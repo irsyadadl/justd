@@ -43,7 +43,7 @@ export default function Page() {
                 app: {
                   "page.tsx": "blocks/sidebar/sidebar-01/page",
                   "layout.tsx": "blocks/sidebar/sidebar-01/layout",
-                  "global.css": "docs/installation/main.css",
+                  "global.css": "blocks/main.css",
                 },
               },
             }}
@@ -74,7 +74,7 @@ export default function Page() {
                 app: {
                   "page.tsx": "blocks/sidebar/sidebar-03/page",
                   "layout.tsx": "blocks/sidebar/sidebar-03/layout",
-                  "global.css": "docs/installation/main.css",
+                  "global.css": "blocks/main.css",
                 },
               },
             }}
@@ -105,7 +105,7 @@ export default function Page() {
                 app: {
                   "page.tsx": "blocks/sidebar/sidebar-04/page",
                   "layout.tsx": "blocks/sidebar/sidebar-04/layout",
-                  "global.css": "docs/installation/main.css",
+                  "global.css": "blocks/main.css",
                 },
               },
             }}
@@ -130,7 +130,7 @@ export default function Page() {
                   "app-navbar.tsx": "blocks/navbar/navbar-00/app-navbar",
                 },
                 app: {
-                  "global.css": "docs/installation/main.css",
+                  "global.css": "blocks/main.css",
                   "page.tsx": "blocks/navbar/navbar-00/page",
                   "layout.tsx": "blocks/navbar/navbar-00/layout",
                 },
@@ -158,7 +158,7 @@ export default function Page() {
                   "app-navbar.tsx": "blocks/navbar/navbar-03/app-navbar",
                 },
                 app: {
-                  "global.css": "docs/installation/main.css",
+                  "global.css": "blocks/main.css",
                   "page.tsx": "blocks/navbar/navbar-03/page",
                   "layout.tsx": "blocks/navbar/navbar-03/layout",
                 },
@@ -185,7 +185,7 @@ export default function Page() {
                   "app-navbar.tsx": "blocks/navbar/navbar-02/app-navbar",
                 },
                 app: {
-                  "global.css": "docs/installation/main.css",
+                  "global.css": "blocks/main.css",
                   "page.tsx": "blocks/navbar/navbar-02/page",
                   "layout.tsx": "blocks/navbar/navbar-02/layout",
                 },

@@ -2716,6 +2716,44 @@
         ]
       },
       {
+        "title": "Drag-and-drop",
+        "children": [
+          {
+            "title": "Drop Zone",
+            "slug": "docs/2.x/components/drag-and-drop/drop-zone",
+            "order": 1,
+            "children": [],
+            "toc": [
+              {
+                "title": "Basic",
+                "url": "#basic",
+                "items": []
+              },
+              {
+                "title": "Installation",
+                "url": "#installation",
+                "items": []
+              },
+              {
+                "title": "Manual Installation",
+                "url": "#manual-installation",
+                "items": []
+              },
+              {
+                "title": "Anatomy",
+                "url": "#anatomy",
+                "items": []
+              },
+              {
+                "title": "Using FileTrigger",
+                "url": "#using-filetrigger",
+                "items": []
+              }
+            ]
+          }
+        ]
+      },
+      {
         "title": "Date-and-time",
         "children": [
           {
@@ -3022,44 +3060,6 @@
               {
                 "title": "Disabled",
                 "url": "#disabled",
-                "items": []
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "title": "Drag-and-drop",
-        "children": [
-          {
-            "title": "Drop Zone",
-            "slug": "docs/2.x/components/drag-and-drop/drop-zone",
-            "order": 1,
-            "children": [],
-            "toc": [
-              {
-                "title": "Basic",
-                "url": "#basic",
-                "items": []
-              },
-              {
-                "title": "Installation",
-                "url": "#installation",
-                "items": []
-              },
-              {
-                "title": "Manual Installation",
-                "url": "#manual-installation",
-                "items": []
-              },
-              {
-                "title": "Anatomy",
-                "url": "#anatomy",
-                "items": []
-              },
-              {
-                "title": "Using FileTrigger",
-                "url": "#using-filetrigger",
                 "items": []
               }
             ]
@@ -4137,351 +4137,6 @@
         ]
       },
       {
-        "title": "Navigation",
-        "children": [
-          {
-            "title": "Link",
-            "slug": "docs/2.x/components/navigation/link",
-            "order": 1,
-            "children": [],
-            "toc": [
-              {
-                "title": "Basic",
-                "url": "#basic",
-                "items": []
-              },
-              {
-                "title": "Installation",
-                "url": "#installation",
-                "items": []
-              },
-              {
-                "title": "Manual Installation",
-                "url": "#manual-installation",
-                "items": []
-              },
-              {
-                "title": "Anatomy",
-                "url": "#anatomy",
-                "items": []
-              },
-              {
-                "title": "Unstyled",
-                "url": "#unstyled",
-                "items": []
-              },
-              {
-                "title": "Use as Button",
-                "url": "#use-as-button",
-                "items": []
-              },
-              {
-                "title": "Disabled",
-                "url": "#disabled",
-                "items": []
-              }
-            ]
-          },
-          {
-            "title": "Breadcrumbs",
-            "slug": "docs/2.x/components/navigation/breadcrumbs",
-            "order": 2,
-            "children": [],
-            "toc": [
-              {
-                "title": "Basic",
-                "url": "#basic",
-                "items": []
-              },
-              {
-                "title": "Installation",
-                "url": "#installation",
-                "items": []
-              },
-              {
-                "title": "Composed Components",
-                "url": "#composed-components",
-                "items": []
-              },
-              {
-                "title": "Manual Installation",
-                "url": "#manual-installation",
-                "items": []
-              },
-              {
-                "title": "Anatomy",
-                "url": "#anatomy",
-                "items": []
-              },
-              {
-                "title": "Separator",
-                "url": "#separator",
-                "items": []
-              },
-              {
-                "title": "Menu",
-                "url": "#menu",
-                "items": []
-              },
-              {
-                "title": "Collections",
-                "url": "#collections",
-                "items": []
-              },
-              {
-                "title": "Current",
-                "url": "#current",
-                "items": []
-              }
-            ]
-          },
-          {
-            "title": "Pagination",
-            "slug": "docs/2.x/components/navigation/pagination",
-            "status": "beta",
-            "order": 3,
-            "children": [],
-            "toc": [
-              {
-                "title": "Basic",
-                "url": "#basic",
-                "items": []
-              },
-              {
-                "title": "Installation",
-                "url": "#installation",
-                "items": []
-              },
-              {
-                "title": "Composed Components",
-                "url": "#composed-components",
-                "items": []
-              },
-              {
-                "title": "Manual Installation",
-                "url": "#manual-installation",
-                "items": []
-              },
-              {
-                "title": "Anatomy",
-                "url": "#anatomy",
-                "items": []
-              },
-              {
-                "title": "Simple",
-                "url": "#simple",
-                "items": []
-              },
-              {
-                "title": "Using Collections",
-                "url": "#using-collections",
-                "items": []
-              },
-              {
-                "title": "Preserving Scroll",
-                "url": "#preserving-scroll",
-                "items": [
-                  {
-                    "title": "Inertia.js",
-                    "url": "#inertiajs",
-                    "items": []
-                  },
-                  {
-                    "title": "Next.js",
-                    "url": "#nextjs",
-                    "items": []
-                  },
-                  {
-                    "title": "Remix",
-                    "url": "#remix",
-                    "items": []
-                  },
-                  {
-                    "title": "React Router",
-                    "url": "#react-router",
-                    "items": []
-                  },
-                  {
-                    "title": "Considering",
-                    "url": "#considering",
-                    "items": []
-                  }
-                ]
-              },
-              {
-                "title": "Client Side Routing",
-                "url": "#client-side-routing",
-                "items": []
-              }
-            ]
-          },
-          {
-            "title": "Tabs",
-            "slug": "docs/2.x/components/navigation/tabs",
-            "order": 3,
-            "children": [],
-            "toc": [
-              {
-                "title": "Basic",
-                "url": "#basic",
-                "items": []
-              },
-              {
-                "title": "Installation",
-                "url": "#installation",
-                "items": []
-              },
-              {
-                "title": "Manual Installation",
-                "url": "#manual-installation",
-                "items": []
-              },
-              {
-                "title": "Anatomy",
-                "url": "#anatomy",
-                "items": []
-              },
-              {
-                "title": "With Icons",
-                "url": "#with-icons",
-                "items": []
-              },
-              {
-                "title": "Orientation",
-                "url": "#orientation",
-                "items": []
-              },
-              {
-                "title": "Collections",
-                "url": "#collections",
-                "items": []
-              },
-              {
-                "title": "Links",
-                "url": "#links",
-                "items": []
-              },
-              {
-                "title": "Disabled",
-                "url": "#disabled",
-                "items": []
-              }
-            ]
-          },
-          {
-            "title": "Disclosure | Collapsible",
-            "slug": "docs/2.x/components/navigation/disclosure",
-            "order": 5,
-            "children": [],
-            "toc": [
-              {
-                "title": "Basic",
-                "url": "#basic",
-                "items": []
-              },
-              {
-                "title": "Installation",
-                "url": "#installation",
-                "items": []
-              },
-              {
-                "title": "Manual Installation",
-                "url": "#manual-installation",
-                "items": []
-              },
-              {
-                "title": "Anatomy",
-                "url": "#anatomy",
-                "items": []
-              },
-              {
-                "title": "Disabled",
-                "url": "#disabled",
-                "items": []
-              },
-              {
-                "title": "Controlled",
-                "url": "#controlled",
-                "items": []
-              },
-              {
-                "title": "Accordion",
-                "url": "#accordion",
-                "items": []
-              }
-            ]
-          },
-          {
-            "title": "Disclosure Group | Accordion",
-            "slug": "docs/2.x/components/navigation/disclosure-group",
-            "order": 6,
-            "children": [],
-            "toc": [
-              {
-                "title": "Basic",
-                "url": "#basic",
-                "items": []
-              },
-              {
-                "title": "Installation",
-                "url": "#installation",
-                "items": []
-              },
-              {
-                "title": "Manual Installation",
-                "url": "#manual-installation",
-                "items": []
-              },
-              {
-                "title": "Anatomy",
-                "url": "#anatomy",
-                "items": []
-              },
-              {
-                "title": "Default Expanded",
-                "url": "#default-expanded",
-                "items": []
-              },
-              {
-                "title": "Allow Multiple Expanded",
-                "url": "#allow-multiple-expanded",
-                "items": []
-              },
-              {
-                "title": "Nested",
-                "url": "#nested",
-                "items": []
-              },
-              {
-                "title": "With Icon",
-                "url": "#with-icon",
-                "items": []
-              },
-              {
-                "title": "Hide Border",
-                "url": "#hide-border",
-                "items": []
-              },
-              {
-                "title": "Hide Indicator",
-                "url": "#hide-indicator",
-                "items": []
-              },
-              {
-                "title": "Hide Everything",
-                "url": "#hide-everything",
-                "items": []
-              },
-              {
-                "title": "Disabled",
-                "url": "#disabled",
-                "items": []
-              }
-            ]
-          }
-        ]
-      },
-      {
         "title": "Overlays",
         "children": [
           {
@@ -4841,6 +4496,351 @@
         ]
       },
       {
+        "title": "Navigation",
+        "children": [
+          {
+            "title": "Link",
+            "slug": "docs/2.x/components/navigation/link",
+            "order": 1,
+            "children": [],
+            "toc": [
+              {
+                "title": "Basic",
+                "url": "#basic",
+                "items": []
+              },
+              {
+                "title": "Installation",
+                "url": "#installation",
+                "items": []
+              },
+              {
+                "title": "Manual Installation",
+                "url": "#manual-installation",
+                "items": []
+              },
+              {
+                "title": "Anatomy",
+                "url": "#anatomy",
+                "items": []
+              },
+              {
+                "title": "Unstyled",
+                "url": "#unstyled",
+                "items": []
+              },
+              {
+                "title": "Use as Button",
+                "url": "#use-as-button",
+                "items": []
+              },
+              {
+                "title": "Disabled",
+                "url": "#disabled",
+                "items": []
+              }
+            ]
+          },
+          {
+            "title": "Breadcrumbs",
+            "slug": "docs/2.x/components/navigation/breadcrumbs",
+            "order": 2,
+            "children": [],
+            "toc": [
+              {
+                "title": "Basic",
+                "url": "#basic",
+                "items": []
+              },
+              {
+                "title": "Installation",
+                "url": "#installation",
+                "items": []
+              },
+              {
+                "title": "Composed Components",
+                "url": "#composed-components",
+                "items": []
+              },
+              {
+                "title": "Manual Installation",
+                "url": "#manual-installation",
+                "items": []
+              },
+              {
+                "title": "Anatomy",
+                "url": "#anatomy",
+                "items": []
+              },
+              {
+                "title": "Separator",
+                "url": "#separator",
+                "items": []
+              },
+              {
+                "title": "Menu",
+                "url": "#menu",
+                "items": []
+              },
+              {
+                "title": "Collections",
+                "url": "#collections",
+                "items": []
+              },
+              {
+                "title": "Current",
+                "url": "#current",
+                "items": []
+              }
+            ]
+          },
+          {
+            "title": "Pagination",
+            "slug": "docs/2.x/components/navigation/pagination",
+            "status": "beta",
+            "order": 3,
+            "children": [],
+            "toc": [
+              {
+                "title": "Basic",
+                "url": "#basic",
+                "items": []
+              },
+              {
+                "title": "Installation",
+                "url": "#installation",
+                "items": []
+              },
+              {
+                "title": "Composed Components",
+                "url": "#composed-components",
+                "items": []
+              },
+              {
+                "title": "Manual Installation",
+                "url": "#manual-installation",
+                "items": []
+              },
+              {
+                "title": "Anatomy",
+                "url": "#anatomy",
+                "items": []
+              },
+              {
+                "title": "Simple",
+                "url": "#simple",
+                "items": []
+              },
+              {
+                "title": "Using Collections",
+                "url": "#using-collections",
+                "items": []
+              },
+              {
+                "title": "Preserving Scroll",
+                "url": "#preserving-scroll",
+                "items": [
+                  {
+                    "title": "Inertia.js",
+                    "url": "#inertiajs",
+                    "items": []
+                  },
+                  {
+                    "title": "Next.js",
+                    "url": "#nextjs",
+                    "items": []
+                  },
+                  {
+                    "title": "Remix",
+                    "url": "#remix",
+                    "items": []
+                  },
+                  {
+                    "title": "React Router",
+                    "url": "#react-router",
+                    "items": []
+                  },
+                  {
+                    "title": "Considering",
+                    "url": "#considering",
+                    "items": []
+                  }
+                ]
+              },
+              {
+                "title": "Client Side Routing",
+                "url": "#client-side-routing",
+                "items": []
+              }
+            ]
+          },
+          {
+            "title": "Tabs",
+            "slug": "docs/2.x/components/navigation/tabs",
+            "order": 3,
+            "children": [],
+            "toc": [
+              {
+                "title": "Basic",
+                "url": "#basic",
+                "items": []
+              },
+              {
+                "title": "Installation",
+                "url": "#installation",
+                "items": []
+              },
+              {
+                "title": "Manual Installation",
+                "url": "#manual-installation",
+                "items": []
+              },
+              {
+                "title": "Anatomy",
+                "url": "#anatomy",
+                "items": []
+              },
+              {
+                "title": "With Icons",
+                "url": "#with-icons",
+                "items": []
+              },
+              {
+                "title": "Orientation",
+                "url": "#orientation",
+                "items": []
+              },
+              {
+                "title": "Collections",
+                "url": "#collections",
+                "items": []
+              },
+              {
+                "title": "Links",
+                "url": "#links",
+                "items": []
+              },
+              {
+                "title": "Disabled",
+                "url": "#disabled",
+                "items": []
+              }
+            ]
+          },
+          {
+            "title": "Disclosure | Collapsible",
+            "slug": "docs/2.x/components/navigation/disclosure",
+            "order": 5,
+            "children": [],
+            "toc": [
+              {
+                "title": "Basic",
+                "url": "#basic",
+                "items": []
+              },
+              {
+                "title": "Installation",
+                "url": "#installation",
+                "items": []
+              },
+              {
+                "title": "Manual Installation",
+                "url": "#manual-installation",
+                "items": []
+              },
+              {
+                "title": "Anatomy",
+                "url": "#anatomy",
+                "items": []
+              },
+              {
+                "title": "Disabled",
+                "url": "#disabled",
+                "items": []
+              },
+              {
+                "title": "Controlled",
+                "url": "#controlled",
+                "items": []
+              },
+              {
+                "title": "Accordion",
+                "url": "#accordion",
+                "items": []
+              }
+            ]
+          },
+          {
+            "title": "Disclosure Group | Accordion",
+            "slug": "docs/2.x/components/navigation/disclosure-group",
+            "order": 6,
+            "children": [],
+            "toc": [
+              {
+                "title": "Basic",
+                "url": "#basic",
+                "items": []
+              },
+              {
+                "title": "Installation",
+                "url": "#installation",
+                "items": []
+              },
+              {
+                "title": "Manual Installation",
+                "url": "#manual-installation",
+                "items": []
+              },
+              {
+                "title": "Anatomy",
+                "url": "#anatomy",
+                "items": []
+              },
+              {
+                "title": "Default Expanded",
+                "url": "#default-expanded",
+                "items": []
+              },
+              {
+                "title": "Allow Multiple Expanded",
+                "url": "#allow-multiple-expanded",
+                "items": []
+              },
+              {
+                "title": "Nested",
+                "url": "#nested",
+                "items": []
+              },
+              {
+                "title": "With Icon",
+                "url": "#with-icon",
+                "items": []
+              },
+              {
+                "title": "Hide Border",
+                "url": "#hide-border",
+                "items": []
+              },
+              {
+                "title": "Hide Indicator",
+                "url": "#hide-indicator",
+                "items": []
+              },
+              {
+                "title": "Hide Everything",
+                "url": "#hide-everything",
+                "items": []
+              },
+              {
+                "title": "Disabled",
+                "url": "#disabled",
+                "items": []
+              }
+            ]
+          }
+        ]
+      },
+      {
         "title": "Pickers",
         "children": [
           {
@@ -5044,6 +5044,309 @@
               {
                 "title": "Props",
                 "url": "#props",
+                "items": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Surfaces",
+        "children": [
+          {
+            "title": "Card",
+            "slug": "docs/2.x/components/surfaces/card",
+            "order": 1,
+            "children": [],
+            "toc": [
+              {
+                "title": "Basic",
+                "url": "#basic",
+                "items": []
+              },
+              {
+                "title": "Installation",
+                "url": "#installation",
+                "items": []
+              },
+              {
+                "title": "Composed Components",
+                "url": "#composed-components",
+                "items": []
+              },
+              {
+                "title": "Manual Installation",
+                "url": "#manual-installation",
+                "items": []
+              },
+              {
+                "title": "Anatomy",
+                "url": "#anatomy",
+                "items": []
+              },
+              {
+                "title": "With Form",
+                "url": "#with-form",
+                "items": []
+              },
+              {
+                "title": "With Table",
+                "url": "#with-table",
+                "items": []
+              },
+              {
+                "title": "Section Title",
+                "url": "#section-title",
+                "items": []
+              }
+            ]
+          },
+          {
+            "title": "Grid",
+            "slug": "docs/2.x/components/surfaces/grid",
+            "status": "alpha",
+            "order": 2,
+            "children": [],
+            "toc": [
+              {
+                "title": "Basic",
+                "url": "#basic",
+                "items": []
+              },
+              {
+                "title": "Installation",
+                "url": "#installation",
+                "items": []
+              },
+              {
+                "title": "Manual Installation",
+                "url": "#manual-installation",
+                "items": []
+              },
+              {
+                "title": "Anatomy",
+                "url": "#anatomy",
+                "items": []
+              },
+              {
+                "title": "Responsive",
+                "url": "#responsive",
+                "items": []
+              },
+              {
+                "title": "Gaps",
+                "url": "#gaps",
+                "items": []
+              },
+              {
+                "title": "Gaps X and Y",
+                "url": "#gaps-x-and-y",
+                "items": []
+              },
+              {
+                "title": "Debugging",
+                "url": "#debugging",
+                "items": []
+              },
+              {
+                "title": "Grid Item",
+                "url": "#grid-item",
+                "items": []
+              },
+              {
+                "title": "Props",
+                "url": "#props",
+                "items": [
+                  {
+                    "title": "Grid",
+                    "url": "#grid",
+                    "items": []
+                  },
+                  {
+                    "title": "GridItem",
+                    "url": "#griditem",
+                    "items": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Separator",
+            "slug": "docs/2.x/components/surfaces/separator",
+            "order": 3,
+            "children": [],
+            "toc": [
+              {
+                "title": "Basic",
+                "url": "#basic",
+                "items": []
+              },
+              {
+                "title": "Installation",
+                "url": "#installation",
+                "items": []
+              },
+              {
+                "title": "Manual Installation",
+                "url": "#manual-installation",
+                "items": []
+              },
+              {
+                "title": "Anatomy",
+                "url": "#anatomy",
+                "items": []
+              },
+              {
+                "title": "Orientation",
+                "url": "#orientation",
+                "items": []
+              }
+            ]
+          },
+          {
+            "title": "Heading",
+            "slug": "docs/2.x/components/surfaces/heading",
+            "order": 4,
+            "children": [],
+            "toc": [
+              {
+                "title": "Basic",
+                "url": "#basic",
+                "items": []
+              },
+              {
+                "title": "Installation",
+                "url": "#installation",
+                "items": []
+              },
+              {
+                "title": "Anatomy",
+                "url": "#anatomy",
+                "items": []
+              },
+              {
+                "title": "Manual Installation",
+                "url": "#manual-installation",
+                "items": []
+              },
+              {
+                "title": "Heading Levels",
+                "url": "#heading-levels",
+                "items": []
+              },
+              {
+                "title": "Letter Spacing",
+                "url": "#letter-spacing",
+                "items": []
+              }
+            ]
+          },
+          {
+            "title": "Show More",
+            "slug": "docs/2.x/components/surfaces/show-more",
+            "order": 4,
+            "children": [],
+            "toc": [
+              {
+                "title": "Basic",
+                "url": "#basic",
+                "items": []
+              },
+              {
+                "title": "Installation",
+                "url": "#installation",
+                "items": []
+              },
+              {
+                "title": "Manual Installation",
+                "url": "#manual-installation",
+                "items": []
+              },
+              {
+                "title": "Anatomy",
+                "url": "#anatomy",
+                "items": []
+              },
+              {
+                "title": "As Text",
+                "url": "#as-text",
+                "items": []
+              },
+              {
+                "title": "Controlled",
+                "url": "#controlled",
+                "items": []
+              },
+              {
+                "title": "Orientation",
+                "url": "#orientation",
+                "items": []
+              }
+            ]
+          },
+          {
+            "title": "Description List",
+            "slug": "docs/2.x/components/surfaces/description-list",
+            "order": 6,
+            "children": [],
+            "toc": [
+              {
+                "title": "Basic",
+                "url": "#basic",
+                "items": []
+              },
+              {
+                "title": "Installation",
+                "url": "#installation",
+                "items": []
+              },
+              {
+                "title": "Anatomy",
+                "url": "#anatomy",
+                "items": []
+              },
+              {
+                "title": "Manual Installation",
+                "url": "#manual-installation",
+                "items": []
+              },
+              {
+                "title": "With Heading",
+                "url": "#with-heading",
+                "items": []
+              },
+              {
+                "title": "With Card",
+                "url": "#with-card",
+                "items": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Utilities",
+        "children": [
+          {
+            "title": "Visually Hidden",
+            "slug": "docs/2.x/components/utilities/visually-hidden",
+            "order": 1,
+            "children": [],
+            "toc": [
+              {
+                "title": "Visually Hidden",
+                "url": "#visually-hidden",
+                "items": []
+              },
+              {
+                "title": "Installation",
+                "url": "#installation",
+                "items": []
+              },
+              {
+                "title": "Manual Installation",
+                "url": "#manual-installation",
                 "items": []
               }
             ]
@@ -5418,309 +5721,6 @@
               {
                 "title": "Shape",
                 "url": "#shape",
-                "items": []
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "title": "Surfaces",
-        "children": [
-          {
-            "title": "Card",
-            "slug": "docs/2.x/components/surfaces/card",
-            "order": 1,
-            "children": [],
-            "toc": [
-              {
-                "title": "Basic",
-                "url": "#basic",
-                "items": []
-              },
-              {
-                "title": "Installation",
-                "url": "#installation",
-                "items": []
-              },
-              {
-                "title": "Composed Components",
-                "url": "#composed-components",
-                "items": []
-              },
-              {
-                "title": "Manual Installation",
-                "url": "#manual-installation",
-                "items": []
-              },
-              {
-                "title": "Anatomy",
-                "url": "#anatomy",
-                "items": []
-              },
-              {
-                "title": "With Form",
-                "url": "#with-form",
-                "items": []
-              },
-              {
-                "title": "With Table",
-                "url": "#with-table",
-                "items": []
-              },
-              {
-                "title": "Section Title",
-                "url": "#section-title",
-                "items": []
-              }
-            ]
-          },
-          {
-            "title": "Grid",
-            "slug": "docs/2.x/components/surfaces/grid",
-            "status": "alpha",
-            "order": 2,
-            "children": [],
-            "toc": [
-              {
-                "title": "Basic",
-                "url": "#basic",
-                "items": []
-              },
-              {
-                "title": "Installation",
-                "url": "#installation",
-                "items": []
-              },
-              {
-                "title": "Manual Installation",
-                "url": "#manual-installation",
-                "items": []
-              },
-              {
-                "title": "Anatomy",
-                "url": "#anatomy",
-                "items": []
-              },
-              {
-                "title": "Responsive",
-                "url": "#responsive",
-                "items": []
-              },
-              {
-                "title": "Gaps",
-                "url": "#gaps",
-                "items": []
-              },
-              {
-                "title": "Gaps X and Y",
-                "url": "#gaps-x-and-y",
-                "items": []
-              },
-              {
-                "title": "Debugging",
-                "url": "#debugging",
-                "items": []
-              },
-              {
-                "title": "Grid Item",
-                "url": "#grid-item",
-                "items": []
-              },
-              {
-                "title": "Props",
-                "url": "#props",
-                "items": [
-                  {
-                    "title": "Grid",
-                    "url": "#grid",
-                    "items": []
-                  },
-                  {
-                    "title": "GridItem",
-                    "url": "#griditem",
-                    "items": []
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "title": "Separator",
-            "slug": "docs/2.x/components/surfaces/separator",
-            "order": 3,
-            "children": [],
-            "toc": [
-              {
-                "title": "Basic",
-                "url": "#basic",
-                "items": []
-              },
-              {
-                "title": "Installation",
-                "url": "#installation",
-                "items": []
-              },
-              {
-                "title": "Manual Installation",
-                "url": "#manual-installation",
-                "items": []
-              },
-              {
-                "title": "Anatomy",
-                "url": "#anatomy",
-                "items": []
-              },
-              {
-                "title": "Orientation",
-                "url": "#orientation",
-                "items": []
-              }
-            ]
-          },
-          {
-            "title": "Heading",
-            "slug": "docs/2.x/components/surfaces/heading",
-            "order": 4,
-            "children": [],
-            "toc": [
-              {
-                "title": "Basic",
-                "url": "#basic",
-                "items": []
-              },
-              {
-                "title": "Installation",
-                "url": "#installation",
-                "items": []
-              },
-              {
-                "title": "Anatomy",
-                "url": "#anatomy",
-                "items": []
-              },
-              {
-                "title": "Manual Installation",
-                "url": "#manual-installation",
-                "items": []
-              },
-              {
-                "title": "Heading Levels",
-                "url": "#heading-levels",
-                "items": []
-              },
-              {
-                "title": "Letter Spacing",
-                "url": "#letter-spacing",
-                "items": []
-              }
-            ]
-          },
-          {
-            "title": "Show More",
-            "slug": "docs/2.x/components/surfaces/show-more",
-            "order": 4,
-            "children": [],
-            "toc": [
-              {
-                "title": "Basic",
-                "url": "#basic",
-                "items": []
-              },
-              {
-                "title": "Installation",
-                "url": "#installation",
-                "items": []
-              },
-              {
-                "title": "Manual Installation",
-                "url": "#manual-installation",
-                "items": []
-              },
-              {
-                "title": "Anatomy",
-                "url": "#anatomy",
-                "items": []
-              },
-              {
-                "title": "As Text",
-                "url": "#as-text",
-                "items": []
-              },
-              {
-                "title": "Controlled",
-                "url": "#controlled",
-                "items": []
-              },
-              {
-                "title": "Orientation",
-                "url": "#orientation",
-                "items": []
-              }
-            ]
-          },
-          {
-            "title": "Description List",
-            "slug": "docs/2.x/components/surfaces/description-list",
-            "order": 6,
-            "children": [],
-            "toc": [
-              {
-                "title": "Basic",
-                "url": "#basic",
-                "items": []
-              },
-              {
-                "title": "Installation",
-                "url": "#installation",
-                "items": []
-              },
-              {
-                "title": "Anatomy",
-                "url": "#anatomy",
-                "items": []
-              },
-              {
-                "title": "Manual Installation",
-                "url": "#manual-installation",
-                "items": []
-              },
-              {
-                "title": "With Heading",
-                "url": "#with-heading",
-                "items": []
-              },
-              {
-                "title": "With Card",
-                "url": "#with-card",
-                "items": []
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "title": "Utilities",
-        "children": [
-          {
-            "title": "Visually Hidden",
-            "slug": "docs/2.x/components/utilities/visually-hidden",
-            "order": 1,
-            "children": [],
-            "toc": [
-              {
-                "title": "Visually Hidden",
-                "url": "#visually-hidden",
-                "items": []
-              },
-              {
-                "title": "Installation",
-                "url": "#installation",
-                "items": []
-              },
-              {
-                "title": "Manual Installation",
-                "url": "#manual-installation",
                 "items": []
               }
             ]
