@@ -113,4 +113,5 @@ ListBox.ItemDetails = DropdownItemDetails
 ListBox.Item = Item
 ListBox.Picker = ListBoxPicker
 
-export { ListBox, listBoxStyles, type ListBoxPickerProps }
+export type { ListBoxPickerProps }
+export { ListBox, listBoxStyles }

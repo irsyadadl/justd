@@ -202,4 +202,5 @@ const Thumb = ({ className, ...props }: SliderThumbProps) => {
   )
 }
 
+export type { SliderProps }
 export { Slider }

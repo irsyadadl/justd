@@ -91,17 +91,22 @@ const TagGroupContext = React.createContext<TagGroupContextValue>({
   shape: "square",
 })
 
-export interface TagGroupProps extends TagGroupPrimitiveProps {
+interface TagGroupProps extends TagGroupPrimitiveProps {
   intent?: Intent
   shape?: "square" | "circle"
   errorMessage?: string
   label?: string
   description?: string
+  ref?: React.RefObject<HTMLDivElement>
 }
 
-const TagGroup = ({ children, ...props }: TagGroupProps) => {
+const TagGroup = ({ children, ref, ...props }: TagGroupProps) => {
   return (
-    <TagGroupPrimitive {...props} className={cn("flex flex-col flex-wrap", props.className)}>
+    <TagGroupPrimitive
+      ref={ref}
+      className={cn("flex flex-col flex-wrap", props.className)}
+      {...props}
+    >
       <TagGroupContext.Provider
         value={{
           intent: props.intent || "primary",
@@ -181,4 +186,5 @@ const Tag = ({ className, intent, shape, ...props }: TagProps) => {
   )
 }
 
-export { Tag, TagList, TagGroup, type RestrictedIntent }
+export type { TagGroupProps, TagProps, TagListProps, RestrictedIntent }
+export { Tag, TagList, TagGroup }

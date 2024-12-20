@@ -1,11 +1,9 @@
 "use client"
 
-import { forwardRef } from "react"
-
 import type {
-  FieldErrorProps,
+  FieldErrorProps as FieldErrorPrimitiveProps,
   GroupProps,
-  InputProps,
+  InputProps as InputPrimitiveProps,
   LabelProps,
   TextFieldProps as TextFieldPrimitiveProps,
   TextProps,
@@ -51,12 +49,14 @@ const Label = ({ className, ...props }: LabelProps) => {
 
 interface DescriptionProps extends TextProps {
   isWarning?: boolean
+  ref?: React.RefObject<HTMLElement>
 }
 
-const Description = ({ className, ...props }: DescriptionProps) => {
+const Description = ({ ref, className, ...props }: DescriptionProps) => {
   const isWarning = props.isWarning ?? false
   return (
     <Text
+      ref={ref}
       {...props}
       slot="description"
       className={description({ className: isWarning ? "text-warning" : className })}
@@ -64,9 +64,13 @@ const Description = ({ className, ...props }: DescriptionProps) => {
   )
 }
 
-const FieldError = ({ className, ...props }: FieldErrorProps) => {
+interface FieldErrorProps extends FieldErrorPrimitiveProps {
+  ref?: React.RefObject<HTMLElement>
+}
+const FieldError = ({ className, ref, ...props }: FieldErrorProps) => {
   return (
     <FieldErrorPrimitive
+      ref={ref}
       {...props}
       className={composeTailwindRenderProps(className, fieldError())}
     />
@@ -105,7 +109,10 @@ const FieldGroup = ({ className, ...props }: GroupProps) => {
   )
 }
 
-const Input = forwardRef<HTMLInputElement, InputProps>(({ className, ...props }, ref) => {
+interface InputProps extends InputPrimitiveProps {
+  ref?: React.RefObject<HTMLInputElement>
+}
+const Input = ({ className, ref, ...props }: InputProps) => {
   return (
     <InputPrimitive
       ref={ref}
@@ -113,8 +120,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(({ className, ...props },
       className={composeTailwindRenderProps(className, input())}
     />
   )
-})
+}
 
-Input.displayName = "Input"
-
-export { Description, FieldError, FieldGroup, Input, Label, type FieldProps }
+export type { FieldProps, InputProps, FieldErrorProps }
+export { Description, FieldError, FieldGroup, Input, Label }

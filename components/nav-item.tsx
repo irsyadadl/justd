@@ -4,8 +4,8 @@ import type React from "react"
 
 import { motion } from "motion/react"
 import NextLink from "next/link"
+import { Link } from "react-aria-components"
 import { tv } from "tailwind-variants"
-import { LinkPrimitive } from "ui"
 
 const navLinkStyles = tv({
   base: "relative flex focus-visible:text-fg items-center gap-x-3 tracking-tight py-2 text-sm text-muted-fg transition-colors data-focused:outline-hidden sm:py-3",
@@ -27,7 +27,7 @@ interface NavLinkProps {
 }
 
 const NavLink = ({ href, isActive, className, isNextLink, ...props }: NavLinkProps) => {
-  const El = isNextLink ? NextLink : LinkPrimitive
+  const El = isNextLink ? NextLink : Link
   return (
     <El href={href} className={navLinkStyles({ isActive, className })} {...props}>
       <>

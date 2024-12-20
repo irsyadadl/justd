@@ -10,7 +10,7 @@ import {
 import { Label } from "./field"
 import { composeTailwindRenderProps } from "./primitive"
 
-export interface MeterProps extends MeterPrimitiveProps {
+interface MeterProps extends MeterPrimitiveProps {
   label?: string
 }
 
@@ -55,22 +55,23 @@ const Meter = ({ label, ...props }: MeterProps) => {
 
 const getColor = (percentage: number) => {
   if (percentage < 30) {
-    return "var(--primary)" // Blue
+    return "var(--primary)"
   }
 
   if (percentage < 50) {
-    return "var(--success)" // Green
+    return "var(--success)"
   }
 
   if (percentage < 70) {
-    return "#eab308" // Yellow
+    return "#eab308"
   }
 
   if (percentage < 80) {
-    return "var(--warning)" // Orange
+    return "var(--warning)"
   }
 
-  return "var(--danger)" // Red
+  return "var(--danger)"
 }
 
+export type { MeterProps }
 export { Meter }

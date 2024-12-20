@@ -11,13 +11,15 @@ import { composeTailwindRenderProps } from "./primitive"
 
 interface ProgressBarProps extends ProgressBarPrimitiveProps {
   label?: string
+  ref?: React.RefObject<HTMLDivElement>
 }
 
-const ProgressBar = ({ label, className, ...props }: ProgressBarProps) => {
+const ProgressBar = ({ label, ref, className, ...props }: ProgressBarProps) => {
   return (
     <ProgressBarPrimitive
-      {...props}
+      ref={ref}
       className={composeTailwindRenderProps(className, "flex flex-col")}
+      {...props}
     >
       {({ percentage, valueText, isIndeterminate }) => (
         <>
@@ -52,4 +54,5 @@ const ProgressBar = ({ label, className, ...props }: ProgressBarProps) => {
   )
 }
 
+export type { ProgressBarProps }
 export { ProgressBar }

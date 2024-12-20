@@ -24,7 +24,7 @@ const buttonStyles = tv({
   base: "flex btn-trigger cursor-pointer disabled:cursor-default disabled:opacity-50 items-center rounded text-sm",
 })
 
-export interface ColorPickerProps extends ColorPickerPrimitiveProps {
+interface ColorPickerProps extends ColorPickerPrimitiveProps {
   label?: string
   children?: React.ReactNode
   showArrow?: boolean
@@ -72,4 +72,5 @@ const ColorPicker = ({
   )
 }
 
+export type { ColorPickerProps }
 export { ColorPicker }

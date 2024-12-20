@@ -63,11 +63,11 @@ const ComboBox = <T extends object>({
 
 type ListBoxPickerProps<T extends object> = React.ComponentProps<typeof ListBox<T>>
 
-interface ListProps<T extends object>
+interface ComboBoxListProps<T extends object>
   extends ListBoxPickerProps<T>,
     Omit<PopoverPrimitiveProps, "children" | "className" | "style"> {}
 
-const List = <T extends object>({ children, items, ...props }: ListProps<T>) => {
+const ComboBoxList = <T extends object>({ children, items, ...props }: ComboBoxListProps<T>) => {
   return (
     <Popover.Picker trigger="ComboBox" isNonModal placement={props.placement}>
       <ListBox.Picker items={items} {...props}>
@@ -109,8 +109,9 @@ const ComboBoxClearButton = () => {
 }
 
 ComboBox.Input = ComboBoxInput
-ComboBox.List = List
+ComboBox.List = ComboBoxList
 ComboBox.Option = DropdownItem
 ComboBox.Section = DropdownSection
 
+export type { ComboBoxProps, ComboBoxListProps }
 export { ComboBox }

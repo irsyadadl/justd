@@ -55,4 +55,5 @@ const Textarea = ({
   )
 }
 
-export { Textarea, type TextareaProps }
+export type { TextareaProps }
+export { Textarea }

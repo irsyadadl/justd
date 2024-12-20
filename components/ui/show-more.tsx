@@ -61,4 +61,5 @@ const ShowMore = ({
   )
 }
 
+export type { ShowMoreProps }
 export { ShowMore }

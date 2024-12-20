@@ -3,15 +3,17 @@
 import { useId } from "react"
 
 import { LayoutGroup, motion } from "motion/react"
+import type {
+  TabListProps as TabListPrimitiveProps,
+  TabPanelProps as TabPanelPrimitiveProps,
+  TabProps as TabPrimitiveProps,
+  TabsProps as TabsPrimitiveProps,
+} from "react-aria-components"
 import {
   TabList,
-  type TabListProps,
   TabPanel,
-  type TabPanelProps,
   Tab as TabPrimitive,
-  type TabProps,
   Tabs as TabsPrimitive,
-  type TabsProps,
   composeRenderProps,
 } from "react-aria-components"
 import { twJoin } from "tailwind-merge"
@@ -30,16 +32,20 @@ const tabsStyles = tv({
   },
 })
 
-const Tabs = ({ className, ...props }: TabsProps) => {
+interface TabsProps extends TabsPrimitiveProps {
+  ref?: React.RefObject<HTMLDivElement>
+}
+const Tabs = ({ className, ref, ...props }: TabsProps) => {
   return (
     <TabsPrimitive
-      {...props}
       className={composeRenderProps(className, (className, renderProps) =>
         tabsStyles({
           ...renderProps,
           className,
         }),
       )}
+      ref={ref}
+      {...props}
     />
   )
 }
@@ -54,13 +60,17 @@ const tabListStyles = tv({
   },
 })
 
-const List = <T extends object>(props: TabListProps<T>) => {
+interface TabListProps<T extends object> extends TabListPrimitiveProps<T> {
+  ref?: React.RefObject<HTMLDivElement>
+}
+const List = <T extends object>({ className, ref, ...props }: TabListProps<T>) => {
   const id = useId()
   return (
     <LayoutGroup id={id}>
       <TabList
+        ref={ref}
         {...props}
-        className={composeRenderProps(props.className, (className, renderProps) =>
+        className={composeRenderProps(className, (className, renderProps) =>
           tabListStyles({ ...renderProps, className }),
         )}
       />
@@ -86,9 +96,13 @@ const tabStyles = tv({
   },
 })
 
-const Tab = ({ children, ...props }: TabProps) => {
+interface TabProps extends TabPrimitiveProps {
+  ref?: React.RefObject<HTMLButtonElement>
+}
+const Tab = ({ children, ref, ...props }: TabProps) => {
   return (
     <TabPrimitive
+      ref={ref}
       {...props}
       className={composeRenderProps(props.className, (_className, renderProps) =>
         tabStyles({
@@ -119,10 +133,14 @@ const Tab = ({ children, ...props }: TabProps) => {
   )
 }
 
-const Panel = ({ className, ...props }: TabPanelProps) => {
+interface TabPanelProps extends TabPanelPrimitiveProps {
+  ref?: React.RefObject<HTMLDivElement>
+}
+const Panel = ({ className, ref, ...props }: TabPanelProps) => {
   return (
     <TabPanel
       {...props}
+      ref={ref}
       className={composeTailwindRenderProps(
         className,
         "flex-1 text-fg text-sm data-focus-visible:outline-hidden",
@@ -135,4 +153,5 @@ Tabs.List = List
 Tabs.Tab = Tab
 Tabs.Panel = Panel
 
+export type { TabsProps, TabListProps, TabProps, TabPanelProps }
 export { Tabs }

@@ -1,6 +1,6 @@
 "use client"
 
-import { createContext, forwardRef, use, useState } from "react"
+import { createContext, use, useState } from "react"
 
 import type { PanInfo } from "motion/react"
 import {
@@ -50,15 +50,13 @@ const useDrawerContext = () => {
   return context
 }
 
-const ModalWrapper = forwardRef<HTMLDivElement, React.ComponentProps<typeof Modal>>(
-  (props, ref) => <Modal ref={ref} {...props} />,
+const ModalWrapper = ({ ref, ...props }: React.ComponentProps<typeof Modal>) => (
+  <Modal ref={ref} {...props} />
 )
-ModalWrapper.displayName = "ModalWrapper"
 
-const ModalOverlayWrapper = forwardRef<HTMLDivElement, React.ComponentProps<typeof ModalOverlay>>(
-  (props, ref) => <ModalOverlay ref={ref} {...props} />,
+const ModalOverlayWrapper = ({ ref, ...props }: React.ComponentProps<typeof ModalOverlay>) => (
+  <ModalOverlay ref={ref} {...props} />
 )
-ModalOverlayWrapper.displayName = "ModalOverlayWrapper"
 
 const ModalPrimitive = motion.create(ModalWrapper)
 const ModalOverlayPrimitive = motion.create(ModalOverlayWrapper)
@@ -236,7 +234,8 @@ const Drawer = ({
   )
 }
 
-const Content = ({ children, ...props }: React.ComponentProps<typeof DrawerPrimitive>) => {
+type DrawerContentProps = React.ComponentProps<typeof DrawerPrimitive>
+const Content = ({ children, ...props }: DrawerContentProps) => {
   return (
     <DrawerPrimitive>
       <DrawerContentPrimitive {...props}>
@@ -286,4 +285,5 @@ Drawer.Header = DrawerHeader
 Drawer.Title = Dialog.Title
 Drawer.Trigger = DrawerTrigger
 
+export type { DrawerProps, DrawerContentProps }
 export { Drawer }

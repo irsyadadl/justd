@@ -64,7 +64,9 @@ const DropdownSection = <T extends object>({ className, ...props }: DropdownSect
   )
 }
 
-const DropdownItem = ({ className, ...props }: ListBoxItemProps) => {
+type DropdownItemProps = ListBoxItemProps
+
+const DropdownItem = ({ className, ...props }: DropdownItemProps) => {
   const textValue =
     props.textValue || (typeof props.children === "string" ? props.children : undefined)
   return (
@@ -92,7 +94,7 @@ const DropdownItem = ({ className, ...props }: ListBoxItemProps) => {
   )
 }
 
-interface DropdownItemSlot extends TextProps {
+interface DropdownItemDetailProps extends TextProps {
   label?: TextProps["children"]
   description?: TextProps["children"]
   classNames?: {
@@ -101,7 +103,12 @@ interface DropdownItemSlot extends TextProps {
   }
 }
 
-const DropdownItemDetails = ({ label, description, classNames, ...props }: DropdownItemSlot) => {
+const DropdownItemDetails = ({
+  label,
+  description,
+  classNames,
+  ...props
+}: DropdownItemDetailProps) => {
   const { slot, children, title, ...restProps } = props
 
   return (
@@ -130,6 +137,7 @@ const DropdownItemDetails = ({ label, description, classNames, ...props }: Dropd
 }
 
 // Note: This is not exposed component, but it's used in other components to render dropdowns.
+export type { DropdownSectionProps, DropdownItemProps, DropdownItemDetailProps }
 export {
   DropdownItem,
   dropdownItemStyles,

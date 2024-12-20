@@ -76,4 +76,5 @@ const ColorField = ({
   )
 }
 
+export type { ColorFieldProps }
 export { ColorField }

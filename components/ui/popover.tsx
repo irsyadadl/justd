@@ -21,28 +21,35 @@ import { tv } from "tailwind-variants"
 import { useMediaQuery } from "@/utils/use-media-query"
 import { twMerge } from "tailwind-merge"
 import { Dialog } from "./dialog"
+import type {
+  DialogBodyProps,
+  DialogFooterProps,
+  DialogHeaderProps,
+  DialogTitleProps,
+} from "./dialog"
 
-const Popover = ({ children, ...props }: DialogTriggerProps) => {
+type PopoverProps = DialogTriggerProps
+const Popover = ({ children, ...props }: PopoverProps) => {
   return <DialogTrigger {...props}>{children}</DialogTrigger>
 }
 
-const Title = ({ level = 2, className, ...props }: React.ComponentProps<typeof Dialog.Title>) => (
+const Title = ({ level = 2, className, ...props }: DialogTitleProps) => (
   <Dialog.Title
     className={twMerge("sm:leading-none", level === 2 && "sm:text-lg", className)}
     {...props}
   />
 )
 
-const Header = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
+const Header = ({ className, ...props }: DialogHeaderProps) => (
   <Dialog.Header className={twMerge("sm:p-4", className)} {...props} />
 )
 
-const Footer = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
+const Footer = ({ className, ...props }: DialogFooterProps) => (
   <Dialog.Footer className={twMerge("sm:p-4", className)} {...props} />
 )
 
-const Body = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
-  <Dialog.Body className={twMerge("sm:px-4", className)} {...props} />
+const Body = ({ className, ref, ...props }: DialogBodyProps) => (
+  <Dialog.Body ref={ref} className={twMerge("sm:px-4", className)} {...props} />
 )
 
 const content = tv({
@@ -94,7 +101,7 @@ const drawer = tv({
   },
 })
 
-interface PopoverProps
+interface PopoverContentProps
   extends Omit<React.ComponentProps<typeof Modal>, "children">,
     Omit<PopoverPrimitiveProps, "children" | "className">,
     Omit<ModalOverlayProps, "className"> {
@@ -107,13 +114,13 @@ interface PopoverProps
   className?: string | ((values: { defaultClassName?: string }) => string)
 }
 
-const Content = ({
+const PopoverContent = ({
   respectScreen = true,
   children,
   showArrow = true,
   className,
   ...props
-}: PopoverProps) => {
+}: PopoverContentProps) => {
   const isMobile = useMediaQuery("(max-width: 600px)")
   const popoverContext = useSlottedContext(PopoverContext)!
   const isMenuTrigger = popoverContext?.trigger === "MenuTrigger"
@@ -169,7 +176,7 @@ const Content = ({
   )
 }
 
-const Picker = ({ children, className, ...props }: PopoverProps) => {
+const Picker = ({ children, className, ...props }: PopoverContentProps) => {
   return (
     <PopoverPrimitive
       {...props}
@@ -189,7 +196,7 @@ const Picker = ({ children, className, ...props }: PopoverProps) => {
 Popover.Primitive = PopoverPrimitive
 Popover.Trigger = Dialog.Trigger
 Popover.Close = Dialog.Close
-Popover.Content = Content
+Popover.Content = PopoverContent
 Popover.Description = Dialog.Description
 Popover.Body = Body
 Popover.Footer = Footer
@@ -197,4 +204,5 @@ Popover.Header = Header
 Popover.Picker = Picker
 Popover.Title = Title
 
-export { Popover, content }
+export type { PopoverProps, PopoverContentProps }
+export { Popover }

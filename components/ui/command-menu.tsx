@@ -297,4 +297,5 @@ CommandMenu.Separator = CommandMenuSeparator
 CommandMenu.Description = CommandMenuDescription
 CommandMenu.Loading = CommandMenuLoading
 
+export type { CommandMenuProps, CommandItemProps, CommandSectionProps, CommandMenuDescriptionProps }
 export { CommandMenu }

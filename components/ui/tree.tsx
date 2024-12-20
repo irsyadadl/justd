@@ -102,4 +102,5 @@ TreeItem.Indicator = Indicator
 TreeItem.Checkbox = ItemCheckbox
 TreeItem.Content = ItemContent
 
+export type { TreeProps, TreeItemProps }
 export { Tree, TreeItem }
