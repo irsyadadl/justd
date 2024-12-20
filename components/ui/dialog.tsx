@@ -92,23 +92,32 @@ const titleStyles = tv({
   },
 })
 
-interface TitleProps extends Omit<HeadingProps, "level"> {
+interface DialogTitleProps extends Omit<HeadingProps, "level"> {
   level?: 1 | 2 | 3 | 4
+  ref?: React.Ref<HTMLHeadingElement>
 }
-
-const Title = ({ level = 2, className, ...props }: TitleProps) => (
-  <Heading slot="title" level={level} className={titleStyles({ level, className })} {...props} />
+const Title = ({ level = 2, className, ref, ...props }: DialogTitleProps) => (
+  <Heading
+    slot="title"
+    level={level}
+    ref={ref}
+    className={titleStyles({ level, className })}
+    {...props}
+  />
 )
 
-const Description = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
-  <div className={description({ className })} {...props} />
+type DialogDescriptionProps = React.ComponentProps<"div">
+const Description = ({ className, ref, ...props }: DialogDescriptionProps) => (
+  <div className={description({ className })} ref={ref} {...props} />
 )
 
-const Body = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
-  <div data-slot="dialog-body" className={body({ className })} {...props} />
+type DialogBodyProps = React.ComponentProps<"div">
+const Body = ({ className, ref, ...props }: DialogBodyProps) => (
+  <div data-slot="dialog-body" ref={ref} className={body({ className })} {...props} />
 )
 
-const Footer = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
+type DialogFooterProps = React.ComponentProps<"div">
+const Footer = ({ className, ...props }: DialogFooterProps) => {
   const footerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -137,8 +146,8 @@ const Footer = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) =
   )
 }
 
-const Close = ({ className, appearance = "outline", ...props }: ButtonProps) => {
-  return <Button slot="close" className={className} appearance={appearance} {...props} />
+const Close = ({ className, appearance = "outline", ref, ...props }: ButtonProps) => {
+  return <Button slot="close" className={className} ref={ref} appearance={appearance} {...props} />
 }
 
 interface CloseButtonIndicatorProps extends ButtonProps {
@@ -177,4 +186,12 @@ Dialog.Footer = Footer
 Dialog.Close = Close
 Dialog.CloseIndicator = CloseIndicator
 
+export type {
+  DialogHeaderProps,
+  DialogTitleProps,
+  DialogBodyProps,
+  DialogFooterProps,
+  DialogDescriptionProps,
+  CloseButtonIndicatorProps,
+}
 export { Dialog }

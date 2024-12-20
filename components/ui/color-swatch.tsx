@@ -2,7 +2,8 @@
 
 import { composeTailwindRenderProps } from "@/components/ui/primitive"
 import { parseColor } from "@react-stately/color"
-import { ColorSwatch as ColorSwatchPrimitive, type ColorSwatchProps } from "react-aria-components"
+import type { ColorSwatchProps } from "react-aria-components"
+import { ColorSwatch as ColorSwatchPrimitive } from "react-aria-components"
 import { twMerge } from "tailwind-merge"
 
 const hexToRgb = (hex: string): { r: number; g: number; b: number } | null => {

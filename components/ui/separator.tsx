@@ -18,7 +18,7 @@ const separatorStyles = tv({
 
 interface SeparatorProps extends DividerProps {
   className?: string
-  ref?: React.RefObject<DividerProps>
+  ref?: React.RefObject<HTMLDivElement>
 }
 
 const Separator = ({ className, ref, ...props }: SeparatorProps) => {
@@ -34,4 +34,5 @@ const Separator = ({ className, ref, ...props }: SeparatorProps) => {
   )
 }
 
+export type { SeparatorProps }
 export { Separator }

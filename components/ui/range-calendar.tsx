@@ -105,4 +105,5 @@ const RangeCalendar = <T extends DateValue>({
   )
 }
 
+export type { RangeCalendarProps }
 export { RangeCalendar }

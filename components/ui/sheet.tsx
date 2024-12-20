@@ -64,7 +64,8 @@ const contentStyles = tv({
   compoundVariants: generateCompoundVariants(["top", "bottom", "left", "right"]),
 })
 
-const Sheet = (props: DialogTriggerProps) => {
+type SheetProps = DialogTriggerProps
+const Sheet = (props: SheetProps) => {
   return <DialogTrigger {...props} />
 }
 
@@ -85,7 +86,7 @@ interface SheetContentProps
   }
 }
 
-const Content = ({
+const SheetContent = ({
   classNames,
   isBlurred = false,
   isDismissable = true,
@@ -140,11 +141,12 @@ const Content = ({
 
 Sheet.Trigger = Dialog.Trigger
 Sheet.Footer = Dialog.Footer
-Sheet.Content = Content
+Sheet.Content = SheetContent
 Sheet.Header = Dialog.Header
 Sheet.Title = Dialog.Title
 Sheet.Description = Dialog.Description
 Sheet.Body = Dialog.Body
 Sheet.Close = Dialog.Close
 
+export type { SheetProps, SheetContentProps, Sides }
 export { Sheet }

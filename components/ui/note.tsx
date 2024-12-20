@@ -61,4 +61,5 @@ const Note = ({ indicator = true, intent = "default", className, ...props }: Not
   )
 }
 
-export { Note, type NoteProps }
+export type { NoteProps }
+export { Note }

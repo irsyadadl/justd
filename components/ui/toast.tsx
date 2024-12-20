@@ -70,4 +70,5 @@ const Toast = ({ ...props }: ToasterProps) => {
   )
 }
 
+export type { ToasterProps }
 export { Toast }

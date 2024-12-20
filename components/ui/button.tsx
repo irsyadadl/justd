@@ -116,4 +116,5 @@ const Button = ({ className, intent, appearance, size, shape, ref, ...props }: B
   )
 }
 
-export { Button, ButtonPrimitive, buttonStyles, type ButtonProps }
+export type { ButtonProps }
+export { Button, ButtonPrimitive, buttonStyles }

@@ -16,11 +16,20 @@ interface RadioGroupProps extends Omit<RadioGroupPrimitiveProps, "children"> {
   children?: React.ReactNode
   description?: string
   errorMessage?: string | ((validation: ValidationResult) => string)
+  ref?: React.Ref<HTMLDivElement>
 }
 
-const RadioGroup = ({ label, description, errorMessage, children, ...props }: RadioGroupProps) => {
+const RadioGroup = ({
+  label,
+  description,
+  errorMessage,
+  children,
+  ref,
+  ...props
+}: RadioGroupProps) => {
   return (
     <RadioGroupPrimitive
+      ref={ref}
       {...props}
       className={composeTailwindRenderProps(props.className, "group flex flex-col gap-2")}
     >
@@ -58,35 +67,36 @@ const radioStyles = tv({
 
 interface RadioProps extends RadioPrimitiveProps {
   description?: string
+  ref?: React.Ref<HTMLLabelElement>
 }
 
-const Radio = ({ description, ...props }: RadioProps) => {
+const Radio = ({ description, ref, ...props }: RadioProps) => {
   return (
-    <>
-      <RadioPrimitive
-        {...props}
-        className={composeTailwindRenderProps(
-          props.className,
-          "group flex items-center gap-2 text-fg text-sm transition disabled:text-fg/50 forced-colors:data-disabled:text-[GrayText]",
-        )}
-      >
-        {(renderProps) => (
-          <div className="flex gap-2">
-            <div
-              className={radioStyles({
-                ...renderProps,
-                className: "description" in props ? "mt-1" : "mt-0.5",
-              })}
-            />
-            <div className="flex flex-col gap-1">
-              {props.children as React.ReactNode}
-              {description && <Description className="block">{description}</Description>}
-            </div>
+    <RadioPrimitive
+      ref={ref}
+      className={composeTailwindRenderProps(
+        props.className,
+        "group flex items-center gap-2 text-fg text-sm transition disabled:text-fg/50 forced-colors:data-disabled:text-[GrayText]",
+      )}
+      {...props}
+    >
+      {(renderProps) => (
+        <div className="flex gap-2">
+          <div
+            className={radioStyles({
+              ...renderProps,
+              className: "description" in props ? "mt-1" : "mt-0.5",
+            })}
+          />
+          <div className="flex flex-col gap-1">
+            {props.children as React.ReactNode}
+            {description && <Description className="block">{description}</Description>}
           </div>
-        )}
-      </RadioPrimitive>
-    </>
+        </div>
+      )}
+    </RadioPrimitive>
   )
 }
 
-export { Radio, RadioGroup, radioStyles }
+export type { RadioGroupProps, RadioProps }
+export { Radio, RadioGroup }

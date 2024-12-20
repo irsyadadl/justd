@@ -28,15 +28,20 @@ const toggleGroupStyles = tv({
   },
 })
 
+interface ToggleGroupProps extends ToggleButtonGroupProps, ToggleGroupContextProps {
+  ref?: React.RefObject<HTMLDivElement>
+}
 const ToggleGroup = ({
   className,
   orientation = "horizontal",
   appearance = "plain",
+  ref,
   ...props
-}: ToggleButtonGroupProps & ToggleGroupContextProps) => {
+}: ToggleGroupProps) => {
   return (
     <ToggleGroupContext.Provider value={{ appearance }}>
       <ToggleButtonGroup
+        ref={ref}
         orientation={orientation}
         className={composeRenderProps(className, (className, renderProps) =>
           toggleGroupStyles({
@@ -95,13 +100,14 @@ const toggleStyles = tv({
   },
 })
 
-type ToggleProps = ToggleButtonProps & VariantProps<typeof toggleStyles>
-
-const Toggle = ({ className, appearance, ...props }: ToggleProps) => {
+interface ToggleProps extends ToggleButtonProps, VariantProps<typeof toggleStyles> {
+  ref?: React.RefObject<HTMLButtonElement>
+}
+const Toggle = ({ className, appearance, ref, ...props }: ToggleProps) => {
   const { appearance: groupAppearance } = use(ToggleGroupContext)
   return (
     <ToggleButton
-      {...props}
+      ref={ref}
       className={composeRenderProps(className, (className, renderProps) =>
         toggleStyles({
           ...renderProps,
@@ -111,8 +117,10 @@ const Toggle = ({ className, appearance, ...props }: ToggleProps) => {
           className,
         }),
       )}
+      {...props}
     />
   )
 }
 
+export type { ToggleGroupProps, ToggleProps }
 export { ToggleGroup, Toggle }

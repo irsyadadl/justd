@@ -8,7 +8,7 @@ import {
 
 import { ColorThumb } from "./color-thumb"
 
-export type ColorWheelProps = Omit<ColorWheelPrimitiveProps, "outerRadius" | "innerRadius">
+type ColorWheelProps = Omit<ColorWheelPrimitiveProps, "outerRadius" | "innerRadius">
 
 const ColorWheel = (props: ColorWheelProps) => {
   return (
@@ -27,4 +27,5 @@ const ColorWheel = (props: ColorWheelProps) => {
   )
 }
 
+export type { ColorWheelProps }
 export { ColorWheel }

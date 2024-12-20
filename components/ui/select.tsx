@@ -87,12 +87,12 @@ const List = <T extends object>({
   )
 }
 
-interface TriggerProps extends React.ComponentProps<typeof Button> {
+interface SelectTriggerProps extends React.ComponentProps<typeof Button> {
   prefix?: React.ReactNode
   className?: string
 }
 
-const Trigger = ({ className, ...props }: TriggerProps) => {
+const SelectTrigger = ({ className, ...props }: SelectTriggerProps) => {
   return (
     <Button
       className={composeRenderProps(className, (className, renderProps) =>
@@ -115,7 +115,8 @@ const Trigger = ({ className, ...props }: TriggerProps) => {
 Select.OptionDetails = DropdownItemDetails
 Select.Option = DropdownItem
 Select.Section = DropdownSection
-Select.Trigger = Trigger
+Select.Trigger = SelectTrigger
 Select.List = List
 
+export type { SelectProps, SelectTriggerProps }
 export { Select }

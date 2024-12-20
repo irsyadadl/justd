@@ -28,11 +28,11 @@ const useContextMenuTrigger = () => {
   return context
 }
 
-interface ContextMenuRootComponent {
+interface ContextMenuProps {
   children: React.ReactNode
 }
 
-const ContextMenu = ({ children }: ContextMenuRootComponent) => {
+const ContextMenu = ({ children }: ContextMenuProps) => {
   const [contextMenuOffset, setContextMenuOffset] = useState<{
     offset: number
     crossOffset: number
@@ -114,4 +114,5 @@ ContextMenu.Section = Menu.Section
 ContextMenu.Header = Menu.Header
 ContextMenu.Keyboard = Menu.Keyboard
 
+export type { ContextMenuProps }
 export { ContextMenu }

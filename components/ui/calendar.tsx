@@ -123,4 +123,6 @@ const CalendarGridHeader = () => {
 
 Calendar.Header = CalendarHeader
 Calendar.GridHeader = CalendarGridHeader
+
+export type { CalendarProps }
 export { Calendar }

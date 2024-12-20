@@ -28,11 +28,13 @@ const linkStyles = tv({
 
 interface LinkProps extends LinkPrimitiveProps {
   intent?: "primary" | "secondary" | "unstyled"
+  ref?: React.RefObject<HTMLAnchorElement>
 }
 
-const Link = ({ className, ...props }: LinkProps) => {
+const Link = ({ className, ref, ...props }: LinkProps) => {
   return (
     <LinkPrimitive
+      ref={ref}
       {...props}
       className={composeRenderProps(className, (className, ...renderProps) =>
         linkStyles({ ...renderProps, intent: props.intent, className }),
@@ -45,4 +47,5 @@ const Link = ({ className, ...props }: LinkProps) => {
   )
 }
 
-export { Link, LinkPrimitive, type LinkPrimitiveProps, type LinkProps }
+export type { LinkProps }
+export { Link }

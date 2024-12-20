@@ -264,4 +264,5 @@ Carousel.Handler = CarouselHandler
 Carousel.Item = CarouselItem
 Carousel.Button = CarouselButton
 
-export { Carousel, type CarouselApi }
+export type { CarouselApi }
+export { Carousel }

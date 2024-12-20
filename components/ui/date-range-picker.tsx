@@ -55,5 +55,5 @@ const DateRangePicker = <T extends DateValue>({
     </DateRangePickerPrimitive>
   )
 }
-
-export { DateRangePicker, type DateRangePickerProps }
+export type { DateRangePickerProps }
+export { DateRangePicker }

@@ -1,12 +1,10 @@
 "use client"
 
-import type React from "react"
-
+import type { TooltipProps as TooltipPrimitiveProps } from "react-aria-components"
 import {
   Button,
   OverlayArrow,
   Tooltip as TooltipPrimitive,
-  type TooltipProps as TooltipPrimitiveProps,
   TooltipTrigger,
   composeRenderProps,
 } from "react-aria-components"
@@ -41,11 +39,10 @@ const tooltipStyles = tv({
   },
 })
 
-const Tooltip = (props: React.ComponentProps<typeof TooltipTrigger>) => (
-  <TooltipTrigger {...props} />
-)
+type TooltipProps = React.ComponentProps<typeof TooltipTrigger>
+const Tooltip = (props: TooltipProps) => <TooltipTrigger {...props} />
 
-interface ContentProps
+interface TooltipContentProps
   extends Omit<TooltipPrimitiveProps, "children">,
     VariantProps<typeof tooltipStyles> {
   showArrow?: boolean
@@ -58,7 +55,7 @@ const Content = ({
   intent = "default",
   children,
   ...props
-}: ContentProps) => {
+}: TooltipContentProps) => {
   return (
     <TooltipPrimitive
       {...props}
@@ -91,4 +88,5 @@ const Content = ({
 Tooltip.Trigger = Button
 Tooltip.Content = Content
 
+export type { TooltipProps, TooltipContentProps }
 export { Tooltip }

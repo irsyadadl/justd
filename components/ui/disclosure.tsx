@@ -5,8 +5,8 @@ import { IconChevronLeft } from "justd-icons"
 import type {
   DisclosureGroupProps as AccordionProps,
   ButtonProps,
-  DisclosurePanelProps,
-  DisclosureProps,
+  DisclosureProps as CollapsibleProps,
+  DisclosurePanelProps as DisclosurePanelPrimitiveProps,
 } from "react-aria-components"
 import {
   DisclosureGroup as Accordion,
@@ -18,9 +18,13 @@ import {
 } from "react-aria-components"
 import { tv } from "tailwind-variants"
 
-const DisclosureGroup = ({ children, className, ...props }: AccordionProps) => {
+interface DisclosureGroupProps extends AccordionProps {
+  ref?: React.RefObject<HTMLDivElement>
+}
+const DisclosureGroup = ({ children, ref, className, ...props }: DisclosureGroupProps) => {
   return (
     <Accordion
+      ref={ref}
       data-slot="disclosure-group"
       {...props}
       className={composeTailwindRenderProps(
@@ -46,9 +50,13 @@ const disclosure = tv({
   },
 })
 
-const Disclosure = ({ className, ...props }: DisclosureProps) => {
+interface DisclosureProps extends CollapsibleProps {
+  ref?: React.Ref<HTMLDivElement>
+}
+const Disclosure = ({ className, ref, ...props }: DisclosureProps) => {
   return (
     <Collapsible
+      ref={ref}
       data-slot="disclosure"
       {...props}
       className={composeRenderProps(className, (className, renderProps) =>
@@ -77,11 +85,14 @@ const disclosureTrigger = tv({
   },
 })
 
-const DisclosureTrigger = ({ className, ...props }: ButtonProps) => {
+interface DisclosureTriggerProps extends ButtonProps {
+  ref?: React.Ref<HTMLButtonElement>
+}
+const DisclosureTrigger = ({ className, ref, ...props }: DisclosureTriggerProps) => {
   return (
     <Heading>
       <Button
-        {...props}
+        ref={ref}
         slot="trigger"
         className={composeRenderProps(className, (className, renderProps) =>
           disclosureTrigger({
@@ -89,6 +100,7 @@ const DisclosureTrigger = ({ className, ...props }: ButtonProps) => {
             className,
           }),
         )}
+        {...props}
       >
         {(values) => (
           <>
@@ -104,9 +116,13 @@ const DisclosureTrigger = ({ className, ...props }: ButtonProps) => {
   )
 }
 
-const DisclosurePanel = ({ className, ...props }: DisclosurePanelProps) => {
+interface DisclosurePanelProps extends DisclosurePanelPrimitiveProps {
+  ref?: React.Ref<HTMLDivElement>
+}
+const DisclosurePanel = ({ className, ref, ...props }: DisclosurePanelProps) => {
   return (
     <CollapsiblePanel
+      ref={ref}
       data-slot="disclosure-panel"
       className={composeTailwindRenderProps(
         className,
@@ -124,4 +140,5 @@ const DisclosurePanel = ({ className, ...props }: DisclosurePanelProps) => {
   )
 }
 
+export type { DisclosureGroupProps, DisclosureProps, DisclosurePanelProps, DisclosureTriggerProps }
 export { DisclosureGroup, Disclosure, DisclosurePanel, DisclosureTrigger }

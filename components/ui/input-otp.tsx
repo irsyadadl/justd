@@ -7,12 +7,8 @@ import { IconBulletFill } from "justd-icons"
 
 import { cn } from "@/utils/classes"
 
-const InputOTP = ({
-  className,
-  containerClassName,
-  ref,
-  ...props
-}: React.ComponentProps<typeof OTPInput>) => (
+type InputOTOPProps = React.ComponentProps<typeof OTPInput>
+const InputOTP = ({ className, containerClassName, ref, ...props }: InputOTOPProps) => (
   <OTPInput
     data-1p-ignore
     ref={ref}
@@ -22,7 +18,8 @@ const InputOTP = ({
   />
 )
 
-const InputOTPGroup = ({ className, ref, ...props }: React.ComponentProps<"div">) => (
+type InputOTPGroupProps = React.ComponentProps<"div">
+const InputOTPGroup = ({ className, ref, ...props }: InputOTPGroupProps) => (
   <div ref={ref} className={cn("flex items-center gap-x-1.5", className)} {...props} />
 )
 
@@ -54,9 +51,9 @@ const InputOTPSlot = ({ index, className, ref, ...props }: InputOTPSlotProps) =>
   )
 }
 
-const InputOTPSeparator = ({ ref, ...props }: React.ComponentProps<"div">) => (
-  // biome-ignore lint/a11y/useFocusableInteractive: TODO: fix this
-  <div ref={ref} role="separator" {...props}>
+type InputOTPSeparatorProps = React.ComponentProps<"div">
+const InputOTPSeparator = ({ ref, ...props }: InputOTPSeparatorProps) => (
+  <div ref={ref} {...props}>
     <IconBulletFill className="size-2" />
   </div>
 )
@@ -65,4 +62,5 @@ InputOTP.Group = InputOTPGroup
 InputOTP.Slot = InputOTPSlot
 InputOTP.Separator = InputOTPSeparator
 
+export type { InputOTPGroupProps, InputOTOPProps, InputOTPSlotProps, InputOTPSeparatorProps }
 export { InputOTP }

@@ -68,4 +68,5 @@ const SearchField = ({
   )
 }
 
-export { SearchField, type SearchFieldProps }
+export type { SearchFieldProps }
+export { SearchField }

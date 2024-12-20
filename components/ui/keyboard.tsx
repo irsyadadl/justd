@@ -38,4 +38,5 @@ const Keyboard = ({ keys, classNames, className, ...props }: KeyboardProps) => {
   )
 }
 
-export { Keyboard, type KeyboardProps }
+export type { KeyboardProps }
+export { Keyboard }
