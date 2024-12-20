@@ -25,19 +25,4 @@ export default {
       },
     ]
   },
-  async redirects() {
-    return [
-      {
-        source: "/docs/:slug*",
-        missing: [
-          {
-            type: "header",
-            key: "x-no-redirect",
-          },
-        ],
-        destination: "/docs/2.x/:slug*",
-        permanent: false,
-      },
-    ]
-  },
 }
