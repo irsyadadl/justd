@@ -12,6 +12,8 @@ import { toast } from "sonner"
 import { Menu } from "ui"
 import { copyToClipboard } from "usemods"
 
+import { aliasLookup } from "@/app/(app)/icons/partials/aliases"
+import { cn } from "@/utils/classes"
 import { Controller } from "./controller"
 import { box, item } from "./styles"
 
@@ -26,20 +28,28 @@ export function IconsList({ searchParams }: SearchParamsProps) {
   const { query, t } = searchParams
   const filterType = t ?? "regular"
 
-  const filteredIcons = Object.entries(icons).filter(([name]) => {
-    const matchesSearch = query ? name.toLowerCase().includes(query.toLowerCase()) : true
-    const isSolid = name.toLowerCase().endsWith("fill")
-    const matchesFilter =
-      (filterType === "solid" && isSolid) || (filterType === "regular" && !isSolid)
-    return matchesSearch && matchesFilter
-  })
+  const filteredIcons = (query = "", filterType?: "solid" | "regular") => {
+    const queryLower = query.toLowerCase()
+
+    const matchingIcons = new Set(aliasLookup[queryLower] || [])
+    return Object.entries(icons).filter(([name]) => {
+      const nameLower = name.toLowerCase()
+
+      const matchesSearch = nameLower.includes(queryLower) || matchingIcons.has(name)
+      const isSolid = nameLower.endsWith("fill")
+      const matchesFilter =
+        !filterType || (filterType === "solid" && isSolid) || (filterType === "regular" && !isSolid)
+      return matchesSearch && matchesFilter
+    })
+  }
+  const iconsList = filteredIcons(query, filterType)
 
   return (
     <>
       <Controller searchParams={searchParams} />
       <div className="sm:-mx-2">
         <ListBox selectionMode="single" aria-label="List Icon" layout="grid" className={box()}>
-          {filteredIcons.map(([name, Icon]) => (
+          {iconsList.map(([name, Icon]) => (
             <IconListItem key={name} name={name} Icon={Icon} />
           ))}
         </ListBox>
@@ -79,7 +89,7 @@ export function IconListItem({ name, Icon }: IconListItemProps) {
       className={item()}
       textValue={name}
     >
-      <Icon aria-label={name} className={selectedSize} key={name} />
+      <Icon aria-label={name} className={cn(selectedSize)} key={name} />
       <Menu isOpen={isSelected} onOpenChange={setSelected}>
         <Menu.Content
           triggerRef={triggerRef}

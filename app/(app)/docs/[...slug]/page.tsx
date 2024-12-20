@@ -82,7 +82,6 @@ export async function generateStaticParams(): Promise<{ slug: any }[]> {
 export default async function PostPage(props: DocPageProps) {
   const params = await props.params
   const doc = await getPostFromParams(params)
-
   if (!doc || !doc.published) {
     notFound()
   }

@@ -73,7 +73,7 @@ export function Navbar() {
                       isActive={
                         pathname?.startsWith("/docs/2.x/components") || pathname === "/components"
                       }
-                      href="/docs/2.x/components/buttons/button"
+                      href="/components"
                     >
                       Components
                     </NavLink>
