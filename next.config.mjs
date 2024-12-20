@@ -29,11 +29,10 @@ export default {
     return [
       {
         source: "/docs/:slug*",
-        has: [
+        missing: [
           {
             type: "header",
             key: "x-no-redirect",
-            value: "true",
           },
         ],
         destination: "/docs/2.x/:slug*",
