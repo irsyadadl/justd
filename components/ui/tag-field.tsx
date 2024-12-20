@@ -166,10 +166,11 @@ const TagField = ({
                 onKeyDown={onKeyDown}
                 onChange={setInputValue}
                 value={inputValue}
+                className="flex-1"
                 {...props}
               >
                 <Input
-                  className="inline w-auto"
+                  className="inline"
                   placeholder={maxTagsToAdd <= 0 ? "Remove one to add more" : props.placeholder}
                 />
               </TextField>
