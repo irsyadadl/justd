@@ -3,6 +3,7 @@
 import * as React from "react"
 import { useState } from "react"
 
+import { cn } from "@/utils/classes"
 import { IconChevronLgDown } from "justd-icons"
 import { useFilter } from "react-aria"
 import type {
@@ -20,7 +21,6 @@ import type { FieldProps } from "./field"
 import { Description, FieldError, Input, Label } from "./field"
 import { ListBox } from "./list-box"
 import { Popover } from "./popover"
-import { cn } from "./primitive"
 import type { RestrictedIntent, TagGroupProps } from "./tag-group"
 import { Tag } from "./tag-group"
 import { VisuallyHidden } from "./visually-hidden"

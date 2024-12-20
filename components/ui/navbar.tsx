@@ -5,11 +5,11 @@ import * as React from "react"
 import { IconHamburger } from "justd-icons"
 import { LayoutGroup, motion } from "motion/react"
 import type { LinkProps } from "react-aria-components"
-import { Link } from "react-aria-components"
+import { composeRenderProps, Link } from "react-aria-components"
 import { tv } from "tailwind-variants"
 
 import { Button } from "./button"
-import { cn, cr, useMediaQuery } from "./primitive"
+import { cn, useMediaQuery } from "./primitive"
 import { Sheet } from "./sheet"
 
 type NavbarOptions = {
@@ -224,7 +224,7 @@ const Item = ({ className, isCurrent, ...props }: ItemProps) => {
     <Link
       slot="navbar-item"
       aria-current={isCurrent ? "page" : undefined}
-      className={cr(className, (className, ...renderProps) =>
+      className={composeRenderProps(className, (className, ...renderProps) =>
         navItemStyles({ ...renderProps, isCurrent, className })
       )}
       {...props}

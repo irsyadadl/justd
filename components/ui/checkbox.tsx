@@ -2,18 +2,20 @@
 
 import * as React from "react"
 
+import { cn } from "@/utils/classes"
 import { IconCheck, IconMinus } from "justd-icons"
 import {
   Checkbox as CheckboxPrimitive,
   CheckboxGroup as CheckboxGroupPrimitive,
   type CheckboxGroupProps as CheckboxGroupPrimitiveProps,
   type CheckboxProps as CheckboxPrimitiveProps,
+  composeRenderProps,
   type ValidationResult
 } from "react-aria-components"
 import { tv } from "tailwind-variants"
 
 import { Description, FieldError, Label } from "./field"
-import { cn, cr, ctr } from "./primitive"
+import { ctr } from "./primitive"
 
 interface CheckboxGroupProps extends CheckboxGroupPrimitiveProps {
   label?: string
@@ -73,7 +75,7 @@ const Checkbox = ({ className, ...props }: CheckboxProps) => {
   return (
     <CheckboxPrimitive
       {...props}
-      className={cr(className, (className, renderProps) =>
+      className={composeRenderProps(className, (className, renderProps) =>
         checkboxStyles({ ...renderProps, className })
       )}
     >

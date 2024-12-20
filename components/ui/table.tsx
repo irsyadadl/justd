@@ -2,6 +2,7 @@
 
 import React from "react"
 
+import { cn } from "@/utils/classes"
 import { IconChevronLgDown, IconHamburger } from "justd-icons"
 import type {
   CellProps,
@@ -18,6 +19,7 @@ import {
   Collection,
   Column,
   ColumnResizer as ColumnResizerPrimitive,
+  composeRenderProps,
   ResizableTableContainer,
   Row,
   Table as TablePrimitive,
@@ -28,7 +30,6 @@ import {
 import { tv } from "tailwind-variants"
 
 import { Checkbox } from "./checkbox"
-import { cn, cr } from "./primitive"
 
 const table = tv({
   slots: {
@@ -78,7 +79,7 @@ const Table = ({ children, className, ...props }: TableProps) => (
 const ColumnResizer = ({ className, ...props }: ColumnResizerProps) => (
   <ColumnResizerPrimitive
     {...props}
-    className={cr(className, (className, renderProps) =>
+    className={composeRenderProps(className, (className, renderProps) =>
       columnResizer({
         ...renderProps,
         className

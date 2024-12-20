@@ -2,10 +2,9 @@
 
 import * as React from "react"
 
+import { cn } from "@/utils/classes"
 import { Collection } from "react-aria-components"
 import { tv, type VariantProps } from "tailwind-variants"
-
-import { cn } from "./primitive"
 
 const gridStyles = tv(
   {

@@ -6,8 +6,8 @@ import sidebar from "@/resources/lib/sidebar.json"
 import { useCommandState } from "cmdk"
 import {
   IconBrandJustd,
-  IconColorSwatch,
   IconColors,
+  IconColorSwatch,
   IconCube,
   IconHashtag,
   IconHome,

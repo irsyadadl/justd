@@ -2,11 +2,11 @@
 
 import * as React from "react"
 
-import type { GroupProps, SeparatorProps, ToolbarProps } from "react-aria-components"
-import { Group, Toolbar as ToolbarPrimitive } from "react-aria-components"
+import { cn } from "@/utils/classes"
+import { composeRenderProps, Group, Toolbar as ToolbarPrimitive } from "react-aria-components"
+import type { SeparatorProps, GroupProps, ToolbarProps } from "react-aria-components"
 import { tv } from "tailwind-variants"
 
-import { cn, cr } from "./primitive"
 import { Separator } from "./separator"
 import { Toggle } from "./toggle"
 
@@ -43,7 +43,7 @@ const Toolbar = ({ orientation = "horizontal", ...props }: ToolbarProps) => {
       <ToolbarPrimitive
         orientation={orientation}
         {...props}
-        className={cr(props.className, (className, renderProps) =>
+        className={composeRenderProps(props.className, (className, renderProps) =>
           toolbarStyles({ ...renderProps, className })
         )}
       />

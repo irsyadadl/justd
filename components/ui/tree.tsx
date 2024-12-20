@@ -6,6 +6,7 @@ import { IconChevronRight } from "justd-icons"
 import type { TreeItemProps as TreeItemPrimitiveProps, TreeProps } from "react-aria-components"
 import {
   Button,
+  composeRenderProps,
   UNSTABLE_Tree as TreePrimitive,
   UNSTABLE_TreeItem as TreeItemPrimitive,
   UNSTABLE_TreeItemContent as TreeItemContent
@@ -13,7 +14,6 @@ import {
 import { tv } from "tailwind-variants"
 
 import { Checkbox } from "./checkbox"
-import { cr } from "./primitive"
 
 const treeStyles = tv({
   base: "flex border max-h-96 min-w-72 [&::-webkit-scrollbar]:size-0.5 [scrollbar-width:thin] py-2 rounded-lg bg-bg cursor-default lg:text-sm flex-col overflow-auto forced-color-adjust-none outline-none",
@@ -27,7 +27,7 @@ const treeStyles = tv({
 const Tree = <T extends object>({ className, ...props }: TreeProps<T>) => {
   return (
     <TreePrimitive
-      className={cr(className, (className, renderProps) =>
+      className={composeRenderProps(className, (className, renderProps) =>
         treeStyles({
           ...renderProps,
           className
@@ -62,7 +62,7 @@ const itemStyles = tv({
 const TreeItem = <T extends object>({ className, ...props }: TreeItemPrimitiveProps<T>) => {
   return (
     <TreeItemPrimitive
-      className={cr(className, (className, renderProps) =>
+      className={composeRenderProps(className, (className, renderProps) =>
         itemStyles({
           ...renderProps,
           className

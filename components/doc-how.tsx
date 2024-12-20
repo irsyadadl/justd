@@ -8,10 +8,10 @@ import { Code } from "@/components/docs/rehype/code"
 import { cn } from "@/resources/lib/utils"
 import { IconFullscreen } from "justd-icons"
 import { LayoutGroup, motion } from "motion/react"
-import { Tab as TabPrimitive, type TabProps } from "react-aria-components"
+import { composeRenderProps, Tab as TabPrimitive, type TabProps } from "react-aria-components"
 import { twJoin } from "tailwind-merge"
 import { tv } from "tailwind-variants"
-import { cr, Loader, Tabs } from "ui"
+import { Loader, Tabs } from "ui"
 
 interface HowProps extends React.HTMLAttributes<HTMLDivElement> {
   toUse: string
@@ -99,7 +99,7 @@ const Tab = ({ children, ...props }: TabProps) => {
   return (
     <TabPrimitive
       {...props}
-      className={cr(props.className, (_className, renderProps) =>
+      className={composeRenderProps(props.className, (_className, renderProps) =>
         tabStyles({
           ...renderProps,
           className: twJoin("href" in props && "cursor-pointer", _className)

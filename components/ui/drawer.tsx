@@ -2,6 +2,7 @@
 
 import React from "react"
 
+import { cn } from "@/utils/classes"
 import type { PanInfo } from "motion/react"
 import {
   animate,
@@ -18,7 +19,6 @@ import { type ButtonProps, Modal, ModalOverlay } from "react-aria-components"
 import { twJoin } from "tailwind-merge"
 
 import { Dialog } from "./dialog"
-import { cn } from "./primitive"
 
 const inertiaTransition: Inertia = {
   type: "inertia",

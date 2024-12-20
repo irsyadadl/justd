@@ -2,6 +2,7 @@
 
 import * as React from "react"
 
+import { cn } from "@/utils/classes"
 import {
   IconChevronLgLeft,
   IconChevronLgRight,
@@ -10,6 +11,7 @@ import {
   IconDotsHorizontal
 } from "justd-icons"
 import {
+  composeRenderProps,
   ListBox,
   ListBoxItem,
   type ListBoxItemProps,
@@ -21,7 +23,6 @@ import {
 import { tv } from "tailwind-variants"
 
 import { buttonStyles } from "./button"
-import { cn, cr } from "./primitive"
 
 const paginationStyles = tv({
   slots: {
@@ -68,7 +69,7 @@ const List = <T extends object>({ className, ...props }: ListBoxProps<T>) => {
       orientation="horizontal"
       aria-label={props["aria-label"] || "Pagination"}
       layout="grid"
-      className={cr(className, (className) => list({ className }))}
+      className={composeRenderProps(className, (className) => list({ className }))}
       {...props}
     />
   )

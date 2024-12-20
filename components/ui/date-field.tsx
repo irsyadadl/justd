@@ -2,6 +2,7 @@
 
 import * as React from "react"
 
+import { cn } from "@/utils/classes"
 import {
   DateField as DateFieldPrimitive,
   type DateFieldProps as DateFieldPrimitiveProps,
@@ -14,7 +15,7 @@ import {
 import { tv } from "tailwind-variants"
 
 import { Description, FieldError, FieldGroup, Label } from "./field"
-import { cn, ctr } from "./primitive"
+import { ctr } from "./primitive"
 
 interface DateFieldProps<T extends DateValue> extends DateFieldPrimitiveProps<T> {
   label?: string

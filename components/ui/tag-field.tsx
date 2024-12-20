@@ -2,6 +2,7 @@
 
 import * as React from "react"
 
+import { cn } from "@/utils/classes"
 import type { Key } from "react-aria-components"
 import { Group, TextField } from "react-aria-components"
 import type { ListData } from "react-stately"
@@ -10,7 +11,6 @@ import { tv } from "tailwind-variants"
 
 import type { FieldProps } from "./field"
 import { Description, Input, Label } from "./field"
-import { cn } from "./primitive"
 import type { RestrictedIntent, TagGroupProps } from "./tag-group"
 import { Tag } from "./tag-group"
 

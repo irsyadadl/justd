@@ -3,11 +3,11 @@
 import * as React from "react"
 
 import type { ToggleButtonGroupProps, ToggleButtonProps } from "react-aria-components"
-import { ToggleButton, ToggleButtonGroup } from "react-aria-components"
+import { composeRenderProps, ToggleButton, ToggleButtonGroup } from "react-aria-components"
 import type { VariantProps } from "tailwind-variants"
 import { tv } from "tailwind-variants"
 
-import { cr, focusButtonStyles } from "./primitive"
+import { focusButtonStyles } from "./primitive"
 
 interface ToggleGroupContextProps {
   appearance?: "outline" | "plain" | "solid"
@@ -38,7 +38,7 @@ const ToggleGroup = ({
     <ToggleGroupContext.Provider value={{ appearance }}>
       <ToggleButtonGroup
         orientation={orientation}
-        className={cr(className, (className, renderProps) =>
+        className={composeRenderProps(className, (className, renderProps) =>
           toggleGroupStyles({
             ...renderProps,
             orientation,
@@ -102,7 +102,7 @@ const Toggle = ({ className, appearance, ...props }: ToggleProps) => {
   return (
     <ToggleButton
       {...props}
-      className={cr(className, (className, renderProps) =>
+      className={composeRenderProps(className, (className, renderProps) =>
         toggleStyles({
           ...renderProps,
           appearance: appearance ?? groupAppearance,

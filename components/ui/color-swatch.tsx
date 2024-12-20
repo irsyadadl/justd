@@ -2,10 +2,9 @@
 
 import React from "react"
 
+import { cn } from "@/utils/classes"
 import { parseColor } from "@react-stately/color"
 import { ColorSwatch as ColorSwatchPrimitive, type ColorSwatchProps } from "react-aria-components"
-
-import { cn } from "./primitive"
 
 const hexToRgb = (hex: string): { r: number; g: number; b: number } | null => {
   const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i

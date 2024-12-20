@@ -2,11 +2,10 @@
 
 import * as React from "react"
 
-import { Text, ToggleButton } from "react-aria-components"
+import { composeRenderProps, Text, ToggleButton } from "react-aria-components"
 import { tv } from "tailwind-variants"
 
 import { buttonStyles } from "./button"
-import { cr } from "./primitive"
 
 const showMoreStyles = tv({
   base: "text-sm leading-6 after:border-muted before:border-muted",
@@ -53,7 +52,7 @@ const ShowMore = ({
           {...props}
           className={buttonStyles({ shape: "circle", appearance: "outline", size: "small" })}
         >
-          {cr(props.children, (children) => (
+          {composeRenderProps(props.children, (children) => (
             <>{children}</>
           ))}
         </ToggleButton>

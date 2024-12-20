@@ -1,5 +1,6 @@
 "use client"
 
+import { cn } from "@/utils/classes"
 import { IconChevronLgRight } from "justd-icons"
 import type { BreadcrumbProps, BreadcrumbsProps } from "react-aria-components"
 import {
@@ -9,7 +10,7 @@ import {
 } from "react-aria-components"
 
 import { Link } from "./link"
-import { cn, ctr } from "./primitive"
+import { ctr } from "./primitive"
 
 const Breadcrumbs = <T extends object>({ className, ...props }: BreadcrumbsProps<T>) => {
   return <BreadcrumbsPrimitive {...props} className={cn("flex items-center gap-2", className)} />

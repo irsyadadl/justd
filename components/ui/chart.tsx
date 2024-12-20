@@ -2,9 +2,8 @@
 
 import * as React from "react"
 
+import { cn } from "@/utils/classes"
 import { Legend, type LegendProps, ResponsiveContainer as Container, Tooltip } from "recharts"
-
-import { cn } from "./primitive"
 
 interface Theme {
   readonly light: string

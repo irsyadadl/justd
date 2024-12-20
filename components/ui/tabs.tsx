@@ -2,8 +2,10 @@
 
 import * as React from "react"
 
+import { cn } from "@/utils/classes"
 import { LayoutGroup, motion } from "motion/react"
 import {
+  composeRenderProps,
   Tab as TabPrimitive,
   TabList,
   type TabListProps,
@@ -15,8 +17,6 @@ import {
 } from "react-aria-components"
 import { twJoin } from "tailwind-merge"
 import { tv } from "tailwind-variants"
-
-import { cn, cr } from "./primitive"
 
 const tabsStyles = tv({
   base: "group flex gap-4 forced-color-adjust-none",
@@ -32,7 +32,7 @@ const Tabs = (props: TabsProps) => {
   return (
     <TabsPrimitive
       {...props}
-      className={cr(props.className, (className, renderProps) =>
+      className={composeRenderProps(props.className, (className, renderProps) =>
         tabsStyles({
           ...renderProps,
           className
@@ -58,7 +58,7 @@ const List = <T extends object>(props: TabListProps<T>) => {
     <LayoutGroup id={id}>
       <TabList
         {...props}
-        className={cr(props.className, (className, renderProps) =>
+        className={composeRenderProps(props.className, (className, renderProps) =>
           tabListStyles({ ...renderProps, className })
         )}
       />
@@ -90,7 +90,7 @@ const Tab = ({ children, ...props }: TabProps) => {
   return (
     <TabPrimitive
       {...props}
-      className={cr(props.className, (_className, renderProps) =>
+      className={composeRenderProps(props.className, (_className, renderProps) =>
         tabStyles({
           ...renderProps,
           className: twJoin("href" in props && "cursor-pointer", _className)
@@ -132,7 +132,7 @@ const Panel = (props: TabPanelProps) => {
   return (
     <TabPanel
       {...props}
-      className={cr(props.className, (className, renderProps) =>
+      className={composeRenderProps(props.className, (className, renderProps) =>
         tabPanelStyles({ ...renderProps, className })
       )}
     />

@@ -4,11 +4,11 @@ import * as React from "react"
 
 import { IconChevronDown, IconChevronRight, IconHamburger, IconSidebarFill } from "justd-icons"
 import type { DisclosureProps, LinkProps } from "react-aria-components"
-import { Disclosure, DisclosurePanel, Link } from "react-aria-components"
+import { composeRenderProps, Disclosure, DisclosurePanel, Link } from "react-aria-components"
 import { tv } from "tailwind-variants"
 
 import { Button, ButtonPrimitive } from "./button"
-import { cn, cr, useMediaQuery } from "./primitive"
+import { cn, useMediaQuery } from "./primitive"
 import { Sheet } from "./sheet"
 import { Tooltip } from "./tooltip"
 
@@ -283,7 +283,7 @@ const Item = ({ isCurrent, children, className, icon: Icon, ...props }: ItemProp
     <Link
       data-slot="sidebar-item"
       aria-current={isCurrent ? "page" : undefined}
-      className={cr(className, (className, renderProps) =>
+      className={composeRenderProps(className, (className, renderProps) =>
         itemStyles({
           ...renderProps,
           collapsed: state === "collapsed",

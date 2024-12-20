@@ -12,6 +12,7 @@ import type {
   TextProps
 } from "react-aria-components"
 import {
+  composeRenderProps,
   Slider as SliderPrimitive,
   SliderOutput,
   SliderStateContext,
@@ -22,7 +23,6 @@ import {
 import { tv, type VariantProps } from "tailwind-variants"
 
 import { Description, Label } from "./field"
-import { cr } from "./primitive"
 
 const sliderStyles = tv({
   slots: {
@@ -59,7 +59,7 @@ const Root = (props: SliderPrimitiveProps) => {
         data-slot="root"
         aria-describedby={descriptionId}
         {...props}
-        className={cr(props.className, (className) => root({ className }))}
+        className={composeRenderProps(props.className, (className) => root({ className }))}
       />
     </TextContext.Provider>
   )
@@ -98,7 +98,10 @@ const Controls = (props: SliderTrackProps) => {
 
 const Track = (props: SliderTrackProps) => {
   return (
-    <SliderTrack {...props} className={cr(props.className, (className) => track({ className }))} />
+    <SliderTrack
+      {...props}
+      className={composeRenderProps(props.className, (className) => track({ className }))}
+    />
   )
 }
 
@@ -123,13 +126,21 @@ const Filler = (props: React.HTMLAttributes<HTMLDivElement>) => {
 }
 
 const Thumb = ({ className, ...props }: SliderThumbProps) => {
-  return <SliderThumb {...props} className={cr(className, (className) => thumb({ className }))} />
+  return (
+    <SliderThumb
+      {...props}
+      className={composeRenderProps(className, (className) => thumb({ className }))}
+    />
+  )
 }
 
 const Output = ({ className, ...props }: SliderOutputProps) => {
   return (
-    <SliderOutput {...props} className={cr(className, (className) => valueLabel({ className }))}>
-      {cr(
+    <SliderOutput
+      {...props}
+      className={composeRenderProps(className, (className) => valueLabel({ className }))}
+    >
+      {composeRenderProps(
         props.children,
         (children, { state }) =>
           children ?? state.values.map((_, i) => state.getThumbValueLabel(i)).join(" - ")

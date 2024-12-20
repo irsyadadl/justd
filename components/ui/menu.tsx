@@ -2,11 +2,12 @@
 
 import * as React from "react"
 
+import { cn } from "@/utils/classes"
 import { IconBulletFill, IconCheck, IconChevronLgRight } from "justd-icons"
 import type {
-  ButtonProps,
   MenuItemProps as MenuItemPrimitiveProps,
   MenuProps as MenuPrimitiveProps,
+  ButtonProps,
   MenuSectionProps,
   MenuTriggerProps as MenuTriggerPrimitiveProps,
   PopoverProps,
@@ -15,6 +16,7 @@ import type {
 import {
   Button,
   Collection,
+  composeRenderProps,
   Header,
   Menu as MenuPrimitive,
   MenuItem,
@@ -29,7 +31,6 @@ import { tv } from "tailwind-variants"
 import { DropdownItemDetails, dropdownItemStyles, dropdownSectionStyles } from "./dropdown"
 import { Keyboard } from "./keyboard"
 import { Popover } from "./popover"
-import { cn, cr } from "./primitive"
 
 interface MenuContextProps {
   respectScreen: boolean
@@ -122,7 +123,7 @@ const Item = ({ className, isDanger = false, children, ...props }: MenuItemProps
   const textValue = props.textValue || (typeof children === "string" ? children : undefined)
   return (
     <MenuItem
-      className={cr(className, (className, renderProps) =>
+      className={composeRenderProps(className, (className, renderProps) =>
         dropdownItemStyles({
           ...renderProps,
           className

@@ -2,9 +2,10 @@
 
 import { useEffect, useState } from "react"
 
+import { cn } from "@/utils/classes"
 import { IconDeviceDesktop2, IconMoon, IconSun } from "justd-icons"
 import { useTheme } from "next-themes"
-import { Button, cn } from "ui"
+import { Button } from "ui"
 
 export function ThemeSwitcher({
   shape = "square",

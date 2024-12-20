@@ -4,6 +4,7 @@ import * as React from "react"
 
 import type { DialogProps, DialogTriggerProps, ModalOverlayProps } from "react-aria-components"
 import {
+  composeRenderProps,
   DialogTrigger,
   Modal as ModalPrimitive,
   ModalOverlay as ModalOverlayPrimitive
@@ -11,7 +12,6 @@ import {
 import { tv, type VariantProps } from "tailwind-variants"
 
 import { Dialog } from "./dialog"
-import { cr } from "./primitive"
 
 const modalOverlayStyles = tv({
   base: [
@@ -102,7 +102,7 @@ const ModalContent = ({
   return (
     <ModalOverlayPrimitive
       isDismissable={_isDismissable}
-      className={cr(classNames?.overlay, (className, renderProps) => {
+      className={composeRenderProps(classNames?.overlay, (className, renderProps) => {
         return modalOverlayStyles({
           ...renderProps,
           isBlurred,
@@ -112,7 +112,7 @@ const ModalContent = ({
       {...props}
     >
       <ModalPrimitive
-        className={cr(classNames?.content, (className, renderProps) =>
+        className={composeRenderProps(classNames?.content, (className, renderProps) =>
           modalContentStyles({
             ...renderProps,
             size,

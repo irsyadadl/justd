@@ -7,6 +7,7 @@ import { IconChevronLgDown } from "justd-icons"
 import type { ButtonProps } from "react-aria-components"
 import {
   Button,
+  composeRenderProps,
   Select as SelectPrimitive,
   type SelectProps as SelectPrimitiveProps,
   SelectValue,
@@ -18,7 +19,7 @@ import { DropdownItem, DropdownItemDetails, DropdownSection } from "./dropdown"
 import { Description, FieldError, Label } from "./field"
 import { ListBox } from "./list-box"
 import { Popover } from "./popover"
-import { cr, ctr, focusStyles } from "./primitive"
+import { ctr, focusStyles } from "./primitive"
 
 const selectTriggerStyles = tv({
   extend: focusStyles,
@@ -85,7 +86,7 @@ interface TriggerProps extends ButtonProps {
 const Trigger = ({ className, ...props }: TriggerProps) => {
   return (
     <Button
-      className={cr(className, (className, renderProps) =>
+      className={composeRenderProps(className, (className, renderProps) =>
         selectTriggerStyles({
           ...renderProps,
           className

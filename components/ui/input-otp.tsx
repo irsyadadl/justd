@@ -2,10 +2,9 @@
 
 import * as React from "react"
 
+import { cn } from "@/utils/classes"
 import { OTPInput, OTPInputContext } from "input-otp"
 import { IconBulletFill } from "justd-icons"
-
-import { cn } from "./primitive"
 
 interface InputOTPType
   extends React.ForwardRefExoticComponent<
