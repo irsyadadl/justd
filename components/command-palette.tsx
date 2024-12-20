@@ -13,6 +13,7 @@ import {
   IconHashtag,
   IconHome,
   IconNotes,
+  IconWindowVisit,
 } from "justd-icons"
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
@@ -168,6 +169,11 @@ export function CommandPalette({ openCmd, setOpen }: OpenCloseProps) {
           <CommandMenu.Item value="themes" asChild>
             <Link href="/themes">
               <IconColorSwatch /> Themes
+            </Link>
+          </CommandMenu.Item>
+          <CommandMenu.Item value="blocks" asChild>
+            <Link href="/blocks">
+              <IconWindowVisit /> Blocks
             </Link>
           </CommandMenu.Item>
         </CommandMenu.Section>

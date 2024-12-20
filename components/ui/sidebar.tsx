@@ -115,7 +115,7 @@ const SidebarProvider = ({
     <SidebarContext value={contextValue}>
       <div
         className={cn(
-          "**:data-[slot=icon]:shrink-0",
+          "**:data-[slot=icon]:shrink-0 @container",
           "[--sidebar-width:17rem] [--sidebar-width-mobile:18rem] [--sidebar-width-dock:3.25rem]",
           "[--sidebar-border:color-mix(in_oklch,var(--color-sidebar)_25%,black_6%)]",
           "dark:[--sidebar-border:color-mix(in_oklch,var(--color-sidebar)_55%,white_10%)]",

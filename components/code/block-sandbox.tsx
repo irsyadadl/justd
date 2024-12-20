@@ -13,7 +13,7 @@ import { cn } from "@/utils/classes"
 import {
   IconCube,
   IconFolderFill,
-  IconFolderOpen,
+  IconFolderOpenFill,
   IconFullscreen,
   IconLayoutAlignLeft,
   IconLayoutAlignTop,
@@ -99,7 +99,11 @@ function Component({ folders, fullscreen, isIframe = false, title, ...props }: P
                   className="pl-[calc(var(--nested-level)*16px)]"
                   style={{ "--nested-level": nestedLevel } as React.CSSProperties}
                 >
-                  {isExpanded ? <IconFolderOpen /> : <IconFolderFill />}
+                  {isExpanded ? (
+                    <IconFolderOpenFill className="text-sky-600 size-4 dark:text-[#62cfff]" />
+                  ) : (
+                    <IconFolderFill className="text-sky-600 size-4 dark:text-[#62cfff]" />
+                  )}
                   <SidebarLabel>{key}</SidebarLabel>
                 </SidebarDisclosureTrigger>
                 <SidebarDisclosurePanel>

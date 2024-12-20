@@ -114,7 +114,7 @@ export default function Page() {
           <BlockSandbox
             {...{
               title: "Default Navbar",
-              defaultSelected: "navbar.tsx",
+              defaultSelected: "app-navbar.tsx",
               fullscreen: "/blocks/navbar/navbar-00",
               preview: "blocks/navbar/navbar-00/app-navbar",
               expandKeys: ["components", "ui", "app"],
@@ -142,7 +142,7 @@ export default function Page() {
             {...{
               isIframe: true,
               title: "Inset Navbar",
-              defaultSelected: "navbar.tsx",
+              defaultSelected: "app-navbar.tsx",
               fullscreen: "/blocks/navbar/navbar-03",
               preview: "blocks/navbar/navbar-03",
               expandKeys: ["components", "ui", "app"],
@@ -169,7 +169,7 @@ export default function Page() {
           <BlockSandbox
             {...{
               title: "Floating Navbar",
-              defaultSelected: "navbar.tsx",
+              defaultSelected: "app-navbar.tsx",
               fullscreen: "/blocks/navbar/navbar-02",
               preview: "blocks/navbar/navbar-02/app-navbar",
               expandKeys: ["components", "ui", "app"],
