@@ -89,7 +89,7 @@ export function IconListItem({ name, Icon }: IconListItemProps) {
       className={item()}
       textValue={name}
     >
-      <Icon aria-label={name} className={cn(selectedSize)} key={name} />
+      <Icon className={cn(selectedSize)} key={name} />
       <Menu isOpen={isSelected} onOpenChange={setSelected}>
         <Menu.Content
           triggerRef={triggerRef}

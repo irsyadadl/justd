@@ -207,6 +207,7 @@ function Component({ folders, fullscreen, isIframe = false, title, ...props }: P
                 href={fullscreen}
                 target="_blank"
                 className={buttonStyles({ appearance: "plain", size: "square-petite" })}
+                aria-label="Open in fullscreen"
               >
                 <IconFullscreen />
               </Link>
