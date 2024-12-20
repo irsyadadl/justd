@@ -16,6 +16,7 @@ import {
   IconDeviceDesktop,
   IconHome,
   IconMoon,
+  IconNotepad,
   IconSearch,
   IconSun,
   IconWindowVisit,
@@ -72,7 +73,7 @@ export function Navbar() {
                       isActive={
                         pathname?.startsWith("/docs/2.x/components") || pathname === "/components"
                       }
-                      href="/docs/2.x/components/buttons/button"
+                      href="/components"
                     >
                       Components
                     </NavLink>
@@ -199,6 +200,10 @@ export function NavbarDropdown() {
             <Menu.Item href="/icons">
               <IconBrandJustd />
               Icons
+            </Menu.Item>
+            <Menu.Item href="/blog">
+              <IconNotepad />
+              Blog
             </Menu.Item>
           </Menu.Section>
           <Menu.Section title="Refs">

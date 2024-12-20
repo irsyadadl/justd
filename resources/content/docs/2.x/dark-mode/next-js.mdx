@@ -6,50 +6,17 @@ published: true
 ---
 
 ## Next Themes
-Because you are using Next.js, you can use next-themes to implement dark mode.
-<Installation options={{ isManual: true }}  items={['next-themes']}/>
+Because you are using Next.js, you can use `next-themes` to implement dark mode. And since you're using `justd-icons`, you can use the `IconSun` and `IconMoon` icons.
+<Installation options={{ isManual: false }}  items={['next-themes', 'justd-icons']}/>
 
-## Theme Provider
+## Provider and Switcher
 Next, you need to create a theme provider component. You can do it like this:
-```
-'use client'
-
-import * as React from 'react'
-
-import { ThemeProvider as NextThemesProvider, useTheme } from 'next-themes'
-import { type ThemeProviderProps } from 'next-themes/dist/types'
-
-const ThemeProvider = ({ children, ...props }: ThemeProviderProps) => {
-  return <NextThemesProvider {...props}>{children}</NextThemesProvider>
-}
-
-export { ThemeProvider, useTheme }
-```
-Since you've got the theme provider in play, you'll probably wanna team it up with a route provider. Go ahead and whip up a `providers.tsx` file in your `components` folder.
-
-<PlainCode code={`'use client'
-
-  import { ThemeProvider } from 'next-themes'
-  import { useRouter } from 'next/navigation'
-  import { RouterProvider } from 'react-aria-components'
-
-  declare module 'react-aria-components' {
-    interface RouterConfig {
-      routerOptions: NonNullable<Parameters<ReturnType<typeof useRouter>['push']>[1]>
-    }
-  }
-
-  export function Providers({ children }: { children: React.ReactNode }) {
-    let router = useRouter()
-
-    return (
-      <RouterProvider navigate={router.push}>
-        <ThemeProvider attribute="class">{children}</ThemeProvider>
-      </RouterProvider>
-    )
-  }
-  `}/>
-
+<CodeBlock
+    source={{
+        'theme-provider.tsx': 'dark-mode/nextjs/theme-provider.tsx',
+        'providers.tsx': 'dark-mode/nextjs/providers.tsx',
+        'theme-switcher.tsx': 'dark-mode/nextjs/theme-switcher.tsx',
+    }} />
 ## Usage
 After that, you can use it in your root layout file like so:
 
@@ -68,32 +35,3 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   )
 }
 ```
-
-## Theme Switcher
-For theme switcher, you can use the `useTheme` hook from `next-themes` to get the current theme.
-
-<Installation options={{ isManual: true }}  items={['justd-icons']} />
-
-<PlainCode code={`'use client'
-
-  import { IconMoon, IconSun } from 'justd-icons'
-  import { useTheme } from 'next-themes'
-  import { Button } from 'ui'
-
-  export function ThemeSwitcher() {
-    const { resolvedTheme, setTheme } = useTheme()
-
-    return (
-      <Button
-        appearance="outline"
-        size="square-petite"
-        aria-label={'Switch to ' + resolvedTheme === 'light' ? 'dark' : 'light' + 'mode'}
-        onPress={() => setTheme(resolvedTheme === 'light' ? 'dark' : 'light')}
-      >
-        <IconSun className="transition-all scale-100 rotate-0 dark:scale-0 dark:-rotate-90 h-[1.2rem] w-[1.2rem]" />
-        <IconMoon className="absolute transition-all scale-0 rotate-90 dark:scale-100 dark:rotate-0 h-[1.2rem] w-[1.2rem]" />
-      </Button>
-    )
-  }`}/>
-
-If you spot typos or wrong implementations, feel free to [contribute here](https://github.com/irsyadadl/d./blob/main/content/docs/dark-mode/next-js.mdx).

@@ -2,6 +2,7 @@
 /.idea
 /__registry__
 /public/registry
+/public/stubs
 ignore
 /.vercel
 /note.md

@@ -2,9 +2,9 @@ import type React from "react"
 
 import { GeneratedTheme } from "@/app/(app)/themes/partials/generated-theme"
 import { Anatomy } from "@/components/code/anatomy"
+import { CodeBlock } from "@/components/code/code-block"
 import { CodeSandbox } from "@/components/code/code-sandbox"
 import { EditorText } from "@/components/code/editor-text"
-import { PlainCode } from "@/components/code/plain-code"
 import { SourceCode } from "@/components/code/source-code"
 import { DocComposed } from "@/components/doc-composed"
 import { DocNote } from "@/components/doc-note"
@@ -14,6 +14,7 @@ import { IconArrowUpRight } from "justd-icons"
 import Image from "next/image"
 import { Link } from "ui"
 
+import { BlockSandbox } from "@/components/code/block-sandbox"
 import { DocHow } from "./code/doc-how"
 
 interface MdxProps {
@@ -27,6 +28,8 @@ export function Mdx({ code }: MdxProps) {
     <Component
       components={{
         GeneratedTheme,
+        CodeBlock,
+        BlockSandbox,
         EditorText: (props: React.ComponentProps<typeof EditorText>) => <EditorText {...props} />,
         CodeSandbox: (props: React.ComponentProps<typeof CodeSandbox>) => (
           <CodeSandbox {...props} />
@@ -54,7 +57,6 @@ export function Mdx({ code }: MdxProps) {
           />
         ),
         SourceCode: SourceCode,
-        PlainCode: PlainCode,
         figure: (props: React.ComponentProps<"figure">) => (
           <figure
             className="*:[pre]:inset-ring-1 *:[pre]:inset-ring-zinc-800 *:[pre]:max-h-96 *:[pre]:rounded-lg *:[pre]:bg-shiki-bg *:[pre]:p-4"

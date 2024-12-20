@@ -112,8 +112,8 @@ const Navbar = ({
 
 const navStyles = tv({
   base: [
-    "hidden h-(--navbar-height) [--navbar-height:3.5rem] px-4 group peer md:flex items-center w-full",
-    "[&>div]:max-w-[1680px] md:[&>div]:flex [&>div]:items-center [&>div]:w-full [&>div]:mx-auto",
+    "hidden h-(--navbar-height) [--navbar-height:3.5rem] px-4 group peer @md:flex items-center w-full",
+    "[&>div]:max-w-[1680px] @md:[&>div]:flex [&>div]:items-center [&>div]:w-full [&>div]:mx-auto",
   ],
   variants: {
     isSticky: {
@@ -121,11 +121,11 @@ const navStyles = tv({
     },
     intent: {
       floating:
-        "bg-navbar text-navbar-fg w-full max-w-7xl 2xl:max-w-(--breakpoint-2xl) mx-auto border rounded-xl md:px-4",
-      navbar: "bg-navbar text-navbar-fg border-b md:px-6",
+        "bg-navbar text-navbar-fg w-full max-w-7xl 2xl:max-w-(--breakpoint-2xl) mx-auto border rounded-xl @md:px-4",
+      navbar: "bg-navbar text-navbar-fg border-b @md:px-6",
       inset: [
         "mx-auto dark:md:px-6",
-        "2xl:[&>div]:max-w-(--breakpoint-2xl) md:[&>div]:flex [&>div]:items-center [&>div]:w-full [&>div]:mx-auto",
+        "2xl:[&>div]:max-w-(--breakpoint-2xl) @md:[&>div]:flex [&>div]:items-center [&>div]:w-full [&>div]:mx-auto",
       ],
     },
   },
@@ -152,7 +152,7 @@ const Nav = ({ className, ...props }: NavbarProps) => {
           }}
           isFloat={intent === "floating"}
         >
-          <Sheet.Body className="px-2 md:px-4">{props.children}</Sheet.Body>
+          <Sheet.Body className="px-2 @md:px-4">{props.children}</Sheet.Body>
         </Sheet.Content>
       </Sheet>
     )
@@ -208,7 +208,7 @@ const Section = ({ className, ...props }: React.ComponentProps<"div">) => {
 
 const navItemStyles = tv({
   base: [
-    "relative no-underline cursor-pointer md:text-sm px-2 flex forced-colors:outline-0 items-center gap-x-2 *:data-[slot=icon]:-mx-0.5 text-muted-fg outline-hidden forced-colors:data-disabled:text-[GrayText] forced-colors:transform-none transition-colors",
+    "relative no-underline cursor-pointer @md:text-sm px-2 flex forced-colors:outline-0 items-center gap-x-2 *:data-[slot=icon]:-mx-0.5 text-muted-fg outline-hidden forced-colors:data-disabled:text-[GrayText] forced-colors:transform-none transition-colors",
     "data-hovered:text-fg data-focused:text-fg data-pressed:text-fg data-focus-visible:outline-1 data-focus-visible:outline-primary",
     "**:data-[slot=chevron]:size-4 **:data-[slot=chevron]:transition-transform",
     "data-pressed:**:data-[slot=chevron]:rotate-180 *:data-[slot=icon]:size-4 *:data-[slot=icon]:shrink-0",
@@ -257,7 +257,7 @@ const Logo = ({ className, ...props }: LinkProps) => {
     <Link
       className={composeTailwindRenderProps(
         className,
-        "flex items-center gap-x-2 px-2 py-4 text-fg data-focus-visible:outline-1 data-focus-visible:outline-primary data-focused:outline-hidden md:mr-4 md:px-0 md:py-0",
+        "flex items-center gap-x-2 px-2 py-4 text-fg data-focus-visible:outline-1 data-focus-visible:outline-primary data-focused:outline-hidden @md:mr-4 @md:px-0 @md:py-0",
       )}
       {...props}
     />
@@ -265,15 +265,15 @@ const Logo = ({ className, ...props }: LinkProps) => {
 }
 
 const Flex = ({ className, ...props }: React.ComponentProps<"div">) => {
-  return <div className={cn("flex items-center gap-2 md:gap-3", className)} {...props} />
+  return <div className={cn("flex items-center gap-2 @md:gap-3", className)} {...props} />
 }
 
 const compactStyles = tv({
-  base: "md:hidden flex peer-has-[[data-navbar-intent=floating]]:border bg-navbar text-navbar-fg justify-between",
+  base: "@md:hidden flex peer-has-[[data-navbar-intent=floating]]:border bg-navbar text-navbar-fg justify-between",
   variants: {
     intent: {
       floating: "border h-12 rounded-lg px-3.5",
-      inset: "h-14 px-4",
+      inset: "h-14 px-4 border-b",
       navbar: "h-14 border-b px-4",
     },
   },
@@ -289,7 +289,8 @@ const insetStyles = tv({
   variants: {
     intent: {
       floating: "",
-      inset: "bg-muted/40 md:rounded-lg md:shadow-xs md:ring-1 md:ring-fg/15 md:dark:ring-border",
+      inset:
+        "bg-muted/40 @md:rounded-lg @md:shadow-xs @md:ring-1 @md:ring-fg/15 @md:dark:ring-border",
       navbar: "",
     },
   },
@@ -300,7 +301,7 @@ const Inset = ({ className, ...props }: React.ComponentProps<"div">) => {
   return (
     <main
       data-navbar-intent={intent}
-      className={cn("flex flex-1 flex-col", intent === "inset" && "pb-2 md:px-2", className)}
+      className={cn("flex flex-1 flex-col", intent === "inset" && "pb-2 @md:px-2", className)}
     >
       <div className={insetStyles({ intent, className })}>{props.children}</div>
     </main>

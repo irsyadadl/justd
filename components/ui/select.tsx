@@ -1,17 +1,20 @@
 "use client"
 
-import type { Placement } from "@react-types/overlays"
 import { IconChevronLgDown } from "justd-icons"
+import type {
+  ListBoxProps,
+  SelectProps as SelectPrimitiveProps,
+  ValidationResult,
+} from "react-aria-components"
 import {
   Button,
   Select as SelectPrimitive,
-  type SelectProps as SelectPrimitiveProps,
   SelectValue,
-  type ValidationResult,
   composeRenderProps,
 } from "react-aria-components"
 import { tv } from "tailwind-variants"
 
+import type { Placement } from "@react-types/overlays"
 import { DropdownItem, DropdownItemDetails, DropdownSection } from "./dropdown"
 import { Description, FieldError, Label } from "./field"
 import { ListBox } from "./list-box"
@@ -61,17 +64,23 @@ const Select = <T extends object>({
   )
 }
 
-interface ListProps<T extends object> {
+interface ListProps<T extends object> extends ListBoxProps<T> {
   items?: Iterable<T>
   placement?: Placement
   children: React.ReactNode | ((item: T) => React.ReactNode)
   className?: string
 }
 
-const List = <T extends object>({ className, children, items, placement }: ListProps<T>) => {
+const List = <T extends object>({
+  className,
+  children,
+  items,
+  placement,
+  ...props
+}: ListProps<T>) => {
   return (
-    <Popover.Picker className={className} trigger="Select" placement={placement}>
-      <ListBox.Picker aria-label="items" items={items}>
+    <Popover.Picker className={className} placement={placement}>
+      <ListBox.Picker aria-label="items" items={items} {...props}>
         {children}
       </ListBox.Picker>
     </Popover.Picker>
@@ -94,10 +103,7 @@ const Trigger = ({ className, ...props }: TriggerProps) => {
       )}
     >
       {props.prefix && <span className="-mr-1">{props.prefix}</span>}
-      <SelectValue
-        aria-placeholder="xxxxx"
-        className="flex-1 text-base data-placeholder:text-muted-fg sm:text-sm [&_[slot=description]]:hidden"
-      />
+      <SelectValue className="flex-1 text-base data-placeholder:text-muted-fg sm:text-sm [&_[slot=description]]:hidden" />
       <IconChevronLgDown
         aria-hidden
         className="duration-300 size-4 shrink-0 text-muted-fg group-data-open:rotate-180 group-data-open:text-fg group-data-disabled:opacity-50 forced-colors:text-[ButtonText] forced-colors:group-data-disabled:text-[GrayText]"

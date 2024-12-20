@@ -7,75 +7,30 @@ published: true
 
 
 ## Remix Themes
-Remix themes is a slick way to handle themes in your Remix app. Read more about it [here](https://github.com/abereghici/remix-themes).
-<Installation options={{ isManual: true }}  items={['remix-themes']}/>
+Because you are using Next.js, you can use `remix-themes` to implement dark mode. And since you're using `justd-icons`, you can use the `IconSun` and `IconMoon` icons.
+<Installation options={{ isManual: false }}  items={['next-themes', 'justd-icons']}/>
 
-## Session Storage
-And next, in your `app/sessions.server.tsx` file, add the following:
-<PlainCode code={`import { createCookieSessionStorage } from '@remix-run/node'
-  import { createThemeSessionResolver } from 'remix-themes'
-
-  const isProduction = process.env.NODE_ENV === 'production'
-
-  const sessionStorage = createCookieSessionStorage({
-    cookie: {
-      name: 'theme',
-      path: '/',
-      httpOnly: true,
-      sameSite: 'lax',
-      secrets: ['s3cr3t'],
-      ...(isProduction ? { domain: 'your-production-domain.com', secure: true } : {})
-    }
-  })
-
-  export const themeSessionResolver = createThemeSessionResolver(sessionStorage)`} />
-
-## Providers
-Next to add the `ThemeProvider` to your root layout like so:
-```
-export { Theme, useTheme } from 'remix-themes'
-```
-
-## Action Route
-Create a file in `/routes/action.set-theme.ts`. Make sure you pass the filename to the `ThemeProvider` component. This route stores the preferred theme in session storage when the user switches it up.
-
-```tsx
-import { themeSessionResolver } from '@/sessions.server'
-import { createThemeAction } from 'remix-themes'
-
-export const action = createThemeAction(themeSessionResolver)
-```
+After that, we need x files: `app/sessions.server.tsx`, `app/theme-provider.tsx`, and `/routes/action.set-theme.ts`.
+<CodeBlock
+    source={{
+        'app/sessions.server.tsx': 'dark-mode/remix/sessions.server.tsx',
+        'app/theme-provider.tsx': 'dark-mode/remix/theme-provider.tsx',
+        'routes/action.set-theme.ts': 'dark-mode/remix/action.set-theme.ts',
+    }} />
 
 ## Theme Switcher
-For theme switcher, you can use the `useTheme` hook from `remix-themes` to get the current theme.
-<Installation options={{ isManual: true }}  items={['justd-icons']} />
-Then, make sure you import the icons you want to use.
+And then, we need a theme switcher component. You can do it like this:
+<CodeBlock
+    source={{
+        'app/theme-switcher.tsx': 'dark-mode/remix/theme-switcher.tsx',
+    }} />
 
-<PlainCode code={`import { Button } from 'ui'
-  import { IconMoon, IconSun } from 'justd-icons'
-  import { Theme, useTheme } from '@/components/theme-provider'
+## Usage
+Then you can wrap your app with the provider. For example if you are using Laravel with Inertia.js, you can put it inside your `app.tsx` like so:
+<CodeBlock
+    source={{
+        'app/root.tsx': 'dark-mode/remix/root.tsx',
+    }} />
 
-  export function ThemeSwitcher() {
-    const [theme, setTheme] = useTheme()
-    const switchTheme = () => {
-      if (theme === 'dark') {
-        setTheme(Theme.LIGHT)
-      } else {
-        setTheme(Theme.DARK)
-      }
-    }
 
-    return (
-      <Button
-        appearance="outline"
-        size="square-petite"
-        aria-label="Switch theme"
-        onPress={switchTheme}
-      >
-        <IconSun className="transition-all scale-100 rotate-0 dark:scale-0 dark:-rotate-90 h-[1.2rem] w-[1.2rem]" />
-        <IconMoon className="absolute transition-all scale-0 rotate-90 dark:scale-100 dark:rotate-0 h-[1.2rem] w-[1.2rem]" />
-      </Button>
-    )
-  }`} />
-
-If you spot typos or wrong implementations, feel free to [contribute here](https://github.com/irsyadadl/d./blob/main/content/docs/dark-mode/remix.mdx).
+If you spot typos or wrong implementations, feel free to <NewTab href='https://github.com/irsyadadl/justd/blob/2.x/resources/content/docs/2.x/dark-mode/remix.mdx'>contribute here</NewTab>.

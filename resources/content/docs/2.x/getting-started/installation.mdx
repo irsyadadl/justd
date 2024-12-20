@@ -9,8 +9,13 @@ published: true
 Before executing the command, ensure that **tailwind** is installed. If not, follow the instructions [here](https://tailwindcss.com/docs/installation) for installation.
 
 <Note intent='info'>
-  Running this command will overwrite your **main css** file. It is recommended to use this in a
-  **new project** rather than an existing one to avoid manual file additions.
+  <p>
+      Running this command will overwrite your **main css** file. It is recommended to use this in a
+      **new project** rather than an existing one to avoid manual file additions.
+  </p>
+    <p className='mt-4'>
+        This documentation is for the latest version of Justd which assumes you are using tailwind v4, if you're using v3, you can refer to the [1.x documentation](/docs/1.x/getting-started/installation).
+    </p>
 </Note>
 
 ### Initial Setup
@@ -110,110 +115,128 @@ You can also doing a diff to specific components by using the following command:
 <Installation command='npx justd-cli@latest diff multiple-select menu modal' items={['']}/>
 
 ## Starter Kit
-I offer two starter kits, one for Next.js and one for Laravel. Choose the one that suits your project needs.
+Explore our range of starter kits designed to suit various project needs. Whether you're working with Next.js, Laravel, Vite, or other frameworks, we've got you covered.
 
 <Note intent='info'>
-  If you have other starter kits, such as Remix or Vite, consider submitting a
-  [PR](https://github.com/justdlabs/next.js/issues/new) to expand our list.
+    Got a starter kit for something else, like Remix or Astro? Consider submitting a [PR](https://github.com/justdlabs/next.js/issues/new) to help expand our list!
 </Note>
 
-Here’s a swagged-out version of what you got:
+### Vite
+For a simple and speedy setup with React Router 7 and Vite, try the [Vite Starter Kit](https://github.com/justdlabs/vite):
+
+```
+git clone https://github.com/justdlabs/vite.git my-app
+cd my-app
+bun i && bun run dev
+```
 
 ### Laravel
-First up, make sure you got [Composer](https://getcomposer.org/download/) chillin' on your system. Then, hit this
-command to spin up a fresh project:
-<Installation command='composer create-project justd/laravel app' items={['']}/>
-Jump into your new crib with `cd app`, then install all the goods with `npm i && npm run dev`. Fire up your
-server with `php artisan serve`, and boom—you’re ready to roll.
+Start your Laravel journey with our [Laravel Starter Kit](https://github.com/justdlabs/laravel). Make sure you have [Composer](https://getcomposer.org/download/) installed. Follow these steps:
+
+```
+composer create-project justd/laravel app
+cd app
+npm i && npm run dev
+php artisan serve
+```
+
+Your Laravel project is now up and running!
 
 ### Next.js
-Get on that Just D hype with the [Next.js Starter Kit](https://next.getjustd.com/). This bad boy is pre-loaded and
-ready to go. Kick off a new project with:
-<Installation command='npx create-next-app@latest -e https://github.com/justdlabs/next.js project-name' items={['']}/>
+Elevate your projects with the [Next.js Starter Kit](https://next.getjustd.com/). Fully loaded and ready to go:
+
+```
+npx create-next-app@latest -e https://github.com/justdlabs/next.js project-name
+```
 
 ### Remix
-Remix caught your eye? Kick things off with the [Remix Starter Kit](https://remix.getjustd.com/), crafted by [José
-Miguel](https://github.com/m1guer). It’s like Next.js but with that Remix spin. Grab the repo here:
-[justdlabs/remix](https://github.com/justdlabs/remix). To get started, run the following command:
-<Installation command='npx create-remix@latest --template justdlabs/remix' items={['']}/>
+Interested in Remix? Dive into the [Remix Starter Kit](https://remix.getjustd.com/), crafted by [José Miguel](https://github.com/m1guer). Here’s how to get started:
+
+```
+npx create-remix@latest --template justdlabs/remix
+```
 
 ### Astro
-This starter is already in production, and you can check it out [here](https://astro.getjustd.com/). The repository is
-available [here](https://github.com/justdlabs/astro). To get started, run the following command:
-<Installation command='npm create astro@latest -- --template justdlabs/astro' items={['']}/>
+Looking for a production-ready Astro setup? Check out our [Astro Starter Kit](https://astro.getjustd.com/). Start with this command:
+
+```
+npm create astro@latest -- --template justdlabs/astro
+```
+
+For more details, visit the [Astro repository](https://github.com/justdlabs/astro).
 
 
 ## Manual Installation
 To begin setting up the design system, start by installing these packages:
 
-<Installation options={{isManual: true}} items={['react-aria-components', 'tailwindcss-react-aria-components']}/>
+<Installation options={{isManual: true}} items={['react-aria-components']} />
 
-Next, add Tailwind Variant, Tailwind Merge, and clsx for utility functions:
+Next, add Tailwind Variant, Tailwind Merge, and for utility functions:
 
-<Installation options={{isManual: true}} items={['tailwind-variants', 'tailwind-merge', 'clsx']} />
+<Installation options={{isManual: true}} items={['tailwind-variants', 'tailwind-merge']} />
 
 Following that, include the animation package for managing animations and Paranoid for icons:
 
 <Installation options={{isManual: true}} items={['justd-icons', 'tailwindcss-animate']} />
 
 ### Style and Primitive
-  After installing the required packages, you can copy the CSS below into your global CSS file and move the primitives to your UI folder. Primitives serve as utilities for managing states, including `focusRing`, `focusStyles`, and `focusButtonStyles`. Additionally, there’s a hook called `useMediaQuery` and a function named `composeTailwindRenderProps`. Every component in Justd relies on helpers from this file, so it’s essential to include it!
+After installing the required packages, you can copy the CSS below into your global CSS file and move the primitives to your UI folder. Primitives serve as utilities for managing states, including `focusRing`, `focusStyles`, and `focusButtonStyles`. Additionally, there’s a hook called `useMediaQuery` and a function named `composeTailwindRenderProps`. Every component in Justd relies on helpers from this file, so it’s essential to include it!
 
-<EditorText
-  source={{
-    'app/globals.css': 'docs/installation/main.css',
-    'ui/primitive.tsx': 'ui/primitive',
-  }} />
+<CodeBlock
+    source={{
+        'app/globals.css': 'installation/main.css',
+        'ui/primitive.tsx': 'installation/primitive.tsx',
+    }} />
 
 ### Classes and Hooks
 
 All components that use the `cn` function will import it from the `utils/classes.ts` file, which provides a `cn` function compatible with server components. Hooks are only used in specific components like the **Navbar**, **Sidebar**, **Popover**, and **Command Menu**. If you're using the **Justd CLI**, it will handle this automatically; otherwise, download the file below.
-<EditorText
-source={{
-    'utils/classes.ts': 'utils/classes.ts',
-    'utils/use-media-query.ts': 'utils/use-media-query.ts',
-}} />
+
+<CodeBlock
+    source={{
+        'utils/classes.ts': 'utils/classes.ts',
+        'utils/use-media-query.ts': 'utils/use-media-query.ts',
+    }} />
+
 
 ### Simple Import
-Indeed, it's efficient because the `index.ts` file in your UI folder serves as a hub. Even if the button and badge
-components are in separate files, you can import them together easily. First, create a `ui/index.ts` file:
-  ```ts title="ui/index.ts"
-  export * from "./primitive";
-  export * from "./sidebar";
-  export * from "./navbar";
-  export * from "./tree";
-  export * from "./table";
-  export * from "./text-field";
-  export * from "./button";
-  export * from "./card";
-  // ...
-  ```
+Indeed, it's efficient because the `index.ts` file in your UI folder serves as a hub. Even if the button and badge components are in separate files, you can import them together easily. First, create a `ui/index.ts` file:
 
-So, here's the scoop: your UI folder contains an `index.ts` file, right? This file consolidates all your components for
-straightforward access. Simply tell TypeScript where to find it and import them as needed, hassle-free!
-<EditorText
-  source={{
-    'component.tsx': 'docs/installation/component.docs',
-    'tsconfig.json': 'docs/installation/not-tsconfig.json',
-  }} />
+```ts title="ui/index.ts"
+export * from "./primitive";
+export * from "./sidebar";
+export * from "./navbar";
+export * from "./tree";
+export * from "./table";
+export * from "./text-field";
+export * from "./button";
+export * from "./card";
+// ...
+```
 
-If you're using src folder, you can use the following config:
+So, here's the scoop: your UI folder contains an `index.ts` file, right? This file consolidates all your components for straightforward access. Simply tell TypeScript where to find it and import them as needed, hassle-free!
+
+<CodeBlock
+    source={{
+        'component.tsx': 'installation/component.tsx',
+        'tsconfig.json': 'installation/not-tsconfig.json',
+    }} />
+
+If you're using a `src` folder, you can use the following config:
+
 ```json
-{
-  "compilerOptions": {
-    // ...
-    "paths": {
-      "@/*": ["./src/*"],
-      "ui": ["./src/components/ui"]
-    }
-  }
+"paths": {
+  "@/*": ["./src/*"],
+  "ui": ["./src/components/ui"]
 }
 ```
 
 ### Fonts
-This is is currently using the [Inter font](https://rsms.me/inter/). If you want to use a different font, you can define your font-family in your js or css file.
+This is currently using the [Inter font](https://rsms.me/inter/). If you want to use a different font, you can define your font-family in your JS or CSS file.
 
-### Stylesheet
+
+
+    ### Stylesheet
 When you're working with a stylesheet, you can define your `@font-face` in your css file.
 
 ```

@@ -1,6 +1,6 @@
 ---
 title: Astro
-description: Wanna make your Astro project slick with dark mode? Here’s the playbook for getting that moody vibe on lock.
+description: Want making your Astro project slick with dark mode? Here’s the playbook for getting that moody vibe on lock.
 order: 5
 published: true
 ---
@@ -8,84 +8,16 @@ published: true
 
 ## Inline Scripts
 Astro supports inline scripts, so we can get localStorage and set the theme.
-```js
-<script is:inline>
-  const getThemePreference = () => {
-    if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-      return localStorage.getItem('theme')
-    }
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-  }
-  const isDark = getThemePreference() === 'dark'
-  document.documentElement.classList[isDark ? 'add' : 'remove']('dark')
-
-  if (typeof localStorage !== 'undefined') {
-    const observer = new MutationObserver(() => {
-      const isDark = document.documentElement.classList.contains('dark')
-      localStorage.setItem('theme', isDark ? 'dark' : 'light')
-    })
-    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] })
-  }
-</script>
-```
+<CodeBlock
+    source={{
+        'inline-script.tsx': 'dark-mode/astro/inline-script.tsx',
+    }} />
 
 ## Theme Switcher
 First, install the `justd-icons` package.
 <Installation options={{ isManual: true }}  items={['justd-icons']} />
 And then, add the following code the component where you want to use the theme switcher.
-<PlainCode code={`'use client'
-
-  import { IconMoon, IconSun } from 'justd-icons'
-  import { useEffect, useState } from 'react'
-  import { Button, cn } from 'ui'
-
-  export function ThemeSwitcher() {
-    const [theme, setTheme] = useState('light')
-    const [isMounted, setIsMounted] = useState(false)
-
-    useEffect(() => {
-      const savedTheme = localStorage.getItem('theme') || 'light'
-      setTheme(savedTheme)
-      if (savedTheme === 'dark') {
-        document.documentElement.classList.add('dark')
-      } else {
-        document.documentElement.classList.remove('dark')
-      }
-      setIsMounted(true)
-    }, [])
-
-    if (!isMounted) return null
-
-    const handleSwitchTheme = () => {
-      const newTheme = theme === 'light' ? 'dark' : 'light'
-      setTheme(newTheme)
-      if (newTheme === 'dark') {
-        document.documentElement.classList.add('dark')
-      } else {
-        document.documentElement.classList.remove('dark')
-      }
-      localStorage.setItem('theme', newTheme)
-    }
-
-    return (
-      <Button
-        appearance="outline"
-        size="square-petite"
-        aria-label={'Switch to ' + theme === 'light' ? 'dark' : 'light' + 'mode'}
-        onPress={handleSwitchTheme}
-      >
-        <IconSun
-          className={cn(
-            'h-[1.2rem] w-[1.2rem] transition-all',
-            theme === 'dark' ? 'opacity-0 scale-0 -rotate-90' : 'opacity-100 scale-100 rotate-0'
-          )}
-        />
-        <IconMoon
-          className={cn(
-            'absolute h-[1.2rem] w-[1.2rem] transition-all',
-            theme === 'dark' ? 'opacity-100 scale-100 rotate-0' : 'opacity-0 scale-0 rotate-90'
-          )}
-        />
-      </Button>
-    )
-  }`}/>
+<CodeBlock
+    source={{
+        'theme-switcher.tsx': 'dark-mode/astro/theme-switcher.tsx',
+    }} />

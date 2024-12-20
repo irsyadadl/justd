@@ -1,6 +1,6 @@
 import { Container, Heading } from "ui"
 
-import { AppLayout } from "./app-layout"
+import { AppLayout } from "./app-layout.tsx.sutbs"
 
 export default function Home() {
   return (

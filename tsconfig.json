@@ -31,11 +31,9 @@
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "next.config.mjs"],
   "exclude": [
     "node_modules",
-
-    "./resources/docs/**/*.docs.*",
-    "./resources/docs/**/*.docs.tsx",
-    "./resources/content/**/*.mdx",
-    "./resources/scripts/build-registry.mts",
-    "./__registry__"
+    "resources/stubs",
+    "resources/content/**/*.mdx",
+    "resources/scripts/build-registry.mts",
+    "__registry__"
   ]
 }

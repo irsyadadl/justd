@@ -8,6 +8,7 @@
       "**/*.js",
       "public/**/*",
       "resources/lib/sidebar.json",
+      "resources/stubs/**/*",
       "**/*.css",
       "**/.next/**",
       "resource/content",
