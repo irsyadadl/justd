@@ -9,7 +9,10 @@ export function ListComponents() {
     <div className="gap-1 columns-1 sm:columns-2 md:columns-3 lg:columns-4">
       {sidebar[3].children.map((item, index) => (
         <div key={index} className="p-4 mb-1 rounded-lg border break-inside-avoid">
-          <Heading level={2} className="flex gap-x-2 items-center mb-2 text-base font-semibold">
+          <Heading
+            level={2}
+            className="flex gap-x-2 items-center mb-2 text-base font-semibold sm:text-base"
+          >
             <IconPackage /> {goodTitle(item.title)}
           </Heading>
           <ul className="flex flex-col">
