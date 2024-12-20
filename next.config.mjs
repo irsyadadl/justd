@@ -28,7 +28,7 @@ export default {
   async redirects() {
     return [
       {
-        source: "/docs/:slug*",
+        source: "/docs/(?!2\\.x/)(:slug*)",
         missing: [
           {
             type: "header",
