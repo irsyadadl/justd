@@ -101,12 +101,12 @@ function AsideLink({ href, ...props }: AsideLinkProps) {
       ref={ref}
       className={twMerge(
         "-ml-3 mb-0.5 flex items-center justify-between rounded-lg px-3 py-1.5 text-base text-muted-fg sm:text-sm",
-        "data-focused:outline-hidden",
-        "data-hovered:bg-muted data-hovered:text-secondary-fg",
+        "focus:outline-none",
+        "hover:bg-muted hover:text-secondary-fg",
         isActive && [
           "font-medium",
-          "bg-blue-100 text-blue-600 data-hovered:bg-blue-100 data-hovered:text-blue-600",
-          "dark:bg-blue-400/10 dark:text-blue-400 dark:data-hovered:bg-blue-400/10 dark:data-hovered:text-blue-400"
+          "bg-blue-100 text-blue-600 hover:bg-blue-100 hover:text-blue-600",
+          "dark:bg-blue-400/10 dark:text-blue-400 dark:hover:bg-blue-400/10 dark:hover:text-blue-400"
         ]
       )}
     />
