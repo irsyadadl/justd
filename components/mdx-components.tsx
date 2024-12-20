@@ -14,6 +14,7 @@ import { IconArrowUpRight } from "justd-icons"
 import Image from "next/image"
 import { Link } from "ui"
 
+import { BlockSandbox } from "@/components/code/block-sandbox"
 import { DocHow } from "./code/doc-how"
 
 interface MdxProps {
@@ -28,6 +29,7 @@ export function Mdx({ code }: MdxProps) {
       components={{
         GeneratedTheme,
         CodeBlock,
+        BlockSandbox,
         EditorText: (props: React.ComponentProps<typeof EditorText>) => <EditorText {...props} />,
         CodeSandbox: (props: React.ComponentProps<typeof CodeSandbox>) => (
           <CodeSandbox {...props} />

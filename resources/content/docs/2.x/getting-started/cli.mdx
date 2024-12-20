@@ -1,0 +1,86 @@
+---
+title: "CLI"
+description: "The CLI is not the only way to install Justd, but it's the most convenient. It's designed to help you set up your project quickly and efficiently"
+order: 4
+published: true
+---
+
+## Command Line Interface (CLI)
+The CLI is design for you to quickly and efficiently set up your project with Justd. It's the most convenient way to install Justd. It's very easy to use and you can start your project in minutes.
+
+## Existing Project
+If you have setup a project, wheater it's Laravel, Next.js, Remix, Tanstack or what ever is it. Just run the following command to install Justd:
+<Installation options={{ isInit: true }} items={['initial setup']} />
+With that command, you'll asking to determine which setup you have, but it's actually clever enought to detect your project so it will have default value.
+This is the ouput when you're running it in Next.js project:
+```
+✔ Initializing.
+? Components folder: src/components
+? Utils folder: src/utils
+? Where would you like to place the CSS file? src/app/globals.css
+✔ Installing dependencies.
+✔ Configuring.
+✔ UI folder created at `src/components/ui`
+✔ Primitive file saved to `src/components/ui/primitive.tsx`
+✔ Classes file saved to `src/utils/classes.ts`
+✔ Theme Provider file saved to `"src/components/theme-provider.tsx"`
+✔ Providers file saved to `"src/components/providers.tsx"`
+✔ Configuration saved to `justd.json`
+✔ Installation complete.
+```
+
+## Start New Project
+The CLI is very flexible, it knows weather you have setup project or not, so if you don't have a project setup, you can just start by running `init` command like:
+<Installation options={{ isInit: true }} items={['initial setup']} />
+By running this command, if you don't have a project setup, it will create a new project for you. Until now, it just support Laravel, Next.js, Remix, and Vite. But if you think we should add more, please [let us know](https://x.com/irsyadadl).
+
+```
+? No setup project detected. Do you want to start a new project? (yes/no) yes
+? Which framework do you want to use? Next.js
+? Which package manager do you want to use? Bun
+? Enter the name of your new project: new-project
+? Which Tailwind version do you want to use? (3/4) 4
+...
+...
+Project setup complete!
+To get started, run: `cd new-project && npm run dev`
+```
+
+## Add
+When you're setup justd, now you can start adding a component by justd running `add` command like:
+<Installation options={{ isComponent: true, noText: true }} items={['combo-box']} />
+
+## Diff
+When you're thinking you're not up-to-date with justd, don't worry, you can see the changed by running `diff` command like:
+<Installation options={{isExecutor: true}} command='npx justd-cli@latest diff' items={['']} />
+After that running, it will show you what component are different from your installed component, and also it'll list so you can easily pick what should be updated.
+
+## Change Gray
+Maybe you're not happy with the default base gray color, you can change it by running `change` command like:
+<Installation options={{isExecutor: true, noText: true}} command='npx justd-cli@latest change-gray'/>
+The output will be like this:
+```
+? The specified CSS path 'src/app/globals.css' exists. Do you want to use this path? yes
+? You will override the current theme "`zinc`" with others? yes
+? Pick your desired base gray:
+  zinc
+  gray
+❯ slate
+  neutral
+  stone
+```
+
+## Options
+The CLI is very flexible, you can customize it by adding some flags. Here are some options that you can use:
+
+### Skip
+If you're sure with the default value gave by the CLI, you can just run the command with `--yes` or `-y` flag like:
+<Installation options={{isExecutor: true}} command='npx justd-cli@latest -y' items={['']} />
+
+### Dirty
+When runnning init command, the CLI will detect is your project clean or not, if it's not clean, it will throw an error not continue the process. But if you don't care about it, just use `--force` flag like:
+<Installation options={{isExecutor: true}} command='npx justd-cli@latest init --force' items={['']} />
+
+### Help
+If you're not sure what to do, you can always run `help` command like:
+<Installation options={{isExecutor: true}} command='npx justd-cli@latest help' items={['']} />

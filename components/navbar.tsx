@@ -16,6 +16,7 @@ import {
   IconDeviceDesktop,
   IconHome,
   IconMoon,
+  IconNotepad,
   IconSearch,
   IconSun,
   IconWindowVisit,
@@ -199,6 +200,10 @@ export function NavbarDropdown() {
             <Menu.Item href="/icons">
               <IconBrandJustd />
               Icons
+            </Menu.Item>
+            <Menu.Item href="/blog">
+              <IconNotepad />
+              Blog
             </Menu.Item>
           </Menu.Section>
           <Menu.Section title="Refs">
