@@ -1,18 +1,18 @@
 ---
 title: "CLI"
-description: "The CLI is not the only way to install Justd, but it's the most convenient. It's designed to help you set up your project quickly and efficiently"
+description: "The CLI isn’t the only way to install Justd, but it’s by far the most convenient. It’s built to make setting up your project fast and hassle-free."
 order: 4
 published: true
 ---
 
 ## Command Line Interface (CLI)
-The CLI is design for you to quickly and efficiently set up your project with Justd. It's the most convenient way to install Justd. It's very easy to use and you can start your project in minutes.
+The CLI is designed to help you set up your project with Justd quickly and efficiently. It’s the easiest and most convenient way to install Justd, allowing you to get started with your project in just minutes.
 
 ## Existing Project
-If you have setup a project, wheater it's Laravel, Next.js, Remix, Tanstack or what ever is it. Just run the following command to install Justd:
+If you already have a project set up—whether it’s built with Laravel, Next.js, Remix, Tanstack, or any other framework—simply run the following command to install Justd:
 <Installation options={{ isInit: true }} items={['initial setup']} />
-With that command, you'll asking to determine which setup you have, but it's actually clever enought to detect your project so it will have default value.
-This is the ouput when you're running it in Next.js project:
+This command will prompt you to confirm your project’s setup. However, the CLI is smart enough to detect your project type and provide default values.
+Here’s an example of the output when running the command in a Next.js project:
 ```
 ✔ Initializing.
 ? Components folder: src/components
@@ -29,11 +29,11 @@ This is the ouput when you're running it in Next.js project:
 ✔ Installation complete.
 ```
 
-## Start New Project
-The CLI is very flexible, it knows weather you have setup project or not, so if you don't have a project setup, you can just start by running `init` command like:
+## Start a New Project
+The CLI is highly flexible and can automatically detect whether you already have a project set up. If you don’t, you can start fresh by running the `init` command like this:
 <Installation options={{ isInit: true }} items={['initial setup']} />
-By running this command, if you don't have a project setup, it will create a new project for you. Until now, it just support Laravel, Next.js, Remix, and Vite. But if you think we should add more, please [let us know](https://x.com/irsyadadl).
 
+Running this command will create a new project if no existing setup is detected. Currently, the CLI supports Laravel, Next.js, Remix, and Vite. If you’d like to see support for other frameworks, please [let me know](https://x.com/irsyadadl).
 ```
 ? No setup project detected. Do you want to start a new project? (yes/no) yes
 ? Which framework do you want to use? Next.js
@@ -47,16 +47,17 @@ To get started, run: `cd new-project && npm run dev`
 ```
 
 ## Add
-When you're setup justd, now you can start adding a component by justd running `add` command like:
+Once you’ve set up Justd, you can start adding components easily by running the `add` command:
 <Installation options={{ isComponent: true, noText: true }} items={['combo-box']} />
 
 ## Diff
-When you're thinking you're not up-to-date with justd, don't worry, you can see the changed by running `diff` command like:
+If you think your Justd setup might be outdated, don’t worry. You can check for changes by running the `diff` command:
 <Installation options={{isExecutor: true}} command='npx justd-cli@latest diff' items={['']} />
-After that running, it will show you what component are different from your installed component, and also it'll list so you can easily pick what should be updated.
+
+This will display the components that differ from your installed versions and provide a list so you can quickly choose which components to update.
 
 ## Change Gray
-Maybe you're not happy with the default base gray color, you can change it by running `change` command like:
+Not satisfied with the default gray base color? You can easily customize it by running the `change` command:
 <Installation options={{isExecutor: true, noText: true}} command='npx justd-cli@latest change-gray'/>
 The output will be like this:
 ```
@@ -71,16 +72,16 @@ The output will be like this:
 ```
 
 ## Options
-The CLI is very flexible, you can customize it by adding some flags. Here are some options that you can use:
+The CLI is highly customizable, allowing you to use various flags for a more tailored experience. Here are some of the options available:
 
 ### Skip
-If you're sure with the default value gave by the CLI, you can just run the command with `--yes` or `-y` flag like:
+If you’re confident with the default values provided by the CLI, you can skip prompts by using the `--yes` or `-y` flag:
 <Installation options={{isExecutor: true}} command='npx justd-cli@latest -y' items={['']} />
 
 ### Dirty
-When runnning init command, the CLI will detect is your project clean or not, if it's not clean, it will throw an error not continue the process. But if you don't care about it, just use `--force` flag like:
+When running the `init` command, the CLI checks whether your project is clean. If it’s not, it will throw an error and halt the process. If you want to proceed regardless, you can use the `--force` flag:
 <Installation options={{isExecutor: true}} command='npx justd-cli@latest init --force' items={['']} />
 
 ### Help
-If you're not sure what to do, you can always run `help` command like:
+If you’re unsure about the next steps, you can always refer to the `help` command for guidance:
 <Installation options={{isExecutor: true}} command='npx justd-cli@latest help' items={['']} />
