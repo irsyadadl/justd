@@ -7,9 +7,9 @@ import type {
   CellProps,
   ColumnProps,
   ColumnResizerProps,
+  TableHeaderProps as HeaderProps,
   RowProps,
   TableBodyProps,
-  TableHeaderProps,
   TableProps as TablePrimitiveProps,
 } from "react-aria-components"
 import {
@@ -156,14 +156,21 @@ const TableColumn = ({ isResizable = false, className, ...props }: TableColumnPr
   )
 }
 
-interface HeaderProps<T extends object> extends TableHeaderProps<T> {
+interface TableHeaderProps<T extends object> extends HeaderProps<T> {
   className?: string
+  ref?: React.Ref<HTMLTableSectionElement>
 }
 
-const Header = <T extends object>({ children, className, columns, ...props }: HeaderProps<T>) => {
+const Header = <T extends object>({
+  children,
+  ref,
+  className,
+  columns,
+  ...props
+}: TableHeaderProps<T>) => {
   const { selectionBehavior, selectionMode, allowsDragging } = useTableOptions()
   return (
-    <TableHeader data-slot="table-header" {...props} className={header({ className })}>
+    <TableHeader data-slot="table-header" ref={ref} className={header({ className })} {...props}>
       {allowsDragging && <Column className="w-0" />}
       {selectionBehavior === "toggle" && (
         <Column className="pl-4 w-0">
@@ -177,6 +184,7 @@ const Header = <T extends object>({ children, className, columns, ...props }: He
 
 interface TableRowProps<T extends object> extends RowProps<T> {
   className?: string
+  ref?: React.Ref<HTMLTableRowElement>
 }
 
 const TableRow = <T extends object>({
@@ -184,11 +192,13 @@ const TableRow = <T extends object>({
   className,
   columns,
   id,
+  ref,
   ...props
 }: TableRowProps<T>) => {
   const { selectionBehavior, allowsDragging } = useTableOptions()
   return (
     <Row
+      ref={ref}
       data-slot="table-row"
       id={id}
       {...props}
@@ -232,4 +242,5 @@ Table.Column = TableColumn
 Table.Header = Header
 Table.Row = TableRow
 
+export type { TableProps, TableBodyProps, TableCellProps, TableColumnProps, TableRowProps }
 export { Table }

@@ -6,11 +6,11 @@ import { IconHamburger } from "justd-icons"
 import { LayoutGroup, motion } from "motion/react"
 import type { LinkProps } from "react-aria-components"
 import { Link, composeRenderProps } from "react-aria-components"
-import { tv } from "tailwind-variants"
+import { type VariantProps, tv } from "tailwind-variants"
 
 import { cn } from "@/utils/classes"
 import { useMediaQuery } from "@/utils/use-media-query"
-import { Button } from "./button"
+import { Button, type ButtonProps } from "./button"
 import { composeTailwindRenderProps } from "./primitive"
 import { Sheet } from "./sheet"
 
@@ -38,7 +38,7 @@ function useNavbar() {
   return context
 }
 
-interface NavbarProviderProps extends React.ComponentProps<"header">, NavbarOptions {
+interface NavbarProps extends React.ComponentProps<"header">, NavbarOptions {
   defaultOpen?: boolean
   isOpen?: boolean
   onOpenChange?: (open: boolean) => void
@@ -65,7 +65,7 @@ const Navbar = ({
   isSticky = false,
   intent = "navbar",
   ...props
-}: NavbarProviderProps) => {
+}: NavbarProps) => {
   const isCompact = useMediaQuery("(max-width: 768px)")
   const [_open, _setOpen] = useState(defaultOpen)
   const open = openProp ?? _open
@@ -131,13 +131,13 @@ const navStyles = tv({
   },
 })
 
-interface NavbarProps extends React.ComponentProps<"div"> {
+interface NavbarNavProps extends React.ComponentProps<"div"> {
   intent?: "navbar" | "floating" | "inset"
   isSticky?: boolean
   side?: "left" | "right"
 }
 
-const Nav = ({ className, ...props }: NavbarProps) => {
+const NavbarNav = ({ className, ref, ...props }: NavbarNavProps) => {
   const { isCompact, side, intent, isSticky, open, setOpen } = useNavbar()
 
   if (isCompact) {
@@ -159,16 +159,25 @@ const Nav = ({ className, ...props }: NavbarProps) => {
   }
 
   return (
-    <div data-navbar-nav="true" className={navStyles({ isSticky, intent, className })} {...props}>
+    <div
+      data-navbar-nav="true"
+      ref={ref}
+      className={navStyles({ isSticky, intent, className })}
+      {...props}
+    >
       <div>{props.children}</div>
     </div>
   )
 }
 
-const Trigger = ({ className, onPress, ...props }: React.ComponentProps<typeof Button>) => {
+interface NavbarTriggerProps extends ButtonProps {
+  ref?: React.RefObject<HTMLButtonElement>
+}
+const NavbarTrigger = ({ className, onPress, ref, ...props }: NavbarTriggerProps) => {
   const { toggleNavbar } = useNavbar()
   return (
     <Button
+      ref={ref}
       data-navbar-trigger="true"
       appearance="plain"
       aria-label={props["aria-label"] || "Toggle Navbar"}
@@ -264,8 +273,8 @@ const Logo = ({ className, ...props }: LinkProps) => {
   )
 }
 
-const Flex = ({ className, ...props }: React.ComponentProps<"div">) => {
-  return <div className={cn("flex items-center gap-2 @md:gap-3", className)} {...props} />
+const Flex = ({ className, ref, ...props }: React.ComponentProps<"div">) => {
+  return <div ref={ref} className={cn("flex items-center gap-2 @md:gap-3", className)} {...props} />
 }
 
 const compactStyles = tv({
@@ -279,9 +288,14 @@ const compactStyles = tv({
   },
 })
 
-const Compact = ({ className, ...props }: React.ComponentProps<"div">) => {
+interface NavbarCompactProps
+  extends React.ComponentProps<"div">,
+    VariantProps<typeof compactStyles> {
+  ref?: React.RefObject<HTMLDivElement>
+}
+const NavbarCompact = ({ className, ref, ...props }: NavbarCompactProps) => {
   const { intent } = useNavbar()
-  return <div className={compactStyles({ intent, className })} {...props} />
+  return <div ref={ref} className={compactStyles({ intent, className })} {...props} />
 }
 
 const insetStyles = tv({
@@ -296,10 +310,11 @@ const insetStyles = tv({
   },
 })
 
-const Inset = ({ className, ...props }: React.ComponentProps<"div">) => {
+const Inset = ({ className, ref, ...props }: React.ComponentProps<"div">) => {
   const { intent } = useNavbar()
   return (
     <main
+      ref={ref}
       data-navbar-intent={intent}
       className={cn("flex flex-1 flex-col", intent === "inset" && "pb-2 @md:px-2", className)}
     >
@@ -308,13 +323,14 @@ const Inset = ({ className, ...props }: React.ComponentProps<"div">) => {
   )
 }
 
-Navbar.Nav = Nav
+Navbar.Nav = NavbarNav
 Navbar.Inset = Inset
-Navbar.Compact = Compact
+Navbar.Compact = NavbarCompact
 Navbar.Flex = Flex
-Navbar.Trigger = Trigger
+Navbar.Trigger = NavbarTrigger
 Navbar.Logo = Logo
 Navbar.Item = Item
 Navbar.Section = Section
 
+export type { NavbarProps, NavbarNavProps, NavbarCompactProps, NavbarTriggerProps }
 export { Navbar }

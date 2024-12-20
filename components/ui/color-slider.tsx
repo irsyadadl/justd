@@ -72,4 +72,5 @@ const ColorSlider = ({ showOutput = true, label, className, ...props }: ColorSli
   )
 }
 
+export type { ColorSliderProps }
 export { ColorSlider }

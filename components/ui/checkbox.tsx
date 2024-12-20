@@ -105,4 +105,5 @@ const Checkbox = ({ className, ...props }: CheckboxProps) => {
   )
 }
 
+export type { CheckboxGroupProps, CheckboxProps }
 export { Checkbox, CheckboxGroup }

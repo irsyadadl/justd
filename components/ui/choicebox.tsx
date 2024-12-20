@@ -122,4 +122,6 @@ const ChoiceboxItem = ({ className, ...props }: ChoiceboxItemProps) => {
 }
 
 Choicebox.Item = ChoiceboxItem
+
+export type { ChoiceboxProps, ChoiceboxItemProps }
 export { Choicebox }

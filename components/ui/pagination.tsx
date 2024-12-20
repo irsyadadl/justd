@@ -7,13 +7,11 @@ import {
   IconChevronsLgRight,
   IconDotsHorizontal,
 } from "justd-icons"
+import type { ListBoxItemProps, ListBoxProps, ListBoxSectionProps } from "react-aria-components"
 import {
   ListBox,
   ListBoxItem,
-  type ListBoxItemProps,
-  type ListBoxProps,
   ListBoxSection,
-  type SectionProps,
   Separator,
   composeRenderProps,
 } from "react-aria-components"
@@ -53,17 +51,29 @@ const {
   itemSeparatorLine,
 } = paginationStyles()
 
-const Pagination = ({ className, ...props }: React.ComponentProps<"nav">) => (
-  <nav aria-label="pagination" className={pagination({ className })} {...props} />
+type PagginationProps = React.ComponentProps<"nav">
+const Pagination = ({ className, ref, ...props }: PagginationProps) => (
+  <nav aria-label="pagination" ref={ref} className={pagination({ className })} {...props} />
 )
 
-const PaginationSection = <T extends object>({ className, ...props }: SectionProps<T>) => (
-  <ListBoxSection {...props} className={section({ className })} />
+interface PaginationSectionProps<T> extends ListBoxSectionProps<T> {
+  ref?: React.RefObject<HTMLElement>
+}
+const PaginationSection = <T extends object>({
+  className,
+  ref,
+  ...props
+}: PaginationSectionProps<T>) => (
+  <ListBoxSection ref={ref} {...props} className={section({ className })} />
 )
 
-const List = <T extends object>({ className, ...props }: ListBoxProps<T>) => {
+interface PaginationListProps<T> extends ListBoxProps<T> {
+  ref?: React.RefObject<HTMLDivElement>
+}
+const List = <T extends object>({ className, ref, ...props }: PaginationListProps<T>) => {
   return (
     <ListBox
+      ref={ref}
       orientation="horizontal"
       aria-label={props["aria-label"] || "Pagination"}
       layout="grid"
@@ -194,4 +204,5 @@ Pagination.Item = Item
 Pagination.List = List
 Pagination.Section = PaginationSection
 
+export type { PagginationProps, PaginationListProps, PaginationSectionProps, PaginationItemProps }
 export { Pagination }

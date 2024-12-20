@@ -16,17 +16,17 @@ const Breadcrumbs = <T extends object>({ className, ...props }: BreadcrumbsProps
   return <BreadcrumbsPrimitive {...props} className={cn("flex items-center gap-2", className)} />
 }
 
-interface ItemProps extends BreadcrumbProps {
+interface BreadcrumbsItemProps extends BreadcrumbProps {
   href?: string
   separator?: "slash" | "chevron" | boolean
 }
 
-const Item = ({
+const BreadcrumbsItem = ({
   href,
   separator = true,
   className,
   ...props
-}: ItemProps & Partial<Omit<LinkProps, "className">>) => {
+}: BreadcrumbsItemProps & Partial<Omit<LinkProps, "className">>) => {
   const separatorValue = separator === true ? "chevron" : separator
 
   return (
@@ -44,7 +44,9 @@ const Item = ({
   )
 }
 
-const Separator = ({ separator = "chevron" }: { separator?: ItemProps["separator"] }) => {
+const Separator = ({
+  separator = "chevron",
+}: { separator?: BreadcrumbsItemProps["separator"] }) => {
   return (
     <span className="*:shrink-0 *:text-muted-fg *:data-[slot=icon]:size-3.5">
       {separator === "chevron" && <IconChevronLgRight />}
@@ -53,6 +55,7 @@ const Separator = ({ separator = "chevron" }: { separator?: ItemProps["separator
   )
 }
 
-Breadcrumbs.Item = Item
+Breadcrumbs.Item = BreadcrumbsItem
 
+export type { BreadcrumbsProps, BreadcrumbsItemProps }
 export { Breadcrumbs }

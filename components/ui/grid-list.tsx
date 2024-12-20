@@ -12,6 +12,7 @@ import {
 } from "react-aria-components"
 import { tv } from "tailwind-variants"
 
+import { cn } from "@/utils/classes"
 import { Checkbox } from "./checkbox"
 import { composeTailwindRenderProps } from "./primitive"
 
@@ -79,11 +80,12 @@ const Item = ({ className, ...props }: GridListItemProps) => {
   )
 }
 
-const EmptyState = (props: React.HTMLAttributes<HTMLDivElement>) => (
-  <div className="p-6" {...props} />
+const EmptyState = ({ ref, className, ...props }: React.ComponentProps<"div">) => (
+  <div ref={ref} className={cn("p-6", className)} {...props} />
 )
 
 GridList.Item = Item
 GridList.EmptyState = EmptyState
 
+export type { GridListProps, GridListItemProps }
 export { GridList }

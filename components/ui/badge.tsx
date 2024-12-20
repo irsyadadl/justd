@@ -53,4 +53,5 @@ const Badge = ({ children, intent, shape, className, ...props }: BadgeProps) => 
   )
 }
 
+export type { BadgeProps }
 export { Badge, badgeIntents, badgeStyles, badgeShapes }

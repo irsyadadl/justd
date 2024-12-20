@@ -99,7 +99,6 @@ export function Navbar() {
                       size="small"
                       appearance="outline"
                       className="h-9"
-                      aria-label="Search..."
                     >
                       <IconSearch />
 

@@ -1,12 +1,19 @@
 "use client"
 
-import { Switch as SwitchPrimitive, type SwitchProps } from "react-aria-components"
+import {
+  Switch as SwitchPrimitive,
+  type SwitchProps as SwitchPrimitiveProps,
+} from "react-aria-components"
 
 import { composeTailwindRenderProps } from "./primitive"
 
-const Switch = ({ children, className, ...props }: SwitchProps) => {
+interface SwitchProps extends SwitchPrimitiveProps {
+  ref?: React.RefObject<HTMLLabelElement>
+}
+const Switch = ({ children, className, ref, ...props }: SwitchProps) => {
   return (
     <SwitchPrimitive
+      ref={ref}
       {...props}
       className={composeTailwindRenderProps(
         className,
@@ -26,4 +33,5 @@ const Switch = ({ children, className, ...props }: SwitchProps) => {
   )
 }
 
+export type { SwitchProps }
 export { Switch }

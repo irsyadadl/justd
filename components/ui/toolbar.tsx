@@ -9,7 +9,7 @@ import { tv } from "tailwind-variants"
 import { composeTailwindRenderProps } from "@/components/ui/primitive"
 import { cn } from "@/utils/classes"
 import { Separator } from "./separator"
-import { Toggle } from "./toggle"
+import { Toggle, type ToggleProps } from "./toggle"
 
 const ToolbarContext = createContext<{ orientation?: ToolbarProps["orientation"] }>({
   orientation: "horizontal",
@@ -42,7 +42,8 @@ const Toolbar = ({ orientation = "horizontal", className, ...props }: ToolbarPro
 
 const ToolbarGroupContext = createContext<{ isDisabled?: boolean }>({})
 
-const ToolbarGroup = ({ isDisabled, className, ...props }: GroupProps) => {
+type ToolbarGroupProps = GroupProps
+const ToolbarGroup = ({ isDisabled, className, ...props }: ToolbarGroupProps) => {
   return (
     <ToolbarGroupContext.Provider value={{ isDisabled }}>
       <Group
@@ -58,14 +59,15 @@ const ToolbarGroup = ({ isDisabled, className, ...props }: GroupProps) => {
   )
 }
 
-const Item = ({ isDisabled, ...props }: React.ComponentProps<typeof Toggle>) => {
+type ToggleItemProps = ToggleProps
+const Item = ({ isDisabled, ref, ...props }: ToggleItemProps) => {
   const context = useContext(ToolbarGroupContext)
   const effectiveIsDisabled = isDisabled || context.isDisabled
 
-  return <Toggle isDisabled={effectiveIsDisabled} {...props} />
+  return <Toggle ref={ref} isDisabled={effectiveIsDisabled} {...props} />
 }
-
-const ToolbarSeparator = ({ className, ...props }: SeparatorProps) => {
+type ToolbarSeparatorProps = SeparatorProps
+const ToolbarSeparator = ({ className, ...props }: ToolbarSeparatorProps) => {
   const { orientation } = useContext(ToolbarContext)
   const effectiveOrientation = orientation === "vertical" ? "horizontal" : "vertical"
   return (
@@ -81,4 +83,5 @@ Toolbar.Group = ToolbarGroup
 Toolbar.Separator = ToolbarSeparator
 Toolbar.Item = Item
 
+export type { ToolbarGroupProps, ToolbarProps, ToggleItemProps, ToolbarSeparatorProps }
 export { Toolbar }

@@ -1,6 +1,6 @@
 import type React from "react"
 
-import { tv } from "tailwind-variants"
+import { type VariantProps, tv } from "tailwind-variants"
 
 const skeletonStyles = tv({
   base: "animate-pulse shrink-0",
@@ -20,12 +20,10 @@ const skeletonStyles = tv({
   },
 })
 
-interface SkeletonProps extends React.HTMLAttributes<HTMLDivElement> {
-  intent?: "muted" | "lighter"
-  shape?: "circle" | "square"
-}
-const Skeleton = ({ shape, intent, className, ...props }: SkeletonProps) => {
-  return <div className={skeletonStyles({ shape, intent, className })} {...props} />
+type SkeletonProps = React.ComponentProps<"div"> & VariantProps<typeof skeletonStyles>
+const Skeleton = ({ shape, ref, intent, className, ...props }: SkeletonProps) => {
+  return <div ref={ref} className={skeletonStyles({ shape, intent, className })} {...props} />
 }
 
+export type { SkeletonProps }
 export { Skeleton }

@@ -15,6 +15,7 @@ interface FileTriggerProps extends FileTriggerPrimitiveProps {
   size?: "medium" | "large" | "square-petite" | "extra-small" | "small"
   shape?: "square" | "circle"
   appearance?: "solid" | "outline" | "plain"
+  ref?: React.RefObject<HTMLInputElement>
 }
 
 const FileTrigger = ({
@@ -23,42 +24,42 @@ const FileTrigger = ({
   size = "medium",
   shape = "square",
   withIcon = true,
+  ref,
   ...props
 }: FileTriggerProps) => {
   return (
-    <>
-      <FileTriggerPrimitive {...props}>
-        <Button
-          isDisabled={props.isDisabled}
-          intent={intent}
-          size={size}
-          shape={shape}
-          appearance={appearance}
-        >
-          {withIcon &&
-            (props.defaultCamera ? (
-              <IconCamera />
-            ) : props.acceptDirectory ? (
-              <IconFolder />
-            ) : (
-              <IconPaperclip className="rotate-45" />
-            ))}
-          {props.children ? (
-            props.children
+    <FileTriggerPrimitive ref={ref} {...props}>
+      <Button
+        isDisabled={props.isDisabled}
+        intent={intent}
+        size={size}
+        shape={shape}
+        appearance={appearance}
+      >
+        {withIcon &&
+          (props.defaultCamera ? (
+            <IconCamera />
+          ) : props.acceptDirectory ? (
+            <IconFolder />
           ) : (
-            <>
-              {props.allowsMultiple
-                ? "Browse a files"
-                : props.acceptDirectory
-                  ? "Browse"
-                  : "Browse a file"}
-              ...
-            </>
-          )}
-        </Button>
-      </FileTriggerPrimitive>
-    </>
+            <IconPaperclip className="rotate-45" />
+          ))}
+        {props.children ? (
+          props.children
+        ) : (
+          <>
+            {props.allowsMultiple
+              ? "Browse a files"
+              : props.acceptDirectory
+                ? "Browse"
+                : "Browse a file"}
+            ...
+          </>
+        )}
+      </Button>
+    </FileTriggerPrimitive>
   )
 }
 
+export type { FileTriggerProps }
 export { FileTrigger }

@@ -5,7 +5,13 @@ import { createContext, use, useCallback, useEffect, useMemo, useState } from "r
 import { cn } from "@/utils/classes"
 import { useMediaQuery } from "@/utils/use-media-query"
 import { IconChevronLgLeft, IconHamburger, IconSidebarFill } from "justd-icons"
-import type { LinkRenderProps } from "react-aria-components"
+import type {
+  ButtonProps,
+  DisclosureGroupProps,
+  DisclosureProps,
+  LinkProps,
+  LinkRenderProps,
+} from "react-aria-components"
 import {
   Disclosure,
   DisclosureGroup,
@@ -19,7 +25,12 @@ import {
 } from "react-aria-components"
 import { twJoin } from "tailwind-merge"
 import { tv } from "tailwind-variants"
-import { Badge, Button, Separator, Sheet, Tooltip, composeTailwindRenderProps } from "ui"
+import { Badge } from "./badge"
+import { Button } from "./button"
+import { composeTailwindRenderProps } from "./primitive"
+import { Separator, type SeparatorProps } from "./separator"
+import { Sheet } from "./sheet"
+import { Tooltip } from "./tooltip"
 
 const SIDEBAR_COOKIE_NAME = "sidebar:state"
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7
@@ -478,11 +489,16 @@ const sidebarLink = tv({
     },
   },
 })
-const SidebarLink = ({ className, ...props }: React.ComponentProps<typeof Link>) => {
+
+interface SidebarLinkProps extends LinkProps {
+  ref?: React.Ref<HTMLAnchorElement>
+}
+const SidebarLink = ({ className, ref, ...props }: SidebarLinkProps) => {
   const { state, isMobile } = useSidebar()
   const collapsed = state === "collapsed" && !isMobile
   return (
     <Link
+      ref={ref}
       className={composeRenderProps(className, (className, renderProps) =>
         sidebarLink({
           ...renderProps,
@@ -510,11 +526,12 @@ const SidebarInset = ({ className, ref, ...props }: React.ComponentProps<"main">
   )
 }
 
+type SidebarDisclosureGroupProps = DisclosureGroupProps
 const SidebarDisclosureGroup = ({
   allowsMultipleExpanded = true,
   className,
   ...props
-}: React.ComponentProps<typeof DisclosureGroup>) => {
+}: SidebarDisclosureGroupProps) => {
   return (
     <DisclosureGroup
       data-sidebar-disclosure-group="true"
@@ -525,9 +542,13 @@ const SidebarDisclosureGroup = ({
   )
 }
 
-const SidebarDisclosure = ({ className, ...props }: React.ComponentProps<typeof Disclosure>) => {
+interface SidebarDisclosureProps extends DisclosureProps {
+  ref?: React.Ref<HTMLDivElement>
+}
+const SidebarDisclosure = ({ className, ref, ...props }: SidebarDisclosureProps) => {
   return (
     <Disclosure
+      ref={ref}
       data-sidebar-disclosure="true"
       className={composeTailwindRenderProps(className, "px-2 in-data-[sidebar-intent=fleet]:px-0")}
       {...props}
@@ -553,12 +574,16 @@ const sidebarDisclosureTrigger = tv({
   },
 })
 
-const SidebarDisclosureTrigger = ({ className, ...props }: React.ComponentProps<typeof Button>) => {
+interface SidebarDisclosureTriggerProps extends ButtonProps {
+  ref?: React.Ref<HTMLButtonElement>
+}
+const SidebarDisclosureTrigger = ({ className, ref, ...props }: SidebarDisclosureTriggerProps) => {
   const { state, isMobile } = useSidebar()
   const collapsed = state === "collapsed" && !isMobile
   return (
     <Heading level={3}>
       <Trigger
+        ref={ref}
         slot="trigger"
         className={composeRenderProps(className, (className, renderProps) =>
           sidebarDisclosureTrigger({
@@ -590,9 +615,11 @@ const SidebarDisclosurePanel = (props: React.ComponentProps<typeof DisclosurePan
   return <DisclosurePanel data-sidebar-disclosure-panel="true" {...props} />
 }
 
-const SidebarSeparator = ({ className, ...props }: React.ComponentProps<typeof Separator>) => {
+type SidebarSeparatorProps = SeparatorProps
+const SidebarSeparator = ({ className, ref, ...props }: SidebarSeparatorProps) => {
   return (
     <Separator
+      ref={ref}
       className={cn("mx-auto my-2 w-[calc(var(--sidebar-width)-theme(spacing.6))]", className)}
       {...props}
     />
@@ -620,7 +647,8 @@ const SidebarTrigger = ({ onPress, ...props }: React.ComponentProps<typeof Trigg
   )
 }
 
-const SidebarRail = ({ className, ref, ...props }: React.ComponentProps<"button">) => {
+type SidebarRailProps = React.ComponentProps<"button">
+const SidebarRail = ({ className, ref, ...props }: SidebarRailProps) => {
   const { toggleSidebar } = useSidebar()
 
   return (
@@ -644,12 +672,14 @@ const SidebarRail = ({ className, ref, ...props }: React.ComponentProps<"button"
   )
 }
 
-const SidebarLabel = ({ className, ...props }: React.ComponentProps<typeof Text>) => {
+type SidebarLabelProps = React.ComponentProps<typeof Text>
+const SidebarLabel = ({ className, ref, ...props }: SidebarLabelProps) => {
   const { state, isMobile } = useSidebar()
   const collapsed = state === "collapsed" && !isMobile
   if (!collapsed) {
     return (
       <Text
+        ref={ref}
         slot="label"
         className={cn("flex flex-1 w-full overflow-hidden whitespace-nowrap", className)}
         {...props}
@@ -676,6 +706,20 @@ interface SidebarNavProps extends React.ComponentProps<"nav"> {
 
 const SidebarNav = ({ isSticky = false, className, ...props }: SidebarNavProps) => {
   return <nav data-slot="sidebar-nav" {...props} className={nav({ isSticky, className })} />
+}
+
+export type {
+  SidebarProviderProps,
+  SidebarProps,
+  SidebarItemProps,
+  SidebarNavProps,
+  SidebarDisclosureGroupProps,
+  SidebarDisclosureProps,
+  SidebarSeparatorProps,
+  SidebarLabelProps,
+  SidebarRailProps,
+  SidebarLinkProps,
+  SidebarDisclosureTriggerProps,
 }
 
 export {

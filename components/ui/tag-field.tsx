@@ -186,4 +186,5 @@ const TagField = ({
   )
 }
 
-export { TagField, type TagItemProps }
+export type { TagFieldProps, TagItemProps }
+export { TagField }

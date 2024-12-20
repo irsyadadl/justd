@@ -78,4 +78,5 @@ const DateInput = ({ className, ...props }: Omit<DateInputProps, "children">) =>
   )
 }
 
-export { DateField, DateInput, segmentStyles, type DateFieldProps }
+export type { DateFieldProps }
+export { DateField, DateInput, segmentStyles }

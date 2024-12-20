@@ -10,15 +10,15 @@ const descriptionListStyles = tv({
 
 const { dl, dt, dd } = descriptionListStyles()
 
-const DescriptionList = ({ className, ...props }: React.ComponentPropsWithoutRef<"dl">) => {
-  return <dl {...props} className={dl({ className })} />
+const DescriptionList = ({ className, ref, ...props }: React.ComponentProps<"dl">) => {
+  return <dl ref={ref} className={dl({ className })} {...props} />
 }
 
-const DescriptionTerm = ({ className, ...props }: React.ComponentPropsWithoutRef<"dt">) => {
-  return <dt {...props} className={dt({ className })} />
+const DescriptionTerm = ({ className, ref, ...props }: React.ComponentProps<"dt">) => {
+  return <dt ref={ref} className={dt({ className })} {...props} />
 }
 
-const DescriptionDetails = ({ className, ...props }: React.ComponentPropsWithoutRef<"dd">) => {
+const DescriptionDetails = ({ className, ...props }: React.ComponentProps<"dd">) => {
   return <dd {...props} className={dd({ className })} />
 }
 
