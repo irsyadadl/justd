@@ -694,7 +694,7 @@ const SidebarLabel = ({ className, ref, ...props }: SidebarLabelProps) => {
 const nav = tv({
   base: [
     "md:w-full isolate text-navbar-fg justify-between sm:justify-start h-[3.2rem] flex items-center gap-x-2 px-4",
-    "group-has-data-[sidebar-intent=default]/sidebar-root:bg-sidebar group-has-data-[sidebar-intent=default]/sidebar-root:border-b",
+    "group-has-data-[sidebar-intent=default]/sidebar-root:bg-sidebar group-has-data-[sidebar-intent=default]/sidebar-root:border-b group-has-data-[sidebar-intent=fleet]/sidebar-root:border-b",
   ],
   variants: {
     isSticky: {
