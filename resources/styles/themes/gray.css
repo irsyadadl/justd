@@ -4,6 +4,13 @@
 @variant dark (&:is(.dark *));
 
 @theme {
+  /* Recommended font is: Inter, Sathosi, Geist */
+  /*--font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",*/
+  /*"Segoe UI Symbol", "Noto Color Emoji";*/
+
+  /*--font-mono: var(--font-mono), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",*/
+  /*"Segoe UI Symbol", "Noto Color Emoji";*/
+
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
