@@ -485,7 +485,7 @@ const sidebarLink = tv({
   base: "flex items-center focus:outline-hidden w-full gap-x-2",
   variants: {
     collapsed: {
-      true: "absolute inset-0 size-full",
+      true: "absolute justify-center inset-0 size-full",
     },
   },
 })

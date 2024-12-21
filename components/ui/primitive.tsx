@@ -13,7 +13,7 @@ function composeTailwindRenderProps<T>(
 
 const focusRing = tv({
   variants: {
-    isFocused: { true: "ring-4 ring-ring/20 outline-hidden" },
+    isFocused: { true: "ring-4 ring-ring/20 outline-hidden data-invalid:ring-danger/20" },
     isFocusVisible: { true: "ring-4 ring-ring/20 outline-hidden" },
     isInvalid: { true: "ring-4 ring-danger/20" },
   },
