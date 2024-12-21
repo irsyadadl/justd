@@ -16,7 +16,7 @@ export default function ToggleGroupOrientationDemo() {
           {({ isSelected }) => (
             <>
               {isSelected ? <IconMoonFill /> : <IconSun />}
-              {isSelected ? "Dark" : "Light"}Mode
+              {isSelected ? "Dark" : "Light"} Mode
             </>
           )}
         </Toggle>
