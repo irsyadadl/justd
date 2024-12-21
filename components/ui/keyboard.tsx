@@ -7,7 +7,7 @@ const keyboardStyles = tv({
   slots: {
     base: "-mr-1 ml-auto hidden items-center lg:inline-flex",
     kbd: [
-      "text-center font-sans capitalize text-muted-fg group-data-focused:text-fg forced-colors:group-data-focused:text-[HighlightText]",
+      "text-center font-sans capitalize text-current/70 group-data-focused:text-fg forced-colors:group-data-focused:text-[HighlightText]",
       "inline-grid min-h-5 min-w-[2ch] place-content-center rounded group-data-hovered:text-fg group-data-disabled:opacity-50 font-sans text-[.75rem] uppercase group-data-focused:opacity-90",
     ],
   },

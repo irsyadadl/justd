@@ -43,7 +43,7 @@ const commandStyles = tv({
       "disabled:pointer-events-none",
     ],
     empty: "py-6 text-center text-sm text-muted-fg x3tmpy",
-    kbdKeyboard: "lg:block hidden group-data-[selected=true]:opacity-60",
+    kbdKeyboard: "lg:block hidden group-data-[selected=true]:text-current/90",
     description: "sm:inline hidden text-sm ml-auto",
     item: [
       "group relative flex forced-colors:outline-0 cursor-default select-none text-fg items-center rounded-lg py-2 text-sm outline-hidden",

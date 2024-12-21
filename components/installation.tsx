@@ -7,7 +7,7 @@ import { CopyButton } from "@/components/code/copy-button"
 import { copyToClipboard } from "@/resources/lib/copy"
 import { useOpenPanel } from "@openpanel/nextjs"
 import { Group } from "react-aria-components"
-import { Link, Menu, composeTailwindRenderProps } from "ui"
+import { composeTailwindRenderProps, Link, Menu } from "ui"
 
 const manualText =
   "Sometimes, using the CLI is the way to go, so make sure you install the necessary\n" +
@@ -60,13 +60,13 @@ export function Installation({ className, ...props }: InstallationProps) {
           <Link
             className="text-blue-600 dark:text-blue-400 not-prose xd2432 data-hovered:underline"
             intent="primary"
-            href="/docs/getting-started/installation"
+            href="/docs/2.x/getting-started/cli"
             target="_blank"
             rel="noreferrer"
           >
             here
-          </Link>
-          .
+          </Link>{" "}
+          for more information.
         </p>
       )}
       {options.isManual && <p>{manualText}</p>}
