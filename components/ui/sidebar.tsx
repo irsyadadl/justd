@@ -238,7 +238,7 @@ const Sidebar = ({
           isFloat={intent === "float"}
           side={side}
         >
-          <Sheet.Body className="px-0">{props.children}</Sheet.Body>
+          <Sheet.Body className="px-0 sm:px-0">{props.children}</Sheet.Body>
         </Sheet.Content>
       </Sheet>
     )
