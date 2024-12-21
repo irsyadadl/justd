@@ -82,6 +82,7 @@ export function Blocks() {
         </Card>
         <Card className="flex gap-2 justify-center items-center p-6">
           <div className="space-y-2">
+            {/*<BadgeIntentDemo/>*/}
             <div className="flex flex-col gap-2 md:flex-row">
               <ModalDemo />
               <PopoverDemo />
