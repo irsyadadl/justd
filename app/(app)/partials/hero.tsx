@@ -54,7 +54,7 @@ export function Hero() {
                 appearance: "outline",
                 shape: "circle",
                 className:
-                  "group bg-white text-zinc-900 hover:bg-zinc-100 **:data-[slot=icon]:text-warning",
+                  "group bg-white text-zinc-900 hover:bg-zinc-100 dark:hover:text-white **:data-[slot=icon]:text-warning",
               })}
             >
               <IconStar className="group-hover:text-yellow-500 group-hover:fill-yellow-500" /> Stars
