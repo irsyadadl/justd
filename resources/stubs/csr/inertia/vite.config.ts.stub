@@ -1,0 +1,15 @@
+...
+import { resolve } from 'path';
+
+export default defineConfig({
+  plugins: [...],
+  resolve: {
+    alias: {
+      // if you want simple import
+      ui: resolve('resources/js/components/ui/index.ts'),
+
+      // resolve ziggy-js
+      'ziggy-js': resolve('vendor/tightenco/ziggy')
+    }
+  }
+});

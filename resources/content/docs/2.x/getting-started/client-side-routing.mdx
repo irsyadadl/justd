@@ -32,6 +32,13 @@ export default function Layout() {
 ```
 
 ## Inertia.js
+The Ziggy JS library, when running Laravel, is located in the `vendor` folder. To use it, we need to configure it by updating your `tsconfig` and `vite.config` files as follows:
+<CodeBlock
+    source={{
+        'vite.config.ts': 'csr/inertia/vite.config.ts',
+        'tsconfig.json': 'csr/inertia/tsconfig.json',
+    }} />
+
 ### Global Declaration
 To integrate with Inertia.js, you must first declare it in your `.d.ts` file, such as in `global.d.ts`.
 <CodeBlock
@@ -41,7 +48,7 @@ To integrate with Inertia.js, you must first declare it in your `.d.ts` file, su
 
 
 ### Providers
-Next, you'll need to create a provider for this, but because we're using react aria components, I also show you how to combine your router provider with the theme provider. So we need 3 files:
+Next, you'll need to create a provider for this, but because we're using react aria components, I also show you how to combine your router provider with the theme provider. So we need 2 files:
 1. `providers/index.tsx`
 2. `providers/theme-provider.tsx`
 
@@ -50,6 +57,7 @@ Next, you'll need to create a provider for this, but because we're using react a
         'providers/theme-provider.tsx': 'csr/inertia/theme-provider.tsx',
         'providers/index.tsx': 'csr/inertia/index.tsx',
     }} />
+
 ### Usage
 After you create the provider files, you can use them in your `app.tsx` file like this:
 
