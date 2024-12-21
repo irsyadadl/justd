@@ -516,7 +516,7 @@ const SidebarInset = ({ className, ref, ...props }: React.ComponentProps<"main">
     <main
       ref={ref}
       className={cn(
-        "relative w-full flex min-h-svh flex-1 flex-col border border-transparent peer-data-[sidebar-intent=inset]:border-(--sidebar-border)",
+        "relative w-full flex min-h-svh flex-1 flex-col peer-data-[sidebar-intent=inset]:border peer-data-[sidebar-intent=inset]:border-(--sidebar-border)",
         "bg-bg dark:peer-data-[sidebar-intent=inset]:bg-sidebar peer-data-[sidebar-intent=inset]:overflow-hidden",
         "peer-data-[sidebar-intent=inset]:min-h-[calc(100svh-theme(spacing.4))] md:peer-data-[sidebar-intent=inset]:m-2 md:peer-data-[sidebar-state=collapsed]:peer-data-[sidebar-intent=inset]:ml-2 md:peer-data-[sidebar-intent=inset]:ml-0 md:peer-data-[sidebar-intent=inset]:rounded-xl md:peer-data-[sidebar-intent=inset]:shadow-xs",
         className,
@@ -692,7 +692,7 @@ const SidebarLabel = ({ className, ref, ...props }: SidebarLabelProps) => {
 }
 
 const nav = tv({
-  base: "md:w-full [--bg-nav:var(--sidebar)] bg-(--bg-nav) peer-data-[sidebar-intent=inset]:[--bg-nav:transparent] isolate text-navbar-fg justify-between sm:justify-start h-[3rem] px-4 border-b flex items-center gap-x-2",
+  base: "md:w-full [--bg-nav:var(--sidebar)] bg-(--bg-nav) peer-data-[sidebar-intent=inset]:[--bg-nav:transparent] isolate text-navbar-fg justify-between sm:justify-start h-[3.2rem] px-4 border-b flex items-center gap-x-2",
   variants: {
     isSticky: {
       true: "sticky in-data-[sidebar-intent=inset]:static top-0 z-40",
