@@ -12,7 +12,7 @@ export default function PaginationDynamicDemo() {
         <Pagination.Section aria-label="Pagination Segment" className="rounded-lg border lg:hidden">
           <Pagination.Item segment="label">1</Pagination.Item>
           <Pagination.Item segment="separator" />
-          <Pagination.Item className="text-muted-fg" variant="label">
+          <Pagination.Item className="text-muted-fg" segment="label">
             10
           </Pagination.Item>
         </Pagination.Section>
