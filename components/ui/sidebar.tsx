@@ -692,7 +692,7 @@ const SidebarLabel = ({ className, ref, ...props }: SidebarLabelProps) => {
 }
 
 const nav = tv({
-  base: "md:w-full [--bg-nav:var(--sidebar-sidebar)] bg-(--bg-nav) peer-data-[sidebar-intent=inset]:[--bg-nav:var(--color-red-500)] isolate text-navbar-fg justify-between sm:justify-start h-[3rem] px-4 border-b flex items-center gap-x-2",
+  base: "md:w-full [--bg-nav:var(--sidebar)] bg-(--bg-nav) peer-data-[sidebar-intent=inset]:[--bg-nav:transparent] isolate text-navbar-fg justify-between sm:justify-start h-[3rem] px-4 border-b flex items-center gap-x-2",
   variants: {
     isSticky: {
       true: "sticky in-data-[sidebar-intent=inset]:static top-0 z-40",
