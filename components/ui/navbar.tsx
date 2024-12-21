@@ -66,7 +66,7 @@ const Navbar = ({
   intent = "navbar",
   ...props
 }: NavbarProps) => {
-  const isCompact = useMediaQuery("(max-width: 768px)")
+  const isCompact = useMediaQuery("(max-width: 765px)")
   const [_open, _setOpen] = useState(defaultOpen)
   const open = openProp ?? _open
 

@@ -692,10 +692,13 @@ const SidebarLabel = ({ className, ref, ...props }: SidebarLabelProps) => {
 }
 
 const nav = tv({
-  base: "md:w-full [--bg-nav:var(--sidebar)] bg-(--bg-nav) peer-data-[sidebar-intent=inset]:[--bg-nav:transparent] isolate text-navbar-fg justify-between sm:justify-start h-[3.2rem] px-4 border-b flex items-center gap-x-2",
+  base: [
+    "md:w-full isolate text-navbar-fg justify-between sm:justify-start h-[3.2rem] flex items-center gap-x-2 px-4",
+    "group-has-data-[sidebar-intent=default]/sidebar-root:bg-sidebar group-has-data-[sidebar-intent=default]/sidebar-root:border-b",
+  ],
   variants: {
     isSticky: {
-      true: "sticky in-data-[sidebar-intent=inset]:static top-0 z-40",
+      true: "static group-has-data-[sidebar-intent=default]/sidebar-root:sticky top-0 z-40",
     },
   },
 })

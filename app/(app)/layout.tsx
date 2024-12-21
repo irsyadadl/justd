@@ -6,7 +6,7 @@ import { Toast } from "ui"
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex relative flex-col min-h-dvh bg-bg">
+    <div className="flex relative flex-col min-h-svh bg-bg">
       <Navbar />
       <main className="flex-1">{children}</main>
 

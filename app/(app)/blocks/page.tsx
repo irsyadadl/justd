@@ -30,6 +30,9 @@ export default function Page() {
                 components: {
                   ui: {
                     "badge.tsx": "ui/badge",
+                    "link.tsx": "ui/link",
+                    "avatar.tsx": "ui/avatar",
+                    "menu.tsx": "ui/menu",
                     "separator.tsx": "ui/separator",
                     "sheet.tsx": "ui/sheet",
                     "tooltip.tsx": "ui/tooltip",
@@ -62,6 +65,9 @@ export default function Page() {
                 components: {
                   ui: {
                     "badge.tsx": "ui/badge",
+                    "link.tsx": "ui/link",
+                    "avatar.tsx": "ui/avatar",
+                    "menu.tsx": "ui/menu",
                     "separator.tsx": "ui/separator",
                     "sheet.tsx": "ui/sheet",
                     "tooltip.tsx": "ui/tooltip",
@@ -93,6 +99,9 @@ export default function Page() {
                 components: {
                   ui: {
                     "badge.tsx": "ui/badge",
+                    "link.tsx": "ui/link",
+                    "avatar.tsx": "ui/avatar",
+                    "menu.tsx": "ui/menu",
                     "separator.tsx": "ui/separator",
                     "sheet.tsx": "ui/sheet",
                     "tooltip.tsx": "ui/tooltip",
@@ -118,16 +127,20 @@ export default function Page() {
               fullscreen: "/blocks/navbar/navbar-00",
               preview: "blocks/navbar/navbar-00/app-navbar",
               expandKeys: ["components", "ui", "app"],
-              initialRegistry: "ui/navbar",
+              initialRegistry: "blocks/navbar/navbar-00/app-navbar",
               folders: {
                 components: {
                   ui: {
                     "primitive.tsx": "ui/primitive",
+                    "avatar.tsx": "ui/avatar",
+                    "menu.tsx": "ui/menu",
                     "button.tsx": "ui/button",
                     "sheet.tsx": "ui/sheet",
+                    "separator.tsx": "ui/separator",
                     "navbar.tsx": "ui/navbar",
                   },
                   "app-navbar.tsx": "blocks/navbar/navbar-00/app-navbar",
+                  "theme-switcher.tsx": "blocks/theme-switcher",
                 },
                 app: {
                   "global.css": "blocks/main.css",
@@ -146,15 +159,19 @@ export default function Page() {
               fullscreen: "/blocks/navbar/navbar-03",
               preview: "blocks/navbar/navbar-03",
               expandKeys: ["components", "ui", "app"],
-              initialRegistry: "ui/navbar",
+              initialRegistry: "blocks/navbar/navbar-03/app-navbar",
               folders: {
                 components: {
                   ui: {
                     "primitive.tsx": "ui/primitive",
+                    "avatar.tsx": "ui/avatar",
+                    "menu.tsx": "ui/menu",
                     "button.tsx": "ui/button",
                     "sheet.tsx": "ui/sheet",
+                    "separator.tsx": "ui/separator",
                     "navbar.tsx": "ui/navbar",
                   },
+                  "theme-switcher.tsx": "blocks/theme-switcher",
                   "app-navbar.tsx": "blocks/navbar/navbar-03/app-navbar",
                 },
                 app: {
@@ -173,15 +190,19 @@ export default function Page() {
               fullscreen: "/blocks/navbar/navbar-02",
               preview: "blocks/navbar/navbar-02/app-navbar",
               expandKeys: ["components", "ui", "app"],
-              initialRegistry: "ui/navbar",
+              initialRegistry: "blocks/navbar/navbar-02/app-navbar",
               folders: {
                 components: {
                   ui: {
                     "primitive.tsx": "ui/primitive",
+                    "avatar.tsx": "ui/avatar",
+                    "menu.tsx": "ui/menu",
                     "button.tsx": "ui/button",
                     "sheet.tsx": "ui/sheet",
+                    "separator.tsx": "ui/separator",
                     "navbar.tsx": "ui/navbar",
                   },
+                  "theme-switcher.tsx": "blocks/theme-switcher",
                   "app-navbar.tsx": "blocks/navbar/navbar-02/app-navbar",
                 },
                 app: {
