@@ -318,7 +318,7 @@ const Inset = ({ className, ref, ...props }: React.ComponentProps<"div">) => {
       data-navbar-intent={intent}
       className={cn(
         "flex flex-1 flex-col",
-        intent === "inset" && "pb-2 bg-bg dark:bg-navbar @md:px-2",
+        intent === "inset" && "pb-2 bg-bg dark:bg-bg @md:px-2",
         className,
       )}
     >
