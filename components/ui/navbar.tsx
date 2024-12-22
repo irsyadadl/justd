@@ -50,7 +50,7 @@ const navbarStyles = tv({
     intent: {
       floating: "pt-2 px-2.5",
       navbar: "",
-      inset: "bg-bg min-h-svh",
+      inset: "bg-navbar dark:bg-bg min-h-svh",
     },
   },
 })
@@ -124,7 +124,7 @@ const navStyles = tv({
         "bg-navbar text-navbar-fg w-full max-w-7xl 2xl:max-w-(--breakpoint-2xl) mx-auto border rounded-xl @md:px-4",
       navbar: "bg-navbar text-navbar-fg border-b @md:px-6",
       inset: [
-        "mx-auto dark:md:px-6",
+        "mx-auto @md:px-6",
         "2xl:[&>div]:max-w-(--breakpoint-2xl) @md:[&>div]:flex [&>div]:items-center [&>div]:w-full [&>div]:mx-auto",
       ],
     },
@@ -316,7 +316,11 @@ const Inset = ({ className, ref, ...props }: React.ComponentProps<"div">) => {
     <main
       ref={ref}
       data-navbar-intent={intent}
-      className={cn("flex flex-1 flex-col", intent === "inset" && "pb-2 @md:px-2", className)}
+      className={cn(
+        "flex flex-1 flex-col",
+        intent === "inset" && "pb-2 bg-bg dark:bg-navbar @md:px-2",
+        className,
+      )}
     >
       <div className={insetStyles({ intent, className })}>{props.children}</div>
     </main>
