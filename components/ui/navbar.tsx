@@ -230,11 +230,11 @@ const navItemStyles = tv({
   },
 })
 
-interface ItemProps extends LinkProps {
+interface NavbarItemProps extends LinkProps {
   isCurrent?: boolean
 }
 
-const Item = ({ className, isCurrent, ...props }: ItemProps) => {
+const Item = ({ className, isCurrent, ...props }: NavbarItemProps) => {
   const { intent, isCompact } = useNavbar()
   return (
     <Link
@@ -266,7 +266,7 @@ const Logo = ({ className, ...props }: LinkProps) => {
     <Link
       className={composeTailwindRenderProps(
         className,
-        "flex items-center gap-x-2 px-2 py-4 text-fg data-focus-visible:outline-1 data-focus-visible:outline-primary data-focused:outline-hidden @md:mr-4 @md:px-0 @md:py-0",
+        "flex items-center relative gap-x-2 px-2 py-4 text-fg data-focus-visible:outline-1 data-focus-visible:outline-primary data-focused:outline-hidden @md:mr-4 @md:px-0 @md:py-0",
       )}
       {...props}
     />
@@ -318,7 +318,7 @@ const Inset = ({ className, ref, ...props }: React.ComponentProps<"div">) => {
       data-navbar-intent={intent}
       className={cn(
         "flex flex-1 flex-col",
-        intent === "inset" && "pb-2 bg-bg dark:bg-bg @md:px-2",
+        intent === "inset" && "pb-2 bg-navbar dark:bg-bg @md:px-2",
         className,
       )}
     >
@@ -336,5 +336,5 @@ Navbar.Logo = Logo
 Navbar.Item = Item
 Navbar.Section = Section
 
-export type { NavbarProps, NavbarNavProps, NavbarCompactProps, NavbarTriggerProps }
+export type { NavbarProps, NavbarNavProps, NavbarCompactProps, NavbarTriggerProps, NavbarItemProps }
 export { Navbar }

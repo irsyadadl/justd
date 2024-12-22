@@ -62,20 +62,17 @@ const Choicebox = <T extends object>({
 const choiceboxItemStyles = tv({
   extend: focusStyles,
   base: [
-    "[--choicebox:color-mix(in_oklab,var(--color-primary)_3%,white_97%)] [--choicebox-fg:var(--color-primary)]",
+    "bg-bg [--choicebox:color-mix(in_oklab,var(--color-primary)_4%,white_96%)] [--choicebox-fg:var(--color-primary)]",
     "[--choicebox-selected-hovered:color-mix(in_oklab,var(--color-primary)_15%,white_85%)]",
     "dark:[--choicebox-selected-hovered:color-mix(in_oklab,var(--color-primary)_25%,black_75%)]",
     "dark:[--choicebox:color-mix(in_oklab,var(--color-primary)_20%,black_70%)] dark:[--choicebox-fg:color-mix(in_oklab,var(--color-primary)_45%,white_55%)]",
-    "rounded-lg cursor-pointer border p-4 [&_[slot=title]]:font-medium",
+    "rounded-lg cursor-pointer inset-ring inset-ring-border p-4 [&_[slot=title]]:font-medium",
   ],
   variants: {
-    isHovered: {
-      true: "bg-secondary/30",
-    },
-    isSelected: {
+    init: {
       true: [
         "bg-(--choicebox) text-(--choicebox-fg)",
-        "z-20 data-hovered:bg-(--choicebox-selected-hovered) border-ring/50",
+        "z-20 data-hovered:bg-(--choicebox-selected-hovered) inset-ring-ring/70",
         "[&_[slot=title]]:text-(--choicebox-fg)",
         "[&_[slot=description]]:text-(--choicebox-fg)",
       ],
@@ -100,6 +97,7 @@ const ChoiceboxItem = ({ className, ...props }: ChoiceboxItemProps) => {
       className={composeRenderProps(className, (className, renderProps) =>
         choiceboxItemStyles({
           ...renderProps,
+          init: renderProps.isSelected || renderProps.isHovered || renderProps.isFocusVisible,
           className,
         }),
       )}
