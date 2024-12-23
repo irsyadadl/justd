@@ -3,7 +3,7 @@
 import React, { useState } from "react"
 
 import { CodeHighlighter } from "@/components/code/code-highlighter"
-import { CopyButton } from "@/components/code/copy-button"
+import { CopyMotionButton } from "@/components/code/copy-button"
 import { extractImports, extractJSX } from "@/resources/lib/utils"
 import { Group } from "react-aria-components"
 
@@ -47,11 +47,12 @@ export const Anatomy = ({ show, ...props }: AnatomyProps) => {
         {processedSourceCode && (
           <>
             <Group className="relative group">
-              <CopyButton
-                className="absolute top-1 right-1"
+              <CopyMotionButton
+                className="absolute right-1.5 top-2"
                 text={extractImports(processedSourceCode as string)}
               />
               <CodeHighlighter
+                className="py-2 px-4"
                 max96={false}
                 removeLastLine
                 code={extractImports(processedSourceCode as string)}
@@ -59,8 +60,8 @@ export const Anatomy = ({ show, ...props }: AnatomyProps) => {
               />
             </Group>
             <Group className="relative mt-4 group">
-              <CopyButton
-                className="absolute top-1 right-1"
+              <CopyMotionButton
+                className="absolute right-1.5 top-2"
                 text={extractJSX(processedSourceCode as string) as any}
               />
               <CodeHighlighter

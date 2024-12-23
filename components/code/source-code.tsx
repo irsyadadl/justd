@@ -58,18 +58,21 @@ export const SourceCode = ({ toShow, ...props }: SourceCodeProps) => {
 
   if (processedSourceCode) {
     return (
-      <section {...props} className="my-6 group not-prose">
+      <section {...props} className="relative my-6 group not-prose">
         <p className="mb-4 -mt-2">
           {props.message
             ? props.message
             : "And next, you can copy the code below and paste it into your component folder."}
         </p>
         {props.title && <figcaption data-rehype-pretty-code-title="">{props.title}</figcaption>}
-        <div className="flex relative justify-between items-center mb-1">
+        <div className="flex justify-between items-center mb-1">
           <div className="flex gap-x-2 items-center font-mono tracking-tight text-[13px]">
             <IconBrandReactjs className="text-cyan-600 dark:text-cyan-500 size-4" /> {toShow}.tsx
           </div>
-          <CopyMotionButton className="-top-1.5" text={processedSourceCode} />
+          <CopyMotionButton
+            className="absolute right-2 top-20 rounded-sm group-hover:opacity-100"
+            text={processedSourceCode}
+          />
         </div>
         <div className="overflow-hidden rounded-lg border border-shiki-border bg-shiki-bg">
           <CodeHighlighter

@@ -126,7 +126,7 @@ export function CopyMotionButton({ className, text }: { className?: string; text
     <button
       type="button"
       className={cn(
-        "group/button -top-0.5 absolute right-0 overflow-hidden rounded-full py-1 pr-2.5 pl-1.5 font-medium text-[0.70rem]/[1.20rem] opacity-0 backdrop-blur transition focus:opacity-100 group-hover:opacity-100",
+        "group/button -top-0.5 absolute right-0 overflow-hidden rounded-sm py-1 pr-2.5 pl-1.5 font-medium text-[0.70rem]/[1.20rem] opacity-0 backdrop-blur transition focus:opacity-100 group-hover:opacity-100 group-data-hovered/tabs:opacity-100",
         copied
           ? "bg-blue-400/10 ring-1 ring-blue-400/20 ring-inset"
           : "bg-secondary/80 text-secondary-fg ring-1 ring-fg/10 ring-inset",

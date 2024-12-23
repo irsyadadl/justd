@@ -146,7 +146,7 @@ interface TabListProps {
 
 export const TabsList = ({ src, code, copyButton }: TabListProps) => {
   return (
-    <div className="relative">
+    <div className="relative group">
       <Tabs.List>
         <Tabs.Tab id="preview">Preview</Tabs.Tab>
         <Tabs.Tab id="code">Code</Tabs.Tab>

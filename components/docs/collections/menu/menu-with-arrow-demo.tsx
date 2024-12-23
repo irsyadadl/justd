@@ -8,9 +8,9 @@ export default function MenuWithArrowDemo() {
     <>
       <Menu>
         <Menu.Trigger aria-label="Open Menu">
-          <Avatar className="size-10" src="/images/avatar/cobain.jpg" />
+          <Avatar src="/images/avatar/cobain.jpg" />
         </Menu.Trigger>
-        <Menu.Content placement="bottom" showArrow className="min-w-64">
+        <Menu.Content placement="bottom" showArrow className="sm:min-w-54">
           <Menu.Section>
             <Menu.Header separator>
               <span className="block">Irsyad A. Panjaitan</span>

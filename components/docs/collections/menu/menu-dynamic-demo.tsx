@@ -2,11 +2,11 @@
 
 import { Button, Menu } from "ui"
 
-export default function MenuCollectionDemo() {
+export default function MenuDynamicDemo() {
   return (
     <Menu>
       <Button appearance="outline">Open</Button>
-      <Menu.Content className="min-w-64" placement="bottom" items={categories}>
+      <Menu.Content placement="bottom" items={categories}>
         {(item) => <Menu.Item id={item.slug}>{item.name}</Menu.Item>}
       </Menu.Content>
     </Menu>
