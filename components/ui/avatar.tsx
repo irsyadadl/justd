@@ -11,6 +11,7 @@ const avatar = tv({
       circle: "rounded-full *:rounded-full",
     },
     size: {
+      'extra-small': "size-5 *:size-5",
       small: "size-6 *:size-6",
       medium: "size-8 *:size-8",
       large: "size-10 *:size-10",
