@@ -141,11 +141,11 @@ export function CopyMotionButton({ className, text }: { className?: string; text
       <span
         aria-hidden={copied}
         className={cn(
-          "pointer-events-none flex items-center gap-0.5 text-zinc-400 transition duration-300",
+          "pointer-events-none flex items-center gap-0.5 dark:text-zinc-400 text-zinc-500 transition duration-300",
           copied && "-translate-y-1.5 opacity-0",
         )}
       >
-        <ClipboardIcon className="w-5 h-5 transition-colors fill-zinc-500/20 stroke-zinc-500 group-hover/button:stroke-zinc-400" />
+        <ClipboardIcon className="transition-colors size-5 fill-zinc-600/20 stroke-zinc-600 dark:fill-zinc-500/20 dark:stroke-zinc-500 dark:group-hover/button:stroke-zinc-400 group-hover/button:stroke-zinc-500" />
         Copy
       </span>
       <span

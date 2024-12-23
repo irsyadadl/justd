@@ -15,7 +15,7 @@ import { twJoin } from "tailwind-merge"
 import { tv } from "tailwind-variants"
 
 import { Calendar } from "./calendar"
-import { composeTailwindRenderProps, focusRing } from "./primitive"
+import { focusRing } from "./primitive"
 
 const cell = tv({
   extend: focusRing,
@@ -37,65 +37,74 @@ const cell = tv({
   },
 })
 
-interface RangeCalendarProps<T extends DateValue>
-  extends Omit<RangeCalendarPrimitiveProps<T>, "visibleDuration"> {
+interface RangeCalendarProps<T extends DateValue> extends RangeCalendarPrimitiveProps<T> {
   errorMessage?: string
 }
 
 const RangeCalendar = <T extends DateValue>({
   errorMessage,
   className,
+  visibleDuration = { months: 1 },
   ...props
 }: RangeCalendarProps<T>) => {
   return (
-    <RangeCalendarPrimitive
-      className={composeTailwindRenderProps(className, "max-w-[17.5rem] sm:max-w-[15.8rem]")}
-      {...props}
-    >
+    <RangeCalendarPrimitive visibleDuration={visibleDuration} {...props}>
       <Calendar.Header />
-      <CalendarGrid className="**:[td]:px-0 **:[td]:py-[1.5px]">
-        <Calendar.GridHeader />
-        <CalendarGridBody>
-          {(date) => (
-            <CalendarCell
-              date={date}
-              className={twJoin([
-                "[--cell-fg:var(--color-primary)] [--cell:color-mix(in_oklab,var(--color-primary)_10%,white_90%)]",
-                "dark:[--cell:color-mix(in_oklab,var(--color-primary)_30%,black_45%)] dark:[--cell-fg:color-mix(in_oklab,var(--color-primary)_80%,white_20%)]",
-                "group/calendar-cell size-10 cursor-default outline-hidden [line-height:2.286rem] data-selection-start:rounded-s-lg data-selection-end:rounded-e-lg data-outside-month:text-muted-fg sm:text-sm lg:size-9",
-                "data-selected:bg-(--cell)/70 data-selected:text-(--cell-fg) dark:data-selected:bg-(--cell)",
-                "data-invalid:data-selected:bg-red-100 dark:data-invalid:data-selected:bg-red-700/30",
-                "[td:first-child_&]:rounded-s-lg [td:last-child_&]:rounded-e-lg",
-                "forced-colors:data-invalid:data-selected:bg-[Mark] forced-colors:data-selected:bg-[Highlight] forced-colors:data-selected:text-[HighlightText]",
-              ])}
+      <div className="flex overflow-auto gap-2">
+        {Array.from({ length: visibleDuration?.months ?? 1 }).map((_, index) => {
+          const id = index + 1 // Adjusting to start at 1
+          return (
+            <CalendarGrid
+              key={index}
+              offset={id >= 2 ? { months: id - 1 } : undefined} // Ensuring the offset starts from 1 month for the second grid
+              className="**:[td]:px-0 **:[td]:py-[1.5px]"
             >
-              {({
-                formattedDate,
-                isSelected,
-                isSelectionStart,
-                isSelectionEnd,
-                isFocusVisible,
-                isDisabled,
-              }) => (
-                <span
-                  className={cell({
-                    selectionState:
-                      isSelected && (isSelectionStart || isSelectionEnd)
-                        ? "cap"
-                        : isSelected
-                          ? "middle"
-                          : "none",
-                    isFocusVisible,
-                    isDisabled,
-                  })}
-                >
-                  {formattedDate}
-                </span>
-              )}
-            </CalendarCell>
-          )}
-        </CalendarGridBody>
-      </CalendarGrid>
+              <Calendar.GridHeader />
+              <CalendarGridBody>
+                {(date) => (
+                  <CalendarCell
+                    date={date}
+                    className={twJoin([
+                      "[--cell-fg:var(--color-primary)] [--cell:color-mix(in_oklab,var(--color-primary)_10%,white_90%)]",
+                      "dark:[--cell:color-mix(in_oklab,var(--color-primary)_30%,black_45%)] dark:[--cell-fg:color-mix(in_oklab,var(--color-primary)_80%,white_20%)]",
+                      "group/calendar-cell size-10 cursor-default outline-hidden [line-height:2.286rem] data-selection-start:rounded-s-lg data-selection-end:rounded-e-lg data-outside-month:text-muted-fg sm:text-sm lg:size-9",
+                      "data-selected:bg-(--cell)/70 data-selected:text-(--cell-fg) dark:data-selected:bg-(--cell)",
+                      "data-invalid:data-selected:bg-red-100 dark:data-invalid:data-selected:bg-red-700/30",
+                      "[td:first-child_&]:rounded-s-lg [td:last-child_&]:rounded-e-lg",
+                      "forced-colors:data-invalid:data-selected:bg-[Mark] forced-colors:data-selected:bg-[Highlight] forced-colors:data-selected:text-[HighlightText]",
+                    ])}
+                  >
+                    {({
+                      formattedDate,
+                      isSelected,
+                      isSelectionStart,
+                      isSelectionEnd,
+                      isFocusVisible,
+                      isDisabled,
+                    }) => (
+                      <span
+                        className={cell({
+                          selectionState:
+                            isSelected && (isSelectionStart || isSelectionEnd)
+                              ? "cap"
+                              : isSelected
+                                ? "middle"
+                                : "none",
+                          isFocusVisible,
+                          isDisabled,
+                        })}
+                      >
+                        {formattedDate}
+                      </span>
+                    )}
+                  </CalendarCell>
+                )}
+              </CalendarGridBody>
+            </CalendarGrid>
+          )
+        })}
+      </div>
+
       {errorMessage && (
         <Text slot="errorMessage" className="text-sm text-danger">
           {errorMessage}

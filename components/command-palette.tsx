@@ -133,7 +133,7 @@ export function CommandPalette({ openCmd, setOpen }: OpenCloseProps) {
       onOpenChange={setOpen}
     >
       <CommandMenu.Input
-        className="text-sm"
+        className="lg:text-sm"
         isPending={loading}
         value={search}
         onValueChange={setSearch}

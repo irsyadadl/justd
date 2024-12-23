@@ -8,6 +8,8 @@ import {
 } from "react-aria-components"
 import { tv } from "tailwind-variants"
 
+import type { DateDuration } from "@internationalized/date"
+import type { Placement } from "@react-types/overlays"
 import { DateInput } from "./date-field"
 import { DatePickerIcon, DatePickerOverlay } from "./date-picker"
 import { Description, FieldError, FieldGroup, Label } from "./field"
@@ -29,6 +31,9 @@ interface DateRangePickerProps<T extends DateValue> extends DateRangePickerPrimi
   label?: string
   description?: string
   errorMessage?: string | ((validation: ValidationResult) => string)
+  visibleDuration?: DateDuration
+  pageBehavior?: "visible" | "single"
+  contentPlacement?: Placement
 }
 
 const DateRangePicker = <T extends DateValue>({
@@ -36,6 +41,8 @@ const DateRangePicker = <T extends DateValue>({
   className,
   description,
   errorMessage,
+  contentPlacement = "bottom",
+  visibleDuration = { months: 1 },
   ...props
 }: DateRangePickerProps<T>) => {
   return (
@@ -51,7 +58,7 @@ const DateRangePicker = <T extends DateValue>({
       </FieldGroup>
       {description && <Description>{description}</Description>}
       <FieldError>{errorMessage}</FieldError>
-      <DatePickerOverlay range />
+      <DatePickerOverlay placement={contentPlacement} visibleDuration={visibleDuration} range />
     </DateRangePickerPrimitive>
   )
 }

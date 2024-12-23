@@ -30,6 +30,19 @@ Ensure that the date range picker is properly filled out by using the `isRequire
 Use the `validate` function to implement custom validation rules. It evaluates the current date range and returns error messages if the value doesn't meet your criteria.
 <How minW72 toUse="date-and-time/date-range-picker/date-range-picker-custom-validation-demo" />
 
+## Visible Duration
+You can control the duration of the visible date range by using the `visibleDuration` prop. It accepts an object with the following properties:
+* `years`: The number of years to add or subtract.
+* `months`: The number of months to add or subtract.
+* `weeks`: The number of weeks to add or subtract.
+* `days`: The number of days to add or subtract.
+
+Learn more about the <NewTab href='https://react-spectrum.adobe.com/react-aria/RangeCalendar.html#multi-month'>visible duration</NewTab> in the rac documentation.
+<Note>
+When you're on mobile, the visible duration will reset to the default value of `months: 1`.
+</Note>
+<How minW72 toUse="date-and-time/date-range-picker/date-range-picker-visible-duration-demo" />
+
 ## Controlled
 Take control of your date range picker by passing a `value` prop to manage the selected date range.
 <How minW72 toUse="date-and-time/date-range-picker/date-range-picker-controlled-demo" />
