@@ -40,7 +40,7 @@ export default function Page() {
                     "button.tsx": "ui/button",
                     "sidebar.tsx": "ui/sidebar",
                   },
-
+                  "app-sidebar-nav.tsx": "blocks/sidebar/app-sidebar-nav",
                   "app-sidebar.tsx": "blocks/sidebar/sidebar-01/app-sidebar",
                 },
                 app: {
@@ -76,6 +76,7 @@ export default function Page() {
                     "sidebar.tsx": "ui/sidebar",
                   },
                   "app-sidebar.tsx": "blocks/sidebar/app-sidebar",
+                  "app-sidebar-nav.tsx": "blocks/sidebar/app-sidebar-nav",
                 },
                 app: {
                   "page.tsx": "blocks/sidebar/sidebar-03/page",
@@ -109,6 +110,7 @@ export default function Page() {
                     "button.tsx": "ui/button",
                     "sidebar.tsx": "ui/sidebar",
                   },
+                  "app-sidebar-nav.tsx": "blocks/sidebar/app-sidebar-nav",
                   "app-sidebar.tsx": "blocks/sidebar/app-sidebar",
                 },
                 app: {

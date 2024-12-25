@@ -67,7 +67,26 @@ function Component({ folders, fullscreen, isIframe = false, title, ...props }: P
   const Component = registry[props.preview]?.component
   useEffect(() => {
     if (!registryKey) return
-    fetchCode(registryKey).then(setCode)
+    fetchCode(registryKey).then((fetchedCode) => {
+      const updatedCode = fetchedCode
+        .replace(
+          /import\s+AppSidebarNav\s+from\s+["']..\/app-sidebar-nav["']/g,
+          'import AppSidebarNav from "@/components/app-sidebar-nav"',
+        )
+        .replace(
+          /import\s+AppSidebar\s+from\s+["'](\.\/|\.\.\/)app-sidebar["']/g,
+          'import AppSidebar from "@/components/app-sidebar"',
+        )
+        .replace(
+          /import\s+AppNavbar\s+from\s+["'](\.\/|\.\.\/)app-navbar["']/g,
+          'import AppNavbar from "@/components/app-navbar"',
+        )
+        .replace(
+          /import\s+AppSidebar\s+from\s+["']\.\/app-sidebar["']/g,
+          'import AppSidebar from "@/components/app-sidebar"',
+        )
+      setCode(updatedCode)
+    })
   }, [registryKey])
 
   const renderTree = useCallback(
