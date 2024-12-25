@@ -53,7 +53,7 @@
     "scroll-into-view-if-needed": "^3.1.0",
     "sharp": "^0.33.5",
     "sonner": "^1.7.1",
-    "tailwind-merge": "^2.5.5",
+    "tailwind-merge": "^2.6.0",
     "tailwind-variants": "^0.3.0",
     "tailwindcss-animate": "^1.0.7",
     "title": "^4.0.1",

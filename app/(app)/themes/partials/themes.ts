@@ -166,7 +166,7 @@ export const generateTheme = (selectedColors: Record<string, string>) => {
     --primary: ${getColorValue(primary, darkPrimary)};
     --primary-fg: ${darkPrimaryFgValue};
     
-    --secondary: ${adjustLightness(getColorValue(gray, "800"), -4)};
+    --secondary: ${adjustLightness(getColorValue(gray, "800"), -3)};
     --secondary-fg: ${getColorValue(gray, "50")};
     
     --accent: ${getColorValue(accent, darkAccent)};
@@ -187,8 +187,8 @@ export const generateTheme = (selectedColors: Record<string, string>) => {
     --danger: ${dangerColor};
     --danger-fg: ${getColorValue("red", "50")};
     
-    --border: ${getColorValue(gray, "800")};
-    --input: ${getColorValue(gray, "800")};
+    --border: ${adjustLightness(getColorValue(gray, "700"), -10)};
+    --input: ${adjustLightness(getColorValue(gray, "700"), -8)};
     --ring: ${getColorValue(primary, darkRingShade)};
     
     --navbar: ${adjustLightness(getColorValue(gray, "900"), -4)};
