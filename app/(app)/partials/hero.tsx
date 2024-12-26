@@ -49,16 +49,10 @@ export function Hero() {
             <Link
               target="_blank"
               href={siteConfig.repo}
-              className={buttonStyles({
-                size: "extra-small",
-                appearance: "outline",
-                shape: "circle",
-                className:
-                  "group bg-white text-zinc-900 hover:bg-zinc-100 dark:hover:text-white **:data-[slot=icon]:text-warning",
-              })}
+              className="inline-flex gap-x-1 items-center py-2 px-3 text-xs rounded-full bg-zinc-50 group text-zinc-900 data-hovered:bg-zinc-200"
             >
-              <IconStar className="group-hover:text-yellow-500 group-hover:fill-yellow-500" /> Stars
-              sustain energy
+              <IconStar className="text-amber-400 duration-200 group-hover:text-amber-400 group-hover:fill-amber-400" />
+              Stars sustain energy
             </Link>
             <h1 className="mt-4 mb-4 max-w-xl text-2xl font-bold tracking-tight lg:mb-6 lg:text-4xl">
               Accessible React UI Components. Copy, Customize, and Make Them Yours.

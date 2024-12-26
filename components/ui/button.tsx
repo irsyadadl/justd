@@ -24,9 +24,9 @@ const buttonStyles = tv({
         "inset-shadow-primary-fg/20 data-hovered:inset-shadow-primary-fg/25 data-pressed:inset-shadow-primary-fg/20",
       ],
       secondary: [
-        "[--btn-bg:theme(--color-secondary/95%)] dark:[--btn-bg:theme(--color-secondary/85%)] [--btn-fg:var(--color-secondary-fg)] [--btn-border:theme(--color-secondary-fg/10%)] dark:[--btn-border:theme(--color-secondary-fg/15%)]",
-        "[--btn-bg-hovered:color-mix(in_oklab,var(--color-secondary)_60%,white_20%)] dark:[--btn-bg-hovered:color-mix(in_oklab,var(--color-secondary)_95%,white_5%)]",
-        "inset-shadow-white/20 data-hovered:inset-shadow-white/25 data-pressed:inset-shadow-white/20",
+        "[--btn-bg:theme(--color-secondary/95%)] dark:[--btn-bg:theme(--color-secondary/85%)] [--btn-fg:var(--color-secondary-fg)] [--btn-border:theme(--color-secondary-fg/10%)] dark:[--btn-border:theme(--color-secondary-fg/7%)]",
+        "[--btn-bg-hovered:color-mix(in_oklab,var(--color-secondary)_60%,white_20%)] dark:[--btn-bg-hovered:color-mix(in_oklab,var(--color-secondary)_96%,white_4%)]",
+        "inset-shadow-white/15 data-hovered:inset-shadow-white/20 data-pressed:inset-shadow-white/15",
       ],
       warning: [
         "[--btn-warning:theme(--color-warning/97%)]",
