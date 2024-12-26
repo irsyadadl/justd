@@ -46,7 +46,7 @@ export default function SalesPerformance() {
                         textAnchor="middle"
                         dominantBaseline="middle"
                       >
-                        <tspan x={viewBox.cx} y={viewBox.cy} className="text-4xl font-bold fill-fg">
+                        <tspan x={viewBox.cx} y={viewBox.cy} className="fill-fg font-bold text-4xl">
                           {chartData[0].sales.toLocaleString()}
                         </tspan>
                         <tspan x={viewBox.cx} y={(viewBox.cy || 0) + 24} className="fill-muted-fg">

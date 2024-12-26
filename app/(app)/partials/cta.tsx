@@ -6,13 +6,13 @@ import { Container, Heading, Link, buttonStyles } from "ui"
 
 export function Cta() {
   return (
-    <div className="py-8 bg-gradient-to-b lg:py-16 from-bg to-muted">
+    <div className="bg-gradient-to-b from-bg to-muted py-8 lg:py-16">
       <Container>
         <div className="mx-auto max-w-md text-center">
           <Heading className="text-2xl sm:text-3xl" level={3}>
             Justd is Open Source
           </Heading>
-          <p className="mt-2 mb-4 text-base lg:text-lg text-muted-fg">
+          <p className="mt-2 mb-4 text-base text-muted-fg lg:text-lg">
             Our code's chillin' on GitHub - dive in, peep it, or drop some hot commits if you're
             feelin' it!
           </p>

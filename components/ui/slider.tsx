@@ -18,11 +18,11 @@ import { Description, Label } from "./field"
 import { Tooltip } from "./tooltip"
 
 const sliderStyles = tv({
-  base: "relative group flex flex-col touch-none select-none",
+  base: "group relative flex touch-none select-none flex-col",
   variants: {
     orientation: {
       horizontal: "w-full min-w-56 gap-y-2",
-      vertical: "h-full gap-y-2 w-1.5 min-h-56 items-center",
+      vertical: "h-full min-h-56 w-1.5 items-center gap-y-2",
     },
     isDisabled: {
       true: "data-disabled:opacity-50",
@@ -90,7 +90,7 @@ const Slider = ({
           showArrow={false}
           offset={orientation === "horizontal" ? 8 : -140}
           crossOffset={orientation === "horizontal" ? -85 : 0}
-          className="py-1 px-1.5 text-xs min-w-6"
+          className="min-w-6 px-1.5 py-1 text-xs"
           placement={orientation === "vertical" ? "right" : "top"}
         >
           <SliderOutput />
@@ -134,12 +134,12 @@ const controlsStyles = tv({
   slots: {
     filler: [
       "rounded-full bg-primary group-data-disabled/track:opacity-60",
-      "pointer-events-none absolute group-data-[orientation=horizontal]/top-0 group-data-[orientation=vertical]/track:w-full group-data-[orientation=vertical]/track:bottom-0 group-data-[orientation=horizontal]/track:h-full",
+      "group-data-[orientation=horizontal]/top-0 pointer-events-none absolute group-data-[orientation=vertical]/track:bottom-0 group-data-[orientation=horizontal]/track:h-full group-data-[orientation=vertical]/track:w-full",
     ],
     track: [
       "[--slider:color-mix(in_oklab,var(--color-muted)_90%,black_10%)] dark:[--slider:color-mix(in_oklab,var(--color-muted)_90%,white_10%)]",
-      "relative group/track rounded-full bg-(--slider) cursor-pointer data-disabled:cursor-default data-disabled:opacity-60",
-      "grow group-data-[orientation=vertical]:flex-1 group-data-[orientation=vertical]:w-1.5 group-data-[orientation=horizontal]:w-full group-data-[orientation=horizontal]:h-1.5",
+      "group/track relative cursor-pointer rounded-full bg-(--slider) data-disabled:cursor-default data-disabled:opacity-60",
+      "grow group-data-[orientation=horizontal]:h-1.5 group-data-[orientation=horizontal]:w-full group-data-[orientation=vertical]:w-1.5 group-data-[orientation=vertical]:flex-1",
     ],
   },
 })
@@ -177,14 +177,14 @@ const Filler = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) =
 
 const thumbStyles = tv({
   base: [
-    "size-[1.25rem] left-[50%] top-[50%] rounded-full border border-fg/10 bg-white transition-[width,height] outline-hidden ring-black",
+    "top-[50%] left-[50%] size-[1.25rem] rounded-full border border-fg/10 bg-white outline-hidden ring-black transition-[width,height]",
   ],
   variants: {
     isFocusVisible: {
-      true: "ring-primary/20 border-primary outline-hidden",
+      true: "border-primary outline-hidden ring-primary/20",
     },
     isDragging: {
-      true: "cursor-grabbing size-[1.35rem] border-primary",
+      true: "size-[1.35rem] cursor-grabbing border-primary",
     },
     isDisabled: {
       true: "opacity-50 forced-colors:border-[GrayText]",

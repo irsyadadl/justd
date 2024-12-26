@@ -50,7 +50,7 @@ export default function BarChartMultipleDemo() {
         className="items-center pb-4"
       />
       <Card.Content>
-        <Chart config={chartConfig} className="w-full max-h-[250px]">
+        <Chart config={chartConfig} className="max-h-[250px] w-full">
           <BarChart accessibilityLayer data={chartData}>
             <CartesianGrid vertical={false} />
             <XAxis dataKey="month" tickLine={false} tickMargin={10} axisLine={false} />

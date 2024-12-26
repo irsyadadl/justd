@@ -11,7 +11,7 @@ export function ColorPalette() {
       <div className="mx-auto max-w-7xl sm:px-8">
         <Container
           intent="constrained"
-          className="px-0 sm:px-0 lg:px-0 bg-bg shadow-fg/10 sm:border-x"
+          className="bg-bg px-0 shadow-fg/10 sm:border-x sm:px-0 lg:px-0"
         >
           <ColorGenerator />
           <div className="grid grid-cols-1 lg:grid-cols-2">

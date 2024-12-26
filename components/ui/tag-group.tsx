@@ -132,10 +132,10 @@ const TagList = <T extends object>({ className, ...props }: TagListProps<T>) => 
 
 const tagStyles = tv({
   extend: focusStyles,
-  base: [badgeStyles.base, "cursor-pointer jdt3lr2x"],
+  base: [badgeStyles.base, "jdt3lr2x cursor-pointer"],
   variants: {
     isFocused: { true: "ring-1" },
-    isDisabled: { true: "opacity-50 cursor-default" },
+    isDisabled: { true: "cursor-default opacity-50" },
     allowsRemoving: { true: "pr-1" },
   },
 })

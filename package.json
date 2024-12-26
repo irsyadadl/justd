@@ -15,8 +15,7 @@
     "build:registry": "rm -rf public/registry && bun run resources/scripts/build-registry.ts",
     "dev": "next dev --turbopack && velite --watch",
     "build": "next build && velite --clean",
-    "tailwind:format": "rustywind --write .",
-    "format": "bun run tailwind:format && biome check --write",
+    "format": "biome lint --fix && biome check --write",
     "format:unsafe": "biome check --unsafe --write",
     "build:everything": "rm -rf pubilc/registry && bun run build:sidebar && bun run build:registry && biome format --write __registry__/generated.ts",
     "bb": "bun run format && bun run build:everything",
@@ -74,7 +73,6 @@
     "postcss": "^8.4.49",
     "rehype-autolink-headings": "^7.1.0",
     "rehype-slug": "^6.0.0",
-    "rustywind": "^0.23.1",
     "tailwindcss": "^4.0.0-beta.8",
     "typescript": "^5.7.2",
     "velite": "^0.2.2"

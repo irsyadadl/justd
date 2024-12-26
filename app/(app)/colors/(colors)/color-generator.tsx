@@ -86,12 +86,12 @@ export function ColorGenerator() {
 
   return (
     <div>
-      <div className="gap-6 items-center border-b">
+      <div className="items-center gap-6 border-b">
         <div className="grid lg:grid-cols-2">
-          <div className="p-6 border-r">
+          <div className="border-r p-6">
             <div className="mb-7">
               <Heading level={2}>Generate</Heading>
-              <p className="text-sm text-muted-fg">
+              <p className="text-muted-fg text-sm">
                 Genereate your desired color by picking a shade from the color picker or by entering
                 a hex code.
               </p>
@@ -110,7 +110,7 @@ export function ColorGenerator() {
               "pb-6 even:pl-6 even:lg:border-r-0",
             )}
           >
-            <div className="flex justify-between items-center mb-4">
+            <div className="mb-4 flex items-center justify-between">
               <div className="font-mono text-sm uppercase">
                 {getColorName(value.toString("hex"))}
               </div>

@@ -34,7 +34,7 @@ export default function DisclosureGroupWithIconDemo() {
                 <Disclosure key={childIndex} id={childIndex}>
                   <DisclosureTrigger className="group">
                     <span>
-                      <IconChevronRight className="duration-300 size-5 group-aria-expanded:rotate-90" />
+                      <IconChevronRight className="size-5 duration-300 group-aria-expanded:rotate-90" />
                       <child.icon />
                       {child.title}
                     </span>

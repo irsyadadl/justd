@@ -50,7 +50,7 @@ const ContextMenu = ({ children }: ContextMenuProps) => {
 
 const contextMenuTriggerStyles = tv({
   extend: focusButtonStyles,
-  base: "data-focused:outline-hidden cursor-default",
+  base: "cursor-default data-focused:outline-hidden",
   variants: {
     isDisabled: {
       false: "forced-colors:data-disabled:text-[GrayText]",

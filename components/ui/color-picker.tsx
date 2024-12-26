@@ -21,7 +21,7 @@ import { focusButtonStyles } from "./primitive"
 
 const buttonStyles = tv({
   extend: focusButtonStyles,
-  base: "flex btn-trigger cursor-pointer disabled:cursor-default disabled:opacity-50 items-center rounded text-sm",
+  base: "btn-trigger flex cursor-pointer items-center rounded text-sm disabled:cursor-default disabled:opacity-50",
 })
 
 interface ColorPickerProps extends ColorPickerPrimitiveProps {

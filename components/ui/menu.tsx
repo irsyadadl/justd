@@ -59,10 +59,10 @@ const SubMenu = ({ delay = 0, ...props }) => (
 
 const menuStyles = tv({
   slots: {
-    menu: "max-h-[calc(var(--visual-viewport-height)-10rem)] sm:max-h-[inherit] overflow-auto rounded-xl p-1 outline-hidden [clip-path:inset(0_0_0_0_round_calc(var(--radius-lg)-2px))]",
-    popover: "z-50 sm:min-w-40 p-0 outline-hidden shadow-xs",
+    menu: "max-h-[calc(var(--visual-viewport-height)-10rem)] overflow-auto rounded-xl p-1 outline-hidden [clip-path:inset(0_0_0_0_round_calc(var(--radius-lg)-2px))] sm:max-h-[inherit]",
+    popover: "z-50 p-0 shadow-xs outline-hidden sm:min-w-40",
     trigger: [
-      "inline relative text-left data-focused:outline-hidden data-focus-visible:ring-1 data-focus-visible:ring-primary data-pressed:outline-hidden",
+      "relative inline text-left data-focused:outline-hidden data-pressed:outline-hidden data-focus-visible:ring-1 data-focus-visible:ring-primary",
     ],
   },
 })
@@ -136,7 +136,7 @@ const Item = ({ className, isDanger = false, children, ...props }: MenuItemProps
       {(values) => (
         <>
           {typeof children === "function" ? children(values) : children}
-          {values.hasSubmenu && <IconChevronLgRight className="ml-auto gpfw size-3.5" />}
+          {values.hasSubmenu && <IconChevronLgRight className="gpfw ml-auto size-3.5" />}
         </>
       )}
     </MenuItem>
@@ -172,7 +172,7 @@ const MenuItemCheckbox = ({ className, children, ...props }: MenuItemProps) => (
       <>
         {typeof children === "function" ? children(values) : children}
         {values.isSelected && (
-          <span className="flex absolute right-2 justify-center items-center size-4 shrink-0 animate-in">
+          <span className="absolute right-2 flex size-4 shrink-0 animate-in items-center justify-center">
             <IconCheck />
           </span>
         )}

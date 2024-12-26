@@ -26,11 +26,11 @@ const datePickerStyles = tv({
   slots: {
     base: "group flex flex-col gap-y-1.5",
     datePickerIcon:
-      "group mr-1 h-7 **:data-[slot=icon]:text-muted-fg w-8 rounded outline-offset-0data-hovered:bg-transparent data-pressed:bg-transparent",
+      "group mr-1 h-7 w-8 rounded outline-offset-0data-hovered:bg-transparent data-pressed:bg-transparent **:data-[slot=icon]:text-muted-fg",
     calendarIcon: "group-open:text-fg",
     datePickerInput: "w-full px-2 text-base sm:text-sm",
-    dateRangePickerInputStart: "px-2 sm:text-sm text-base",
-    dateRangePickerInputEnd: "flex-1 px-2 py-1.5 sm:text-sm text-base",
+    dateRangePickerInputStart: "px-2 text-base sm:text-sm",
+    dateRangePickerInputEnd: "flex-1 px-2 py-1.5 text-base sm:text-sm",
     dateRangePickerDash:
       "text-fg group-data-disabled:opacity-50 forced-colors:text-[ButtonText] forced-colors:group-data-disabled:text-[GrayText]",
   },
@@ -61,7 +61,7 @@ const DatePickerOverlay = ({
     <Popover.Content
       showArrow={false}
       className={cn(
-        "flex justify-center p-4 sm:p-2 sm:pt-3 sm:min-w-[17rem]",
+        "flex justify-center p-4 sm:min-w-[17rem] sm:p-2 sm:pt-3",
         visibleDuration?.months === 1 ? "sm:max-w-[17.5rem]" : "sm:max-w-none",
       )}
       {...props}
@@ -75,7 +75,7 @@ const DatePickerOverlay = ({
         <Calendar />
       )}
       {closeButton && (
-        <div className="flex justify-center py-2.5 mx-auto w-full sm:hidden max-w-[inherit]">
+        <div className="mx-auto flex w-full max-w-[inherit] justify-center py-2.5 sm:hidden">
           <Popover.Close shape="circle" className="w-full">
             Close
           </Popover.Close>

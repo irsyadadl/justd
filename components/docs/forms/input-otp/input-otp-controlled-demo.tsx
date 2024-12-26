@@ -16,7 +16,7 @@ export default function InputOtpControlledDemo() {
         </InputOTP.Group>
       </InputOTP>
 
-      <div className="text-sm text-center">
+      <div className="text-center text-sm">
         {value === "" ? <>Enter your one-time password.</> : <>You entered: {value}</>}
       </div>
     </div>

@@ -15,7 +15,7 @@ export default function TagGroupIntentDemo() {
     initialItems: shoes,
   })
   return (
-    <div className="space-y-2 max-w-sm">
+    <div className="max-w-sm space-y-2">
       <TagGroup
         intent="primary"
         aria-label="Primary Intent"

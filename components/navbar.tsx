@@ -47,11 +47,11 @@ export function Navbar() {
     <>
       <CommandPalette setOpen={setOpen} openCmd={open} />
       <LayoutGroup id={`navigation-${id}`}>
-        <div className="hidden overflow-hidden sticky top-0 z-30 pb-0 lg:block xnw2">
-          <nav className="py-2 border-b border-current/10 bg-bg dark:supports-backdrop-filter:backdrop-blur-3xl dark:supports-backdrop-filter:bg-bg/60">
-            <div className="px-4 mx-auto sm:px-6 lg:px-8 max-w-(--breakpoint-2xl)">
-              <div className="flex justify-between items-center">
-                <div className="flex gap-x-6 items-center">
+        <div className="xnw2 sticky top-0 z-30 hidden overflow-hidden pb-0 lg:block">
+          <nav className="border-current/10 border-b bg-bg py-2 dark:supports-backdrop-filter:bg-bg/60 dark:supports-backdrop-filter:backdrop-blur-3xl">
+            <div className="mx-auto max-w-(--breakpoint-2xl) px-4 sm:px-6 lg:px-8">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-x-6">
                   <NavbarDropdown />
                   <Separator orientation="vertical" className="h-6" />
                   <Collection items={menuItems}>
@@ -92,7 +92,7 @@ export function Navbar() {
                   </Collection>
                 </div>
 
-                <div className="flex gap-x-1 items-center">
+                <div className="flex items-center gap-x-1">
                   <>
                     <Button
                       onPress={() => setOpen((open: boolean) => !open)}
@@ -113,12 +113,12 @@ export function Navbar() {
                       <Button
                         size="small"
                         appearance="outline"
-                        className="justify-between text-left group"
+                        className="group justify-between text-left"
                       >
                         {pathname.includes("/docs/")
                           ? pathname.split("/")[2]
                           : siteConfig.currentVersion}
-                        <IconChevronLgDown className="duration-200 size-3 group-pressed:rotate-180" />
+                        <IconChevronLgDown className="size-3 duration-200 group-pressed:rotate-180" />
                       </Button>
                       <Menu.Content placement="bottom right" className="sm:min-w-10">
                         <Menu.Item href="/docs/1.x/getting-started/introduction">1.x</Menu.Item>
@@ -165,13 +165,13 @@ export function NavbarDropdown() {
   const { theme, setTheme } = useTheme()
   const pathname = usePathname()
   return (
-    <div className="flex gap-x-1 items-center">
+    <div className="flex items-center gap-x-1">
       <Menu>
         <Button aria-label={siteConfig.name} appearance="plain" className="-ml-1 group">
-          <span className="flex gap-x-2 items-center">
+          <span className="flex items-center gap-x-2">
             <IconBrandJustd className="-ml-1 size-5" />
             <span className="font-mono text-base tracking-tight sm:text-sm">{siteConfig.name}</span>
-            <IconChevronLgDown className="ml-3 -mr-1 transition duration-300 size-3.5 text-muted-fg group-data-pressed:rotate-180 group-data-pressed:text-fg group-hover:text-fg" />
+            <IconChevronLgDown className="-mr-1 ml-3 size-3.5 text-muted-fg transition duration-300 group-hover:text-fg group-data-pressed:rotate-180 group-data-pressed:text-fg" />
           </span>
         </Button>
         <Menu.Content placement="bottom" className="sm:min-w-64">
@@ -256,9 +256,9 @@ export function NavbarDropdown() {
         </Menu.Content>
       </Menu>
       <Menu>
-        <Button appearance="plain" className="justify-between text-left sm:hidden group">
+        <Button appearance="plain" className="group justify-between text-left sm:hidden">
           {pathname.includes("/docs/") ? pathname.split("/")[2] : siteConfig.currentVersion}
-          <IconChevronLgDown className="duration-200 size-3 group-pressed:rotate-180" />
+          <IconChevronLgDown className="size-3 duration-200 group-pressed:rotate-180" />
         </Button>
         <Menu.Content placement="bottom right" className="sm:min-w-10">
           <Menu.Item href="/docs/1.x/getting-started/introduction">1.x</Menu.Item>

@@ -3,7 +3,7 @@ import type React from "react"
 import { type VariantProps, tv } from "tailwind-variants"
 
 const skeletonStyles = tv({
-  base: "animate-pulse shrink-0",
+  base: "shrink-0 animate-pulse",
   variants: {
     intent: {
       muted: "bg-fg/20",

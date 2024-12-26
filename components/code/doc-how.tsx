@@ -80,14 +80,14 @@ export const DocHow = ({
         <Tabs.Panel className="w-full" id="preview">
           <div
             className={cn(
-              !withNoPadding && "relative gap-4 rounded-lg border bg-bg dark:bg-secondary/40 p-6",
+              !withNoPadding && "relative gap-4 rounded-lg border bg-bg p-6 dark:bg-secondary/40",
               isCenter &&
                 "preview flex min-h-56 items-center justify-center overflow-x-auto py-6 sm:py-24 lg:min-h-110",
             )}
           >
             <React.Suspense
               fallback={
-                <div className="flex justify-center items-center py-6 text-sm text-muted-fg">
+                <div className="flex items-center justify-center py-6 text-muted-fg text-sm">
                   <Loader variant="spin" />
                   <span className="sr-only">Loading...</span>
                 </div>
@@ -102,7 +102,7 @@ export const DocHow = ({
 
         <Tabs.Panel id="code">
           {processedSourceCode ? (
-            <Group className="relative group">
+            <Group className="group relative">
               <CodeHighlighter removeLastLine code={processedSourceCode} />
             </Group>
           ) : (

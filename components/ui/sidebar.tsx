@@ -126,14 +126,14 @@ const SidebarProvider = ({
     <SidebarContext value={contextValue}>
       <div
         className={cn(
-          "**:data-[slot=icon]:shrink-0 @container",
-          "[--sidebar-width:17rem] [--sidebar-width-mobile:18rem] [--sidebar-width-dock:3.25rem]",
+          "@container **:data-[slot=icon]:shrink-0",
+          "[--sidebar-width-dock:3.25rem] [--sidebar-width-mobile:18rem] [--sidebar-width:17rem]",
           "[--sidebar-border:color-mix(in_oklch,var(--color-sidebar)_25%,black_6%)]",
           "dark:[--sidebar-border:color-mix(in_oklch,var(--color-sidebar)_55%,white_10%)]",
           "[--sidebar-accent:color-mix(in_oklab,var(--color-sidebar)_95%,black_5%)]",
           "dark:[--sidebar-accent:color-mix(in_oklab,var(--color-sidebar)_90%,white_10%)]",
           "flex min-h-svh w-full text-sidebar-fg",
-          "dark:has-data-[sidebar-intent=inset]:bg-bg has-data-[sidebar-intent=inset]:bg-sidebar group/sidebar-root",
+          "group/sidebar-root has-data-[sidebar-intent=inset]:bg-sidebar dark:has-data-[sidebar-intent=inset]:bg-bg",
           className,
         )}
         ref={ref}
@@ -148,7 +148,7 @@ const SidebarProvider = ({
 const gap = tv({
   base: [
     "w-(--sidebar-width) group-data-[sidebar-collapsible=hidden]/sidebar-container:w-0",
-    "duration-200 relative h-svh bg-transparent transition-[width] ease-linear",
+    "relative h-svh bg-transparent transition-[width] duration-200 ease-linear",
     "group-data-[sidebar-side=right]/sidebar-container:rotate-180",
   ],
   variants: {
@@ -165,8 +165,8 @@ const gap = tv({
 
 const sidebar = tv({
   base: [
-    "duration-200 fixed inset-y-0 z-10 hidden h-svh w-(--sidebar-width) transition-[left,right,width] ease-linear md:flex",
-    "bg-sidebar min-h-svh",
+    "fixed inset-y-0 z-10 hidden h-svh w-(--sidebar-width) transition-[left,right,width] duration-200 ease-linear md:flex",
+    "min-h-svh bg-sidebar",
     "**:data-[slot=disclosure]:border-0 **:data-[slot=disclosure]:px-2",
   ],
   variants: {
@@ -177,18 +177,18 @@ const sidebar = tv({
     },
     intent: {
       float:
-        "p-2 bg-bg group-data-[sidebar-collapsible=dock]/sidebar-container:w-[calc(var+theme(spacing.4)+2px)]",
+        "bg-bg p-2 group-data-[sidebar-collapsible=dock]/sidebar-container:w-[calc(var+theme(spacing.4)+2px)]",
       inset: [
-        "p-2 bg-sidebar dark:bg-bg group-data-[sidebar-collapsible=dock]/sidebar-container:w-[calc(var(--sidebar-width-dock)+theme(spacing.2)+2px)]",
+        "bg-sidebar p-2 group-data-[sidebar-collapsible=dock]/sidebar-container:w-[calc(var(--sidebar-width-dock)+theme(spacing.2)+2px)] dark:bg-bg",
       ],
       fleet: [
         "group-data-[sidebar-collapsible=dock]/sidebar-container:w-(--sidebar-width-dock)",
-        "**:data-sidebar-section:px-0 **:data-sidebar-disclosure:px-0 **:data-sidebar-section:gap-y-0 **:data-sidebar-disclosure:gap-y-0",
-        "group-data-[sidebar-side=right]/sidebar-container:border-l group-data-[sidebar-side=left]/sidebar-container:border-r",
+        "**:data-sidebar-disclosure:gap-y-0 **:data-sidebar-section:gap-y-0 **:data-sidebar-disclosure:px-0 **:data-sidebar-section:px-0",
+        "group-data-[sidebar-side=left]/sidebar-container:border-r group-data-[sidebar-side=right]/sidebar-container:border-l",
       ],
       default: [
         "group-data-[sidebar-collapsible=dock]/sidebar-container:w-(--sidebar-width-dock) group-data-[sidebar-side=left]/sidebar-container:border-(--sidebar-border)",
-        "group-data-[sidebar-side=right]/sidebar-container:border-l group-data-[sidebar-side=left]/sidebar-container:border-r",
+        "group-data-[sidebar-side=left]/sidebar-container:border-r group-data-[sidebar-side=right]/sidebar-container:border-l",
       ],
     },
   },
@@ -217,7 +217,7 @@ const Sidebar = ({
         data-sidebar-intent={intent}
         data-sidebar-collapsible="none"
         className={cn(
-          "flex h-full peer w-(--sidebar-width) flex-col border-r bg-sidebar text-sidebar-fg ",
+          "peer flex h-full w-(--sidebar-width) flex-col border-r bg-sidebar text-sidebar-fg ",
           className,
         )}
         {...props}
@@ -250,7 +250,7 @@ const Sidebar = ({
       data-sidebar-collapsible={state === "collapsed" ? collapsible : ""}
       data-sidebar-intent={intent}
       data-sidebar-side={side}
-      className="hidden md:block group/sidebar-container peer text-sidebar-fg"
+      className="group/sidebar-container peer hidden text-sidebar-fg md:block"
       {...props}
     >
       <div className={gap({ intent })} />
@@ -265,9 +265,9 @@ const Sidebar = ({
         <div
           data-sidebar="default"
           className={twJoin(
-            "flex h-full text-sidebar-fg w-full flex-col",
+            "flex h-full w-full flex-col text-sidebar-fg",
             "group-data-[sidebar-intent=inset]/sidebar-container:bg-sidebar dark:group-data-[sidebar-intent=inset]/sidebar-container:bg-bg",
-            "group-data-[sidebar-intent=float]/sidebar-container:rounded-lg group-data-[sidebar-intent=float]/sidebar-container:bg-sidebar group-data-[sidebar-intent=float]/sidebar-container:border group-data-[sidebar-intent=float]/sidebar-container:border-(--sidebar-border) group-data-[sidebar-intent=float]/sidebar-container:shadow-xs",
+            "group-data-[sidebar-intent=float]/sidebar-container:rounded-lg group-data-[sidebar-intent=float]/sidebar-container:border group-data-[sidebar-intent=float]/sidebar-container:border-(--sidebar-border) group-data-[sidebar-intent=float]/sidebar-container:bg-sidebar group-data-[sidebar-intent=float]/sidebar-container:shadow-xs",
           )}
         >
           {props.children}
@@ -278,11 +278,11 @@ const Sidebar = ({
 }
 
 const header = tv({
-  base: "flex flex-col mb-2 **:data-[slot=sidebar-label-mask]:hidden",
+  base: "mb-2 flex flex-col **:data-[slot=sidebar-label-mask]:hidden",
   variants: {
     collapsed: {
       false: "px-4 py-[calc(var(--spacing)*4)]",
-      true: "p-5 mt-2 md:p-0 md:size-9 group-data-[sidebar-intent=float]/sidebar-container:mt-2 md:rounded-lg md:hover:bg-(--sidebar-accent) md:mx-auto md:justify-center md:items-center",
+      true: "mt-2 p-5 group-data-[sidebar-intent=float]/sidebar-container:mt-2 md:mx-auto md:size-9 md:items-center md:justify-center md:rounded-lg md:p-0 md:hover:bg-(--sidebar-accent)",
     },
   },
 })
@@ -301,24 +301,24 @@ const SidebarHeader = ({ className, ref, ...props }: React.ComponentProps<"div">
 
 const footer = tv({
   base: [
-    "flex flex-col mt-auto p-2",
+    "mt-auto flex flex-col p-2",
     "in-data-[sidebar-intent=fleet]:mt-0 in-data-[sidebar-intent=fleet]:p-0",
     "in-data-[sidebar-intent=fleet]:**:data-[slot=menu-trigger]:rounded-none",
     "**:data-[slot=menu-trigger]:relative **:data-[slot=menu-trigger]:overflow-hidden",
     "**:data-[slot=menu-trigger]:rounded-lg",
-    "**:data-[slot=menu-trigger]:outline-hidden **:data-[slot=menu-trigger]:cursor-default **:data-[slot=menu-trigger]:p-2 **:data-[slot=menu-trigger]:items-center sm:**:data-[slot=menu-trigger]:text-sm **:data-[slot=menu-trigger]:flex **:data-[slot=menu-trigger]:gap-x-2",
+    "**:data-[slot=menu-trigger]:flex **:data-[slot=menu-trigger]:cursor-default **:data-[slot=menu-trigger]:items-center **:data-[slot=menu-trigger]:gap-x-2 **:data-[slot=menu-trigger]:p-2 **:data-[slot=menu-trigger]:outline-hidden sm:**:data-[slot=menu-trigger]:text-sm",
     "**:data-[slot=menu-trigger]:data-hovered:bg-(--sidebar-accent) **:data-[slot=menu-trigger]:data-hovered:text-fg",
   ],
   variants: {
     collapsed: {
       false: [
-        "**:data-[slot=avatar]:size-8 **:data-[slot=avatar]:*:size-8",
-        "**:data-[slot=menu-trigger]:w-full **:data-[slot=menu-trigger]:**:data-[slot=chevron]:transition-transform **:data-[slot=menu-trigger]:data-pressed:**:data-[slot=chevron]:rotate-180 **:data-[slot=menu-trigger]:**:data-[slot=chevron]:ml-auto",
+        "**:data-[slot=avatar]:*:size-8 **:data-[slot=avatar]:size-8",
+        "**:data-[slot=menu-trigger]:**:data-[slot=chevron]:ml-auto **:data-[slot=menu-trigger]:**:data-[slot=chevron]:transition-transform **:data-[slot=menu-trigger]:w-full **:data-[slot=menu-trigger]:data-pressed:**:data-[slot=chevron]:rotate-180",
       ],
       true: [
-        "**:data-[slot=avatar]:size-6 **:data-[slot=avatar]:*:size-6",
-        "**:data-[slot=menu-label]:hidden **:data-[slot=chevron]:hidden",
-        "**:data-[slot=menu-trigger]:size-8 **:data-[slot=menu-trigger]:grid **:data-[slot=menu-trigger]:place-content-center",
+        "**:data-[slot=avatar]:*:size-6 **:data-[slot=avatar]:size-6",
+        "**:data-[slot=chevron]:hidden **:data-[slot=menu-label]:hidden",
+        "**:data-[slot=menu-trigger]:grid **:data-[slot=menu-trigger]:size-8 **:data-[slot=menu-trigger]:place-content-center",
       ],
     },
   },
@@ -336,7 +336,7 @@ const SidebarContent = ({ className, ...props }: React.ComponentProps<"div">) =>
     <div
       data-sidebar-content="true"
       className={cn(
-        "flex min-h-0 flex-1 flex-col overflow-auto scroll-mb-96",
+        "flex min-h-0 flex-1 scroll-mb-96 flex-col overflow-auto",
         state === "collapsed" && "items-center",
         className,
       )}
@@ -349,7 +349,7 @@ const SidebarSectionGroup = ({ className, ...props }: React.ComponentProps<"sect
   return (
     <section
       data-sidebar-section-group="true"
-      className={cn("flex flex-col gap-y-6 w-full", className)}
+      className={cn("flex w-full flex-col gap-y-6", className)}
       {...props}
     />
   )
@@ -363,11 +363,11 @@ const SidebarSection = ({
   return (
     <div
       data-sidebar-section="true"
-      className={cn("flex flex-col in-data-[sidebar-intent=fleet]:px-0 px-2 gap-y-0.5", className)}
+      className={cn("flex flex-col gap-y-0.5 in-data-[sidebar-intent=fleet]:px-0 px-2", className)}
       {...props}
     >
       {state !== "collapsed" && "title" in props && (
-        <Header className="duration-200 mb-1 flex shrink-0 items-center rounded-md px-2.5 text-xs font-medium text-sidebar-fg/70 outline-none ring-sidebar-ring transition-[margin,opa] ease-linear data-focus-visible:ring-2 *:data-[slot=icon]:size-4 *:data-[slot=icon]:shrink-0 group-data-[sidebar-collapsible=dock]/sidebar-container:-mt-8 group-data-[sidebar-collapsible=dock]/sidebar-container:opacity-0">
+        <Header className="group-data-[sidebar-collapsible=dock]/sidebar-container:-mt-8 mb-1 flex shrink-0 items-center rounded-md px-2.5 font-medium text-sidebar-fg/70 text-xs outline-none ring-sidebar-ring transition-[margin,opa] duration-200 ease-linear data-focus-visible:ring-2 *:data-[slot=icon]:size-4 *:data-[slot=icon]:shrink-0 group-data-[sidebar-collapsible=dock]/sidebar-container:opacity-0">
           {props.title}
         </Header>
       )}
@@ -378,25 +378,25 @@ const SidebarSection = ({
 
 const sidebarItem = tv({
   base: [
-    "text-sidebar-fg/70 relative px-2.5 py-2 overflow-hidden gap-x-2 w-full group cursor-pointer flex items-center sm:text-sm rounded-lg outline-hidden",
-    "**:data-[slot=menu-trigger]:absolute **:data-[slot=menu-trigger]:h-full **:data-[slot=menu-trigger]:items-center **:data-[slot=menu-trigger]:w-[calc(var(--sidebar-width)-90%)] **:data-[slot=menu-trigger]:right-0 **:data-[slot=menu-trigger]:flex **:data-[slot=menu-trigger]:justify-end **:data-[slot=menu-trigger]:pr-2.5",
+    "group relative flex w-full cursor-pointer items-center gap-x-2 overflow-hidden rounded-lg px-2.5 py-2 text-sidebar-fg/70 outline-hidden sm:text-sm",
+    "**:data-[slot=menu-trigger]:absolute **:data-[slot=menu-trigger]:right-0 **:data-[slot=menu-trigger]:flex **:data-[slot=menu-trigger]:h-full **:data-[slot=menu-trigger]:w-[calc(var(--sidebar-width)-90%)] **:data-[slot=menu-trigger]:items-center **:data-[slot=menu-trigger]:justify-end **:data-[slot=menu-trigger]:pr-2.5",
     "**:data-[slot=menu-trigger]:hidden",
-    "**:data-[slot=icon]:size-4 **:data-[slot=avatar]:size-4 **:data-[slot=avatar]:*:size-4 **:data-[slot=icon]:shrink-0 **:data-[slot=avatar]:shrink-0",
+    "**:data-[slot=avatar]:*:size-4 **:data-[slot=avatar]:size-4 **:data-[slot=icon]:size-4 **:data-[slot=avatar]:shrink-0 **:data-[slot=icon]:shrink-0",
     "**:data-[slot=menu-trigger]:bg-gradient-to-l **:data-[slot=menu-trigger]:from-(--sidebar-accent) **:data-[slot=menu-trigger]:from-65%",
     "in-data-[sidebar-intent=fleet]:rounded-none",
   ],
   variants: {
     collapsed: {
-      true: "size-9 justify-center p-0 gap-x-0",
+      true: "size-9 justify-center gap-x-0 p-0",
     },
     isCurrent: {
-      true: "bg-primary text-primary-fg **:data-[slot=icon]:text-primary-fg **:data-[slot=menu-trigger]:from-primary data-hovered:bg-primary data-hovered:text-primary-fg [&_.text-muted-fg]:text-primary-fg/80",
+      true: "bg-primary text-primary-fg data-hovered:bg-primary data-hovered:text-primary-fg **:data-[slot=menu-trigger]:from-primary **:data-[slot=icon]:text-primary-fg [&_.text-muted-fg]:text-primary-fg/80",
     },
     isActive: {
       true: "bg-(--sidebar-accent) text-sidebar-fg **:data-[slot=menu-trigger]:flex",
     },
     isDisabled: {
-      true: "opacity-50 cursor-default",
+      true: "cursor-default opacity-50",
     },
   },
 })
@@ -449,14 +449,14 @@ const SidebarItem = ({
                 shape="square"
                 intent="primary"
                 data-slot="sidebar-badge"
-                className="w-auto inset-y-1/2 text-[10px] dark:group-data-current:bg-[color-mix(in_oklab,var(--color-primary)_20%,white_15%)] group-data-current:bg-[color-mix(in_oklab,var(--color-primary)_20%,white_20%)] group-data-current:text-primary-fg inset-ring-1 inset-ring-primary/20 group-data-current:inset-ring-transparent dark:group-data-current:text-current transition-colors -translate-y-1/2 absolute right-1.5 h-5.5"
+                className="-translate-y-1/2 absolute inset-ring-1 inset-ring-primary/20 inset-y-1/2 right-1.5 h-5.5 w-auto text-[10px] transition-colors group-data-current:inset-ring-transparent group-data-current:bg-[color-mix(in_oklab,var(--color-primary)_20%,white_20%)] group-data-current:text-primary-fg dark:group-data-current:bg-[color-mix(in_oklab,var(--color-primary)_20%,white_15%)] dark:group-data-current:text-current"
               >
                 {badge}
               </Badge>
             ) : (
               <div
                 aria-hidden
-                className="absolute top-1 right-1 rounded-full size-1.5 bg-primary"
+                className="absolute top-1 right-1 size-1.5 rounded-full bg-primary"
               />
             ))}
         </>
@@ -468,7 +468,7 @@ const SidebarItem = ({
     <Tooltip delay={0}>
       {link}
       <Tooltip.Content
-        className="**:data-[slot=sidebar-label-mask]:hidden **:data-[slot=icon]:hidden"
+        className="**:data-[slot=icon]:hidden **:data-[slot=sidebar-label-mask]:hidden"
         intent="inverse"
         showArrow={false}
         placement="right"
@@ -482,10 +482,10 @@ const SidebarItem = ({
 }
 
 const sidebarLink = tv({
-  base: "flex items-center focus:outline-hidden w-full gap-x-2",
+  base: "flex w-full items-center gap-x-2 focus:outline-hidden",
   variants: {
     collapsed: {
-      true: "absolute justify-center inset-0 size-full",
+      true: "absolute inset-0 size-full justify-center",
     },
   },
 })
@@ -516,9 +516,9 @@ const SidebarInset = ({ className, ref, ...props }: React.ComponentProps<"main">
     <main
       ref={ref}
       className={cn(
-        "relative w-full flex min-h-svh flex-1 flex-col peer-data-[sidebar-intent=inset]:border peer-data-[sidebar-intent=inset]:border-(--sidebar-border)",
-        "bg-bg dark:peer-data-[sidebar-intent=inset]:bg-sidebar peer-data-[sidebar-intent=inset]:overflow-hidden",
-        "peer-data-[sidebar-intent=inset]:min-h-[calc(100svh-theme(spacing.4))] md:peer-data-[sidebar-intent=inset]:m-2 md:peer-data-[sidebar-state=collapsed]:peer-data-[sidebar-intent=inset]:ml-2 md:peer-data-[sidebar-intent=inset]:ml-0 md:peer-data-[sidebar-intent=inset]:rounded-xl md:peer-data-[sidebar-intent=inset]:shadow-xs",
+        "relative flex min-h-svh w-full flex-1 flex-col peer-data-[sidebar-intent=inset]:border peer-data-[sidebar-intent=inset]:border-(--sidebar-border)",
+        "bg-bg peer-data-[sidebar-intent=inset]:overflow-hidden dark:peer-data-[sidebar-intent=inset]:bg-sidebar",
+        "peer-data-[sidebar-intent=inset]:min-h-[calc(100svh-theme(spacing.4))] md:peer-data-[sidebar-state=collapsed]:peer-data-[sidebar-intent=inset]:ml-2 md:peer-data-[sidebar-intent=inset]:m-2 md:peer-data-[sidebar-intent=inset]:ml-0 md:peer-data-[sidebar-intent=inset]:rounded-xl md:peer-data-[sidebar-intent=inset]:shadow-xs",
         className,
       )}
       {...props}
@@ -550,7 +550,7 @@ const SidebarDisclosure = ({ className, ref, ...props }: SidebarDisclosureProps)
     <Disclosure
       ref={ref}
       data-sidebar-disclosure="true"
-      className={composeTailwindRenderProps(className, "px-2 in-data-[sidebar-intent=fleet]:px-0")}
+      className={composeTailwindRenderProps(className, "in-data-[sidebar-intent=fleet]:px-0 px-2")}
       {...props}
     />
   )
@@ -558,18 +558,18 @@ const SidebarDisclosure = ({ className, ref, ...props }: SidebarDisclosureProps)
 
 const sidebarDisclosureTrigger = tv({
   base: [
-    "text-sidebar-fg/70 relative px-2.5 py-2 overflow-hidden gap-x-2 w-full group cursor-pointer flex items-center sm:text-sm rounded-lg outline-hidden",
-    "in-data-[sidebar-intent=fleet]:rounded-none in-data-[sidebar-intent=fleet]:**:data-[slot=chevron]:hidden in-data-[sidebar-intent=fleet]:py-2",
+    "group relative flex w-full cursor-pointer items-center gap-x-2 overflow-hidden rounded-lg px-2.5 py-2 text-sidebar-fg/70 outline-hidden sm:text-sm",
+    "in-data-[sidebar-intent=fleet]:rounded-none in-data-[sidebar-intent=fleet]:py-2 in-data-[sidebar-intent=fleet]:**:data-[slot=chevron]:hidden",
   ],
   variants: {
     collapsed: {
-      true: "size-9 justify-center p-0 gap-x-0",
+      true: "size-9 justify-center gap-x-0 p-0",
     },
     isActive: {
       true: "bg-(--sidebar-accent) text-sidebar-fg",
     },
     isDisabled: {
-      true: "opacity-50 cursor-default",
+      true: "cursor-default opacity-50",
     },
   },
 })
@@ -601,7 +601,7 @@ const SidebarDisclosureTrigger = ({ className, ref, ...props }: SidebarDisclosur
             {state !== "collapsed" && (
               <IconChevronLgLeft
                 data-slot="chevron"
-                className="z-10 ml-auto transition-transform size-3.5 group-aria-expanded:-rotate-90"
+                className="group-aria-expanded:-rotate-90 z-10 ml-auto size-3.5 transition-transform"
               />
             )}
           </>
@@ -660,10 +660,10 @@ const SidebarRail = ({ className, ref, ...props }: SidebarRailProps) => {
       tabIndex={-1}
       onClick={toggleSidebar}
       className={cn(
-        "absolute outline-hidden inset-y-0 z-20 hidden w-4 -translate-x-1/2 transition-all ease-linear after:absolute after:inset-y-0 after:left-1/2 after:w-[2px] data-hovered:after:bg-transparent group-data-[sidebar-side=left]/sidebar-container:-right-4 group-data-[sidebar-side=right]/sidebar-container:left-0 sm:flex",
+        "-translate-x-1/2 group-data-[sidebar-side=left]/sidebar-container:-right-4 absolute inset-y-0 z-20 hidden w-4 outline-hidden transition-all ease-linear after:absolute after:inset-y-0 after:left-1/2 after:w-[2px] data-hovered:after:bg-transparent group-data-[sidebar-side=right]/sidebar-container:left-0 sm:flex",
         "in-data-[sidebar-side=left]:cursor-w-resize in-data-[sidebar-side=right]:cursor-e-resize",
         "[[data-sidebar-side=left][data-sidebar-state=collapsed]_&]:cursor-e-resize [[data-sidebar-side=right][data-sidebar-state=collapsed]_&]:cursor-w-resize",
-        "group-data-[sidebar-collapsible=hidden]/sidebar-container:translate-x-0 group-data-[sidebar-collapsible=hidden]/sidebar-container:after:left-full group-data-[sidebar-collapsible=hidden]/sidebar-container:hover:bg-secondary",
+        "group-data-[sidebar-collapsible=hidden]/sidebar-container:translate-x-0 group-data-[sidebar-collapsible=hidden]/sidebar-container:hover:bg-secondary group-data-[sidebar-collapsible=hidden]/sidebar-container:after:left-full",
         "[[data-sidebar-side=left][data-sidebar-collapsible=hidden]_&]:-right-2 [[data-sidebar-side=right][data-sidebar-collapsible=hidden]_&]:-left-2",
         className,
       )}
@@ -681,7 +681,7 @@ const SidebarLabel = ({ className, ref, ...props }: SidebarLabelProps) => {
       <Text
         ref={ref}
         slot="label"
-        className={cn("flex flex-1 w-full overflow-hidden whitespace-nowrap", className)}
+        className={cn("flex w-full flex-1 overflow-hidden whitespace-nowrap", className)}
         {...props}
       >
         {props.children}
@@ -693,12 +693,12 @@ const SidebarLabel = ({ className, ref, ...props }: SidebarLabelProps) => {
 
 const nav = tv({
   base: [
-    "md:w-full isolate text-navbar-fg justify-between sm:justify-start h-[3.2rem] flex items-center gap-x-2 px-4",
-    "group-has-data-[sidebar-intent=default]/sidebar-root:bg-sidebar group-has-data-[sidebar-intent=default]/sidebar-root:border-b group-has-data-[sidebar-intent=fleet]/sidebar-root:border-b",
+    "isolate flex h-[3.2rem] items-center justify-between gap-x-2 px-4 text-navbar-fg sm:justify-start md:w-full",
+    "group-has-data-[sidebar-intent=default]/sidebar-root:border-b group-has-data-[sidebar-intent=fleet]/sidebar-root:border-b group-has-data-[sidebar-intent=default]/sidebar-root:bg-sidebar",
   ],
   variants: {
     isSticky: {
-      true: "static group-has-data-[sidebar-intent=default]/sidebar-root:sticky top-0 z-40",
+      true: "static top-0 z-40 group-has-data-[sidebar-intent=default]/sidebar-root:sticky",
     },
   },
 })

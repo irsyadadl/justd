@@ -68,7 +68,7 @@ export function Blocks() {
 
             <Grid.Item>
               <div className="grid gap-2">
-                <Wrapper className="grid gap-6 lg:py-9 lg:px-8">
+                <Wrapper className="grid gap-6 lg:px-8 lg:py-9">
                   <DateRangePicker className="w-full" label="Reservations date" />
                   <DatePicker className="w-full" label="Event date" />
                 </Wrapper>
@@ -95,7 +95,7 @@ export function Blocks() {
           </Grid>
         </div>
 
-        <div className="flex justify-center items-center mt-8 lg:justify-end">
+        <div className="mt-8 flex items-center justify-center lg:justify-end">
           <Link className={buttonStyles()} href="/docs/2.x/components/buttons/button">
             <IconCubeFill /> Show More
           </Link>

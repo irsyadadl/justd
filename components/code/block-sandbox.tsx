@@ -119,9 +119,9 @@ function Component({ folders, fullscreen, isIframe = false, title, ...props }: P
                   style={{ "--nested-level": nestedLevel } as React.CSSProperties}
                 >
                   {isExpanded ? (
-                    <IconFolderOpenFill className="text-sky-600 size-4 dark:text-[#62cfff]" />
+                    <IconFolderOpenFill className="size-4 text-sky-600 dark:text-[#62cfff]" />
                   ) : (
-                    <IconFolderFill className="text-sky-600 size-4 dark:text-[#62cfff]" />
+                    <IconFolderFill className="size-4 text-sky-600 dark:text-[#62cfff]" />
                   )}
                   <SidebarLabel>{key}</SidebarLabel>
                 </SidebarDisclosureTrigger>
@@ -139,9 +139,9 @@ function Component({ folders, fullscreen, isIframe = false, title, ...props }: P
     return <p>Component "{props.preview}" not found in the registry.</p>
   }
   return (
-    <div className="flex overflow-hidden relative rounded-xl border isolate">
-      <Tabs className="gap-0 p-1 w-full">
-        <div className="flex overflow-hidden justify-between items-center mb-1 rounded-lg ring-1 bg-navbar ring-fg/10">
+    <div className="relative isolate flex overflow-hidden rounded-xl border">
+      <Tabs className="w-full gap-0 p-1">
+        <div className="mb-1 flex items-center justify-between overflow-hidden rounded-lg bg-navbar ring-1 ring-fg/10">
           <h2 className="ml-3.5 inline-flex items-center gap-x-1.5 font-medium text-sm **:data-[slot=icon]:text-muted-fg">
             {title.includes("Sidebar") ? (
               <IconLayoutAlignLeft />
@@ -152,7 +152,7 @@ function Component({ folders, fullscreen, isIframe = false, title, ...props }: P
             )}
             {title}
           </h2>
-          <div className="flex items-center py-1 px-2 ring-1 ring-transparent shadow-sm rounded-s-lg bg-bg dark:ring-border">
+          <div className="flex items-center rounded-s-lg bg-bg px-2 py-1 shadow-sm ring-1 ring-transparent dark:ring-border">
             <TabList className="flex items-center text-xs">
               <Tab
                 className={({ isSelected }) =>
@@ -220,7 +220,7 @@ function Component({ folders, fullscreen, isIframe = false, title, ...props }: P
                 <IconDeviceDesktop />
               </ToggleButton>
             </ToggleGroup>
-            <Separator orientation="vertical" className="hidden mx-2 h-6 sm:block" />
+            <Separator orientation="vertical" className="mx-2 hidden h-6 sm:block" />
             {fullscreen && (
               <Link
                 href={fullscreen}
@@ -234,7 +234,7 @@ function Component({ folders, fullscreen, isIframe = false, title, ...props }: P
           </div>
         </div>
         <Tabs.Panel id="preview">
-          <div className="flex justify-center items-center">
+          <div className="flex items-center justify-center">
             {isIframe ? (
               <iframe
                 title="preview"
@@ -261,25 +261,25 @@ function Component({ folders, fullscreen, isIframe = false, title, ...props }: P
           </div>
         </Tabs.Panel>
         <Tabs.Panel id="code">
-          <div className="flex overflow-hidden rounded-lg border max-h-(--height) min-h-(--height) [--height:85vh]">
+          <div className="flex max-h-(--height) min-h-(--height) overflow-hidden rounded-lg border [--height:85vh]">
             <SidebarProvider className="min-h-full">
               <Sidebar intent="fleet" className="h-full" collapsible="none">
-                <SidebarHeader className="flex flex-row justify-between items-center py-0 h-12 bg-gradient-to-b border-b">
+                <SidebarHeader className="flex h-12 flex-row items-center justify-between border-b bg-gradient-to-b py-0">
                   <Link
                     className="flex items-center gap-x-2 group-data-[collapsible=dock]:size-10 group-data-[collapsible=dock]:justify-center"
                     href="/docs/2.x/components/layouts/sidebar"
                   >
                     <IconFolderFill className="size-4.5" />
-                    <SidebarLabel className="text-sm font-medium">getjustd.com</SidebarLabel>
+                    <SidebarLabel className="font-medium text-sm">getjustd.com</SidebarLabel>
                   </Link>
                 </SidebarHeader>
                 <SidebarContent className="pb-10">{renderTree(folders)}</SidebarContent>
               </Sidebar>
               <SidebarInset className="overflow-hidden">
-                <SidebarNav className="flex justify-between h-12 shrink-0 bg-sidebar">
+                <SidebarNav className="flex h-12 shrink-0 justify-between bg-sidebar">
                   <div className="flex flex-1 items-center">
                     <BrandIcon label={selectedKey} />
-                    <strong className="ml-2 text-xs font-medium">{selectedKey}</strong>
+                    <strong className="ml-2 font-medium text-xs">{selectedKey}</strong>
                   </div>
                   <Button
                     onPress={() => {
@@ -304,7 +304,7 @@ function Component({ folders, fullscreen, isIframe = false, title, ...props }: P
                 <CodeHighlighter
                   max96={false}
                   plain
-                  className={"overflow-y-auto bg-zinc-950 h-full px-6 pt-6 pb-24 text-white"}
+                  className={"h-full overflow-y-auto bg-zinc-950 px-6 pt-6 pb-24 text-white"}
                   code={code}
                 />
               </SidebarInset>

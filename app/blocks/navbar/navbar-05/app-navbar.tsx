@@ -32,7 +32,7 @@ export default function AppNavbar() {
             <Navbar.Item href="#">Mac</Navbar.Item>
             <Navbar.Item href="#">iPad</Navbar.Item>
           </Navbar.Section>
-          <Navbar.Section className="hidden ml-auto sm:flex">
+          <Navbar.Section className="ml-auto hidden sm:flex">
             <Navbar.Flex>
               <SearchField aria-label="Search for products" />
             </Navbar.Flex>

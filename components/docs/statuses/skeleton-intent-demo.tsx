@@ -8,8 +8,8 @@ export default function SkeletonIntentDemo() {
       <div className="flex gap-2">
         <Skeleton intent="lighter" className="size-8" />
         <div className="space-y-1">
-          <Skeleton intent="muted" className="w-20 h-3.5" />
-          <Skeleton intent="muted" className="w-48 h-3.5" />
+          <Skeleton intent="muted" className="h-3.5 w-20" />
+          <Skeleton intent="muted" className="h-3.5 w-48" />
         </div>
       </div>
     </Card>

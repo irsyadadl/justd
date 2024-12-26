@@ -19,7 +19,7 @@ export default function ButtonLoaderDemo() {
   return (
     <Button
       isPending={loading === "loading"}
-      className="justify-between w-52"
+      className="w-52 justify-between"
       onPress={pressHandler}
       intent="primary"
     >

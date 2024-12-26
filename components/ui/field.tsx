@@ -34,9 +34,9 @@ const fieldStyles = tv({
   slots: {
     description: "text-pretty text-base/6 text-muted-fg sm:text-sm/6",
     label: "w-fit cursor-default font-medium text-secondary-fg text-sm",
-    fieldError: "text-sm/6 text-danger forced-colors:text-[Mark]",
+    fieldError: "text-danger text-sm/6 forced-colors:text-[Mark]",
     input: [
-      "w-full min-w-0 [&::-ms-reveal]:hidden bg-transparent py-2 px-2.5 text-base text-fg placeholder-muted-fg outline-hidden data-focused:outline-hidden sm:text-sm",
+      "w-full min-w-0 bg-transparent px-2.5 py-2 text-base text-fg placeholder-muted-fg outline-hidden data-focused:outline-hidden sm:text-sm [&::-ms-reveal]:hidden",
     ],
   },
 })
@@ -79,8 +79,8 @@ const FieldError = ({ className, ref, ...props }: FieldErrorProps) => {
 
 const fieldGroupStyles = tv({
   base: [
-    "group border border-input transition h-10 duration-200 ease-out overflow-hidden rounded-lg flex items-center",
-    "group-data-invalid:focus-within:border-danger focus-within:ring-4 group-data-invalid:focus-within:ring-danger/20",
+    "group flex h-10 items-center overflow-hidden rounded-lg border border-input transition duration-200 ease-out",
+    "focus-within:ring-4 group-data-invalid:focus-within:border-danger group-data-invalid:focus-within:ring-danger/20",
     "[&>[role=progressbar]]:mr-2.5",
     "**:data-[slot=icon]:size-4 **:data-[slot=icon]:shrink-0",
     "*:data-[slot=suffix]:mr-2.5 *:data-[slot=suffix]:text-muted-fg",

@@ -5,7 +5,7 @@ import { Button } from "ui"
 
 export default function ButtonIntentDemo() {
   return (
-    <div className="flex flex-wrap gap-2 max-w-sm">
+    <div className="flex max-w-sm flex-wrap gap-2">
       <Button>
         <IconDuplicate /> Label
       </Button>

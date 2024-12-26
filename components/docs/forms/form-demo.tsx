@@ -4,7 +4,7 @@ import { Button, Form, Heading, TextField } from "ui"
 
 export default function FormDemo() {
   return (
-    <div className="py-10 mx-auto max-w-md">
+    <div className="mx-auto max-w-md py-10">
       <Heading level={2} className="mb-4">
         Register
       </Heading>

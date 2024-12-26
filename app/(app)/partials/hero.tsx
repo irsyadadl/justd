@@ -7,10 +7,10 @@ import { Container, Link, buttonStyles } from "ui"
 
 export function Hero() {
   return (
-    <div className="overflow-hidden relative isolate bg-bg">
+    <div className="relative isolate overflow-hidden bg-bg">
       <div
         aria-hidden="true"
-        className="hidden overflow-hidden absolute inset-x-0 -top-10 transform-gpu sm:block sm:-top-56 -z-10 blur-3xl"
+        className="-top-10 sm:-top-56 -z-10 absolute inset-x-0 hidden transform-gpu overflow-hidden blur-3xl sm:block"
       >
         <div
           style={{
@@ -43,21 +43,21 @@ export function Hero() {
           strokeWidth={0}
         />
       </svg>
-      <div className="pt-10 pb-6 border-b sm:py-8 lg:py-10 xl:py-20 2xl:py-24">
+      <div className="border-b pt-10 pb-6 sm:py-8 lg:py-10 xl:py-20 2xl:py-24">
         <Container>
           <Header>
             <Link
               target="_blank"
               href={siteConfig.repo}
-              className="inline-flex gap-x-1 items-center py-2 px-3 text-xs rounded-full bg-zinc-50 group text-zinc-900 data-hovered:bg-zinc-200"
+              className="group inline-flex items-center gap-x-1 rounded-full bg-zinc-50 px-3 py-2 text-xs text-zinc-900 data-hovered:bg-zinc-200"
             >
-              <IconStar className="text-amber-400 duration-200 group-hover:text-amber-400 group-hover:fill-amber-400" />
+              <IconStar className="text-amber-400 duration-200 group-hover:fill-amber-400 group-hover:text-amber-400" />
               Stars sustain energy
             </Link>
-            <h1 className="mt-4 mb-4 max-w-xl text-2xl font-bold tracking-tight lg:mb-6 lg:text-4xl">
+            <h1 className="mt-4 mb-4 max-w-xl font-bold text-2xl tracking-tight lg:mb-6 lg:text-4xl">
               Accessible React UI Components. Copy, Customize, and Make Them Yours.
             </h1>
-            <p className="block max-w-3xl text-base text-muted-fg leading-relaxed md:leading-relaxed max-w-xl lg:text-xl [&_strong]:font-medium">
+            <p className="block max-w-3xl max-w-xl text-base text-muted-fg leading-relaxed md:leading-relaxed lg:text-xl [&_strong]:font-medium">
               <strong className="text-fg">{siteConfig.name}</strong> is a chill set of React
               components, built on top of <strong className="text-fg">React Aria Components</strong>
               , all about keeping the web accessible. Easy to customize and just copy & paste into
@@ -67,7 +67,7 @@ export function Hero() {
             </p>
           </Header>
 
-          <div className="flex gap-x-2 items-center mt-6">
+          <div className="mt-6 flex items-center gap-x-2">
             <Link
               className={buttonStyles({
                 size: "large",

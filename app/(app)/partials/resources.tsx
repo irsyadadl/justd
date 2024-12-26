@@ -108,7 +108,7 @@ export function Resources() {
               </Card.Header>
             </div>
             <Card.Footer>
-              <Badge className="text-pink-700 dark:text-pink-400 bg-pink-400/15 group-data-hovered:bg-pink-400/25 dark:bg-pink-400/10 dark:group-data-hovered:bg-pink-400/20">
+              <Badge className="bg-pink-400/15 text-pink-700 group-data-hovered:bg-pink-400/25 dark:bg-pink-400/10 dark:text-pink-400 dark:group-data-hovered:bg-pink-400/20">
                 support
               </Badge>
             </Card.Footer>
@@ -150,7 +150,7 @@ export function Wrapper({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="wrapper-card"
       className={cn(
-        "flex relative group **:data-[slot=card-header]:px-0 **:data-[slot=card-footer]:px-0 flex-col p-4 w-full h-full rounded-lg lg:p-8 bg-overlay inset-shadow-zinc-200 inset-shadow-xs inset-ring inset-ring-zinc-200 shadow-xs dark:inset-shadow-zinc-800 dark:inset-ring-zinc-500/10",
+        "group relative inset-ring inset-ring-zinc-200 inset-shadow-xs inset-shadow-zinc-200 flex h-full w-full flex-col rounded-lg bg-overlay p-4 shadow-xs **:data-[slot=card-footer]:px-0 **:data-[slot=card-header]:px-0 lg:p-8 dark:inset-ring-zinc-500/10 dark:inset-shadow-zinc-800",
         className,
       )}
       {...props}
@@ -162,7 +162,7 @@ export function WrapperIcon(props: React.ComponentProps<"div">) {
   return (
     <div
       id="support"
-      className="grid place-content-center text-xl rounded-full size-14 bg-secondary/20 inset-ring inset-ring-fg/15 group-hover:bg-secondary/30"
+      className="inset-ring inset-ring-fg/15 grid size-14 place-content-center rounded-full bg-secondary/20 text-xl group-hover:bg-secondary/30"
       {...props}
     />
   )

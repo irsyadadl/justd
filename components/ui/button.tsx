@@ -12,19 +12,19 @@ import { focusButtonStyles } from "./primitive"
 const buttonStyles = tv({
   extend: focusButtonStyles,
   base: [
-    "kbt32x border relative flex items-center justify-center gap-x-2 font-medium",
+    "kbt32x relative flex items-center justify-center gap-x-2 border font-medium",
     "forced-colors:[--button-icon:ButtonText] forced-colors:data-hovered:[--button-icon:ButtonText]",
     "*:data-[slot=icon]:-mx-0.5 *:data-[slot=icon]:my-1 *:data-[slot=icon]:size-4 *:data-[slot=icon]:shrink-0 *:data-[slot=icon]:text-current/60",
   ],
   variants: {
     intent: {
       primary: [
-        "outline-primary [--btn-bg:theme(--color-primary/95%)] dark:[--btn-bg:theme(--color-primary/90%)] [--btn-fg:var(--color-primary-fg)] [--btn-border:var(--color-primary)]",
+        "outline-primary [--btn-bg:theme(--color-primary/95%)] [--btn-border:var(--color-primary)] [--btn-fg:var(--color-primary-fg)] dark:[--btn-bg:theme(--color-primary/90%)]",
         "[--btn-bg-hovered:theme(--color-primary/87%)] [--btn-border-hovered:theme(--color-primary/87%)] dark:[--btn-bg-hovered:theme(--color-primary)] dark:[--btn-border-hovered:theme(--color-primary)]",
         "inset-shadow-primary-fg/20 data-hovered:inset-shadow-primary-fg/25 data-pressed:inset-shadow-primary-fg/20",
       ],
       secondary: [
-        "[--btn-bg:theme(--color-secondary/95%)] dark:[--btn-bg:theme(--color-secondary/85%)] [--btn-fg:var(--color-secondary-fg)] [--btn-border:theme(--color-secondary-fg/10%)] dark:[--btn-border:theme(--color-secondary-fg/7%)]",
+        "[--btn-bg:theme(--color-secondary/95%)] [--btn-border:theme(--color-secondary-fg/10%)] [--btn-fg:var(--color-secondary-fg)] dark:[--btn-bg:theme(--color-secondary/85%)] dark:[--btn-border:theme(--color-secondary-fg/7%)]",
         "[--btn-bg-hovered:color-mix(in_oklab,var(--color-secondary)_60%,white_20%)] dark:[--btn-bg-hovered:color-mix(in_oklab,var(--color-secondary)_96%,white_4%)]",
         "inset-shadow-white/15 data-hovered:inset-shadow-white/20 data-pressed:inset-shadow-white/15",
       ],
@@ -32,12 +32,12 @@ const buttonStyles = tv({
         "[--btn-warning:theme(--color-warning/97%)]",
         "[--btn-warning-hovered:color-mix(in_oklab,var(--color-warning)_85%,white_15%)]",
         "dark:[--btn-warning-hovered:color-mix(in_oklab,var(--color-warning)_90%,white_10%)]",
-        "outline-warning [--btn-bg:var(--btn-warning)] [--btn-fg:var(--color-warning-fg)] [--btn-border:var(--btn-warning)]",
+        "outline-warning [--btn-bg:var(--btn-warning)] [--btn-border:var(--btn-warning)] [--btn-fg:var(--color-warning-fg)]",
         "[--btn-bg-hovered:var(--btn-warning-hovered)] [--btn-border-hovered:var(--btn-warning-hovered)]",
         "inset-shadow-white/25 data-hovered:inset-shadow-white/30 data-pressed:inset-shadow-white/25",
       ],
       danger: [
-        "outline-danger [--btn-bg:var(--color-danger)] dark:[--btn-bg:var(--color-danger)] [--btn-fg:var(--color-danger-fg)] [--btn-border:var(--color-danger)]",
+        "outline-danger [--btn-bg:var(--color-danger)] [--btn-border:var(--color-danger)] [--btn-fg:var(--color-danger-fg)] dark:[--btn-bg:var(--color-danger)]",
         "[--btn-danger-hovered:color-mix(in_oklab,var(--color-danger)_93%,white_7%)]",
         "dark:[--btn-danger-hovered:color-mix(in_oklab,var(--color-danger)_96%,white_4%)]",
         "[--btn-bg-hovered:var(--btn-danger-hovered)] [--btn-border-hovered:var(--btn-danger-hovered)]",
@@ -46,20 +46,20 @@ const buttonStyles = tv({
     },
     appearance: {
       solid: [
-        "dark:border-0 inset-ring-0 dark:inset-ring",
-        "inset-shadow-2xs bg-(--btn-bg) text-(--btn-fg) border-(--btn-border) inset-ring-(--btn-border)",
+        "inset-ring-0 dark:inset-ring dark:border-0",
+        "inset-ring-(--btn-border) inset-shadow-2xs border-(--btn-border) bg-(--btn-bg) text-(--btn-fg)",
         "data-hovered:bg-(--btn-bg-hovered) data-hovered:ring-(--btn-border-hovered) data-hovered:*:data-[slot=icon]:text-current/90",
-        "data-pressed:bg-(--btn-bg) data-pressed:border-(--btn-border) data-pressed:*:data-[slot=icon]:text-current",
+        "data-pressed:border-(--btn-border) data-pressed:bg-(--btn-bg) data-pressed:*:data-[slot=icon]:text-current",
       ],
       outline: ["border data-hovered:bg-secondary data-pressed:bg-secondary"],
       plain: ["border-transparent data-hovered:bg-secondary data-pressed:bg-secondary"],
     },
     size: {
       "extra-small": "h-8 px-[calc(var(--spacing)*2.7)] text-xs/4 lg:text-[0.800rem]/4",
-      small: "h-9  px-3.5 text-sm/5 sm:text-sm/5",
+      small: "h-9 px-3.5 text-sm/5 sm:text-sm/5",
       medium: "h-10 px-4 text-base sm:text-sm/6",
       large:
-        "*:data-[slot=icon]:mx-[-1.5px] h-11 px-4.5 text-base lg:text-base/7 sm:*:data-[slot=icon]:size-5",
+        "h-11 px-4.5 text-base *:data-[slot=icon]:mx-[-1.5px] sm:*:data-[slot=icon]:size-5 lg:text-base/7",
       "square-petite": "size-9 shrink-0 **:data-[slot=icon]:text-current",
     },
     shape: {
@@ -67,8 +67,8 @@ const buttonStyles = tv({
       circle: "rounded-full",
     },
     isDisabled: {
-      false: "forced-colors:data-disabled:text-[GrayText] cursor-pointer",
-      true: "cursor-default ring-0 dark:inset-ring-0 border-0 inset-shadow-none opacity-50 forced-colors:data-disabled:text-[GrayText]",
+      false: "cursor-pointer forced-colors:data-disabled:text-[GrayText]",
+      true: "inset-shadow-none cursor-default border-0 opacity-50 ring-0 dark:inset-ring-0 forced-colors:data-disabled:text-[GrayText]",
     },
     isPending: {
       true: "cursor-default opacity-50",

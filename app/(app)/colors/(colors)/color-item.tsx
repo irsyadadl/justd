@@ -63,7 +63,7 @@ export function ColorItem({ color }: { color: keyof typeof colors }) {
         "pb-6 even:pl-6 even:lg:border-r-0",
       )}
     >
-      <div className="flex justify-between items-center mb-4">
+      <div className="mb-4 flex items-center justify-between">
         <div className="font-mono text-sm uppercase">{color}</div>
         <div>
           <SelectFormat selected={selectedFormat} setSelected={setSelectedFormat} />
@@ -102,7 +102,7 @@ interface SelectedFormatProps {
 export function SelectFormat({ selected, setSelected }: SelectedFormatProps) {
   return (
     <Menu>
-      <Button appearance="outline" className="justify-between w-32 font-mono uppercase">
+      <Button appearance="outline" className="w-32 justify-between font-mono uppercase">
         {[...selected].join(", ")}
         <IconChevronLgDown className="ml-1" />
       </Button>

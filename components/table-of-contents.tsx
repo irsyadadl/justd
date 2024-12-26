@@ -68,7 +68,7 @@ export function TableOfContents({ className, items }: Props) {
       <nav aria-labelledby="on-this-page-title" className="w-56">
         <Suspense>
           <>
-            <Heading level={2} className="mb-6 text-base font-medium leading-7 lg:text-lg text-fg">
+            <Heading level={2} className="mb-6 font-medium text-base text-fg leading-7 lg:text-lg">
               On this page
             </Heading>
             {items.length > 0 && (

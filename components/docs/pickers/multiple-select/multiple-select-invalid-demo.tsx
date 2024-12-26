@@ -43,7 +43,7 @@ export default function MultipleSelectInvalidDemo() {
         }}
       </MultipleSelect>
       {invalid && (
-        <div className="text-sm text-danger forced-colors:text-[Mark]">
+        <div className="text-danger text-sm forced-colors:text-[Mark]">
           Please fill out this field.
         </div>
       )}

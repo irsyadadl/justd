@@ -71,7 +71,7 @@ export default function PieChartDonutWithTextDemo() {
                         textAnchor="middle"
                         dominantBaseline="middle"
                       >
-                        <tspan x={viewBox.cx} y={viewBox.cy} className="text-3xl font-bold fill-fg">
+                        <tspan x={viewBox.cx} y={viewBox.cy} className="fill-fg font-bold text-3xl">
                           {totalSales.toLocaleString()}
                         </tspan>
                         <tspan x={viewBox.cx} y={(viewBox.cy || 0) + 24} className="fill-muted-fg">

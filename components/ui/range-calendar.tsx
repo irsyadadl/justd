@@ -19,7 +19,7 @@ import { focusRing } from "./primitive"
 
 const cell = tv({
   extend: focusRing,
-  base: "flex size-full items-center tabular-nums justify-center rounded-lg forced-color-adjust-none",
+  base: "flex size-full items-center justify-center rounded-lg tabular-nums forced-color-adjust-none",
   variants: {
     selectionState: {
       none: "group-data-hovered/calendar-cell:bg-secondary-fg/15 group-data-pressed/calendar-cell:bg-secondary-fg/20 forced-colors:group-data-pressed/calendar-cell:bg-[Highlight]",
@@ -50,7 +50,7 @@ const RangeCalendar = <T extends DateValue>({
   return (
     <RangeCalendarPrimitive visibleDuration={visibleDuration} {...props}>
       <Calendar.Header />
-      <div className="flex overflow-auto gap-2">
+      <div className="flex gap-2 overflow-auto">
         {Array.from({ length: visibleDuration?.months ?? 1 }).map((_, index) => {
           const id = index + 1 // Adjusting to start at 1
           return (
@@ -66,7 +66,7 @@ const RangeCalendar = <T extends DateValue>({
                     date={date}
                     className={twJoin([
                       "[--cell-fg:var(--color-primary)] [--cell:color-mix(in_oklab,var(--color-primary)_10%,white_90%)]",
-                      "dark:[--cell:color-mix(in_oklab,var(--color-primary)_30%,black_45%)] dark:[--cell-fg:color-mix(in_oklab,var(--color-primary)_80%,white_20%)]",
+                      "dark:[--cell-fg:color-mix(in_oklab,var(--color-primary)_80%,white_20%)] dark:[--cell:color-mix(in_oklab,var(--color-primary)_30%,black_45%)]",
                       "group/calendar-cell size-10 cursor-default outline-hidden [line-height:2.286rem] data-selection-start:rounded-s-lg data-selection-end:rounded-e-lg data-outside-month:text-muted-fg sm:text-sm lg:size-9",
                       "data-selected:bg-(--cell)/70 data-selected:text-(--cell-fg) dark:data-selected:bg-(--cell)",
                       "data-invalid:data-selected:bg-red-100 dark:data-invalid:data-selected:bg-red-700/30",
@@ -106,7 +106,7 @@ const RangeCalendar = <T extends DateValue>({
       </div>
 
       {errorMessage && (
-        <Text slot="errorMessage" className="text-sm text-danger">
+        <Text slot="errorMessage" className="text-danger text-sm">
           {errorMessage}
         </Text>
       )}

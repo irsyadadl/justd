@@ -2,12 +2,12 @@ import { Avatar } from "ui"
 
 export default function AvatarGroupDemo() {
   return (
-    <div className="flex justify-center items-center -space-x-2">
+    <div className="-space-x-2 flex items-center justify-center">
       {users.map((user) => (
         <Avatar
           key={user.id}
           src={user.image_url}
-          className="ring-2 ring-white size-8 dark:ring-zinc-900"
+          className="size-8 ring-2 ring-white dark:ring-zinc-900"
         />
       ))}
     </div>

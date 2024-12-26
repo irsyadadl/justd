@@ -9,8 +9,8 @@ import { ColorWheel } from "ui"
 export default function ColorWheelControlledDemo() {
   const [color, setColor] = useState(parseColor("hsl(0, 100%, 50%)"))
   return (
-    <div className="grid gap-4 justify-center items-center sm:grid-cols-2">
-      <div className="grid place-content-center shrink-0">
+    <div className="grid items-center justify-center gap-4 sm:grid-cols-2">
+      <div className="grid shrink-0 place-content-center">
         <ColorWheel aria-label="Background color" value={color} onChange={setColor} />
       </div>
       <ControlledValues color={color} />

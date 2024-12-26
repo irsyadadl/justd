@@ -6,10 +6,10 @@ export default function SkeletonAnatomy() {
       <div className="flex gap-2">
         <Skeleton intent="lighter" shape="circle" className="size-8" />
         <div className="space-y-1">
-          <Skeleton intent="muted" shape="circle" className="w-56 h-4" />
-          <Skeleton intent="lighter" shape="circle" className="w-16 h-4" />
-          <Skeleton intent="lighter" className="w-24 h-4" />
-          <Skeleton intent="muted" className="w-32 h-4" />
+          <Skeleton intent="muted" shape="circle" className="h-4 w-56" />
+          <Skeleton intent="lighter" shape="circle" className="h-4 w-16" />
+          <Skeleton intent="lighter" className="h-4 w-24" />
+          <Skeleton intent="muted" className="h-4 w-32" />
         </div>
       </div>
     </Card>

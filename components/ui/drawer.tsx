@@ -133,10 +133,10 @@ const DrawerContentPrimitive = ({ children, ...props }: DrawerOverlayPrimitivePr
         >
           <div className="overflow-hidden">
             {withNotch && (
-              <div className="sticky top-0 mx-auto mt-2.5 w-10 h-1.5 rounded-full notch shrink-0 touch-pan-y bg-fg/20" />
+              <div className="notch sticky top-0 mx-auto mt-2.5 h-1.5 w-10 shrink-0 touch-pan-y rounded-full bg-fg/20" />
             )}
             <div
-              className="overflow-y-auto mt-3"
+              className="mt-3 overflow-y-auto"
               ref={(el) => {
                 if (el) {
                   const resizeObserver = new ResizeObserver((entries) => {

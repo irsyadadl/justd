@@ -5,13 +5,13 @@ import { Heading } from "./heading"
 const card = tv({
   slots: {
     root: [
-      "xrkr rounded-lg bg-bg xkd2 has-[table]:**:data-[slot=card-footer]:border-t **:data-[slot=table-header]:bg-muted/50 has-[table]:overflow-hidden border text-fg shadow-xs **:[table]:overflow-hidden",
+      "xrkr xkd2 rounded-lg border bg-bg text-fg shadow-xs has-[table]:overflow-hidden **:data-[slot=table-header]:bg-muted/50 has-[table]:**:data-[slot=card-footer]:border-t **:[table]:overflow-hidden",
     ],
     header: "flex flex-col gap-y-1 px-6 py-5",
-    title: "sm:leading-6 leading-none font-semibold tracking-tight",
+    title: "font-semibold leading-none tracking-tight sm:leading-6",
     description: "text-muted-fg text-sm",
     content:
-      "px-6 pb-6 has-[[data-slot=table-header]]:bg-muted/40 has-[table]:p-0 [&:has(table)+[data-slot=card-footer]]:py-5 has-[table]:border-t **:data-[slot=table-cell]:px-6 **:data-[slot=table-column]:px-6",
+      "px-6 pb-6 has-[table]:border-t has-[[data-slot=table-header]]:bg-muted/40 has-[table]:p-0 **:data-[slot=table-cell]:px-6 **:data-[slot=table-column]:px-6 [&:has(table)+[data-slot=card-footer]]:py-5",
     footer: "flex items-center p-6 pt-0",
   },
 })

@@ -14,7 +14,7 @@ export default function CarouselOptionsDemo() {
       <Carousel.Content items={Array.from({ length: 16 }, (_, id) => ({ id: id + 1 }))}>
         {({ id }) => (
           <Carousel.Item id={id} className="basis-1/2 lg:basis-1/3">
-            <Card className="flex justify-center items-center aspect-square">
+            <Card className="flex aspect-square items-center justify-center">
               <Card.Title>{id}</Card.Title>
             </Card>
           </Carousel.Item>

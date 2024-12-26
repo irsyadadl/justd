@@ -72,7 +72,7 @@ export default async function Page({
       <Container className="py-4 sm:py-16">
         <Suspense
           fallback={
-            <div className="flex justify-center items-center min-h-96">
+            <div className="flex min-h-96 items-center justify-center">
               <Loader />
             </div>
           }

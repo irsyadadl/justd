@@ -41,19 +41,19 @@ export function Mdx({ code }: MdxProps) {
         Image,
         NewTab: (props: React.ComponentProps<typeof Link>) => (
           <Link
-            className="text-blue-600 dark:text-blue-400 not-prose xd2432 outline-hidden data-hovered:underline data-focus-visible:ring-1"
+            className="not-prose xd2432 text-blue-600 outline-hidden data-hovered:underline data-focus-visible:ring-1 dark:text-blue-400"
             target="_blank"
             {...props}
           >
             {(props.children as string) ?? "Preview"}
-            <IconArrowUpRight className="inline ml-1 size-3.5" />
+            <IconArrowUpRight className="ml-1 inline size-3.5" />
           </Link>
         ),
         How: DocHow,
         a: (props: React.ComponentProps<"a">) => (
           <a
             {...props}
-            className="text-blue-600 dark:text-blue-400 focus-visible:ring-1 not-prose xd2432 outline-hidden data-hovered:underline"
+            className="not-prose xd2432 text-blue-600 outline-hidden focus-visible:ring-1 data-hovered:underline dark:text-blue-400"
           />
         ),
         SourceCode: SourceCode,

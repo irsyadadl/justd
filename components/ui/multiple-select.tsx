@@ -28,15 +28,15 @@ const multiSelectStyles = tv({
   slots: {
     multiSelectField: "group flex w-full min-w-80 flex-col",
     multiSelect: [
-      "relative px-1 flex min-h-10 flex-row flex-wrap items-center rounded-lg shadow-xs border",
+      "relative flex min-h-10 flex-row flex-wrap items-center rounded-lg border px-1 shadow-xs",
       "has-[input[data-focused=true]]:border-ring/85",
       "has-[input[data-invalid=true][data-focused=true]]:border-blue-500",
       "has-[input[data-invalid=true]]:border-danger",
       "has-[input[data-focused=true]]:ring-4 has-[input[data-focused=true]]:ring-ring/20",
     ],
     chevronButton:
-      "size-8 -mr-2 grid place-content-center rounded-sm data-hovered:text-fg data-focused:text-fg text-muted-fg",
-    input: "flex-1 py-1 px-0.5 ml-1 shadow-none ring-0",
+      "-mr-2 grid size-8 place-content-center rounded-sm text-muted-fg data-focused:text-fg data-hovered:text-fg",
+    input: "ml-1 flex-1 px-0.5 py-1 shadow-none ring-0",
     comboBoxChild: "inline-flex flex-1 flex-wrap items-center px-0",
     comboBox: "group peer flex flex-1",
   },
@@ -299,7 +299,7 @@ const MultipleSelect = <T extends SelectedKey>({
               </ListBox.Picker>
             </Popover.Picker>
           </ComboBox>
-          <div className="flex relative justify-center items-center px-1 ml-auto" aria-hidden>
+          <div className="relative ml-auto flex items-center justify-center px-1" aria-hidden>
             <button
               type="button"
               className={chevronButton()}

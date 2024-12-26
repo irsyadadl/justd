@@ -16,11 +16,11 @@ const ToolbarContext = createContext<{ orientation?: ToolbarProps["orientation"]
 })
 
 const toolbarStyles = tv({
-  base: "flex gap-2 group",
+  base: "group flex gap-2",
   variants: {
     orientation: {
       horizontal:
-        "flex-row [&::-webkit-scrollbar]:hidden [scrollbar-width:none] [-ms-overflow-style:none]",
+        "flex-row [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
       vertical: "flex-col items-start",
     },
   },

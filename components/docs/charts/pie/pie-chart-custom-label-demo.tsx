@@ -45,7 +45,7 @@ export default function PieChartCustomLabelDemo() {
         <Card.Description>Jan - Jun 2024</Card.Description>
       </Card.Header>
       <Card.Content className="flex-1 pb-0">
-        <Chart config={chartConfig} className="px-0 mx-auto aspect-square max-h-[250px]">
+        <Chart config={chartConfig} className="mx-auto aspect-square max-h-[250px] px-0">
           <PieChart>
             <ChartTooltip content={<ChartTooltipContent nameKey="amount" hideLabel />} />
             <Pie

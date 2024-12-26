@@ -72,7 +72,7 @@ export default function SliderOrientationDemo() {
           orientation="vertical"
         />
       </div>
-      <Description className="block mt-6 text-center">Equilizer</Description>
+      <Description className="mt-6 block text-center">Equilizer</Description>
     </Card>
   )
 }

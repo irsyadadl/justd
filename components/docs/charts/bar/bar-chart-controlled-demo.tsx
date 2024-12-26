@@ -39,7 +39,7 @@ export default function BarChartControlledDemo() {
 
   return (
     <Card>
-      <Card.Header className="flex-row justify-between items-center">
+      <Card.Header className="flex-row items-center justify-between">
         <div className="space-y-1">
           <Card.Title>Business Overview</Card.Title>
           <Card.Description>
@@ -71,7 +71,7 @@ export default function BarChartControlledDemo() {
         </div>
       </Card.Header>
       <Card.Content className="px-2 sm:p-6">
-        <Chart config={chartConfig} className="w-full aspect-auto h-[250px]">
+        <Chart config={chartConfig} className="aspect-auto h-[250px] w-full">
           <BarChart
             accessibilityLayer
             data={chartData}

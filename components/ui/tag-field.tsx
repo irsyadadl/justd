@@ -19,7 +19,7 @@ const tagFieldsStyles = tv({
   variants: {
     appearance: {
       outline: [
-        "px-1 rounded-lg shadow-xs border",
+        "rounded-lg border px-1 shadow-xs",
         "has-[input[data-focused=true]]:border-primary",
         "has-[input[data-invalid=true][data-focused=true]]:border-danger has-[input[data-invalid=true]]:border-danger has-[input[data-invalid=true]]:ring-danger/20",
         "has-[input[data-focused=true]]:ring-4 has-[input[data-focused=true]]:ring-primary/20",
@@ -146,7 +146,7 @@ const TagField = ({
           onRemove={onRemove}
         >
           <div className={tagFieldsStyles({ appearance })}>
-            <div className="flex flex-wrap flex-1 items-center">
+            <div className="flex flex-1 flex-wrap items-center">
               <TagList
                 items={list.items}
                 className={twJoin(

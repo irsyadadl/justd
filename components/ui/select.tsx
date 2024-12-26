@@ -24,7 +24,7 @@ import { composeTailwindRenderProps, focusStyles } from "./primitive"
 const selectTriggerStyles = tv({
   extend: focusStyles,
   base: [
-    "btr **:data-[slot=icon]:size-4 group-data-disabled:opacity-50 flex h-10 w-full cursor-default items-center gap-4 rounded-lg border border-input py-2 pl-3 pr-2 text-start shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)] transition dark:shadow-none",
+    "btr flex h-10 w-full cursor-default items-center gap-4 rounded-lg border border-input py-2 pr-2 pl-3 text-start shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)] transition **:data-[slot=icon]:size-4 group-data-disabled:opacity-50 dark:shadow-none",
     "group-data-open:border-ring/70 group-data-open:ring-4 group-data-open:ring-ring/20",
     "text-fg group-data-invalid:border-danger group-data-invalid:ring-danger/20 forced-colors:group-data-invalid:border-[Mark]",
   ],
@@ -106,7 +106,7 @@ const SelectTrigger = ({ className, ...props }: SelectTriggerProps) => {
       <SelectValue className="flex-1 text-base data-placeholder:text-muted-fg sm:text-sm [&_[slot=description]]:hidden" />
       <IconChevronLgDown
         aria-hidden
-        className="duration-300 size-4 shrink-0 text-muted-fg group-data-open:rotate-180 group-data-open:text-fg group-data-disabled:opacity-50 forced-colors:text-[ButtonText] forced-colors:group-data-disabled:text-[GrayText]"
+        className="size-4 shrink-0 text-muted-fg duration-300 group-data-open:rotate-180 group-data-open:text-fg group-data-disabled:opacity-50 forced-colors:text-[ButtonText] forced-colors:group-data-disabled:text-[GrayText]"
       />
     </Button>
   )

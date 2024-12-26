@@ -29,7 +29,7 @@ const DisclosureGroup = ({ children, ref, className, ...props }: DisclosureGroup
       {...props}
       className={composeTailwindRenderProps(
         className,
-        "data-disabled:cursor-not-allowed data-disabled:opacity-75 cursor-pointer peer",
+        "peer cursor-pointer data-disabled:cursor-not-allowed data-disabled:opacity-75",
       )}
     >
       {(values) => (
@@ -42,7 +42,7 @@ const DisclosureGroup = ({ children, ref, className, ...props }: DisclosureGroup
 }
 
 const disclosure = tv({
-  base: ["peer border-b border-border min-w-60 w-full group/disclosure"],
+  base: ["peer group/disclosure w-full min-w-60 border-border border-b"],
   variants: {
     isDisabled: {
       true: "cursor-not-allowed opacity-70",
@@ -70,17 +70,17 @@ const Disclosure = ({ className, ref, ...props }: DisclosureProps) => {
 
 const disclosureTrigger = tv({
   base: [
-    "flex items-center gap-x-2 group/trigger [&[aria-expanded=true]_[data-slot=chevron]]:-rotate-90 **:data-[slot=chevron]:size-5 **:data-[slot=chevron]:size-5 **:data-[slot=icon]:shrink-0 sm:text-sm **:data-[slot=icon]:-mx-0.5 **:data-[slot=icon]:text-muted-fg justify-between py-3 **:[span]:*:data-[slot=icon]:mr-1 **:[span]:flex **:[span]:items-center **:[span]:gap-x-1 w-full text-left font-medium",
+    "group/trigger [&[aria-expanded=true]_[data-slot=chevron]]:-rotate-90 **:data-[slot=icon]:-mx-0.5 flex w-full items-center justify-between gap-x-2 py-3 text-left font-medium **:data-[slot=chevron]:size-5 **:data-[slot=chevron]:size-5 **:data-[slot=icon]:shrink-0 **:data-[slot=icon]:text-muted-fg sm:text-sm **:[span]:flex **:[span]:items-center **:[span]:gap-x-1 **:[span]:*:data-[slot=icon]:mr-1",
   ],
   variants: {
     isFocused: {
-      true: "outline-hidden text-fg",
+      true: "text-fg outline-hidden",
     },
     isOpen: {
       true: "text-fg",
     },
     isDisabled: {
-      true: "opacity-50 cursor-default",
+      true: "cursor-default opacity-50",
     },
   },
 })
@@ -107,7 +107,7 @@ const DisclosureTrigger = ({ className, ref, ...props }: DisclosureTriggerProps)
             {typeof props.children === "function" ? props.children(values) : props.children}
             <IconChevronLeft
               data-slot="chevron"
-              className="ml-auto transition duration-300 internal-chevron size-4 shrink-0"
+              className="internal-chevron ml-auto size-4 shrink-0 transition duration-300"
             />
           </>
         )}
@@ -126,7 +126,7 @@ const DisclosurePanel = ({ className, ref, ...props }: DisclosurePanelProps) => 
       data-slot="disclosure-panel"
       className={composeTailwindRenderProps(
         className,
-        "overflow-hidden text-muted-fg text-sm transition-all has-data-[slot=disclosure-group]:**:[button]:px-4 **:data-[slot=disclosure-group]:border-t **:data-[slot=disclosure-group]:**:[.internal-chevron]:hidden",
+        "overflow-hidden text-muted-fg text-sm transition-all **:data-[slot=disclosure-group]:border-t **:data-[slot=disclosure-group]:**:[.internal-chevron]:hidden has-data-[slot=disclosure-group]:**:[button]:px-4",
       )}
       {...props}
     >

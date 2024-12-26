@@ -111,7 +111,7 @@ export function ThemeCustomizer({ selectedColors, setSelectedColors }: ThemeCust
     "1.5rem",
   ]
   return (
-    <div className="grid gap-4 max-w-xl">
+    <div className="grid max-w-xl gap-4">
       <div className="grid grid-cols-2 gap-x-3 gap-y-6">
         <ColorSelect
           selectedKey={selectedColors.gray}

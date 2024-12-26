@@ -47,7 +47,7 @@ export default function AppSidebar(props: React.ComponentProps<typeof Sidebar>) 
                   <SidebarItem key={itemIndex} href="#">
                     {({ isHovered }) => (
                       <>
-                        <i aria-hidden className="content-center size-4">
+                        <i aria-hidden className="size-4 content-center">
                           <IconBullet
                             className={`${isHovered ? "fill-sky-500 text-sky-500" : ""} m-auto size-2`}
                           />

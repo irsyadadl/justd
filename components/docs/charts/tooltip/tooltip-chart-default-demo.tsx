@@ -72,14 +72,14 @@ export default function TooltipChartAdvanceDemo() {
                         }
                       />
                       {chartConfig[name as keyof typeof chartConfig]?.label || name}
-                      <div className="flex gap-0.5 items-baseline ml-auto font-mono font-medium tabular-nums text-foreground">
+                      <div className="ml-auto flex items-baseline gap-0.5 font-medium font-mono text-foreground tabular-nums">
                         {value}
                         <span className="font-normal text-muted-fg">USD</span>
                       </div>
                       {index === 1 && (
-                        <div className="flex items-center pt-1.5 mt-1.5 text-xs font-medium border-t basis-full text-foreground">
+                        <div className="mt-1.5 flex basis-full items-center border-t pt-1.5 font-medium text-foreground text-xs">
                           Total
-                          <div className="flex gap-0.5 items-baseline ml-auto font-mono font-medium tabular-nums text-foreground">
+                          <div className="ml-auto flex items-baseline gap-0.5 font-medium font-mono text-foreground tabular-nums">
                             {item.payload.groceries + item.payload.utilities}
                             <span className="font-normal text-muted-fg">USD</span>
                           </div>

@@ -65,15 +65,15 @@ export function CmdK() {
   return (
     <>
       <Button
-        className="flex gap-1 items-center self-center py-2 px-4 rounded ring-offset-2 transition text-stone-800 ring-stone-600 data-focused:outline-hidden hover:bg-stone-100 focus-visible:ring-3"
+        className="flex items-center gap-1 self-center rounded px-4 py-2 text-stone-800 ring-stone-600 ring-offset-2 transition hover:bg-stone-100 focus-visible:ring-3 data-focused:outline-hidden"
         onPress={() => setOpen(true)}
       >
-        <kbd className="p-1 rounded-md border border-b-2 border-stone-400">cmd+k</kbd>
+        <kbd className="rounded-md border border-stone-400 border-b-2 p-1">cmd+k</kbd>
         to open
       </Button>
       <ModalOverlay
         isOpen={open}
-        className="flex overflow-y-auto fixed inset-0 z-10 justify-center p-4 min-h-full text-center duration-150 entering:fade-in entering:animate-in bg-black/25 pt-[33dvh] backdrop-blur-sm"
+        className="entering:fade-in fixed inset-0 z-10 flex min-h-full entering:animate-in justify-center overflow-y-auto bg-black/25 p-4 pt-[33dvh] text-center backdrop-blur-sm duration-150"
       >
         <Modal>
           <Dialog className="data-focused:outline-hidden" aria-label="command bar">
@@ -92,11 +92,11 @@ export function CmdK() {
                   ref={inputRef}
                   aria-label="Search for apps, files, anything..."
                   placeholder="Search for apps, files, anything..."
-                  className="p-3 rounded-t-lg w-[66vw] bg-stone-100 text-stone-800 data-focused:outline-hidden"
+                  className="w-[66vw] rounded-t-lg bg-stone-100 p-3 text-stone-800 data-focused:outline-hidden"
                 />
                 {filteredItems.length === 0 ? (
                   <Text
-                    className="p-3 rounded-b-lg border-t-2 w-[66vw] border-b-stone-300 bg-stone-100 text-stone-800"
+                    className="w-[66vw] rounded-b-lg border-t-2 border-b-stone-300 bg-stone-100 p-3 text-stone-800"
                     slot="description"
                   >
                     Hmm, we couldn't find anything
@@ -108,13 +108,13 @@ export function CmdK() {
 
               <Popover
                 offset={0}
-                className="p-3 rounded-b-lg border-t-2 duration-75 entering:slide-in-from-top-2 w-[66vw] entering:animate-in border-b-stone-300 bg-stone-100 text-stone-800"
+                className="entering:slide-in-from-top-2 w-[66vw] entering:animate-in rounded-b-lg border-t-2 border-b-stone-300 bg-stone-100 p-3 text-stone-800 duration-75"
               >
                 <ListBox className="flex flex-col gap-2">
                   {(i: (typeof items)[number]) => (
                     <ListBoxItem
                       textValue={i.name}
-                      className="flex gap-4 items-center p-2 rounded-md data-focused:bg-stone-200"
+                      className="flex items-center gap-4 rounded-md p-2 data-focused:bg-stone-200"
                     >
                       {i.name}
                     </ListBoxItem>

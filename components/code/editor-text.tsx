@@ -81,7 +81,7 @@ export function EditorText({ source }: Props) {
     <>
       {rawSourceCode && Object.keys(rawSourceCode).length > 0 ? (
         <Tabs className="relative gap-0">
-          <div className="flex overflow-hidden justify-between items-center rounded-t-lg border-zinc-700 border-x border-y bg-[#0e0e10] dark:border-zinc-800">
+          <div className="flex items-center justify-between overflow-hidden rounded-t-lg border-zinc-700 border-x border-y bg-[#0e0e10] dark:border-zinc-800">
             <Tabs.List className="gap-0 border-0">
               {Object.keys(rawSourceCode).map((key) => (
                 <Tab
@@ -130,7 +130,7 @@ export function EditorText({ source }: Props) {
             <Tabs.Panel
               key={key}
               id={key}
-              className="overflow-hidden rounded-b-lg border-b border-zinc-700 border-x bg-shiki-bg dark:border-zinc-800"
+              className="overflow-hidden rounded-b-lg border-zinc-700 border-x border-b bg-shiki-bg dark:border-zinc-800"
             >
               <CopyButton
                 className="absolute top-0.5 right-1"

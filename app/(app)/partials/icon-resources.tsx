@@ -85,17 +85,17 @@ export function IconResources() {
     return () => clearTimeout(timer)
   }, [isCopied])
   return (
-    <div className="py-16 border-y">
+    <div className="border-y py-16">
       <Container>
-        <div className="grid gap-6 items-end md:grid-cols-2 md:gap-10">
+        <div className="grid items-end gap-6 md:grid-cols-2 md:gap-10">
           <div className="">
-            <div className="grid place-content-center rounded-xl ring-1 size-14 bg-secondary/50 ring-fg/20 group-hover:bg-secondary">
+            <div className="grid size-14 place-content-center rounded-xl bg-secondary/50 ring-1 ring-fg/20 group-hover:bg-secondary">
               <IconBrandJustd className="size-6" />
             </div>
-            <h2 className="mt-4 max-w-md text-3xl font-semibold tracking-tight md:text-4xl">
+            <h2 className="mt-4 max-w-md font-semibold text-3xl tracking-tight md:text-4xl">
               Empower your design with Justd Icons
             </h2>
-            <p className="mt-3 mb-6 leading-relaxed lg:text-lg text-muted-fg text-pretty">
+            <p className="mt-3 mb-6 text-pretty text-muted-fg leading-relaxed lg:text-lg">
               Justd Icons is a powerful open-source SVG icon library with over{" "}
               <strong className="text-fg">1,191 symbols</strong>, and more added with every release.
               Designed to seamlessly integrate into any project, they work perfectly whether or not
@@ -119,8 +119,8 @@ export function IconResources() {
             <InstallIcon />
           </div>
           <div>
-            <div className="grid flex-1 **:data-[slot=icon]:size-5 items-start md:grid-cols-2 gap-2">
-              <div className="flex flex-wrap gap-6 p-6 rounded-lg border">
+            <div className="grid flex-1 items-start gap-2 **:data-[slot=icon]:size-5 md:grid-cols-2">
+              <div className="flex flex-wrap gap-6 rounded-lg border p-6">
                 <IconCheck />
                 <IconShoppingBag />
                 <IconTriangleExclamation />
@@ -152,7 +152,7 @@ export function IconResources() {
                 <IconRunShortcut />
                 <IconScreenSharing />
               </div>
-              <div className="flex flex-wrap gap-6 p-6 rounded-lg border">
+              <div className="flex flex-wrap gap-6 rounded-lg border p-6">
                 <IconCircleCheckFill />
                 <IconShoppingBagFill />
                 <IconTriangleExclamationFill />
@@ -185,7 +185,7 @@ export function IconResources() {
                 <IconScreenSharingFill />
               </div>
             </div>
-            <div className="flex justify-end mt-4">
+            <div className="mt-4 flex justify-end">
               <Link className={buttonStyles} href="/icons">
                 View all icons <IconArrowRight />
               </Link>

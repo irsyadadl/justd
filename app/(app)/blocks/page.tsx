@@ -15,7 +15,7 @@ export default function Page() {
         Blo
         <span className="text-muted-fg">cks</span>
       </Header>
-      <Container className="py-6 space-y-16 sm:py-16">
+      <Container className="space-y-16 py-6 sm:py-16">
         <div className="flex flex-col gap-1">
           <BlockSandbox
             {...{

@@ -48,7 +48,14 @@
         "noDangerouslySetInnerHtml": "off"
       },
       "nursery": {
-        "useSortedClasses": "off"
+        "useSortedClasses": {
+          "level": "error",
+          "fix": "safe",
+          "options": {
+            "attributes": ["classList"],
+            "functions": ["cn", "twJoin", "tv", "composeRenderProps", "composeTailwindRenderProps"]
+          }
+        }
       }
     },
     "ignore": ["node_modules", ".next", ".velite", "dist", ".vercel"]

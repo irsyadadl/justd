@@ -36,14 +36,14 @@ export function ThemeContainer() {
   return (
     <div className="py-4 sm:py-16">
       <Container>
-        <div className="flex flex-col rounded-lg border divide-y lg:flex-row lg:divide-y-0 lg:divide-x">
-          <div className="p-4 w-full lg:p-6 lg:w-1/2">
-            <div className="flex flex-col gap-4 mb-4 sm:flex-row sm:justify-between sm:items-end lg:mb-6">
+        <div className="flex flex-col divide-y rounded-lg border lg:flex-row lg:divide-x lg:divide-y-0">
+          <div className="w-full p-4 lg:w-1/2 lg:p-6">
+            <div className="mb-4 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between lg:mb-6">
               <div>
                 <Heading level={2} className="sm:text-lg">
                   Theme Customizer
                 </Heading>
-                <p className="text-sm text-muted-fg">
+                <p className="text-muted-fg text-sm">
                   Customize your theme by selecting colors from the color picker or by entering a
                   hex code.
                 </p>
@@ -51,7 +51,7 @@ export function ThemeContainer() {
             </div>
             <div>
               <ThemeCustomizer {...{ selectedColors, setSelectedColors }} />
-              <div className="flex justify-end mt-3">
+              <div className="mt-3 flex justify-end">
                 <Button className="flex w-full lg:hidden" onPress={handleOpen}>
                   <IconBrandCss />
                   Get Theme
@@ -59,13 +59,13 @@ export function ThemeContainer() {
               </div>
             </div>
           </div>
-          <div className="px-4 pt-2 pb-4 w-full lg:p-6 lg:w-2/3">
-            <div className="flex justify-between mb-4 lg:mb-6">
+          <div className="w-full px-4 pt-2 pb-4 lg:w-2/3 lg:p-6">
+            <div className="mb-4 flex justify-between lg:mb-6">
               <div>
                 <Heading level={2} className="sm:text-lg">
                   Generated Theme
                 </Heading>
-                <p className="text-sm text-muted-fg">
+                <p className="text-muted-fg text-sm">
                   The generated colors are based on the selected gray color.
                 </p>
               </div>
@@ -108,7 +108,7 @@ export function ThemeContainer() {
           title="Theme"
           description="Copy the theme below and paste it into your CSS file."
         />
-        <Sheet.Body className="pb-4 border-zinc-800 border-y">
+        <Sheet.Body className="border-zinc-800 border-y pb-4">
           <CodeHighlighter
             plain
             max96={false}
@@ -119,7 +119,7 @@ export function ThemeContainer() {
         <Sheet.Footer className="gap-x-1">
           <Sheet.Close
             onPress={handleClose}
-            className="hidden text-white sm:flex border-zinc-800 data-hovered:border-zinc-700 data-pressed:border-zinc-700 data-hovered:bg-zinc-900 data-pressed:bg-zinc-800"
+            className="hidden border-zinc-800 text-white data-hovered:border-zinc-700 data-pressed:border-zinc-700 data-hovered:bg-zinc-900 data-pressed:bg-zinc-800 sm:flex"
           >
             Close
           </Sheet.Close>

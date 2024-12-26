@@ -22,11 +22,11 @@ import { composeTailwindRenderProps, focusRing } from "./primitive"
 
 const cell = tv({
   extend: focusRing,
-  base: "flex size-10 sm:size-9 cursor-default tabular-nums items-center justify-center rounded-lg sm:text-sm forced-colors:outline-0",
+  base: "flex size-10 cursor-default items-center justify-center rounded-lg tabular-nums sm:size-9 sm:text-sm forced-colors:outline-0",
   variants: {
     isSelected: {
       false:
-        "text-fg forced-colors:text-[ButtonText] data-hovered:bg-secondary-fg/15 data-pressed:bg-secondary-fg/20",
+        "text-fg data-hovered:bg-secondary-fg/15 data-pressed:bg-secondary-fg/20 forced-colors:text-[ButtonText]",
       true: "bg-primary text-primary-fg data-invalid:bg-danger data-invalid:text-danger-fg forced-colors:bg-[Highlight] forced-colors:text-[Highlight] forced-colors:data-invalid:bg-[Mark]",
     },
     isDisabled: {
@@ -65,7 +65,7 @@ const Calendar = <T extends DateValue>({ errorMessage, className, ...props }: Ca
         </CalendarGridBody>
       </CalendarGrid>
       {errorMessage && (
-        <Text slot="errorMessage" className="text-sm text-red-600">
+        <Text slot="errorMessage" className="text-red-600 text-sm">
           {errorMessage}
         </Text>
       )}
@@ -76,8 +76,8 @@ const Calendar = <T extends DateValue>({ errorMessage, className, ...props }: Ca
 const calendarHeaderStyles = tv({
   slots: {
     header: "flex w-full justify-center gap-1 px-1 pb-5 sm:pb-4",
-    heading: "mr-2 text-muted-fg sm:text-sm flex-1 text-left font-medium",
-    calendarGridHeaderCell: "text-sm lg:text-xs font-semibold text-muted-fg",
+    heading: "mr-2 flex-1 text-left font-medium text-muted-fg sm:text-sm",
+    calendarGridHeaderCell: "font-semibold text-muted-fg text-sm lg:text-xs",
   },
 })
 
@@ -89,7 +89,7 @@ const CalendarHeader = ({ className, ...props }: React.HTMLAttributes<HTMLDivEle
   return (
     <header data-slot="calendar-header" className={header({ className })} {...props}>
       <Heading className={heading()} />
-      <div className="flex gap-1 items-center">
+      <div className="flex items-center gap-1">
         <Button
           size="square-petite"
           className="size-8 **:data-[slot=icon]:text-fg sm:size-7"

@@ -16,20 +16,20 @@ export default function Page() {
           {blog
             .sort((a, b) => new Date(b.published).getTime() - new Date(a.published).getTime())
             .map((item) => (
-              <Card className="flex relative flex-col" key={item.slug}>
+              <Card className="relative flex flex-col" key={item.slug}>
                 <Link href={item.slug} className="absolute inset-0 size-full" />
                 <Card.Header className="flex-1" title={item.title}>
                   <Card.Description className="line-clamp-2">{item.description}</Card.Description>
                 </Card.Header>
                 <Card.Footer>
-                  <div className="flex gap-x-2 justify-between items-center w-full">
+                  <div className="flex w-full items-center justify-between gap-x-2">
                     <Avatar
                       alt={item.author}
                       src={`https://github.com/${item.author}.png`}
                       shape="square"
                       size="small"
                     />
-                    <span className="font-mono text-sm text-muted-fg">
+                    <span className="font-mono text-muted-fg text-sm">
                       {dayjs(item.published).format("MMMM D, YYYY")}
                     </span>
                   </div>

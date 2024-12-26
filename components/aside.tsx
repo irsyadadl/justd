@@ -23,7 +23,7 @@ export function Aside() {
         <div key={item.slug || item.title}>
           {item.children && item.children.length > 0 && item.title !== "Components" && (
             <Heading
-              className="flex gap-x-2 items-center mb-2 text-base font-medium sm:text-sm"
+              className="mb-2 flex items-center gap-x-2 font-medium text-base sm:text-sm"
               level={3}
             >
               {item.title}
@@ -35,7 +35,7 @@ export function Aside() {
               {item.children.map((child: SidebarItem) => (
                 <div key={child.slug || child.title}>
                   {child.children && child.children.length > 0 ? (
-                    <Heading className="mb-2 text-base font-medium sm:text-sm" level={4}>
+                    <Heading className="mb-2 font-medium text-base sm:text-sm" level={4}>
                       {child.title}
                     </Heading>
                   ) : (

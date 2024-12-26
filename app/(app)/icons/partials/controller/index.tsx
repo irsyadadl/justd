@@ -30,9 +30,9 @@ export function Controller({ searchParams }: SearchParamsProps) {
   return (
     <div className="z-10 lg:sticky lg:top-20">
       <div className="relative">
-        <div className="flex relative z-20 flex-col gap-2 justify-between items-center mb-6 sm:flex-row sm:mb-12">
+        <div className="relative z-20 mb-6 flex flex-col items-center justify-between gap-2 sm:mb-12 sm:flex-row">
           <InstallIcon />
-          <div className="flex gap-2 items-center">
+          <div className="flex items-center gap-2">
             <Search />
             <Button
               aria-label={`Change filter to ${isSelected === "solid" ? "regular" : "solid"}`}
@@ -47,7 +47,7 @@ export function Controller({ searchParams }: SearchParamsProps) {
           </div>
         </div>
 
-        <div className="hidden absolute inset-x-0 top-0 z-0 -mt-5 h-24 to-transparent pointer-events-none md:block bg-linear-to-b from-bg via-bg/90" />
+        <div className="-mt-5 pointer-events-none absolute inset-x-0 top-0 z-0 hidden h-24 bg-linear-to-b from-bg via-bg/90 to-transparent md:block" />
       </div>
     </div>
   )

@@ -18,7 +18,7 @@ export default function CardLoginFormDemo() {
           type="password"
           placeholder="Enter your password"
         />
-        <div className="flex justify-between items-center">
+        <div className="flex items-center justify-between">
           <Checkbox>Remember me</Checkbox>
           <Link intent="primary" className="text-sm" href="#">
             Forgot password?

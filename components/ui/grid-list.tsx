@@ -17,7 +17,7 @@ import { Checkbox } from "./checkbox"
 import { composeTailwindRenderProps } from "./primitive"
 
 const gridListStyles = tv({
-  base: "relative *:data-drop-target:border *:data-drop-target:border-accent [&::-webkit-scrollbar]:size-0.5 [scrollbar-width:thin] max-h-96 overflow-auto rounded-lg border",
+  base: "relative max-h-96 overflow-auto rounded-lg border [scrollbar-width:thin] *:data-drop-target:border *:data-drop-target:border-accent [&::-webkit-scrollbar]:size-0.5",
 })
 
 const GridList = <T extends object>({ children, className, ...props }: GridListProps<T>) => (
@@ -27,17 +27,17 @@ const GridList = <T extends object>({ children, className, ...props }: GridListP
 )
 
 const itemStyles = tv({
-  base: "[--selected-item:theme(--color-muted/80%)] [--selected-item-hovered:theme(--color-muted/70%)] relative group transition outline-hidden flex cursor-default select-none gap-3 border-y px-3 -mb-px py-2 sm:text-sm text-fg -outline-offset-2 first:rounded-t-md first:border-t-0 last:mb-0 last:rounded-b-md last:border-b-0",
+  base: "group -mb-px -outline-offset-2 relative flex cursor-default select-none gap-3 border-y px-3 py-2 text-fg outline-hidden transition [--selected-item-hovered:theme(--color-muted/70%)] [--selected-item:theme(--color-muted/80%)] first:rounded-t-md first:border-t-0 last:mb-0 last:rounded-b-md last:border-b-0 sm:text-sm",
   variants: {
     isHovered: { true: "bg-subtle" },
     isSelected: {
-      true: "bg-(--selected-item) z-20 border-border/50 data-hovered:bg-(--selected-item-hovered)",
+      true: "z-20 border-border/50 bg-(--selected-item) data-hovered:bg-(--selected-item-hovered)",
     },
     isFocused: {
       true: "outline-hidden",
     },
     isFocusVisible: {
-      true: "ring-1 ring-ring outline-hidden bg-(--selected-item) data-selected:bg-(--selected-item) data-hovered:bg-(--selected-item-hovered)",
+      true: "bg-(--selected-item) outline-hidden ring-1 ring-ring data-hovered:bg-(--selected-item-hovered) data-selected:bg-(--selected-item)",
     },
     isDisabled: {
       true: "text-muted-fg/70 forced-colors:text-[GrayText]",
@@ -68,7 +68,7 @@ const Item = ({ className, ...props }: GridListItemProps) => {
 
           <span
             aria-hidden
-            className="hidden absolute inset-y-0 left-0 w-0.5 h-full bg-primary group-data-selected:block"
+            className="absolute inset-y-0 left-0 hidden h-full w-0.5 bg-primary group-data-selected:block"
           />
           {selectionMode === "multiple" && selectionBehavior === "toggle" && (
             <Checkbox className="-mr-2" slot="selection" />

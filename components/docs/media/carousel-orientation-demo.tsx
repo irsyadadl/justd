@@ -5,9 +5,9 @@ import { Card, Carousel } from "ui"
 export default function CarouselOrientationDemo() {
   return (
     <Carousel orientation="vertical" className="relative w-full max-w-xs">
-      <Carousel.Content items={items} className="py-4 h-64 snap-y">
+      <Carousel.Content items={items} className="h-64 snap-y py-4">
         {(item) => (
-          <Carousel.Item className="pt-1 basis-1/2 snap-center md:basis-1/3">
+          <Carousel.Item className="basis-1/2 snap-center pt-1 md:basis-1/3">
             <Card>
               <Card.Header>
                 <Card.Title>{item.title}</Card.Title>

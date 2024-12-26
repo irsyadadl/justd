@@ -61,7 +61,7 @@ const chartConfig = {
 
 export default function BarChartHorizontalLabelInsetDemo() {
   return (
-    <Card className="w-full h-full">
+    <Card className="h-full w-full">
       <Card.Header>
         <Card.Title>Traffic by Country</Card.Title>
         <Card.Description>Since Aug 17, 2014</Card.Description>

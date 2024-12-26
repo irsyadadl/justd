@@ -26,15 +26,15 @@ const paginationStyles = tv({
     section: "flex h-9 gap-[5px]",
     list: "flex flex-row items-center gap-[5px]",
     itemButton:
-      "data-focus-visible:border-primary text-fg font-normal cursor-pointer data-focus-visible:bg-primary/10 data-focus-visible:ring-4 data-focus-visible:ring-primary/20",
-    itemLabel: "h-9 px-3.5 tabular-nums grid place-content-center",
-    itemSeparator: "h-9 grid place-content-center",
+      "cursor-pointer font-normal text-fg data-focus-visible:border-primary data-focus-visible:bg-primary/10 data-focus-visible:ring-4 data-focus-visible:ring-primary/20",
+    itemLabel: "grid h-9 place-content-center px-3.5 tabular-nums",
+    itemSeparator: "grid h-9 place-content-center",
     itemEllipsis:
-      "flex items-center justify-center data-focus-visible:border-primary rounded-lg border border-transparent data-focused:outline-hidden size-9 data-focus-visible:bg-primary/10 data-focus-visible:ring-4 data-focus-visible:ring-primary/20",
+      "flex size-9 items-center justify-center rounded-lg border border-transparent data-focus-visible:border-primary data-focus-visible:bg-primary/10 data-focused:outline-hidden data-focus-visible:ring-4 data-focus-visible:ring-primary/20",
     itemEllipsisIcon: "flex size-9 items-center justify-center",
     defaultItem:
-      "data-focus-visible:border-primary tabular-nums font-normal cursor-pointer disabled:cursor-default data-focus-visible:bg-primary/10 data-focus-visible:ring-4 data-focus-visible:ring-primary/20 disabled:opacity-100",
-    itemSeparatorLine: "h-5 w-[1.5px] bg-secondary-fg/40 rotate-[14deg] shrink-0",
+      "cursor-pointer font-normal tabular-nums disabled:cursor-default disabled:opacity-100 data-focus-visible:border-primary data-focus-visible:bg-primary/10 data-focus-visible:ring-4 data-focus-visible:ring-primary/20",
+    itemSeparatorLine: "h-5 w-[1.5px] shrink-0 rotate-[14deg] bg-secondary-fg/40",
   },
 })
 

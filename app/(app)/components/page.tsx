@@ -53,7 +53,7 @@ export default function Page() {
         <span className="text-fg">Comp</span>
         <span className="text-muted-fg">onents</span>
       </Header>
-      <div className="py-10 lg:py-16 bg-muted/35">
+      <div className="bg-muted/35 py-10 lg:py-16">
         <Container>
           <ListComponents />
         </Container>

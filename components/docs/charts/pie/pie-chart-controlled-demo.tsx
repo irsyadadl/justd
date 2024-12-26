@@ -68,8 +68,8 @@ export default function PieChartControlledDemo() {
   return (
     <Card data-chart={id} className="flex flex-col">
       <ChartStyle id={id} config={config} />
-      <Card.Header className="flex-row items-start pb-0 space-y-0">
-        <div className="grid gap-1 w-full">
+      <Card.Header className="flex-row items-start space-y-0 pb-0">
+        <div className="grid w-full gap-1">
           <Card.Title className="capitalize">{activeMonth}</Card.Title>
           <Card.Description>
             The total sales for the month is{" "}
@@ -78,7 +78,7 @@ export default function PieChartControlledDemo() {
         </div>
         <Select selectedKey={activeMonth} onSelectionChange={setActiveMonth}>
           <Select.Trigger
-            className="px-2 ml-auto h-8 rounded-lg w-[130px]"
+            className="ml-auto h-8 w-[130px] rounded-lg px-2"
             aria-label="Select a value"
           />
           <Select.List className="rounded-xl">
@@ -91,7 +91,7 @@ export default function PieChartControlledDemo() {
 
               return (
                 <Select.Option key={key} id={key}>
-                  <div className="flex gap-2 items-center text-xs">{_config?.label}</div>
+                  <div className="flex items-center gap-2 text-xs">{_config?.label}</div>
                 </Select.Option>
               )
             })}
@@ -99,7 +99,7 @@ export default function PieChartControlledDemo() {
         </Select>
       </Card.Header>
       <Card.Content className="flex flex-1 justify-center pb-0">
-        <Chart id={id} config={config} className="mx-auto w-full aspect-square max-w-[315px]">
+        <Chart id={id} config={config} className="mx-auto aspect-square w-full max-w-[315px]">
           <PieChart>
             <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
             <Pie
@@ -133,7 +133,7 @@ export default function PieChartControlledDemo() {
                         <tspan
                           x={viewBox.cx}
                           y={viewBox.cy}
-                          className="text-2xl font-semibold fill-fg"
+                          className="fill-fg font-semibold text-2xl"
                         >
                           {data[activeIndex].sales.toLocaleString()}
                         </tspan>

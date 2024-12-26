@@ -47,7 +47,7 @@ const checkboxStyles = tv({
 })
 
 const boxStyles = tv({
-  base: "flex size-4 *:data-[slot=icon]:size-3 shrink-0 items-center justify-center rounded border border-input text-bg transition",
+  base: "flex size-4 shrink-0 items-center justify-center rounded border border-input text-bg transition *:data-[slot=icon]:size-3",
   variants: {
     isSelected: {
       false: "bg-muted",

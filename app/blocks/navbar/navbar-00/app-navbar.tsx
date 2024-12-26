@@ -46,7 +46,7 @@ export default function AppNavbar(props: React.ComponentProps<typeof Navbar>) {
           </Menu>
         </Navbar.Section>
 
-        <Navbar.Section className="hidden ml-auto md:flex">
+        <Navbar.Section className="ml-auto hidden md:flex">
           <Navbar.Flex className="sm:gap-x-1">
             <Button appearance="plain" size="square-petite" aria-label="Search for products">
               <IconSearch />

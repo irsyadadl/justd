@@ -37,8 +37,8 @@ export const Anatomy = ({ show, ...props }: AnatomyProps) => {
   }, [show])
   if (processedSourceCode) {
     return (
-      <section className="my-6 not-prose">
-        <p className="mb-4 -mt-2">
+      <section className="not-prose my-6">
+        <p className="-mt-2 mb-4">
           {props.message
             ? props.message
             : "Import the components and use them as shown below, adapting the structure to fit each component."}
@@ -46,22 +46,22 @@ export const Anatomy = ({ show, ...props }: AnatomyProps) => {
         {props.title && <figcaption data-rehype-pretty-code-title="">{props.title}</figcaption>}
         {processedSourceCode && (
           <>
-            <Group className="relative group">
+            <Group className="group relative">
               <CopyMotionButton
-                className="absolute right-1.5 top-2"
+                className="absolute top-2 right-1.5"
                 text={extractImports(processedSourceCode as string)}
               />
               <CodeHighlighter
-                className="py-2 px-4"
+                className="px-4 py-2"
                 max96={false}
                 removeLastLine
                 code={extractImports(processedSourceCode as string)}
                 lang={props.ext}
               />
             </Group>
-            <Group className="relative mt-4 group">
+            <Group className="group relative mt-4">
               <CopyMotionButton
-                className="absolute right-1.5 top-2"
+                className="absolute top-2 right-1.5"
                 text={extractJSX(processedSourceCode as string) as any}
               />
               <CodeHighlighter

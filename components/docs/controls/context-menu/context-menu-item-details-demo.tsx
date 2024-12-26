@@ -5,7 +5,7 @@ import { ContextMenu } from "ui"
 export default function ContextMenuItemDetailsDemo() {
   return (
     <ContextMenu>
-      <ContextMenu.Trigger className="grid place-content-center w-56 h-28 rounded-lg border-2 border-dashed">
+      <ContextMenu.Trigger className="grid h-28 w-56 place-content-center rounded-lg border-2 border-dashed">
         Right click me
       </ContextMenu.Trigger>
       <ContextMenu.Content items={roles}>

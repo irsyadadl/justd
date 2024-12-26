@@ -4,7 +4,7 @@ import { ColorSlider } from "ui"
 
 export default function ColorSliderVerticalDemo() {
   return (
-    <div className="flex justify-center items-center">
+    <div className="flex items-center justify-center">
       <ColorSlider
         orientation="vertical"
         aria-label="Fill Color"

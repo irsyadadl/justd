@@ -5,7 +5,7 @@ import { ContextMenu } from "ui"
 export default function ContextMenuSeparatorDemo() {
   return (
     <ContextMenu>
-      <ContextMenu.Trigger className="grid place-content-center h-28 rounded-lg border-2 border-dashed sm:min-w-60">
+      <ContextMenu.Trigger className="grid h-28 place-content-center rounded-lg border-2 border-dashed sm:min-w-60">
         Right click me
       </ContextMenu.Trigger>
       <ContextMenu.Content>

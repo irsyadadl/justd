@@ -3,7 +3,7 @@ import { type VariantProps, tv } from "tailwind-variants"
 const avatar = tv({
   base: [
     "inline-grid shrink-0 align-middle [--avatar-radius:20%] [--ring-opacity:20%] *:col-start-1 *:row-start-1",
-    "outline-1 -outline-offset-1 outline-fg/(--ring-opacity)",
+    "-outline-offset-1 outline-1 outline-fg/(--ring-opacity)",
   ],
   variants: {
     shape: {

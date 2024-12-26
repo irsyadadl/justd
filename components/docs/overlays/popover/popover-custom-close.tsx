@@ -21,7 +21,7 @@ export default function PopoverCustomClose() {
                 type="password"
                 placeholder="Enter your password"
               />
-              <div className="flex justify-between items-center">
+              <div className="flex items-center justify-between">
                 <Checkbox name="remember-me">Remember me</Checkbox>
                 <Link intent="primary" href="#">
                   Forgot password?
