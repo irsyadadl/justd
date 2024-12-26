@@ -21,7 +21,7 @@ const groupDocs = (docs: Docs[]) => {
       groups.prologue.push({ title, slug, order, children: [], toc })
     } else if (slug.startsWith(`docs/${VERSION}/components/`)) {
       const parts = slug.split("/")
-      const category = parts[3]
+      const category = parts[3]!
       const componentSlug = parts.slice(4).join("/")
 
       if (!groups.components[category]) {

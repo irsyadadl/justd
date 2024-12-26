@@ -36,7 +36,7 @@ const findComponentsUsingClasses = (
       // Recursively check subdirectories
       const subResults = findComponentsUsingClasses(fullPath, targetClasses)
       targetClasses.forEach((cls) => {
-        result[cls] = result[cls].concat(subResults[cls])
+        result[cls] = result[cls]!.concat(subResults[cls]!)
       })
     } else if (stat.isFile() && file.endsWith(".tsx")) {
       // Check .tsx files for the target classes
@@ -44,8 +44,8 @@ const findComponentsUsingClasses = (
       targetClasses.forEach((cls) => {
         if (content.includes(cls)) {
           const componentName = path.basename(file, ".tsx")
-          if (!result[cls].includes(componentName)) {
-            result[cls].push(componentName)
+          if (!result[cls]!.includes(componentName)) {
+            result[cls]!.push(componentName)
           }
         }
       })
@@ -65,9 +65,9 @@ const main = () => {
   const components = findComponentsUsingClasses(TARGET_DIR, TARGET_CLASSES)
 
   TARGET_CLASSES.forEach((cls) => {
-    if (components[cls].length === 0) {
+    if (components[cls]!.length === 0) {
     } else {
-      components[cls].forEach((component) => {
+      components[cls]!.forEach((component) => {
         console.info(`Found ${component} using ${cls}`)
       })
     }

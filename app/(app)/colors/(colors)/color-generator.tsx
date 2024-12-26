@@ -34,17 +34,17 @@ export function ColorGenerator() {
     ]
 
     return {
-      50: scale[0],
-      100: scale[1],
-      200: scale[2],
-      300: scale[3],
-      400: scale[4],
-      500: scale[5],
-      600: scale[6],
-      700: scale[7],
-      800: scale[8],
-      900: scale[9],
-      950: scale[10],
+      50: scale[0]!,
+      100: scale[1]!,
+      200: scale[2]!,
+      300: scale[3]!,
+      400: scale[4]!,
+      500: scale[5]!,
+      600: scale[6]!,
+      700: scale[7]!,
+      800: scale[8]!,
+      900: scale[9]!,
+      950: scale[10]!,
     }
   }
 

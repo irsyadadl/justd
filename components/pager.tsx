@@ -36,7 +36,7 @@ export function Pager({ docs, doc }: { docs: Doc[]; doc: Doc }) {
       return a.order - b.order
     }
 
-    return groupA.localeCompare(groupB)
+    return groupA!.localeCompare(groupB!)
   })
 
   const pager = getPagerForDoc(groupedAndSortedDocs, doc)

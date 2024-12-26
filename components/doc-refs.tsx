@@ -16,7 +16,7 @@ import { ListBox, ListBoxItem } from "react-aria-components"
 
 function getComponentName(url: string): string {
   const lastSegment = url.split("/").pop()
-  return lastSegment?.split("#")[0].replace(".html", "") || ""
+  return lastSegment?.split("#")[0]!.replace(".html", "") || ""
 }
 
 export function DocRefs({ references }: { references: string[] }) {

@@ -5,9 +5,15 @@ import { Link } from "next-view-transitions"
 import { Heading } from "ui"
 
 export function ListComponents() {
+  const sidebarItem = sidebar[3]
+
+  if (!sidebarItem) {
+    throw new Error("Sidebar item not found")
+  }
+
   return (
     <div className="columns-1 gap-(--gap) [--gap:4px] sm:columns-2 md:columns-3 lg:columns-4">
-      {sidebar[3].children.map((item, index) => (
+      {sidebarItem.children.map((item, index) => (
         <div
           key={index}
           className="relative inset-ring-1 inset-ring-border inset-shadow-none inset-shadow-xs mb-(--gap) break-inside-avoid rounded-xs bg-white p-4 dark:inset-ring-fg/5 dark:inset-shadow-zinc-800 dark:bg-[#111114]"

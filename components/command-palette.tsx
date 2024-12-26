@@ -107,7 +107,13 @@ export function CommandPalette({ openCmd, setOpen }: OpenCloseProps) {
   const filteredItems = React.useMemo(() => {
     if (!debouncedSearch) return []
 
-    return searchSidebar(sidebar[3].children as any, debouncedSearch)
+    const sidebarItem = sidebar[3]
+
+    if (!sidebarItem) {
+      throw new Error("Sidebar item not found")
+    }
+
+    return searchSidebar(sidebarItem.children as any, debouncedSearch)
   }, [debouncedSearch, sidebar])
 
   React.useEffect(() => {
