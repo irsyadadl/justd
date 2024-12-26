@@ -349,7 +349,7 @@ const SidebarSectionGroup = ({ className, ...props }: React.ComponentProps<"sect
   return (
     <section
       data-sidebar-section-group="true"
-      className={cn("flex flex-col gap-y-6", className)}
+      className={cn("flex flex-col gap-y-6 w-full", className)}
       {...props}
     />
   )
