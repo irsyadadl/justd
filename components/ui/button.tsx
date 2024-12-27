@@ -12,7 +12,7 @@ import { focusButtonStyles } from "./primitive"
 const buttonStyles = tv({
   extend: focusButtonStyles,
   base: [
-    "kbt32x relative flex items-center justify-center gap-x-2 border font-medium",
+    "kbt32x relative inline-flex items-center justify-center gap-x-2 border font-medium",
     "forced-colors:[--button-icon:ButtonText] forced-colors:data-hovered:[--button-icon:ButtonText]",
     "*:data-[slot=icon]:-mx-0.5 *:data-[slot=icon]:my-1 *:data-[slot=icon]:size-4 *:data-[slot=icon]:shrink-0 *:data-[slot=icon]:text-current/60",
   ],
