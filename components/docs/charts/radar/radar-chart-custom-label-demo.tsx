@@ -52,7 +52,7 @@ export default function RadarChartCustomLabelDemo() {
             <PolarAngleAxis
               dataKey="month"
               tick={({ x, y, textAnchor, index, ...props }) => {
-                const data = chartData[index]
+                const data = chartData[index]!
 
                 return (
                   <text

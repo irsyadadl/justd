@@ -23,7 +23,7 @@ export default function MultipleSelectDemo() {
   )
 }
 
-const fruits: SelectedKey[] = [
+const fruits = [
   { id: 1, name: "Apple" },
   { id: 2, name: "Banana" },
   { id: 3, name: "Cherry" },
@@ -44,4 +44,4 @@ const fruits: SelectedKey[] = [
   { id: 18, name: "Tangerine" },
   { id: 19, name: "Ugli Fruit" },
   { id: 20, name: "Watermelon" },
-]
+] as const satisfies SelectedKey[]

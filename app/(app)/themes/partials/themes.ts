@@ -23,7 +23,9 @@ const getFgValue = (colorKey: string, fg: ForegroundColor) => {
   return getColorValue(colorKey, fg)
 }
 
-export const generateTheme = (selectedColors: Record<string, string>) => {
+export const generateTheme = (
+  selectedColors: Record<"primary" | "gray" | "accent" | "radius", string>,
+) => {
   const { primary, gray, accent, radius } = selectedColors
 
   const isNeutralPrimary = neutralColors.includes(primary)

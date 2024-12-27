@@ -29,7 +29,13 @@ interface InputOTPSlotProps extends React.ComponentProps<"div"> {
 
 const InputOTPSlot = ({ index, className, ref, ...props }: InputOTPSlotProps) => {
   const inputOTPContext = use(OTPInputContext)
-  const { char, hasFakeCaret, isActive } = inputOTPContext.slots[index]
+  const slot = inputOTPContext.slots[index]
+
+  if (!slot) {
+    throw new Error("Slot not found")
+  }
+
+  const { char, hasFakeCaret, isActive } = slot
 
   return (
     <div

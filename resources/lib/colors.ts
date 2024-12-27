@@ -29,8 +29,9 @@ export const adjustLightness = (oklchColor: string, adjustBy: number): string =>
   const match = oklchColor.match(/oklch\((\d+(\.\d+)?) (\d+(\.\d+)?) (\d+(\.\d+)?)\)/)
   if (!match) throw new Error("Invalid OKLCH color format")
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_, l, , c, , h] = match
+
+  if (!l || !c || !h) throw new Error("Invalid OKLCH color format")
 
   const lightness = Number.parseFloat(l)
   const newLightness = Math.min(1, Math.max(0, lightness + adjustBy / 100))

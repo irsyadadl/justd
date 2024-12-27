@@ -5,7 +5,6 @@ import React, { Suspense, useState } from "react"
 import { cn } from "@/utils/classes"
 import { useMediaQuery } from "@/utils/use-media-query"
 import { useScrollPosition } from "hooks/use-scroll-position"
-import { usePathname } from "next/navigation"
 import { Heading } from "react-aria-components"
 import scrollIntoView from "scroll-into-view-if-needed"
 
@@ -25,13 +24,11 @@ export function TableOfContents({ className, items }: Props) {
   const tocRef = React.useRef<HTMLDivElement>(null)
   const scrollPosition = useScrollPosition(tocRef)
   const ids = items.flatMap((item) => [
-    item.url.split("#")[1],
-    ...(item.items ? item.items.map((subItem) => subItem.url.split("#")[1]) : []),
+    item.url.split("#")[1]!,
+    ...(item.items ? item.items.map((subItem) => subItem.url.split("#")[1]!) : []),
   ])
   const activeId = useActiveItem(ids)
   const activeIndex = activeId?.length || 0
-
-  const pathname = usePathname()
 
   React.useEffect(() => {
     if (!activeId || activeIndex < 2) return

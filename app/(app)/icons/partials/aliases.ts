@@ -3,12 +3,12 @@ import * as icons from "justd-icons"
 /**
  * Common aliases for icons
  */
-const commonAliases: Record<string, string[]> = {
+const commonAliases = {
   storage: ["storage", "server", "database"],
   person: ["person", "people", "user", "profile", "account"],
   archive: ["storage", "box", "inbox", "folder", "file", "document"],
   music: ["audio", "sound", "music", "melody", "tune", "song"],
-}
+} satisfies Record<string, string[]>
 
 /**
  * Base aliases for icons
@@ -46,7 +46,7 @@ const generateAliases = (iconKeys: string[]): Record<string, string[]> => {
       const isFill = name.endsWith("fill") // Only check if it ends with "fill"
       const typeKey = Object.keys(baseAliases).find((key) => name.includes(key)) || null
 
-      acc[icon] = [...(typeKey ? baseAliases[typeKey] : []), ...(isFill ? baseAliases.fill : [])]
+      acc[icon] = [...(typeKey ? baseAliases[typeKey]! : []), ...(isFill ? baseAliases.fill : [])!]
 
       return acc
     },

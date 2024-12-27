@@ -18,7 +18,7 @@ const chartConfig = {
 } satisfies ChartConfig
 
 export default function SalesPerformanceOverview() {
-  const totalRevenue = chartData[0].sales + chartData[0].profit
+  const totalRevenue = chartData[0]!.sales + chartData[0]!.profit
 
   return (
     <Card>

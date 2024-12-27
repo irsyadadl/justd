@@ -47,4 +47,4 @@ const packages = [
     title: "Extra Large",
     description: "Max power for demanding applications. Top-tier performance.",
   },
-]
+] as const

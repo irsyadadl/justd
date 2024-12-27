@@ -21,7 +21,8 @@
     "bb": "bun run format && bun run build:everything",
     "start": "next start",
     "preview": "bun run build && next start",
-    "ic": "bun run resources/scripts/identify-color.ts"
+    "ic": "bun run resources/scripts/identify-color.ts",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@openpanel/nextjs": "^1.0.7",

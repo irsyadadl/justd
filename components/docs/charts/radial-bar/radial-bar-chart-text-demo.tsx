@@ -53,7 +53,7 @@ export default function ProductSalesOverview() {
                         dominantBaseline="middle"
                       >
                         <tspan x={viewBox.cx} y={viewBox.cy} className="fill-fg font-bold text-4xl">
-                          {chartData[0].sales.toLocaleString()}
+                          {chartData[0]!.sales.toLocaleString()}
                         </tspan>
                         <tspan x={viewBox.cx} y={(viewBox.cy || 0) + 24} className="fill-muted-fg">
                           Sales
