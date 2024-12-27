@@ -64,7 +64,7 @@ function Component({ folders, fullscreen, isIframe = false, title, ...props }: P
   const [selectedKey, setSelectedKey] = useState(props.defaultSelected)
   const [code, setCode] = useState("")
   const [registryKey, setRegistryKey] = useState(props.initialRegistry)
-  const ComponentRegistry = registry[props.preview]?.component as React.ComponentType;
+  const ComponentRegistry = registry[props.preview]?.component as React.ComponentType
 
   useEffect(() => {
     if (!registryKey) return
