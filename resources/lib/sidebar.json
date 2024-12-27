@@ -5445,34 +5445,6 @@
         ]
       },
       {
-        "title": "Utilities",
-        "children": [
-          {
-            "title": "Visually Hidden",
-            "slug": "docs/2.x/components/utilities/visually-hidden",
-            "order": 1,
-            "children": [],
-            "toc": [
-              {
-                "title": "Visually Hidden",
-                "url": "#visually-hidden",
-                "items": []
-              },
-              {
-                "title": "Installation",
-                "url": "#installation",
-                "items": []
-              },
-              {
-                "title": "Manual Installation",
-                "url": "#manual-installation",
-                "items": []
-              }
-            ]
-          }
-        ]
-      },
-      {
         "title": "Surfaces",
         "children": [
           {
@@ -5741,6 +5713,34 @@
               {
                 "title": "With Card",
                 "url": "#with-card",
+                "items": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Utilities",
+        "children": [
+          {
+            "title": "Visually Hidden",
+            "slug": "docs/2.x/components/utilities/visually-hidden",
+            "order": 1,
+            "children": [],
+            "toc": [
+              {
+                "title": "Visually Hidden",
+                "url": "#visually-hidden",
+                "items": []
+              },
+              {
+                "title": "Installation",
+                "url": "#installation",
+                "items": []
+              },
+              {
+                "title": "Manual Installation",
+                "url": "#manual-installation",
                 "items": []
               }
             ]
