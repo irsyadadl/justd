@@ -346,10 +346,16 @@ const SidebarContent = ({ className, ...props }: React.ComponentProps<"div">) =>
 }
 
 const SidebarSectionGroup = ({ className, ...props }: React.ComponentProps<"section">) => {
+  const { state, isMobile } = useSidebar()
+  const collapsed = state === "collapsed" && !isMobile
   return (
     <section
       data-sidebar-section-group="true"
-      className={cn("flex w-full flex-col gap-y-6", className)}
+      className={cn(
+        "flex w-full flex-col gap-y-6",
+        collapsed && "items-center justify-center",
+        className,
+      )}
       {...props}
     />
   )
