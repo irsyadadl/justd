@@ -455,7 +455,7 @@ const SidebarItem = ({
                 shape="square"
                 intent="primary"
                 data-slot="sidebar-badge"
-                className="-translate-y-1/2 absolute inset-ring-1 inset-ring-primary/20 inset-y-1/2 right-1.5 h-5.5 w-auto text-[10px] transition-colors group-data-current:inset-ring-transparent group-data-current:bg-[color-mix(in_oklab,var(--color-primary)_20%,white_20%)] group-data-hovered:bg-[color-mix(in_oklab,var(--color-primary)_15%,white_30%)] group-data-current:text-primary-fg dark:group-data-current:bg-[color-mix(in_oklab,var(--color-primary)_20%,white_15%)] dark:group-data-hovered:bg-[color-mix(in_oklab,var(--color-primary)_15%,white_30%)] dark:group-data-current:text-current"
+                className="-translate-y-1/2 absolute inset-ring-1 inset-ring-primary/20 inset-y-1/2 right-1.5 h-5.5 w-auto text-[10px] transition-colors group-data-current:inset-ring-transparent group-data-current:bg-[color-mix(in_oklab,var(--color-primary)_20%,white_20%)] group-data-hovered:bg-[color-mix(in_oklab,var(--color-primary)_15%,white_30%)] group-data-current:text-primary-fg dark:group-data-current:bg-[color-mix(in_oklab,var(--color-primary)_20%,white_15%)] dark:group-data-hovered:bg-[color-mix(in_oklab,var(--color-primary)_25%,black_5%)] dark:group-data-current:text-current"
               >
                 {badge}
               </Badge>
