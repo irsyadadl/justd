@@ -14,4 +14,19 @@ export default {
         optimizePackageImports: ["shiki"]
     },
     crossOrigin: 'anonymous',
+    async redirects() {
+        return [
+            {
+                source: "/docs/:slug((?![12]\\.x/).*)",
+                missing: [
+                    {
+                        type: "header",
+                        key: "x-no-redirect",
+                    },
+                ],
+                destination: "/docs/1.x/:slug*",
+                permanent: false,
+            },
+        ]
+    }
 }
