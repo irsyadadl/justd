@@ -107,7 +107,7 @@ const TagField = ({
   const onRemove = (keys: Set<Key>) => {
     list.remove(...keys)
 
-    onItemCleared?.(undefined)
+    onItemCleared?.(list.getItem([...keys][0]!))
     clearInvalidFeedback()
   }
 
