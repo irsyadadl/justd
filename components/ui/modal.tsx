@@ -1,8 +1,13 @@
 "use client"
 
 import type { DialogProps, DialogTriggerProps, ModalOverlayProps } from "react-aria-components"
-import { composeRenderProps, DialogTrigger, Modal as ModalPrimitive, ModalOverlay } from "react-aria-components"
-import { tv, type VariantProps } from "tailwind-variants"
+import {
+  DialogTrigger,
+  ModalOverlay,
+  Modal as ModalPrimitive,
+  composeRenderProps,
+} from "react-aria-components"
+import { type VariantProps, tv } from "tailwind-variants"
 
 import { Dialog } from "./dialog"
 
@@ -37,7 +42,9 @@ const content = tv({
       ],
     },
     isExiting: {
-      true: ["slide-out-to-bottom sm:slide-out-to-bottom-0 sm:zoom-out-95 animate-out duration-150 ease-in"],
+      true: [
+        "slide-out-to-bottom sm:slide-out-to-bottom-0 sm:zoom-out-95 animate-out duration-150 ease-in",
+      ],
     },
     size: {
       xs: "sm:max-w-xs",
@@ -61,9 +68,9 @@ const Modal = (props: DialogTriggerProps) => {
 }
 
 interface ModalContentProps
-    extends Omit<React.ComponentProps<typeof Modal>, "children">,
-        Omit<ModalOverlayProps, "className" | "children">,
-        VariantProps<typeof content> {
+  extends Omit<React.ComponentProps<typeof Modal>, "children">,
+    Omit<ModalOverlayProps, "className" | "children">,
+    VariantProps<typeof content> {
   "aria-label"?: DialogProps["aria-label"]
   "aria-labelledby"?: DialogProps["aria-labelledby"]
   role?: DialogProps["role"]
@@ -77,48 +84,48 @@ interface ModalContentProps
 }
 
 const ModalContent = ({
-                        classNames,
-                        isDismissable = true,
-                        isBlurred = false,
-                        children,
-                        size,
-                        role,
-                        closeButton = true,
-                        ...props
-                      }: ModalContentProps) => {
+  classNames,
+  isDismissable = true,
+  isBlurred = false,
+  children,
+  size,
+  role,
+  closeButton = true,
+  ...props
+}: ModalContentProps) => {
   const _isDismissable = role === "alertdialog" ? false : isDismissable
   return (
-      <ModalOverlay
-          isDismissable={_isDismissable}
-          className={composeRenderProps(classNames?.overlay, (className, renderProps) => {
-            return overlay({
-              ...renderProps,
-              isBlurred,
-              className,
-            })
-          })}
-          {...props}
+    <ModalOverlay
+      isDismissable={_isDismissable}
+      className={composeRenderProps(classNames?.overlay, (className, renderProps) => {
+        return overlay({
+          ...renderProps,
+          isBlurred,
+          className,
+        })
+      })}
+      {...props}
+    >
+      <ModalPrimitive
+        className={composeRenderProps(classNames?.content, (className, renderProps) =>
+          content({
+            ...renderProps,
+            size,
+            className,
+          }),
+        )}
+        {...props}
       >
-        <ModalPrimitive
-            className={composeRenderProps(classNames?.content, (className, renderProps) =>
-                content({
-                  ...renderProps,
-                  size,
-                  className,
-                }),
-            )}
-            {...props}
-        >
-          <Dialog role={role}>
-            {(values) => (
-                <>
-                  {typeof children === "function" ? children(values) : children}
-                  {closeButton && <Dialog.CloseIndicator isDismissable={_isDismissable} />}
-                </>
-            )}
-          </Dialog>
-        </ModalPrimitive>
-      </ModalOverlay>
+        <Dialog role={role}>
+          {(values) => (
+            <>
+              {typeof children === "function" ? children(values) : children}
+              {closeButton && <Dialog.CloseIndicator isDismissable={_isDismissable} />}
+            </>
+          )}
+        </Dialog>
+      </ModalPrimitive>
+    </ModalOverlay>
   )
 }
 
