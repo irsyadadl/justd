@@ -8,12 +8,19 @@ import { IconBulletFill } from "justd-icons"
 import { cn } from "@/utils/classes"
 
 type InputOTOPProps = React.ComponentProps<typeof OTPInput>
-const InputOTP = ({ className, containerClassName, ref, ...props }: InputOTOPProps) => (
+const InputOTP = ({
+  className,
+  autoFocus = true,
+  containerClassName,
+  ref,
+  ...props
+}: InputOTOPProps) => (
   <OTPInput
     data-1p-ignore
     ref={ref}
+    autoFocus={autoFocus}
     containerClassName={cn("flex items-center gap-2 has-disabled:opacity-50", containerClassName)}
-    className={cn("disabled:cursor-not-allowed", className)}
+    className={cn("mt-auto h-[2.5rem] bg-red-500 disabled:cursor-not-allowed", className)}
     {...props}
   />
 )
