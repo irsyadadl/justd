@@ -1,7 +1,6 @@
 import { Mdx } from "@/components/mdx-components"
 import { TableOfContents } from "@/components/table-of-contents"
 import { siteConfig } from "@/resources/config/site"
-import { goodTitle } from "@/resources/lib/utils"
 import dayjs from "dayjs"
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
@@ -18,11 +17,6 @@ async function getPostFromParams(params: { slug: string[] }) {
   const article = blog.find((article) => article.slugAsParams === slug)
 
   return article
-}
-
-const extractSegment = (str: string): string | null => {
-  const segments = str.split("/")
-  return segments.length === 4 ? goodTitle(segments[2]) : goodTitle(segments[1])
 }
 
 export async function generateMetadata(props: DocPageProps): Promise<Metadata> {

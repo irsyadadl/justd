@@ -64,7 +64,8 @@ function Component({ folders, fullscreen, isIframe = false, title, ...props }: P
   const [selectedKey, setSelectedKey] = useState(props.defaultSelected)
   const [code, setCode] = useState("")
   const [registryKey, setRegistryKey] = useState(props.initialRegistry)
-  const Component = registry[props.preview]?.component
+  const ComponentRegistry = registry[props.preview]?.component as React.ComponentType
+
   useEffect(() => {
     if (!registryKey) return
     fetchCode(registryKey).then((fetchedCode) => {
@@ -255,7 +256,7 @@ function Component({ folders, fullscreen, isIframe = false, title, ...props }: P
                   [...device].join(", ") === "desktop" && "max-w-none",
                 )}
               >
-                <Component />
+                <ComponentRegistry />
               </div>
             )}
           </div>
@@ -334,6 +335,6 @@ const fetchCode = cache(async (registryKey: string) => {
   return registryEntry?.files?.[0]?.content || ""
 })
 
-const randomQuote = quotes[Math.floor(Math.random() * quotes.length)]
+const randomQuote = quotes[Math.floor(Math.random() * quotes.length)]!
 
 export const BlockSandbox = memo(Component)

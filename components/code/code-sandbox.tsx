@@ -27,7 +27,7 @@ const registry = generated as Record<string, RegistryItem>
 export function CodeSandbox({ isIframe = true, classNames, source, src }: Props) {
   const [copiedStates, setCopiedStates] = useState<Record<string, boolean>>({})
   const [rawSourceCode, setRawSourceCode] = useState<Record<string, string | null>>({})
-  const Component = registry[source.preview]?.component
+  const Component = registry[source.preview!]?.component
 
   const handleCopy = (key: string, value: string | null) => {
     if (value) {

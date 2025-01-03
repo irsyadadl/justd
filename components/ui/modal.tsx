@@ -59,7 +59,7 @@ const content = tv({
     },
   },
   defaultVariants: {
-    size: "lg",
+    size: "xl",
   },
 })
 
@@ -69,11 +69,12 @@ const Modal = (props: DialogTriggerProps) => {
 
 interface ModalContentProps
   extends Omit<React.ComponentProps<typeof Modal>, "children">,
-    Omit<ModalOverlayProps, "className">,
+    Omit<ModalOverlayProps, "className" | "children">,
     VariantProps<typeof content> {
   "aria-label"?: DialogProps["aria-label"]
   "aria-labelledby"?: DialogProps["aria-labelledby"]
   role?: DialogProps["role"]
+  children?: DialogProps["children"]
   closeButton?: boolean
   isBlurred?: boolean
   classNames?: {
@@ -115,12 +116,14 @@ const ModalContent = ({
         )}
         {...props}
       >
-        {(values) => (
-          <Dialog role={role}>
-            {typeof children === "function" ? children(values) : children}
-            {closeButton && <Dialog.CloseIndicator isDismissable={_isDismissable} />}
-          </Dialog>
-        )}
+        <Dialog role={role}>
+          {(values) => (
+            <>
+              {typeof children === "function" ? children(values) : children}
+              {closeButton && <Dialog.CloseIndicator isDismissable={_isDismissable} />}
+            </>
+          )}
+        </Dialog>
       </ModalPrimitive>
     </ModalOverlay>
   )

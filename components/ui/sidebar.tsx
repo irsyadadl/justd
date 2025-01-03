@@ -346,10 +346,16 @@ const SidebarContent = ({ className, ...props }: React.ComponentProps<"div">) =>
 }
 
 const SidebarSectionGroup = ({ className, ...props }: React.ComponentProps<"section">) => {
+  const { state, isMobile } = useSidebar()
+  const collapsed = state === "collapsed" && !isMobile
   return (
     <section
       data-sidebar-section-group="true"
-      className={cn("flex w-full flex-col gap-y-6", className)}
+      className={cn(
+        "flex w-full flex-col gap-y-6",
+        collapsed && "items-center justify-center",
+        className,
+      )}
       {...props}
     />
   )
@@ -449,7 +455,14 @@ const SidebarItem = ({
                 shape="square"
                 intent="primary"
                 data-slot="sidebar-badge"
-                className="-translate-y-1/2 absolute inset-ring-1 inset-ring-primary/20 inset-y-1/2 right-1.5 h-5.5 w-auto text-[10px] transition-colors group-data-current:inset-ring-transparent group-data-current:bg-[color-mix(in_oklab,var(--color-primary)_20%,white_20%)] group-data-current:text-primary-fg dark:group-data-current:bg-[color-mix(in_oklab,var(--color-primary)_20%,white_15%)] dark:group-data-current:text-current"
+                className={cn(
+                  "-translate-y-1/2 absolute inset-ring-1 inset-ring-primary/20 inset-y-1/2 right-1.5 h-5.5 w-auto text-[10px] transition-colors group-data-current:inset-ring-transparent",
+                  isCurrent && [
+                    "bg-[color-mix(in_oklab,var(--color-primary)_20%,white_20%)] text-primary-fg dark:bg-[color-mix(in_oklab,var(--color-primary)_20%,white_15%)] dark:text-current ",
+                    "group-data-hovered:bg-[color-mix(in_oklab,var(--color-primary)_25%,white_30%)]",
+                    "dark:group-data-hovered:bg-[color-mix(in_oklab,var(--color-primary)_25%,white_20%)]",
+                  ],
+                )}
               >
                 {badge}
               </Badge>

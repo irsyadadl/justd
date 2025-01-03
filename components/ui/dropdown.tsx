@@ -20,7 +20,7 @@ const dropdownItemStyles = tv({
     "group relative flex cursor-default select-none items-center gap-x-1.5 rounded-[calc(var(--radius-lg)-1px)] px-2.5 py-2 forced-color:text-[Highlight] text-base text-fg outline outline-0 forced-color-adjust-none sm:text-sm forced-colors:text-[LinkText]",
     "has-submenu:data-open:data-danger:bg-danger/20 has-submenu:data-open:data-danger:text-danger",
     "data-has-submenu:data-open:bg-accent data-has-submenu:data-open:text-accent-fg data-has-submenu:data-open:*:data-[slot=icon]:text-accent-fg data-has-submenu:data-open:*:[.text-muted-fg]:text-accent-fg",
-    "**:data-[slot=avatar]:-mr-0.5 **:data-[slot=avatar]:size-6 sm:**:data-[slot=avatar]:size-5",
+    "**:data-[slot=avatar]:-mr-0.5 **:data-[slot=avatar]:*:size-6 **:data-[slot=avatar]:size-6 sm:**:data-[slot=avatar]:*:size-5 sm:**:data-[slot=avatar]:size-5",
     "data-danger:**:data-[slot=icon]:text-danger/70 data-focused:**:data-[slot=icon]:text-accent-fg data-hovered:**:data-[slot=icon]:text-accent-fg **:data-[slot=icon]:size-4 **:data-[slot=icon]:shrink-0 **:data-[slot=icon]:text-muted-fg data-focused:data-danger:**:data-[slot=icon]:text-danger-fg",
     "data-[slot=menu-radio]:*:data-[slot=icon]:size-3",
     "forced-colors:**:data-[slot=icon]:text-[CanvasText] forced-colors:group-data-focused:**:data-[slot=icon]:text-[Canvas] ",

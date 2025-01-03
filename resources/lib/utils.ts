@@ -14,7 +14,7 @@ export function wait(number: number) {
 }
 
 export function getSiteName(url: string): string {
-  return url.replace(/^(https?:\/\/)?(www\.)?/, "").split(".")[0]
+  return url.replace(/^(https?:\/\/)?(www\.)?/, "").split(".")[0]!
 }
 
 export function extractJSX(code: string) {

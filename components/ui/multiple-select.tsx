@@ -170,7 +170,7 @@ const MultipleSelect = <T extends SelectedKey>({
 
     const endKey = selectedItems.items[selectedItems.items.length - 1]
 
-    if (endKey !== null) {
+    if (endKey) {
       selectedItems.remove(endKey.id)
       onItemCleared?.(endKey.id)
     }

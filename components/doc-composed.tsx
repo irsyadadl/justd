@@ -1,7 +1,8 @@
 "use client"
 
+import { cn } from "@/utils/classes"
 import { usePathname } from "next/navigation"
-import { Card, Grid, Link } from "ui"
+import { Card, Link } from "ui"
 import { docs } from "#site/content"
 
 const simplifiedDocs = docs.map(({ title, slug, description }) => ({ title, slug, description }))
@@ -21,29 +22,25 @@ export function DocComposed({
       {!text ? (
         <>
           <p className="mb-6">
-            When you plug this component from the CLI, it autoloads all the composed components. No
-            need to toss 'em in one at a time.
+            Plug this component into the CLI, and it automatically loads all the included
+            components. No need to add them individually.
           </p>
           <p className="mb-6">
-            The <strong className="font-medium lowercase">{name}</strong>'s decked out with several
-            components to make it bangin'.
+            The <strong className="font-medium text-fg lowercase">{name}</strong> comes packed with
+            a variety of components to make it stand out.
           </p>
         </>
       ) : (
         <p className="mb-4">{text}</p>
       )}
-      <Grid
-        gap={{
-          initial: 2,
-          sm: 4,
-        }}
-        columns={{
-          initial: filteredComponents.length === 1 ? 1 : 2,
-          sm: 2,
-        }}
+      <div
+        className={cn(
+          "grid gap-2",
+          filteredComponents.length === 1 ? "grid-cols-1" : "grid-cols-2",
+        )}
       >
         {filteredComponents.map((item) => (
-          <Grid.Item className="relative" key={item.slug}>
+          <div className="relative" key={item.slug}>
             <Link
               aria-label={`Open ${item.title}`}
               rel="noopener noreferrer"
@@ -60,9 +57,9 @@ export function DocComposed({
                 </Card.Description>
               </Card.Header>
             </Card>
-          </Grid.Item>
+          </div>
         ))}
-      </Grid>
+      </div>
     </div>
   )
 }

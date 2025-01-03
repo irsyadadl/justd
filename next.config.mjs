@@ -38,6 +38,21 @@ export default {
         destination: "/docs/2.x/:slug*",
         permanent: false,
       },
+      {
+        source: "/docs/2.x/components/layouts/aside",
+        destination: "/docs/2.x/components/layouts/sidebar",
+        permanent: true,
+      },
+      {
+        source: "/docs/2.x/components/surfaces/chart",
+        destination: "/docs/2.x/components/charts/setup",
+        permanent: true,
+      },
+      {
+        source: "/docs/2.x/components/collections/accordion",
+        destination: "/docs/2.x/components/navigation/disclosure-group",
+        permanent: true,
+      },
     ]
   },
 }
