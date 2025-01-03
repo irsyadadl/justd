@@ -8,12 +8,13 @@ import { IconBulletFill } from "justd-icons"
 import { cn } from "@/utils/classes"
 
 type InputOTOPProps = React.ComponentProps<typeof OTPInput>
-const InputOTP = ({ className, containerClassName, ref, ...props }: InputOTOPProps) => (
+const InputOTP = ({ className, autoFocus = true, containerClassName, ref, ...props }: InputOTOPProps) => (
   <OTPInput
     data-1p-ignore
     ref={ref}
+    autoFocus={autoFocus}
     containerClassName={cn("flex items-center gap-2 has-disabled:opacity-50", containerClassName)}
-    className={cn("disabled:cursor-not-allowed", className)}
+    className={cn("disabled:cursor-not-allowed !h-[2.5rem] mt-auto", className)}
     {...props}
   />
 )
@@ -29,7 +30,13 @@ interface InputOTPSlotProps extends React.ComponentProps<"div"> {
 
 const InputOTPSlot = ({ index, className, ref, ...props }: InputOTPSlotProps) => {
   const inputOTPContext = use(OTPInputContext)
-  const { char, hasFakeCaret, isActive } = inputOTPContext.slots[index]
+  const slot = inputOTPContext.slots[index]
+
+  if (!slot) {
+    throw new Error("Slot not found")
+  }
+
+  const { char, hasFakeCaret, isActive } = slot
 
   return (
     <div
