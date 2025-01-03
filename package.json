@@ -26,9 +26,9 @@
   },
   "dependencies": {
     "@openpanel/nextjs": "^1.0.7",
-    "@shikijs/transformers": "^1.25.1",
+    "@shikijs/transformers": "^1.26.1",
     "@types/mdx": "^2.0.13",
-    "@types/node": "^22.10.3",
+    "@types/node": "^22.10.5",
     "babel-plugin-react-compiler": "^19.0.0-beta-df7b47d-20241124",
     "cmdk": "^1.0.4",
     "culori": "^4.0.1",
@@ -63,7 +63,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
-    "@shikijs/rehype": "^1.25.1",
+    "@shikijs/rehype": "^1.26.1",
     "@tailwindcss/postcss": "^4.0.0-beta.8",
     "@tailwindcss/typography": "^0.5.15",
     "@types/culori": "^2.1.1",
