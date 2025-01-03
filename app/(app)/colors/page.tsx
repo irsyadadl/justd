@@ -6,7 +6,7 @@ import type { Metadata } from "next"
 export const metadata: Metadata = {
   title: "Colors",
   description:
-    "A stash of over 154 colors blending TailwindCSS vibes with HTML color names, served up in 8 slick formats.",
+    "A stash of over 154 colors blending TailwindCSS vibes with HTML color names, served up in 4 slick formats.",
   metadataBase: new URL("https://getjustd.com"),
   applicationName: siteConfig.name,
   category: "Colors",

@@ -14,19 +14,23 @@ import {
   IconColors,
   IconCube,
   IconDeviceDesktop,
+  IconDuplicateFill,
   IconHome,
   IconMoon,
   IconNotepad,
+  IconPackage,
   IconSearch,
   IconSun,
   IconWindowVisit,
+  IconWindowVisitFill,
 } from "justd-icons"
 import { LayoutGroup } from "motion/react"
 import { useTheme } from "next-themes"
 import { usePathname } from "next/navigation"
 import { Collection } from "react-aria-components"
-import { Button, Link, Menu, Separator, buttonStyles } from "ui"
+import { Badge, Button, Link, Menu, Separator, buttonStyles } from "ui"
 
+import { cn } from "@/utils/classes"
 import { useMediaQuery } from "@/utils/use-media-query"
 import { CommandPalette } from "./command-palette"
 import { NavLink } from "./nav-item"
@@ -77,21 +81,46 @@ export function Navbar() {
                     >
                       Components
                     </NavLink>
-                    <NavLink isNextLink isActive={pathname === "/blocks"} href="/blocks">
-                      Blocks
-                    </NavLink>
-                    <NavLink isNextLink isActive={pathname === "/colors"} href="/colors">
-                      Colors
-                    </NavLink>
+
                     <NavLink isNextLink isActive={pathname === "/themes"} href="/themes">
                       Themes
                     </NavLink>
-                    <NavLink isNextLink isActive={pathname === "/icons"} href="/icons">
-                      Icons
-                    </NavLink>
+                    <Menu>
+                      <Menu.Trigger
+                        className={cn(
+                          "group flex cursor-pointer items-center gap-x-2 py-3 text-muted-fg text-sm",
+                        )}
+                      >
+                        Ecosystem
+                        <IconChevronLgDown className="size-3 duration-200 group-data-pressed:rotate-180" />
+                      </Menu.Trigger>
+                      <Menu.Content
+                        className="sm:min-w-xs sm:max-w-min"
+                        placement="bottom"
+                        items={ecosystemItems}
+                      >
+                        {(item) => (
+                          <Menu.Item
+                            href={item.href}
+                            className="group items-start gap-x-3 **:data-[slot=icon]:size-4"
+                          >
+                            <div className="grid size-8 shrink-0 place-content-center rounded-md bg-secondary/40 ring-1 ring-fg/10">
+                              {item.icon}
+                            </div>
+                            <Menu.ItemDetails>
+                              <span className="font-medium sm:text-sm">
+                                {item.label} {item.badge && <Badge>{item.badge}</Badge>}
+                              </span>
+                              <span className="-mt-1 block text-muted-fg text-xs">
+                                {item.description}
+                              </span>
+                            </Menu.ItemDetails>
+                          </Menu.Item>
+                        )}
+                      </Menu.Content>
+                    </Menu>
                   </Collection>
                 </div>
-
                 <div className="flex items-center gap-x-1">
                   <>
                     <Button
@@ -268,3 +297,51 @@ export function NavbarDropdown() {
     </div>
   )
 }
+const ecosystemItems = [
+  {
+    id: 1,
+    label: "Premium Starter Kit",
+    href: "#",
+    icon: <IconWindowVisitFill />,
+    description:
+      "Get started quickly with a complete React project setup, including authentication.",
+    badge: "Coming soon",
+  },
+  {
+    id: 2,
+    label: "Premium Blocks",
+    href: "#",
+    icon: <IconPackage />,
+    description: "Pre-designed, ready-to-use React components for seamless integration.",
+    badge: "Coming soon",
+  },
+  {
+    id: 3,
+    label: "Icons",
+    href: "/icons",
+    icon: <IconDuplicateFill />,
+    description: "Explore 1,191+ open-source SVG icons with frequent updates for your projects.",
+  },
+  {
+    id: 4,
+    label: "Themes",
+    href: "/themes",
+    icon: <IconColorPalette />,
+    description: "Curated themes to easily create polished designs for your apps.",
+  },
+  {
+    id: 5,
+    label: "Colors",
+    href: "/colors",
+    icon: <IconColors />,
+    description: "Over 154 colors blending TailwindCSS vibes with HTML color names.",
+  },
+  {
+    id: 6,
+    label: "Basic Blocks",
+    href: "/blocks",
+    icon: <IconWindowVisit />,
+    description:
+      "Example guides demonstrating how to effectively use components in their entirety.",
+  },
+]
