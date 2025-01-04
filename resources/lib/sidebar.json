@@ -2731,6 +2731,44 @@
         ]
       },
       {
+        "title": "Drag-and-drop",
+        "children": [
+          {
+            "title": "Drop Zone",
+            "slug": "docs/2.x/components/drag-and-drop/drop-zone",
+            "order": 1,
+            "children": [],
+            "toc": [
+              {
+                "title": "Basic",
+                "url": "#basic",
+                "items": []
+              },
+              {
+                "title": "Installation",
+                "url": "#installation",
+                "items": []
+              },
+              {
+                "title": "Manual Installation",
+                "url": "#manual-installation",
+                "items": []
+              },
+              {
+                "title": "Anatomy",
+                "url": "#anatomy",
+                "items": []
+              },
+              {
+                "title": "Using FileTrigger",
+                "url": "#using-filetrigger",
+                "items": []
+              }
+            ]
+          }
+        ]
+      },
+      {
         "title": "Date-and-time",
         "children": [
           {
@@ -3049,11 +3087,11 @@
         ]
       },
       {
-        "title": "Drag-and-drop",
+        "title": "Layouts",
         "children": [
           {
-            "title": "Drop Zone",
-            "slug": "docs/2.x/components/drag-and-drop/drop-zone",
+            "title": "Sidebar",
+            "slug": "docs/2.x/components/layouts/sidebar",
             "order": 1,
             "children": [],
             "toc": [
@@ -3068,6 +3106,11 @@
                 "items": []
               },
               {
+                "title": "Composed Components",
+                "url": "#composed-components",
+                "items": []
+              },
+              {
                 "title": "Manual Installation",
                 "url": "#manual-installation",
                 "items": []
@@ -3078,9 +3121,266 @@
                 "items": []
               },
               {
-                "title": "Using FileTrigger",
-                "url": "#using-filetrigger",
+                "title": "CSS Variables",
+                "url": "#css-variables",
                 "items": []
+              },
+              {
+                "title": "Intent",
+                "url": "#intent",
+                "items": [
+                  {
+                    "title": "Sidebar",
+                    "url": "#sidebar",
+                    "items": []
+                  },
+                  {
+                    "title": "Inset",
+                    "url": "#inset",
+                    "items": []
+                  },
+                  {
+                    "title": "Float",
+                    "url": "#float",
+                    "items": []
+                  },
+                  {
+                    "title": "Fleet",
+                    "url": "#fleet",
+                    "items": []
+                  }
+                ]
+              },
+              {
+                "title": "Collapsible",
+                "url": "#collapsible",
+                "items": [
+                  {
+                    "title": "Hidden",
+                    "url": "#hidden",
+                    "items": []
+                  },
+                  {
+                    "title": "Dock",
+                    "url": "#dock",
+                    "items": []
+                  }
+                ]
+              },
+              {
+                "title": "Default Open",
+                "url": "#default-open",
+                "items": []
+              },
+              {
+                "title": "Sidebar Section",
+                "url": "#sidebar-section",
+                "items": []
+              },
+              {
+                "title": "Sidebar Disclosure Group",
+                "url": "#sidebar-disclosure-group",
+                "items": []
+              },
+              {
+                "title": "Menu",
+                "url": "#menu",
+                "items": []
+              },
+              {
+                "title": "Badge",
+                "url": "#badge",
+                "items": []
+              },
+              {
+                "title": "Separator",
+                "url": "#separator",
+                "items": []
+              },
+              {
+                "title": "Tooltip",
+                "url": "#tooltip",
+                "items": []
+              },
+              {
+                "title": "Header",
+                "url": "#header",
+                "items": []
+              },
+              {
+                "title": "Footer",
+                "url": "#footer",
+                "items": []
+              },
+              {
+                "title": "Side",
+                "url": "#side",
+                "items": []
+              },
+              {
+                "title": "Put Anything",
+                "url": "#put-anything",
+                "items": []
+              },
+              {
+                "title": "Props",
+                "url": "#props",
+                "items": [
+                  {
+                    "title": "Sidebar",
+                    "url": "#sidebar-1",
+                    "items": []
+                  },
+                  {
+                    "title": "SidebarContextProps",
+                    "url": "#sidebarcontextprops",
+                    "items": []
+                  },
+                  {
+                    "title": "SidebarProviderProps",
+                    "url": "#sidebarproviderprops",
+                    "items": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Container",
+            "slug": "docs/2.x/components/layouts/container",
+            "order": 3,
+            "children": [],
+            "toc": [
+              {
+                "title": "Installation",
+                "url": "#installation",
+                "items": []
+              },
+              {
+                "title": "Manual Installation",
+                "url": "#manual-installation",
+                "items": []
+              },
+              {
+                "title": "Intent",
+                "url": "#intent",
+                "items": []
+              }
+            ]
+          },
+          {
+            "title": "Navbar",
+            "slug": "docs/2.x/components/layouts/navbar",
+            "order": 6,
+            "children": [],
+            "toc": [
+              {
+                "title": "Basic",
+                "url": "#basic",
+                "items": []
+              },
+              {
+                "title": "Installation",
+                "url": "#installation",
+                "items": []
+              },
+              {
+                "title": "Composed Components",
+                "url": "#composed-components",
+                "items": []
+              },
+              {
+                "title": "Manual Installation",
+                "url": "#manual-installation",
+                "items": []
+              },
+              {
+                "title": "Anatomy",
+                "url": "#anatomy",
+                "items": []
+              },
+              {
+                "title": "Intent",
+                "url": "#intent",
+                "items": [
+                  {
+                    "title": "Navbar",
+                    "url": "#navbar",
+                    "items": []
+                  },
+                  {
+                    "title": "Floating",
+                    "url": "#floating",
+                    "items": []
+                  },
+                  {
+                    "title": "Inset",
+                    "url": "#inset",
+                    "items": []
+                  }
+                ]
+              },
+              {
+                "title": "Using the Layout",
+                "url": "#using-the-layout",
+                "items": [
+                  {
+                    "title": "Common Usage",
+                    "url": "#common-usage",
+                    "items": []
+                  },
+                  {
+                    "title": "Inertia.js",
+                    "url": "#inertiajs",
+                    "items": []
+                  },
+                  {
+                    "title": "Next.js",
+                    "url": "#nextjs",
+                    "items": []
+                  }
+                ]
+              },
+              {
+                "title": "Logo",
+                "url": "#logo",
+                "items": []
+              },
+              {
+                "title": "Current",
+                "url": "#current",
+                "items": []
+              },
+              {
+                "title": "Sticky",
+                "url": "#sticky",
+                "items": []
+              },
+              {
+                "title": "Using Icons",
+                "url": "#using-icons",
+                "items": []
+              },
+              {
+                "title": "Disabled",
+                "url": "#disabled",
+                "items": []
+              },
+              {
+                "title": "Controlled",
+                "url": "#controlled",
+                "items": [
+                  {
+                    "title": "Inertia.js",
+                    "url": "#inertiajs-1",
+                    "items": []
+                  },
+                  {
+                    "title": "Next.js",
+                    "url": "#nextjs-1",
+                    "items": []
+                  }
+                ]
               }
             ]
           }
@@ -3735,306 +4035,6 @@
                 "title": "Props",
                 "url": "#props",
                 "items": []
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "title": "Layouts",
-        "children": [
-          {
-            "title": "Sidebar",
-            "slug": "docs/2.x/components/layouts/sidebar",
-            "order": 1,
-            "children": [],
-            "toc": [
-              {
-                "title": "Basic",
-                "url": "#basic",
-                "items": []
-              },
-              {
-                "title": "Installation",
-                "url": "#installation",
-                "items": []
-              },
-              {
-                "title": "Composed Components",
-                "url": "#composed-components",
-                "items": []
-              },
-              {
-                "title": "Manual Installation",
-                "url": "#manual-installation",
-                "items": []
-              },
-              {
-                "title": "Anatomy",
-                "url": "#anatomy",
-                "items": []
-              },
-              {
-                "title": "CSS Variables",
-                "url": "#css-variables",
-                "items": []
-              },
-              {
-                "title": "Intent",
-                "url": "#intent",
-                "items": [
-                  {
-                    "title": "Sidebar",
-                    "url": "#sidebar",
-                    "items": []
-                  },
-                  {
-                    "title": "Inset",
-                    "url": "#inset",
-                    "items": []
-                  },
-                  {
-                    "title": "Float",
-                    "url": "#float",
-                    "items": []
-                  },
-                  {
-                    "title": "Fleet",
-                    "url": "#fleet",
-                    "items": []
-                  }
-                ]
-              },
-              {
-                "title": "Collapsible",
-                "url": "#collapsible",
-                "items": [
-                  {
-                    "title": "Hidden",
-                    "url": "#hidden",
-                    "items": []
-                  },
-                  {
-                    "title": "Dock",
-                    "url": "#dock",
-                    "items": []
-                  }
-                ]
-              },
-              {
-                "title": "Default Open",
-                "url": "#default-open",
-                "items": []
-              },
-              {
-                "title": "Sidebar Section",
-                "url": "#sidebar-section",
-                "items": []
-              },
-              {
-                "title": "Sidebar Disclosure Group",
-                "url": "#sidebar-disclosure-group",
-                "items": []
-              },
-              {
-                "title": "Menu",
-                "url": "#menu",
-                "items": []
-              },
-              {
-                "title": "Badge",
-                "url": "#badge",
-                "items": []
-              },
-              {
-                "title": "Separator",
-                "url": "#separator",
-                "items": []
-              },
-              {
-                "title": "Tooltip",
-                "url": "#tooltip",
-                "items": []
-              },
-              {
-                "title": "Header",
-                "url": "#header",
-                "items": []
-              },
-              {
-                "title": "Footer",
-                "url": "#footer",
-                "items": []
-              },
-              {
-                "title": "Side",
-                "url": "#side",
-                "items": []
-              },
-              {
-                "title": "Put Anything",
-                "url": "#put-anything",
-                "items": []
-              },
-              {
-                "title": "Props",
-                "url": "#props",
-                "items": [
-                  {
-                    "title": "Sidebar",
-                    "url": "#sidebar-1",
-                    "items": []
-                  },
-                  {
-                    "title": "SidebarContextProps",
-                    "url": "#sidebarcontextprops",
-                    "items": []
-                  },
-                  {
-                    "title": "SidebarProviderProps",
-                    "url": "#sidebarproviderprops",
-                    "items": []
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "title": "Container",
-            "slug": "docs/2.x/components/layouts/container",
-            "order": 3,
-            "children": [],
-            "toc": [
-              {
-                "title": "Installation",
-                "url": "#installation",
-                "items": []
-              },
-              {
-                "title": "Manual Installation",
-                "url": "#manual-installation",
-                "items": []
-              },
-              {
-                "title": "Intent",
-                "url": "#intent",
-                "items": []
-              }
-            ]
-          },
-          {
-            "title": "Navbar",
-            "slug": "docs/2.x/components/layouts/navbar",
-            "order": 6,
-            "children": [],
-            "toc": [
-              {
-                "title": "Basic",
-                "url": "#basic",
-                "items": []
-              },
-              {
-                "title": "Installation",
-                "url": "#installation",
-                "items": []
-              },
-              {
-                "title": "Composed Components",
-                "url": "#composed-components",
-                "items": []
-              },
-              {
-                "title": "Manual Installation",
-                "url": "#manual-installation",
-                "items": []
-              },
-              {
-                "title": "Anatomy",
-                "url": "#anatomy",
-                "items": []
-              },
-              {
-                "title": "Intent",
-                "url": "#intent",
-                "items": [
-                  {
-                    "title": "Navbar",
-                    "url": "#navbar",
-                    "items": []
-                  },
-                  {
-                    "title": "Floating",
-                    "url": "#floating",
-                    "items": []
-                  },
-                  {
-                    "title": "Inset",
-                    "url": "#inset",
-                    "items": []
-                  }
-                ]
-              },
-              {
-                "title": "Using the Layout",
-                "url": "#using-the-layout",
-                "items": [
-                  {
-                    "title": "Common Usage",
-                    "url": "#common-usage",
-                    "items": []
-                  },
-                  {
-                    "title": "Inertia.js",
-                    "url": "#inertiajs",
-                    "items": []
-                  },
-                  {
-                    "title": "Next.js",
-                    "url": "#nextjs",
-                    "items": []
-                  }
-                ]
-              },
-              {
-                "title": "Logo",
-                "url": "#logo",
-                "items": []
-              },
-              {
-                "title": "Current",
-                "url": "#current",
-                "items": []
-              },
-              {
-                "title": "Sticky",
-                "url": "#sticky",
-                "items": []
-              },
-              {
-                "title": "Using Icons",
-                "url": "#using-icons",
-                "items": []
-              },
-              {
-                "title": "Disabled",
-                "url": "#disabled",
-                "items": []
-              },
-              {
-                "title": "Controlled",
-                "url": "#controlled",
-                "items": [
-                  {
-                    "title": "Inertia.js",
-                    "url": "#inertiajs-1",
-                    "items": []
-                  },
-                  {
-                    "title": "Next.js",
-                    "url": "#nextjs-1",
-                    "items": []
-                  }
-                ]
               }
             ]
           }

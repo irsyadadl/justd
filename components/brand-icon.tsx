@@ -1,10 +1,10 @@
 import {
-    IconBrandLaravel,
-    IconBrandPhp,
-    IconBrandReactjs,
-    IconBrandTailwindcss,
-    IconBrandTypescript,
-    IconFile,
+  IconBrandLaravel,
+  IconBrandPhp,
+  IconBrandReactjs,
+  IconBrandTailwindcss,
+  IconBrandTypescript,
+  IconFile,
 } from "justd-icons"
 
 export const BrandIcon = ({ label }: { label: string }) => {

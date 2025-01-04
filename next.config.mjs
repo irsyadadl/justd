@@ -15,7 +15,6 @@ export default {
   },
   experimental: {
     reactCompiler: true,
-    optimizePackageImports: ["shiki"],
   },
   async rewrites() {
     return [
