@@ -6,15 +6,15 @@ import sidebar from "@/resources/lib/sidebar.json"
 import { useMediaQuery } from "@/utils/use-media-query"
 import { useCommandState } from "cmdk"
 import {
-  IconBrandJustd,
-  IconColorSwatch,
-  IconColors,
-  IconCube,
-  IconHashtag,
-  IconHome,
-  IconNotepad,
-  IconNotes,
-  IconWindowVisit,
+    IconBrandJustd,
+    IconColors,
+    IconColorSwatch,
+    IconCube,
+    IconHashtag,
+    IconHome,
+    IconNotepad,
+    IconNotes,
+    IconWindowVisit,
 } from "justd-icons"
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"

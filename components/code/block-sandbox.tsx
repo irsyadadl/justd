@@ -305,7 +305,7 @@ function Component({ folders, fullscreen, isIframe = false, title, ...props }: P
                 <CodeHighlighter
                   max96={false}
                   plain
-                  className={"h-full overflow-y-auto bg-zinc-950 px-6 pt-6 pb-24 text-white"}
+                  className={"h-full overflow-y-auto bg-shiki-bg px-6 pt-6 pb-32 text-white"}
                   code={code}
                 />
               </SidebarInset>

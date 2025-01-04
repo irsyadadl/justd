@@ -54,20 +54,17 @@ export function CodeBlock({ source }: Props) {
     <>
       {contents && Object.keys(contents).length > 0 ? (
         <Tabs className="relative gap-0">
-          <div className="flex items-center justify-between overflow-hidden rounded-t-lg border-zinc-700 border-x border-y bg-[#0e0e10] dark:border-zinc-800">
+          <div className="flex items-center justify-between overflow-hidden rounded-t-lg border-x border-y">
             <Tabs.List className="gap-0 border-0">
               {Object.keys(contents).map((key) => (
                 <Tab
                   className={(values) =>
                     cn(
-                      "flex cursor-pointer items-center gap-x-1.5 whitespace-nowrap px-3 py-2.5 font-mono text-xs text-zinc-400 tracking-tight",
+                      "flex cursor-pointer items-center gap-x-1.5 whitespace-nowrap px-3 py-2.5 font-mono text-muted-fg text-xs tracking-tight outline-hidden",
                       "**:data-[slot=icon]:-ml-0.5 border-transparent border-x first:border-l-0 **:data-[slot=icon]:size-4 **:data-[slot=icon]:shrink-0",
-                      values.isHovered && "bg-zinc-800 text-zinc-50 dark:bg-zinc-800/50",
-                      values.isSelected &&
-                        "border-zinc-700 bg-zinc-800 text-zinc-50 dark:border-zinc-800 dark:bg-zinc-800/50",
-                      values.isFocused &&
-                        "bg-zinc-800 text-zinc-50 outline-hidden dark:bg-zinc-800/50",
-                      values.isFocusVisible && "bg-zinc-800 text-zinc-50 dark:bg-zinc-800/50",
+                      (values.isSelected || values.isFocused || values.isFocusVisible) &&
+                        "border-input bg-secondary text-secondary-fg dark:bg-muted",
+                      values.isHovered && "bg-secondary text-secondary-fg dark:bg-muted",
                     )
                   }
                   key={key}
@@ -93,7 +90,7 @@ export function CodeBlock({ source }: Props) {
             <Tabs.Panel
               key={key}
               id={key}
-              className="overflow-hidden rounded-b-lg border-zinc-700 border-x border-b bg-shiki-bg dark:border-zinc-800"
+              className="overflow-hidden rounded-b-lg border-x border-b bg-shiki-bg"
             >
               <CopyButton
                 className="absolute top-0.5 right-1"

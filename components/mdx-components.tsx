@@ -15,6 +15,7 @@ import Image from "next/image"
 import { Link } from "ui"
 
 import { BlockSandbox } from "@/components/code/block-sandbox"
+import { PlainCode, Pre } from "@/components/code/plain-code"
 import { DocHow } from "./code/doc-how"
 
 interface MdxProps {
@@ -28,6 +29,11 @@ export function Mdx({ code }: MdxProps) {
     <Component
       components={{
         GeneratedTheme,
+        pre: (props: React.ComponentProps<typeof PlainCode>) => (
+          <PlainCode className="not-prose bg-black" {...props}>
+            <Pre>{props.children}</Pre>
+          </PlainCode>
+        ),
         CodeBlock,
         BlockSandbox,
         EditorText: (props: React.ComponentProps<typeof EditorText>) => <EditorText {...props} />,
@@ -57,12 +63,6 @@ export function Mdx({ code }: MdxProps) {
           />
         ),
         SourceCode: SourceCode,
-        figure: (props: React.ComponentProps<"figure">) => (
-          <figure
-            className="*:[pre]:inset-ring-1 *:[pre]:inset-ring-zinc-800 *:[pre]:max-h-96 *:[pre]:rounded-lg *:[pre]:bg-shiki-bg *:[pre]:p-4"
-            {...props}
-          />
-        ),
       }}
     />
   )

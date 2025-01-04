@@ -1,6 +1,7 @@
+import rehypeShiki from "@shikijs/rehype"
 import { transformerNotationDiff } from "@shikijs/transformers"
+
 import rehypeAutolinkHeadings from "rehype-autolink-headings"
-import rehypePrettyCode from "rehype-pretty-code"
 import rehypeSlug from "rehype-slug"
 import rehypeStringify from "rehype-stringify"
 import remarkParse from "remark-parse"
@@ -63,15 +64,15 @@ export default defineConfig({
       rehypeSlug,
       rehypeStringify,
       [
-        rehypePrettyCode,
+        rehypeShiki as any,
         {
-          keepBackground: false,
-          transformers: [transformerNotationDiff()],
-          theme: "vesper",
-          defaultLang: {
-            block: "tsx",
-            inline: "plaintext",
+          highlighter: transformerNotationDiff,
+          themes: {
+            light: "github-light",
+            dark: "github-dark",
           },
+          langs: ["ts", "tsx", "js", "jsx", "json", "css", "html", "md", "mdx"],
+          defaultLanguage: "tsx",
         },
       ],
       [

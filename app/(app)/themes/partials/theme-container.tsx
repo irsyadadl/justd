@@ -100,15 +100,14 @@ export function ThemeContainer() {
       <Sheet.Content
         onOpenChange={setOpen}
         isOpen={open}
-        classNames={{ content: "bg-[#0e0e10] sm:max-w-md" }}
+        classNames={{ content: "bg-shiki-bg sm:max-w-md" }}
         side="right"
       >
         <Sheet.Header
-          className="border-zinc-800 text-white *:text-white"
           title="Theme"
           description="Copy the theme below and paste it into your CSS file."
         />
-        <Sheet.Body className="border-zinc-800 border-y pb-4">
+        <Sheet.Body className="border-y pb-4">
           <CodeHighlighter
             plain
             max96={false}
@@ -117,10 +116,7 @@ export function ThemeContainer() {
           />
         </Sheet.Body>
         <Sheet.Footer className="gap-x-1">
-          <Sheet.Close
-            onPress={handleClose}
-            className="hidden border-zinc-800 text-white data-hovered:border-zinc-700 data-pressed:border-zinc-700 data-hovered:bg-zinc-900 data-pressed:bg-zinc-800 sm:flex"
-          >
+          <Sheet.Close onPress={handleClose} className="hidden sm:flex">
             Close
           </Sheet.Close>
           <Button
