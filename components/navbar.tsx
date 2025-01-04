@@ -28,7 +28,7 @@ import { LayoutGroup } from "motion/react"
 import { useTheme } from "next-themes"
 import { usePathname } from "next/navigation"
 import { Collection } from "react-aria-components"
-import { Badge, Button, buttonStyles, Link, Menu, Separator } from "ui"
+import { Badge, Button, Link, Menu, Separator, buttonStyles } from "ui"
 
 import { cn } from "@/utils/classes"
 import { useMediaQuery } from "@/utils/use-media-query"

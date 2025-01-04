@@ -4,13 +4,13 @@ import type { FC, SVGProps } from "react"
 
 import { Logo } from "@/components/logo"
 import {
-    IconBell,
-    IconBrandAdobe,
-    IconBrandFramer,
-    IconBrandGithub,
-    IconBrandJustd,
-    IconChartBar,
-    IconCommandFill,
+  IconBell,
+  IconBrandAdobe,
+  IconBrandFramer,
+  IconBrandGithub,
+  IconBrandJustd,
+  IconChartBar,
+  IconCommandFill,
 } from "justd-icons"
 import { ListBox, ListBoxItem } from "react-aria-components"
 
