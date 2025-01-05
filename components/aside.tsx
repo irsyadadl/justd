@@ -2,7 +2,6 @@
 
 import { source } from "@/utils/source"
 import type { PageTree } from "fumadocs-core/server"
-// import sidebar from "@/resources/lib/sidebar.json"
 import { Link } from "next-view-transitions"
 import type { LinkProps } from "next/link"
 import { usePathname } from "next/navigation"
@@ -20,7 +19,7 @@ export interface SidebarItem {
 export function Aside() {
   const pageTree = source.pageTree
   return (
-    <div className="flex flex-col gap-y-6 px-4">
+    <div className="px-4">
       {pageTree.children.map((item, index) => {
         return <SidebarComposed key={index} node={item} />
       })}
@@ -69,13 +68,16 @@ const SidebarComposed = ({
 }) => {
   if (node.type === "folder") {
     return (
-      <div>
-        <Heading
-          className="mb-2 flex items-center gap-x-2 font-medium text-base sm:text-sm"
-          level={3}
-        >
-          {node.name}
-        </Heading>
+      <div className="mb-6">
+        {!Number(node.name) && (
+          <Heading
+            className="mb-2 flex items-center gap-x-2 font-medium text-base sm:text-sm"
+            level={3}
+          >
+            {node.name}
+          </Heading>
+        )}
+
         {node.children.map((child, index) => (
           <SidebarComposed key={index} node={child} />
         ))}

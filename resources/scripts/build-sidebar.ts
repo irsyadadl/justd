@@ -1,5 +1,5 @@
 import * as fs from "node:fs"
-import { type Docs, docs } from "#site/content"
+import { docs } from "#site/content"
 
 const VERSION = "2.x"
 

@@ -1,5 +1,5 @@
-import { docs } from "@/.source"
 import { notFound, redirect } from "next/navigation"
+import { docs } from "#site/content"
 
 interface PageProps {
   params: Promise<{ slug: string }>
@@ -7,10 +7,15 @@ interface PageProps {
 
 export default async function Page(props: PageProps) {
   const params = await props.params
-  const originalUrl = docs.map((i) => i.slug).find((i) => i.split("/").pop() === params.slug)
+
+  const originalUrl = docs
+    .map((i) => i._file?.path)
+    .find((i) => i?.split("/").at(-1)?.split(".")[0] === params.slug)
+    ?.replace(".mdx", "")
+
   if (!originalUrl) {
     notFound()
   }
 
-  return redirect(`/${originalUrl.toLowerCase()}`)
+  return redirect(`/docs/${originalUrl.toLowerCase()}`)
 }
