@@ -1,8 +1,14 @@
 "use client"
 
-import React, { useState } from "react"
+import React, { useEffect, useMemo, useState } from "react"
+
+import { CommandMenu } from "ui"
+
+import Link from "next/link"
 
 import sidebar from "@/resources/lib/sidebar.json"
+import type { PageTree } from "fumadocs-core/server"
+
 import { useMediaQuery } from "@/utils/use-media-query"
 import { useCommandState } from "cmdk"
 import {
@@ -16,9 +22,9 @@ import {
   IconNotes,
   IconWindowVisit,
 } from "justd-icons"
-import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
-import { CommandMenu } from "ui"
+
+import { source } from "@/utils/source"
 import { useDebounce } from "use-debounce"
 
 export interface OpenCloseProps {
@@ -42,8 +48,16 @@ export function CommandPalette({ openCmd, setOpen }: OpenCloseProps) {
   const router = useRouter()
   const pathname = usePathname()
 
+  const firstChild = source.pageTree.children[0]
+  const pageTree = firstChild?.type === "folder" ? firstChild : source.pageTree
+
+  const nonComponentPages = useMemo(
+    () => pageTree.children.filter((item) => item.name !== "Components"),
+    [pageTree],
+  )
+
   // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
-  React.useEffect(() => {
+  useEffect(() => {
     const down = (e: KeyboardEvent) => {
       if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
         e.preventDefault()
@@ -58,10 +72,8 @@ export function CommandPalette({ openCmd, setOpen }: OpenCloseProps) {
   }, [pathname, setOpen])
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
-  React.useEffect(() => {
-    if (setOpen) {
-      setOpen(false)
-    }
+  useEffect(() => {
+    setOpen?.(false)
   }, [pathname, setOpen])
 
   const isDesktop = useMediaQuery("(min-width: 1024px)")
@@ -69,6 +81,10 @@ export function CommandPalette({ openCmd, setOpen }: OpenCloseProps) {
   const [loading, setLoading] = useState(false)
   const [search, setSearch] = useState("")
   const [debouncedSearch] = useDebounce(search, 300)
+
+  function searchSidebarV2(items: PageTree.Node[], query: string): PageTree.Node[] {
+    return items
+  }
 
   function searchSidebar(items: SidebarItem[], query: string): SidebarItem[] {
     return items
@@ -104,7 +120,7 @@ export function CommandPalette({ openCmd, setOpen }: OpenCloseProps) {
   }
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
-  const filteredItems = React.useMemo(() => {
+  const filteredItems = useMemo(() => {
     if (!debouncedSearch) return []
 
     const sidebarItem = sidebar[3]
@@ -116,7 +132,7 @@ export function CommandPalette({ openCmd, setOpen }: OpenCloseProps) {
     return searchSidebar(sidebarItem.children as any, debouncedSearch)
   }, [debouncedSearch, sidebar])
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (debouncedSearch) {
       setLoading(true)
       const timeout = setTimeout(() => setLoading(false), 100)
@@ -126,9 +142,10 @@ export function CommandPalette({ openCmd, setOpen }: OpenCloseProps) {
   }, [debouncedSearch])
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
-  React.useEffect(() => {
+  useEffect(() => {
     setSearch("")
   }, [pathname])
+
   return (
     <CommandMenu
       classNames={{
@@ -189,23 +206,9 @@ export function CommandPalette({ openCmd, setOpen }: OpenCloseProps) {
             </Link>
           </CommandMenu.Item>
         </CommandMenu.Section>
-        {sidebar
-          .filter((i) => i.title !== "Components")
-          .map((item) => (
-            <CommandMenu.Section key={item.slug} heading={item.title}>
-              {item.children?.map((child) => (
-                <CommandMenu.Item
-                  key={`${child.title}`}
-                  value={`${item.title} ${child.title} ${item.slug}`}
-                  // @ts-ignore
-                  onSelect={() => router.push(`/${child.slug}`)}
-                >
-                  <IconNotes />
-                  {child.title}
-                </CommandMenu.Item>
-              ))}
-            </CommandMenu.Section>
-          ))}
+        {nonComponentPages.map((item, index) => (
+          <CommandComposed key={index} node={item} />
+        ))}
         {debouncedSearch &&
           filteredItems.map((item, i) => (
             <CommandMenu.Section key={`${item.slug}-${i}-${item.title}`} heading={item.title}>
@@ -242,4 +245,43 @@ const SubItem = (props: React.ComponentProps<typeof CommandMenu.Item>) => {
   const search = useCommandState((state) => state.search)
   if (!search) return null
   return <CommandMenu.Item {...props} />
+}
+
+const CommandComposed = ({
+  node,
+}: {
+  node: PageTree.Node
+}) => {
+  const router = useRouter()
+
+  if (node.type === "folder") {
+    return (
+      <CommandMenu.Section heading={node.name}>
+        {node.children.map((child, index) => (
+          <CommandComposed key={index} node={child} />
+        ))}
+      </CommandMenu.Section>
+    )
+  }
+
+  if (node.type === "separator") {
+    return <CommandMenu.Separator />
+  }
+
+  if (node.type === "page") {
+    return (
+      <CommandMenu.Item
+        onSelect={() => {
+          if (node.external) {
+            window.open(node.url, "_blank")
+          } else {
+            router.push(node.url)
+          }
+        }}
+      >
+        {node.icon ? node.icon : <IconNotes />}
+        {node.name}
+      </CommandMenu.Item>
+    )
+  }
 }
