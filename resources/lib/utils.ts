@@ -1,9 +1,4 @@
-import type { Docs } from "@/.velite"
 import title from "title"
-
-export function sortDocs(docs: Array<Docs>) {
-  return docs.sort((a, b) => a.order - b.order)
-}
 
 export function goodTitle(str: string) {
   return title(str.replaceAll("-", " "))

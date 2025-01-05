@@ -12,7 +12,7 @@
       "**/*.css",
       "**/.next/**",
       "resource/content",
-      ".velite",
+      ".source",
       "components/docs/generated/**/*"
     ]
   },
@@ -58,14 +58,14 @@
         }
       }
     },
-    "ignore": ["node_modules", ".next", ".velite", "dist", ".vercel"]
+    "ignore": ["node_modules", ".next", ".source", "dist", ".vercel"]
   },
   "formatter": {
     "enabled": true,
     "indentStyle": "space",
     "indentWidth": 2,
     "lineWidth": 100,
-    "ignore": ["node_modules", ".next", ".velite", "dist", ".vercel"]
+    "ignore": ["node_modules", ".next", ".source", "dist", ".vercel"]
   },
   "javascript": {
     "formatter": {

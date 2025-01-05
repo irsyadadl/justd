@@ -1,8 +1,9 @@
-import { type Docs, docs } from "@/.velite"
 import { siteConfig } from "@/resources/config/site"
+import { source } from "@/utils/source"
 import type { MetadataRoute } from "next"
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const docs = source.pageTree
   return [
     {
       url: siteConfig.url,
@@ -28,9 +29,31 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${siteConfig.url}/charts`,
       lastModified: new Date(),
     },
-    ...docs.map((doc: Docs) => ({
-      url: `${siteConfig.url}/${doc.slug}`,
-      lastModified: new Date(),
-    })),
+    //   @ts-ignore
+    ...extractUrls(docs.children[0].children),
   ]
+}
+
+type DocNode = {
+  type: string
+  name: string
+  url?: string
+  children: DocNode[]
+  $ref?: Record<string, any>
+}
+
+function extractUrls(data: DocNode[]): { url: string }[] {
+  const urls: { url: string }[] = []
+
+  const traverse = (node: DocNode): void => {
+    if (node.type === "page" && node.url) {
+      urls.push({ url: node.url })
+    } else if (node.children) {
+      node.children.forEach(traverse)
+    }
+  }
+
+  data.forEach(traverse)
+
+  return urls
 }
