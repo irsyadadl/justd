@@ -30,7 +30,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
     },
     //   @ts-ignore
-    ...extractUrls(docs.children[0].children),
+    ...extractUrls(docs.children[0].children).map((i) => ({ ...i, lastModified: new Date() })),
   ]
 }
 
@@ -38,6 +38,7 @@ type DocNode = {
   type: string
   name: string
   url?: string
+  lastModified: Date
   children: DocNode[]
   $ref?: Record<string, any>
 }
@@ -47,7 +48,9 @@ function extractUrls(data: DocNode[]): { url: string }[] {
 
   const traverse = (node: DocNode): void => {
     if (node.type === "page" && node.url) {
-      urls.push({ url: node.url })
+      urls.push({
+        url: `${siteConfig.url}${node.url}`,
+      })
     } else if (node.children) {
       node.children.forEach(traverse)
     }
