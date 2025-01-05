@@ -9,21 +9,17 @@ import { SourceCode } from "@/components/code/source-code"
 import { DocComposed } from "@/components/doc-composed"
 import { DocNote } from "@/components/doc-note"
 import { Installation } from "@/components/installation"
-import { useMDXComponent } from "@/resources/hooks/use-mdx"
 import { IconArrowUpRight } from "justd-icons"
 import Image from "next/image"
 import { Link } from "ui"
 
 import { BlockSandbox } from "@/components/code/block-sandbox"
 import { PlainCode, Pre } from "@/components/code/plain-code"
+import type { MDXContent } from "mdx/types"
 import { DocHow } from "./code/doc-how"
 
-interface MdxProps {
-  code: string
-}
-
-export function Mdx({ code }: MdxProps) {
-  const Component = useMDXComponent(code)
+export function Mdx({ code }: { code: MDXContent }) {
+  const Component = code
 
   return (
     <Component

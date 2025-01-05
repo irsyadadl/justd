@@ -1,34 +1,28 @@
 "use client"
 
-import React, { Suspense, useState } from "react"
+import React, { Suspense, useEffect, useState } from "react"
 
 import { cn } from "@/utils/classes"
 import { useMediaQuery } from "@/utils/use-media-query"
-import { useScrollPosition } from "hooks/use-scroll-position"
 import { Heading } from "react-aria-components"
 import scrollIntoView from "scroll-into-view-if-needed"
 
-interface TableOfContentsProps {
-  title: string
-  url: string
-  items?: TableOfContentsProps[]
-}
+import type { TOCItemType, TableOfContents } from "fumadocs-core/server"
+import { useScrollPosition } from "hooks/use-scroll-position"
 
 interface Props {
   className?: string
-  items: TableOfContentsProps[]
+  items: TableOfContents
 }
 
-export function TableOfContents({ className, items }: Props) {
-  // const [thereIsAnAd, setThereIsAnAd] = useState(true)
+export function Toc({ className, items }: Props) {
   const tocRef = React.useRef<HTMLDivElement>(null)
   const scrollPosition = useScrollPosition(tocRef)
-  const ids = items.flatMap((item) => [
-    item.url.split("#")[1]!,
-    ...(item.items ? item.items.map((subItem) => subItem.url.split("#")[1]!) : []),
-  ])
-  const activeId = useActiveItem(ids)
+  const ids = items.map((item) => item.url.split("#")[1])
+  const activeId = useActiveItem(ids as string[])
   const activeIndex = activeId?.length || 0
+
+  const minDepth = items.reduce((acc, item) => Math.min(acc, item.depth), 1000)
 
   React.useEffect(() => {
     if (!activeId || activeIndex < 2) return
@@ -53,7 +47,7 @@ export function TableOfContents({ className, items }: Props) {
       className={cn(
         "not-prose forced-color-adjust-none",
         "scrollbar-hidden xl:-mr-6 xl:sticky xl:top-[1.75rem] xl:h-[calc(100vh-4.75rem)] xl:flex-none xl:overflow-y-auto xl:py-16 xl:pr-12",
-        "top-20",
+        "top-10",
         className,
       )}
       style={{
@@ -71,15 +65,8 @@ export function TableOfContents({ className, items }: Props) {
             {items.length > 0 && (
               <ul className="flex flex-col gap-y-2.5">
                 {items.map((item) => (
-                  <React.Fragment key={item.title}>
-                    <TocLink item={item} activeId={activeId} />
-                    {item.items && item.items.length > 0 && (
-                      <ul className="flex flex-col gap-y-2.5 lg:pl-2.5">
-                        {item.items.map((subItem) => (
-                          <TocLink key={subItem.title} item={subItem} activeId={activeId} />
-                        ))}
-                      </ul>
-                    )}
+                  <React.Fragment key={item.url}>
+                    <TocLink item={item} activeId={activeId} minDepth={minDepth} />
                   </React.Fragment>
                 ))}
               </ul>
@@ -91,9 +78,13 @@ export function TableOfContents({ className, items }: Props) {
   )
 }
 
-function TocLink({ item, activeId }: { item: TableOfContentsProps; activeId: string | null }) {
+function TocLink({
+  item,
+  activeId,
+  minDepth,
+}: { item: TOCItemType; activeId: string | null; minDepth: number }) {
   return (
-    <li key={item.title}>
+    <li key={item.url}>
       <a
         className={cn(
           "block tracking-tight no-underline outline-hidden duration-200 focus-visible:text-fg focus-visible:outline-hidden lg:text-[0.885rem]",
@@ -101,6 +92,9 @@ function TocLink({ item, activeId }: { item: TableOfContentsProps; activeId: str
             ? "text-fg forced-colors:text-[Highlight]"
             : "text-muted-fg/90 forced-colors:text-[GrayText]",
         )}
+        style={{
+          marginLeft: (item.depth - minDepth) * 16,
+        }}
         href={item.url}
       >
         {item.title}
@@ -112,8 +106,7 @@ function TocLink({ item, activeId }: { item: TableOfContentsProps; activeId: str
 export function useActiveItem(itemIds: string[]) {
   const [activeId, setActiveId] = useState<string | null>(null)
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
-  React.useEffect(() => {
+  useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         let bestCandidate: IntersectionObserverEntry | null = null
@@ -144,7 +137,7 @@ export function useActiveItem(itemIds: string[]) {
         if (element) observer.unobserve(element)
       })
     }
-  }, [itemIds, activeId])
+  }, [itemIds])
 
   return activeId
 }

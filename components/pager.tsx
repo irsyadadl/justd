@@ -1,70 +1,43 @@
-"use client"
-
 import { cn } from "@/utils/classes"
-import { IconChevronLgLeft, IconChevronLgRight } from "justd-icons"
-import { Link, buttonStyles } from "ui"
+import { type PageTree, findNeighbour } from "fumadocs-core/server"
+import { IconChevronLeft, IconChevronRight } from "justd-icons"
+import Link from "next/link"
+import { Button } from "ui"
 
-interface Doc {
-  order: number
-  slug: string
-  title: string
-}
-
-const getPagerForDoc = (docs: Doc[], doc: Doc) => {
-  const nav = docs.map((d) => ({
-    href: `/${d.slug}`,
-    title: d.title,
-  }))
-
-  const activeIndex = nav.findIndex((link) => `/${doc.slug}` === link.href)
-
-  const prev = activeIndex > 0 ? nav[activeIndex - 1] : null
-  const next = activeIndex < nav.length - 1 ? nav[activeIndex + 1] : null
-
-  return {
-    prev,
-    next,
-  }
-}
-
-export function Pager({ docs, doc }: { docs: Doc[]; doc: Doc }) {
-  const groupedAndSortedDocs = docs.sort((a, b) => {
-    const groupA = a.slug.split("/")[2]
-    const groupB = b.slug.split("/")[2]
-
-    if (groupA === groupB) {
-      return a.order - b.order
-    }
-
-    return groupA!.localeCompare(groupB!)
-  })
-
-  const pager = getPagerForDoc(groupedAndSortedDocs, doc)
-
-  if (!pager.prev && !pager.next) {
-    return null
-  }
+export const Pager = ({
+  tree,
+  url,
+  className,
+}: { tree: PageTree.Root; url: string; className?: string }) => {
+  const neighbours = findNeighbour(tree, url)
 
   return (
-    <div className="mt-6 flex flex-row items-center justify-between">
-      {pager.prev && (
-        <Link
-          aria-label={`Previous page: ${pager.prev.title}`}
-          href={pager.prev.href}
-          className={buttonStyles({ appearance: "outline" })}
-        >
-          <IconChevronLgLeft />
-          {pager.prev.title}
+    <div className={cn("flex w-full justify-between gap-3", className)}>
+      {neighbours.previous && (
+        <Link className="w-full" href={neighbours.previous.url}>
+          <Button appearance="outline" className={"size-full justify-start p-4"}>
+            <div>
+              <div className="flex items-center gap-px text-muted-fg">
+                <IconChevronLeft className="size-5" />
+                Previous
+              </div>
+              {neighbours.previous.name}
+            </div>
+          </Button>
         </Link>
       )}
-      {pager.next && (
-        <Link
-          aria-label={`Next page: ${pager.next.title}`}
-          href={pager.next.href}
-          className={cn(buttonStyles({ appearance: "outline" }), "ml-auto")}
-        >
-          {pager.next.title}
-          <IconChevronLgRight />
+
+      {neighbours.next && (
+        <Link className="w-full" href={neighbours.next.url}>
+          <Button appearance="outline" className={"size-full justify-end p-4"}>
+            <div>
+              <div className="flex items-center gap-px text-muted-fg">
+                Next
+                <IconChevronRight className="size-5" />
+              </div>
+              {neighbours.next.name}
+            </div>
+          </Button>
         </Link>
       )}
     </div>

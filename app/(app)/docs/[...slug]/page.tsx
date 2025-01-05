@@ -1,12 +1,12 @@
 import { DocRefs } from "@/components/doc-refs"
-import { Mdx } from "@/components/mdx-components"
+import { Mdx } from "@/components/mdx"
 import { Pager } from "@/components/pager"
-import { TableOfContents } from "@/components/table-of-contents"
+import { Toc } from "@/components/toc"
 import { siteConfig } from "@/resources/config/site"
 import { goodTitle } from "@/resources/lib/utils"
+import { source } from "@/utils/source"
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
-import { docs } from "#site/content"
 
 export interface DocPageProps {
   params: Promise<{
@@ -14,39 +14,32 @@ export interface DocPageProps {
   }>
 }
 
-async function getPostFromParams(params: { slug: string[] }) {
-  const slug = params?.slug?.join("/")
-  const doc = docs.find((doc) => doc.slugAsParams === slug)
-
-  return doc
-}
-
 const extractSegment = (str: string): string | null => {
   const segments = str.split("/")
-  return segments.length === 5 ? goodTitle(segments[3]!) : goodTitle(segments[2]!)
+  return segments.length === 5 ? goodTitle(segments[3]!) : goodTitle(segments[3]!)
 }
 
 export async function generateMetadata(props: DocPageProps): Promise<Metadata> {
   const params = await props.params
-  const doc = await getPostFromParams(params)
+  const page = source.getPage(params.slug)
 
-  if (!doc) {
+  if (!page) {
     return {}
   }
 
   const ogSearchParams = new URLSearchParams()
-  ogSearchParams.set("title", doc.title)
+  ogSearchParams.set("title", page.data.title)
 
   return {
-    title: doc.title,
-    description: doc.description,
+    title: page.data.title,
+    description: page.data.description,
     applicationName: siteConfig.name,
     category: "Docs",
     keywords: [
-      doc.title,
-      `${doc.title} components`,
-      `${doc.title} component`,
-      `${doc.title} on React`,
+      page.data.title,
+      `${page.data.title} components`,
+      `${page.data.title} component`,
+      `${page.data.title} on React`,
       "React",
       "Next.js",
       "Inertia.js",
@@ -75,14 +68,15 @@ export async function generateMetadata(props: DocPageProps): Promise<Metadata> {
   }
 }
 
-export async function generateStaticParams(): Promise<{ slug: any }[]> {
-  return docs.map((doc) => ({ slug: doc.slugAsParams.split("/") }))
-}
+// export async function generateStaticParams(): Promise<{ slug: any }[]> {
+//   return docs.map((doc) => ({ slug: doc.slugAsParams.split("/") }))
+// }
 
-export default async function PostPage(props: DocPageProps) {
+export default async function Page(props: DocPageProps) {
   const params = await props.params
-  const doc = await getPostFromParams(params)
-  if (!doc || !doc.published) {
+  const page = source.getPage(params.slug)
+
+  if (!page) {
     notFound()
   }
 
@@ -105,38 +99,29 @@ export default async function PostPage(props: DocPageProps) {
                 />
               </div>
               <div className="font-mono text-blue-600 text-xs uppercase dark:text-blue-400">
-                {extractSegment(doc.slug)}
+                {extractSegment(page.url)}
               </div>
               <h1 className="mt-2 font-semibold text-2xl tracking-tight sm:text-3xl">
-                {doc.title}
+                {page.data.title}
               </h1>
-              {doc.description ? (
+              {page.data.description ? (
                 <p className="mt-2.5 text-pretty text-base text-fg/60 leading-relaxed">
-                  {doc.description}
+                  {page.data.description}
                 </p>
               ) : null}
 
-              {doc.references && doc.references?.length > 0 && (
-                <DocRefs references={doc.references} />
+              {page.data.references && page.data.references?.length > 0 && (
+                <DocRefs references={page.data.references} />
               )}
             </div>
           </div>
 
-          <TableOfContents className="mt-4 block sm:mt-8 xl:hidden" items={doc.toc} />
-          <Mdx code={doc.body} />
-          <Pager
-            doc={{
-              title: doc.title,
-              slug: doc.slug,
-              order: doc.order,
-            }}
-            docs={docs
-              .filter((doc) => doc.slug.startsWith("docs/2.x/components"))
-              .map((doc) => ({ order: doc.order, slug: doc.slug, title: doc.title }))}
-          />
+          <Toc className="mt-4 block sm:mt-8 xl:hidden" items={page.data.toc} />
+          <Mdx code={page.data.body} />
+          <Pager className="pt-3" tree={source.pageTree} url={page.url} />
         </main>
       </div>
-      <TableOfContents className="hidden xl:block" items={doc.toc} />
+      <Toc className="hidden xl:block" items={page.data.toc} />
     </>
   )
 }

@@ -141,7 +141,12 @@ const CommandMenu = ({
         <Modal className={modal({ className: classNames?.content })}>
           <Dialog className="outline-hidden" aria-label="Command Palette">
             <>
-              <Command value={value} onValueChange={onValueChange} className={command()}>
+              <Command
+                value={value}
+                shouldFilter={false}
+                onValueChange={onValueChange}
+                className={command()}
+              >
                 {children}
               </Command>
               {!hideCloseButton && (
