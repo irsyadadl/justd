@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation"
 import { Card, Link } from "ui"
 import { docs } from "#site/content"
 
-const simplifiedDocs = docs.map(({ title, slug, description }) => ({ title, slug, description }))
+const simplifiedDocs = docs.map(({ title, description }) => ({ title, description }))
 
 export function DocComposed({
   components,

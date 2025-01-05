@@ -13,8 +13,8 @@
     "prepare": "husky",
     "build:sidebar": "bun run resources/scripts/build-sidebar.ts",
     "build:registry": "rm -rf public/registry && bun run resources/scripts/build-registry.ts",
-    "dev": "next dev --turbopack && velite --watch",
-    "build": "next build && velite --clean",
+    "dev": "next dev --turbopack",
+    "build": "next build",
     "format": "biome lint --fix && biome check --write",
     "format:unsafe": "biome check --unsafe --write",
     "build:everything": "rm -rf pubilc/registry && bun run build:sidebar && bun run build:registry && biome format --write __registry__/generated.ts",
@@ -36,6 +36,7 @@
     "dayjs": "^1.11.13",
     "embla-carousel-autoplay": "^8.5.1",
     "embla-carousel-react": "^8.5.1",
+    "fumadocs-mdx": "^11.2.2",
     "input-otp": "^1.4.1",
     "justd-icons": "^1.10.10",
     "motion": "^11.15.0",
@@ -75,8 +76,7 @@
     "rehype-autolink-headings": "^7.1.0",
     "rehype-slug": "^6.0.0",
     "tailwindcss": "^4.0.0-beta.8",
-    "typescript": "^5.7.2",
-    "velite": "^0.2.2"
+    "typescript": "^5.7.2"
   },
   "repository": {
     "type": "git",
