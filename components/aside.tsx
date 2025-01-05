@@ -1,14 +1,14 @@
 "use client"
 
-import React from "react"
+import { source } from "@/utils/source"
 import type { PageTree } from "fumadocs-core/server"
 // import sidebar from "@/resources/lib/sidebar.json"
 import { Link } from "next-view-transitions"
 import type { LinkProps } from "next/link"
 import { usePathname } from "next/navigation"
+import React from "react"
 import { twMerge } from "tailwind-merge"
-import { Badge, Heading, Separator } from "ui"
-import { source } from "@/utils/source";
+import { Heading, Separator } from "ui"
 
 export interface SidebarItem {
   title: string
@@ -18,12 +18,12 @@ export interface SidebarItem {
 }
 
 export function Aside() {
-    const pageTree = source.pageTree
+  const pageTree = source.pageTree
   return (
     <div className="flex flex-col gap-y-6 px-4">
-        {pageTree.children.map((item, index) => {
-            return <SidebarComposed key={index} node={item} />
-        })}
+      {pageTree.children.map((item, index) => {
+        return <SidebarComposed key={index} node={item} />
+      })}
     </div>
   )
 }
@@ -63,36 +63,36 @@ function AsideLink({ href, ...props }: AsideLinkProps) {
 }
 
 const SidebarComposed = ({
-                             node,
-                         }: {
-    node: PageTree.Node
+  node,
+}: {
+  node: PageTree.Node
 }) => {
-    if (node.type === "folder") {
-        return (
-            <div>
-                <Heading
-                    className="mb-2 flex items-center gap-x-2 font-medium text-base sm:text-sm"
-                    level={3}
-                >
-                    {node.name}
-                </Heading>
-                {node.children.map((child, index) => (
-                    <SidebarComposed key={index} node={child} />
-                ))}
-            </div>
-        )
-    }
+  if (node.type === "folder") {
+    return (
+      <div>
+        <Heading
+          className="mb-2 flex items-center gap-x-2 font-medium text-base sm:text-sm"
+          level={3}
+        >
+          {node.name}
+        </Heading>
+        {node.children.map((child, index) => (
+          <SidebarComposed key={index} node={child} />
+        ))}
+      </div>
+    )
+  }
 
-    if (node.type === "separator") {
-        return <Separator />
-    }
+  if (node.type === "separator") {
+    return <Separator />
+  }
 
-    if (node.type === "page") {
-        return (
-            <AsideLink href={node.url}>
-                {node.icon}
-                {node.name}
-            </AsideLink>
-        )
-    }
+  if (node.type === "page") {
+    return (
+      <AsideLink href={node.url}>
+        {node.icon}
+        {node.name}
+      </AsideLink>
+    )
+  }
 }

@@ -1,4 +1,4 @@
-import { docs } from "@/.velite"
+import { docs } from "@/.source"
 import { notFound, redirect } from "next/navigation"
 
 interface PageProps {
