@@ -1,13 +1,18 @@
+import { cn } from "@/utils/classes"
 import { type PageTree, findNeighbour } from "fumadocs-core/server"
 import { IconChevronLeft, IconChevronRight } from "justd-icons"
 import Link from "next/link"
 import { Button } from "ui"
 
-export const Pager = ({ tree, url }: { tree: PageTree.Root; url: string }) => {
+export const Pager = ({
+  tree,
+  url,
+  className,
+}: { tree: PageTree.Root; url: string; className?: string }) => {
   const neighbours = findNeighbour(tree, url)
 
   return (
-    <div className="flex w-full justify-between gap-3">
+    <div className={cn("flex w-full justify-between gap-3", className)}>
       {neighbours.previous && (
         <Link className="w-full" href={neighbours.previous.url}>
           <Button appearance="outline" className={"size-full justify-start p-4"}>

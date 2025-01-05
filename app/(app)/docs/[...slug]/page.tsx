@@ -175,7 +175,7 @@ export default async function Page(props: DocPageProps) {
               SourceCode: SourceCode,
             }}
           />
-          <Pager tree={source.pageTree} url={page.url} />
+          <Pager className="pt-3" tree={source.pageTree} url={page.url} />
         </main>
       </div>
       <Toc className="hidden xl:block" items={page.data.toc} />
