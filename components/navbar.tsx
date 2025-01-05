@@ -5,6 +5,7 @@ import { ResponsiveAside } from "@/components/responsive-aside"
 import { siteConfig } from "@/resources/config/site"
 import {
   IconBrandAdobe,
+  IconBrandFigma,
   IconBrandGithub,
   IconBrandJustd,
   IconBrandTailwindcss,
@@ -14,7 +15,6 @@ import {
   IconColors,
   IconCube,
   IconDeviceDesktop,
-  IconDuplicateFill,
   IconHome,
   IconMoon,
   IconNotepad,
@@ -109,9 +109,17 @@ export function Navbar() {
                             </div>
                             <Menu.ItemDetails>
                               <span className="font-medium sm:text-sm">
-                                {item.label} {item.badge && <Badge>{item.badge}</Badge>}
+                                {item.label}{" "}
+                                {item.badge && (
+                                  <Badge
+                                    shape="square"
+                                    className="ml-0.5 font-mono text-[0.65rem] uppercase"
+                                  >
+                                    {item.badge}
+                                  </Badge>
+                                )}
                               </span>
-                              <span className="-mt-1 block text-muted-fg text-xs">
+                              <span className="-mt-0.5 block text-muted-fg text-xs">
                                 {item.description}
                               </span>
                             </Menu.ItemDetails>
@@ -316,11 +324,20 @@ const ecosystemItems = [
     badge: "Coming soon",
   },
   {
+    id: 2,
+    label: "Premium Blocks",
+    href: "#",
+    icon: <IconPackage />,
+    description: "Pre-designed, ready-to-use React components for seamless integration.",
+    badge: "Coming soon",
+  },
+  {
     id: 3,
-    label: "Icons",
-    href: "/icons",
-    icon: <IconDuplicateFill />,
-    description: "Explore 1,191+ open-source SVG icons with frequent updates for your projects.",
+    label: "Figma",
+    href: "#",
+    icon: <IconBrandFigma />,
+    description: "Enhance your Figma designs with Justd components.",
+    badge: "Coming soon",
   },
   {
     id: 4,
