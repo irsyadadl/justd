@@ -1,5 +1,5 @@
 import { remarkHeading, remarkImage } from "fumadocs-core/mdx-plugins"
-import { defineConfig, defineDocs, frontmatterSchema } from "fumadocs-mdx/config"
+import { defineCollections, defineConfig, defineDocs, frontmatterSchema } from "fumadocs-mdx/config"
 import { z } from "zod"
 
 export const { docs, meta } = defineDocs({
@@ -19,6 +19,17 @@ export const { docs, meta } = defineDocs({
       description: z.string(),
     }),
   },
+})
+
+export const blog = defineCollections({
+  type: "doc",
+  dir: "resources/content/blog",
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    published: z.date(),
+    author: z.string().optional(),
+  }),
 })
 
 export default defineConfig({

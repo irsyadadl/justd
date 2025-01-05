@@ -1,45 +1,33 @@
+import type { DocPageProps } from "@/app/(app)/docs/[...slug]/page"
 import { Mdx } from "@/components/mdx-components"
-import { TableOfContents } from "@/components/table-of-contents"
+import { Toc } from "@/components/toc"
 import { siteConfig } from "@/resources/config/site"
+import { source } from "@/utils/source"
 import dayjs from "dayjs"
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
-import { blog } from "#site/content"
-
-export interface DocPageProps {
-  params: Promise<{
-    slug: string[]
-  }>
-}
-
-async function getPostFromParams(params: { slug: string[] }) {
-  const slug = params?.slug?.join("/")
-  const article = blog.find((article) => article.slugAsParams === slug)
-
-  return article
-}
 
 export async function generateMetadata(props: DocPageProps): Promise<Metadata> {
-  const params = await props.params
-  const article = await getPostFromParams(params)
+  const { slug } = await props.params
+  const article = source.getPage(slug)
 
   if (!article) {
     return {}
   }
 
   const ogSearchParams = new URLSearchParams()
-  ogSearchParams.set("title", article.title)
+  ogSearchParams.set("title", article.data.title)
 
   return {
-    title: article.title,
-    description: article.description,
+    title: article.data.title,
+    description: article.data.description,
     applicationName: siteConfig.name,
     category: "Blog",
     keywords: [
-      article.title,
-      `${article.title} components`,
-      `${article.title} component`,
-      `${article.title} on React`,
+      article.data.title,
+      `${article.data.title} components`,
+      `${article.data.title} component`,
+      `${article.data.title} on React`,
       "React",
       "Next.js",
       "Inertia.js",
@@ -68,15 +56,11 @@ export async function generateMetadata(props: DocPageProps): Promise<Metadata> {
   }
 }
 
-export async function generateStaticParams(): Promise<{ slug: any }[]> {
-  return blog.map((article) => ({ slug: article.slugAsParams.split("/") }))
-}
-
-export default async function PostPage(props: DocPageProps) {
+export default async function Page(props: DocPageProps) {
   const params = await props.params
-  const article = await getPostFromParams(params)
+  const article = source.getPage(params.slug)
 
-  if (!article || !article.published) {
+  if (!article) {
     notFound()
   }
 
@@ -99,24 +83,24 @@ export default async function PostPage(props: DocPageProps) {
                 />
               </div>
               <div className="font-mono text-blue-600 text-xs uppercase dark:text-blue-400">
-                {dayjs(article.published).format("MMMM D, YYYY")}
+                {dayjs(article.data.published).format("MMMM D, YYYY")}
               </div>
               <h1 className="mt-2 font-semibold text-2xl tracking-tight sm:text-3xl">
-                {article.title}
+                {article.data.title}
               </h1>
-              {article.description ? (
+              {article.data.description ? (
                 <p className="mt-2.5 text-pretty text-base text-fg/60 leading-relaxed">
-                  {article.description}
+                  {article.data.description}
                 </p>
               ) : null}
             </div>
           </div>
 
-          <TableOfContents className="mt-4 block sm:mt-8 xl:hidden" items={article.toc} />
-          <Mdx code={article.body} />
+          <Toc className="mt-4 block sm:mt-8 xl:hidden" items={article.data.toc} />
+          <Mdx code={article.data.body as unknown as string} />
         </main>
       </div>
-      <TableOfContents className="hidden xl:block" items={article.toc} />
+      <Toc className="hidden xl:block" items={article.data.toc} />
     </>
   )
 }
