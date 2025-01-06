@@ -75,7 +75,7 @@ export function DocRefs({ references }: { references: string[] }) {
   return (
     <ListBox
       orientation="horizontal"
-      className="not-prose mt-6 flex gap-x-2"
+      className="not-prose flex gap-x-2"
       aria-label="Link References"
       items={urls}
     >

@@ -10,6 +10,7 @@ export const { docs, meta } = defineDocs({
       title: z.string(),
       description: z.string(),
       references: z.array(z.string()).optional(),
+      status: z.string().optional(),
     }),
   },
   meta: {

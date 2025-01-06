@@ -7,6 +7,7 @@ import { goodTitle } from "@/resources/lib/utils"
 import { source } from "@/utils/source"
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
+import { Badge } from "ui"
 
 export interface DocPageProps {
   params: Promise<{
@@ -68,10 +69,6 @@ export async function generateMetadata(props: DocPageProps): Promise<Metadata> {
   }
 }
 
-// export async function generateStaticParams(): Promise<{ slug: any }[]> {
-//   return docs.map((doc) => ({ slug: doc.slugAsParams.split("/") }))
-// }
-
 export default async function Page(props: DocPageProps) {
   const params = await props.params
   const page = source.getPage(params.slug)
@@ -110,9 +107,18 @@ export default async function Page(props: DocPageProps) {
                 </p>
               ) : null}
 
-              {page.data.references && page.data.references?.length > 0 && (
-                <DocRefs references={page.data.references} />
-              )}
+              <div className="mt-6 flex items-center">
+                {page.data.references && page.data.references?.length > 0 && (
+                  <DocRefs references={page.data.references} />
+                )}
+                {page.data.status && (
+                  <div className={page.data?.references?.length! > 0 ? "ml-auto" : "ml-0"}>
+                    <Badge intent={page.data.status === "beta" ? "warning" : "primary"}>
+                      {page.data.status}
+                    </Badge>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
 
