@@ -28,6 +28,7 @@ export function SliderOnPopoverBlock() {
         isOpen={isOpen}
         onOpenChange={setIsOpen}
         showArrow={false}
+        className="p-4"
       >
         <div className="space-y-4">
           <Slider
