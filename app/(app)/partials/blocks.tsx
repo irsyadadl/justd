@@ -27,34 +27,22 @@ export function Blocks() {
           Blocks
         </Heading>
         <div className="space-y-2">
-          <Grid columns={{ initial: 1, sm: 2, lg: 3 }} gap={2}>
-            <Grid.Item>
-              <Wrapper>
-                <TagFieldDemo />
-              </Wrapper>
-            </Grid.Item>
-            <Grid.Item>
-              <Wrapper>
-                <ComboBoxAvatarDemo />
-              </Wrapper>
-            </Grid.Item>
-            <Grid.Item>
-              <Wrapper>
-                <MultipleSelectDemo />
-              </Wrapper>
-            </Grid.Item>
-            <Grid.Item>
-              <LoginForm />
-            </Grid.Item>
-            <Grid.Item>
-              <CheckRadioBlock />
-            </Grid.Item>
-            <Grid.Item>
-              <Wrapper>
-                <RangeCalendarControlledDemo />
-              </Wrapper>
-            </Grid.Item>
-          </Grid>
+          <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+            <Wrapper>
+              <TagFieldDemo />
+            </Wrapper>
+            <Wrapper>
+              <ComboBoxAvatarDemo />
+            </Wrapper>
+            <Wrapper>
+              <MultipleSelectDemo />
+            </Wrapper>
+            <LoginForm />
+            <CheckRadioBlock />
+            <Wrapper>
+              <RangeCalendarControlledDemo />
+            </Wrapper>
+          </div>
           <Grid columns={{ initial: 1, sm: 2, lg: 3 }} gap={2}>
             <Grid.Item className="flex flex-col gap-y-4 lg:gap-y-2">
               <ToolbarBlock />

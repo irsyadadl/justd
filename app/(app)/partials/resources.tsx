@@ -8,7 +8,7 @@ import {
   IconBrandRemix,
   IconWindowVisitFill,
 } from "justd-icons"
-import { Badge, Card, Container, Grid, Heading, Link } from "ui"
+import { Badge, Card, Container, Heading, Link } from "ui"
 
 const resources = [
   {
@@ -81,14 +81,7 @@ export function Resources() {
         <Heading level={2} className="mb-6">
           Extra
         </Heading>
-        <Grid
-          columns={{
-            initial: 1,
-            sm: 2,
-          }}
-          gap={2}
-          aria-label="Extra"
-        >
+        <div className="grid grid-cols-1 gap-2 gap-2 sm:grid-cols-2" aria-label="Extra">
           <Wrapper aria-label="Extra">
             <Link
               target="_blank"
@@ -139,7 +132,7 @@ export function Resources() {
               </Badge>
             </Card.Footer>
           </Wrapper>
-        </Grid>
+        </div>
       </section>
     </Container>
   )
