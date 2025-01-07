@@ -4,7 +4,7 @@ import { Avatar, ComboBox } from "ui"
 
 export default function ComboBoxAvatarDemo() {
   return (
-    <ComboBox placeholder="Select a user" label="Users" isRequired>
+    <ComboBox className="min-w-xs" placeholder="Select a user" label="Users" isRequired>
       <ComboBox.Input />
       <ComboBox.List items={users}>
         {(item) => (
