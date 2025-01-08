@@ -27,7 +27,7 @@ const ProgressBar = ({ label, ref, className, ...props }: ProgressBarProps) => {
             {label && <Label>{label}</Label>}
             <span className="text-muted-fg text-sm tabular-nums">{valueText}</span>
           </div>
-          <div className="-outline-offset-1 relative h-2 min-w-64 overflow-hidden rounded-full bg-secondary outline outline-1 outline-transparent">
+          <div className="-outline-offset-1 relative mt-1 h-2 min-w-64 overflow-hidden rounded-full bg-secondary outline outline-1 outline-transparent">
             {!isIndeterminate ? (
               <motion.div
                 className="absolute top-0 left-0 h-full rounded-full bg-primary forced-colors:bg-[Highlight]"
