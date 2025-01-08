@@ -15,6 +15,7 @@ import {
   IconColors,
   IconCube,
   IconDeviceDesktop,
+  IconDuplicateFill,
   IconHome,
   IconMoon,
   IconNotepad,
@@ -27,7 +28,6 @@ import {
 import { LayoutGroup } from "motion/react"
 import { useTheme } from "next-themes"
 import { usePathname } from "next/navigation"
-import { Collection } from "react-aria-components"
 import { Badge, Button, Link, Menu, Separator, buttonStyles } from "ui"
 
 import { cn } from "@/utils/classes"
@@ -58,76 +58,74 @@ export function Navbar() {
                 <div className="flex items-center gap-x-6">
                   <NavbarDropdown />
                   <Separator orientation="vertical" className="h-6" />
-                  <Collection items={menuItems}>
-                    <NavLink isNextLink isActive={pathname === "/"} href="/">
-                      Home
-                    </NavLink>
-                    <NavLink
-                      isNextLink
-                      isActive={
-                        pathname?.startsWith("/docs/2.x") &&
-                        !pathname?.includes("/docs/2.x/components")
-                      }
-                      href="/docs/2.x/getting-started/introduction"
-                    >
-                      Docs
-                    </NavLink>
-                    <NavLink
-                      isNextLink
-                      isActive={
-                        pathname?.startsWith("/docs/2.x/components") || pathname === "/components"
-                      }
-                      href="/components"
-                    >
-                      Components
-                    </NavLink>
+                  <NavLink isNextLink isActive={pathname === "/"} href="/">
+                    Home
+                  </NavLink>
+                  <NavLink
+                    isNextLink
+                    isActive={
+                      pathname?.startsWith("/docs/2.x") &&
+                      !pathname?.includes("/docs/2.x/components")
+                    }
+                    href="/docs/2.x/getting-started/introduction"
+                  >
+                    Docs
+                  </NavLink>
+                  <NavLink
+                    isNextLink
+                    isActive={
+                      pathname?.startsWith("/docs/2.x/components") || pathname === "/components"
+                    }
+                    href="/components"
+                  >
+                    Components
+                  </NavLink>
 
-                    <NavLink isNextLink isActive={pathname === "/themes"} href="/themes">
-                      Themes
-                    </NavLink>
-                    <Menu>
-                      <Menu.Trigger
-                        className={cn(
-                          "group flex cursor-pointer items-center gap-x-2 py-3 text-muted-fg text-sm",
-                        )}
-                      >
-                        Ecosystem
-                        <IconChevronLgDown className="size-3 duration-200 group-data-pressed:rotate-180" />
-                      </Menu.Trigger>
-                      <Menu.Content
-                        className="sm:min-w-xs sm:max-w-min"
-                        placement="bottom"
-                        items={ecosystemItems}
-                      >
-                        {(item) => (
-                          <Menu.Item
-                            href={item.href}
-                            className="group items-start gap-x-3 **:data-[slot=icon]:size-4"
-                          >
-                            <div className="grid size-8 shrink-0 place-content-center rounded-md bg-secondary/40 ring-1 ring-fg/10">
-                              {item.icon}
-                            </div>
-                            <Menu.ItemDetails>
-                              <span className="font-medium sm:text-sm">
-                                {item.label}{" "}
-                                {item.badge && (
-                                  <Badge
-                                    shape="square"
-                                    className="ml-0.5 font-mono text-[0.65rem] uppercase"
-                                  >
-                                    {item.badge}
-                                  </Badge>
-                                )}
-                              </span>
-                              <span className="-mt-0.5 block text-muted-fg text-xs">
-                                {item.description}
-                              </span>
-                            </Menu.ItemDetails>
-                          </Menu.Item>
-                        )}
-                      </Menu.Content>
-                    </Menu>
-                  </Collection>
+                  <NavLink isNextLink isActive={pathname === "/themes"} href="/themes">
+                    Themes
+                  </NavLink>
+                  <Menu>
+                    <Menu.Trigger
+                      className={cn(
+                        "group flex cursor-pointer items-center gap-x-2 py-3 text-muted-fg text-sm",
+                      )}
+                    >
+                      Ecosystem
+                      <IconChevronLgDown className="size-3 duration-200 group-data-pressed:rotate-180" />
+                    </Menu.Trigger>
+                    <Menu.Content
+                      className="sm:min-w-xs sm:max-w-min"
+                      placement="bottom"
+                      items={ecosystemItems}
+                    >
+                      {(item) => (
+                        <Menu.Item
+                          href={item.href}
+                          className="group items-start gap-x-3 **:data-[slot=icon]:size-4"
+                        >
+                          <div className="grid size-8 shrink-0 place-content-center rounded-md bg-secondary/40 ring-1 ring-fg/10">
+                            {item.icon}
+                          </div>
+                          <Menu.ItemDetails>
+                            <span className="font-medium sm:text-sm">
+                              {item.label}{" "}
+                              {item.badge && (
+                                <Badge
+                                  shape="square"
+                                  className="ml-0.5 font-mono text-[0.65rem] uppercase"
+                                >
+                                  {item.badge}
+                                </Badge>
+                              )}
+                            </span>
+                            <span className="-mt-0.5 block text-muted-fg text-xs">
+                              {item.description}
+                            </span>
+                          </Menu.ItemDetails>
+                        </Menu.Item>
+                      )}
+                    </Menu.Content>
+                  </Menu>
                 </div>
                 <div className="flex items-center gap-x-1">
                   <>
@@ -341,20 +339,28 @@ const ecosystemItems = [
   },
   {
     id: 4,
+    label: "Justd Icons",
+    href: "/icons",
+    icon: <IconDuplicateFill />,
+    description:
+      "Justd Icons is a powerful open-source SVG icon library with over 1,191 symbols, and more added with every release.",
+  },
+  {
+    id: 5,
     label: "Themes",
     href: "/themes",
     icon: <IconColorPalette />,
     description: "Curated themes to easily create polished designs for your apps.",
   },
   {
-    id: 5,
+    id: 6,
     label: "Colors",
     href: "/colors",
     icon: <IconColors />,
     description: "Over 154 colors blending TailwindCSS vibes with HTML color names.",
   },
   {
-    id: 6,
+    id: 7,
     label: "Basic Blocks",
     href: "/blocks",
     icon: <IconWindowVisit />,
