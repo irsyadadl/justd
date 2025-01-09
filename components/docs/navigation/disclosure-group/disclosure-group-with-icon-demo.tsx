@@ -28,7 +28,7 @@ export default function DisclosureGroupWithIconDemo() {
           <DisclosureTrigger className="px-4">
             <item.icon /> {item.title}
           </DisclosureTrigger>
-          <DisclosurePanel className="bg-[color-mix(in_oklab,var(--color-muted)_70%,black_15%)]">
+          <DisclosurePanel className="bg-muted">
             <DisclosureGroup allowsMultipleExpanded>
               {item.children.map((child, childIndex) => (
                 <Disclosure key={childIndex} id={childIndex}>
