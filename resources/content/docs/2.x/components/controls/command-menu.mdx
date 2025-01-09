@@ -132,20 +132,12 @@ export function CommandPalette({ open, setOpen }: Props) {
 ```
 ### Next.js
 When using Next.js, you can use the `usePathname` hook to close the command palette when you navigate to a new page.
-```tsx {2} {14}
+```
 export function CommandPalette({ open, setOpen }: Props) {
   const pathname = usePathname()
-  React.useEffect(() => {
-    const down = (e: KeyboardEvent) => {
-      if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
-        e.preventDefault()
-        setOpen((open: boolean) => !open)
-      }
-    }
 
-    document.addEventListener('keydown', down)
-
-    return () => document.removeEventListener('keydown', down)
-  }, [pathname, setOpen])
+  useEffect(() => {
+    setOpen(false)
+  }, [pathname])
   return (...)
 ```
