@@ -35,13 +35,17 @@ function useChart() {
   return context
 }
 
-const Chart = forwardRef<
-  HTMLDivElement,
-  React.ComponentProps<"div"> & {
-    config: ChartConfig
-    children: React.ComponentProps<typeof ResponsiveContainer>["children"]
-  }
->(({ id, className, children, config, ...props }, ref) => {
+const Chart = ({
+  id,
+  className,
+  children,
+  config,
+  ref,
+  ...props
+}: React.ComponentProps<"div"> & {
+  config: ChartConfig
+  children: React.ComponentProps<typeof ResponsiveContainer>["children"]
+}) => {
   const uniqueId = useId()
   const chartId = `chart-${id || uniqueId.replace(/:/g, "")}`
 
@@ -61,8 +65,7 @@ const Chart = forwardRef<
       </div>
     </ChartContext.Provider>
   )
-})
-Chart.displayName = "Chart"
+}
 
 const ChartStyle = ({ id, config }: { id: string; config: ChartConfig }) => {
   const colorConfig = Object.entries(config).filter(([_, config]) => config.theme || config.color)
@@ -180,7 +183,7 @@ const ChartTooltipContent = forwardRef<
               <div
                 key={item.dataKey}
                 className={cn(
-                  "flex w-full flex-wrap items-stretch gap-2 [&>svg]:h-2.5 [&>svg]:w-2.5 [&>svg]:text-muted-fg",
+                  "flex w-full flex-wrap items-stretch gap-2 *:data-[slot=icon]:size-2.5 *:data-[slot=icon]:text-muted-fg",
                   indicator === "dot" && "items-center",
                 )}
               >
@@ -271,7 +274,7 @@ const ChartLegendContent = forwardRef<
           <div
             key={item.value}
             className={cn(
-              "flex items-center gap-1.5 [&>svg]:h-3 [&>svg]:w-3 [&>svg]:text-muted-fg",
+              "flex items-center gap-1.5 *:data-[slot=icon]:size-3 *:data-[slot=icon]:text-muted-fg",
             )}
           >
             {itemConfig?.icon && !hideIcon ? (
