@@ -10,3 +10,5 @@ export const { GET } = createSearchAPI("advanced", {
     structuredData: page.data.structuredData,
   })),
 })
+
+export const runtime = "edge"
