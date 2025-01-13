@@ -7,7 +7,7 @@ import "@/resources/styles/app.css"
 import { OpenPanelComponent } from "@openpanel/nextjs"
 import type { Metadata, Viewport } from "next"
 import { ViewTransitions } from "next-view-transitions"
-import localFont from "next/font/local"
+import { Geist_Mono, Inter } from "next/font/google"
 
 export default function RootLayout({
   children,
@@ -17,15 +17,6 @@ export default function RootLayout({
   return (
     <ViewTransitions>
       <html dir="ltr" lang="en" className="scroll-smooth" suppressHydrationWarning>
-        <head>
-          {process.env.NODE_ENV === "production" && (
-            <script
-              defer
-              data-site-id="getjustd.com"
-              src="https://assets.onedollarstats.com/tracker.js"
-            />
-          )}
-        </head>
         <body
           className={cn("min-h-screen font-sans antialiased", fontSans.variable, fontMono.variable)}
         >
@@ -116,12 +107,12 @@ export const viewport: Viewport = {
   initialScale: 1,
 }
 
-const fontSans = localFont({
-  src: [{ path: "./fonts/Inter.woff2" }],
-  variable: "--font-sans",
+const fontSans = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
 })
 
-const fontMono = localFont({
-  src: [{ path: "./fonts/GeistMonoVF.woff" }, { path: "./fonts/GeistMonoVF.woff2" }],
-  variable: "--font-mono",
+const fontMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
 })
