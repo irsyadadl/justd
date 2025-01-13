@@ -311,7 +311,7 @@ const ecosystemItems = [
   },
   {
     id: 4,
-    label: "Justd Icons",
+    label: "Icons",
     href: "/icons",
     icon: <IconDuplicateFill />,
     description:
