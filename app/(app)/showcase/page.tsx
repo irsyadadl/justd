@@ -22,8 +22,8 @@ export default async function Page() {
   return (
     <>
       <Header>
-        Show
-        <span className="text-muted-fg">case</span>
+        <span className="tracking-tight">Show</span>
+        <span className="text-muted-fg tracking-tight">case</span>
       </Header>
       <Container className="py-4 sm:py-16">
         <ListSites sites={sites} />

@@ -54,8 +54,8 @@ export default async function Page() {
   return (
     <>
       <Header>
-        Col
-        <span className="text-muted-fg">ors</span>
+        <span className="tracking-tight">Col</span>
+        <span className="text-muted-fg tracking-tight">ors</span>
       </Header>
       <ColorPalette />
     </>

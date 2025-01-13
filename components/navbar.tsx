@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from "react"
+import { useId, useState } from "react"
 
 import { ResponsiveAside } from "@/components/responsive-aside"
 import { siteConfig } from "@/resources/config/site"
@@ -14,14 +14,11 @@ import {
   IconColorPalette,
   IconColors,
   IconCube,
-  IconDeviceDesktop,
   IconDuplicateFill,
   IconHome,
-  IconMoon,
   IconNotepad,
   IconPackage,
   IconSearch,
-  IconSun,
   IconWindowVisit,
   IconWindowVisitFill,
 } from "justd-icons"
@@ -32,6 +29,7 @@ import { Badge, Button, Link, Menu, Separator, buttonStyles } from "ui"
 
 import { cn } from "@/utils/classes"
 import { useMediaQuery } from "@/utils/use-media-query"
+import { Header, MenuSection } from "react-aria-components"
 import { CommandPalette } from "./command-palette"
 import { NavLink } from "./nav-item"
 import { TakeCurrentUrl } from "./take-current-url"
@@ -43,7 +41,7 @@ const menuItems = [
 ]
 
 export function Navbar() {
-  const id = React.useId()
+  const id = useId()
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
   const isDesktop = useMediaQuery("(min-width: 1024px)")
@@ -204,13 +202,14 @@ export function NavbarDropdown() {
       <Menu>
         <Button aria-label={siteConfig.name} appearance="plain" className="-ml-1 group">
           <span className="flex items-center gap-x-2">
-            <IconBrandJustd className="-ml-1 size-5" />
+            <IconBrandJustd className="-ml-1 size-4.5" />
             <span className="font-mono text-base tracking-tight sm:text-sm">{siteConfig.name}</span>
             <IconChevronLgDown className="-mr-1 ml-3 size-3.5 text-muted-fg transition duration-300 group-hover:text-fg group-data-pressed:rotate-180 group-data-pressed:text-fg" />
           </span>
         </Button>
         <Menu.Content placement="bottom" className="sm:min-w-64">
-          <Menu.Section title="Pages">
+          <MenuSection className="mb-3">
+            <Header className="px-3 py-1 text-muted-fg">Pages</Header>
             <Menu.Item href="/">
               <IconHome />
               Home
@@ -239,8 +238,9 @@ export function NavbarDropdown() {
               <IconNotepad />
               Blog
             </Menu.Item>
-          </Menu.Section>
-          <Menu.Section title="Refs">
+          </MenuSection>
+          <MenuSection>
+            <Header className="px-3 py-1 text-muted-fg">Refs</Header>
             <Menu.Item href="https://x.com/intent/follow?screen_name=irsyadadl" target="_blank">
               <IconBrandX />X / Twitter
             </Menu.Item>
@@ -259,35 +259,7 @@ export function NavbarDropdown() {
               <IconBrandTailwindcss />
               Tailwind CSS
             </Menu.Item>
-          </Menu.Section>
-          <Menu.Section title="Preferences">
-            <Menu.Submenu>
-              <Menu.Item>
-                {theme === "system" ? (
-                  <IconDeviceDesktop />
-                ) : theme === "dark" ? (
-                  <IconMoon />
-                ) : (
-                  <IconSun />
-                )}
-                <span>Switch Theme</span>
-              </Menu.Item>
-              <Menu.Content>
-                <Menu.Item onAction={() => setTheme("system")}>
-                  <IconDeviceDesktop />
-                  <span>System</span>
-                </Menu.Item>
-                <Menu.Item onAction={() => setTheme("dark")}>
-                  <IconMoon />
-                  <span>Dark</span>
-                </Menu.Item>
-                <Menu.Item onAction={() => setTheme("light")}>
-                  <IconSun />
-                  <span>Light</span>
-                </Menu.Item>
-              </Menu.Content>
-            </Menu.Submenu>
-          </Menu.Section>
+          </MenuSection>
         </Menu.Content>
       </Menu>
       <Menu>

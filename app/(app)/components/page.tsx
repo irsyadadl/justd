@@ -14,8 +14,8 @@ export default function Page() {
   return (
     <div>
       <Header>
-        <span className="text-fg">Comp</span>
-        <span className="text-muted-fg">onents</span>
+        <span className="text-fg tracking-tight">Comp</span>
+        <span className="text-muted-fg tracking-tight">onents</span>
       </Header>
       <div className="bg-muted/35 py-10 lg:py-16">
         <Container>
