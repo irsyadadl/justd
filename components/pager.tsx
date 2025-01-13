@@ -1,8 +1,9 @@
+"use client"
+
 import { cn } from "@/utils/classes"
 import { type PageTree, findNeighbour } from "fumadocs-core/server"
-import { IconChevronLeft, IconChevronRight } from "justd-icons"
-import Link from "next/link"
-import { Button } from "ui"
+import { IconChevronLgLeft, IconChevronLgRight } from "justd-icons"
+import { Link } from "next-view-transitions"
 
 export const Pager = ({
   tree,
@@ -12,33 +13,33 @@ export const Pager = ({
   const neighbours = findNeighbour(tree, url)
 
   return (
-    <div className={cn("flex w-full justify-between gap-3", className)}>
+    <div className={cn("not-prose flex w-full justify-between gap-3", className)}>
       {neighbours.previous && (
-        <Link className="w-full" href={neighbours.previous.url}>
-          <Button appearance="outline" className={"size-full justify-start p-4"}>
+        <div className="group w-full">
+          <Link className="inline-flex justify-start" href={neighbours.previous.url}>
             <div>
-              <div className="flex items-center gap-px text-muted-fg">
-                <IconChevronLeft className="size-5" />
+              <div className="flex items-center gap-1 text-muted-fg">
+                <IconChevronLgLeft className="group-hover:-translate-x-2 size-3.5 transition-transform" />
                 Previous
               </div>
-              {neighbours.previous.name}
+              <span className="text-fg">{neighbours.previous.name}</span>
             </div>
-          </Button>
-        </Link>
+          </Link>
+        </div>
       )}
 
       {neighbours.next && (
-        <Link className="w-full" href={neighbours.next.url}>
-          <Button appearance="outline" className={"size-full justify-end p-4"}>
+        <div className="group">
+          <Link className="inline-flex justify-end" href={neighbours.next.url}>
             <div>
-              <div className="flex items-center gap-px text-muted-fg">
+              <div className="flex items-center justify-end gap-1 text-right text-muted-fg">
                 Next
-                <IconChevronRight className="size-5" />
+                <IconChevronLgRight className="size-3.5 transition-transform group-hover:translate-x-1" />
               </div>
-              {neighbours.next.name}
+              <span className="text-fg">{neighbours.next.name}</span>
             </div>
-          </Button>
-        </Link>
+          </Link>
+        </div>
       )}
     </div>
   )

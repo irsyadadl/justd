@@ -106,7 +106,7 @@ const DisclosureTrigger = ({ className, ref, ...props }: DisclosureTriggerProps)
           <>
             {typeof props.children === "function" ? props.children(values) : props.children}
             <IconChevronLeft
-              data-slot="chevron"
+              data-slot="disclosure-chevron"
               className="internal-chevron ml-auto size-4 shrink-0 transition duration-300"
             />
           </>
