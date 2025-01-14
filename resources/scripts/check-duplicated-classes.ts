@@ -1,31 +1,22 @@
-import * as fs from "node:fs"
+import fs from "node:fs"
 import path from "node:path"
 
 /**
- * Function to get all .tsx files in a directory and its subdirectories
- * @param dir - The directory to scan
- * @param fileList - An optional array to store the file paths
- * @returns An array of file paths
+ * Function to get all .tsx files in a directory and its subdirectories and return an array of file paths
+ * @param dir - The directory to scan for .tsx files
+ * @param fileList
  */
-const getAllTsxFiles = (dir: string, fileList: string[] = []): string[] => {
-  if (!fs.existsSync(dir)) {
-    console.error(`Directory does not exist: ${dir}`)
-    return fileList
-  }
-
+const get = (dir: string, fileList: string[] = []): string[] => {
   const files = fs.readdirSync(dir)
 
   files.forEach((file) => {
     const filePath = path.join(dir, file)
-    try {
-      const stat = fs.statSync(filePath)
-      if (stat.isDirectory()) {
-        getAllTsxFiles(filePath, fileList)
-      } else if (filePath.endsWith(".tsx")) {
-        fileList.push(filePath)
-      }
-    } catch (error) {
-      console.error(`Error accessing path: ${filePath}`, error)
+    const stat = fs.statSync(filePath)
+
+    if (stat.isDirectory()) {
+      get(filePath, fileList)
+    } else if (filePath.endsWith(".tsx")) {
+      fileList.push(filePath)
     }
   })
 
@@ -33,27 +24,34 @@ const getAllTsxFiles = (dir: string, fileList: string[] = []): string[] => {
 }
 
 /**
- * Function to find duplicate classes in a string
- * @param content - The string to search
- * @returns An array of duplicate class names
+ * Function to find duplicate classes in a string and return an array of objects with the tag and duplicate classes
+ * @param content - The string to search for duplicate classes
+ * @returns An array of objects with the tag and duplicate classes
  */
-const findDuplicateClasses = (content: string): string[] => {
-  const classRegex = /class(Name)?="(.*?)"/g
-  const duplicates: string[] = []
+const find = (content: string): { tag: string; duplicateClasses: string[] }[] => {
+  const classRegex = /<([a-zA-Z0-9]+)([^>]*)\bclass(Name)?="([^"]*)"/g
+  const duplicates: { tag: string; duplicateClasses: string[] }[] = []
 
   let match = classRegex.exec(content)
   while (match) {
-    // @ts-ignore
-    const classes = match[2].split(/\s+/)
+    const tag = match[1]
+    const rawClasses = match[4]
+    const classes = rawClasses?.split(/\s+/)
     const seen = new Set<string>()
+    const tagDuplicates: string[] = []
 
-    classes.forEach((cls) => {
+    classes?.forEach((cls) => {
       if (seen.has(cls)) {
-        duplicates.push(cls)
+        tagDuplicates.push(cls)
       } else {
         seen.add(cls)
       }
     })
+
+    if (tagDuplicates.length > 0) {
+      // @ts-ignore
+      duplicates.push({ tag, duplicateClasses: tagDuplicates })
+    }
 
     match = classRegex.exec(content)
   }
@@ -62,33 +60,49 @@ const findDuplicateClasses = (content: string): string[] => {
 }
 
 /**
- * Function to scan directories recursively for .tsx files and check for duplicate classes
+ * Function to scan directories recursively for duplicate classes
  * @param directories
  */
-const detectDuplicateClasses = (directories: string[]) => {
-  let duplicatedClasses = []
+const detect = (directories: string[]) => {
+  const results: { file: string; tag: string; duplicates: string[] }[] = []
+
   directories.forEach((dir) => {
-    const files = getAllTsxFiles(dir)
+    const files = get(dir)
+
     files.forEach((file) => {
       const content = fs.readFileSync(file, "utf-8")
-      const duplicates = findDuplicateClasses(content)
-      duplicatedClasses = duplicates
-      if (duplicates.length > 0) {
-        console.info(`File: ${file}`)
-        console.info(`Duplicate classes: ${[...new Set(duplicates)].join(", ")}`)
-        console.info("---")
-      }
+      const duplicates = find(content)
+
+      duplicates.forEach(({ tag, duplicateClasses }) => {
+        if (duplicateClasses.length > 0) {
+          results.push({
+            file,
+            tag,
+            duplicates: duplicateClasses,
+          })
+        }
+      })
     })
   })
-  if (duplicatedClasses.length === 0) {
-    console.info("✅ No duplicated classes found.")
+
+  if (results.length > 0) {
+    console.table(
+      results.map(({ file, tag, duplicates }) => ({
+        File: file,
+        Tag: tag,
+        "Duplicate Classes": duplicates.join(", "),
+      })),
+    )
   } else {
-    console.info(`You have ${duplicatedClasses.length} duplicated classes.`)
+    console.info("————————————————————————————————")
+    console.info("👌 No duplicate classes found.")
+    console.info("————————————————————————————————")
   }
 }
 
 /**
- * Scan directories recursively for .tsx files and check for duplicate classes
+ * Directory to scan for duplicate classes
  */
 const directoriesToScan = ["app", "components"]
-detectDuplicateClasses(directoriesToScan)
+
+detect(directoriesToScan)
