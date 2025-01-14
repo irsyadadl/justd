@@ -81,7 +81,7 @@ export function Resources() {
         <Heading level={2} className="mb-6">
           Extra
         </Heading>
-        <div className="grid grid-cols-1 gap-2 gap-2 sm:grid-cols-2" aria-label="Extra">
+        <div className="grid grid-cols-1 gap-2 sm:grid-cols-2" aria-label="Extra">
           <Wrapper aria-label="Extra">
             <Link
               target="_blank"

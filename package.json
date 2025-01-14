@@ -9,6 +9,7 @@
     "build:stubs": "rm -rf public/stubs && bun run resources/scripts/build-stubs.ts",
     "prebuild": "bun run build:registry && bun run build:stubs",
     "cuc": "bun run resources/scripts/check-use-client.ts",
+    "cdc": "bun run resources/scripts/cdc.ts",
     "prepare": "husky",
     "build:registry": "rm -rf public/registry && bun run resources/scripts/build-registry.ts",
     "dev": "next dev --turbopack",
