@@ -7,6 +7,7 @@ export const siteConfig = {
   links: {
     twitter: "https://x.com/intent/follow?screen_name=getjustd",
     github: "https://github.com/justdlabs",
+    discord: "https://discord.gg/gtayr6qPW7",
     personalSite: "https://irsyad.co",
   },
   repo: "https://github.com/justdlabs/justd",

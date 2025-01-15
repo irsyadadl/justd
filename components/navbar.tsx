@@ -6,6 +6,7 @@ import { ResponsiveAside } from "@/components/responsive-aside"
 import { siteConfig } from "@/resources/config/site"
 import {
   IconBrandAdobe,
+  IconBrandDiscord,
   IconBrandGithub,
   IconBrandJustd,
   IconBrandTailwindcss,
@@ -117,6 +118,18 @@ export function Navbar() {
                       href={siteConfig.repo}
                     >
                       <IconBrandGithub />
+                    </Link>
+                    <Link
+                      aria-label="Join Discord"
+                      className={buttonStyles({
+                        appearance: "outline",
+                        size: "square-petite",
+                        className: "**:data-[slot=icon]:text-fg",
+                      })}
+                      target="_blank"
+                      href="https://discord.gg/gtayr6qPW7"
+                    >
+                      <IconBrandDiscord />
                     </Link>
                     <Link
                       aria-label="Follow Update on X"
