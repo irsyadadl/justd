@@ -86,7 +86,7 @@ export function Navbar() {
                   <Menu>
                     <Menu.Trigger
                       className={cn(
-                        "group flex cursor-pointer items-center gap-x-2 py-3 text-muted-fg text-sm",
+                        "group flex cursor-pointer items-center gap-x-2 py-3 text-muted-fg text-sm tracking-tight",
                       )}
                     >
                       Ecosystem
