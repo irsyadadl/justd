@@ -13,7 +13,7 @@ export default function ChoiceboxNoGapDemo() {
       columns={1}
       items={prices}
     >
-      {(item) => <Choicebox.Item {...item} />}
+      {(item) => <Choicebox.Item title={item.title} description={item.description} />}
     </Choicebox>
   )
 }

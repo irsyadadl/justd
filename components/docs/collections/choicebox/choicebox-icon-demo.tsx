@@ -12,7 +12,9 @@ export default function ChoiceboxIconDemo() {
       columns={1}
       items={frameworks}
     >
-      {(item) => <Choicebox.Item {...item} />}
+      {(item) => (
+        <Choicebox.Item title={item.title} icon={item.icon} description={item.description} />
+      )}
     </Choicebox>
   )
 }
