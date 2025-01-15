@@ -8,6 +8,7 @@ import { OpenPanelComponent } from "@openpanel/nextjs"
 import type { Metadata, Viewport } from "next"
 import { ViewTransitions } from "next-view-transitions"
 import { Geist_Mono, Inter } from "next/font/google"
+import { twJoin } from "tailwind-merge";
 
 export default function RootLayout({
   children,
@@ -16,9 +17,9 @@ export default function RootLayout({
 }>) {
   return (
     <ViewTransitions>
-      <html dir="ltr" lang="en" className="scroll-smooth" suppressHydrationWarning>
+      <html dir="ltr" lang="en" className={twJoin('scroll-smooth', fontSans.variable, fontMono.variable)} suppressHydrationWarning>
         <body
-          className={cn("min-h-screen font-sans antialiased", fontSans.variable, fontMono.variable)}
+          className={cn("min-h-screen font-sans antialiased")}
         >
           <Providers>
             {children}
