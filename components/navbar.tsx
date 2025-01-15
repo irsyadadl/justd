@@ -5,6 +5,7 @@ import { ResponsiveAside } from "@/components/responsive-aside"
 import { siteConfig } from "@/resources/config/site"
 import {
   IconBrandAdobe,
+  IconBrandDiscord,
   IconBrandFigma,
   IconBrandGithub,
   IconBrandJustd,
@@ -241,6 +242,9 @@ export function NavbarDropdown() {
           </MenuSection>
           <MenuSection>
             <Header className="px-3 py-1 text-muted-fg">Refs</Header>
+            <Menu.Item href="https://discord.gg/DYmVJ66JUD" target="_blank">
+              <IconBrandDiscord /> Discord
+            </Menu.Item>
             <Menu.Item href="https://x.com/intent/follow?screen_name=irsyadadl" target="_blank">
               <IconBrandX />X / Twitter
             </Menu.Item>
