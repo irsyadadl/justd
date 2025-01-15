@@ -6,7 +6,7 @@ import { MultipleSelect } from "ui"
 
 export default function MultipleSelectIntentDemo() {
   const selectedItems = useListData<SelectedKey>({
-    initialItems: [fruits[0]],
+    initialItems: [fruits[0]!],
   })
   return (
     <MultipleSelect

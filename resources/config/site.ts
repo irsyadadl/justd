@@ -11,6 +11,7 @@ export const siteConfig = {
     personalSite: "https://irsyad.co",
   },
   repo: "https://github.com/justdlabs/justd",
+  currentVersion: "2.x",
 }
 
 export type SiteConfig = typeof siteConfig

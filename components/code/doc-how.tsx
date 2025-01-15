@@ -6,8 +6,8 @@ import generated from "@/__registry__/generated"
 import { CodeHighlighter } from "@/components/code/code-highlighter"
 import { TabsList } from "@/components/code/code-sandbox"
 import { createFetchRegistryFile } from "@/resources/lib/fetch-registry"
-import { cn } from "@/resources/lib/utils"
 import type { RegistryItem } from "@/resources/types"
+import { cn } from "@/utils/classes"
 import { Group } from "react-aria-components"
 import { Loader, Tabs } from "ui"
 
@@ -75,19 +75,19 @@ export const DocHow = ({
   const divProps = { ...props } as React.HTMLProps<HTMLDivElement>
   return (
     <div className={cn("not-prose forced-color-adjust-non relative my-4", className)} {...divProps}>
-      <Tabs aria-label="Packages">
+      <Tabs className="group" aria-label="Packages">
         <TabsList copyButton={copyButton} code={processedSourceCode as string} src={src} />
         <Tabs.Panel className="w-full" id="preview">
           <div
             className={cn(
-              !withNoPadding && "relative gap-4 rounded-lg border bg-overlay p-6",
+              !withNoPadding && "relative gap-4 rounded-lg border bg-bg p-6 dark:bg-secondary/40",
               isCenter &&
                 "preview flex min-h-56 items-center justify-center overflow-x-auto py-6 sm:py-24 lg:min-h-110",
             )}
           >
             <React.Suspense
               fallback={
-                <div className="flex justify-center items-center py-6 text-sm text-muted-fg">
+                <div className="flex items-center justify-center py-6 text-muted-fg text-sm">
                   <Loader variant="spin" />
                   <span className="sr-only">Loading...</span>
                 </div>
@@ -102,8 +102,7 @@ export const DocHow = ({
 
         <Tabs.Panel id="code">
           {processedSourceCode ? (
-            <Group className="relative group">
-              {/*<CopyButton text={processedSourceCode} className="absolute top-0 right-0" />*/}
+            <Group className="group relative">
               <CodeHighlighter removeLastLine code={processedSourceCode} />
             </Group>
           ) : (

@@ -17,8 +17,12 @@ export default function TabsIconsDemo() {
           <IconClock /> Tracker
         </Tabs.Tab>
       </Tabs.List>
-      <Tabs.Panel id="w">Find a variety of workout plans tailored to your fitness level and goals.</Tabs.Panel>
-      <Tabs.Panel id="n">Get nutrition tips and meal plans to complement your fitness journey.</Tabs.Panel>
+      <Tabs.Panel id="w">
+        Find a variety of workout plans tailored to your fitness level and goals.
+      </Tabs.Panel>
+      <Tabs.Panel id="n">
+        Get nutrition tips and meal plans to complement your fitness journey.
+      </Tabs.Panel>
       <Tabs.Panel id="t">Track your progress with detailed statistics and analytics.</Tabs.Panel>
     </Tabs>
   )

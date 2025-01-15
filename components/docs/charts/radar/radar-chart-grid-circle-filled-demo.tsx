@@ -37,7 +37,7 @@ export default function RadarChartGridCircleFilledDemo() {
         <Chart config={chartConfig} className="mx-auto aspect-square max-h-[250px]">
           <RadarChart data={chartData}>
             <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
-            <PolarGrid className="opacity-20 fill-[--color-sales]" gridType="circle" />
+            <PolarGrid className="fill-[--color-sales] opacity-20" gridType="circle" />
             <PolarAngleAxis dataKey="month" />
             <Radar dataKey="sales" fill="var(--color-sales)" fillOpacity={0.5} />
           </RadarChart>

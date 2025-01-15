@@ -1,7 +1,13 @@
 "use client"
 
 import { getSiteName } from "@/resources/lib/utils"
-import { Collection, ListBoxItem, ListBoxSection, ListBox as Primitive, Text } from "react-aria-components"
+import {
+  Collection,
+  ListBoxItem,
+  ListBoxSection,
+  ListBox as Primitive,
+  Text,
+} from "react-aria-components"
 import { Avatar } from "ui"
 
 interface Props {
@@ -21,7 +27,7 @@ export function ListSites({ sites }: Props) {
               <ListBoxItem
                 rel="nofollow"
                 target="_blank"
-                className="flex gap-x-3 items-center py-2.5 px-3 rounded-lg ring-1 transition bg-secondary/70 ring-border data-hovered:bg-secondary data-focused:outline-hidden data-focus-visible:ring-1 data-focus-visible:ring-ring"
+                className="flex items-center gap-x-3 rounded-lg bg-secondary/70 px-3 py-2.5 ring-1 ring-border transition data-hovered:bg-secondary data-focused:outline-hidden data-focus-visible:ring-1 data-focus-visible:ring-ring"
                 textValue={item.name}
                 href={`${item.url}?ref=getjustd.com/showcase`}
                 id={getSiteName(item.url)}
@@ -36,7 +42,7 @@ export function ListSites({ sites }: Props) {
                   <Text slot="label" className="font-medium sm:text-sm">
                     {item.name}
                   </Text>
-                  <Text slot="description" className="text-xs text-muted-fg">
+                  <Text slot="description" className="text-muted-fg text-xs">
                     {item.url}
                   </Text>
                 </div>

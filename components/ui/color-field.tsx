@@ -1,6 +1,9 @@
 "use client"
 
-import type { ColorFieldProps as ColorFieldPrimitiveProps, ValidationResult } from "react-aria-components"
+import type {
+  ColorFieldProps as ColorFieldPrimitiveProps,
+  ValidationResult,
+} from "react-aria-components"
 import { ColorField as ColorFieldPrimitive } from "react-aria-components"
 
 import { ColorPicker } from "./color-picker"
@@ -48,7 +51,7 @@ const ColorField = ({
             {prefix}
           </span>
         ) : null}
-        <div className="flex items-center w-full">
+        <div className="flex w-full items-center">
           {value && (
             <span className="ml-2">
               {enableColorPicker ? (
@@ -62,7 +65,7 @@ const ColorField = ({
           <Input placeholder={placeholder} />
         </div>
         {suffix ? (
-          <span data-slot="suffix" className="ml-auto atrs">
+          <span data-slot="suffix" className="atrs ml-auto">
             {suffix}
           </span>
         ) : null}
@@ -73,4 +76,5 @@ const ColorField = ({
   )
 }
 
+export type { ColorFieldProps }
 export { ColorField }

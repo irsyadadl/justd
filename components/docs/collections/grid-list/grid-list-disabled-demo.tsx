@@ -4,7 +4,12 @@ import { GridList } from "ui"
 
 export default function GridListDisabledDemo() {
   return (
-    <GridList items={items} aria-label="Select your favorite bands" selectionMode="multiple" className="min-w-64">
+    <GridList
+      items={items}
+      aria-label="Select your favorite bands"
+      selectionMode="multiple"
+      className="min-w-64"
+    >
       {(item) => (
         <GridList.Item isDisabled={[2, 5].includes(Number(item.id))} id={item.id}>
           {item.name}

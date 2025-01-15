@@ -26,7 +26,13 @@ export default function ProductSalesOverview() {
       />
       <Card.Content>
         <Chart config={chartConfig} className="mx-auto aspect-square max-h-[250px]">
-          <RadialBarChart data={chartData} startAngle={0} endAngle={250} innerRadius={80} outerRadius={110}>
+          <RadialBarChart
+            data={chartData}
+            startAngle={0}
+            endAngle={250}
+            innerRadius={80}
+            outerRadius={110}
+          >
             <PolarGrid
               gridType="circle"
               radialLines={false}
@@ -40,9 +46,14 @@ export default function ProductSalesOverview() {
                 content={({ viewBox }) => {
                   if (viewBox && "cx" in viewBox && "cy" in viewBox) {
                     return (
-                      <text x={viewBox.cx} y={viewBox.cy} textAnchor="middle" dominantBaseline="middle">
-                        <tspan x={viewBox.cx} y={viewBox.cy} className="text-4xl font-bold fill-fg">
-                          {chartData[0].sales.toLocaleString()}
+                      <text
+                        x={viewBox.cx}
+                        y={viewBox.cy}
+                        textAnchor="middle"
+                        dominantBaseline="middle"
+                      >
+                        <tspan x={viewBox.cx} y={viewBox.cy} className="fill-fg font-bold text-4xl">
+                          {chartData[0]!.sales.toLocaleString()}
                         </tspan>
                         <tspan x={viewBox.cx} y={(viewBox.cy || 0) + 24} className="fill-muted-fg">
                           Sales

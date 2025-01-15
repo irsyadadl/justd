@@ -1,17 +1,20 @@
 "use client"
 
-import type { Placement } from "@react-types/overlays"
 import { IconChevronLgDown } from "justd-icons"
+import type {
+  ListBoxProps,
+  SelectProps as SelectPrimitiveProps,
+  ValidationResult,
+} from "react-aria-components"
 import {
   Button,
   Select as SelectPrimitive,
-  type SelectProps as SelectPrimitiveProps,
   SelectValue,
-  type ValidationResult,
   composeRenderProps,
 } from "react-aria-components"
 import { tv } from "tailwind-variants"
 
+import type { Placement } from "@react-types/overlays"
 import { DropdownItem, DropdownItemDetails, DropdownSection } from "./dropdown"
 import { Description, FieldError, Label } from "./field"
 import { ListBox } from "./list-box"
@@ -21,7 +24,7 @@ import { composeTailwindRenderProps, focusStyles } from "./primitive"
 const selectTriggerStyles = tv({
   extend: focusStyles,
   base: [
-    "btr **:data-[slot=icon]:size-4 group-data-disabled:opacity-50 flex h-10 w-full cursor-default items-center gap-4 rounded-lg border border-input py-2 pl-3 pr-2 text-start shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)] transition dark:shadow-none",
+    "btr flex h-10 w-full cursor-default items-center gap-4 rounded-lg border border-input py-2 pr-2 pl-3 text-start shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)] transition **:data-[slot=icon]:size-4 group-data-disabled:opacity-50 dark:shadow-none",
     "group-data-open:border-ring/70 group-data-open:ring-4 group-data-open:ring-ring/20",
     "text-fg group-data-invalid:border-danger group-data-invalid:ring-danger/20 forced-colors:group-data-invalid:border-[Mark]",
   ],
@@ -61,29 +64,35 @@ const Select = <T extends object>({
   )
 }
 
-interface ListProps<T extends object> {
+interface ListProps<T extends object> extends ListBoxProps<T> {
   items?: Iterable<T>
   placement?: Placement
   children: React.ReactNode | ((item: T) => React.ReactNode)
   className?: string
 }
 
-const List = <T extends object>({ className, children, items, placement }: ListProps<T>) => {
+const List = <T extends object>({
+  className,
+  children,
+  items,
+  placement,
+  ...props
+}: ListProps<T>) => {
   return (
-    <Popover.Picker className={className} trigger="Select" placement={placement}>
-      <ListBox.Picker aria-label="items" items={items}>
+    <Popover.Picker className={className} placement={placement}>
+      <ListBox.Picker aria-label="items" items={items} {...props}>
         {children}
       </ListBox.Picker>
     </Popover.Picker>
   )
 }
 
-interface TriggerProps extends React.ComponentProps<typeof Button> {
+interface SelectTriggerProps extends React.ComponentProps<typeof Button> {
   prefix?: React.ReactNode
   className?: string
 }
 
-const Trigger = ({ className, ...props }: TriggerProps) => {
+const SelectTrigger = ({ className, ...props }: SelectTriggerProps) => {
   return (
     <Button
       className={composeRenderProps(className, (className, renderProps) =>
@@ -94,13 +103,10 @@ const Trigger = ({ className, ...props }: TriggerProps) => {
       )}
     >
       {props.prefix && <span className="-mr-1">{props.prefix}</span>}
-      <SelectValue
-        aria-placeholder="xxxxx"
-        className="flex-1 text-base data-placeholder:text-muted-fg sm:text-sm [&_[slot=description]]:hidden"
-      />
+      <SelectValue className="flex-1 text-base data-placeholder:text-muted-fg sm:text-sm [&_[slot=description]]:hidden" />
       <IconChevronLgDown
         aria-hidden
-        className="duration-300 size-4 shrink-0 text-muted-fg group-data-open:rotate-180 group-data-open:text-fg group-data-disabled:opacity-50 forced-colors:text-[ButtonText] forced-colors:group-data-disabled:text-[GrayText]"
+        className="size-4 shrink-0 text-muted-fg duration-300 group-data-open:rotate-180 group-data-open:text-fg group-data-disabled:opacity-50 forced-colors:text-[ButtonText] forced-colors:group-data-disabled:text-[GrayText]"
       />
     </Button>
   )
@@ -109,7 +115,8 @@ const Trigger = ({ className, ...props }: TriggerProps) => {
 Select.OptionDetails = DropdownItemDetails
 Select.Option = DropdownItem
 Select.Section = DropdownSection
-Select.Trigger = Trigger
+Select.Trigger = SelectTrigger
 Select.List = List
 
+export type { SelectProps, SelectTriggerProps }
 export { Select }

@@ -9,7 +9,7 @@
     "ui": {
       "type": "string"
     },
-    "classes": {
+    "utils": {
       "type": "string"
     },
     "gray": {
@@ -23,5 +23,5 @@
       "type": "string"
     }
   },
-  "required": ["$schema", "ui", "classes", "theme", "css", "alias"]
+  "required": ["$schema", "ui", "utils", "gray", "css", "alias"]
 }

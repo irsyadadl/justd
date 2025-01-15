@@ -1,77 +1,12 @@
 [
   {
     "title": "Prologue",
-    "slug": "docs/prologue/prologue",
+    "slug": "docs/2.x/prologue/prologue",
     "children": [
       {
-        "title": "Contribution Guide",
-        "slug": "docs/prologue/contribution-guide",
-        "order": 1,
-        "children": [],
-        "toc": [
-          {
-            "title": "Contribution Guide",
-            "url": "#contribution-guide",
-            "items": []
-          },
-          {
-            "title": "Getting Started",
-            "url": "#getting-started",
-            "items": []
-          },
-          {
-            "title": "How to Contribute",
-            "url": "#how-to-contribute",
-            "items": [
-              {
-                "title": "Reporting Bugs",
-                "url": "#reporting-bugs",
-                "items": []
-              },
-              {
-                "title": "Suggesting Enhancements",
-                "url": "#suggesting-enhancements",
-                "items": []
-              },
-              {
-                "title": "Pull Requests",
-                "url": "#pull-requests",
-                "items": []
-              }
-            ]
-          },
-          {
-            "title": "Folder Structure",
-            "url": "#folder-structure",
-            "items": [
-              {
-                "title": "Components",
-                "url": "#components",
-                "items": []
-              },
-              {
-                "title": "Registry",
-                "url": "#registry",
-                "items": []
-              }
-            ]
-          },
-          {
-            "title": "Code of Conduct",
-            "url": "#code-of-conduct",
-            "items": []
-          },
-          {
-            "title": "License",
-            "url": "#license",
-            "items": []
-          }
-        ]
-      },
-      {
         "title": "Release Notes",
-        "slug": "docs/prologue/release-notes",
-        "order": 2,
+        "slug": "docs/2.x/prologue/release-notes",
+        "order": 1,
         "children": [],
         "toc": [
           {
@@ -285,19 +220,148 @@
             "items": []
           }
         ]
+      },
+      {
+        "title": "Upgrade Guide",
+        "slug": "docs/2.x/prologue/upgrade-guide",
+        "order": 2,
+        "children": [],
+        "toc": [
+          {
+            "title": "Introduction",
+            "url": "#introduction",
+            "items": []
+          },
+          {
+            "title": "Getting Started",
+            "url": "#getting-started",
+            "items": [
+              {
+                "title": "Upgrading from Tailwind v3 to v4",
+                "url": "#upgrading-from-tailwind-v3-to-v4",
+                "items": []
+              },
+              {
+                "title": "Vite",
+                "url": "#vite",
+                "items": []
+              },
+              {
+                "title": "PostCSS",
+                "url": "#postcss",
+                "items": []
+              }
+            ]
+          },
+          {
+            "title": "Updating CSS and Primitives",
+            "url": "#updating-css-and-primitives",
+            "items": []
+          },
+          {
+            "title": "Justd v2 Schema",
+            "url": "#justd-v2-schema",
+            "items": []
+          },
+          {
+            "title": "Hooks and Classes",
+            "url": "#hooks-and-classes",
+            "items": []
+          },
+          {
+            "title": "Checking Differences",
+            "url": "#checking-differences",
+            "items": []
+          },
+          {
+            "title": "Conclusion",
+            "url": "#conclusion",
+            "items": []
+          }
+        ]
+      },
+      {
+        "title": "Contribution Guide",
+        "slug": "docs/2.x/prologue/contribution-guide",
+        "order": 3,
+        "children": [],
+        "toc": [
+          {
+            "title": "Contribution Guide",
+            "url": "#contribution-guide",
+            "items": []
+          },
+          {
+            "title": "Getting Started",
+            "url": "#getting-started",
+            "items": []
+          },
+          {
+            "title": "How to Contribute",
+            "url": "#how-to-contribute",
+            "items": [
+              {
+                "title": "Reporting Bugs",
+                "url": "#reporting-bugs",
+                "items": []
+              },
+              {
+                "title": "Suggesting Enhancements",
+                "url": "#suggesting-enhancements",
+                "items": []
+              },
+              {
+                "title": "Pull Requests",
+                "url": "#pull-requests",
+                "items": []
+              }
+            ]
+          },
+          {
+            "title": "Folder Structure",
+            "url": "#folder-structure",
+            "items": [
+              {
+                "title": "Components",
+                "url": "#components",
+                "items": []
+              },
+              {
+                "title": "Registry",
+                "url": "#registry",
+                "items": []
+              }
+            ]
+          },
+          {
+            "title": "Code of Conduct",
+            "url": "#code-of-conduct",
+            "items": []
+          },
+          {
+            "title": "License",
+            "url": "#license",
+            "items": []
+          }
+        ]
       }
     ]
   },
   {
     "title": "Getting Started",
-    "slug": "docs/getting-started/getting-started",
+    "slug": "docs/2.x/getting-started/getting-started",
     "children": [
       {
         "title": "Introduction",
-        "slug": "docs/getting-started/introduction",
+        "slug": "docs/2.x/getting-started/introduction",
         "order": 1,
         "children": [],
         "toc": [
+          {
+            "title": "Introduction",
+            "url": "#introduction",
+            "items": []
+          },
           {
             "title": "Shoutout",
             "url": "#shoutout",
@@ -314,8 +378,8 @@
             "items": []
           },
           {
-            "title": "Styles",
-            "url": "#styles",
+            "title": "Tailwind CSS",
+            "url": "#tailwind-css",
             "items": []
           },
           {
@@ -327,7 +391,7 @@
       },
       {
         "title": "Installation",
-        "slug": "docs/getting-started/installation",
+        "slug": "docs/2.x/getting-started/installation",
         "order": 2,
         "children": [],
         "toc": [
@@ -367,6 +431,11 @@
             "url": "#starter-kit",
             "items": [
               {
+                "title": "Vite",
+                "url": "#vite",
+                "items": []
+              },
+              {
                 "title": "Laravel",
                 "url": "#laravel",
                 "items": []
@@ -379,6 +448,11 @@
               {
                 "title": "Remix",
                 "url": "#remix",
+                "items": []
+              },
+              {
+                "title": "Tanstack Router",
+                "url": "#tanstack-router",
                 "items": []
               },
               {
@@ -398,8 +472,8 @@
                 "items": []
               },
               {
-                "title": "Classes / CN",
-                "url": "#classes--cn",
+                "title": "Classes and Hooks",
+                "url": "#classes-and-hooks",
                 "items": []
               },
               {
@@ -443,7 +517,7 @@
       },
       {
         "title": "Client Side Routing",
-        "slug": "docs/getting-started/client-side-routing",
+        "slug": "docs/2.x/getting-started/client-side-routing",
         "order": 3,
         "children": [],
         "toc": [
@@ -455,25 +529,126 @@
           {
             "title": "Router Provider",
             "url": "#router-provider",
+            "items": []
+          },
+          {
+            "title": "Inertia.js",
+            "url": "#inertiajs",
             "items": [
               {
-                "title": "Inertia.js",
-                "url": "#inertiajs",
+                "title": "Global Declaration",
+                "url": "#global-declaration",
                 "items": []
               },
               {
-                "title": "Next.js",
-                "url": "#nextjs",
+                "title": "Providers",
+                "url": "#providers",
                 "items": []
               },
               {
-                "title": "Remix",
-                "url": "#remix",
+                "title": "Usage",
+                "url": "#usage",
+                "items": []
+              }
+            ]
+          },
+          {
+            "title": "Next.js",
+            "url": "#nextjs",
+            "items": [
+              {
+                "title": "Providers",
+                "url": "#providers-1",
                 "items": []
               },
               {
-                "title": "Others",
-                "url": "#others",
+                "title": "Usage",
+                "url": "#usage-1",
+                "items": []
+              }
+            ]
+          },
+          {
+            "title": "Remix",
+            "url": "#remix",
+            "items": [
+              {
+                "title": "Usage",
+                "url": "#usage-2",
+                "items": []
+              }
+            ]
+          },
+          {
+            "title": "Tanstack Router",
+            "url": "#tanstack-router",
+            "items": []
+          },
+          {
+            "title": "Others",
+            "url": "#others",
+            "items": []
+          }
+        ]
+      },
+      {
+        "title": "CLI",
+        "slug": "docs/2.x/getting-started/cli",
+        "order": 4,
+        "children": [],
+        "toc": [
+          {
+            "title": "Command Line Interface (CLI)",
+            "url": "#command-line-interface-cli",
+            "items": []
+          },
+          {
+            "title": "Existing Project",
+            "url": "#existing-project",
+            "items": []
+          },
+          {
+            "title": "Start a New Project",
+            "url": "#start-a-new-project",
+            "items": []
+          },
+          {
+            "title": "Add",
+            "url": "#add",
+            "items": []
+          },
+          {
+            "title": "Diff",
+            "url": "#diff",
+            "items": []
+          },
+          {
+            "title": "Change Gray",
+            "url": "#change-gray",
+            "items": []
+          },
+          {
+            "title": "Alias",
+            "url": "#alias",
+            "items": []
+          },
+          {
+            "title": "Options",
+            "url": "#options",
+            "items": [
+              {
+                "title": "Skip",
+                "url": "#skip",
+                "items": []
+              },
+              {
+                "title": "Dirty",
+                "url": "#dirty",
+                "items": []
+              },
+              {
+                "title": "Help",
+                "url": "#help",
                 "items": []
               }
             ]
@@ -482,8 +657,8 @@
       },
       {
         "title": "React 19",
-        "slug": "docs/getting-started/react-19",
-        "order": 4,
+        "slug": "docs/2.x/getting-started/react-19",
+        "order": 5,
         "children": [],
         "toc": [
           {
@@ -495,8 +670,8 @@
       },
       {
         "title": "Colors",
-        "slug": "docs/getting-started/colors",
-        "order": 5,
+        "slug": "docs/2.x/getting-started/colors",
+        "order": 6,
         "children": [],
         "toc": [
           {
@@ -520,62 +695,52 @@
   },
   {
     "title": "Dark Mode",
-    "slug": "docs/dark-mode/dark-mode",
+    "slug": "docs/2.x/dark-mode/dark-mode",
     "children": [
       {
         "title": "Vite",
-        "slug": "docs/dark-mode/vite",
+        "slug": "docs/2.x/dark-mode/vite",
         "order": 1,
         "children": [],
         "toc": [
           {
-            "title": "Theme Provider",
-            "url": "#theme-provider",
+            "title": "Starter Kit",
+            "url": "#starter-kit",
+            "items": []
+          },
+          {
+            "title": "Provider and Switcher",
+            "url": "#provider-and-switcher",
             "items": []
           },
           {
             "title": "Usage",
             "url": "#usage",
             "items": []
-          },
-          {
-            "title": "Theme Switcher",
-            "url": "#theme-switcher",
-            "items": []
           }
         ]
       },
       {
         "title": "Inertia.js",
-        "slug": "docs/dark-mode/inertia-js",
+        "slug": "docs/2.x/dark-mode/inertia-js",
         "order": 2,
         "children": [],
         "toc": [
           {
-            "title": "Theme Provider",
-            "url": "#theme-provider",
+            "title": "Provider and Switcher",
+            "url": "#provider-and-switcher",
             "items": []
           },
           {
-            "title": "Root App",
-            "url": "#root-app",
-            "items": []
-          },
-          {
-            "title": "Theme Switcher",
-            "url": "#theme-switcher",
-            "items": []
-          },
-          {
-            "title": "Group Providers",
-            "url": "#group-providers",
+            "title": "Usage",
+            "url": "#usage",
             "items": []
           }
         ]
       },
       {
         "title": "Remix",
-        "slug": "docs/dark-mode/remix",
+        "slug": "docs/2.x/dark-mode/remix",
         "order": 3,
         "children": [],
         "toc": [
@@ -585,30 +750,20 @@
             "items": []
           },
           {
-            "title": "Session Storage",
-            "url": "#session-storage",
-            "items": []
-          },
-          {
-            "title": "Providers",
-            "url": "#providers",
-            "items": []
-          },
-          {
-            "title": "Action Route",
-            "url": "#action-route",
-            "items": []
-          },
-          {
             "title": "Theme Switcher",
             "url": "#theme-switcher",
+            "items": []
+          },
+          {
+            "title": "Usage",
+            "url": "#usage",
             "items": []
           }
         ]
       },
       {
         "title": "Next.js",
-        "slug": "docs/dark-mode/next-js",
+        "slug": "docs/2.x/dark-mode/next-js",
         "order": 4,
         "children": [],
         "toc": [
@@ -618,25 +773,20 @@
             "items": []
           },
           {
-            "title": "Theme Provider",
-            "url": "#theme-provider",
+            "title": "Provider and Switcher",
+            "url": "#provider-and-switcher",
             "items": []
           },
           {
             "title": "Usage",
             "url": "#usage",
             "items": []
-          },
-          {
-            "title": "Theme Switcher",
-            "url": "#theme-switcher",
-            "items": []
           }
         ]
       },
       {
         "title": "Astro",
-        "slug": "docs/dark-mode/astro",
+        "slug": "docs/2.x/dark-mode/astro",
         "order": 5,
         "children": [],
         "toc": [
@@ -656,14 +806,14 @@
   },
   {
     "title": "Components",
-    "slug": "docs/components/components",
+    "slug": "docs/2.x/components/components",
     "children": [
       {
         "title": "Buttons",
         "children": [
           {
             "title": "Button",
-            "slug": "docs/components/buttons/button",
+            "slug": "docs/2.x/components/buttons/button",
             "order": 1,
             "children": [],
             "toc": [
@@ -741,7 +891,7 @@
           },
           {
             "title": "File Trigger",
-            "slug": "docs/components/buttons/file-trigger",
+            "slug": "docs/2.x/components/buttons/file-trigger",
             "order": 2,
             "children": [],
             "toc": [
@@ -804,7 +954,7 @@
           },
           {
             "title": "Toggle Group",
-            "slug": "docs/components/buttons/toggle-group",
+            "slug": "docs/2.x/components/buttons/toggle-group",
             "order": 3,
             "children": [],
             "toc": [
@@ -862,7 +1012,7 @@
           },
           {
             "title": "Toggle",
-            "slug": "docs/components/buttons/toggle",
+            "slug": "docs/2.x/components/buttons/toggle",
             "order": 3,
             "children": [],
             "toc": [
@@ -915,7 +1065,7 @@
         "children": [
           {
             "title": "Setting Up",
-            "slug": "docs/components/charts/setup",
+            "slug": "docs/2.x/components/charts/setup",
             "order": 1,
             "children": [],
             "toc": [
@@ -973,7 +1123,7 @@
           },
           {
             "title": "Area Chart",
-            "slug": "docs/components/charts/area-chart",
+            "slug": "docs/2.x/components/charts/area-chart",
             "order": 2,
             "children": [],
             "toc": [
@@ -1021,7 +1171,7 @@
           },
           {
             "title": "Bar Chart",
-            "slug": "docs/components/charts/bar-chart",
+            "slug": "docs/2.x/components/charts/bar-chart",
             "order": 3,
             "children": [],
             "toc": [
@@ -1084,7 +1234,7 @@
           },
           {
             "title": "Line Chart",
-            "slug": "docs/components/charts/line-chart",
+            "slug": "docs/2.x/components/charts/line-chart",
             "order": 4,
             "children": [],
             "toc": [
@@ -1142,7 +1292,7 @@
           },
           {
             "title": "Pie Chart",
-            "slug": "docs/components/charts/pie-chart",
+            "slug": "docs/2.x/components/charts/pie-chart",
             "order": 5,
             "children": [],
             "toc": [
@@ -1205,7 +1355,7 @@
           },
           {
             "title": "Radar Chart",
-            "slug": "docs/components/charts/radar-chart",
+            "slug": "docs/2.x/components/charts/radar-chart",
             "order": 6,
             "children": [],
             "toc": [
@@ -1283,7 +1433,7 @@
           },
           {
             "title": "Radial Bar Chart",
-            "slug": "docs/components/charts/radial-bar-chart",
+            "slug": "docs/2.x/components/charts/radial-bar-chart",
             "order": 7,
             "children": [],
             "toc": [
@@ -1321,7 +1471,7 @@
           },
           {
             "title": "Scatter Chart",
-            "slug": "docs/components/charts/scatter-chart",
+            "slug": "docs/2.x/components/charts/scatter-chart",
             "order": 8,
             "children": [],
             "toc": [
@@ -1334,7 +1484,7 @@
           },
           {
             "title": "Tooltip Chart",
-            "slug": "docs/components/charts/tooltip-chart",
+            "slug": "docs/2.x/components/charts/tooltip-chart",
             "order": 9,
             "children": [],
             "toc": [
@@ -1392,7 +1542,7 @@
         "children": [
           {
             "title": "Menu",
-            "slug": "docs/components/collections/menu",
+            "slug": "docs/2.x/components/collections/menu",
             "order": 1,
             "children": [],
             "toc": [
@@ -1490,7 +1640,7 @@
           },
           {
             "title": "List Box",
-            "slug": "docs/components/collections/list-box",
+            "slug": "docs/2.x/components/collections/list-box",
             "order": 2,
             "children": [],
             "toc": [
@@ -1553,7 +1703,7 @@
           },
           {
             "title": "Tag Group",
-            "slug": "docs/components/collections/tag-group",
+            "slug": "docs/2.x/components/collections/tag-group",
             "order": 4,
             "children": [],
             "toc": [
@@ -1616,7 +1766,7 @@
           },
           {
             "title": "Table",
-            "slug": "docs/components/collections/table",
+            "slug": "docs/2.x/components/collections/table",
             "order": 5,
             "children": [],
             "toc": [
@@ -1674,7 +1824,7 @@
           },
           {
             "title": "Tree",
-            "slug": "docs/components/collections/tree",
+            "slug": "docs/2.x/components/collections/tree",
             "status": "beta",
             "order": 6,
             "children": [],
@@ -1708,7 +1858,7 @@
           },
           {
             "title": "Grid List",
-            "slug": "docs/components/collections/grid-list",
+            "slug": "docs/2.x/components/collections/grid-list",
             "order": 7,
             "children": [],
             "toc": [
@@ -1771,7 +1921,7 @@
           },
           {
             "title": "Choicebox",
-            "slug": "docs/components/collections/choicebox",
+            "slug": "docs/2.x/components/collections/choicebox",
             "order": 8,
             "children": [],
             "toc": [
@@ -1824,7 +1974,7 @@
           },
           {
             "title": "Dropdown",
-            "slug": "docs/components/collections/dropdown",
+            "slug": "docs/2.x/components/collections/dropdown",
             "status": "primitive",
             "order": 9,
             "children": [],
@@ -1853,7 +2003,7 @@
         "children": [
           {
             "title": "Color Picker",
-            "slug": "docs/components/colors/color-picker",
+            "slug": "docs/2.x/components/colors/color-picker",
             "order": 1,
             "children": [],
             "toc": [
@@ -1921,7 +2071,7 @@
           },
           {
             "title": "Color Field",
-            "slug": "docs/components/colors/color-field",
+            "slug": "docs/2.x/components/colors/color-field",
             "order": 2,
             "children": [],
             "toc": [
@@ -1984,7 +2134,7 @@
           },
           {
             "title": "Color Area",
-            "slug": "docs/components/colors/color-area",
+            "slug": "docs/2.x/components/colors/color-area",
             "order": 3,
             "children": [],
             "toc": [
@@ -2042,7 +2192,7 @@
           },
           {
             "title": "Color Slider",
-            "slug": "docs/components/colors/color-slider",
+            "slug": "docs/2.x/components/colors/color-slider",
             "order": 4,
             "children": [],
             "toc": [
@@ -2095,7 +2245,7 @@
           },
           {
             "title": "Color Swatch Picker",
-            "slug": "docs/components/colors/color-swatch-picker",
+            "slug": "docs/2.x/components/colors/color-swatch-picker",
             "order": 5,
             "children": [],
             "toc": [
@@ -2138,7 +2288,7 @@
           },
           {
             "title": "Color Swatch",
-            "slug": "docs/components/colors/color-swatch",
+            "slug": "docs/2.x/components/colors/color-swatch",
             "order": 5,
             "children": [],
             "toc": [
@@ -2166,7 +2316,7 @@
           },
           {
             "title": "Color Wheel",
-            "slug": "docs/components/colors/color-wheel",
+            "slug": "docs/2.x/components/colors/color-wheel",
             "order": 7,
             "children": [],
             "toc": [
@@ -2209,7 +2359,7 @@
           },
           {
             "title": "Color Thumb",
-            "slug": "docs/components/colors/color-thumb",
+            "slug": "docs/2.x/components/colors/color-thumb",
             "status": "primitive",
             "order": 8,
             "children": [],
@@ -2238,7 +2388,7 @@
         "children": [
           {
             "title": "Slider",
-            "slug": "docs/components/controls/slider",
+            "slug": "docs/2.x/components/controls/slider",
             "order": 1,
             "children": [],
             "toc": [
@@ -2306,7 +2456,7 @@
           },
           {
             "title": "Switch",
-            "slug": "docs/components/controls/switch",
+            "slug": "docs/2.x/components/controls/switch",
             "order": 2,
             "children": [],
             "toc": [
@@ -2344,7 +2494,7 @@
           },
           {
             "title": "Toolbar",
-            "slug": "docs/components/controls/toolbar",
+            "slug": "docs/2.x/components/controls/toolbar",
             "order": 3,
             "children": [],
             "toc": [
@@ -2387,7 +2537,7 @@
           },
           {
             "title": "Command Menu",
-            "slug": "docs/components/controls/command-menu",
+            "slug": "docs/2.x/components/controls/command-menu",
             "status": "beta",
             "order": 4,
             "children": [],
@@ -2497,7 +2647,7 @@
           },
           {
             "title": "Keyboard",
-            "slug": "docs/components/controls/keyboard",
+            "slug": "docs/2.x/components/controls/keyboard",
             "status": "primitive",
             "order": 5,
             "children": [],
@@ -2521,7 +2671,7 @@
           },
           {
             "title": "Context Menu",
-            "slug": "docs/components/controls/context-menu",
+            "slug": "docs/2.x/components/controls/context-menu",
             "status": "beta",
             "order": 6,
             "children": [],
@@ -2581,49 +2731,11 @@
         ]
       },
       {
-        "title": "Drag-and-drop",
-        "children": [
-          {
-            "title": "Drop Zone",
-            "slug": "docs/components/drag-and-drop/drop-zone",
-            "order": 1,
-            "children": [],
-            "toc": [
-              {
-                "title": "Basic",
-                "url": "#basic",
-                "items": []
-              },
-              {
-                "title": "Installation",
-                "url": "#installation",
-                "items": []
-              },
-              {
-                "title": "Manual Installation",
-                "url": "#manual-installation",
-                "items": []
-              },
-              {
-                "title": "Anatomy",
-                "url": "#anatomy",
-                "items": []
-              },
-              {
-                "title": "Using FileTrigger",
-                "url": "#using-filetrigger",
-                "items": []
-              }
-            ]
-          }
-        ]
-      },
-      {
         "title": "Date-and-time",
         "children": [
           {
             "title": "Calendar",
-            "slug": "docs/components/date-and-time/calendar",
+            "slug": "docs/2.x/components/date-and-time/calendar",
             "order": 1,
             "children": [],
             "toc": [
@@ -2656,7 +2768,7 @@
           },
           {
             "title": "Range Calendar",
-            "slug": "docs/components/date-and-time/range-calendar",
+            "slug": "docs/2.x/components/date-and-time/range-calendar",
             "order": 2,
             "children": [],
             "toc": [
@@ -2699,7 +2811,7 @@
           },
           {
             "title": "Date Field",
-            "slug": "docs/components/date-and-time/date-field",
+            "slug": "docs/2.x/components/date-and-time/date-field",
             "order": 3,
             "children": [],
             "toc": [
@@ -2767,7 +2879,7 @@
           },
           {
             "title": "Time Field",
-            "slug": "docs/components/date-and-time/time-field",
+            "slug": "docs/2.x/components/date-and-time/time-field",
             "order": 4,
             "children": [],
             "toc": [
@@ -2830,7 +2942,7 @@
           },
           {
             "title": "Date Picker",
-            "slug": "docs/components/date-and-time/date-picker",
+            "slug": "docs/2.x/components/date-and-time/date-picker",
             "order": 5,
             "children": [],
             "toc": [
@@ -2883,7 +2995,7 @@
           },
           {
             "title": "Date Range Picker",
-            "slug": "docs/components/date-and-time/date-range-picker",
+            "slug": "docs/2.x/components/date-and-time/date-range-picker",
             "order": 6,
             "children": [],
             "toc": [
@@ -2918,6 +3030,11 @@
                 "items": []
               },
               {
+                "title": "Visible Duration",
+                "url": "#visible-duration",
+                "items": []
+              },
+              {
                 "title": "Controlled",
                 "url": "#controlled",
                 "items": []
@@ -2932,11 +3049,49 @@
         ]
       },
       {
+        "title": "Drag-and-drop",
+        "children": [
+          {
+            "title": "Drop Zone",
+            "slug": "docs/2.x/components/drag-and-drop/drop-zone",
+            "order": 1,
+            "children": [],
+            "toc": [
+              {
+                "title": "Basic",
+                "url": "#basic",
+                "items": []
+              },
+              {
+                "title": "Installation",
+                "url": "#installation",
+                "items": []
+              },
+              {
+                "title": "Manual Installation",
+                "url": "#manual-installation",
+                "items": []
+              },
+              {
+                "title": "Anatomy",
+                "url": "#anatomy",
+                "items": []
+              },
+              {
+                "title": "Using FileTrigger",
+                "url": "#using-filetrigger",
+                "items": []
+              }
+            ]
+          }
+        ]
+      },
+      {
         "title": "Forms",
         "children": [
           {
             "title": "Form",
-            "slug": "docs/components/forms/form",
+            "slug": "docs/2.x/components/forms/form",
             "order": 1,
             "children": [],
             "toc": [
@@ -2969,7 +3124,7 @@
           },
           {
             "title": "Field",
-            "slug": "docs/components/forms/field",
+            "slug": "docs/2.x/components/forms/field",
             "status": "primitive",
             "order": 2,
             "children": [],
@@ -2993,7 +3148,7 @@
           },
           {
             "title": "Text Field",
-            "slug": "docs/components/forms/text-field",
+            "slug": "docs/2.x/components/forms/text-field",
             "order": 2,
             "children": [],
             "toc": [
@@ -3076,7 +3231,7 @@
           },
           {
             "title": "Search Field",
-            "slug": "docs/components/forms/search-field",
+            "slug": "docs/2.x/components/forms/search-field",
             "order": 3,
             "children": [],
             "toc": [
@@ -3149,7 +3304,7 @@
           },
           {
             "title": "Textarea",
-            "slug": "docs/components/forms/textarea",
+            "slug": "docs/2.x/components/forms/textarea",
             "order": 4,
             "children": [],
             "toc": [
@@ -3212,7 +3367,7 @@
           },
           {
             "title": "Input OTP",
-            "slug": "docs/components/forms/input-otp",
+            "slug": "docs/2.x/components/forms/input-otp",
             "order": 5,
             "children": [],
             "toc": [
@@ -3255,7 +3410,7 @@
           },
           {
             "title": "Number Field",
-            "slug": "docs/components/forms/number-field",
+            "slug": "docs/2.x/components/forms/number-field",
             "order": 6,
             "children": [],
             "toc": [
@@ -3308,7 +3463,7 @@
           },
           {
             "title": "Checkbox Group",
-            "slug": "docs/components/forms/checkbox-group",
+            "slug": "docs/2.x/components/forms/checkbox-group",
             "order": 7,
             "children": [],
             "toc": [
@@ -3376,7 +3531,7 @@
           },
           {
             "title": "Checkbox",
-            "slug": "docs/components/forms/checkbox",
+            "slug": "docs/2.x/components/forms/checkbox",
             "order": 8,
             "children": [],
             "toc": [
@@ -3444,7 +3599,7 @@
           },
           {
             "title": "Radio Group",
-            "slug": "docs/components/forms/radio-group",
+            "slug": "docs/2.x/components/forms/radio-group",
             "order": 9,
             "children": [],
             "toc": [
@@ -3517,7 +3672,7 @@
           },
           {
             "title": "Tag Field",
-            "slug": "docs/components/forms/tag-field",
+            "slug": "docs/2.x/components/forms/tag-field",
             "order": 9,
             "children": [],
             "toc": [
@@ -3590,7 +3745,7 @@
         "children": [
           {
             "title": "Sidebar",
-            "slug": "docs/components/layouts/sidebar",
+            "slug": "docs/2.x/components/layouts/sidebar",
             "order": 1,
             "children": [],
             "toc": [
@@ -3746,7 +3901,7 @@
           },
           {
             "title": "Container",
-            "slug": "docs/components/layouts/container",
+            "slug": "docs/2.x/components/layouts/container",
             "order": 3,
             "children": [],
             "toc": [
@@ -3769,7 +3924,7 @@
           },
           {
             "title": "Navbar",
-            "slug": "docs/components/layouts/navbar",
+            "slug": "docs/2.x/components/layouts/navbar",
             "order": 6,
             "children": [],
             "toc": [
@@ -3890,7 +4045,7 @@
         "children": [
           {
             "title": "Avatar",
-            "slug": "docs/components/media/avatar",
+            "slug": "docs/2.x/components/media/avatar",
             "order": 1,
             "children": [],
             "toc": [
@@ -3938,7 +4093,7 @@
           },
           {
             "title": "Carousel",
-            "slug": "docs/components/media/carousel",
+            "slug": "docs/2.x/components/media/carousel",
             "order": 8,
             "children": [],
             "toc": [
@@ -4006,7 +4161,7 @@
         "children": [
           {
             "title": "Link",
-            "slug": "docs/components/navigation/link",
+            "slug": "docs/2.x/components/navigation/link",
             "order": 1,
             "children": [],
             "toc": [
@@ -4049,7 +4204,7 @@
           },
           {
             "title": "Breadcrumbs",
-            "slug": "docs/components/navigation/breadcrumbs",
+            "slug": "docs/2.x/components/navigation/breadcrumbs",
             "order": 2,
             "children": [],
             "toc": [
@@ -4102,7 +4257,7 @@
           },
           {
             "title": "Pagination",
-            "slug": "docs/components/navigation/pagination",
+            "slug": "docs/2.x/components/navigation/pagination",
             "status": "beta",
             "order": 3,
             "children": [],
@@ -4182,7 +4337,7 @@
           },
           {
             "title": "Tabs",
-            "slug": "docs/components/navigation/tabs",
+            "slug": "docs/2.x/components/navigation/tabs",
             "order": 3,
             "children": [],
             "toc": [
@@ -4227,11 +4382,6 @@
                 "items": []
               },
               {
-                "title": "Responsive",
-                "url": "#responsive",
-                "items": []
-              },
-              {
                 "title": "Disabled",
                 "url": "#disabled",
                 "items": []
@@ -4240,7 +4390,7 @@
           },
           {
             "title": "Disclosure | Collapsible",
-            "slug": "docs/components/navigation/disclosure",
+            "slug": "docs/2.x/components/navigation/disclosure",
             "order": 5,
             "children": [],
             "toc": [
@@ -4283,7 +4433,7 @@
           },
           {
             "title": "Disclosure Group | Accordion",
-            "slug": "docs/components/navigation/disclosure-group",
+            "slug": "docs/2.x/components/navigation/disclosure-group",
             "order": 6,
             "children": [],
             "toc": [
@@ -4356,7 +4506,7 @@
         "children": [
           {
             "title": "Modal",
-            "slug": "docs/components/overlays/modal",
+            "slug": "docs/2.x/components/overlays/modal",
             "order": 1,
             "children": [],
             "toc": [
@@ -4439,7 +4589,7 @@
           },
           {
             "title": "Dialog",
-            "slug": "docs/components/overlays/dialog",
+            "slug": "docs/2.x/components/overlays/dialog",
             "status": "primitive",
             "order": 2,
             "children": [],
@@ -4468,7 +4618,7 @@
           },
           {
             "title": "Sheet",
-            "slug": "docs/components/overlays/sheet",
+            "slug": "docs/2.x/components/overlays/sheet",
             "order": 2,
             "children": [],
             "toc": [
@@ -4518,8 +4668,8 @@
                 "items": []
               },
               {
-                "title": "Stack",
-                "url": "#stack",
+                "title": "Float",
+                "url": "#float",
                 "items": []
               },
               {
@@ -4546,7 +4696,7 @@
           },
           {
             "title": "Drawer",
-            "slug": "docs/components/overlays/drawer",
+            "slug": "docs/2.x/components/overlays/drawer",
             "order": 3,
             "children": [],
             "toc": [
@@ -4599,7 +4749,7 @@
           },
           {
             "title": "Popover",
-            "slug": "docs/components/overlays/popover",
+            "slug": "docs/2.x/components/overlays/popover",
             "order": 4,
             "children": [],
             "toc": [
@@ -4657,7 +4807,7 @@
           },
           {
             "title": "Tooltip",
-            "slug": "docs/components/overlays/tooltip",
+            "slug": "docs/2.x/components/overlays/tooltip",
             "order": 5,
             "children": [],
             "toc": [
@@ -4711,292 +4861,11 @@
         ]
       },
       {
-        "title": "Surfaces",
-        "children": [
-          {
-            "title": "Card",
-            "slug": "docs/components/surfaces/card",
-            "order": 1,
-            "children": [],
-            "toc": [
-              {
-                "title": "Basic",
-                "url": "#basic",
-                "items": []
-              },
-              {
-                "title": "Installation",
-                "url": "#installation",
-                "items": []
-              },
-              {
-                "title": "Composed Components",
-                "url": "#composed-components",
-                "items": []
-              },
-              {
-                "title": "Manual Installation",
-                "url": "#manual-installation",
-                "items": []
-              },
-              {
-                "title": "Anatomy",
-                "url": "#anatomy",
-                "items": []
-              },
-              {
-                "title": "With Form",
-                "url": "#with-form",
-                "items": []
-              },
-              {
-                "title": "With Table",
-                "url": "#with-table",
-                "items": []
-              },
-              {
-                "title": "Section Title",
-                "url": "#section-title",
-                "items": []
-              }
-            ]
-          },
-          {
-            "title": "Grid",
-            "slug": "docs/components/surfaces/grid",
-            "status": "alpha",
-            "order": 2,
-            "children": [],
-            "toc": [
-              {
-                "title": "Basic",
-                "url": "#basic",
-                "items": []
-              },
-              {
-                "title": "Installation",
-                "url": "#installation",
-                "items": []
-              },
-              {
-                "title": "Manual Installation",
-                "url": "#manual-installation",
-                "items": []
-              },
-              {
-                "title": "Anatomy",
-                "url": "#anatomy",
-                "items": []
-              },
-              {
-                "title": "Responsive",
-                "url": "#responsive",
-                "items": []
-              },
-              {
-                "title": "Gaps",
-                "url": "#gaps",
-                "items": []
-              },
-              {
-                "title": "Gaps X and Y",
-                "url": "#gaps-x-and-y",
-                "items": []
-              },
-              {
-                "title": "Collections",
-                "url": "#collections",
-                "items": []
-              },
-              {
-                "title": "Debugging",
-                "url": "#debugging",
-                "items": []
-              },
-              {
-                "title": "Grid Item",
-                "url": "#grid-item",
-                "items": []
-              },
-              {
-                "title": "Props",
-                "url": "#props",
-                "items": [
-                  {
-                    "title": "Grid",
-                    "url": "#grid",
-                    "items": []
-                  },
-                  {
-                    "title": "GridItem",
-                    "url": "#griditem",
-                    "items": []
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "title": "Separator",
-            "slug": "docs/components/surfaces/separator",
-            "order": 3,
-            "children": [],
-            "toc": [
-              {
-                "title": "Basic",
-                "url": "#basic",
-                "items": []
-              },
-              {
-                "title": "Installation",
-                "url": "#installation",
-                "items": []
-              },
-              {
-                "title": "Manual Installation",
-                "url": "#manual-installation",
-                "items": []
-              },
-              {
-                "title": "Anatomy",
-                "url": "#anatomy",
-                "items": []
-              },
-              {
-                "title": "Orientation",
-                "url": "#orientation",
-                "items": []
-              }
-            ]
-          },
-          {
-            "title": "Heading",
-            "slug": "docs/components/surfaces/heading",
-            "order": 4,
-            "children": [],
-            "toc": [
-              {
-                "title": "Basic",
-                "url": "#basic",
-                "items": []
-              },
-              {
-                "title": "Installation",
-                "url": "#installation",
-                "items": []
-              },
-              {
-                "title": "Anatomy",
-                "url": "#anatomy",
-                "items": []
-              },
-              {
-                "title": "Manual Installation",
-                "url": "#manual-installation",
-                "items": []
-              },
-              {
-                "title": "Heading Levels",
-                "url": "#heading-levels",
-                "items": []
-              },
-              {
-                "title": "Letter Spacing",
-                "url": "#letter-spacing",
-                "items": []
-              }
-            ]
-          },
-          {
-            "title": "Show More",
-            "slug": "docs/components/surfaces/show-more",
-            "order": 4,
-            "children": [],
-            "toc": [
-              {
-                "title": "Basic",
-                "url": "#basic",
-                "items": []
-              },
-              {
-                "title": "Installation",
-                "url": "#installation",
-                "items": []
-              },
-              {
-                "title": "Manual Installation",
-                "url": "#manual-installation",
-                "items": []
-              },
-              {
-                "title": "Anatomy",
-                "url": "#anatomy",
-                "items": []
-              },
-              {
-                "title": "As Text",
-                "url": "#as-text",
-                "items": []
-              },
-              {
-                "title": "Controlled",
-                "url": "#controlled",
-                "items": []
-              },
-              {
-                "title": "Orientation",
-                "url": "#orientation",
-                "items": []
-              }
-            ]
-          },
-          {
-            "title": "Description List",
-            "slug": "docs/components/surfaces/description-list",
-            "status": "new",
-            "order": 6,
-            "children": [],
-            "toc": [
-              {
-                "title": "Basic",
-                "url": "#basic",
-                "items": []
-              },
-              {
-                "title": "Installation",
-                "url": "#installation",
-                "items": []
-              },
-              {
-                "title": "Anatomy",
-                "url": "#anatomy",
-                "items": []
-              },
-              {
-                "title": "Manual Installation",
-                "url": "#manual-installation",
-                "items": []
-              },
-              {
-                "title": "With Heading",
-                "url": "#with-heading",
-                "items": []
-              },
-              {
-                "title": "With Card",
-                "url": "#with-card",
-                "items": []
-              }
-            ]
-          }
-        ]
-      },
-      {
         "title": "Pickers",
         "children": [
           {
             "title": "Combo Box",
-            "slug": "docs/components/pickers/combo-box",
+            "slug": "docs/2.x/components/pickers/combo-box",
             "order": 1,
             "children": [],
             "toc": [
@@ -5070,7 +4939,7 @@
           },
           {
             "title": "Select",
-            "slug": "docs/components/pickers/select",
+            "slug": "docs/2.x/components/pickers/select",
             "order": 2,
             "children": [],
             "toc": [
@@ -5138,7 +5007,7 @@
           },
           {
             "title": "Multiple Select",
-            "slug": "docs/components/pickers/multiple-select",
+            "slug": "docs/2.x/components/pickers/multiple-select",
             "order": 3,
             "children": [],
             "toc": [
@@ -5206,7 +5075,7 @@
         "children": [
           {
             "title": "Badge",
-            "slug": "docs/components/statuses/badge",
+            "slug": "docs/2.x/components/statuses/badge",
             "order": 1,
             "children": [],
             "toc": [
@@ -5239,7 +5108,7 @@
           },
           {
             "title": "Progress Bar",
-            "slug": "docs/components/statuses/progress-bar",
+            "slug": "docs/2.x/components/statuses/progress-bar",
             "order": 1,
             "children": [],
             "toc": [
@@ -5277,7 +5146,7 @@
           },
           {
             "title": "Progress Circle",
-            "slug": "docs/components/statuses/progress-circle",
+            "slug": "docs/2.x/components/statuses/progress-circle",
             "order": 3,
             "children": [],
             "toc": [
@@ -5330,7 +5199,7 @@
           },
           {
             "title": "Meter",
-            "slug": "docs/components/statuses/meter",
+            "slug": "docs/2.x/components/statuses/meter",
             "order": 4,
             "children": [],
             "toc": [
@@ -5373,7 +5242,7 @@
           },
           {
             "title": "Note",
-            "slug": "docs/components/statuses/note",
+            "slug": "docs/2.x/components/statuses/note",
             "order": 4,
             "children": [],
             "toc": [
@@ -5411,7 +5280,7 @@
           },
           {
             "title": "Toast",
-            "slug": "docs/components/statuses/toast",
+            "slug": "docs/2.x/components/statuses/toast",
             "order": 5,
             "children": [],
             "toc": [
@@ -5494,7 +5363,7 @@
           },
           {
             "title": "Loader",
-            "slug": "docs/components/statuses/loader",
+            "slug": "docs/2.x/components/statuses/loader",
             "order": 6,
             "children": [],
             "toc": [
@@ -5537,7 +5406,7 @@
           },
           {
             "title": "Skeleton",
-            "slug": "docs/components/statuses/skeleton",
+            "slug": "docs/2.x/components/statuses/skeleton",
             "order": 7,
             "children": [],
             "toc": [
@@ -5576,11 +5445,286 @@
         ]
       },
       {
+        "title": "Surfaces",
+        "children": [
+          {
+            "title": "Card",
+            "slug": "docs/2.x/components/surfaces/card",
+            "order": 1,
+            "children": [],
+            "toc": [
+              {
+                "title": "Basic",
+                "url": "#basic",
+                "items": []
+              },
+              {
+                "title": "Installation",
+                "url": "#installation",
+                "items": []
+              },
+              {
+                "title": "Composed Components",
+                "url": "#composed-components",
+                "items": []
+              },
+              {
+                "title": "Manual Installation",
+                "url": "#manual-installation",
+                "items": []
+              },
+              {
+                "title": "Anatomy",
+                "url": "#anatomy",
+                "items": []
+              },
+              {
+                "title": "With Form",
+                "url": "#with-form",
+                "items": []
+              },
+              {
+                "title": "With Table",
+                "url": "#with-table",
+                "items": []
+              },
+              {
+                "title": "Section Title",
+                "url": "#section-title",
+                "items": []
+              }
+            ]
+          },
+          {
+            "title": "Grid",
+            "slug": "docs/2.x/components/surfaces/grid",
+            "status": "alpha",
+            "order": 2,
+            "children": [],
+            "toc": [
+              {
+                "title": "Basic",
+                "url": "#basic",
+                "items": []
+              },
+              {
+                "title": "Installation",
+                "url": "#installation",
+                "items": []
+              },
+              {
+                "title": "Manual Installation",
+                "url": "#manual-installation",
+                "items": []
+              },
+              {
+                "title": "Anatomy",
+                "url": "#anatomy",
+                "items": []
+              },
+              {
+                "title": "Responsive",
+                "url": "#responsive",
+                "items": []
+              },
+              {
+                "title": "Gaps",
+                "url": "#gaps",
+                "items": []
+              },
+              {
+                "title": "Gaps X and Y",
+                "url": "#gaps-x-and-y",
+                "items": []
+              },
+              {
+                "title": "Debugging",
+                "url": "#debugging",
+                "items": []
+              },
+              {
+                "title": "Grid Item",
+                "url": "#grid-item",
+                "items": []
+              },
+              {
+                "title": "Props",
+                "url": "#props",
+                "items": [
+                  {
+                    "title": "Grid",
+                    "url": "#grid",
+                    "items": []
+                  },
+                  {
+                    "title": "GridItem",
+                    "url": "#griditem",
+                    "items": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Separator",
+            "slug": "docs/2.x/components/surfaces/separator",
+            "order": 3,
+            "children": [],
+            "toc": [
+              {
+                "title": "Basic",
+                "url": "#basic",
+                "items": []
+              },
+              {
+                "title": "Installation",
+                "url": "#installation",
+                "items": []
+              },
+              {
+                "title": "Manual Installation",
+                "url": "#manual-installation",
+                "items": []
+              },
+              {
+                "title": "Anatomy",
+                "url": "#anatomy",
+                "items": []
+              },
+              {
+                "title": "Orientation",
+                "url": "#orientation",
+                "items": []
+              }
+            ]
+          },
+          {
+            "title": "Heading",
+            "slug": "docs/2.x/components/surfaces/heading",
+            "order": 4,
+            "children": [],
+            "toc": [
+              {
+                "title": "Basic",
+                "url": "#basic",
+                "items": []
+              },
+              {
+                "title": "Installation",
+                "url": "#installation",
+                "items": []
+              },
+              {
+                "title": "Anatomy",
+                "url": "#anatomy",
+                "items": []
+              },
+              {
+                "title": "Manual Installation",
+                "url": "#manual-installation",
+                "items": []
+              },
+              {
+                "title": "Heading Levels",
+                "url": "#heading-levels",
+                "items": []
+              },
+              {
+                "title": "Letter Spacing",
+                "url": "#letter-spacing",
+                "items": []
+              }
+            ]
+          },
+          {
+            "title": "Show More",
+            "slug": "docs/2.x/components/surfaces/show-more",
+            "order": 4,
+            "children": [],
+            "toc": [
+              {
+                "title": "Basic",
+                "url": "#basic",
+                "items": []
+              },
+              {
+                "title": "Installation",
+                "url": "#installation",
+                "items": []
+              },
+              {
+                "title": "Manual Installation",
+                "url": "#manual-installation",
+                "items": []
+              },
+              {
+                "title": "Anatomy",
+                "url": "#anatomy",
+                "items": []
+              },
+              {
+                "title": "As Text",
+                "url": "#as-text",
+                "items": []
+              },
+              {
+                "title": "Controlled",
+                "url": "#controlled",
+                "items": []
+              },
+              {
+                "title": "Orientation",
+                "url": "#orientation",
+                "items": []
+              }
+            ]
+          },
+          {
+            "title": "Description List",
+            "slug": "docs/2.x/components/surfaces/description-list",
+            "order": 6,
+            "children": [],
+            "toc": [
+              {
+                "title": "Basic",
+                "url": "#basic",
+                "items": []
+              },
+              {
+                "title": "Installation",
+                "url": "#installation",
+                "items": []
+              },
+              {
+                "title": "Anatomy",
+                "url": "#anatomy",
+                "items": []
+              },
+              {
+                "title": "Manual Installation",
+                "url": "#manual-installation",
+                "items": []
+              },
+              {
+                "title": "With Heading",
+                "url": "#with-heading",
+                "items": []
+              },
+              {
+                "title": "With Card",
+                "url": "#with-card",
+                "items": []
+              }
+            ]
+          }
+        ]
+      },
+      {
         "title": "Utilities",
         "children": [
           {
             "title": "Visually Hidden",
-            "slug": "docs/components/utilities/visually-hidden",
+            "slug": "docs/2.x/components/utilities/visually-hidden",
             "order": 1,
             "children": [],
             "toc": [

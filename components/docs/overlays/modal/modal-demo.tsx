@@ -15,7 +15,13 @@ export default function ModalDemo() {
         </Modal.Header>
         <Form onSubmit={() => {}}>
           <Modal.Body>
-            <TextField isRequired autoFocus label="Password" type="password" placeholder="Enter your password" />
+            <TextField
+              isRequired
+              autoFocus
+              label="Password"
+              type="password"
+              placeholder="Enter your password"
+            />
           </Modal.Body>
           <Modal.Footer>
             <Modal.Close>Cancel</Modal.Close>

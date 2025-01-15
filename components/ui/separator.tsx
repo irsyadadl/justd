@@ -4,7 +4,7 @@ import { Separator as Divider, type SeparatorProps as DividerProps } from "react
 import { tv } from "tailwind-variants"
 
 const separatorStyles = tv({
-  base: "bg-border shrink-0 forced-colors:bg-[ButtonBorder]",
+  base: "shrink-0 bg-border forced-colors:bg-[ButtonBorder]",
   variants: {
     orientation: {
       horizontal: "h-px w-full",
@@ -18,7 +18,7 @@ const separatorStyles = tv({
 
 interface SeparatorProps extends DividerProps {
   className?: string
-  ref?: React.RefObject<DividerProps>
+  ref?: React.RefObject<HTMLDivElement>
 }
 
 const Separator = ({ className, ref, ...props }: SeparatorProps) => {
@@ -34,4 +34,5 @@ const Separator = ({ className, ref, ...props }: SeparatorProps) => {
   )
 }
 
+export type { SeparatorProps }
 export { Separator }

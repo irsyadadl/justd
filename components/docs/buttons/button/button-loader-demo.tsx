@@ -17,7 +17,12 @@ export default function ButtonLoaderDemo() {
   }
 
   return (
-    <Button isPending={loading === "loading"} className="justify-between w-52" onPress={pressHandler} intent="primary">
+    <Button
+      isPending={loading === "loading"}
+      className="w-52 justify-between"
+      onPress={pressHandler}
+      intent="primary"
+    >
       {loading === "success" ? (
         <IconCircleCheckFill />
       ) : loading === "loading" ? (
@@ -25,7 +30,11 @@ export default function ButtonLoaderDemo() {
       ) : (
         <IconKey />
       )}
-      {loading === "loading" ? "Generating Key..." : loading === "success" ? "Key Generated!" : "Generate API Key"}
+      {loading === "loading"
+        ? "Generating Key..."
+        : loading === "success"
+          ? "Key Generated!"
+          : "Generate API Key"}
     </Button>
   )
 }

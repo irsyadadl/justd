@@ -18,7 +18,10 @@ export default function CommandMenuControlledDemo() {
           {users.map((user) => (
             <CommandMenu.Item key={user.id} value={user.name}>
               <Avatar src={user.image_url} />
-              {user.name} {user.name === value && <CommandMenu.Description>Selected: {value}</CommandMenu.Description>}
+              {user.name}{" "}
+              {user.name === value && (
+                <CommandMenu.Description>Selected: {value}</CommandMenu.Description>
+              )}
             </CommandMenu.Item>
           ))}
         </CommandMenu.List>

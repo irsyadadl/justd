@@ -1,15 +1,18 @@
-import { Cta } from "@/components/cta"
-import { Hero } from "@/components/hero"
-import { Resources } from "@/components/resources"
-import { Container } from "ui"
+import { Blocks } from "./partials/blocks"
+import { Cta } from "./partials/cta"
+import { Hero } from "./partials/hero"
+import { IconResources } from "./partials/icon-resources"
+import { Resources } from "./partials/resources"
 
 export default function Page() {
   return (
     <>
       <Hero />
-      <Container className="py-6 space-y-16 sm:py-16">
+      <div className="space-y-16 py-6 lg:py-16">
+        <Blocks />
+        <IconResources />
         <Resources />
-      </Container>
+      </div>
       <Cta />
     </>
   )

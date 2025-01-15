@@ -9,7 +9,9 @@ export default function AlertDialogDemo() {
       <Modal.Content role="alertdialog">
         <Modal.Header>
           <Modal.Title>Delete file</Modal.Title>
-          <Modal.Description>This will permanently delete the selected file. Continue?</Modal.Description>
+          <Modal.Description>
+            This will permanently delete the selected file. Continue?
+          </Modal.Description>
         </Modal.Header>
         <Modal.Footer>
           <Modal.Close appearance="outline">Cancel</Modal.Close>

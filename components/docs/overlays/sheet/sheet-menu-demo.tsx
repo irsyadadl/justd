@@ -35,12 +35,16 @@ export default function SheetMenuDemo() {
         </Modal.Header>
         <Modal.Body>
           <div className="space-y-4">
-            <TextField prefix={<IconBrandGithub />} label="Status" placeholder="What's your status?" />
+            <TextField
+              prefix={<IconBrandGithub />}
+              label="Status"
+              placeholder="What's your status?"
+            />
             <Group>
               <Checkbox>Busy</Checkbox>
               <Description>
-                When others mention you, assign you, or request your review, GitHub will let them know that you have
-                limited availability.
+                When others mention you, assign you, or request your review, GitHub will let them
+                know that you have limited availability.
               </Description>
             </Group>
             <Select label="Clear Status">
@@ -74,7 +78,7 @@ export default function SheetMenuDemo() {
           <Avatar src="/images/avatar/cobain.jpg" alt="irsyadadl" />
         </Sheet.Trigger>
         <Sheet.Content closeButton={false}>
-          <Sheet.Header className="flex sticky top-0 flex-row gap-x-3 items-center p-4 mb-2 border-b bg-overlay">
+          <Sheet.Header className="sticky top-0 mb-2 flex flex-row items-center gap-x-3 border-b bg-overlay p-4">
             <Avatar src="/images/avatar/cobain.jpg" alt="irsyadadl" />
             <div>
               <Sheet.Title>irsyadadl</Sheet.Title>

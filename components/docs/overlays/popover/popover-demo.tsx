@@ -6,7 +6,7 @@ export default function PopoverDemo() {
   return (
     <Popover>
       <Button>Forgot Password</Button>
-      <Popover.Content className="min-w-72">
+      <Popover.Content className="max-w-72">
         <Popover.Header>
           <Popover.Title>Email</Popover.Title>
           <Popover.Description>We'll send you an email to log in.</Popover.Description>

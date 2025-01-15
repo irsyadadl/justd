@@ -14,13 +14,13 @@ export default function BreadcrumbsMenuDemo() {
             <IconDotsHorizontal />
           </Button>
           <Menu.Content placement="bottom">
-            <Menu.Item href="/docs/components/layouts/sidebar">Sidebar</Menu.Item>
-            <Menu.Item href="/docs/components/controls/toolbar">Toolbar</Menu.Item>
-            <Menu.Item href="/docs/components/collections/menu">Menu</Menu.Item>
-            <Menu.Item href="/docs/components/layouts/container">Container</Menu.Item>
-            <Menu.Item href="/docs/components/surfaces/chart">Chart</Menu.Item>
-            <Menu.Item href="/docs/components/collections/table">Table</Menu.Item>
-            <Menu.Item href="/docs/components/overlays/modal">Modal</Menu.Item>
+            <Menu.Item href="/docs/2.x/components/layouts/sidebar">Sidebar</Menu.Item>
+            <Menu.Item href="/docs/2.x/components/controls/toolbar">Toolbar</Menu.Item>
+            <Menu.Item href="/docs/2.x/components/collections/menu">Menu</Menu.Item>
+            <Menu.Item href="/docs/2.x/components/layouts/container">Container</Menu.Item>
+            <Menu.Item href="/docs/2.x/components/surfaces/chart">Chart</Menu.Item>
+            <Menu.Item href="/docs/2.x/components/collections/table">Table</Menu.Item>
+            <Menu.Item href="/docs/2.x/components/overlays/modal">Modal</Menu.Item>
           </Menu.Content>
         </Menu>
       </Breadcrumbs.Item>

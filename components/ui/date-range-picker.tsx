@@ -8,6 +8,8 @@ import {
 } from "react-aria-components"
 import { tv } from "tailwind-variants"
 
+import type { DateDuration } from "@internationalized/date"
+import type { Placement } from "@react-types/overlays"
 import { DateInput } from "./date-field"
 import { DatePickerIcon, DatePickerOverlay } from "./date-picker"
 import { Description, FieldError, FieldGroup, Label } from "./field"
@@ -16,18 +18,22 @@ import { composeTailwindRenderProps } from "./primitive"
 const dateRangePickerStyles = tv({
   slots: {
     base: "group flex flex-col gap-y-1.5",
-    dateRangePickerInputStart: "px-2 sm:text-sm tabular-nums text-base",
-    dateRangePickerInputEnd: "flex-1 px-2 py-1.5 tabular-nums text-base sm:text-sm",
+    dateRangePickerInputStart: "px-2 text-base tabular-nums sm:text-sm",
+    dateRangePickerInputEnd: "flex-1 px-2 py-1.5 text-base tabular-nums sm:text-sm",
     dateRangePickerDash:
       "text-fg group-data-disabled:text-muted-fg forced-colors:text-[ButtonText] forced-colors:group-data-disabled:text-[GrayText]",
   },
 })
-const { base, dateRangePickerInputStart, dateRangePickerInputEnd, dateRangePickerDash } = dateRangePickerStyles()
+const { base, dateRangePickerInputStart, dateRangePickerInputEnd, dateRangePickerDash } =
+  dateRangePickerStyles()
 
 interface DateRangePickerProps<T extends DateValue> extends DateRangePickerPrimitiveProps<T> {
   label?: string
   description?: string
   errorMessage?: string | ((validation: ValidationResult) => string)
+  visibleDuration?: DateDuration
+  pageBehavior?: "visible" | "single"
+  contentPlacement?: Placement
 }
 
 const DateRangePicker = <T extends DateValue>({
@@ -35,6 +41,8 @@ const DateRangePicker = <T extends DateValue>({
   className,
   description,
   errorMessage,
+  contentPlacement = "bottom",
+  visibleDuration = { months: 1 },
   ...props
 }: DateRangePickerProps<T>) => {
   return (
@@ -50,9 +58,9 @@ const DateRangePicker = <T extends DateValue>({
       </FieldGroup>
       {description && <Description>{description}</Description>}
       <FieldError>{errorMessage}</FieldError>
-      <DatePickerOverlay range />
+      <DatePickerOverlay placement={contentPlacement} visibleDuration={visibleDuration} range />
     </DateRangePickerPrimitive>
   )
 }
-
-export { DateRangePicker, type DateRangePickerProps }
+export type { DateRangePickerProps }
+export { DateRangePicker }

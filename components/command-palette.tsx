@@ -3,11 +3,22 @@
 import React, { useState } from "react"
 
 import sidebar from "@/resources/lib/sidebar.json"
+import { useMediaQuery } from "@/utils/use-media-query"
 import { useCommandState } from "cmdk"
-import { IconBrandJustd, IconColorSwatch, IconColors, IconCube, IconHashtag, IconHome, IconNotes } from "justd-icons"
+import {
+  IconBrandJustd,
+  IconColorSwatch,
+  IconColors,
+  IconCube,
+  IconHashtag,
+  IconHome,
+  IconNotepad,
+  IconNotes,
+  IconWindowVisit,
+} from "justd-icons"
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
-import { CommandMenu, useMediaQuery } from "ui"
+import { CommandMenu } from "ui"
 import { useDebounce } from "use-debounce"
 
 export interface OpenCloseProps {
@@ -96,7 +107,13 @@ export function CommandPalette({ openCmd, setOpen }: OpenCloseProps) {
   const filteredItems = React.useMemo(() => {
     if (!debouncedSearch) return []
 
-    return searchSidebar(sidebar[3].children as any, debouncedSearch)
+    const sidebarItem = sidebar[3]
+
+    if (!sidebarItem) {
+      throw new Error("Sidebar item not found")
+    }
+
+    return searchSidebar(sidebarItem.children as any, debouncedSearch)
   }, [debouncedSearch, sidebar])
 
   React.useEffect(() => {
@@ -113,16 +130,23 @@ export function CommandPalette({ openCmd, setOpen }: OpenCloseProps) {
     setSearch("")
   }, [pathname])
   return (
-    <CommandMenu classNames={{ content: "backdrop-blur-2xl bg-overlay/50" }} isOpen={openCmd} onOpenChange={setOpen}>
+    <CommandMenu
+      classNames={{
+        content:
+          "dark:supports-backdrop-filter:backdrop-blur-2xl dark:supports-backdrop-filter:bg-overlay/50",
+      }}
+      isOpen={openCmd}
+      onOpenChange={setOpen}
+    >
       <CommandMenu.Input
-        className="text-sm"
+        className="lg:text-sm"
         isPending={loading}
         value={search}
         onValueChange={setSearch}
         autoFocus={isDesktop}
         placeholder="Eg. Colors, Date, Chart, etc."
       />
-      <CommandMenu.List>
+      <CommandMenu.List className="scrollbar-hidden">
         <CommandMenu.Section>
           <CommandMenu.Item value="home" asChild>
             <Link href="/">
@@ -130,7 +154,7 @@ export function CommandPalette({ openCmd, setOpen }: OpenCloseProps) {
             </Link>
           </CommandMenu.Item>
           <CommandMenu.Item value="documenation" asChild>
-            <Link href="/docs/getting-started/installation">
+            <Link href="/docs/2.x/getting-started/installation">
               <IconNotes /> Docs
             </Link>
           </CommandMenu.Item>
@@ -154,7 +178,34 @@ export function CommandPalette({ openCmd, setOpen }: OpenCloseProps) {
               <IconColorSwatch /> Themes
             </Link>
           </CommandMenu.Item>
+          <CommandMenu.Item value="blocks" asChild>
+            <Link href="/blocks">
+              <IconWindowVisit /> Blocks
+            </Link>
+          </CommandMenu.Item>
+          <CommandMenu.Item value="blog" asChild>
+            <Link href="/blog">
+              <IconNotepad /> Blog
+            </Link>
+          </CommandMenu.Item>
         </CommandMenu.Section>
+        {sidebar
+          .filter((i) => i.title !== "Components")
+          .map((item) => (
+            <CommandMenu.Section key={item.slug} heading={item.title}>
+              {item.children?.map((child) => (
+                <CommandMenu.Item
+                  key={`${child.title}`}
+                  value={`${item.title} ${child.title} ${item.slug}`}
+                  // @ts-ignore
+                  onSelect={() => router.push(`/${child.slug}`)}
+                >
+                  <IconNotes />
+                  {child.title}
+                </CommandMenu.Item>
+              ))}
+            </CommandMenu.Section>
+          ))}
         {debouncedSearch &&
           filteredItems.map((item, i) => (
             <CommandMenu.Section key={`${item.slug}-${i}-${item.title}`} heading={item.title}>

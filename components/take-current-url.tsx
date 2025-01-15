@@ -48,11 +48,23 @@ export function TakeCurrentUrl() {
     >
       <AnimatePresence mode="wait" initial={false}>
         {copied ? (
-          <motion.span key="checkmark" variants={snippetVariants} initial="hidden" animate="visible" exit="hidden">
+          <motion.span
+            key="checkmark"
+            variants={snippetVariants}
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+          >
             <IconCheck />
           </motion.span>
         ) : (
-          <motion.span key="copy" variants={snippetVariants} initial="hidden" animate="visible" exit="hidden">
+          <motion.span
+            key="copy"
+            variants={snippetVariants}
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+          >
             <IconDuplicate />
           </motion.span>
         )}

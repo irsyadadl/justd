@@ -24,7 +24,7 @@ export default function ListBoxMultipleDemo() {
       </ListBox>
 
       {[...selected].length > 0 && (
-        <Description className="block mt-4">
+        <Description className="mt-4 block">
           Selected: {selected === "all" ? "All selected" : [...selected].join(", ")}
         </Description>
       )}

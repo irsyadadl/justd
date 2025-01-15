@@ -11,7 +11,9 @@ export default function DropZoneAndFileTriggerDemo() {
   const [droppedImage, setDroppedImage] = useState<string | undefined>(undefined)
 
   const onDropHandler = async (e: DropEvent) => {
-    const item = e.items.filter(isFileDropItem).find((item) => item.type === "image/jpeg" || item.type === "image/png")
+    const item = e.items
+      .filter(isFileDropItem)
+      .find((item) => item.type === "image/jpeg" || item.type === "image/png")
     if (item) {
       const file = await item.getFile()
       setDroppedImage(URL.createObjectURL(file))
@@ -30,14 +32,16 @@ export default function DropZoneAndFileTriggerDemo() {
   }
   return (
     <DropZone
-      getDropOperation={(types) => (types.has("image/jpeg") || types.has("image/png") ? "copy" : "cancel")}
+      getDropOperation={(types) =>
+        types.has("image/jpeg") || types.has("image/png") ? "copy" : "cancel"
+      }
       onDrop={onDropHandler}
     >
       {droppedImage ? (
-        <img alt="" src={droppedImage} className="object-contain aspect-square size-full" />
+        <img alt="" src={droppedImage} className="aspect-square size-full object-contain" />
       ) : (
         <div className="grid space-y-3">
-          <div className="grid place-content-center mx-auto rounded-full border size-12 bg-secondary/70 group-data-[drop-target]:border-primary/70 group-data-[drop-target]:bg-primary/20">
+          <div className="mx-auto grid size-12 place-content-center rounded-full border bg-secondary/70 group-data-[drop-target]:border-primary/70 group-data-[drop-target]:bg-primary/20">
             <IconGallery className="size-5" />
           </div>
           <div className="flex justify-center">

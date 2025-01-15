@@ -16,11 +16,11 @@ const trackStyles = tv({
   base: "group col-span-2 rounded-lg",
   variants: {
     orientation: {
-      horizontal: "w-full h-6",
-      vertical: "w-6 h-56 ml-[50%] -translate-x-[50%]",
+      horizontal: "h-6 w-full",
+      vertical: "-translate-x-[50%] ml-[50%] h-56 w-6",
     },
     isDisabled: {
-      true: "opacity-75 bg-muted forced-colors:bg-[GrayText]",
+      true: "bg-muted opacity-75 forced-colors:bg-[GrayText]",
     },
   },
 })
@@ -34,11 +34,11 @@ const colorSliderStyles = tv({
   base: "group relative gap-2",
   variants: {
     orientation: {
-      horizontal: "grid grid-cols-[1fr_auto] min-w-56",
-      vertical: "flex flex-col justify-center items-center",
+      horizontal: "grid min-w-56 grid-cols-[1fr_auto]",
+      vertical: "flex flex-col items-center justify-center",
     },
     isDisabled: {
-      true: "opacity-75 bg-muted forced-colors:bg-[GrayText]",
+      true: "bg-muted opacity-75 forced-colors:bg-[GrayText]",
     },
   },
 })
@@ -53,7 +53,9 @@ const ColorSlider = ({ showOutput = true, label, className, ...props }: ColorSli
     >
       <div className="flex items-center">
         {label && <Label className="text-sm [grid-area:label]">{label}</Label>}
-        {showOutput && <SliderOutput className="text-sm [grid-area:output] data-[orientation=horizontal]:ml-auto" />}
+        {showOutput && (
+          <SliderOutput className="text-sm [grid-area:output] data-[orientation=horizontal]:ml-auto" />
+        )}
       </div>
       <SliderTrack
         className={trackStyles}
@@ -70,4 +72,5 @@ const ColorSlider = ({ showOutput = true, label, className, ...props }: ColorSli
   )
 }
 
+export type { ColorSliderProps }
 export { ColorSlider }

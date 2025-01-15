@@ -13,7 +13,11 @@ export default function ColorPickerCombinationDemo() {
       {getColorChannels(space).map((channel) => (
         <ColorSlider showOutput={false} key={channel} colorSpace={space} channel={channel} />
       ))}
-      <Select aria-label="Color space" selectedKey={space} onSelectionChange={(s) => setSpace(s as ColorSpace)}>
+      <Select
+        aria-label="Color space"
+        selectedKey={space}
+        onSelectionChange={(s) => setSpace(s as ColorSpace)}
+      >
         <Select.Trigger />
         <Select.List>
           {["rgb", "hsb", "hsl"].map((s) => (

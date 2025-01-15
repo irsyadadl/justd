@@ -1,12 +1,10 @@
 "use client"
 
-import type React from "react"
-
+import type { TooltipProps as TooltipPrimitiveProps } from "react-aria-components"
 import {
   Button,
   OverlayArrow,
   Tooltip as TooltipPrimitive,
-  type TooltipProps as TooltipPrimitiveProps,
   TooltipTrigger,
   composeRenderProps,
 } from "react-aria-components"
@@ -14,22 +12,24 @@ import type { VariantProps } from "tailwind-variants"
 import { tv } from "tailwind-variants"
 
 const tooltipStyles = tv({
-  base: ["group rounded-lg [&_strong]:font-medium border px-2.5 py-1.5 text-sm will-change-transform dark:shadow-none"],
+  base: [
+    "group rounded-lg border px-2.5 py-1.5 text-sm will-change-transform dark:shadow-none [&_strong]:font-medium",
+  ],
   variants: {
     intent: {
       default: "bg-overlay text-overlay-fg [&_.arx]:fill-overlay [&_.arx]:stroke-border",
       inverse:
-        "border-transparent bg-fg text-bg dark:[&_.text-muted-fg]:text-fg/70 [&_.text-muted-fg]:text-bg/70 dark:[&_.arx]:fill-white [&_.arx]:fill-fg [&_.arx]:stroke-transparent",
+        "border-transparent bg-fg text-bg [&_.arx]:fill-fg [&_.arx]:stroke-transparent dark:[&_.arx]:fill-white [&_.text-muted-fg]:text-bg/70 dark:[&_.text-muted-fg]:text-fg/70",
     },
     isEntering: {
       true: [
-        "animate-in fade-in",
+        "fade-in animate-in",
         "data-[placement=left]:slide-in-from-right-1 data-[placement=right]:slide-in-from-left-1 data-[placement=top]:slide-in-from-bottom-1 data-[placement=bottom]:slide-in-from-top-1",
       ],
     },
     isExiting: {
       true: [
-        "animate-in fade-in direction-reverse",
+        "fade-in direction-reverse animate-in",
         "data-[placement=left]:slide-out-to-right-1 data-[placement=right]:slide-out-to-left-1 data-[placement=top]:slide-out-to-bottom-1 data-[placement=bottom]:slide-out-to-top-1",
       ],
     },
@@ -39,14 +39,23 @@ const tooltipStyles = tv({
   },
 })
 
-const Tooltip = (props: React.ComponentProps<typeof TooltipTrigger>) => <TooltipTrigger {...props} />
+type TooltipProps = React.ComponentProps<typeof TooltipTrigger>
+const Tooltip = (props: TooltipProps) => <TooltipTrigger {...props} />
 
-interface ContentProps extends Omit<TooltipPrimitiveProps, "children">, VariantProps<typeof tooltipStyles> {
+interface TooltipContentProps
+  extends Omit<TooltipPrimitiveProps, "children">,
+    VariantProps<typeof tooltipStyles> {
   showArrow?: boolean
   children: React.ReactNode
 }
 
-const Content = ({ offset = 10, showArrow = true, intent = "default", children, ...props }: ContentProps) => {
+const Content = ({
+  offset = 10,
+  showArrow = true,
+  intent = "default",
+  children,
+  ...props
+}: TooltipContentProps) => {
   return (
     <TooltipPrimitive
       {...props}
@@ -79,4 +88,5 @@ const Content = ({ offset = 10, showArrow = true, intent = "default", children, 
 Tooltip.Trigger = Button
 Tooltip.Content = Content
 
+export type { TooltipProps, TooltipContentProps }
 export { Tooltip }

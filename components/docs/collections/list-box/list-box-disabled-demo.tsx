@@ -5,7 +5,12 @@ import { ListBox } from "ui"
 export default function ListBoxDisabledDemo() {
   return (
     <>
-      <ListBox disabledKeys={[2, 3, 4, 5]} items={fruits} aria-label="Fruits" selectionMode="multiple">
+      <ListBox
+        disabledKeys={[2, 3, 4, 5]}
+        items={fruits}
+        aria-label="Fruits"
+        selectionMode="multiple"
+      >
         {(fruit) => <ListBox.Item id={fruit.id}>{fruit.name}</ListBox.Item>}
       </ListBox>
     </>

@@ -40,16 +40,22 @@ export default function LineChartControlledDemo() {
 
   return (
     <Card>
-      <Card.Header className="flex flex-row justify-between items-center">
+      <Card.Header className="flex flex-row items-center justify-between">
         <div className="space-y-1">
           <Card.Title>Revenue vs Expenses</Card.Title>
-          <Card.Description>Tracking daily revenue and expenses over the last 3 months</Card.Description>
+          <Card.Description>
+            Tracking daily revenue and expenses over the last 3 months
+          </Card.Description>
         </div>
         <div className="flex gap-x-1">
           {["revenue", "expenses"].map((key) => {
             const chart = key as keyof typeof chartConfig
             return (
-              <Toggle key={chart} isSelected={activeChart === chart} onPress={() => setActiveChart(chart)}>
+              <Toggle
+                key={chart}
+                isSelected={activeChart === chart}
+                onPress={() => setActiveChart(chart)}
+              >
                 {chartConfig[chart].label}
               </Toggle>
             )
@@ -57,7 +63,7 @@ export default function LineChartControlledDemo() {
         </div>
       </Card.Header>
       <Card.Content className="px-2 sm:p-6">
-        <Chart config={chartConfig} className="w-full aspect-auto h-[250px]">
+        <Chart config={chartConfig} className="aspect-auto h-[250px] w-full">
           <LineChart
             accessibilityLayer
             data={chartData}

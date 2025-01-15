@@ -4,9 +4,12 @@ import { Bar, BarChart, CartesianGrid, XAxis } from "recharts"
 import { Card, Chart, type ChartConfig, ChartTooltip, ChartTooltipContent } from "ui"
 
 const salesData = Array.from({ length: 48 }, (_, index) => {
-  const month = new Date(new Date().getFullYear() - 4, Math.floor(index / 2)).toLocaleDateString("en-US", {
-    month: "short",
-  })
+  const month = new Date(new Date().getFullYear() - 4, Math.floor(index / 2)).toLocaleDateString(
+    "en-US",
+    {
+      month: "short",
+    },
+  )
   const startDay = index % 2 === 0 ? 1 : 15
   const endDay = index % 2 === 0 ? 14 : 28
   return {

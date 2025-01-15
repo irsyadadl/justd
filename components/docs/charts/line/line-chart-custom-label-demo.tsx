@@ -54,7 +54,10 @@ export default function LineChartCustomLabelDemo() {
             }}
           >
             <CartesianGrid vertical={false} />
-            <ChartTooltip cursor={false} content={<ChartTooltipContent indicator="line" nameKey="users" hideLabel />} />
+            <ChartTooltip
+              cursor={false}
+              content={<ChartTooltipContent indicator="line" nameKey="users" hideLabel />}
+            />
             <Line
               dataKey="users"
               type="natural"

@@ -20,7 +20,12 @@ export default function ComboBoxControlledDemo() {
   const [sport, setSport] = useState("")
   return (
     <>
-      <ComboBox onInputChange={setSport} inputValue={sport} placeholder="Select a sports" label="Sports">
+      <ComboBox
+        onInputChange={setSport}
+        inputValue={sport}
+        placeholder="Select a sports"
+        label="Sports"
+      >
         <ComboBox.Input />
         <ComboBox.List items={sports}>
           {(item) => (

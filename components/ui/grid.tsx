@@ -1,9 +1,5 @@
-"use client"
-
-import { Collection } from "react-aria-components"
+import { cn } from "@/utils/classes"
 import { type VariantProps, tv } from "tailwind-variants"
-
-import { cn } from "./primitive"
 
 const gridStyles = tv(
   {
@@ -265,7 +261,9 @@ const gridItemStyles = tv(
   },
 )
 
-interface GridItemProps extends React.HTMLAttributes<HTMLDivElement>, VariantProps<typeof gridItemStyles> {
+interface GridItemProps
+  extends React.HTMLAttributes<HTMLDivElement>,
+    VariantProps<typeof gridItemStyles> {
   className?: string
 }
 
@@ -299,7 +297,6 @@ const GridItem = ({
   )
 }
 
-Grid.Collection = Collection
 Grid.Item = GridItem
 
 export { Grid, gridStyles, gridItemStyles }

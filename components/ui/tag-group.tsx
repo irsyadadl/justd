@@ -17,9 +17,10 @@ import {
 } from "react-aria-components"
 import { tv } from "tailwind-variants"
 
+import { cn } from "@/utils/classes"
 import { badgeIntents, badgeShapes, badgeStyles } from "./badge"
 import { Description, Label } from "./field"
-import { cn, composeTailwindRenderProps, focusStyles } from "./primitive"
+import { composeTailwindRenderProps, focusStyles } from "./primitive"
 
 const intents = {
   primary: {
@@ -33,7 +34,10 @@ const intents = {
     ],
   },
   secondary: {
-    base: [badgeIntents.secondary, "**:[[slot=remove]]:data-hovered:bg-fg **:[[slot=remove]]:data-hovered:text-bg"],
+    base: [
+      badgeIntents.secondary,
+      "**:[[slot=remove]]:data-hovered:bg-fg **:[[slot=remove]]:data-hovered:text-bg",
+    ],
     selected: [
       "bg-fg ring-fg/50 text-bg dark:bg-fg/90 dark:text-secondary ring-inset",
       "**:[[slot=remove]]:data-hovered:**:[[slot=remove]]:data-hovered:text-secondary-fg",
@@ -87,17 +91,22 @@ const TagGroupContext = React.createContext<TagGroupContextValue>({
   shape: "square",
 })
 
-export interface TagGroupProps extends TagGroupPrimitiveProps {
+interface TagGroupProps extends TagGroupPrimitiveProps {
   intent?: Intent
   shape?: "square" | "circle"
   errorMessage?: string
   label?: string
   description?: string
+  ref?: React.RefObject<HTMLDivElement>
 }
 
-const TagGroup = ({ children, ...props }: TagGroupProps) => {
+const TagGroup = ({ children, ref, ...props }: TagGroupProps) => {
   return (
-    <TagGroupPrimitive {...props} className={cn("flex flex-col flex-wrap", props.className)}>
+    <TagGroupPrimitive
+      ref={ref}
+      className={cn("flex flex-col flex-wrap", props.className)}
+      {...props}
+    >
       <TagGroupContext.Provider
         value={{
           intent: props.intent || "primary",
@@ -113,15 +122,20 @@ const TagGroup = ({ children, ...props }: TagGroupProps) => {
 }
 
 const TagList = <T extends object>({ className, ...props }: TagListProps<T>) => {
-  return <TagListPrimitive {...props} className={composeTailwindRenderProps(className, "flex flex-wrap gap-2")} />
+  return (
+    <TagListPrimitive
+      {...props}
+      className={composeTailwindRenderProps(className, "flex flex-wrap gap-2")}
+    />
+  )
 }
 
 const tagStyles = tv({
   extend: focusStyles,
-  base: [badgeStyles.base, "cursor-pointer jdt3lr2x"],
+  base: [badgeStyles.base, "jdt3lr2x cursor-pointer"],
   variants: {
     isFocused: { true: "ring-1" },
-    isDisabled: { true: "opacity-50 cursor-default" },
+    isDisabled: { true: "cursor-default opacity-50" },
     allowsRemoving: { true: "pr-1" },
   },
 })
@@ -172,4 +186,5 @@ const Tag = ({ className, intent, shape, ...props }: TagProps) => {
   )
 }
 
-export { Tag, TagList, TagGroup, type RestrictedIntent }
+export type { TagGroupProps, TagProps, TagListProps, RestrictedIntent }
+export { Tag, TagList, TagGroup }

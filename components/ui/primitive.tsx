@@ -1,13 +1,8 @@
 "use client"
 
-import { useEffect, useState } from "react"
-
-import { type ClassValue, clsx } from "clsx"
 import { composeRenderProps } from "react-aria-components"
 import { twMerge } from "tailwind-merge"
 import { tv } from "tailwind-variants"
-
-const cn = (...inputs: ClassValue[]) => twMerge(clsx(inputs))
 
 function composeTailwindRenderProps<T>(
   className: string | ((v: T) => string) | undefined,
@@ -18,8 +13,8 @@ function composeTailwindRenderProps<T>(
 
 const focusRing = tv({
   variants: {
-    isFocused: { true: "ring-4 ring-ring/20 outline-hidden" },
-    isFocusVisible: { true: "ring-4 ring-ring/20 outline-hidden" },
+    isFocused: { true: "outline-hidden ring-4 ring-ring/20 data-invalid:ring-danger/20" },
+    isFocusVisible: { true: "outline-hidden ring-4 ring-ring/20" },
     isInvalid: { true: "ring-4 ring-danger/20" },
   },
 })
@@ -33,7 +28,7 @@ const focusStyles = tv({
 })
 
 const focusButtonStyles = tv({
-  base: "outline outline-ring forced-colors:outline-[Highlight] outline-offset-2",
+  base: "outline outline-ring outline-offset-2 forced-colors:outline-[Highlight]",
   variants: {
     isFocusVisible: {
       false: "outline-0",
@@ -42,30 +37,4 @@ const focusButtonStyles = tv({
   },
 })
 
-const useMediaQuery = (query: string) => {
-  const [value, setValue] = useState(false)
-
-  useEffect(() => {
-    const onChange = (event: MediaQueryListEvent) => {
-      setValue(event.matches)
-    }
-
-    const result = matchMedia(query)
-    result.addEventListener("change", onChange)
-    setValue(result.matches)
-
-    return () => result.removeEventListener("change", onChange)
-  }, [query])
-
-  return value
-}
-
-export {
-  cn,
-  composeTailwindRenderProps,
-  composeRenderProps as cr,
-  focusRing,
-  focusStyles,
-  focusButtonStyles,
-  useMediaQuery,
-}
+export { composeTailwindRenderProps, focusRing, focusStyles, focusButtonStyles }

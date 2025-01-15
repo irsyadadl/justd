@@ -3,7 +3,7 @@
 import React, { useState } from "react"
 
 import { CodeHighlighter } from "@/components/code/code-highlighter"
-import { CopyButton } from "@/components/code/copy-button"
+import { CopyMotionButton } from "@/components/code/copy-button"
 import { extractImports, extractJSX } from "@/resources/lib/utils"
 import { Group } from "react-aria-components"
 
@@ -37,8 +37,8 @@ export const Anatomy = ({ show, ...props }: AnatomyProps) => {
   }, [show])
   if (processedSourceCode) {
     return (
-      <section className="my-6 not-prose">
-        <p className="mb-4 -mt-2">
+      <section className="not-prose my-6">
+        <p className="-mt-2 mb-4">
           {props.message
             ? props.message
             : "Import the components and use them as shown below, adapting the structure to fit each component."}
@@ -46,17 +46,24 @@ export const Anatomy = ({ show, ...props }: AnatomyProps) => {
         {props.title && <figcaption data-rehype-pretty-code-title="">{props.title}</figcaption>}
         {processedSourceCode && (
           <>
-            <Group className="relative group">
-              <CopyButton className="absolute top-1 right-1" text={extractImports(processedSourceCode as string)} />
+            <Group className="group relative">
+              <CopyMotionButton
+                className="absolute top-2 right-1.5"
+                text={extractImports(processedSourceCode as string)}
+              />
               <CodeHighlighter
+                className="px-4 py-2"
                 max96={false}
                 removeLastLine
                 code={extractImports(processedSourceCode as string)}
                 lang={props.ext}
               />
             </Group>
-            <Group className="relative mt-4 group">
-              <CopyButton className="absolute top-1 right-1" text={extractJSX(processedSourceCode as string) as any} />
+            <Group className="group relative mt-4">
+              <CopyMotionButton
+                className="absolute top-2 right-1.5"
+                text={extractJSX(processedSourceCode as string) as any}
+              />
               <CodeHighlighter
                 max96={false}
                 className="[&_pre]:max-h-[30rem] **:[pre]:p-0"

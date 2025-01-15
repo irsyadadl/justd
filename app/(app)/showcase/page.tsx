@@ -12,9 +12,12 @@ export const metadata: Metadata = {
 }
 
 export default async function Page() {
-  const res = await fetch("https://raw.githubusercontent.com/justdlabs/showcase/refs/heads/main/sites.json", {
-    next: { revalidate: 3600 },
-  })
+  const res = await fetch(
+    "https://raw.githubusercontent.com/justdlabs/showcase/refs/heads/main/sites.json",
+    {
+      next: { revalidate: 3600 },
+    },
+  )
   const sites = await res.json()
   return (
     <>

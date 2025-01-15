@@ -14,7 +14,7 @@ import { composeTailwindRenderProps, focusStyles } from "./primitive"
 
 const textareaStyles = tv({
   extend: focusStyles,
-  base: "w-full min-w-0 min-h-16 field-sizing-content rounded-lg border border-input px-2.5 py-2 text-base shadow-xs outline-hidden transition duration-200 data-disabled:opacity-50 sm:text-sm",
+  base: "field-sizing-content min-h-16 w-full min-w-0 rounded-lg border border-input px-2.5 py-2 text-base shadow-xs outline-hidden transition duration-200 data-disabled:opacity-50 sm:text-sm",
 })
 
 interface TextareaProps extends TextFieldPrimitiveProps {
@@ -26,9 +26,19 @@ interface TextareaProps extends TextFieldPrimitiveProps {
   className?: string
 }
 
-const Textarea = ({ className, placeholder, label, description, errorMessage, ...props }: TextareaProps) => {
+const Textarea = ({
+  className,
+  placeholder,
+  label,
+  description,
+  errorMessage,
+  ...props
+}: TextareaProps) => {
   return (
-    <TextFieldPrimitive {...props} className={composeTailwindRenderProps(className, "group flex flex-col gap-y-1.5")}>
+    <TextFieldPrimitive
+      {...props}
+      className={composeTailwindRenderProps(className, "group flex flex-col gap-y-1.5")}
+    >
       {label && <Label>{label}</Label>}
       <TextAreaPrimitive
         placeholder={placeholder}
@@ -45,4 +55,5 @@ const Textarea = ({ className, placeholder, label, description, errorMessage, ..
   )
 }
 
-export { Textarea, type TextareaProps }
+export type { TextareaProps }
+export { Textarea }

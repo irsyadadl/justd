@@ -37,7 +37,13 @@ export default function TooltipChartFormatterDemo() {
       <Card.Content>
         <Chart config={chartConfig}>
           <BarChart accessibilityLayer data={chartData}>
-            <XAxis dataKey="date" tickLine={false} tickMargin={10} axisLine={false} tickFormatter={(value) => value} />
+            <XAxis
+              dataKey="date"
+              tickLine={false}
+              tickMargin={10}
+              axisLine={false}
+              tickFormatter={(value) => value}
+            />
             <Bar dataKey="sales" stackId="a" fill="var(--color-sales)" radius={[0, 0, 4, 4]} />
             <Bar dataKey="profit" stackId="a" fill="var(--color-profit)" radius={[4, 4, 0, 0]} />
             <ChartTooltip
@@ -45,9 +51,9 @@ export default function TooltipChartFormatterDemo() {
                 <ChartTooltipContent
                   hideLabel
                   formatter={(value, name) => (
-                    <div className="flex items-center text-xs min-w-[130px] text-muted-fg">
+                    <div className="flex min-w-[130px] items-center text-muted-fg text-xs">
                       {chartConfig[name as keyof typeof chartConfig]?.label || name}
-                      <div className="flex gap-0.5 items-baseline ml-auto font-mono font-medium tabular-nums text-foreground">
+                      <div className="ml-auto flex items-baseline gap-0.5 font-medium font-mono text-foreground tabular-nums">
                         {value}
                         <span className="font-normal text-muted-fg">USD</span>
                       </div>

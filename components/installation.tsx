@@ -5,10 +5,9 @@ import React, { useState } from "react"
 import { CodeHighlighter } from "@/components/code/code-highlighter"
 import { CopyButton } from "@/components/code/copy-button"
 import { copyToClipboard } from "@/resources/lib/copy"
-import { cn } from "@/utils/classes"
 import { useOpenPanel } from "@openpanel/nextjs"
 import { Group } from "react-aria-components"
-import { Link, Menu } from "ui"
+import { Link, Menu, composeTailwindRenderProps } from "ui"
 
 const manualText =
   "Sometimes, using the CLI is the way to go, so make sure you install the necessary\n" +
@@ -29,8 +28,16 @@ export interface InstallationProps {
 
 export function Installation({ className, ...props }: InstallationProps) {
   const op = useOpenPanel()
-  const { options = { isExecutor: false, isInit: false, isComponent: false, isManual: false, noText: true }, items } =
-    props
+  const {
+    options = {
+      isExecutor: false,
+      isInit: false,
+      isComponent: false,
+      isManual: false,
+      noText: true,
+    },
+    items,
+  } = props
   const [pkgManager, setPkgManager] = useState({
     name: "npm",
     action: "i",
@@ -51,34 +58,35 @@ export function Installation({ className, ...props }: InstallationProps) {
         <p>
           If you hit any issues, make sure you check out the installation guide{" "}
           <Link
-            className="text-blue-600 dark:text-blue-400 not-prose xd2432 data-hovered:underline"
+            className="not-prose xd2432 text-blue-600 data-hovered:underline dark:text-blue-400"
             intent="primary"
-            href="/docs/getting-started/installation"
+            href="/docs/2.x/getting-started/cli"
             target="_blank"
             rel="noreferrer"
           >
             here
-          </Link>
-          .
+          </Link>{" "}
+          for more information.
         </p>
       )}
       {options.isManual && <p>{manualText}</p>}
       <Group
-        className={cn("group relative flex h-12 items-center overflow-hidden rounded-lg border bg-shiki-bg pr-1", {
+        className={composeTailwindRenderProps(
           className,
-        })}
+          "group relative flex h-12 items-center overflow-hidden rounded-lg border bg-shiki-bg pr-1",
+        )}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
-          className="hidden z-10 md:block ml-[0.395rem] size-6 text-zinc-400"
+          className="z-10 ml-[0.395rem] hidden size-6 text-zinc-400 md:block"
         >
           <path stroke="currentColor" d="m10 16 4-4-4-4" strokeLinecap="square" strokeWidth="2" />
         </svg>
         <CodeHighlighter
           plain
-          className="overflow-x-auto flex-1 px-4 sm:px-1"
+          className="flex-1 overflow-x-auto px-4 sm:px-1"
           lang="bash"
           code={
             props.command ||
@@ -152,7 +160,13 @@ interface ChoosePkgManagerProps {
   isExecutor?: boolean
 }
 
-function ChoosePkgManager({ isExecutor, items, isCopied, setIsCopied, setPkgManager }: ChoosePkgManagerProps) {
+function ChoosePkgManager({
+  isExecutor,
+  items,
+  isCopied,
+  setIsCopied,
+  setPkgManager,
+}: ChoosePkgManagerProps) {
   const op = useOpenPanel()
 
   function handleAction(tool: string) {

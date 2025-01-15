@@ -1,4 +1,11 @@
-import { IconBell, IconBellFill, IconMoonFill, IconSun, IconTranslate, IconTranslateFill } from "justd-icons"
+import {
+  IconBell,
+  IconBellFill,
+  IconMoonFill,
+  IconSun,
+  IconTranslate,
+  IconTranslateFill,
+} from "justd-icons"
 import { Toggle, ToggleGroup } from "ui"
 
 export default function ToggleGroupOrientationDemo() {
@@ -9,7 +16,7 @@ export default function ToggleGroupOrientationDemo() {
           {({ isSelected }) => (
             <>
               {isSelected ? <IconMoonFill /> : <IconSun />}
-              {isSelected ? "Dark" : "Light"}Mode
+              {isSelected ? "Dark" : "Light"} Mode
             </>
           )}
         </Toggle>

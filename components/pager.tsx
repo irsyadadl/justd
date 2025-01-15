@@ -1,6 +1,6 @@
 "use client"
 
-import { cn } from "@/resources/lib/utils"
+import { cn } from "@/utils/classes"
 import { IconChevronLgLeft, IconChevronLgRight } from "justd-icons"
 import { Link, buttonStyles } from "ui"
 
@@ -36,7 +36,7 @@ export function Pager({ docs, doc }: { docs: Doc[]; doc: Doc }) {
       return a.order - b.order
     }
 
-    return groupA.localeCompare(groupB)
+    return groupA!.localeCompare(groupB!)
   })
 
   const pager = getPagerForDoc(groupedAndSortedDocs, doc)
@@ -46,7 +46,7 @@ export function Pager({ docs, doc }: { docs: Doc[]; doc: Doc }) {
   }
 
   return (
-    <div className="flex flex-row justify-between items-center mt-6">
+    <div className="mt-6 flex flex-row items-center justify-between">
       {pager.prev && (
         <Link
           aria-label={`Previous page: ${pager.prev.title}`}

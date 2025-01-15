@@ -37,10 +37,30 @@ export default function TooltipChartNoLabelDemo() {
       <Card.Content>
         <Chart config={chartConfig}>
           <BarChart accessibilityLayer data={chartData}>
-            <XAxis dataKey="date" tickLine={false} tickMargin={10} axisLine={false} tickFormatter={(value) => value} />
-            <Bar dataKey="products" stackId="a" fill="var(--color-products)" radius={[0, 0, 4, 4]} />
-            <Bar dataKey="services" stackId="a" fill="var(--color-services)" radius={[4, 4, 0, 0]} />
-            <ChartTooltip content={<ChartTooltipContent hideIndicator hideLabel />} cursor={false} defaultIndex={1} />
+            <XAxis
+              dataKey="date"
+              tickLine={false}
+              tickMargin={10}
+              axisLine={false}
+              tickFormatter={(value) => value}
+            />
+            <Bar
+              dataKey="products"
+              stackId="a"
+              fill="var(--color-products)"
+              radius={[0, 0, 4, 4]}
+            />
+            <Bar
+              dataKey="services"
+              stackId="a"
+              fill="var(--color-services)"
+              radius={[4, 4, 0, 0]}
+            />
+            <ChartTooltip
+              content={<ChartTooltipContent hideIndicator hideLabel />}
+              cursor={false}
+              defaultIndex={1}
+            />
           </BarChart>
         </Chart>
       </Card.Content>

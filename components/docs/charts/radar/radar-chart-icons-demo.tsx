@@ -2,7 +2,15 @@
 
 import { IconMoneybag, IconShippingBag } from "justd-icons"
 import { PolarAngleAxis, PolarGrid, Radar, RadarChart } from "recharts"
-import { Card, Chart, type ChartConfig, ChartLegend, ChartLegendContent, ChartTooltip, ChartTooltipContent } from "ui"
+import {
+  Card,
+  Chart,
+  type ChartConfig,
+  ChartLegend,
+  ChartLegendContent,
+  ChartTooltip,
+  ChartTooltipContent,
+} from "ui"
 
 const chartData = [
   { month: "Jan", sales: 186, profit: 80 },

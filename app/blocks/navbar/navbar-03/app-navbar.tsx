@@ -19,7 +19,10 @@ export default function AppNavbar({ children, ...props }: React.ComponentProps<t
     <>
       <Navbar intent="inset" {...props}>
         <Navbar.Nav>
-          <Navbar.Logo href="/docs/components/layouts/navbar">
+          <Navbar.Logo
+            aria-label="Goto documenation of Navbar"
+            href="/docs/2.x/components/layouts/navbar"
+          >
             <IconBrandApple className="size-6 sm:size-5" />
           </Navbar.Logo>
           <Navbar.Section>
@@ -29,7 +32,7 @@ export default function AppNavbar({ children, ...props }: React.ComponentProps<t
             <Navbar.Item href="#">Mac</Navbar.Item>
             <Navbar.Item href="#">iPad</Navbar.Item>
           </Navbar.Section>
-          <Navbar.Section className="hidden ml-auto sm:flex">
+          <Navbar.Section className="ml-auto hidden sm:flex">
             <Navbar.Flex>
               <Button appearance="plain" size="square-petite" aria-label="Search for products">
                 <IconSearch />
@@ -84,7 +87,10 @@ export default function AppNavbar({ children, ...props }: React.ComponentProps<t
           <Navbar.Flex>
             <Navbar.Trigger className="-ml-2" />
             <Separator orientation="vertical" className="h-6 sm:mx-1" />
-            <Navbar.Logo href="/docs/components/layouts/navbar">
+            <Navbar.Logo
+              aria-label="Goto documenation of Navbar"
+              href="/docs/2.x/components/layouts/navbar"
+            >
               <IconBrandApple className="size-5" />
             </Navbar.Logo>
           </Navbar.Flex>

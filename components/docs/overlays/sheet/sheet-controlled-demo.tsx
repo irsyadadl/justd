@@ -12,7 +12,9 @@ export default function SheetControlledDemo() {
       <Sheet.Content isOpen={isOpen} onOpenChange={setIsOpen}>
         <Sheet.Header>
           <Sheet.Title>Submit Feedback</Sheet.Title>
-          <Sheet.Description>Please let us know your thoughts and how we can improve our service.</Sheet.Description>
+          <Sheet.Description>
+            Please let us know your thoughts and how we can improve our service.
+          </Sheet.Description>
         </Sheet.Header>
         <Sheet.Body>
           <Textarea label="Your Feedback" placeholder="Type your feedback here..." />

@@ -2,19 +2,25 @@
 
 import { ProgressBar, type ProgressBarProps } from "react-aria-components"
 
-import { cn } from "./primitive"
+import { cn } from "@/utils/classes"
 
 interface ProgressCircleProps extends Omit<ProgressBarProps, "className"> {
   className?: string
+  ref?: React.RefObject<HTMLDivElement>
 }
 
-const ProgressCircle = ({ className, ...props }: ProgressCircleProps) => {
+const ProgressCircle = ({ className, ref, ...props }: ProgressCircleProps) => {
   const c = "50%"
   const r = "calc(50% - 2px)"
   return (
-    <ProgressBar {...props}>
+    <ProgressBar {...props} ref={ref}>
       {({ percentage, isIndeterminate }) => (
-        <svg className={cn("size-4 shrink-0", className)} viewBox="0 0 24 24" fill="none" data-slot="icon">
+        <svg
+          className={cn("size-4 shrink-0", className)}
+          viewBox="0 0 24 24"
+          fill="none"
+          data-slot="icon"
+        >
           <circle cx={c} cy={c} r={r} strokeWidth={3} stroke="currentColor" strokeOpacity={0.25} />
           {!isIndeterminate ? (
             <circle
@@ -50,4 +56,5 @@ const ProgressCircle = ({ className, ...props }: ProgressCircleProps) => {
   )
 }
 
+export type { ProgressCircleProps }
 export { ProgressCircle }

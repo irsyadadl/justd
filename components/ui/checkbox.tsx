@@ -13,8 +13,9 @@ import {
 } from "react-aria-components"
 import { tv } from "tailwind-variants"
 
+import { cn } from "@/utils/classes"
 import { Description, FieldError, Label } from "./field"
-import { cn, composeTailwindRenderProps } from "./primitive"
+import { composeTailwindRenderProps } from "./primitive"
 
 interface CheckboxGroupProps extends CheckboxGroupPrimitiveProps {
   label?: string
@@ -24,7 +25,10 @@ interface CheckboxGroupProps extends CheckboxGroupPrimitiveProps {
 
 const CheckboxGroup = ({ className, ...props }: CheckboxGroupProps) => {
   return (
-    <CheckboxGroupPrimitive {...props} className={composeTailwindRenderProps(className, "flex flex-col gap-y-2")}>
+    <CheckboxGroupPrimitive
+      {...props}
+      className={composeTailwindRenderProps(className, "flex flex-col gap-y-2")}
+    >
       <Label>{props.label}</Label>
       {props.children as React.ReactNode}
       {props.description && <Description className="block">{props.description}</Description>}
@@ -43,7 +47,7 @@ const checkboxStyles = tv({
 })
 
 const boxStyles = tv({
-  base: "flex size-4 *:data-[slot=icon]:size-3 shrink-0 items-center justify-center rounded border border-input text-bg transition",
+  base: "flex size-4 shrink-0 items-center justify-center rounded border border-input text-bg transition *:data-[slot=icon]:size-3",
   variants: {
     isSelected: {
       false: "bg-muted",
@@ -101,4 +105,5 @@ const Checkbox = ({ className, ...props }: CheckboxProps) => {
   )
 }
 
+export type { CheckboxGroupProps, CheckboxProps }
 export { Checkbox, CheckboxGroup }

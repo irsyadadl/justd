@@ -3,21 +3,24 @@
 import { useId } from "react"
 
 import { LayoutGroup, motion } from "motion/react"
+import type {
+  TabListProps as TabListPrimitiveProps,
+  TabPanelProps as TabPanelPrimitiveProps,
+  TabProps as TabPrimitiveProps,
+  TabsProps as TabsPrimitiveProps,
+} from "react-aria-components"
 import {
   TabList,
-  type TabListProps,
   TabPanel,
-  type TabPanelProps,
   Tab as TabPrimitive,
-  type TabProps,
   Tabs as TabsPrimitive,
-  type TabsProps,
   composeRenderProps,
 } from "react-aria-components"
 import { twJoin } from "tailwind-merge"
 import { tv } from "tailwind-variants"
 
-import { cn, composeTailwindRenderProps } from "./primitive"
+import { cn } from "@/utils/classes"
+import { composeTailwindRenderProps } from "./primitive"
 
 const tabsStyles = tv({
   base: "group/tabs flex gap-4 forced-color-adjust-none",
@@ -29,16 +32,20 @@ const tabsStyles = tv({
   },
 })
 
-const Tabs = ({ className, ...props }: TabsProps) => {
+interface TabsProps extends TabsPrimitiveProps {
+  ref?: React.RefObject<HTMLDivElement>
+}
+const Tabs = ({ className, ref, ...props }: TabsProps) => {
   return (
     <TabsPrimitive
-      {...props}
       className={composeRenderProps(className, (className, renderProps) =>
         tabsStyles({
           ...renderProps,
           className,
         }),
       )}
+      ref={ref}
+      {...props}
     />
   )
 }
@@ -47,19 +54,23 @@ const tabListStyles = tv({
   base: "flex forced-color-adjust-none",
   variants: {
     orientation: {
-      horizontal: "flex-row gap-x-5 border-b border-border",
+      horizontal: "flex-row gap-x-5 border-border border-b",
       vertical: "flex-col items-start gap-y-4 border-l",
     },
   },
 })
 
-const List = <T extends object>(props: TabListProps<T>) => {
+interface TabListProps<T extends object> extends TabListPrimitiveProps<T> {
+  ref?: React.RefObject<HTMLDivElement>
+}
+const List = <T extends object>({ className, ref, ...props }: TabListProps<T>) => {
   const id = useId()
   return (
     <LayoutGroup id={id}>
       <TabList
+        ref={ref}
         {...props}
-        className={composeRenderProps(props.className, (className, renderProps) =>
+        className={composeRenderProps(className, (className, renderProps) =>
           tabListStyles({ ...renderProps, className }),
         )}
       />
@@ -69,8 +80,8 @@ const List = <T extends object>(props: TabListProps<T>) => {
 
 const tabStyles = tv({
   base: [
-    "relative flex whitespace-nowrap cursor-default items-center rounded-full text-sm font-medium outline-hidden transition data-hovered:text-fg *:data-[slot=icon]:size-4 *:data-[slot=icon]:mr-2",
-    "group-data-[orientation=vertical]/tabs:w-full group-data-[orientation=vertical]/tabs:py-0 group-data-[orientation=vertical]/tabs:pl-4 group-data-[orientation=vertical]/tabs:pr-2",
+    "relative flex cursor-default items-center whitespace-nowrap rounded-full font-medium text-sm outline-hidden transition data-hovered:text-fg *:data-[slot=icon]:mr-2 *:data-[slot=icon]:size-4",
+    "group-data-[orientation=vertical]/tabs:w-full group-data-[orientation=vertical]/tabs:py-0 group-data-[orientation=vertical]/tabs:pr-2 group-data-[orientation=vertical]/tabs:pl-4",
     "group-data-[orientation=horizontal]/tabs:pb-3",
   ],
   variants: {
@@ -85,9 +96,13 @@ const tabStyles = tv({
   },
 })
 
-const Tab = ({ children, ...props }: TabProps) => {
+interface TabProps extends TabPrimitiveProps {
+  ref?: React.RefObject<HTMLButtonElement>
+}
+const Tab = ({ children, ref, ...props }: TabProps) => {
   return (
     <TabPrimitive
+      ref={ref}
       {...props}
       className={composeRenderProps(props.className, (_className, renderProps) =>
         tabStyles({
@@ -118,11 +133,18 @@ const Tab = ({ children, ...props }: TabProps) => {
   )
 }
 
-const Panel = ({ className, ...props }: TabPanelProps) => {
+interface TabPanelProps extends TabPanelPrimitiveProps {
+  ref?: React.RefObject<HTMLDivElement>
+}
+const Panel = ({ className, ref, ...props }: TabPanelProps) => {
   return (
     <TabPanel
       {...props}
-      className={composeTailwindRenderProps(className, "flex-1 text-fg text-sm data-focus-visible:outline-hidden")}
+      ref={ref}
+      className={composeTailwindRenderProps(
+        className,
+        "flex-1 text-fg text-sm data-focus-visible:outline-hidden",
+      )}
     />
   )
 }
@@ -131,4 +153,5 @@ Tabs.List = List
 Tabs.Tab = Tab
 Tabs.Panel = Panel
 
+export type { TabsProps, TabListProps, TabProps, TabPanelProps }
 export { Tabs }

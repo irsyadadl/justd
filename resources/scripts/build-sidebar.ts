@@ -1,6 +1,8 @@
 import * as fs from "node:fs"
 import { type Docs, docs } from "#site/content"
 
+const VERSION = "2.x"
+
 const groupDocs = (docs: Docs[]) => {
   const groups: any = {
     "dark-mode": [],
@@ -11,16 +13,16 @@ const groupDocs = (docs: Docs[]) => {
 
   docs.forEach((doc) => {
     const { slug, title, order, toc } = doc
-    if (slug.startsWith("docs/dark-mode/")) {
+    if (slug.startsWith(`docs/${VERSION}/dark-mode/`)) {
       groups["dark-mode"].push({ title, slug, order, children: [], toc })
-    } else if (slug.startsWith("docs/getting-started/")) {
+    } else if (slug.startsWith(`docs/${VERSION}/getting-started/`)) {
       groups["getting-started"].push({ title, slug, order, children: [], toc })
-    } else if (slug.startsWith("docs/prologue/")) {
+    } else if (slug.startsWith(`docs/${VERSION}/prologue/`)) {
       groups.prologue.push({ title, slug, order, children: [], toc })
-    } else if (slug.startsWith("docs/components/")) {
+    } else if (slug.startsWith(`docs/${VERSION}/components/`)) {
       const parts = slug.split("/")
-      const category = parts[2]
-      const componentSlug = parts.slice(3).join("/")
+      const category = parts[3]!
+      const componentSlug = parts.slice(4).join("/")
 
       if (!groups.components[category]) {
         groups.components[category] = []
@@ -28,7 +30,7 @@ const groupDocs = (docs: Docs[]) => {
 
       groups.components[category].push({
         title,
-        slug: `docs/components/${category}/${componentSlug}`,
+        slug: `docs/${VERSION}/components/${category}/${componentSlug}`,
         status: doc.status,
         order,
         children: [],
@@ -50,22 +52,22 @@ const groupDocs = (docs: Docs[]) => {
   return [
     {
       title: "Prologue",
-      slug: "docs/prologue/prologue",
+      slug: `docs/${VERSION}/prologue/prologue`,
       children: groups.prologue,
     },
     {
       title: "Getting Started",
-      slug: "docs/getting-started/getting-started",
+      slug: `docs/${VERSION}/getting-started/getting-started`,
       children: groups["getting-started"],
     },
     {
       title: "Dark Mode",
-      slug: "docs/dark-mode/dark-mode",
+      slug: `docs/${VERSION}/dark-mode/dark-mode`,
       children: groups["dark-mode"],
     },
     {
       title: "Components",
-      slug: "docs/components/components",
+      slug: `docs/${VERSION}/components/components`,
       children: Object.entries(groups.components).map(([category, items]) => ({
         title: category.charAt(0).toUpperCase() + category.slice(1),
         children: items,

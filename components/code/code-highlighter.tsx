@@ -70,8 +70,9 @@ export const CodeHighlighter = ({
       className={cn(
         "not-prose overflow-auto font-mono text-sm",
         max96 && "max-h-96",
-        !plain && "inset-ring-1 inset-ring-zinc-800 rounded-lg bg-shiki-bg p-4",
-        removeLastLine && "**:data-rehype-pretty-code-figure:*:[pre]:*:[code]:*:data-line:last:hidden",
+        !plain && "inset-ring-1 inset-ring-zinc-800 rounded-lg bg-shiki-bg px-4 py-2.5",
+        removeLastLine &&
+          "**:data-rehype-pretty-code-figure:*:[pre]:*:[code]:*:data-line:last:hidden",
         className,
       )}
       dangerouslySetInnerHTML={{ __html: formattedCode }}

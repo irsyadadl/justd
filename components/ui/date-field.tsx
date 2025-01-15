@@ -10,9 +10,8 @@ import {
   type ValidationResult,
 } from "react-aria-components"
 import { tv } from "tailwind-variants"
-
 import { Description, FieldError, FieldGroup, Label } from "./field"
-import { cn, composeTailwindRenderProps } from "./primitive"
+import { composeTailwindRenderProps } from "./primitive"
 
 interface DateFieldProps<T extends DateValue> extends DateFieldPrimitiveProps<T> {
   label?: string
@@ -48,7 +47,7 @@ const DateField = <T extends DateValue>({
 }
 
 const segmentStyles = tv({
-  base: "inline shrink-0 sm:uppercase tabular-nums rounded p-0.5 tracking-wider text-fg caret-transparent outline outline-0 forced-color-adjust-none type-literal:px-0 sm:text-sm forced-colors:text-[ButtonText]",
+  base: "inline shrink-0 rounded p-0.5 type-literal:px-0 text-fg tabular-nums tracking-wider caret-transparent outline outline-0 forced-color-adjust-none sm:text-sm sm:uppercase forced-colors:text-[ButtonText]",
   variants: {
     isPlaceholder: {
       true: "text-muted-fg",
@@ -68,7 +67,10 @@ const segmentStyles = tv({
 const DateInput = ({ className, ...props }: Omit<DateInputProps, "children">) => {
   return (
     <DateInputPrimitive
-      className={cn("bg-transparent p-2 text-base text-fg placeholder-muted-fg sm:text-sm", className)}
+      className={composeTailwindRenderProps(
+        className,
+        "bg-transparent p-2 text-base text-fg placeholder-muted-fg sm:text-sm",
+      )}
       {...props}
     >
       {(segment) => <DateSegment segment={segment} className={segmentStyles} />}
@@ -76,4 +78,5 @@ const DateInput = ({ className, ...props }: Omit<DateInputProps, "children">) =>
   )
 }
 
-export { DateField, DateInput, segmentStyles, type DateFieldProps }
+export type { DateFieldProps }
+export { DateField, DateInput, segmentStyles }

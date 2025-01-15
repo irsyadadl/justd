@@ -41,7 +41,10 @@ const chartConfig = {
 export default function BarChartLabelDemo() {
   return (
     <Card>
-      <Card.Header title="Customer Satisfaction Survey" description="Satisfaction scores by category" />
+      <Card.Header
+        title="Customer Satisfaction Survey"
+        description="Satisfaction scores by category"
+      />
       <Card.Content>
         <Chart config={chartConfig}>
           <BarChart

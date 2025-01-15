@@ -15,7 +15,9 @@ export default function TagGroupDisabledDemo() {
       </TagGroup>
 
       <TagGroup label="Disabled by Tag" selectionMode="multiple">
-        <TagList items={androidBrands}>{(item) => <Tag isDisabled={item.available}>{item.name}</Tag>}</TagList>
+        <TagList items={androidBrands}>
+          {(item) => <Tag isDisabled={item.available}>{item.name}</Tag>}
+        </TagList>
       </TagGroup>
     </div>
   )

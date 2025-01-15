@@ -1,13 +1,10 @@
 "use client"
 
-import { forwardRef } from "react"
-
+import { cn } from "@/utils/classes"
 import { IconLoader } from "justd-icons"
 import { ProgressBar } from "react-aria-components"
 import type { VariantProps } from "tailwind-variants"
 import { tv } from "tailwind-variants"
-
-import { cn } from "./primitive"
 
 const loaderStyles = tv({
   base: "relative",
@@ -182,9 +179,10 @@ interface LoaderProps
   percentage?: number
   isIndeterminate?: boolean
   formatOptions?: Intl.NumberFormatOptions
+  ref?: React.RefObject<SVGSVGElement>
 }
 
-const Loader = forwardRef<SVGSVGElement, LoaderProps>(({ isIndeterminate = true, ...props }, ref) => {
+const Loader = ({ isIndeterminate = true, ref, ...props }: LoaderProps) => {
   const { className, variant = DEFAULT_SPINNER, intent, size, ...spinnerProps } = props
   const LoaderPrimitive = LOADERS[variant in LOADERS ? variant : DEFAULT_SPINNER]
 
@@ -210,7 +208,6 @@ const Loader = forwardRef<SVGSVGElement, LoaderProps>(({ isIndeterminate = true,
       />
     </ProgressBar>
   )
-})
-Loader.displayName = "Loader"
+}
 
 export { Loader }

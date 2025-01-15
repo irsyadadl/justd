@@ -32,11 +32,17 @@ export default function BarChartNegativeDemo() {
         <Chart config={chartConfig}>
           <BarChart accessibilityLayer data={chartData}>
             <CartesianGrid vertical={false} />
-            <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel hideIndicator />} />
+            <ChartTooltip
+              cursor={false}
+              content={<ChartTooltipContent hideLabel hideIndicator />}
+            />
             <Bar dataKey="profitLoss">
               <LabelList position="top" dataKey="month" fillOpacity={1} />
               {chartData.map((item) => (
-                <Cell key={item.month} fill={item.profitLoss > 0 ? "var(--chart-1)" : "var(--chart-2)"} />
+                <Cell
+                  key={item.month}
+                  fill={item.profitLoss > 0 ? "var(--chart-1)" : "var(--chart-2)"}
+                />
               ))}
             </Bar>
           </BarChart>

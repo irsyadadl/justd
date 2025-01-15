@@ -5,12 +5,20 @@ import { createContext, use, useCallback, useEffect, useState } from "react"
 
 import useEmblaCarousel, { type UseEmblaCarouselType } from "embla-carousel-react"
 import { IconChevronLgLeft, IconChevronLgRight } from "justd-icons"
-import type { ListBoxItemProps, SectionProps } from "react-aria-components"
-import { ListBox, ListBoxItem, ListBoxSection } from "react-aria-components"
+import {
+  ListBox,
+  ListBoxItem,
+  type ListBoxItemProps,
+  ListBoxSection,
+  type ListBoxSectionProps,
+  composeRenderProps,
+} from "react-aria-components"
 
+import { composeTailwindRenderProps } from "@/components/ui/primitive"
+import { cn } from "@/utils/classes"
+import { tv } from "tailwind-variants"
 import type { ButtonProps } from "./button"
 import { Button } from "./button"
-import { cn } from "./primitive"
 
 type CarouselApi = UseEmblaCarouselType[1]
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>
@@ -149,7 +157,7 @@ const Carousel = ({
   )
 }
 
-const CarouselContent = <T extends object>({ className, ...props }: SectionProps<T>) => {
+const CarouselContent = <T extends object>({ className, ...props }: ListBoxSectionProps<T>) => {
   const { carouselRef, orientation } = useCarousel()
 
   return (
@@ -168,6 +176,19 @@ const CarouselContent = <T extends object>({ className, ...props }: SectionProps
   )
 }
 
+const carouselItem = tv({
+  base: [
+    "xd24r min-w-0 shrink-0 grow-0 basis-full data-focus-visible:outline-hidden data-focused:outline-hidden",
+    "group relative",
+  ],
+  variants: {
+    orientation: {
+      horizontal: "pl-4",
+      vertical: "pt-4",
+    },
+  },
+})
+
 const CarouselItem = ({ className, ...props }: ListBoxItemProps) => {
   const { orientation } = useCarousel()
 
@@ -175,10 +196,12 @@ const CarouselItem = ({ className, ...props }: ListBoxItemProps) => {
     <ListBoxItem
       aria-label={`Slide ${props.id}`}
       aria-roledescription="slide"
-      className={cn(
-        "xd24r min-w-0 shrink-0 grow-0 basis-full data-focus-visible:outline-hidden data-focused:outline-hidden",
-        orientation === "horizontal" ? "pl-4" : "pt-4",
-        className,
+      className={composeRenderProps(className, (className, renderProps) =>
+        carouselItem({
+          ...renderProps,
+          orientation,
+          className,
+        }),
       )}
       {...props}
     />
@@ -223,7 +246,10 @@ const CarouselButton = ({
       appearance={appearance}
       size={size}
       shape={shape}
-      className={cn(orientation === "vertical" ? "rotate-90" : "", className)}
+      className={composeTailwindRenderProps(
+        className,
+        orientation === "vertical" ? "rotate-90" : "",
+      )}
       isDisabled={!canScroll}
       onPress={scroll}
       {...props}
@@ -238,4 +264,5 @@ Carousel.Handler = CarouselHandler
 Carousel.Item = CarouselItem
 Carousel.Button = CarouselButton
 
-export { Carousel, type CarouselApi }
+export type { CarouselApi }
+export { Carousel }

@@ -40,7 +40,10 @@ export default function RadarChartRadiusAxisDemo() {
       <Card.Content>
         <Chart config={chartConfig} className="mx-auto aspect-square max-h-[250px]">
           <RadarChart data={chartData}>
-            <ChartTooltip cursor={false} content={<ChartTooltipContent indicator="line" labelKey="month" />} />
+            <ChartTooltip
+              cursor={false}
+              content={<ChartTooltipContent indicator="line" labelKey="month" />}
+            />
             <PolarGrid />
             <Radar dataKey="sales" fill="var(--color-sales)" fillOpacity={0.6} />
             <Radar dataKey="profit" fill="var(--color-profit)" />

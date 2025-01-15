@@ -11,18 +11,23 @@ import { composeTailwindRenderProps } from "./primitive"
 
 interface ProgressBarProps extends ProgressBarPrimitiveProps {
   label?: string
+  ref?: React.RefObject<HTMLDivElement>
 }
 
-const ProgressBar = ({ label, className, ...props }: ProgressBarProps) => {
+const ProgressBar = ({ label, ref, className, ...props }: ProgressBarProps) => {
   return (
-    <ProgressBarPrimitive {...props} className={composeTailwindRenderProps(className, "flex flex-col")}>
+    <ProgressBarPrimitive
+      ref={ref}
+      className={composeTailwindRenderProps(className, "flex flex-col")}
+      {...props}
+    >
       {({ percentage, valueText, isIndeterminate }) => (
         <>
-          <div className="flex gap-2 justify-between">
+          <div className="flex justify-between gap-2">
             {label && <Label>{label}</Label>}
-            <span className="text-sm tabular-nums text-muted-fg">{valueText}</span>
+            <span className="text-muted-fg text-sm tabular-nums">{valueText}</span>
           </div>
-          <div className="overflow-hidden relative h-2 rounded-full -outline-offset-1 min-w-64 bg-secondary outline outline-1 outline-transparent">
+          <div className="-outline-offset-1 relative h-2 min-w-64 overflow-hidden rounded-full bg-secondary outline outline-1 outline-transparent">
             {!isIndeterminate ? (
               <motion.div
                 className="absolute top-0 left-0 h-full rounded-full bg-primary forced-colors:bg-[Highlight]"
@@ -49,4 +54,5 @@ const ProgressBar = ({ label, className, ...props }: ProgressBarProps) => {
   )
 }
 
+export type { ProgressBarProps }
 export { ProgressBar }

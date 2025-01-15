@@ -13,8 +13,16 @@ export default function SheetControlledDemo() {
         </Sheet.Header>
         <Sheet.Body>
           <CheckboxGroup aria-label="Notification Settings">
-            <Checkbox value="n1" label="Email Notifications" description="Receive updates via email." />
-            <Checkbox value="n2" label="SMS Notifications" description="Receive updates via SMS messages." />
+            <Checkbox
+              value="n1"
+              label="Email Notifications"
+              description="Receive updates via email."
+            />
+            <Checkbox
+              value="n2"
+              label="SMS Notifications"
+              description="Receive updates via SMS messages."
+            />
             <Checkbox
               value="n3"
               label="Push Notifications"

@@ -9,6 +9,12 @@ export default function TagFieldMaxDemo() {
   })
 
   return (
-    <TagField className="max-w-sm" max={3} label="Add tag" description="You can only add 3 tags" list={selectedItems} />
+    <TagField
+      className="max-w-sm"
+      max={3}
+      label="Add tag"
+      description="You can only add 3 tags"
+      list={selectedItems}
+    />
   )
 }

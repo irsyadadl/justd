@@ -2,17 +2,61 @@ import type React from "react"
 
 import { Providers } from "@/components/providers"
 import { siteConfig } from "@/resources/config/site"
-import { cn } from "@/resources/lib/utils"
+import { cn } from "@/utils/classes"
 import "@/resources/styles/app.css"
 import { OpenPanelComponent } from "@openpanel/nextjs"
 import type { Metadata, Viewport } from "next"
+import { ViewTransitions } from "next-view-transitions"
 import localFont from "next/font/local"
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode
+}>) {
+  return (
+    <ViewTransitions>
+      <html dir="ltr" lang="en" className="scroll-smooth" suppressHydrationWarning>
+        <head>
+          {process.env.NODE_ENV === "production" && (
+            <script
+              defer
+              data-site-id="getjustd.com"
+              src="https://assets.onedollarstats.com/tracker.js"
+            />
+          )}
+        </head>
+        <body
+          className={cn("min-h-screen font-sans antialiased", fontSans.variable, fontMono.variable)}
+        >
+          <Providers>
+            {children}
+            {process.env.NODE_ENV === "production" && (
+              <OpenPanelComponent
+                clientSecret={process.env.ANALYTICS_CLIENT_SECRET as string}
+                clientId={process.env.ANALYTICS_CLIENT_ID as string}
+                trackScreenViews={true}
+                trackAttributes={true}
+              />
+            )}
+          </Providers>
+        </body>
+      </html>
+    </ViewTransitions>
+  )
+}
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://getjustd.com"),
   title: {
     default: `${siteConfig.name}`,
     template: `%s / ${siteConfig.name}`,
+  },
+  openGraph: {
+    title: siteConfig.name,
+    description: siteConfig.description,
+    url: "https://getjustd.com",
+    siteName: siteConfig.name,
   },
   description: siteConfig.description,
   alternates: {
@@ -81,32 +125,3 @@ const fontMono = localFont({
   src: [{ path: "./fonts/GeistMonoVF.woff" }, { path: "./fonts/GeistMonoVF.woff2" }],
   variable: "--font-mono",
 })
-
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
-  return (
-    <html dir="ltr" lang="en" className="scroll-smooth" suppressHydrationWarning>
-      <head>
-        {process.env.NODE_ENV === "production" && (
-          <script defer data-site-id="getjustd.com" src="https://assets.onedollarstats.com/tracker.js" />
-        )}
-      </head>
-      <body className={cn("min-h-screen font-sans antialiased", fontSans.variable, fontMono.variable)}>
-        <Providers>
-          {children}
-          {process.env.NODE_ENV === "production" && (
-            <OpenPanelComponent
-              clientSecret={process.env.ANALYTICS_CLIENT_SECRET as string}
-              clientId={process.env.ANALYTICS_CLIENT_ID as string}
-              trackScreenViews={true}
-              trackAttributes={true}
-            />
-          )}
-        </Providers>
-      </body>
-    </html>
-  )
-}

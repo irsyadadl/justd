@@ -32,8 +32,12 @@ export function SelectSize() {
         className="**:data-[slot=icon]:transition-transform [&[data-pressed]_[data-slot=icon]]:rotate-180"
         appearance="outline"
       >
-        <span className="inline sm:hidden">{title([...selectedSize].join(", ").replace("size-", " ")) || "5"}</span>
-        <span className="hidden sm:inline">{title([...selectedSize].join(", ").replace("-", " ")) || "Size 5"}</span>
+        <span className="inline sm:hidden">
+          {title([...selectedSize].join(", ").replace("size-", " ")) || "5"}
+        </span>
+        <span className="hidden sm:inline">
+          {title([...selectedSize].join(", ").replace("-", " ")) || "Size 5"}
+        </span>
         <IconChevronLgDown />
       </Button>
       <Menu.Content
@@ -45,7 +49,8 @@ export function SelectSize() {
       >
         {(item) => (
           <Menu.Radio textValue={item.name}>
-            {item.name} / {item.name === "Size 4" ? "20px" : item.name === "Size 5" ? "24px" : "28px"}
+            {item.name} /{" "}
+            {item.name === "Size 4" ? "20px" : item.name === "Size 5" ? "24px" : "28px"}
           </Menu.Radio>
         )}
       </Menu.Content>

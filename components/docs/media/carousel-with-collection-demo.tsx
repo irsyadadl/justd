@@ -11,14 +11,14 @@ export default function CarouselWithCollectionDemo() {
           <Carousel.Item id={item.id}>
             <Card className="p-1">
               <Image
-                className="object-cover object-center h-40 rounded-md"
+                className="h-40 rounded-md object-cover object-center"
                 src={`/slides/slide-${item.id}.jpg`}
                 alt="image 5"
                 width={400}
                 height={300}
               />
               <Card.Header className="p-3">
-                <Card.Title className="sm:text-lg line-clamp-1">{item.title}</Card.Title>
+                <Card.Title className="line-clamp-1 sm:text-lg">{item.title}</Card.Title>
                 <Card.Description className="line-clamp-2">{item.description}</Card.Description>
               </Card.Header>
             </Card>
@@ -43,7 +43,8 @@ const items = [
   {
     id: 2,
     title: "Wireless Bluetooth Headphones",
-    description: "Experience high-quality sound with these comfortable, noise-canceling headphones.",
+    description:
+      "Experience high-quality sound with these comfortable, noise-canceling headphones.",
   },
   {
     id: 3,

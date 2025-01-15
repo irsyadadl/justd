@@ -4,9 +4,27 @@ import { Bar, BarChart, CartesianGrid, Legend, XAxis, YAxis } from "recharts"
 import { Card, Chart, type ChartConfig, ChartTooltip, ChartTooltipContent } from "ui"
 
 const chartData = [
-  { browser: "chrome", visitors: 275, bounceRate: 40, avgSession: 5.6, fill: "var(--color-chrome)" },
-  { browser: "safari", visitors: 200, bounceRate: 35, avgSession: 6.3, fill: "var(--color-safari)" },
-  { browser: "firefox", visitors: 187, bounceRate: 45, avgSession: 4.2, fill: "var(--color-firefox)" },
+  {
+    browser: "chrome",
+    visitors: 275,
+    bounceRate: 40,
+    avgSession: 5.6,
+    fill: "var(--color-chrome)",
+  },
+  {
+    browser: "safari",
+    visitors: 200,
+    bounceRate: 35,
+    avgSession: 6.3,
+    fill: "var(--color-safari)",
+  },
+  {
+    browser: "firefox",
+    visitors: 187,
+    bounceRate: 45,
+    avgSession: 4.2,
+    fill: "var(--color-firefox)",
+  },
   { browser: "edge", visitors: 173, bounceRate: 30, avgSession: 5.0, fill: "var(--color-edge)" },
   { browser: "other", visitors: 90, bounceRate: 50, avgSession: 3.7, fill: "var(--color-other)" },
 ]

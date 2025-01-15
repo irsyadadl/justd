@@ -9,10 +9,16 @@ export default function ToastStatusDemo() {
       <Button appearance="outline" onPress={() => toast.error("The registration failed")}>
         Error
       </Button>
-      <Button appearance="outline" onPress={() => toast.success("The registration was successful.")}>
+      <Button
+        appearance="outline"
+        onPress={() => toast.success("The registration was successful.")}
+      >
         Success
       </Button>
-      <Button appearance="outline" onPress={() => toast.warning("There was an issue during registration")}>
+      <Button
+        appearance="outline"
+        onPress={() => toast.warning("There was an issue during registration")}
+      >
         Warning
       </Button>
       <Button appearance="outline" onPress={() => toast.info("Email is already registered.")}>

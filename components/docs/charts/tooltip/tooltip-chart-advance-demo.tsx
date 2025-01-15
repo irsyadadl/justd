@@ -37,7 +37,13 @@ export default function TooltipChartAdvanceDemo() {
       <Card.Content>
         <Chart config={chartConfig}>
           <BarChart accessibilityLayer data={chartData}>
-            <XAxis dataKey="date" tickLine={false} tickMargin={10} axisLine={false} tickFormatter={(value) => value} />
+            <XAxis
+              dataKey="date"
+              tickLine={false}
+              tickMargin={10}
+              axisLine={false}
+              tickFormatter={(value) => value}
+            />
             <Bar dataKey="coffee" stackId="a" fill="var(--color-coffee)" radius={[0, 0, 4, 4]} />
             <Bar dataKey="snacks" stackId="a" fill="var(--color-snacks)" radius={[4, 4, 0, 0]} />
             <ChartTooltip
@@ -56,15 +62,15 @@ export default function TooltipChartAdvanceDemo() {
                         }
                       />
                       {chartConfig[name as keyof typeof chartConfig]?.label || name}
-                      <div className="flex gap-0.5 items-baseline ml-auto font-mono font-medium tabular-nums text-foreground">
+                      <div className="ml-auto flex items-baseline gap-0.5 font-medium font-mono text-foreground tabular-nums">
                         {value}
                         <span className="font-normal text-muted-fg">USD</span>
                       </div>
                       {/* Add this after the last item */}
                       {index === 1 && (
-                        <div className="flex items-center pt-1.5 mt-1.5 text-xs font-medium border-t basis-full text-foreground">
+                        <div className="mt-1.5 flex basis-full items-center border-t pt-1.5 font-medium text-foreground text-xs">
                           Total
-                          <div className="flex gap-0.5 items-baseline ml-auto font-mono font-medium tabular-nums text-foreground">
+                          <div className="ml-auto flex items-baseline gap-0.5 font-medium font-mono text-foreground tabular-nums">
                             {item.payload.coffee + item.payload.snacks}
                             <span className="font-normal text-muted-fg">USD</span>
                           </div>

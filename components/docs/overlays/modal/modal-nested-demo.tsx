@@ -47,7 +47,9 @@ export default function ModalNestedDemo() {
       >
         <Modal.Header>
           <Modal.Title>Set Up Your Profile</Modal.Title>
-          <Modal.Description>We need a bit more information before you can get started.</Modal.Description>
+          <Modal.Description>
+            We need a bit more information before you can get started.
+          </Modal.Description>
         </Modal.Header>
         <Form
           onSubmit={(e) => {

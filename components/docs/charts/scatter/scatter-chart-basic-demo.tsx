@@ -29,8 +29,22 @@ export default function StorePerformanceAnalysis() {
         <Chart config={chartConfig} className="max-h-min min-h-32">
           <ScatterChart>
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis type="number" dataKey="x" name="Footfall" unit="k" tickLine={false} axisLine={false} />
-            <YAxis type="number" dataKey="y" name="Revenue" unit="$" tickLine={false} axisLine={false} />
+            <XAxis
+              type="number"
+              dataKey="x"
+              name="Footfall"
+              unit="k"
+              tickLine={false}
+              axisLine={false}
+            />
+            <YAxis
+              type="number"
+              dataKey="y"
+              name="Revenue"
+              unit="$"
+              tickLine={false}
+              axisLine={false}
+            />
             <ZAxis type="number" dataKey="z" name="Avg Order Value" unit="$" />
             <ChartTooltip content={<ChartTooltipContent indicator="dashed" />} />
             <Scatter data={data} fill="var(--chart-1)" />

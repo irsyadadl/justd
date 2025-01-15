@@ -1,4 +1,4 @@
-import { CardBlock } from "@/components/blocks"
+import { Wrapper } from "@/app/(app)/partials/resources"
 import { SliderOnPopoverBlock } from "@/components/blocks/slider-on-popover-block"
 import {
   IconCamera,
@@ -16,8 +16,8 @@ import { Toolbar } from "ui"
 
 export function ToolbarBlock() {
   return (
-    <CardBlock>
-      <div className="flex gap-2 justify-center">
+    <Wrapper>
+      <div className="flex justify-center gap-2">
         <Toolbar aria-label="Toolbars" className="flex justify-between">
           <Toolbar.Group aria-label="Actions">
             <Toolbar.Item size="square-petite" aria-label="Support" appearance="outline">
@@ -37,11 +37,13 @@ export function ToolbarBlock() {
               {({ isSelected }) => <>{isSelected ? <IconGalleryFill /> : <IconGallery />}</>}
             </Toolbar.Item>
             <Toolbar.Item aria-label="Playlist" size="square-petite" appearance="outline">
-              {({ isSelected }) => <>{isSelected ? <IconVideoPlaylistFill /> : <IconVideoPlaylist />}</>}
+              {({ isSelected }) => (
+                <>{isSelected ? <IconVideoPlaylistFill /> : <IconVideoPlaylist />}</>
+              )}
             </Toolbar.Item>
           </Toolbar.Group>
         </Toolbar>
       </div>
-    </CardBlock>
+    </Wrapper>
   )
 }

@@ -12,7 +12,7 @@ const carModels = [
 
 export default function TagGroupShapeDemo() {
   return (
-    <div className="space-y-6 max-w-sm">
+    <div className="max-w-sm space-y-6">
       <TagGroup shape="square" intent="danger" label="Car Models" selectionMode="multiple">
         <TagList items={carModels}>{(item) => <Tag>{item.name}</Tag>}</TagList>
       </TagGroup>

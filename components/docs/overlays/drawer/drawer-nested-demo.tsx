@@ -14,7 +14,10 @@ export default function DrawerNestedDemo() {
     <>
       <Button onPress={() => setIsRegistrationDrawerOpen(true)}>Register</Button>
 
-      <Drawer isOpen={isRegistrationDrawerOpen} onOpenChange={() => setIsRegistrationDrawerOpen(false)}>
+      <Drawer
+        isOpen={isRegistrationDrawerOpen}
+        onOpenChange={() => setIsRegistrationDrawerOpen(false)}
+      >
         <Drawer.Content>
           <Drawer.Header>
             <Drawer.Title>Confirm Registration</Drawer.Title>
@@ -43,7 +46,9 @@ export default function DrawerNestedDemo() {
         <Drawer.Content>
           <Drawer.Header>
             <Drawer.Title>Set Up Your Profile</Drawer.Title>
-            <Drawer.Description>We need a bit more information before you can get started.</Drawer.Description>
+            <Drawer.Description>
+              We need a bit more information before you can get started.
+            </Drawer.Description>
           </Drawer.Header>
           <Form
             onSubmit={(e) => {

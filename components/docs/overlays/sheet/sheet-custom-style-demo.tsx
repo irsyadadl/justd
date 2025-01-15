@@ -16,7 +16,7 @@ export default function SheetCustomStyleDemo() {
             You can restore the project anytime from the archive!
           </Note>
         </Sheet.Header>
-        <Form className="overflow-y-auto flex-1" onSubmit={() => {}}>
+        <Form className="flex-1 overflow-y-auto" onSubmit={() => {}}>
           <Sheet.Body className="space-y-4">
             <TextField
               isRequired

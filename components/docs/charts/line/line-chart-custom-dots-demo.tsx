@@ -26,7 +26,10 @@ const chartConfig = {
 export default function LineChartCustomDotsDemo() {
   return (
     <Card>
-      <Card.Header title="Monthly Sales & Profit" description="Visualizing Monthly Sales & Profit for Jan - Dec 2024" />
+      <Card.Header
+        title="Monthly Sales & Profit"
+        description="Visualizing Monthly Sales & Profit for Jan - Dec 2024"
+      />
       <Card.Content>
         <Chart config={chartConfig}>
           <LineChart

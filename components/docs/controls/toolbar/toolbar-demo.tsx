@@ -40,22 +40,32 @@ export default function ToolbarDemo() {
           {({ isSelected }) => <>{isSelected ? <IconUnderlineFill /> : <IconUnderline />}</>}
         </Toolbar.Item>
         <Toolbar.Item aria-label="Strikethrough" size="square-petite" appearance="outline">
-          {({ isSelected }) => <>{isSelected ? <IconStrikeThroughFill /> : <IconStrikeThrough />}</>}
+          {({ isSelected }) => (
+            <>{isSelected ? <IconStrikeThroughFill /> : <IconStrikeThrough />}</>
+          )}
         </Toolbar.Item>
       </Toolbar.Group>
       <Toolbar.Separator />
       <Toolbar.Group aria-label="Alignment">
         <Toolbar.Item aria-label="Align Left" size="square-petite" appearance="outline">
-          {({ isSelected }) => <>{isSelected ? <IconAlignmentLeftFill /> : <IconAlignmentLeft />}</>}
+          {({ isSelected }) => (
+            <>{isSelected ? <IconAlignmentLeftFill /> : <IconAlignmentLeft />}</>
+          )}
         </Toolbar.Item>
         <Toolbar.Item aria-label="Align Center" appearance="outline">
-          {({ isSelected }) => <>{isSelected ? <IconAlignmentCenterFill /> : <IconAlignmentCenter />}</>}
+          {({ isSelected }) => (
+            <>{isSelected ? <IconAlignmentCenterFill /> : <IconAlignmentCenter />}</>
+          )}
         </Toolbar.Item>
         <Toolbar.Item aria-label="Align Right" appearance="outline">
-          {({ isSelected }) => <>{isSelected ? <IconAlignmentRightFill /> : <IconAlignmentRight />}</>}
+          {({ isSelected }) => (
+            <>{isSelected ? <IconAlignmentRightFill /> : <IconAlignmentRight />}</>
+          )}
         </Toolbar.Item>
         <Toolbar.Item aria-label="Align Justify" appearance="outline">
-          {({ isSelected }) => <>{isSelected ? <IconAlignmentJustifyFill /> : <IconAlignmentJustify />}</>}
+          {({ isSelected }) => (
+            <>{isSelected ? <IconAlignmentJustifyFill /> : <IconAlignmentJustify />}</>
+          )}
         </Toolbar.Item>
       </Toolbar.Group>
       <Toolbar.Separator />

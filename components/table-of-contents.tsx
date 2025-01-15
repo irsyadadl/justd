@@ -2,10 +2,11 @@
 
 import React, { Suspense, useState } from "react"
 
+import { cn } from "@/utils/classes"
+import { useMediaQuery } from "@/utils/use-media-query"
 import { useScrollPosition } from "hooks/use-scroll-position"
 import { Heading } from "react-aria-components"
 import scrollIntoView from "scroll-into-view-if-needed"
-import { cn, useMediaQuery } from "ui"
 
 interface TableOfContentsProps {
   title: string
@@ -23,11 +24,12 @@ export function TableOfContents({ className, items }: Props) {
   const tocRef = React.useRef<HTMLDivElement>(null)
   const scrollPosition = useScrollPosition(tocRef)
   const ids = items.flatMap((item) => [
-    item.url.split("#")[1],
-    ...(item.items ? item.items.map((subItem) => subItem.url.split("#")[1]) : []),
+    item.url.split("#")[1]!,
+    ...(item.items ? item.items.map((subItem) => subItem.url.split("#")[1]!) : []),
   ])
   const activeId = useActiveItem(ids)
   const activeIndex = activeId?.length || 0
+
   React.useEffect(() => {
     if (!activeId || activeIndex < 2) return
     const anchor = tocRef.current?.querySelector(`li > a[href="#${activeId}"]`)
@@ -44,6 +46,7 @@ export function TableOfContents({ className, items }: Props) {
   }, [activeId, activeIndex])
 
   const isLargeScreen = useMediaQuery("(min-width: 1024px)")
+
   return (
     <aside
       ref={tocRef}
@@ -62,7 +65,7 @@ export function TableOfContents({ className, items }: Props) {
       <nav aria-labelledby="on-this-page-title" className="w-56">
         <Suspense>
           <>
-            <Heading level={2} className="mb-6 text-base font-medium leading-7 lg:text-lg text-fg">
+            <Heading level={2} className="mb-6 font-medium text-base text-fg leading-7 lg:text-lg">
               On this page
             </Heading>
             {items.length > 0 && (
@@ -115,7 +118,10 @@ export function useActiveItem(itemIds: string[]) {
       (entries) => {
         let bestCandidate: IntersectionObserverEntry | null = null
         entries.forEach((entry) => {
-          if (entry.isIntersecting && (!bestCandidate || bestCandidate.intersectionRatio < entry.intersectionRatio)) {
+          if (
+            entry.isIntersecting &&
+            (!bestCandidate || bestCandidate.intersectionRatio < entry.intersectionRatio)
+          ) {
             bestCandidate = entry
           }
         })

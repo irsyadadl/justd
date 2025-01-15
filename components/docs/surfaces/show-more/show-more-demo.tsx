@@ -1,7 +1,8 @@
 "use client"
 
+import { cn } from "@/utils/classes"
 import { IconChevronLgDown } from "justd-icons"
-import { ShowMore, cn } from "ui"
+import { ShowMore } from "ui"
 
 export default function ShowMoreDemo() {
   return (
@@ -11,7 +12,10 @@ export default function ShowMoreDemo() {
           <>
             Show {isSelected ? "less" : "more"}
             <IconChevronLgDown
-              className={cn(isSelected ? "rotate-180" : "", "size-4 transition-transform duration-200")}
+              className={cn(
+                isSelected ? "rotate-180" : "",
+                "size-4 transition-transform duration-200",
+              )}
             />
           </>
         )}

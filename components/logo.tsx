@@ -3,7 +3,14 @@ import type { SVGProps } from "react"
 type LogoProps = SVGProps<SVGSVGElement>
 
 const Logo = (props: LogoProps) => (
-  <svg width={24} height={24} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+  <svg
+    width={24}
+    height={24}
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
     <rect width={24} height={24} rx={5.34} fill="#27272A" />
     <g>
       <path

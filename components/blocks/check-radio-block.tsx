@@ -2,14 +2,18 @@
 
 import { useState } from "react"
 
-import { CardBlock } from "@/components/blocks"
+import { Wrapper } from "@/app/(app)/partials/resources"
 import { Checkbox, CheckboxGroup, Radio, RadioGroup } from "ui"
 
 export function CheckRadioBlock() {
   const [selectedRadio, setSelectedRadio] = useState("lowSecurity")
   return (
-    <CardBlock>
-      <RadioGroup aria-labelledby="security-settings" value={selectedRadio} onChange={setSelectedRadio}>
+    <Wrapper>
+      <RadioGroup
+        aria-labelledby="security-settings"
+        value={selectedRadio}
+        onChange={setSelectedRadio}
+      >
         <h2 id="security-settings" className="sr-only">
           Security Settings
         </h2>
@@ -45,6 +49,6 @@ export function CheckRadioBlock() {
           Customize Security
         </Radio>
       </RadioGroup>
-    </CardBlock>
+    </Wrapper>
   )
 }

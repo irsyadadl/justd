@@ -39,10 +39,12 @@ export default function BarChartControlledDemo() {
 
   return (
     <Card>
-      <Card.Header className="flex-row justify-between items-center">
+      <Card.Header className="flex-row items-center justify-between">
         <div className="space-y-1">
           <Card.Title>Business Overview</Card.Title>
-          <Card.Description>Displaying total sales and revenue for the last 50 days</Card.Description>
+          <Card.Description>
+            Displaying total sales and revenue for the last 50 days
+          </Card.Description>
         </div>
         <div>
           <Select selectedKey={activeChart} onSelectionChange={setActiveChart}>
@@ -69,7 +71,7 @@ export default function BarChartControlledDemo() {
         </div>
       </Card.Header>
       <Card.Content className="px-2 sm:p-6">
-        <Chart config={chartConfig} className="w-full aspect-auto h-[250px]">
+        <Chart config={chartConfig} className="aspect-auto h-[250px] w-full">
           <BarChart
             accessibilityLayer
             data={chartData}
@@ -108,7 +110,10 @@ export default function BarChartControlledDemo() {
                 />
               }
             />
-            <Bar dataKey={activeChart as keyof typeof chartConfig} fill={`var(--color-${activeChart})`} />
+            <Bar
+              dataKey={activeChart as keyof typeof chartConfig}
+              fill={`var(--color-${activeChart})`}
+            />
           </BarChart>
         </Chart>
       </Card.Content>

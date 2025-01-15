@@ -11,7 +11,9 @@ export default function FileTriggerAvatarDemo() {
   const [droppedImage, setDroppedImage] = useState<string | undefined>(undefined)
 
   const onDropHandler = async (e: DropEvent) => {
-    const item = e.items.filter(isFileDropItem).find((item) => item.type === "image/jpeg" || item.type === "image/png")
+    const item = e.items
+      .filter(isFileDropItem)
+      .find((item) => item.type === "image/jpeg" || item.type === "image/png")
     if (item) {
       const file = await item.getFile()
       setDroppedImage(URL.createObjectURL(file))
@@ -30,7 +32,7 @@ export default function FileTriggerAvatarDemo() {
   }
 
   return (
-    <div className="flex gap-2 items-center">
+    <div className="flex items-center gap-2">
       <DropZone
         getDropOperation={() => "copy"}
         onDrop={onDropHandler}
@@ -38,7 +40,11 @@ export default function FileTriggerAvatarDemo() {
           "size-10 overflow-hidden rounded-full p-0 **:data-[slot=avatar]:bg-transparent **:data-[slot=avatar]:outline-hidden",
         )}
       >
-        {droppedImage ? <Avatar src={droppedImage} size="large" /> : <Avatar initials="IA" size="large" />}
+        {droppedImage ? (
+          <Avatar src={droppedImage} size="large" />
+        ) : (
+          <Avatar initials="IA" size="large" />
+        )}
         <input type="hidden" name="image" value={droppedImage} />
       </DropZone>
       <FileTrigger

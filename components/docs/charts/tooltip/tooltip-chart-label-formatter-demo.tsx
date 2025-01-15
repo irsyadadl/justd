@@ -37,7 +37,13 @@ export default function TooltipChartLabelFormatterDemo() {
       <Card.Content>
         <Chart config={chartConfig}>
           <BarChart accessibilityLayer data={chartData}>
-            <XAxis dataKey="date" tickLine={false} tickMargin={10} axisLine={false} tickFormatter={(value) => value} />
+            <XAxis
+              dataKey="date"
+              tickLine={false}
+              tickMargin={10}
+              axisLine={false}
+              tickFormatter={(value) => value}
+            />
             <Bar dataKey="sales" stackId="a" fill="var(--color-sales)" radius={[0, 0, 4, 4]} />
             <Bar dataKey="profit" stackId="a" fill="var(--color-profit)" radius={[4, 4, 0, 0]} />
             <ChartTooltip

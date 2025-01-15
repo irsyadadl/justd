@@ -10,17 +10,17 @@ export default function GridItemDemo() {
           initial: 1,
           sm: 2,
         }}
-        className="grid place-content-center w-full h-24"
+        className="grid h-24 w-full place-content-center"
       >
         1
       </Grid.Item>
-      <Grid.Item className="grid place-content-center w-full h-24">2</Grid.Item>
+      <Grid.Item className="grid h-24 w-full place-content-center">2</Grid.Item>
       <Grid.Item
         colSpan={{
           initial: 1,
           sm: 3,
         }}
-        className="grid place-content-center w-full h-24"
+        className="grid h-24 w-full place-content-center"
       >
         3
       </Grid.Item>

@@ -1,9 +1,9 @@
-import { tv } from "tailwind-variants"
+import { type VariantProps, tv } from "tailwind-variants"
 
 const avatar = tv({
   base: [
     "inline-grid shrink-0 align-middle [--avatar-radius:20%] [--ring-opacity:20%] *:col-start-1 *:row-start-1",
-    "outline-1 -outline-offset-1 outline-fg/(--ring-opacity)",
+    "-outline-offset-1 outline-1 outline-fg/(--ring-opacity)",
   ],
   variants: {
     shape: {
@@ -11,6 +11,7 @@ const avatar = tv({
       circle: "rounded-full *:rounded-full",
     },
     size: {
+      "extra-small": "size-5 *:size-5",
       small: "size-6 *:size-6",
       medium: "size-8 *:size-8",
       large: "size-10 *:size-10",
@@ -19,10 +20,8 @@ const avatar = tv({
   },
 })
 
-interface AvatarProps {
+interface AvatarProps extends VariantProps<typeof avatar> {
   src?: string | null
-  shape?: "square" | "circle"
-  size?: "small" | "medium" | "large" | "extra-large"
   initials?: string
   alt?: string
   className?: string
@@ -46,7 +45,14 @@ const Avatar = ({
           aria-hidden={alt ? undefined : "true"}
         >
           {alt && <title>{alt}</title>}
-          <text x="50%" y="50%" alignmentBaseline="middle" dominantBaseline="middle" textAnchor="middle" dy=".125em">
+          <text
+            x="50%"
+            y="50%"
+            alignmentBaseline="middle"
+            dominantBaseline="middle"
+            textAnchor="middle"
+            dy=".125em"
+          >
             {initials}
           </text>
         </svg>
@@ -56,4 +62,5 @@ const Avatar = ({
   )
 }
 
+export type { AvatarProps }
 export { Avatar }

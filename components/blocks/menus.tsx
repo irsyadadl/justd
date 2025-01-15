@@ -1,6 +1,6 @@
 "use client"
 
-import { CardBlock } from "@/components/blocks"
+import { Wrapper } from "@/app/(app)/partials/resources"
 import {
   IconBrandBluesky,
   IconBrandTelegram,
@@ -19,7 +19,7 @@ import { Button, Menu } from "ui"
 
 export function Menus() {
   return (
-    <CardBlock>
+    <Wrapper>
       <Menu>
         <Button className="group" appearance="outline">
           Account <IconChevronLgDown className="duration-300 group-data-pressed:rotate-180" />
@@ -93,6 +93,6 @@ export function Menus() {
           </Menu.Item>
         </Menu.Content>
       </Menu>
-    </CardBlock>
+    </Wrapper>
   )
 }

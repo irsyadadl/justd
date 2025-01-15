@@ -20,7 +20,11 @@ export default function TagGroupWithRemoveDemo() {
   })
 
   return (
-    <TagGroup selectionMode="multiple" className="max-w-sm" onRemove={(keys) => list.remove(...keys)}>
+    <TagGroup
+      selectionMode="multiple"
+      className="max-w-sm"
+      onRemove={(keys) => list.remove(...keys)}
+    >
       <TagList items={list.items}>{(item) => <Tag>{item.name}</Tag>}</TagList>
     </TagGroup>
   )

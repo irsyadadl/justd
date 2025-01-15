@@ -34,17 +34,17 @@ export function ColorGenerator() {
     ]
 
     return {
-      50: scale[0],
-      100: scale[1],
-      200: scale[2],
-      300: scale[3],
-      400: scale[4],
-      500: scale[5],
-      600: scale[6],
-      700: scale[7],
-      800: scale[8],
-      900: scale[9],
-      950: scale[10],
+      50: scale[0]!,
+      100: scale[1]!,
+      200: scale[2]!,
+      300: scale[3]!,
+      400: scale[4]!,
+      500: scale[5]!,
+      600: scale[6]!,
+      700: scale[7]!,
+      800: scale[8]!,
+      900: scale[9]!,
+      950: scale[10]!,
     }
   }
 
@@ -86,13 +86,14 @@ export function ColorGenerator() {
 
   return (
     <div>
-      <div className="gap-6 items-center border-b">
+      <div className="items-center gap-6 border-b">
         <div className="grid lg:grid-cols-2">
-          <div className="p-6 border-r">
+          <div className="border-r p-6">
             <div className="mb-7">
               <Heading level={2}>Generate</Heading>
-              <p className="text-sm text-muted-fg">
-                Genereate your desired color by picking a shade from the color picker or by entering a hex code.
+              <p className="text-muted-fg text-sm">
+                Genereate your desired color by picking a shade from the color picker or by entering
+                a hex code.
               </p>
             </div>
             <ColorField
@@ -109,13 +110,19 @@ export function ColorGenerator() {
               "pb-6 even:pl-6 even:lg:border-r-0",
             )}
           >
-            <div className="flex justify-between items-center mb-4">
-              <div className="font-mono text-sm uppercase">{getColorName(value.toString("hex"))}</div>
+            <div className="mb-4 flex items-center justify-between">
+              <div className="font-mono text-sm uppercase">
+                {getColorName(value.toString("hex"))}
+              </div>
               <div>
                 <SelectFormat selected={selectedFormat} setSelected={setSelectedFormat} />
               </div>
             </div>
-            <ListBox aria-label="Colors" orientation="horizontal" className="flex flex-wrap gap-2 sm:flex-nowrap">
+            <ListBox
+              aria-label="Colors"
+              orientation="horizontal"
+              className="flex flex-wrap gap-2 sm:flex-nowrap"
+            >
               {Object.entries(tailwindShades).map(([shade, colorValue]) => (
                 <ListBoxItem
                   textValue={colorValue}

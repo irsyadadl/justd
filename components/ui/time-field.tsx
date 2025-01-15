@@ -12,7 +12,7 @@ import { DateInput } from "./date-field"
 import { Description, FieldError, FieldGroup, Label } from "./field"
 import { composeTailwindRenderProps } from "./primitive"
 
-export interface TimeFieldProps<T extends TimeValue> extends TimeFieldPrimitiveProps<T> {
+interface TimeFieldProps<T extends TimeValue> extends TimeFieldPrimitiveProps<T> {
   label?: string
   description?: string
   errorMessage?: string | ((validation: ValidationResult) => string)
@@ -34,7 +34,10 @@ const TimeField = <T extends TimeValue>({
   ...props
 }: TimeFieldProps<T>) => {
   return (
-    <TimeFieldPrimitive {...props} className={composeTailwindRenderProps(className, "group flex flex-col gap-y-1.5")}>
+    <TimeFieldPrimitive
+      {...props}
+      className={composeTailwindRenderProps(className, "group flex flex-col gap-y-1.5")}
+    >
       {label && <Label>{label}</Label>}
       <FieldGroup>
         {prefix ? <span data-slot="prefix">{prefix}</span> : null}
@@ -47,4 +50,5 @@ const TimeField = <T extends TimeValue>({
   )
 }
 
+export type { TimeFieldProps }
 export { TimeField }

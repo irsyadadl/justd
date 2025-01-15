@@ -74,7 +74,9 @@ export default function BarChartActiveDemo() {
               tickLine={false}
               tickMargin={10}
               axisLine={false}
-              tickFormatter={(value) => chartConfig[value.toLowerCase() as keyof typeof chartConfig]?.label}
+              tickFormatter={(value) =>
+                chartConfig[value.toLowerCase() as keyof typeof chartConfig]?.label
+              }
             />
             <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
             <Bar

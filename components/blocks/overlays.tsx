@@ -1,11 +1,11 @@
 "use client"
 
-import { CardBlock } from "@/components/blocks"
+import { Wrapper } from "@/app/(app)/partials/resources"
 import { Button, Modal, Popover } from "ui"
 
 export function PopoverOverlays() {
   return (
-    <CardBlock>
+    <Wrapper>
       <Popover>
         <Button appearance="outline">Forgot Password</Button>
         <Popover.Content className="max-w-[28rem]">
@@ -18,13 +18,13 @@ export function PopoverOverlays() {
           </Popover.Footer>
         </Popover.Content>
       </Popover>
-    </CardBlock>
+    </Wrapper>
   )
 }
 
 export function ModalOverlays() {
   return (
-    <CardBlock>
+    <Wrapper>
       <Modal>
         <Button>Install Update</Button>
         <Modal.Content>
@@ -38,6 +38,6 @@ export function ModalOverlays() {
           </Modal.Footer>
         </Modal.Content>
       </Modal>
-    </CardBlock>
+    </Wrapper>
   )
 }

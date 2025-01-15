@@ -42,7 +42,13 @@ export default function LineChartLinearDemo() {
             <CartesianGrid vertical={false} />
             <XAxis dataKey="month" tickLine={false} axisLine={false} tickMargin={8} />
             <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
-            <Line dataKey="revenue" type="linear" stroke="var(--color-revenue)" strokeWidth={2} dot={false} />
+            <Line
+              dataKey="revenue"
+              type="linear"
+              stroke="var(--color-revenue)"
+              strokeWidth={2}
+              dot={false}
+            />
           </LineChart>
         </Chart>
       </Card.Content>

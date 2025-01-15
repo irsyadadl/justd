@@ -5,7 +5,7 @@ import { createContext, forwardRef, use, useId, useMemo } from "react"
 import type { LegendProps } from "recharts"
 import { Legend, ResponsiveContainer, Tooltip } from "recharts"
 
-import { cn } from "./primitive"
+import { cn } from "@/utils/classes"
 
 const THEMES = { light: "", dark: ".dark" } as const
 
@@ -13,7 +13,10 @@ type ChartConfig = {
   [k in string]: {
     label?: React.ReactNode
     icon?: React.ComponentType
-  } & ({ color?: string; theme?: never } | { color?: never; theme: Record<keyof typeof THEMES, string> })
+  } & (
+    | { color?: string; theme?: never }
+    | { color?: never; theme: Record<keyof typeof THEMES, string> }
+  )
 }
 
 type ChartContextProps = {
@@ -129,6 +132,11 @@ const ChartTooltipContent = forwardRef<
       }
 
       const [item] = payload
+
+      if (!item) {
+        return null
+      }
+
       const key = `${labelKey || item.dataKey || item.name || "value"}`
       const itemConfig = getPayloadConfigFromPayload(config, item, key)
       const value =
@@ -185,12 +193,14 @@ const ChartTooltipContent = forwardRef<
                     ) : (
                       !hideIndicator && (
                         <div
-                          className={cn("shrink-0 rounded-[2px] border-(--color-border) bg-(--color-bg)", {
-                            "size-2.5": indicator === "dot",
-                            "w-1": indicator === "line",
-                            "w-0 border-[1.5px] border-dashed bg-transparent": indicator === "dashed",
-                            "my-0.5": nestLabel && indicator === "dashed",
-                          })}
+                          className={cn(
+                            "shrink-0 rounded-[2px] border-(--color-border) bg-(--color-bg)",
+                            indicator === "dot" && "size-2.5",
+                            indicator === "line" && "w-1",
+                            indicator === "dashed" &&
+                              "w-0 border-[1.5px] border-dashed bg-transparent",
+                            nestLabel && indicator === "dashed" && "my-0.5",
+                          )}
                           style={
                             {
                               "--color-bg": indicatorColor,
@@ -211,7 +221,7 @@ const ChartTooltipContent = forwardRef<
                         <span className="text-muted-fg">{itemConfig?.label || item.name}</span>
                       </div>
                       {item.value && (
-                        <span className="font-mono font-medium tabular-nums text-foreground">
+                        <span className="font-medium font-mono text-fg tabular-nums">
                           {item.value.toLocaleString()}
                         </span>
                       )}
@@ -247,7 +257,11 @@ const ChartLegendContent = forwardRef<
   return (
     <div
       ref={ref}
-      className={cn("flex items-center justify-center gap-4", verticalAlign === "top" ? "pb-3" : "pt-3", className)}
+      className={cn(
+        "flex items-center justify-center gap-4",
+        verticalAlign === "top" ? "pb-3" : "pt-3",
+        className,
+      )}
     >
       {payload.map((item) => {
         const key = `${nameKey || item.dataKey || "value"}`
@@ -256,13 +270,15 @@ const ChartLegendContent = forwardRef<
         return (
           <div
             key={item.value}
-            className={cn("flex items-center gap-1.5 [&>svg]:h-3 [&>svg]:w-3 [&>svg]:text-muted-fg")}
+            className={cn(
+              "flex items-center gap-1.5 [&>svg]:h-3 [&>svg]:w-3 [&>svg]:text-muted-fg",
+            )}
           >
             {itemConfig?.icon && !hideIcon ? (
               <itemConfig.icon />
             ) : (
               <div
-                className="w-2 h-2 shrink-0 rounded-[2px]"
+                className="h-2 w-2 shrink-0 rounded-[2px]"
                 style={{
                   backgroundColor: item.color,
                 }}
@@ -302,4 +318,5 @@ function getPayloadConfigFromPayload(config: ChartConfig, payload: unknown, key:
   return configLabelKey in config ? config[configLabelKey] : config[key as keyof typeof config]
 }
 
-export { type ChartConfig, Chart, ChartTooltip, ChartTooltipContent, ChartLegend, ChartLegendContent, ChartStyle }
+export type { ChartConfig }
+export { Chart, ChartTooltip, ChartTooltipContent, ChartLegend, ChartLegendContent, ChartStyle }

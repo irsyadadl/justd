@@ -33,12 +33,21 @@ const chartConfig = {
 export default function BarChartStackedLegendDemo() {
   return (
     <Card>
-      <Card.Header title="Biweekly Revenue" description="Revenue breakdown every 2 weeks (Jan - Dec 2024)" />
+      <Card.Header
+        title="Biweekly Revenue"
+        description="Revenue breakdown every 2 weeks (Jan - Dec 2024)"
+      />
       <Card.Content>
         <Chart config={chartConfig}>
           <BarChart accessibilityLayer data={chartData}>
             <CartesianGrid vertical={false} />
-            <XAxis dataKey="month" tickLine={false} tickMargin={10} axisLine={false} tickFormatter={(value) => value} />
+            <XAxis
+              dataKey="month"
+              tickLine={false}
+              tickMargin={10}
+              axisLine={false}
+              tickFormatter={(value) => value}
+            />
             <ChartTooltip content={<ChartTooltipContent hideLabel />} />
             <ChartLegend content={<ChartLegendContent />} />
             <Bar dataKey="revenue" stackId="a" fill="var(--chart-1)" radius={[0, 0, 4, 4]} />

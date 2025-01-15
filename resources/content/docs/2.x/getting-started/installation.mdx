@@ -1,0 +1,301 @@
+---
+title: "Installation"
+description: Install the necessary packages and set up your project. This tool automates the process, streamlining your setup with no extra steps required.
+order: 2
+published: true
+---
+
+## Installation via CLI
+Before executing the command, ensure that **tailwind** is installed. If not, follow the instructions [here](https://tailwindcss.com/docs/installation) for installation.
+
+<Note intent='info'>
+  <p>
+      Running this command will overwrite your **main css** file. It is recommended to use this in a
+      **new project** rather than an existing one to avoid manual file additions.
+  </p>
+    <p className='mt-4'>
+        This documentation is for the latest version of Justd which assumes you are using tailwind v4, if you're using v3, you can refer to the [1.x documentation](/docs/1.x/getting-started/installation).
+    </p>
+</Note>
+
+### Initial Setup
+Begin by executing this command:
+
+<Installation options={{ isInit: true }} items={['initial setup']} />
+
+When you're run this command, it will ask a couple of questions. Like where's your components folder, utils, your main css file, and lastly is the theme you want like so:
+```bash
+✔ Initializing.
+? Components folder: src/components
+? Utils folder: src/utils
+? Where would you like to place the CSS file? src/app/globals.css
+? Select a base gray: (Use arrow keys)
+❯ zinc
+  gray
+  slate
+  neutral
+  stone
+```
+If it's all good, you will see the following:
+```bash
+Not sure what to do next?
+Visit our documentation at: https://getjustd.com
+
+Now try to add some components to your project
+by running: npx justd-cli@latest add
+
+      _           _      _
+     | |_   _ ___| |_ __| |
+  _  | | | | / __| __/ _` |
+ | |_| | |_| \__ \ || (_| |
+  \___/ \__,_|___/\__\__,_|
+```
+
+### Add Components
+Next, use `add [component-name]` to include a specific component in your project. This allows for selective installation without the need for a full setup. If you need a file-trigger or even a button, this command facilitates that. Install only what you need, or refer to the documentation to manually include components. Here's how to add a `combo-box`:
+<Installation options={{ isComponent: true, noText: true }} items={['combo-box']} />
+
+This command will ensure all necessary components are installed:
+```bash
+✔ Checking.
+✔ Installing dependencies.
+✔ Created 7 files:
+  - src/components/ui/combo-box.tsx
+  - src/components/ui/field.tsx
+  - src/components/ui/list-box.tsx
+  - src/components/ui/dropdown.tsx
+  - src/components/ui/popover.tsx
+  - src/components/ui/dialog.tsx
+  - src/components/ui/button.tsx
+```
+
+Sometimes, you may want to add components individually, such as `select` and `text-field`. You can easily do this by using the following command:
+<Installation options={{ isComponent: true, noText: true }} items={['select', 'text-field']} />
+If you need to include grouped components, refer to the documentation which organizes related components under a single namespace, such as collections, overlays, and forms. This allows you to add them all at once, like so:
+
+<Installation options={{ isComponent: true, noText: true }} items={['overlays']} />
+Using this command, you will install all components under the overlays namespace.
+```bash
+✓ button created
+✓ dialog created
+✓ modal created
+✓ sheet created
+✓ drawer created
+✓ popover created
+✓ tooltip created
+```
+
+### Override
+You can override the existing components by using the `-o` flag. This will overwrite the existing files with the new ones.
+<Installation options={{ isComponent: true, noText: true }} items={['button modal -o']} />
+
+### Select and Add Components
+You might prefer to select the components you want to include by adding them without specifying any items. Just use the following command to add components:
+<Installation options={{ isComponent: true, noText: true }} items={['']} />
+This command will present a list of available components, which you can navigate and select using the arrow keys and spacebar.
+```bash
+? Select components to add: (Press <space> to select, <a> to toggle all, <i> to invert selection, and <enter> to
+  proceed)
+  ◯ dropdown
+  ◯ dialog
+  ◯ field
+  ◯ forms
+  ◯ collections
+  ◯ date-and-time
+  ```
+
+### Diff
+You can see the differences between your current setup and the new one by using the following command:
+
+<Installation options={{isExecutor: true}} command='npx justd-cli@latest diff' items={['']} />
+
+You can see this [tweet](https://x.com/irsyadadl/status/1823355475020402781) if you're not sure.
+
+You can also doing a diff to specific components by using the following command:
+<Installation command='npx justd-cli@latest diff multiple-select menu modal' items={['']}/>
+
+## Starter Kit
+Explore our range of starter kits designed to suit various project needs. Whether you're working with Next.js, Laravel, Vite, or other frameworks, we've got you covered.
+
+<Note intent='info'>
+    Got a starter kit for something else, like Remix or Astro? Consider submitting a [PR](https://github.com/justdlabs/next.js/issues/new) to help expand our list!
+</Note>
+
+### Vite
+For a simple and speedy setup with React Router 7 and Vite, try the [Vite Starter Kit](https://github.com/justdlabs/vite):
+
+```
+git clone https://github.com/justdlabs/vite.git my-app
+cd my-app
+bun i && bun run dev
+```
+
+### Laravel
+Start your Laravel journey with our [Laravel Starter Kit](https://github.com/justdlabs/laravel). Make sure you have [Composer](https://getcomposer.org/download/) installed. Follow these steps:
+
+```
+composer create-project justd/laravel app
+cd app
+npm i && npm run dev
+php artisan serve
+```
+
+Your Laravel project is now up and running!
+
+### Next.js
+Elevate your projects with the [Next.js Starter Kit](https://next.getjustd.com/). Fully loaded and ready to go:
+
+<Installation command='npx create-next-app@latest -e https://github.com/justdlabs/next.js project-name'/>
+
+### Remix
+Interested in Remix? Dive into the [Remix Starter Kit](https://remix.getjustd.com/), crafted by [José Miguel](https://github.com/m1guer). Here’s how to get started:
+
+<Installation command='npx create-remix@latest --template justdlabs/remix'/>
+
+### Tanstack Router
+The starter kit for Tanstack Router is available [here](https://github.com/justdlabs/tanstack-router). Start with this command:
+
+<Installation command='git clone https://github.com/justdlabs/tanstack-router.git tanstack-router-app'/>
+    After cloning the repository, navigate to the `tanstack-router-app` directory and run the following command to install the dependencies and start the development server:
+<Installation command='npm i && npm run dev'/>
+
+### Astro
+Looking for a production-ready Astro setup? Check out our [Astro Starter Kit](https://astro.getjustd.com/). Start with this command:
+
+<Installation command='npm create astro@latest -- --template justdlabs/astro'/>
+
+For more details, visit the [Astro repository](https://github.com/justdlabs/astro).
+
+
+## Manual Installation
+To begin setting up the design system, start by installing these packages:
+
+<Installation options={{isManual: true}} items={['react-aria-components']} />
+
+Next, add Tailwind Variant, Tailwind Merge, and for utility functions:
+
+<Installation options={{isManual: true}} items={['tailwind-variants', 'tailwind-merge']} />
+
+Following that, include the animation package for managing animations and Paranoid for icons:
+
+<Installation options={{isManual: true}} items={['justd-icons', 'tailwindcss-animate']} />
+
+### Style and Primitive
+After installing the required packages, you can copy the CSS below into your global CSS file and move the primitives to your UI folder. Primitives serve as utilities for managing states, including `focusRing`, `focusStyles`, and `focusButtonStyles`. Additionally, there’s a hook called `useMediaQuery` and a function named `composeTailwindRenderProps`. Every component in Justd relies on helpers from this file, so it’s essential to include it!
+
+<CodeBlock
+    source={{
+        'app/globals.css': 'installation/main.css',
+        'ui/primitive.tsx': 'installation/primitive.tsx',
+    }} />
+
+### Classes and Hooks
+
+All components that use the `cn` function will import it from the `utils/classes.ts` file, which provides a `cn` function compatible with server components. Hooks are only used in specific components like the **Navbar**, **Sidebar**, **Popover**, and **Command Menu**. If you're using the **Justd CLI**, it will handle this automatically; otherwise, download the file below.
+
+<CodeBlock
+    source={{
+        'utils/classes.ts': 'utils/classes.ts',
+        'utils/use-media-query.ts': 'utils/use-media-query.ts',
+    }} />
+
+
+### Simple Import
+Indeed, it's efficient because the `index.ts` file in your UI folder serves as a hub. Even if the button and badge components are in separate files, you can import them together easily. First, create a `ui/index.ts` file:
+
+```ts title="ui/index.ts"
+export * from "./primitive";
+export * from "./sidebar";
+export * from "./navbar";
+export * from "./tree";
+export * from "./table";
+export * from "./text-field";
+export * from "./button";
+export * from "./card";
+// ...
+```
+
+So, here's the scoop: your UI folder contains an `index.ts` file, right? This file consolidates all your components for straightforward access. Simply tell TypeScript where to find it and import them as needed, hassle-free!
+
+<CodeBlock
+    source={{
+        'component.tsx': 'installation/component.tsx',
+        'tsconfig.json': 'installation/not-tsconfig.json',
+    }} />
+
+If you're using a `src` folder, you can use the following config:
+
+```json
+"paths": {
+  "@/*": ["./src/*"],
+  "ui": ["./src/components/ui"]
+}
+```
+
+### Fonts
+This is currently using the [Inter font](https://rsms.me/inter/). If you want to use a different font, you can define your font-family in your JS or CSS file.
+
+
+
+### Stylesheet
+When you're working with a stylesheet, you can define your `@font-face` in your css file.
+
+```
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("InterVariable.woff2") format("woff2");
+}
+```
+
+### Next.js
+If you're using Next.js, you don't event need css files. Just define your font in your layout file.
+
+```
+import localFont from 'next/font/local'
+
+const fontSans = localFont({
+  src: [{path: './fonts/Inter.woff2'}],
+  variable: '--font-sans'
+})
+```
+
+Then, apply the `fontSans` to the `body` tag like this:
+
+```tsx
+<body
+  className={`font-sans antialiased ${fontSans.variable}`}
+/>
+```
+
+Then, you can use the variable in your main css file like this:
+
+```css
+@theme {
+  --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+  "Segoe UI Symbol", "Noto Color Emoji";
+  --font-mono: var(--font-mono), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+  "Segoe UI Symbol", "Noto Color Emoji";
+
+  // Your other variables
+}
+```
+
+For more information, refer to the [Tailwind documentation](https://tailwindcss.com/docs/font-family#customizing-the-default-font) and [Next.js documentation](https://nextjs.org/docs/app/building-your-application/optimizing/fonts).
+
+## InteliSense
+If you want your development environment to be more intelligent, you can follow instructions here at [Tailwind Variants](https://www.tailwind-variants.org/docs/getting-started#intellisense-setup-optional).
+
+## Dark Mode
+Justd supports dark mode out of the box. Every framework has its own way of implementing dark mode. So you better check the docs list below:
+- [Vite](/docs/dark-mode/vite)
+- [Inertia.js](/docs/dark-mode/inertia-js)
+- [Next.js](/docs/dark-mode/next-js)
+- [Remix](/docs/dark-mode/remix)
+- [Astro](/docs/dark-mode/astro)
+
+## Prologue
+- [Contribution Guide](/docs/prologue/contribution-guide)
+- [Release Notes](/docs/prologue/release-notes)

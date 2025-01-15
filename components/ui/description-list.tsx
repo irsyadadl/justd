@@ -4,21 +4,21 @@ const descriptionListStyles = tv({
   slots: {
     dl: "grid grid-cols-1 text-base/6 sm:grid-cols-[min(50%,calc(var(--spacing)*80))_auto] sm:text-sm/6",
     dt: "col-start-1 border-t pt-3 text-muted-fg first:border-none sm:py-3",
-    dd: "pb-3 pt-1 text-fg sm:border-t sm:py-3 sm:nth-2:border-none",
+    dd: "pt-1 pb-3 text-fg sm:border-t sm:nth-2:border-none sm:py-3",
   },
 })
 
 const { dl, dt, dd } = descriptionListStyles()
 
-const DescriptionList = ({ className, ...props }: React.ComponentPropsWithoutRef<"dl">) => {
-  return <dl {...props} className={dl({ className })} />
+const DescriptionList = ({ className, ref, ...props }: React.ComponentProps<"dl">) => {
+  return <dl ref={ref} className={dl({ className })} {...props} />
 }
 
-const DescriptionTerm = ({ className, ...props }: React.ComponentPropsWithoutRef<"dt">) => {
-  return <dt {...props} className={dt({ className })} />
+const DescriptionTerm = ({ className, ref, ...props }: React.ComponentProps<"dt">) => {
+  return <dt ref={ref} className={dt({ className })} {...props} />
 }
 
-const DescriptionDetails = ({ className, ...props }: React.ComponentPropsWithoutRef<"dd">) => {
+const DescriptionDetails = ({ className, ...props }: React.ComponentProps<"dd">) => {
   return <dd {...props} className={dd({ className })} />
 }
 

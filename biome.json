@@ -8,6 +8,7 @@
       "**/*.js",
       "public/**/*",
       "resources/lib/sidebar.json",
+      "resources/stubs/**/*",
       "**/*.css",
       "**/.next/**",
       "resource/content",
@@ -47,7 +48,14 @@
         "noDangerouslySetInnerHtml": "off"
       },
       "nursery": {
-        "useSortedClasses": "off"
+        "useSortedClasses": {
+          "level": "error",
+          "fix": "safe",
+          "options": {
+            "attributes": ["classList"],
+            "functions": ["cn", "twJoin", "tv", "composeRenderProps", "composeTailwindRenderProps"]
+          }
+        }
       }
     },
     "ignore": ["node_modules", ".next", ".velite", "dist", ".vercel"]
@@ -56,7 +64,7 @@
     "enabled": true,
     "indentStyle": "space",
     "indentWidth": 2,
-    "lineWidth": 120,
+    "lineWidth": 100,
     "ignore": ["node_modules", ".next", ".velite", "dist", ".vercel"]
   },
   "javascript": {

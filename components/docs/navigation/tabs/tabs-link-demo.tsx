@@ -4,9 +4,10 @@ import { Tabs } from "ui"
 
 const navs = [
   { url: "/", label: "Home" },
-  { url: "/docs/getting-started/introduction", label: "Docs" },
-  { url: "/components", label: "Components" },
-  { url: "https://paranoid.irsyad.co", label: "Paranoid" },
+  { url: "/themes", label: "Themes" },
+  { url: "/colors", label: "Colors" },
+  { url: "https://getjustd.com/icons", label: "Icons" },
+  { url: "https://irsyad.co/templates", label: "Templates" },
 ]
 
 export default function TabsLinkDemo() {

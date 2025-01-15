@@ -11,11 +11,11 @@ export default function Layout({ children }: Readonly<{ children: React.ReactNod
       <SidebarProvider className="[--sidebar-width:19rem]">
         <AppSidebar closeButton={false} intent="fleet" />
         <SidebarInset>
-          <div className="flex justify-between items-center px-4 w-full h-12 border-b bg-sidebar">
+          <div className="flex h-12 w-full items-center justify-between border-b bg-sidebar px-4">
             <SidebarTrigger className="-ml-2 sm:hidden" />
             <div className="flex items-center">
               <IconBrandPhp className="w-8 text-indigo-500" />
-              <span className="font-mono text-xs text-muted-fg">Controller.php</span>
+              <span className="font-mono text-muted-fg text-xs">Controller.php</span>
             </div>
             <IconX />
           </div>

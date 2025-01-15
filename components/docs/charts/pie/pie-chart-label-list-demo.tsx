@@ -40,9 +40,16 @@ const chartConfig = {
 export default function PieChartLabelListDemo() {
   return (
     <Card>
-      <Card.Header className="items-center pb-0" title="EV Market Share by Manufacturer" description="Jan - Jun 2024" />
+      <Card.Header
+        className="items-center pb-0"
+        title="EV Market Share by Manufacturer"
+        description="Jan - Jun 2024"
+      />
       <Card.Content className="flex-1 pb-0">
-        <Chart config={chartConfig} className="mx-auto aspect-square max-h-[250px] [&_.recharts-text]:fill-bg">
+        <Chart
+          config={chartConfig}
+          className="mx-auto aspect-square max-h-[250px] [&_.recharts-text]:fill-bg"
+        >
           <PieChart>
             <ChartTooltip content={<ChartTooltipContent nameKey="marketShare" hideLabel />} />
             <Pie data={chartData} dataKey="marketShare">

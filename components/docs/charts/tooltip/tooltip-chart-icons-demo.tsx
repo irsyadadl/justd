@@ -40,10 +40,25 @@ export default function TooltipChartIconsDemo() {
       <Card.Content>
         <Chart config={chartConfig}>
           <BarChart accessibilityLayer data={chartData}>
-            <XAxis dataKey="date" tickLine={false} tickMargin={10} axisLine={false} tickFormatter={(value) => value} />
+            <XAxis
+              dataKey="date"
+              tickLine={false}
+              tickMargin={10}
+              axisLine={false}
+              tickFormatter={(value) => value}
+            />
             <Bar dataKey="sales" stackId="a" fill="var(--color-sales)" radius={[0, 0, 4, 4]} />
-            <Bar dataKey="expenses" stackId="a" fill="var(--color-expenses)" radius={[4, 4, 0, 0]} />
-            <ChartTooltip content={<ChartTooltipContent hideLabel />} cursor={false} defaultIndex={1} />
+            <Bar
+              dataKey="expenses"
+              stackId="a"
+              fill="var(--color-expenses)"
+              radius={[4, 4, 0, 0]}
+            />
+            <ChartTooltip
+              content={<ChartTooltipContent hideLabel />}
+              cursor={false}
+              defaultIndex={1}
+            />
           </BarChart>
         </Chart>
       </Card.Content>

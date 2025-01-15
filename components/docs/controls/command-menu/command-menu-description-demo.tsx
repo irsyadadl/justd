@@ -12,7 +12,13 @@ export default function CommandMenuDescriptionDemo() {
       <Button appearance="outline" onPress={() => setIsOpen(true)}>
         Open
       </Button>
-      <CommandMenu messageOnEmpty={false} hideCloseButton hideSearchIndicator isOpen={isOpen} onOpenChange={setIsOpen}>
+      <CommandMenu
+        messageOnEmpty={false}
+        hideCloseButton
+        hideSearchIndicator
+        isOpen={isOpen}
+        onOpenChange={setIsOpen}
+      >
         <CommandMenu.Input placeholder="Search for apps and commands..." />
         <CommandMenu.Empty className="grid place-content-center">
           <div className="text-center">

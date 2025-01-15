@@ -9,7 +9,9 @@ export default function DrawerBasicDemo() {
       <Drawer.Content>
         <Drawer.Header>
           <Drawer.Title>Login</Drawer.Title>
-          <Drawer.Description>Please enter your credentials to access your account.</Drawer.Description>
+          <Drawer.Description>
+            Please enter your credentials to access your account.
+          </Drawer.Description>
         </Drawer.Header>
         <Drawer.Body className="space-y-4">
           <TextField label="Email" type="email" placeholder="john.doe@example.com" />

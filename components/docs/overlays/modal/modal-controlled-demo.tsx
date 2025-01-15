@@ -14,7 +14,9 @@ export default function ModalControlledDemo() {
       <Modal.Content isOpen={open} onOpenChange={setOpen}>
         <Modal.Header>
           <Modal.Title>Subscribe to Our Newsletter</Modal.Title>
-          <Modal.Description>Get the latest news and updates right to your inbox.</Modal.Description>
+          <Modal.Description>
+            Get the latest news and updates right to your inbox.
+          </Modal.Description>
         </Modal.Header>
         <Modal.Footer>
           <Button onPress={() => setOpen(false)}>Sign Up</Button>

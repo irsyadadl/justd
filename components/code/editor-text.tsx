@@ -8,7 +8,13 @@ import { CopyButton } from "@/components/code/copy-button"
 import { copyToClipboard } from "@/resources/lib/copy"
 import type { RegistryItem } from "@/resources/types"
 import { cn } from "@/utils/classes"
-import { IconBrackets2, IconBrandCss, IconBrandReactjs, IconBrandTypescript, IconFile } from "justd-icons"
+import {
+  IconBrackets2,
+  IconBrandCss,
+  IconBrandReactjs,
+  IconBrandTypescript,
+  IconFile,
+} from "justd-icons"
 import { Tab } from "react-aria-components"
 import { Tabs } from "ui"
 
@@ -49,7 +55,8 @@ export function EditorText({ source }: Props) {
                 const response = await fetch(`/registry/${registryKey}.json`)
                 if (response.ok) {
                   const registryEntry = await response.json()
-                  fetchedSourceCode[key] = registryEntry.files?.[0]?.content || "No content available"
+                  fetchedSourceCode[key] =
+                    registryEntry.files?.[0]?.content || "No content available"
                 } else {
                   console.error(`Failed to fetch source code for ${path}:`, response.status)
                   fetchedSourceCode[key] = "Error loading source code."
@@ -74,7 +81,7 @@ export function EditorText({ source }: Props) {
     <>
       {rawSourceCode && Object.keys(rawSourceCode).length > 0 ? (
         <Tabs className="relative gap-0">
-          <div className="flex overflow-hidden justify-between items-center rounded-t-lg border-zinc-700 border-x border-y bg-[#0e0e10] dark:border-zinc-800">
+          <div className="flex items-center justify-between overflow-hidden rounded-t-lg border-zinc-700 border-x border-y bg-[#0e0e10] dark:border-zinc-800">
             <Tabs.List className="gap-0 border-0">
               {Object.keys(rawSourceCode).map((key) => (
                 <Tab
@@ -85,7 +92,8 @@ export function EditorText({ source }: Props) {
                       values.isHovered && "bg-zinc-800 text-zinc-50 dark:bg-zinc-800/50",
                       values.isSelected &&
                         "border-zinc-700 bg-zinc-800 text-zinc-50 dark:border-zinc-800 dark:bg-zinc-800/50",
-                      values.isFocused && "bg-zinc-800 text-zinc-50 outline-hidden dark:bg-zinc-800/50",
+                      values.isFocused &&
+                        "bg-zinc-800 text-zinc-50 outline-hidden dark:bg-zinc-800/50",
                       values.isFocusVisible && "bg-zinc-800 text-zinc-50 dark:bg-zinc-800/50",
                     )
                   }
@@ -122,7 +130,7 @@ export function EditorText({ source }: Props) {
             <Tabs.Panel
               key={key}
               id={key}
-              className="overflow-hidden rounded-b-lg border-b border-zinc-700 border-x bg-shiki-bg dark:border-zinc-800"
+              className="overflow-hidden rounded-b-lg border-zinc-700 border-x border-b bg-shiki-bg dark:border-zinc-800"
             >
               <CopyButton
                 className="absolute top-0.5 right-1"

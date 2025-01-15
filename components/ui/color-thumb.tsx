@@ -4,7 +4,7 @@ import { ColorThumb as ColorThumbPrimitive, type ColorThumbProps } from "react-a
 import { tv } from "tailwind-variants"
 
 const thumbStyles = tv({
-  base: "size-6 top-[50%] left-[50%] rounded-full border-2 border-white [box-shadow:0_0_0_1px_black,_inset_0_0_0_1px_black]",
+  base: "top-[50%] left-[50%] size-6 rounded-full border-2 border-white [box-shadow:0_0_0_1px_black,_inset_0_0_0_1px_black]",
   variants: {
     isFocusVisible: {
       true: "size-8",

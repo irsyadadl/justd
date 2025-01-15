@@ -36,15 +36,15 @@ export default function CarouselDApiDemo() {
         {({ id }) => (
           <Carousel.Item id={id}>
             <Card>
-              <Card.Content className="flex justify-center items-center p-6 aspect-square">
-                <span className="text-4xl font-semibold">{id}</span>
+              <Card.Content className="flex aspect-square items-center justify-center p-6">
+                <span className="font-semibold text-4xl">{id}</span>
               </Card.Content>
             </Card>
           </Carousel.Item>
         )}
       </Carousel.Content>
-      <div className="flex justify-between items-center mt-4">
-        <div className="flex gap-1 py-2 text-sm text-center text-muted-fg">
+      <div className="mt-4 flex items-center justify-between">
+        <div className="flex gap-1 py-2 text-center text-muted-fg text-sm">
           {Array.from({ length: 10 }).map((_, index) => (
             <Button
               className={twJoin(

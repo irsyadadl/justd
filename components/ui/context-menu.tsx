@@ -11,10 +11,14 @@ import { focusButtonStyles } from "./primitive"
 interface ContextMenuTriggerContextType {
   buttonRef: React.RefObject<HTMLButtonElement | null>
   contextMenuOffset: { offset: number; crossOffset: number } | null
-  setContextMenuOffset: React.Dispatch<React.SetStateAction<{ offset: number; crossOffset: number } | null>>
+  setContextMenuOffset: React.Dispatch<
+    React.SetStateAction<{ offset: number; crossOffset: number } | null>
+  >
 }
 
-const ContextMenuTriggerContext = createContext<ContextMenuTriggerContextType | undefined>(undefined)
+const ContextMenuTriggerContext = createContext<ContextMenuTriggerContextType | undefined>(
+  undefined,
+)
 
 const useContextMenuTrigger = () => {
   const context = use(ContextMenuTriggerContext)
@@ -24,11 +28,11 @@ const useContextMenuTrigger = () => {
   return context
 }
 
-interface ContextMenuRootComponent {
+interface ContextMenuProps {
   children: React.ReactNode
 }
 
-const ContextMenu = ({ children }: ContextMenuRootComponent) => {
+const ContextMenu = ({ children }: ContextMenuProps) => {
   const [contextMenuOffset, setContextMenuOffset] = useState<{
     offset: number
     crossOffset: number
@@ -36,7 +40,9 @@ const ContextMenu = ({ children }: ContextMenuRootComponent) => {
   const buttonRef = useRef<HTMLButtonElement>(null)
 
   return (
-    <ContextMenuTriggerContext.Provider value={{ buttonRef, contextMenuOffset, setContextMenuOffset }}>
+    <ContextMenuTriggerContext.Provider
+      value={{ buttonRef, contextMenuOffset, setContextMenuOffset }}
+    >
       {children}
     </ContextMenuTriggerContext.Provider>
   )
@@ -44,7 +50,7 @@ const ContextMenu = ({ children }: ContextMenuRootComponent) => {
 
 const contextMenuTriggerStyles = tv({
   extend: focusButtonStyles,
-  base: "data-focused:outline-hidden cursor-default",
+  base: "cursor-default data-focused:outline-hidden",
   variants: {
     isDisabled: {
       false: "forced-colors:data-disabled:text-[GrayText]",
@@ -108,4 +114,5 @@ ContextMenu.Section = Menu.Section
 ContextMenu.Header = Menu.Header
 ContextMenu.Keyboard = Menu.Keyboard
 
+export type { ContextMenuProps }
 export { ContextMenu }

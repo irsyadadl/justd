@@ -8,9 +8,9 @@ import type { ListData } from "react-stately"
 import { twJoin } from "tailwind-merge"
 import { tv } from "tailwind-variants"
 
+import { cn } from "@/utils/classes"
 import type { FieldProps } from "./field"
 import { Description, Input, Label } from "./field"
-import { cn } from "./primitive"
 import type { RestrictedIntent, TagGroupProps } from "./tag-group"
 import { Tag, TagGroup, TagList } from "./tag-group"
 
@@ -19,7 +19,7 @@ const tagFieldsStyles = tv({
   variants: {
     appearance: {
       outline: [
-        "px-1 rounded-lg shadow-xs border",
+        "rounded-lg border px-1 shadow-xs",
         "has-[input[data-focused=true]]:border-primary",
         "has-[input[data-invalid=true][data-focused=true]]:border-danger has-[input[data-invalid=true]]:border-danger has-[input[data-invalid=true]]:ring-danger/20",
         "has-[input[data-focused=true]]:ring-4 has-[input[data-focused=true]]:ring-primary/20",
@@ -81,7 +81,10 @@ const TagField = ({
         .replace(/\s+/g, " ")
         .replace(/[\t\r\n]/g, "")
 
-      if (formattedName && !list.items.some(({ name }) => name.toLowerCase() === formattedName.toLowerCase())) {
+      if (
+        formattedName &&
+        !list.items.some(({ name }) => name.toLowerCase() === formattedName.toLowerCase())
+      ) {
         const tag = {
           id: (list.items.at(-1)?.id ?? 0) + 1,
           name: formattedName,
@@ -103,7 +106,8 @@ const TagField = ({
 
   const onRemove = (keys: Set<Key>) => {
     list.remove(...keys)
-    onItemCleared?.(list.getItem([...keys][0]))
+
+    onItemCleared?.(list.getItem([...keys][0]!))
     clearInvalidFeedback()
   }
 
@@ -124,7 +128,7 @@ const TagField = ({
       return
     }
 
-    const endKey = list.items[list.items.length - 1]
+    const endKey = list.items[list.items.length - 1]!
 
     if (endKey !== null) {
       list.remove(endKey.id)
@@ -136,13 +140,20 @@ const TagField = ({
     <div className={cn("flex w-full flex-col gap-y-1.5", className)}>
       {props.label && <Label>{props.label}</Label>}
       <Group className={twJoin("flex flex-col", props.isDisabled && "opacity-50")}>
-        <TagGroup intent={props.intent} shape={props.shape} aria-label="List item inserted" onRemove={onRemove}>
+        <TagGroup
+          intent={props.intent}
+          shape={props.shape}
+          aria-label="List item inserted"
+          onRemove={onRemove}
+        >
           <div className={tagFieldsStyles({ appearance })}>
-            <div className="flex flex-wrap flex-1 items-center">
+            <div className="flex flex-1 flex-wrap items-center">
               <TagList
                 items={list.items}
                 className={twJoin(
-                  list.items.length !== 0 ? appearance === "outline" && "gap-1.5 px-1 py-1.5" : "gap-0",
+                  list.items.length !== 0
+                    ? appearance === "outline" && "gap-1.5 px-1 py-1.5"
+                    : "gap-0",
                   props.shape === "square" && "[&_.jdt3lr2x]:rounded-[calc(var(--radius-lg)-4px)]",
                   "[&_.jdt3lr2x]:last:-mr-1 outline-hidden [&_.jdt3lr2x]:cursor-default",
                 )}
@@ -156,21 +167,25 @@ const TagField = ({
                 onKeyDown={onKeyDown}
                 onChange={setInputValue}
                 value={inputValue}
+                className="flex-1"
                 {...props}
               >
                 <Input
-                  className="inline w-auto"
+                  className="inline"
                   placeholder={maxTagsToAdd <= 0 ? "Remove one to add more" : props.placeholder}
                 />
               </TextField>
             </div>
           </div>
         </TagGroup>
-        {name && <input hidden name={name} value={list.items.map((i) => i.name).join(",")} readOnly />}
+        {name && (
+          <input hidden name={name} value={list.items.map((i) => i.name).join(",")} readOnly />
+        )}
       </Group>
       {props.description && <Description>{props.description}</Description>}
     </div>
   )
 }
 
-export { TagField, type TagItemProps }
+export type { TagFieldProps, TagItemProps }
+export { TagField }

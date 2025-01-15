@@ -26,7 +26,11 @@ export default function DateRangePickerControlledDemo() {
         </p>
         <p>{value ? `${value.start.toString()} to ${value.end.toString()}` : "-- to --"}</p>
       </div>
-      <DateRangePicker value={value} onChange={(newValue) => setValue(newValue!)} label="Event date" />
+      <DateRangePicker
+        value={value}
+        onChange={(newValue) => setValue(newValue!)}
+        label="Event date"
+      />
     </div>
   )
 }

@@ -17,7 +17,7 @@ export default function ModalCustomStyleDemo() {
           </Note>
         </Modal.Header>
         <Form onSubmit={() => {}}>
-          <Modal.Body className="pt-6 space-y-4 border-t">
+          <Modal.Body className="space-y-4 border-t pt-6">
             <TextField
               isRequired
               autoFocus

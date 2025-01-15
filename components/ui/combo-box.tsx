@@ -24,12 +24,12 @@ import { composeTailwindRenderProps } from "./primitive"
 
 const comboboxStyles = tv({
   slots: {
-    base: "group w-full flex flex-col gap-y-1.5",
+    base: "group flex w-full flex-col gap-y-1.5",
     chevronButton:
-      "h-7 w-8 **:data-[slot=icon]:text-muted-fg **:data-[slot=icon]:hover:text-fg **:data-[slot=icon]:data-pressed:text-fg rounded outline-offset-0 active:bg-transparent data-hovered:bg-transparent data-pressed:bg-transparent",
-    chevronIcon: "transition shrink-0 size-4 duration-200 group-open:rotate-180 group-open:text-fg",
+      "h-7 w-8 rounded outline-offset-0 active:bg-transparent data-hovered:bg-transparent data-pressed:bg-transparent **:data-[slot=icon]:data-pressed:text-fg **:data-[slot=icon]:text-muted-fg **:data-[slot=icon]:hover:text-fg",
+    chevronIcon: "size-4 shrink-0 transition duration-200 group-open:rotate-180 group-open:text-fg",
     clearButton:
-      "data-focused:outline-hidden absolute inset-y-0 right-0 flex items-center pr-2 text-muted-fg data-hovered:text-fg",
+      "absolute inset-y-0 right-0 flex items-center pr-2 text-muted-fg data-hovered:text-fg data-focused:outline-hidden",
   },
 })
 
@@ -63,11 +63,11 @@ const ComboBox = <T extends object>({
 
 type ListBoxPickerProps<T extends object> = React.ComponentProps<typeof ListBox<T>>
 
-interface ListProps<T extends object>
+interface ComboBoxListProps<T extends object>
   extends ListBoxPickerProps<T>,
     Omit<PopoverPrimitiveProps, "children" | "className" | "style"> {}
 
-const List = <T extends object>({ children, items, ...props }: ListProps<T>) => {
+const ComboBoxList = <T extends object>({ children, items, ...props }: ComboBoxListProps<T>) => {
   return (
     <Popover.Picker trigger="ComboBox" isNonModal placement={props.placement}>
       <ListBox.Picker items={items} {...props}>
@@ -109,8 +109,9 @@ const ComboBoxClearButton = () => {
 }
 
 ComboBox.Input = ComboBoxInput
-ComboBox.List = List
+ComboBox.List = ComboBoxList
 ComboBox.Option = DropdownItem
 ComboBox.Section = DropdownSection
 
+export type { ComboBoxProps, ComboBoxListProps }
 export { ComboBox }

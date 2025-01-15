@@ -7,24 +7,28 @@ export default function PaginationDynamicDemo() {
   return (
     <Pagination>
       <Pagination.List>
-        <Pagination.Item variant="first" href="#" />
-        <Pagination.Item variant="previous" href="#" />
+        <Pagination.Item segment="first" href="#" />
+        <Pagination.Item segment="previous" href="#" />
         <Pagination.Section aria-label="Pagination Segment" className="rounded-lg border lg:hidden">
-          <Pagination.Item variant="label">1</Pagination.Item>
-          <Pagination.Item variant="separator" />
-          <Pagination.Item className="text-muted-fg" variant="label">
+          <Pagination.Item segment="label">1</Pagination.Item>
+          <Pagination.Item segment="separator" />
+          <Pagination.Item className="text-muted-fg" segment="label">
             10
           </Pagination.Item>
         </Pagination.Section>
-        <Pagination.Section aria-label="Pagination Segment" className="hidden lg:flex" items={pages}>
+        <Pagination.Section
+          aria-label="Pagination Segment"
+          className="hidden lg:flex"
+          items={pages}
+        >
           {(item) => (
             <Pagination.Item id={item.value.toString()} isCurrent={item.value === 4} href="#">
               {item.value}
             </Pagination.Item>
           )}
         </Pagination.Section>
-        <Pagination.Item variant="next" href="#" />
-        <Pagination.Item variant="last" href="#" />
+        <Pagination.Item segment="next" href="#" />
+        <Pagination.Item segment="last" href="#" />
       </Pagination.List>
     </Pagination>
   )

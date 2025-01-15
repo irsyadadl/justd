@@ -1,6 +1,6 @@
 "use client"
 
-import { createContext, forwardRef, use, useState } from "react"
+import { createContext, use, useState } from "react"
 
 import type { PanInfo } from "motion/react"
 import {
@@ -17,8 +17,8 @@ import type { DialogProps } from "react-aria-components"
 import { type ButtonProps, Modal, ModalOverlay } from "react-aria-components"
 import { twJoin } from "tailwind-merge"
 
+import { cn } from "@/utils/classes"
 import { Dialog } from "./dialog"
-import { cn } from "./primitive"
 
 const inertiaTransition: Inertia = {
   type: "inertia",
@@ -50,21 +50,22 @@ const useDrawerContext = () => {
   return context
 }
 
-const ModalWrapper = forwardRef<HTMLDivElement, React.ComponentProps<typeof Modal>>((props, ref) => (
+const ModalWrapper = ({ ref, ...props }: React.ComponentProps<typeof Modal>) => (
   <Modal ref={ref} {...props} />
-))
-ModalWrapper.displayName = "ModalWrapper"
+)
 
-const ModalOverlayWrapper = forwardRef<HTMLDivElement, React.ComponentProps<typeof ModalOverlay>>((props, ref) => (
+const ModalOverlayWrapper = ({ ref, ...props }: React.ComponentProps<typeof ModalOverlay>) => (
   <ModalOverlay ref={ref} {...props} />
-))
-ModalOverlayWrapper.displayName = "ModalOverlayWrapper"
+)
 
 const ModalPrimitive = motion.create(ModalWrapper)
 const ModalOverlayPrimitive = motion.create(ModalOverlayWrapper)
 
 interface DrawerOverlayPrimitiveProps
-  extends Omit<React.ComponentProps<typeof ModalOverlayPrimitive>, "isOpen" | "onOpenChange" | "style"> {
+  extends Omit<
+    React.ComponentProps<typeof ModalOverlayPrimitive>,
+    "isOpen" | "onOpenChange" | "style"
+  > {
   "aria-label"?: DialogProps["aria-label"]
   "aria-labelledby"?: DialogProps["aria-labelledby"]
   role?: DialogProps["role"]
@@ -132,10 +133,10 @@ const DrawerContentPrimitive = ({ children, ...props }: DrawerOverlayPrimitivePr
         >
           <div className="overflow-hidden">
             {withNotch && (
-              <div className="sticky top-0 mx-auto mt-2.5 w-10 h-1.5 rounded-full notch shrink-0 touch-pan-y bg-fg/20" />
+              <div className="notch sticky top-0 mx-auto mt-2.5 h-1.5 w-10 shrink-0 touch-pan-y rounded-full bg-fg/20" />
             )}
             <div
-              className="overflow-y-auto mt-3"
+              className="mt-3 overflow-y-auto"
               ref={(el) => {
                 if (el) {
                   const resizeObserver = new ResizeObserver((entries) => {
@@ -195,7 +196,12 @@ interface DrawerProps {
   onOpenChange?: (isOpen: boolean) => void
 }
 
-const Drawer = ({ children, withNotch = true, isOpen: controlledIsOpen, onOpenChange }: DrawerProps) => {
+const Drawer = ({
+  children,
+  withNotch = true,
+  isOpen: controlledIsOpen,
+  onOpenChange,
+}: DrawerProps) => {
   const [internalIsOpen, setInternalIsOpen] = useState(false)
 
   const isControlled = controlledIsOpen !== undefined
@@ -222,11 +228,14 @@ const Drawer = ({ children, withNotch = true, isOpen: controlledIsOpen, onOpenCh
   }
 
   return (
-    <DrawerContext.Provider value={{ isOpen, openDrawer, closeDrawer, withNotch }}>{children}</DrawerContext.Provider>
+    <DrawerContext.Provider value={{ isOpen, openDrawer, closeDrawer, withNotch }}>
+      {children}
+    </DrawerContext.Provider>
   )
 }
 
-const Content = ({ children, ...props }: React.ComponentProps<typeof DrawerPrimitive>) => {
+type DrawerContentProps = React.ComponentProps<typeof DrawerPrimitive>
+const Content = ({ children, ...props }: DrawerContentProps) => {
   return (
     <DrawerPrimitive>
       <DrawerContentPrimitive {...props}>
@@ -247,13 +256,21 @@ const DrawerHeader = ({ className, ...props }: React.ComponentProps<typeof Dialo
   <Dialog.Header className={cn("pt-2", className)} {...props} />
 )
 
-const DrawerBody = ({ children, className, ...props }: React.ComponentProps<typeof Dialog.Body>) => (
+const DrawerBody = ({
+  children,
+  className,
+  ...props
+}: React.ComponentProps<typeof Dialog.Body>) => (
   <Dialog.Body {...props} className={cn("px-4", className)}>
     {children}
   </Dialog.Body>
 )
 
-const DrawerFooter = ({ children, className, ...props }: React.ComponentProps<typeof Dialog.Footer>) => (
+const DrawerFooter = ({
+  children,
+  className,
+  ...props
+}: React.ComponentProps<typeof Dialog.Footer>) => (
   <Dialog.Footer {...props} className={cn("pb-2", className)}>
     {children}
   </Dialog.Footer>
@@ -268,4 +285,5 @@ Drawer.Header = DrawerHeader
 Drawer.Title = Dialog.Title
 Drawer.Trigger = DrawerTrigger
 
+export type { DrawerProps, DrawerContentProps }
 export { Drawer }

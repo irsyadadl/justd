@@ -12,7 +12,10 @@ import { CommandPalette } from "./command-palette"
 import { NavbarDropdown } from "./navbar"
 import { ThemeSwitcher } from "./theme-switcher"
 
-export function ResponsiveAside({ openCmd, setOpenCmd }: { openCmd: boolean; setOpenCmd: (open: boolean) => void }) {
+export function ResponsiveAside({
+  openCmd,
+  setOpenCmd,
+}: { openCmd: boolean; setOpenCmd: (open: boolean) => void }) {
   const id = React.useId()
   const [openAside, setOpenAside] = useState(false)
   const pathname = usePathname()
@@ -23,7 +26,7 @@ export function ResponsiveAside({ openCmd, setOpenCmd }: { openCmd: boolean; set
   return (
     <nav className="relative z-10 lg:hidden">
       <CommandPalette setOpen={setOpenCmd} openCmd={openCmd} />
-      <div className="flex justify-between items-center pt-2 pr-2 pl-4 -mb-2">
+      <div className="-mb-2 flex items-center justify-between pt-2 pr-2 pl-4">
         <Button
           aria-label="Open Menu."
           className="-ml-2 **:data-[slot=icon]:text-fg"
@@ -38,7 +41,7 @@ export function ResponsiveAside({ openCmd, setOpenCmd }: { openCmd: boolean; set
         <Link className="-mr-6 rounded data-focused:outline-hidden" href="/" aria-label="Logo">
           <IconBrandJustd className="size-6" />
         </Link>
-        <div className="flex gap-x-1 items-center">
+        <div className="flex items-center gap-x-1">
           <Button
             onPress={() => setOpenCmd(true)}
             size="square-petite"
@@ -65,7 +68,7 @@ export function ResponsiveAside({ openCmd, setOpenCmd }: { openCmd: boolean; set
         side="left"
         closeButton={true}
       >
-        <Sheet.Header className="flex flex-row justify-between py-2 mb-4">
+        <Sheet.Header className="mb-4 flex flex-row justify-between py-2">
           <NavbarDropdown />
         </Sheet.Header>
         <Sheet.Body className="px-2">

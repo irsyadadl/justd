@@ -1,7 +1,5 @@
 "use client"
 
-import type React from "react"
-
 import { type VariantProps, tv } from "tailwind-variants"
 
 const badgeIntents = {
@@ -27,7 +25,7 @@ const badgeShapes = {
   circle: "px-2 rounded-full",
 }
 const badgeStyles = tv({
-  base: "inline-flex items-center gap-x-1.5 py-0.5 text-xs/5 font-medium forced-colors:outline **:data-[slot=icon]:size-3",
+  base: "inline-flex items-center gap-x-1.5 py-0.5 font-medium text-xs/5 **:data-[slot=icon]:size-3 forced-colors:outline",
   variants: {
     intent: { ...badgeIntents },
     shape: { ...badgeShapes },
@@ -38,7 +36,9 @@ const badgeStyles = tv({
   },
 })
 
-interface BadgeProps extends React.HTMLAttributes<HTMLDivElement>, VariantProps<typeof badgeStyles> {
+interface BadgeProps
+  extends React.HTMLAttributes<HTMLDivElement>,
+    VariantProps<typeof badgeStyles> {
   className?: string
   children: React.ReactNode
 }
@@ -51,4 +51,5 @@ const Badge = ({ children, intent, shape, className, ...props }: BadgeProps) => 
   )
 }
 
+export type { BadgeProps }
 export { Badge, badgeIntents, badgeStyles, badgeShapes }

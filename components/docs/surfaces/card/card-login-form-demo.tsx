@@ -11,8 +11,14 @@ export default function CardLoginFormDemo() {
       </Card.Header>
       <Card.Content className="space-y-6">
         <TextField isRequired label="Email" placeholder="Enter your email" />
-        <TextField isRequired label="Password" isRevealable type="password" placeholder="Enter your password" />
-        <div className="flex justify-between items-center">
+        <TextField
+          isRequired
+          label="Password"
+          isRevealable
+          type="password"
+          placeholder="Enter your password"
+        />
+        <div className="flex items-center justify-between">
           <Checkbox>Remember me</Checkbox>
           <Link intent="primary" className="text-sm" href="#">
             Forgot password?

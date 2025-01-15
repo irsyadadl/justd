@@ -1,21 +1,23 @@
 "use client"
 
-import { IconDashboard } from "justd-icons"
-import title from "title"
-import { Button, buttonStyles } from "ui"
-
-export type Appearance = keyof typeof buttonStyles.variants.appearance
+import { IconArrowUpRight, IconDownload, IconUpload } from "justd-icons"
+import { Button } from "ui"
 
 export default function ButtonAppearanceDemo() {
   return (
     <div className="flex flex-col gap-2 md:flex-row md:flex-wrap">
-      {Object.keys(buttonStyles.variants.appearance).map((appearance) => (
-        <div key={appearance}>
-          <Button appearance={appearance as Appearance}>
-            <IconDashboard /> {title(appearance)}
-          </Button>
-        </div>
-      ))}
+      <Button appearance="solid">
+        <IconDownload />
+        Label
+      </Button>
+      <Button appearance="outline">
+        <IconUpload />
+        Label
+      </Button>
+      <Button appearance="plain">
+        Label
+        <IconArrowUpRight />
+      </Button>
     </div>
   )
 }

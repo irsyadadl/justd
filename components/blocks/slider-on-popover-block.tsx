@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useRef, useState } from "react"
 
 import { IconAdjustment } from "justd-icons"
 import { Button, Description, Popover, Separator, Slider } from "ui"
@@ -8,16 +8,35 @@ import { Button, Description, Popover, Separator, Slider } from "ui"
 export function SliderOnPopoverBlock() {
   const [fontSize, setFontSize] = useState<number>(16)
   const [lineHeight, setLineHeight] = useState<number[]>([1.5, 1.75])
+
+  const [isOpen, setIsOpen] = useState(false)
+  const button = useRef(null)
+
   return (
-    <Popover>
-      <Button aria-label="Slider on Popover" size="square-petite" appearance="outline">
+    <>
+      <Button
+        ref={button}
+        onPress={() => setIsOpen(true)}
+        aria-label="Slider on Popover"
+        size="square-petite"
+        appearance="outline"
+      >
         <IconAdjustment />
       </Button>
-      <Popover.Content>
+      <Popover.Content
+        triggerRef={button}
+        isOpen={isOpen}
+        onOpenChange={setIsOpen}
+        showArrow={false}
+      >
         <div className="space-y-4">
-          <Slider output="tooltip" value={fontSize} onChange={(v) => setFontSize(v as number)} label="Font Size" />
           <Slider
             output="tooltip"
+            value={fontSize}
+            onChange={(v) => setFontSize(v as number)}
+            label="Font Size"
+          />
+          <Slider
             value={lineHeight}
             onChange={(v) => setLineHeight(v as number[])}
             label="Line Height"
@@ -29,6 +48,6 @@ export function SliderOnPopoverBlock() {
           </Description>
         </div>
       </Popover.Content>
-    </Popover>
+    </>
   )
 }

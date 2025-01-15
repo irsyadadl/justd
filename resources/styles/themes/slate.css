@@ -4,6 +4,13 @@
 @variant dark (&:is(.dark *));
 
 @theme {
+  /* Recommended font is: Inter, Sathosi, Geist */
+  /*--font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",*/
+  /*"Segoe UI Symbol", "Noto Color Emoji";*/
+
+  /* Recommended font is: Geist Mono */
+  /*--font-mono: var(--font-mono), 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', '"Liberation Mono"', '"Courier New"', 'monospace';*/
+
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
@@ -22,9 +29,6 @@
 
   --color-success: var(--success);
   --color-success-fg: var(--success-fg);
-
-  --color-info: var(--info);
-  --color-info-fg: var(--info-fg);
 
   --color-danger: var(--danger);
   --color-danger-fg: var(--danger-fg);
@@ -95,7 +99,7 @@
     --danger: oklch(0.577 0.245 27.325);
     --danger-fg: oklch(0.971 0.013 17.38);
 
-    --border: oklch(0.929 0.013 255.508);
+    --border: oklch(0.909 0.022 252.894);
     --input: oklch(0.869 0.022 252.894);
     --ring: oklch(0.546 0.245 262.881);
 
@@ -122,7 +126,7 @@
   }
 
   .dark {
-    --bg: oklch(0.129 0.042 264.695);
+    --bg: oklch(0.079 0.042 264.695);
     --fg: oklch(0.984 0.003 247.858);
 
     --primary: oklch(0.546 0.245 262.881);

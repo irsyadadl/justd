@@ -16,13 +16,13 @@ import { Button, SidebarHeader as Header, Link, Menu, SidebarLabel, useSidebar }
 export function SidebarHeader() {
   const { toggleSidebar } = useSidebar()
   return (
-    <Header className="flex flex-row justify-between items-center py-0 h-12 bg-gradient-to-b border-b">
+    <Header className="flex h-12 flex-row items-center justify-between border-b bg-gradient-to-b py-0">
       <Link
         className="flex items-center gap-x-2 group-data-[collapsible=dock]:size-10 group-data-[collapsible=dock]:justify-center"
-        href="/docs/components/layouts/sidebar"
+        href="/docs/2.x/components/layouts/sidebar"
       >
         <IconFolderFill className="size-4.5" />
-        <SidebarLabel className="text-sm font-medium">getjustd.com</SidebarLabel>
+        <SidebarLabel className="font-medium text-sm">getjustd.com</SidebarLabel>
       </Link>
       <div className="-mr-2 flex items-center gap-x-0.5 text-muted-fg **:[button]:text-muted-fg **:[button]:*:data-[slot=icon]:size-3.5 **:[button]:data-hovered:text-fg">
         <Button className="size-7" size="square-petite" appearance="plain" aria-label="Collapse">

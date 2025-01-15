@@ -12,11 +12,19 @@ export default function TimeFieldHcDemo() {
   return (
     <>
       <OptionPreview>
-        <Switch isSelected={hc === 24} onChange={() => setHc((prevHc) => (prevHc === 24 ? 12 : 24))}>
+        <Switch
+          isSelected={hc === 24}
+          onChange={() => setHc((prevHc) => (prevHc === 24 ? 12 : 24))}
+        >
           {hc} hour
         </Switch>
       </OptionPreview>
-      <TimeField value={value} onChange={(newValue) => setValue(newValue!)} hourCycle={hc} label="Event time" />
+      <TimeField
+        value={value}
+        onChange={(newValue) => setValue(newValue!)}
+        hourCycle={hc}
+        label="Event time"
+      />
     </>
   )
 }

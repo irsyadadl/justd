@@ -11,6 +11,9 @@ import {
 } from "react-aria-components"
 import { tv } from "tailwind-variants"
 
+import { cn } from "@/utils/classes"
+import { useMediaQuery } from "@/utils/use-media-query"
+import type { DateDuration } from "@internationalized/date"
 import { Button } from "./button"
 import { Calendar } from "./calendar"
 import { DateInput } from "./date-field"
@@ -23,11 +26,11 @@ const datePickerStyles = tv({
   slots: {
     base: "group flex flex-col gap-y-1.5",
     datePickerIcon:
-      "group mr-1 h-7 **:data-[slot=icon]:text-muted-fg w-8 rounded outline-offset-0data-hovered:bg-transparent data-pressed:bg-transparent",
+      "group mr-1 h-7 w-8 rounded outline-offset-0data-hovered:bg-transparent data-pressed:bg-transparent **:data-[slot=icon]:text-muted-fg",
     calendarIcon: "group-open:text-fg",
     datePickerInput: "w-full px-2 text-base sm:text-sm",
-    dateRangePickerInputStart: "px-2 sm:text-sm text-base",
-    dateRangePickerInputEnd: "flex-1 px-2 py-1.5 sm:text-sm text-base",
+    dateRangePickerInputStart: "px-2 text-base sm:text-sm",
+    dateRangePickerInputEnd: "flex-1 px-2 py-1.5 text-base sm:text-sm",
     dateRangePickerDash:
       "text-fg group-data-disabled:opacity-50 forced-colors:text-[ButtonText] forced-colors:group-data-disabled:text-[GrayText]",
   },
@@ -42,18 +45,37 @@ interface DatePickerOverlayProps
   children?: React.ReactNode
   closeButton?: boolean
   range?: boolean
+  visibleDuration?: DateDuration
+  pageBehavior?: "visible" | "single"
 }
 
-const DatePickerOverlay = ({ closeButton = true, range, ...props }: DatePickerOverlayProps) => {
+const DatePickerOverlay = ({
+  visibleDuration = { months: 1 },
+  closeButton = true,
+  pageBehavior = "visible",
+  range,
+  ...props
+}: DatePickerOverlayProps) => {
+  const isMobile = useMediaQuery("(max-width: 600px)")
   return (
     <Popover.Content
       showArrow={false}
-      className="flex justify-center p-4 sm:p-2 sm:pt-3 sm:min-w-[17rem] sm:max-w-[17.2rem]"
+      className={cn(
+        "flex justify-center p-4 sm:min-w-[17rem] sm:p-2 sm:pt-3",
+        visibleDuration?.months === 1 ? "sm:max-w-[17.5rem]" : "sm:max-w-none",
+      )}
       {...props}
     >
-      {range ? <RangeCalendar /> : <Calendar />}
+      {range ? (
+        <RangeCalendar
+          pageBehavior={pageBehavior}
+          visibleDuration={!isMobile ? visibleDuration : undefined}
+        />
+      ) : (
+        <Calendar />
+      )}
       {closeButton && (
-        <div className="flex justify-center py-2.5 mx-auto w-full sm:hidden max-w-[inherit]">
+        <div className="mx-auto flex w-full max-w-[inherit] justify-center py-2.5 sm:hidden">
           <Popover.Close shape="circle" className="w-full">
             Close
           </Popover.Close>
@@ -95,5 +117,5 @@ const DatePicker = <T extends DateValue>({
     </DatePickerPrimitive>
   )
 }
-
-export { DatePicker, DatePickerIcon, DatePickerOverlay, type DatePickerProps, type DateValue, type ValidationResult }
+export type { DatePickerProps, DateValue, ValidationResult }
+export { DatePicker, DatePickerIcon, DatePickerOverlay }

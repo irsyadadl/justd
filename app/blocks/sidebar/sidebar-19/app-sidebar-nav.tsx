@@ -1,13 +1,20 @@
 "use client"
 
-import { IconCommandRegular, IconDashboard, IconHeadphones, IconLogout, IconMic, IconSettings } from "justd-icons"
+import {
+  IconCommandRegular,
+  IconDashboard,
+  IconHeadphones,
+  IconLogout,
+  IconMic,
+  IconSettings,
+} from "justd-icons"
 import { Avatar, Button, Menu, SearchField, SidebarNav, SidebarTrigger } from "ui"
 
 export default function AppSidebarNav() {
   return (
     <SidebarNav className="flex justify-between border-b-0 sm:mt-2">
       <SidebarTrigger />
-      <div className="flex gap-x-2 items-center mx-auto sm:min-w-120">
+      <div className="mx-auto flex items-center gap-x-2 sm:min-w-120">
         <SearchField className="w-full" />
         <Button size="square-petite" className="size-10" appearance="plain">
           <IconMic />

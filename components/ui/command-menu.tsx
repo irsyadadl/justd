@@ -10,49 +10,49 @@ import { Button, Dialog, Modal, ModalOverlay, Text } from "react-aria-components
 import { twJoin } from "tailwind-merge"
 import { tv } from "tailwind-variants"
 
+import { useMediaQuery } from "@/utils/use-media-query"
 import type { KeyboardProps } from "./keyboard"
 import { Keyboard } from "./keyboard"
-import { useMediaQuery } from "./primitive"
 import { Separator } from "./separator"
 
 const commandStyles = tv({
   slots: {
     command: [
       "flex h-svh w-full flex-col overflow-hidden rounded-md sm:h-full",
-      "[&_[cmdk-group-heading]]:ml-1 [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:-mb-1.5 [&_[cmdk-group-heading]]:text-muted-fg [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[cmdk-input-wrapper]_[data-slot=icon]]:size-5 [&_[cmdk-input]]:h-12",
-      "[&_[cmdk-item]]:py-2.5 [&_[cmdk-item]]:pl-2.5 [&_[cmdk-item]]:pr-4",
+      "[&_[cmdk-group-heading]]:-mb-1.5 [&_[cmdk-group-heading]]:ml-1 [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-muted-fg [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[cmdk-input-wrapper]_[data-slot=icon]]:size-5 [&_[cmdk-input]]:h-12",
+      "[&_[cmdk-item]]:py-2.5 [&_[cmdk-item]]:pr-4 [&_[cmdk-item]]:pl-2.5",
     ],
-    list: "overflow-y-auto lg:pb-0 max-h-[calc(100vh-35%)] pb-16 [&:not(:has(.xda32kfseccmd))]:p-2 [&:not(:has(.xda32kfseccmd))_.s3xsprt]:my-2 overflow-x-hidden md:max-h-[456px]",
+    list: "max-h-[calc(100vh-35%)] overflow-y-auto overflow-x-hidden pb-16 md:max-h-[456px] lg:pb-0 [&:not(:has(.xda32kfseccmd))]:p-2 [&:not(:has(.xda32kfseccmd))_.s3xsprt]:my-2",
     input: [
-      "flex w-full rounded-md forced-colors:focus:outline-0 bg-transparent text-base placeholder:text-muted-fg",
+      "flex w-full rounded-md bg-transparent text-base placeholder:text-muted-fg forced-colors:focus:outline-0",
       "focus:outline-hidden",
-      "disabled:opacity-50 disabled:cursor-not-allowed",
+      "disabled:cursor-not-allowed disabled:opacity-50",
     ],
     section: [
-      "xda32kfseccmd overflow-hidden py-2 px-2 text-fg",
-      "[&_[cmdk-group-heading]]:select-none [&_[cmdk-group-heading]]:ml-[1px] [&_[cmdk-group-heading]]:py-2 [&_[cmdk-group-heading]]:text-[0.8rem] [&_[cmdk-group-heading]]:text-muted-fg",
+      "xda32kfseccmd overflow-hidden px-2 py-2 text-fg",
+      "[&_[cmdk-group-heading]]:ml-[1px] [&_[cmdk-group-heading]]:select-none [&_[cmdk-group-heading]]:py-2 [&_[cmdk-group-heading]]:text-[0.8rem] [&_[cmdk-group-heading]]:text-muted-fg",
     ],
     modal: [
-      "fixed bottom-0 left-[50%] top-auto z-50 grid h-[calc(100vh-35%)] w-full max-w-full translate-x-[-50%] gap-4 overflow-hidden rounded-t-2xl bg-overlay text-overlay-fg shadow-lg forced-colors:border ring-1 ring-fg/10 dark:ring-border sm:bottom-auto sm:top-[6rem] sm:h-auto sm:w-full sm:max-w-2xl sm:rounded-xl",
-      "sm:data-entering:slide-in-from-bottom-auto data-entering:duration-300 data-entering:animate-in data-entering:fade-in-0 data-entering:slide-in-from-bottom-1/2 data-entering:[transition-timing-function:ease-out] sm:data-entering:duration-300 sm:data-entering:slide-in-from-top-[2rem]",
-      "data-exiting:duration-200 data-exiting:animate-out data-exiting:fade-out-0 data-exiting:slide-out-to-bottom-1/2 data-exiting:[transition-timing-function:ease] sm:data-exiting:slide-out-to-top-[4rem]",
+      "fixed top-auto bottom-0 left-[50%] z-50 grid h-[calc(100vh-35%)] w-full max-w-full translate-x-[-50%] gap-4 overflow-hidden rounded-t-2xl bg-overlay text-overlay-fg shadow-lg ring-1 ring-fg/10 sm:top-[6rem] sm:bottom-auto sm:h-auto sm:w-full sm:max-w-2xl sm:rounded-xl dark:ring-border forced-colors:border",
+      "data-entering:fade-in-0 data-entering:slide-in-from-bottom sm:data-entering:slide-in-from-bottom-0 sm:data-entering:zoom-in-95 data-entering:animate-in data-entering:duration-300 sm:data-entering:duration-300",
+      "data-exiting:fade-out sm:data-exiting:zoom-out-95 data-exiting:slide-out-to-bottom-56 sm:data-exiting:slide-out-to-bottom-0 data-exiting:animate-out data-exiting:duration-200",
     ],
     closeButton: [
-      "absolute right-3 top-1.5 [&>span>[data-slot=icon]]:text-muted-fg **:data-[slot=icon]:data-pressed:text-fg lg:top-3.5 rounded-full border lg:border-border border-transparent lg:bg-secondary/50 py-2.5 px-2.5 lg:py-0.5 text-xs transition-opacity data-[state=open]:bg-secondary data-[state=open]:text-muted-fg lg:focus:border-fg/70 data-focused:outline-hidden lg:focus:ring-2 lg:data-focused:ring-ring data-disabled:pointer-events-none",
-      "focus:outline-hidden lg:data-focused:bg-primary/10 lg:data-focused:ring-2 lg:data-focused:ring-primary/20 lg:data-focused:border-primary/70",
+      "absolute top-1.5 right-3 rounded-full border border-transparent px-2.5 py-2.5 text-xs transition-opacity data-disabled:pointer-events-none data-[state=open]:bg-secondary data-[state=open]:text-muted-fg data-focused:outline-hidden **:data-[slot=icon]:data-pressed:text-fg lg:top-3.5 lg:border-border lg:bg-secondary/50 lg:py-0.5 lg:data-focused:ring-ring lg:focus:border-fg/70 lg:focus:ring-2 [&>span>[data-slot=icon]]:text-muted-fg",
+      "focus:outline-hidden lg:data-focused:border-primary/70 lg:data-focused:bg-primary/10 lg:data-focused:ring-2 lg:data-focused:ring-ring/20",
       "disabled:pointer-events-none",
     ],
-    empty: "py-6 text-center text-sm text-muted-fg x3tmpy",
-    kbdKeyboard: "lg:block hidden group-data-[selected=true]:opacity-60",
-    description: "sm:inline hidden text-sm ml-auto",
+    empty: "x3tmpy py-6 text-center text-muted-fg text-sm",
+    kbdKeyboard: "hidden group-data-[selected=true]:text-current/90 lg:block",
+    description: "ml-auto hidden text-sm sm:inline",
     item: [
-      "group relative flex forced-colors:outline-0 cursor-default select-none text-fg items-center rounded-lg py-2 text-sm outline-hidden",
-      "data-[selected=true]:bg-accent forced-colors:data-[selected=true]:bg-[Highlight] forced-colors:data-[selected=true]:text-[ActiveCaption] forced-colors:text-[WindowText] data-[selected=true]:text-accent-fg [&[data-selected=true]_[data-slot=icon]]:text-accent-fg",
+      "group relative flex cursor-default select-none items-center rounded-lg py-2 text-fg text-sm outline-hidden forced-colors:outline-0",
+      "data-[selected=true]:bg-accent data-[selected=true]:text-accent-fg forced-colors:text-[WindowText] forced-colors:data-[selected=true]:bg-[Highlight] forced-colors:data-[selected=true]:text-[ActiveCaption] [&[data-selected=true]_[data-slot=icon]]:text-accent-fg",
       "focus-visible:bg-accent focus-visible:text-accent-fg [&:focus-visible_[data-slot=icon]]:text-accent-fg",
-      "data-[danger=true]:text-danger data-[danger=true]:data-[selected=true]:bg-danger data-[danger=true]:data-[selected=true]:text-danger-fg",
+      "data-[danger=true]:data-[selected=true]:bg-danger data-[danger=true]:data-[selected=true]:text-danger-fg data-[danger=true]:text-danger",
       "data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50",
-      "**:data-[slot=icon]:mr-2 **:data-[slot=icon]:size-[1.10rem] **:data-[slot=icon]:shrink-0 **:data-[slot=icon]:text-muted-fg",
-      "**:data-[slot=avatar]:mr-2 **:data-[slot=avatar]:size-[1.10rem] **:data-[slot=avatar]:shrink-0",
+      "**:data-[slot=icon]:mr-2 **:data-[slot=icon]:size-4.5 **:data-[slot=icon]:shrink-0 **:data-[slot=icon]:text-muted-fg",
+      "**:data-[slot=avatar]:**:mr-2 **:data-[slot=avatar]:mr-2 **:data-[slot=avatar]:**:size-4.5 **:data-[slot=avatar]:size-4.5 **:data-[slot=avatar]:**:shrink-0 **:data-[slot=avatar]:shrink-0",
       "forced-colors:**:data-[slot=icon]:text-[CanvasText] forced-colors:group-data-[focus]:**:data-[slot=icon]:text-[Canvas] ",
     ],
   },
@@ -64,7 +64,8 @@ const commandStyles = tv({
   },
 })
 
-const { command, empty, section, list, item, closeButton, modal, input, kbdKeyboard, description } = commandStyles()
+const { command, empty, section, list, item, closeButton, modal, input, kbdKeyboard, description } =
+  commandStyles()
 
 interface CommandMenuContextProps {
   hideSearchIndicator?: boolean
@@ -89,7 +90,8 @@ interface CommandMenuRootProps {
 
 const modalOverlay = tv({
   base: [
-    "fixed inset-0 max-h-(--visual-viewport-height) z-50 bg-dark/15 dark:bg-dark/40 data-entering:animate-in data-entering:fade-in-0 exiting:animate-in exiting:fade-out-0",
+    "fixed inset-0 z-50 max-h-(--visual-viewport-height) bg-dark/15 dark:bg-dark/40",
+    "data-entering:fade-in data-exiting:fade-out data-entering:animate-in data-exiting:animate-in",
   ],
   variants: {
     isBlurred: {
@@ -99,7 +101,10 @@ const modalOverlay = tv({
   },
 })
 
-interface CommandMenuProps extends ModalOverlayProps, CommandMenuRootProps, CommandMenuContextProps {
+interface CommandMenuProps
+  extends ModalOverlayProps,
+    CommandMenuRootProps,
+    CommandMenuContextProps {
   children: React.ReactNode
   value?: string
   messageOnEmpty?: boolean | string
@@ -142,7 +147,7 @@ const CommandMenu = ({
               {!hideCloseButton && (
                 <Button autoFocus={!isDesktop} slot="close" className={closeButton()}>
                   <span className="hidden lg:block">Esc</span>
-                  <span className="block -mr-2 lg:hidden">
+                  <span className="-mr-2 block lg:hidden">
                     <IconX />
                     <span className="sr-only">Close command palette</span>
                   </span>
@@ -160,30 +165,31 @@ interface CommandMenuInputProps extends React.ComponentPropsWithoutRef<typeof Co
   isPending?: boolean
 }
 
-const CommandMenuInput = forwardRef<React.ComponentRef<typeof Command.Input>, CommandMenuInputProps>(
-  ({ className, isPending, ...props }, ref) => {
-    const { hideSearchIndicator } = use(CommandMenuContext)
-    return (
-      <div className="flex items-center px-3 border-b">
-        {!hideSearchIndicator &&
-          (isPending ? (
-            <Command.Loading className="mr-2 opacity-50 data-[slot=icon]:size-5 data-[slot=icon]:shrink-0">
-              <Loader variant="spin" />
-            </Command.Loading>
-          ) : (
-            <IconSearch className="mr-2 opacity-50 size-5 shrink-0" />
-          ))}
+const CommandMenuInput = forwardRef<
+  React.ComponentRef<typeof Command.Input>,
+  CommandMenuInputProps
+>(({ className, isPending, ...props }, ref) => {
+  const { hideSearchIndicator } = use(CommandMenuContext)
+  return (
+    <div className="flex items-center border-b px-3">
+      {!hideSearchIndicator &&
+        (isPending ? (
+          <Command.Loading className="mr-2 opacity-50 data-[slot=icon]:size-5 data-[slot=icon]:shrink-0">
+            <Loader variant="spin" />
+          </Command.Loading>
+        ) : (
+          <IconSearch className="mr-2 size-5 shrink-0 opacity-50" />
+        ))}
 
-        <Command.Input
-          autoFocus
-          ref={ref}
-          className={input({ className: hideSearchIndicator ? "pl-1" : className })}
-          {...props}
-        />
-      </div>
-    )
-  },
-)
+      <Command.Input
+        autoFocus
+        ref={ref}
+        className={input({ className: hideSearchIndicator ? "pl-1" : className })}
+        {...props}
+      />
+    </div>
+  )
+})
 
 CommandMenuInput.displayName = Command.Input.displayName
 
@@ -194,7 +200,9 @@ const CommandMenuList = ({ className, ...props }: CommandMenuListProps) => {
   return (
     <Command.List className={list({ className })} {...props}>
       {messageOnEmpty !== false && (
-        <CommandMenuEmpty>{typeof messageOnEmpty === "string" ? messageOnEmpty : "No results found."}</CommandMenuEmpty>
+        <CommandMenuEmpty>
+          {typeof messageOnEmpty === "string" ? messageOnEmpty : "No results found."}
+        </CommandMenuEmpty>
       )}
       {props.children}
     </Command.List>
@@ -240,7 +248,11 @@ interface CommandItemProps extends React.ComponentProps<typeof Command.Item> {
 
 const CommandMenuItem = ({ isDanger, className, ...props }: CommandItemProps) => {
   return (
-    <Command.Item data-danger={isDanger ? "true" : undefined} className={item({ isDanger, className })} {...props} />
+    <Command.Item
+      data-danger={isDanger ? "true" : undefined}
+      className={item({ isDanger, className })}
+      {...props}
+    />
   )
 }
 
@@ -285,4 +297,5 @@ CommandMenu.Separator = CommandMenuSeparator
 CommandMenu.Description = CommandMenuDescription
 CommandMenu.Loading = CommandMenuLoading
 
+export type { CommandMenuProps, CommandItemProps, CommandSectionProps, CommandMenuDescriptionProps }
 export { CommandMenu }

@@ -25,5 +25,7 @@ export default function TagFieldIntentDemo() {
     ],
   })
 
-  return <TagField intent="secondary" className="max-w-xs" aria-label="Add tag" list={selectedItems} />
+  return (
+    <TagField intent="secondary" className="max-w-xs" aria-label="Add tag" list={selectedItems} />
+  )
 }

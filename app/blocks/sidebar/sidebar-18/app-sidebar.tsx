@@ -22,7 +22,7 @@ export default function AppSidebar(props: React.ComponentProps<typeof Sidebar>) 
     <Sidebar {...props}>
       <SidebarHeader />
       <SidebarContent className="pb-10">
-        <SidebarDisclosureGroup>
+        <SidebarDisclosureGroup className="gap-y-0.5">
           {folders.map((item) => (
             <SidebarTree key={item.id} item={item} index={1} />
           ))}
@@ -52,7 +52,9 @@ function SidebarTree({ item, index }: { item: (typeof folders)[number]; index: n
   }
 
   return (
-    <SidebarDisclosureGroup defaultExpandedKeys={[1, 12, 121, 1212, 6, 61, 611, 62, 621, 6212, 62121, 1211]}>
+    <SidebarDisclosureGroup
+      defaultExpandedKeys={[1, 12, 121, 1212, 6, 61, 611, 62, 621, 6212, 62121, 1211]}
+    >
       <SidebarDisclosure id={item.id}>
         {({ isExpanded }) => (
           <>

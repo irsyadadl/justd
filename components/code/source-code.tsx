@@ -58,21 +58,30 @@ export const SourceCode = ({ toShow, ...props }: SourceCodeProps) => {
 
   if (processedSourceCode) {
     return (
-      <section {...props} className="my-6 group not-prose">
-        <p className="mb-4 -mt-2">
+      <section {...props} className="group not-prose relative my-6">
+        <p className="-mt-2 mb-4">
           {props.message
             ? props.message
             : "And next, you can copy the code below and paste it into your component folder."}
         </p>
         {props.title && <figcaption data-rehype-pretty-code-title="">{props.title}</figcaption>}
-        <div className="flex relative justify-between items-center mb-1">
-          <div className="flex gap-x-2 items-center font-mono tracking-tight text-[13px]">
-            <IconBrandReactjs className="text-cyan-600 dark:text-cyan-500 size-4" /> {toShow}.tsx
+        <div className="mb-1 flex items-center justify-between">
+          <div className="flex items-center gap-x-2 font-mono text-[13px] tracking-tight">
+            <IconBrandReactjs className="size-4 text-cyan-600 dark:text-cyan-500" /> {toShow}.tsx
           </div>
-          <CopyMotionButton className="-top-1.5" text={processedSourceCode} />
+          <CopyMotionButton
+            className="absolute top-20 right-2 rounded-sm group-hover:opacity-100"
+            text={processedSourceCode}
+          />
         </div>
         <div className="overflow-hidden rounded-lg border border-shiki-border bg-shiki-bg">
-          <CodeHighlighter className="**:[pre]:p-4" removeLastLine plain code={processedSourceCode} lang={props.ext} />
+          <CodeHighlighter
+            className="**:[pre]:p-4"
+            removeLastLine
+            plain
+            code={processedSourceCode}
+            lang={props.ext}
+          />
         </div>
       </section>
     )

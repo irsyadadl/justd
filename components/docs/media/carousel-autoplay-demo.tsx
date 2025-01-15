@@ -26,7 +26,7 @@ export default function CarouselAutoplayDemo() {
               <Card>
                 <div className="relative flex-1 border-b bg-fg/5" />
                 <Card.Header>
-                  <Card.Title className="sm:text-lg line-clamp-1">{item.title}</Card.Title>
+                  <Card.Title className="line-clamp-1 sm:text-lg">{item.title}</Card.Title>
                   <Card.Description className="line-clamp-2">{item.description}</Card.Description>
                 </Card.Header>
               </Card>
@@ -52,7 +52,8 @@ const items = [
   {
     id: 2,
     title: "Wireless Bluetooth Headphones",
-    description: "Experience high-quality sound with these comfortable, noise-canceling headphones.",
+    description:
+      "Experience high-quality sound with these comfortable, noise-canceling headphones.",
   },
   {
     id: 3,

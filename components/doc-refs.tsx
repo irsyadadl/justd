@@ -16,7 +16,7 @@ import { ListBox, ListBoxItem } from "react-aria-components"
 
 function getComponentName(url: string): string {
   const lastSegment = url.split("/").pop()
-  return lastSegment?.split("#")[0].replace(".html", "") || ""
+  return lastSegment?.split("#")[0]!.replace(".html", "") || ""
 }
 
 export function DocRefs({ references }: { references: string[] }) {
@@ -41,7 +41,7 @@ export function DocRefs({ references }: { references: string[] }) {
         title = "Motion"
         icon = IconBrandFramer
         break
-      case url.includes("docs/components"):
+      case url.includes("docs/2.x/components"):
         title = "Internal"
         icon = Logo
         break
@@ -73,16 +73,21 @@ export function DocRefs({ references }: { references: string[] }) {
   })
 
   return (
-    <ListBox orientation="horizontal" className="flex gap-x-2 mt-6 not-prose" aria-label="Link References" items={urls}>
+    <ListBox
+      orientation="horizontal"
+      className="not-prose mt-6 flex gap-x-2"
+      aria-label="Link References"
+      items={urls}
+    >
       {(item: { url: string; title: string; icon: FC<SVGProps<SVGSVGElement>> }) => (
         <ListBoxItem
           textValue={item.title}
           target="_blank"
-          className="flex items-center py-2 px-4 font-mono text-xs uppercase rounded-full ring-1 duration-200 bg-fg/5 ring-fg/10 data-hovered:bg-fg/10 data-hovered:ring-fg/15"
+          className="flex items-center rounded-full bg-fg/5 px-4 py-2 font-mono text-xs uppercase ring-1 ring-fg/10 duration-200 data-hovered:bg-fg/10 data-hovered:ring-fg/15"
           id={item.url}
           href={item.url}
         >
-          {item.icon && <item.icon className="mr-2 -ml-0.5 size-4 shrink-0" />}
+          {item.icon && <item.icon className="-ml-0.5 mr-2 size-4 shrink-0" />}
 
           {item.title === "Props Reference" ? (
             <span>

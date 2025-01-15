@@ -55,7 +55,7 @@ export default function AppSidebar(props: React.ComponentProps<typeof Sidebar>) 
       <SidebarHeader>
         <Link
           className="flex items-center gap-x-2 group-data-[collapsible=dock]:size-10 group-data-[collapsible=dock]:justify-center"
-          href="/docs/components/layouts/sidebar"
+          href="/docs/2.x/components/layouts/sidebar"
         >
           <IconBrandApple className="size-5" />
           <SidebarLabel className="font-medium">Apple</SidebarLabel>
@@ -208,11 +208,11 @@ export default function AppSidebar(props: React.ComponentProps<typeof Sidebar>) 
             <Avatar shape="square" src="/images/avatar/cobain.jpg" />
             <div className="in-data-[sidebar-collapsible=dock]:hidden text-sm">
               <SidebarLabel>Kurt Cobain</SidebarLabel>
-              <span className="block -mt-0.5 text-muted-fg">kurt@cobain.com</span>
+              <span className="-mt-0.5 block text-muted-fg">kurt@cobain.com</span>
             </div>
             <IconChevronLgDown
               data-slot="chevron"
-              className="absolute right-3 transition-transform size-4 group-pressed:rotate-180"
+              className="absolute right-3 size-4 transition-transform group-pressed:rotate-180"
             />
           </Menu.Trigger>
           <Menu.Content placement="bottom right" className="sm:min-w-(--trigger-width)">

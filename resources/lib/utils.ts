@@ -1,11 +1,5 @@
 import type { Docs } from "@/.velite"
-import { type ClassValue, clsx } from "clsx"
-import { twMerge } from "tailwind-merge"
 import title from "title"
-
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
-}
 
 export function sortDocs(docs: Array<Docs>) {
   return docs.sort((a, b) => a.order - b.order)
@@ -20,7 +14,7 @@ export function wait(number: number) {
 }
 
 export function getSiteName(url: string): string {
-  return url.replace(/^(https?:\/\/)?(www\.)?/, "").split(".")[0]
+  return url.replace(/^(https?:\/\/)?(www\.)?/, "").split(".")[0]!
 }
 
 export function extractJSX(code: string) {

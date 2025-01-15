@@ -40,7 +40,11 @@ const chartConfig = {
 export default function PieChartNoneSeparatorDemo() {
   return (
     <Card>
-      <Card.Header className="items-center pb-0" title="Market Share" description="January - June 2024" />
+      <Card.Header
+        className="items-center pb-0"
+        title="Market Share"
+        description="January - June 2024"
+      />
       <Card.Content className="flex-1 pb-0">
         <Chart config={chartConfig} className="mx-auto aspect-square max-h-[250px]">
           <PieChart>

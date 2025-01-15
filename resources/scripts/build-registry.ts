@@ -21,7 +21,6 @@ const generateComponentRegistry = () => {
     { type: "anatomies", path: "components/docs/anatomies" },
     { type: "demo", path: "components/docs" },
     { type: "blocks", path: "app/blocks" },
-    { type: "docs", path: "resources/docs" },
   ]
 
   const getAllFiles = (dirPath: string, arrayOfFiles: string[] = []): string[] => {
@@ -56,7 +55,8 @@ const generateComponentRegistry = () => {
     const files = getAllFiles(resolvedPath)
 
     // Exclude anatomies and docs from demo and blocks
-    const filteredFiles = type === "demo" ? files.filter((file) => !file.includes("/anatomies/")) : files
+    const filteredFiles =
+      type === "demo" ? files.filter((file) => !file.includes("/anatomies/")) : files
 
     filteredFiles.forEach((filePath) => {
       const componentName = path.basename(filePath, ".tsx")

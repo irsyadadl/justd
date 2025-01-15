@@ -48,13 +48,22 @@ export default function SalesDistribution() {
       />
       <Card.Content>
         <Chart config={chartConfig} className="mx-auto aspect-square max-h-[250px]">
-          <RadialBarChart data={chartData} startAngle={-90} endAngle={380} innerRadius={30} outerRadius={110}>
-            <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel nameKey="category" />} />
+          <RadialBarChart
+            data={chartData}
+            startAngle={-90}
+            endAngle={380}
+            innerRadius={30}
+            outerRadius={110}
+          >
+            <ChartTooltip
+              cursor={false}
+              content={<ChartTooltipContent hideLabel nameKey="category" />}
+            />
             <RadialBar dataKey="quantity" background>
               <LabelList
                 position="insideStart"
                 dataKey="category"
-                className="capitalize fill-white mix-blend-luminosity"
+                className="fill-white capitalize mix-blend-luminosity"
                 fontSize={11}
               />
             </RadialBar>

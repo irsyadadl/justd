@@ -51,13 +51,19 @@ export default function ToolbarOrientationDemo() {
       <Toolbar.Separator />
       <Toolbar.Group aria-label="Alignment">
         <Toggle aria-label="Align Left" size="square-petite" appearance="outline">
-          {({ isSelected }) => <>{isSelected ? <IconAlignmentLeftFill /> : <IconAlignmentLeft />}</>}
+          {({ isSelected }) => (
+            <>{isSelected ? <IconAlignmentLeftFill /> : <IconAlignmentLeft />}</>
+          )}
         </Toggle>
         <Toolbar.Item aria-label="Align Center" appearance="outline">
-          {({ isSelected }) => <>{isSelected ? <IconAlignmentCenterFill /> : <IconAlignmentCenter />}</>}
+          {({ isSelected }) => (
+            <>{isSelected ? <IconAlignmentCenterFill /> : <IconAlignmentCenter />}</>
+          )}
         </Toolbar.Item>
         <Toolbar.Item aria-label="Align Justify" appearance="outline">
-          {({ isSelected }) => <>{isSelected ? <IconAlignmentJustifyFill /> : <IconAlignmentJustify />}</>}
+          {({ isSelected }) => (
+            <>{isSelected ? <IconAlignmentJustifyFill /> : <IconAlignmentJustify />}</>
+          )}
         </Toolbar.Item>
       </Toolbar.Group>
       <Toolbar.Separator />

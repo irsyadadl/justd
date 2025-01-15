@@ -14,7 +14,7 @@ export default function ColorSwatchPickerDemo() {
         aria-label="Pick color"
         value={value}
         onChange={setValue}
-        className="flex gap-2 justify-center"
+        className="flex justify-center gap-2"
       >
         <ColorSwatchPicker.Item color="#f59e0b" />
         <ColorSwatchPicker.Item color="#84cc16" />

@@ -25,7 +25,12 @@ export default function PopoverControlledDemo() {
       <Button ref={triggerRef} onPress={() => setIsOpen(true)} intent="danger">
         Delete Account
       </Button>
-      <Popover.Content triggerRef={triggerRef} isOpen={isOpen} onOpenChange={setIsOpen} className="sm:max-w-sm">
+      <Popover.Content
+        triggerRef={triggerRef}
+        isOpen={isOpen}
+        onOpenChange={setIsOpen}
+        className="sm:max-w-sm"
+      >
         <Popover.Header>
           <Popover.Title>Confirm Deletion</Popover.Title>
           <Popover.Description>

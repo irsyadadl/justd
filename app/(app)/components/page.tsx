@@ -1,5 +1,4 @@
-import { CardListBox } from "@/app/(app)/components/partials/card-list-box"
-import { OnThisPage } from "@/app/(app)/components/partials/on-this-page"
+import { ListComponents } from "@/app/(app)/components/partials/list-components"
 import { Header } from "@/components/header"
 import { siteConfig } from "@/resources/config/site"
 import type { Metadata } from "next"
@@ -7,7 +6,8 @@ import { Container } from "ui"
 
 export const metadata: Metadata = {
   title: "Components",
-  description: "Over 50 accessible components, neatly grouped into sections. Guaranteed usability for all!",
+  description:
+    "Over 50 accessible components, neatly grouped into sections. Guaranteed usability for all!",
   metadataBase: new URL("https://getjustd.com"),
   applicationName: siteConfig.name,
   keywords: [
@@ -53,12 +53,9 @@ export default function Page() {
         <span className="text-fg">Comp</span>
         <span className="text-muted-fg">onents</span>
       </Header>
-      <div className="py-10 lg:py-16 bg-muted/35">
+      <div className="bg-muted/35 py-10 lg:py-16">
         <Container>
-          <div className="flex flex-col gap-12 items-start lg:flex-row">
-            <OnThisPage />
-            <CardListBox />
-          </div>
+          <ListComponents />
         </Container>
       </div>
     </div>

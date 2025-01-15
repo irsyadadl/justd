@@ -32,7 +32,9 @@ const choiceboxStyles = tv({
   },
 })
 
-interface ChoiceboxProps<T extends object> extends GridListProps<T>, VariantProps<typeof choiceboxStyles> {
+interface ChoiceboxProps<T extends object>
+  extends GridListProps<T>,
+    VariantProps<typeof choiceboxStyles> {
   className?: string
 }
 
@@ -60,26 +62,23 @@ const Choicebox = <T extends object>({
 const choiceboxItemStyles = tv({
   extend: focusStyles,
   base: [
-    "[--choicebox:color-mix(in_oklab,var(--color-primary)_3%,white_97%)] [--choicebox-fg:var(--color-primary)]",
+    "bg-bg [--choicebox-fg:var(--color-primary)] [--choicebox:color-mix(in_oklab,var(--color-primary)_4%,white_96%)]",
     "[--choicebox-selected-hovered:color-mix(in_oklab,var(--color-primary)_15%,white_85%)]",
     "dark:[--choicebox-selected-hovered:color-mix(in_oklab,var(--color-primary)_25%,black_75%)]",
-    "dark:[--choicebox:color-mix(in_oklab,var(--color-primary)_20%,black_70%)] dark:[--choicebox-fg:color-mix(in_oklab,var(--color-primary)_45%,white_55%)]",
-    "rounded-lg cursor-pointer border p-4 [&_[slot=title]]:font-medium",
+    "dark:[--choicebox-fg:color-mix(in_oklab,var(--color-primary)_45%,white_55%)] dark:[--choicebox:color-mix(in_oklab,var(--color-primary)_20%,black_70%)]",
+    "inset-ring inset-ring-border cursor-pointer rounded-lg p-4 [&_[slot=title]]:font-medium",
   ],
   variants: {
-    isHovered: {
-      true: "bg-secondary/30",
-    },
-    isSelected: {
+    init: {
       true: [
         "bg-(--choicebox) text-(--choicebox-fg)",
-        "z-20 data-hovered:bg-(--choicebox-selected-hovered) border-ring/50",
+        "inset-ring-ring/70 z-20 data-hovered:bg-(--choicebox-selected-hovered)",
         "[&_[slot=title]]:text-(--choicebox-fg)",
         "[&_[slot=description]]:text-(--choicebox-fg)",
       ],
     },
     isDisabled: {
-      true: "z-10 cursor-default opacity-50 [&_[slot=title]]:text-muted-fg [&_[slot=description]]:text-muted-fg/70 forced-colors:text-[GrayText]",
+      true: "z-10 cursor-default opacity-50 forced-colors:text-[GrayText] [&_[slot=description]]:text-muted-fg/70 [&_[slot=title]]:text-muted-fg",
     },
   },
 })
@@ -98,12 +97,13 @@ const ChoiceboxItem = ({ className, ...props }: ChoiceboxItemProps) => {
       className={composeRenderProps(className, (className, renderProps) =>
         choiceboxItemStyles({
           ...renderProps,
+          init: renderProps.isSelected || renderProps.isHovered || renderProps.isFocusVisible,
           className,
         }),
       )}
     >
       {(values) => (
-        <div className="flex gap-2 justify-between items-center w-full">
+        <div className="flex w-full items-center justify-between gap-2">
           <div className="flex flex-col pr-8">
             <Label slot="title" htmlFor={textValue}>
               {props.title}
@@ -120,4 +120,6 @@ const ChoiceboxItem = ({ className, ...props }: ChoiceboxItemProps) => {
 }
 
 Choicebox.Item = ChoiceboxItem
+
+export type { ChoiceboxProps, ChoiceboxItemProps }
 export { Choicebox }

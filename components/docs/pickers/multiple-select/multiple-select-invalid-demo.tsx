@@ -42,7 +42,11 @@ export default function MultipleSelectInvalidDemo() {
           return <MultipleSelect.Option textValue={item.name}>{item.name}</MultipleSelect.Option>
         }}
       </MultipleSelect>
-      {invalid && <div className="text-sm text-danger forced-colors:text-[Mark]">Please fill out this field.</div>}
+      {invalid && (
+        <div className="text-danger text-sm forced-colors:text-[Mark]">
+          Please fill out this field.
+        </div>
+      )}
       <Button type="submit">Submit</Button>
     </Form>
   )
