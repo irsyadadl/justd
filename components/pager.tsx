@@ -16,13 +16,13 @@ export const Pager = ({
     <div className={cn("not-prose flex w-full justify-between gap-3", className)}>
       {neighbours.previous && (
         <div className="group w-full">
-          <Link className="inline-flex justify-start" href={neighbours.previous.url}>
+          <Link className="inline-flex text-sm justify-start" href={neighbours.previous.url}>
             <div>
               <div className="flex items-center gap-1 text-muted-fg">
                 <IconChevronLgLeft className="group-hover:-translate-x-2 size-3.5 transition-transform" />
                 Previous
               </div>
-              <span className="text-fg">{neighbours.previous.name}</span>
+              <span className="text-fg line-clamp-1">{neighbours.previous.name}</span>
             </div>
           </Link>
         </div>
@@ -30,13 +30,13 @@ export const Pager = ({
 
       {neighbours.next && (
         <div className="group">
-          <Link className="inline-flex justify-end" href={neighbours.next.url}>
+          <Link className="inline-flex text-sm justify-end" href={neighbours.next.url}>
             <div>
               <div className="flex items-center justify-end gap-1 text-right text-muted-fg">
                 Next
                 <IconChevronLgRight className="size-3.5 transition-transform group-hover:translate-x-1" />
               </div>
-              <span className="text-fg">{neighbours.next.name}</span>
+              <span className="text-fg line-clamp-1">{neighbours.next.name}</span>
             </div>
           </Link>
         </div>
