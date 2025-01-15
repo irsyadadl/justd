@@ -21,6 +21,7 @@ const choiceboxStyles = tv({
       6: "sm:grid-cols-6",
     },
     gap: {
+      0: "gap-0",
       2: "gap-2",
       4: "gap-4",
       6: "gap-6",
@@ -28,8 +29,16 @@ const choiceboxStyles = tv({
   },
   defaultVariants: {
     columns: 2,
-    gap: 6,
+    gap: 4,
   },
+  compoundVariants: [
+    {
+      gap: 0,
+      columns: 1,
+      className:
+        "*:data-[slot=choicebox-item]:-mt-px rounded-lg *:data-[slot=choicebox-item]:inset-ring-1 *:data-[slot=choicebox-item]:rounded-none *:data-[slot=choicebox-item]:last:rounded-b-[calc(var(--radius-lg)-1px)] *:data-[slot=choicebox-item]:first:rounded-t-[calc(var(--radius-lg)-1px)]",
+    },
+  ],
 })
 
 interface ChoiceboxProps<T extends object>
@@ -67,6 +76,7 @@ const choiceboxItemStyles = tv({
     "dark:[--choicebox-selected-hovered:color-mix(in_oklab,var(--color-primary)_25%,black_75%)]",
     "dark:[--choicebox-fg:color-mix(in_oklab,var(--color-primary)_45%,white_55%)] dark:[--choicebox:color-mix(in_oklab,var(--color-primary)_20%,black_70%)]",
     "inset-ring inset-ring-border cursor-pointer rounded-lg p-4 [&_[slot=title]]:font-medium",
+    "data-selected:**:data-[slot=choicebox-icon]:text-current/90 **:data-[slot=choicebox-icon]:size-5 **:data-[slot=choicebox-icon]:shrink-0 **:data-[slot=choicebox-icon]:text-current/60",
   ],
   variants: {
     init: {
@@ -84,15 +94,17 @@ const choiceboxItemStyles = tv({
 })
 
 interface ChoiceboxItemProps extends GridListItemProps, VariantProps<typeof choiceboxItemStyles> {
-  title: string
+  title?: string
   description?: string
+  icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>
 }
 
-const ChoiceboxItem = ({ className, ...props }: ChoiceboxItemProps) => {
+const ChoiceboxItem = ({ icon: Icon, className, ...props }: ChoiceboxItemProps) => {
   const textValue = props.title ?? props.textValue
   return (
     <GridListItem
       textValue={textValue}
+      data-slot="choicebox-item"
       {...props}
       className={composeRenderProps(className, (className, renderProps) =>
         choiceboxItemStyles({
@@ -104,11 +116,16 @@ const ChoiceboxItem = ({ className, ...props }: ChoiceboxItemProps) => {
     >
       {(values) => (
         <div className="flex w-full items-center justify-between gap-2">
-          <div className="flex flex-col pr-8">
-            <Label slot="title" htmlFor={textValue}>
-              {props.title}
-            </Label>
-            {props.description && <Description>{props.description}</Description>}
+          <div className="flex gap-x-2.5">
+            {Icon && <Icon data-slot="choicebox-icon" />}
+            <div className="flex flex-col gap-y-1 pr-8">
+              <Label slot="title" className="text-sm/4" htmlFor={textValue}>
+                {props.title}
+              </Label>
+              {props.description && (
+                <Description className="text-sm/5">{props.description}</Description>
+              )}
+            </div>
           </div>
           {values.selectionMode === "multiple" && values.selectionBehavior === "toggle" && (
             <Checkbox slot="selection" />

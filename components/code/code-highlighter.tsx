@@ -57,7 +57,7 @@ export const CodeHighlighter = ({
       className={cn(
         "not-prose overflow-auto font-mono text-sm leading-8",
         max96 && "max-h-96",
-        !plain && "inset-ring-1 inset-ring-border rounded-lg bg-shiki-bg px-4 py-2.5",
+        !plain && "rounded-lg bg-shiki-bg px-4 py-2.5 ring-1 ring-border",
         removeLastLine &&
           "**:data-rehype-pretty-code-figure:*:[pre]:*:[code]:*:data-line:last:hidden",
         className,
