@@ -87,7 +87,6 @@ const Checkbox = ({ className, ...props }: CheckboxProps) => {
             className={boxStyles({
               ...renderProps,
               isSelected: isSelected || isIndeterminate,
-              className: props.description ? "mt-1" : "mt-px",
             })}
           >
             {isIndeterminate ? <IconMinus /> : isSelected ? <IconCheck /> : null}

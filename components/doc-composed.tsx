@@ -1,11 +1,8 @@
 "use client"
 
-import { cn } from "@/utils/classes"
+import { docs } from "@/.source"
 import { usePathname } from "next/navigation"
 import { Card, Link } from "ui"
-import { docs } from "#site/content"
-
-const simplifiedDocs = docs.map(({ title, slug, description }) => ({ title, slug, description }))
 
 export function DocComposed({
   components,
@@ -13,41 +10,35 @@ export function DocComposed({
 }: { components: string[]; text?: string | React.ReactNode }) {
   const pathname = usePathname()
   const name = getLatestOfString(pathname)
-  const filteredComponents = simplifiedDocs.filter((component) => {
-    const lastSegment = component.slug.split("/").pop()
-    return components.includes(lastSegment || "")
+
+  const filteredComponents = docs.filter((doc) => {
+    const filename = doc._file?.path?.split("/").at(-1)?.split(".")[0]
+    return components.includes(filename!)
   })
   return (
     <div className="not-prose">
       {!text ? (
         <>
           <p className="mb-6">
-            Plug this component into the CLI, and it automatically loads all the included
-            components. No need to add them individually.
+            When you plug this component from the CLI, it autoloads all the composed components. No
+            need to toss 'em in one at a time.
           </p>
           <p className="mb-6">
-            The <strong className="font-medium text-fg lowercase">{name}</strong> comes packed with
-            a variety of components to make it stand out.
+            The <strong className="font-medium lowercase">{name}</strong>'s decked out with several
+            components to make it bangin'.
           </p>
         </>
       ) : (
         <p className="mb-4">{text}</p>
       )}
-      <div
-        className={cn(
-          "grid gap-2",
-          filteredComponents.length === 1 ? "grid-cols-1" : "grid-cols-2",
-        )}
-      >
+      <div className="grid gap-2 sm:grid-cols-2">
         {filteredComponents.map((item) => (
-          <div className="relative" key={item.slug}>
-            <Link
-              aria-label={`Open ${item.title}`}
-              rel="noopener noreferrer"
-              href={`/${item.slug}`}
-              className="peer absolute inset-0 size-full rounded-lg"
-            />
-            <Card className="overflow-hidden transition-colors peer-hover:bg-secondary/30">
+          <Link
+            className="group"
+            key={item._file?.path}
+            href={`/docs/${item._file?.path.replace(".mdx", "")}`}
+          >
+            <div className="inset-ring inset-ring-border overflow-hidden rounded-sm bg-white shadow-xs transition-colors group-data-hovered:bg-secondary/50 dark:inset-ring-fg/5 dark:inset-shadow-2xs dark:inset-shadow-fg/7 dark:bg-overlay dark:group-data-hovered:bg-muted">
               <Card.Header className="p-4">
                 <Card.Title className="line-clamp-1 font-medium text-base sm:text-lg">
                   {item.title}
@@ -56,8 +47,8 @@ export function DocComposed({
                   {item.description}
                 </Card.Description>
               </Card.Header>
-            </Card>
-          </div>
+            </div>
+          </Link>
         ))}
       </div>
     </div>

@@ -1,13 +1,13 @@
 "use client"
 
-import React from "react"
-
-import sidebar from "@/resources/lib/sidebar.json"
+import { source } from "@/utils/source"
+import type { PageTree } from "fumadocs-core/server"
 import { Link } from "next-view-transitions"
 import type { LinkProps } from "next/link"
 import { usePathname } from "next/navigation"
+import React from "react"
 import { twMerge } from "tailwind-merge"
-import { Badge, Heading } from "ui"
+import { Heading, Separator } from "ui"
 
 export interface SidebarItem {
   title: string
@@ -17,65 +17,12 @@ export interface SidebarItem {
 }
 
 export function Aside() {
+  const pageTree = source.pageTree
   return (
-    <div className="flex flex-col gap-y-6 px-4">
-      {sidebar.map((item: SidebarItem) => (
-        <div key={item.slug || item.title}>
-          {item.children && item.children.length > 0 && item.title !== "Components" && (
-            <Heading
-              className="mb-2 flex items-center gap-x-2 font-medium text-base sm:text-sm"
-              level={3}
-            >
-              {item.title}
-            </Heading>
-          )}
-
-          {item.children && item.children.length > 0 && (
-            <div>
-              {item.children.map((child: SidebarItem) => (
-                <div key={child.slug || child.title}>
-                  {child.children && child.children.length > 0 ? (
-                    <Heading className="mb-2 font-medium text-base sm:text-sm" level={4}>
-                      {child.title}
-                    </Heading>
-                  ) : (
-                    <AsideLink href={`/${child.slug}` || "#"}>{child.title}</AsideLink>
-                  )}
-
-                  {child.children && child.children.length > 0 && (
-                    <div className="mb-6 space-y-2">
-                      {child.children.map((subChild: SidebarItem) => (
-                        <AsideLink
-                          key={subChild.slug || subChild.title}
-                          href={`/${subChild.slug}` || "#"}
-                        >
-                          {subChild.title}
-
-                          {subChild.status && (
-                            <Badge
-                              className="-mr-1.5"
-                              intent={
-                                subChild.status === "primitive"
-                                  ? "secondary"
-                                  : subChild.status === "beta"
-                                    ? "warning"
-                                    : "info"
-                              }
-                              shape="square"
-                            >
-                              {subChild.status}
-                            </Badge>
-                          )}
-                        </AsideLink>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-      ))}
+    <div className="px-4">
+      {pageTree.children.map((item, index) => {
+        return <SidebarComposed key={index} node={item} />
+      })}
     </div>
   )
 }
@@ -112,4 +59,42 @@ function AsideLink({ href, ...props }: AsideLinkProps) {
       )}
     />
   )
+}
+
+const SidebarComposed = ({
+  node,
+}: {
+  node: PageTree.Node
+}) => {
+  if (node.type === "folder") {
+    return (
+      <div className="mb-6">
+        {!Number(node.name) && (
+          <Heading
+            className="mb-2 flex items-center gap-x-2 font-medium text-base sm:text-sm"
+            level={3}
+          >
+            {node.name}
+          </Heading>
+        )}
+
+        {node.children.map((child, index) => (
+          <SidebarComposed key={index} node={child} />
+        ))}
+      </div>
+    )
+  }
+
+  if (node.type === "separator") {
+    return <Separator />
+  }
+
+  if (node.type === "page") {
+    return (
+      <AsideLink href={node.url}>
+        {node.icon}
+        {node.name}
+      </AsideLink>
+    )
+  }
 }

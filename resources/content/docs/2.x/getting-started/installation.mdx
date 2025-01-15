@@ -24,7 +24,7 @@ Begin by executing this command:
 <Installation options={{ isInit: true }} items={['initial setup']} />
 
 When you're run this command, it will ask a couple of questions. Like where's your components folder, utils, your main css file, and lastly is the theme you want like so:
-```bash
+```
 ✔ Initializing.
 ? Components folder: src/components
 ? Utils folder: src/utils
@@ -37,7 +37,7 @@ When you're run this command, it will ask a couple of questions. Like where's yo
   stone
 ```
 If it's all good, you will see the following:
-```bash
+```
 Not sure what to do next?
 Visit our documentation at: https://getjustd.com
 
@@ -56,7 +56,7 @@ Next, use `add [component-name]` to include a specific component in your project
 <Installation options={{ isComponent: true, noText: true }} items={['combo-box']} />
 
 This command will ensure all necessary components are installed:
-```bash
+```
 ✔ Checking.
 ✔ Installing dependencies.
 ✔ Created 7 files:
@@ -75,7 +75,7 @@ If you need to include grouped components, refer to the documentation which orga
 
 <Installation options={{ isComponent: true, noText: true }} items={['overlays']} />
 Using this command, you will install all components under the overlays namespace.
-```bash
+```
 ✓ button created
 ✓ dialog created
 ✓ modal created
@@ -93,7 +93,8 @@ You can override the existing components by using the `-o` flag. This will overw
 You might prefer to select the components you want to include by adding them without specifying any items. Just use the following command to add components:
 <Installation options={{ isComponent: true, noText: true }} items={['']} />
 This command will present a list of available components, which you can navigate and select using the arrow keys and spacebar.
-```bash
+
+```
 ? Select components to add: (Press <space> to select, <a> to toggle all, <i> to invert selection, and <enter> to
   proceed)
   ◯ dropdown

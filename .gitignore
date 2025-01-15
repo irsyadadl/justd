@@ -5,6 +5,7 @@
 /public/stubs
 ignore
 /.vercel
+/.source
 /note.md
 delete-me.txt
 # dependencies

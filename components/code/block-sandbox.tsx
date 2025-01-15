@@ -140,7 +140,7 @@ function Component({ folders, fullscreen, isIframe = false, title, ...props }: P
     return <p>Component "{props.preview}" not found in the registry.</p>
   }
   return (
-    <div className="relative isolate flex overflow-hidden rounded-xl border">
+    <div className="not-prose relative isolate flex overflow-hidden rounded-xl border">
       <Tabs className="w-full gap-0 p-1">
         <div className="mb-1 flex items-center justify-between overflow-hidden rounded-lg bg-navbar ring-1 ring-fg/10">
           <h2 className="ml-3.5 inline-flex items-center gap-x-1.5 font-medium text-sm **:data-[slot=icon]:text-muted-fg">
@@ -305,7 +305,7 @@ function Component({ folders, fullscreen, isIframe = false, title, ...props }: P
                 <CodeHighlighter
                   max96={false}
                   plain
-                  className={"h-full overflow-y-auto bg-zinc-950 px-6 pt-6 pb-24 text-white"}
+                  className={"h-full overflow-y-auto bg-shiki-bg px-6 pt-6 pb-32 text-white"}
                   code={code}
                 />
               </SidebarInset>

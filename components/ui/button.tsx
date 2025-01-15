@@ -13,8 +13,8 @@ const buttonStyles = tv({
   extend: focusButtonStyles,
   base: [
     "kbt32x relative inline-flex items-center justify-center gap-x-2 border font-medium",
-    "forced-colors:[--button-icon:ButtonText] forced-colors:data-hovered:[--button-icon:ButtonText]",
-    "*:data-[slot=icon]:-mx-0.5 *:data-[slot=icon]:my-1 *:data-[slot=icon]:size-4 *:data-[slot=icon]:shrink-0 *:data-[slot=icon]:text-current/60",
+    "forced-colors:[--btn-icon:ButtonText] forced-colors:data-hovered:[--btn-icon:ButtonText]",
+    "*:data-[slot=icon]:-mx-0.5 data-hovered:*:data-[slot=icon]:text-current/90 data-pressed:*:data-[slot=icon]:text-current *:data-[slot=icon]:my-1 *:data-[slot=icon]:size-4 *:data-[slot=icon]:shrink-0 *:data-[slot=icon]:text-current/60 *:data-[slot=icon]:transition",
     "*:data-[slot=avatar]:-mx-0.5 *:data-[slot=avatar]:my-1 *:data-[slot=avatar]:*:size-4 *:data-[slot=avatar]:size-4 *:data-[slot=avatar]:shrink-0",
   ],
   variants: {
@@ -49,8 +49,8 @@ const buttonStyles = tv({
       solid: [
         "inset-ring-0 dark:inset-ring dark:border-0",
         "inset-ring-(--btn-border) inset-shadow-2xs border-(--btn-border) bg-(--btn-bg) text-(--btn-fg)",
-        "data-hovered:bg-(--btn-bg-hovered) data-hovered:ring-(--btn-border-hovered) data-hovered:*:data-[slot=icon]:text-current/90",
-        "data-pressed:border-(--btn-border) data-pressed:bg-(--btn-bg) data-pressed:*:data-[slot=icon]:text-current",
+        "data-hovered:bg-(--btn-bg-hovered) data-hovered:ring-(--btn-border-hovered)",
+        "data-pressed:border-(--btn-border) data-pressed:bg-(--btn-bg)",
       ],
       outline: ["border data-hovered:bg-secondary data-pressed:bg-secondary"],
       plain: ["border-transparent data-hovered:bg-secondary data-pressed:bg-secondary"],
@@ -61,7 +61,7 @@ const buttonStyles = tv({
       medium: "h-10 px-4 text-base sm:text-sm/6",
       large:
         "h-11 px-4.5 text-base *:data-[slot=icon]:mx-[-1.5px] sm:*:data-[slot=icon]:size-5 lg:text-base/7",
-      "square-petite": "size-9 shrink-0 **:data-[slot=icon]:text-current",
+      "square-petite": "size-9 shrink-0",
     },
     shape: {
       square: "rounded-lg",

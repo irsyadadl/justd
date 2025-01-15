@@ -7,11 +7,11 @@
 @variant dark (&:is(.dark *));
 
 @theme {
-  --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-    "Segoe UI Symbol", "Noto Color Emoji";
-  --font-mono: var(--font-mono), 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', '"Liberation Mono"', '"Courier New"', 'monospace';
-  --color-shiki-bg: #0e0e10;
-  --color-shiki-border: var(--color-zinc-800);
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+  "Segoe UI Symbol", "Noto Color Emoji";
+  --font-mono: var(--font-geist-mono), 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', '"Liberation Mono"', '"Courier New"', 'monospace';
+  --color-shiki-bg: var(--shiki-bg);
+  --color-shiki-border: var(--input);
 
   --color-border: var(--border);
   --color-input: var(--input);
@@ -74,6 +74,8 @@
 
 @layer base {
   :root {
+    --shiki-bg: #fff;
+
     --bg: oklch(1 0 0);
     --fg: oklch(0.141 0.005 285.823);
 
@@ -128,6 +130,8 @@
   }
 
   .dark {
+
+    --shiki-bg: #0e0e10;
     --bg: oklch(0.091 0.005 285.823);
     --fg: oklch(0.985 0 0);
 
@@ -191,7 +195,13 @@
   }
 
   html {
-    @apply scroll-smooth;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    font-variation-settings: normal;
+    scroll-behavior: smooth;
+    height: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-tap-highlight-color: transparent;
   }
 
   body {

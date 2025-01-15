@@ -21,7 +21,11 @@
     },
     "alias": {
       "type": "string"
+    },
+    "language": {
+      "type": "string",
+      "enum": ["typescript", "javascript"]
     }
   },
-  "required": ["$schema", "ui", "utils", "gray", "css", "alias"]
+  "required": ["ui", "utils", "gray", "css", "alias"]
 }
