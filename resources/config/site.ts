@@ -9,7 +9,8 @@ export const siteConfig = {
     github: "https://github.com/justdlabs",
     personalSite: "https://irsyad.co",
   },
-  repo: "https://github.com/justdlabs/justd",
+  discord: "https://discord.gg/DYmVJ66JUD",
+  repo: "https://github.com/irsyadadl/justd",
   currentVersion: "2.x",
 }
 

@@ -24,7 +24,6 @@ import {
   IconWindowVisitFill,
 } from "justd-icons"
 import { LayoutGroup } from "motion/react"
-import { useTheme } from "next-themes"
 import { usePathname } from "next/navigation"
 import { Badge, Button, Link, Menu, Separator, buttonStyles } from "ui"
 
@@ -35,11 +34,6 @@ import { CommandPalette } from "./command-palette"
 import { NavLink } from "./nav-item"
 import { TakeCurrentUrl } from "./take-current-url"
 import { ThemeSwitcher } from "./theme-switcher"
-
-const menuItems = [
-  { id: 1, label: "Home", url: "/" },
-  { id: 4, label: "Components", url: "/docs/2.x/getting-started/introduction" },
-]
 
 export function Navbar() {
   const id = useId()
@@ -172,6 +166,18 @@ export function Navbar() {
                       <IconBrandGithub />
                     </Link>
                     <Link
+                      aria-label="Join Discord"
+                      className={buttonStyles({
+                        appearance: "outline",
+                        size: "square-petite",
+                        className: "**:data-[slot=icon]:text-fg",
+                      })}
+                      target="_blank"
+                      href={siteConfig.discord}
+                    >
+                      <IconBrandDiscord />
+                    </Link>
+                    <Link
                       aria-label="Follow Update on X"
                       className={buttonStyles({
                         appearance: "outline",
@@ -196,7 +202,6 @@ export function Navbar() {
 }
 
 export function NavbarDropdown() {
-  const { theme, setTheme } = useTheme()
   const pathname = usePathname()
   return (
     <div className="flex items-center gap-x-1">
@@ -242,7 +247,7 @@ export function NavbarDropdown() {
           </MenuSection>
           <MenuSection>
             <Header className="px-3 py-1 text-muted-fg">Refs</Header>
-            <Menu.Item href="https://discord.gg/DYmVJ66JUD" target="_blank">
+            <Menu.Item href={siteConfig.discord} target="_blank">
               <IconBrandDiscord /> Discord
             </Menu.Item>
             <Menu.Item href="https://x.com/intent/follow?screen_name=irsyadadl" target="_blank">

@@ -17,7 +17,7 @@ import { tv } from "tailwind-variants"
 
 const dropdownItemStyles = tv({
   base: [
-    "group relative flex cursor-default select-none items-center gap-x-1.5 rounded-[calc(var(--radius-lg)-1px)] px-2.5 py-2 forced-color:text-[Highlight] text-base text-fg outline outline-0 forced-color-adjust-none sm:text-sm forced-colors:text-[LinkText]",
+    "group relative flex cursor-default select-none items-center gap-x-1.5 rounded-[calc(var(--radius-lg)-1px)] px-2.5 py-2 forced-color:text-[Highlight] text-base text-fg outline outline-0 forced-color-adjust-none sm:text-sm/6 forced-colors:text-[LinkText]",
     "has-submenu:data-open:data-danger:bg-danger/20 has-submenu:data-open:data-danger:text-danger",
     "data-has-submenu:data-open:bg-accent data-has-submenu:data-open:text-accent-fg data-has-submenu:data-open:*:data-[slot=icon]:text-accent-fg data-has-submenu:data-open:*:[.text-muted-fg]:text-accent-fg",
     "**:data-[slot=avatar]:-mr-0.5 **:data-[slot=avatar]:*:size-6 **:data-[slot=avatar]:size-6 sm:**:data-[slot=avatar]:*:size-5 sm:**:data-[slot=avatar]:size-5",
@@ -45,7 +45,7 @@ const dropdownSectionStyles = tv({
     section:
       "first:-mt-[5px] xss3 flex flex-col gap-y-0.5 after:block after:h-[4px] after:content-['']",
     header:
-      "-top-[5px] -mb-0.5 -mx-1.5 sticky z-10 min-w-(--trigger-width) truncate border-y bg-muted px-4 py-2 font-medium text-muted-fg text-sm supports-[-moz-appearance:none]:bg-muted [&+*]:mt-1",
+      "-top-[5px] -mb-0.5 -mx-1.5 sticky z-10 min-w-(--trigger-width) truncate border-y bg-bg/10 px-4 py-2 font-medium text-muted-fg text-sm supports-[-moz-appearance:none]:bg-muted [&+*]:mt-1",
   },
 })
 
