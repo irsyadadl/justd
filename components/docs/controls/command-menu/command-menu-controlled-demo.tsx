@@ -28,7 +28,7 @@ export default function CommandMenuControlledDemo() {
         onOpenChange={setIsOpen}
       >
         <CommandMenu.Search placeholder="Quick search..." />
-        <CommandMenu.List>
+        <CommandMenu.List items={results}>
           {(user) => (
             <CommandMenu.Item textValue={user.name} key={user.name}>
               <Avatar src={user.image_url} />
