@@ -125,7 +125,7 @@ const CommandMenuSearch = ({ className, placeholder, ...props }: CommandMenuSear
       {...props}
     >
       {isPending ? (
-        <Loader className="size-5" variant="spin" />
+        <Loader className="size-4.5" variant="spin" />
       ) : (
         <IconSearch
           data-slot="command-menu-search-icon"
