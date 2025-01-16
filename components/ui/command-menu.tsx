@@ -1,6 +1,5 @@
 "use client"
 
-import { Keyboard, type KeyboardProps } from "@/components/ui/keyboard"
 import { cn } from "@/utils/classes"
 import { IconSearch } from "justd-icons"
 import { createContext, use, useEffect } from "react"
@@ -15,6 +14,7 @@ import {
   UNSTABLE_DefaultCollectionRenderer as DefaultCollectionRenderer,
   Dialog,
   Header,
+  Input,
   Menu as MenuPrimitive,
   type MenuProps,
   MenuSection,
@@ -28,7 +28,10 @@ import {
 } from "react-aria-components"
 import { twJoin } from "tailwind-merge"
 import { tv } from "tailwind-variants"
-import { Input, Loader, Menu, type MenuSectionProps, composeTailwindRenderProps } from "ui"
+import { Keyboard, type KeyboardProps } from "./keyboard"
+import { Loader } from "./loader"
+import { Menu, type MenuSectionProps } from "./menu"
+import { composeTailwindRenderProps } from "./primitive"
 
 interface CommandMenuProviderProps {
   isPending?: boolean
@@ -131,7 +134,7 @@ const CommandMenuSearch = ({ className, placeholder, ...props }: CommandMenuSear
       )}
       <Input
         placeholder={placeholder ?? "Search..."}
-        className="w-full [&::-webkit-search-cancel-button]:hidden"
+        className="w-full min-w-0 bg-transparent px-2.5 py-2 text-base text-fg placeholder-muted-fg outline-hidden data-focused:outline-hidden sm:text-sm [&::-ms-reveal]:hidden [&::-webkit-search-cancel-button]:hidden"
       />
       {escapeButton && (
         <Button
