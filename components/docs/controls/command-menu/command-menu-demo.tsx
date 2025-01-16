@@ -16,32 +16,32 @@ export default function CommandMenuDemo() {
         <CommandMenu.Search placeholder="Quick search..." />
         <CommandMenu.List>
           <CommandMenu.Section title="Pages">
-            <CommandMenu.Item href="#">
+            <CommandMenu.Item textValue="Home" href="#">
               <IconHome /> Home
             </CommandMenu.Item>
-            <CommandMenu.Item href="#">
+            <CommandMenu.Item textValue="Docs" href="#">
               <IconNotes /> Docs
               <CommandMenu.Keyboard keys="⌘k" />
             </CommandMenu.Item>
-            <CommandMenu.Item href="#">
+            <CommandMenu.Item textValue="Components" href="#">
               <IconCube /> Components
             </CommandMenu.Item>
           </CommandMenu.Section>
           <CommandMenu.Section title="Dashboard">
-            <CommandMenu.Item href="#">
+            <CommandMenu.Item textValue="billing" href="#">
               <IconBill /> Billing
             </CommandMenu.Item>
-            <CommandMenu.Item href="#">
+            <CommandMenu.Item textValue="settings" href="#">
               <IconGear /> Settings
               <CommandMenu.Keyboard keys="⌘s" />
             </CommandMenu.Item>
-            <CommandMenu.Item href="#">
+            <CommandMenu.Item textValue="security" href="#">
               <IconShield /> Security
             </CommandMenu.Item>
           </CommandMenu.Section>
           <CommandMenu.Section title="Team">
             {users.map((user) => (
-              <CommandMenu.Item key={user.id}>
+              <CommandMenu.Item textValue={user.name} key={user.id}>
                 <Avatar src={user.image_url} />
                 {user.name}
               </CommandMenu.Item>

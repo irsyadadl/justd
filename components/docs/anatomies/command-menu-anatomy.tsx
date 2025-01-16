@@ -10,7 +10,7 @@ export default function CommandMenuAnatomy() {
       <CommandMenu.Search placeholder="Quick search..." />
       <CommandMenu.List>
         <CommandMenu.Section title="Pages">
-          <CommandMenu.Item href="#">
+          <CommandMenu.Item textValue="home" href="#">
             <IconHome /> Home
           </CommandMenu.Item>
         </CommandMenu.Section>

@@ -17,52 +17,52 @@ export default function CommandMenuDescriptionDemo() {
         />
         <CommandMenu.List>
           <CommandMenu.Section className="mt-2" title="Suggestions">
-            <CommandMenu.Item>
+            <CommandMenu.Item textValue="phpstorm">
               PhpStorm
               <CommandMenu.Description>Application</CommandMenu.Description>
             </CommandMenu.Item>
-            <CommandMenu.Item>
+            <CommandMenu.Item textValue="webstorm">
               WebStorm
               <CommandMenu.Description>Application</CommandMenu.Description>
             </CommandMenu.Item>
-            <CommandMenu.Item>
+            <CommandMenu.Item textValue="warp">
               Warp
               <CommandMenu.Description>Application</CommandMenu.Description>
             </CommandMenu.Item>
           </CommandMenu.Section>
 
           <CommandMenu.Section title="Applications">
-            <CommandMenu.Item>
+            <CommandMenu.Item textValue="terminal">
               Terminal
               <CommandMenu.Description>Application</CommandMenu.Description>
             </CommandMenu.Item>
-            <CommandMenu.Item>
+            <CommandMenu.Item textValue="docker">
               Docker
               <CommandMenu.Description>Application</CommandMenu.Description>
             </CommandMenu.Item>
           </CommandMenu.Section>
 
           <CommandMenu.Section title="Commands">
-            <CommandMenu.Item>
+            <CommandMenu.Item textValue="git status">
               Git status
               <CommandMenu.Description>Command</CommandMenu.Description>
             </CommandMenu.Item>
-            <CommandMenu.Item>
+            <CommandMenu.Item textValue="bun add">
               Bun add
               <CommandMenu.Description>Command</CommandMenu.Description>
             </CommandMenu.Item>
-            <CommandMenu.Item>
+            <CommandMenu.Item textValue="composer require">
               Composer require
               <CommandMenu.Description>Command</CommandMenu.Description>
             </CommandMenu.Item>
           </CommandMenu.Section>
 
           <CommandMenu.Section title="System Settings">
-            <CommandMenu.Item>
+            <CommandMenu.Item textValue="display brightness">
               Display Brightness
               <CommandMenu.Description>System Settings</CommandMenu.Description>
             </CommandMenu.Item>
-            <CommandMenu.Item>
+            <CommandMenu.Item textValue="sound output">
               Sound Output
               <CommandMenu.Description>System Settings</CommandMenu.Description>
             </CommandMenu.Item>

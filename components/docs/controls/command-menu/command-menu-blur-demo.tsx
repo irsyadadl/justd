@@ -16,32 +16,32 @@ export default function CommandMenuBlurDemo() {
         <CommandMenu.Search placeholder="Quick search..." />
         <CommandMenu.List>
           <CommandMenu.Section title="Pages">
-            <CommandMenu.Item href="#">
+            <CommandMenu.Item href="#" textValue="home">
               <IconHome /> Home
             </CommandMenu.Item>
-            <CommandMenu.Item href="#">
+            <CommandMenu.Item href="#" textValue="docs">
               <IconNotes /> Docs
               <CommandMenu.Keyboard keys="⌘k" />
             </CommandMenu.Item>
-            <CommandMenu.Item href="#">
+            <CommandMenu.Item textValue="components" href="#">
               <IconCube /> Components
             </CommandMenu.Item>
           </CommandMenu.Section>
           <CommandMenu.Section title="Dashboard">
-            <CommandMenu.Item href="#">
+            <CommandMenu.Item href="#" textValue="billing">
               <IconBill /> Billing
             </CommandMenu.Item>
-            <CommandMenu.Item href="#">
+            <CommandMenu.Item href="#" textValue="settings">
               <IconGear /> Settings
               <CommandMenu.Keyboard keys="⌘s" />
             </CommandMenu.Item>
-            <CommandMenu.Item href="#">
+            <CommandMenu.Item href="#" textValue="security">
               <IconShield /> Security
             </CommandMenu.Item>
           </CommandMenu.Section>
           <CommandMenu.Section title="Team">
             {users.map((user) => (
-              <CommandMenu.Item key={user.id}>
+              <CommandMenu.Item textValue={user.name} key={user.id}>
                 <Avatar src={user.image_url} />
                 {user.name}
               </CommandMenu.Item>

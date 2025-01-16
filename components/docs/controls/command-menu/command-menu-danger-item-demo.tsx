@@ -15,13 +15,15 @@ export default function CommandMenuDangerItemDemo() {
         <CommandMenu.Search placeholder="Quick search..." />
         <CommandMenu.List>
           <CommandMenu.Section>
-            <CommandMenu.Item>System Shutdown</CommandMenu.Item>
+            <CommandMenu.Item textValue="system shutdown">System Shutdown</CommandMenu.Item>
             <CommandMenu.Item isDanger>Format Disk</CommandMenu.Item>
-            <CommandMenu.Item>Restart Service</CommandMenu.Item>
-            <CommandMenu.Item>Empty Trash</CommandMenu.Item>
-            <CommandMenu.Item>Overwrite File</CommandMenu.Item>
-            <CommandMenu.Item isDanger>Reset Factory Settings</CommandMenu.Item>
-            <CommandMenu.Item>Disconnect Network</CommandMenu.Item>
+            <CommandMenu.Item textValue="restart service">Restart Service</CommandMenu.Item>
+            <CommandMenu.Item textValue="empty trash">Empty Trash</CommandMenu.Item>
+            <CommandMenu.Item textValue="overwrite file">Overwrite File</CommandMenu.Item>
+            <CommandMenu.Item textValue="reset factory settings" isDanger>
+              Reset Factory Settings
+            </CommandMenu.Item>
+            <CommandMenu.Item textValue="disconnect network">Disconnect Network</CommandMenu.Item>
           </CommandMenu.Section>
         </CommandMenu.List>
       </CommandMenu>

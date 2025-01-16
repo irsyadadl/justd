@@ -15,9 +15,15 @@ export default function CommandMenuDynamicDemo() {
         <CommandMenu.Search placeholder="Quick search..." />
         <CommandMenu.List>
           <CommandMenu.Section title="Pages">
-            <CommandMenu.Item href="#">Home</CommandMenu.Item>
-            <CommandMenu.Item href="#">Docs</CommandMenu.Item>
-            <CommandMenu.Item href="#">Components</CommandMenu.Item>
+            <CommandMenu.Item textValue="Home" href="#">
+              Home
+            </CommandMenu.Item>
+            <CommandMenu.Item textValue="Docs" href="#">
+              Docs
+            </CommandMenu.Item>
+            <CommandMenu.Item textValue="Components" href="#">
+              Components
+            </CommandMenu.Item>
           </CommandMenu.Section>
           <CommandMenu.Separator />
           <CommandMenu.Section title="Users" items={users}>

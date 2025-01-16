@@ -80,28 +80,28 @@ export function CommandPalette({ openCmd, setOpen }: OpenCloseProps) {
         {client.search === "" && (
           <>
             <CommandMenu.Section>
-              <CommandMenu.Item href="/">
+              <CommandMenu.Item textValue="home" href="/">
                 <IconHome /> Home
               </CommandMenu.Item>
-              <CommandMenu.Item href="/docs/2.x/getting-started/installation">
+              <CommandMenu.Item textValue="docs" href="/docs/2.x/getting-started/installation">
                 <IconNotes /> Docs
               </CommandMenu.Item>
-              <CommandMenu.Item href="/components">
+              <CommandMenu.Item textValue="components" href="/components">
                 <IconCube /> Components
               </CommandMenu.Item>
-              <CommandMenu.Item href="/colors">
+              <CommandMenu.Item textValue="colors" href="/colors">
                 <IconColors /> Colors
               </CommandMenu.Item>
-              <CommandMenu.Item href="/icons">
+              <CommandMenu.Item textValue="icons" href="/icons">
                 <IconBrandJustd /> Icons
               </CommandMenu.Item>
-              <CommandMenu.Item href="/themes">
+              <CommandMenu.Item textValue="themes" href="/themes">
                 <IconColorSwatch /> Themes
               </CommandMenu.Item>
-              <CommandMenu.Item href="/blocks">
+              <CommandMenu.Item textValue="blocks" href="/blocks">
                 <IconWindowVisit /> Blocks
               </CommandMenu.Item>
-              <CommandMenu.Item href="/blog">
+              <CommandMenu.Item textValue="blog" href="/blog">
                 <IconNotepad /> Blog
               </CommandMenu.Item>
             </CommandMenu.Section>
@@ -157,6 +157,7 @@ const CommandComposed = ({
   if (node.type === "page") {
     return (
       <CommandMenu.Item
+        textValue={node.name as string}
         onAction={() => {
           if (node.external) {
             window.open(node.url, "_blank")

@@ -15,18 +15,34 @@ export default function CommandMenuSeparatorDemo() {
         <CommandMenu.Search placeholder="Quick search..." />
         <CommandMenu.List>
           <CommandMenu.Section>
-            <CommandMenu.Item href="#">Profile Overview</CommandMenu.Item>
-            <CommandMenu.Item href="#">Profile Settings</CommandMenu.Item>
-            <CommandMenu.Item href="#">Security Settings</CommandMenu.Item>
+            <CommandMenu.Item textValue="profile overview" href="#">
+              Profile Overview
+            </CommandMenu.Item>
+            <CommandMenu.Item textValue="profile settings" href="#">
+              Profile Settings
+            </CommandMenu.Item>
+            <CommandMenu.Item textValue="security settings" href="#">
+              Security Settings
+            </CommandMenu.Item>
             <CommandMenu.Separator />
-            <CommandMenu.Item href="#">Notification Preferences</CommandMenu.Item>
-            <CommandMenu.Item href="#">Privacy Settings</CommandMenu.Item>
+            <CommandMenu.Item textValue="notification preferences" href="#">
+              Notification Preferences
+            </CommandMenu.Item>
+            <CommandMenu.Item textValue="privacy settings" href="#">
+              Privacy Settings
+            </CommandMenu.Item>
             <CommandMenu.Separator />
 
-            <CommandMenu.Item href="#">Billing Information</CommandMenu.Item>
-            <CommandMenu.Item href="#">Subscription Plans</CommandMenu.Item>
+            <CommandMenu.Item textValue="billing information" href="#">
+              Billing Information
+            </CommandMenu.Item>
+            <CommandMenu.Item textValue="subscription plans" href="#">
+              Subscription Plans
+            </CommandMenu.Item>
             <CommandMenu.Separator />
-            <CommandMenu.Item href="#">Connected Apps</CommandMenu.Item>
+            <CommandMenu.Item textValue="connected apps" href="#">
+              Connected Apps
+            </CommandMenu.Item>
           </CommandMenu.Section>
         </CommandMenu.List>
       </CommandMenu>
