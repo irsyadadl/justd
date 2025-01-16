@@ -1,4 +1,5 @@
 "use client"
+
 import { useEffect, useMemo, useState } from "react"
 import { CommandMenu } from "ui"
 
@@ -14,7 +15,7 @@ import {
   IconNotes,
   IconWindowVisit,
 } from "justd-icons"
-import { useRouter } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 
 import { source } from "@/utils/source"
 import { useDocsSearch } from "fumadocs-core/search/client"
@@ -28,6 +29,7 @@ export interface OpenCloseProps {
 
 export function CommandPalette({ openCmd, setOpen }: OpenCloseProps) {
   const router = useRouter()
+  const pathname = usePathname()
 
   const firstChild = source.pageTree.children[0]
   const pageTree = firstChild?.type === "folder" ? firstChild : source.pageTree
@@ -56,6 +58,13 @@ export function CommandPalette({ openCmd, setOpen }: OpenCloseProps) {
   useEffect(() => {
     setValue(client.search || "")
   }, [client.search])
+
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
+  useEffect(() => {
+    if (setOpen) {
+      setOpen(false)
+    }
+  }, [pathname])
   return (
     <CommandMenu
       shortcut="k"
