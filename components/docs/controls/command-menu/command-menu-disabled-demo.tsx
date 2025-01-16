@@ -12,9 +12,9 @@ export default function CommandMenuDisabledDemo() {
         Open
       </Button>
       <CommandMenu isOpen={isOpen} onOpenChange={setIsOpen}>
-        <CommandMenu.Input placeholder="Quick search..." />
+        <CommandMenu.Search placeholder="Quick search..." />
         <CommandMenu.List>
-          <CommandMenu.Section heading="Suggestions">
+          <CommandMenu.Section title="Suggestions">
             <CommandMenu.Item>
               PhpStorm
               <CommandMenu.Description>Application</CommandMenu.Description>
@@ -23,11 +23,11 @@ export default function CommandMenuDisabledDemo() {
               WebStorm
               <CommandMenu.Description>Application</CommandMenu.Description>
             </CommandMenu.Item>
-            <CommandMenu.Item disabled>
+            <CommandMenu.Item isDisabled>
               Warp
               <CommandMenu.Description>Need to enable</CommandMenu.Description>
             </CommandMenu.Item>
-            <CommandMenu.Item disabled>
+            <CommandMenu.Item isDisabled>
               Sublime Text
               <CommandMenu.Description>Need to enable</CommandMenu.Description>
             </CommandMenu.Item>
@@ -35,7 +35,7 @@ export default function CommandMenuDisabledDemo() {
               VS Code
               <CommandMenu.Description>Application</CommandMenu.Description>
             </CommandMenu.Item>
-            <CommandMenu.Item disabled>
+            <CommandMenu.Item isDisabled>
               Atom
               <CommandMenu.Description>Killed</CommandMenu.Description>
             </CommandMenu.Item>

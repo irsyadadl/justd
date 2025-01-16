@@ -74,9 +74,11 @@
 
 @layer base {
   :root {
-    --shiki-bg: #fff;
-
     --bg: oklch(1 0 0);
+
+    --shiki-bg: var(--bg);
+    --shiki-light: var(--shiki-bg);
+
     --fg: oklch(0.141 0.005 285.823);
 
     --primary: oklch(0.546 0.245 262.881);
@@ -130,8 +132,9 @@
   }
 
   .dark {
+    --shiki-bg: #09090b;
+    --shiki-dark: var(--shiki-bg);
 
-    --shiki-bg: #0e0e10;
     --bg: oklch(0.091 0.005 285.823);
     --fg: oklch(0.985 0 0);
 
@@ -229,4 +232,10 @@
   &::-webkit-scrollbar {
     display: none; /* Safari and Chrome */
   }
+}
+
+html.dark .shiki,
+html.dark .shiki span {
+  color: var(--shiki-dark) !important;
+  background-color: var(--shiki-bg) !important;
 }

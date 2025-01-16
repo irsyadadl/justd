@@ -2,9 +2,9 @@
 
 import { useState } from "react"
 
-import { Button, CommandMenu } from "ui"
+import { Avatar, Button, CommandMenu } from "ui"
 
-export default function CommandMenuSectionDemo() {
+export default function CommandMenuDynamicDemo() {
   const [isOpen, setIsOpen] = useState(false)
   return (
     <>
@@ -12,24 +12,21 @@ export default function CommandMenuSectionDemo() {
         Open
       </Button>
       <CommandMenu isOpen={isOpen} onOpenChange={setIsOpen}>
-        <CommandMenu.Input placeholder="Quick search..." />
+        <CommandMenu.Search placeholder="Quick search..." />
         <CommandMenu.List>
-          <CommandMenu.Section heading="Pages">
-            <CommandMenu.Item asChild>
-              <a href="/public">Home</a>
-            </CommandMenu.Item>
-            <CommandMenu.Item asChild>
-              <a href="/docs/getting-started/installation">Docs</a>
-            </CommandMenu.Item>
-            <CommandMenu.Item asChild>
-              <a href="/components">Components</a>
-            </CommandMenu.Item>
+          <CommandMenu.Section title="Pages">
+            <CommandMenu.Item href="#">Home</CommandMenu.Item>
+            <CommandMenu.Item href="#">Docs</CommandMenu.Item>
+            <CommandMenu.Item href="#">Components</CommandMenu.Item>
           </CommandMenu.Section>
           <CommandMenu.Separator />
-          <CommandMenu.Section heading="Users">
-            {users.map((user) => (
-              <CommandMenu.Item key={user.id}>{user.name}</CommandMenu.Item>
-            ))}
+          <CommandMenu.Section title="Users" items={users}>
+            {(user) => (
+              <CommandMenu.Item>
+                <Avatar src={user.image_url} alt={user.name} initials={user.name.slice(0, 2)} />
+                {user.name}
+              </CommandMenu.Item>
+            )}
           </CommandMenu.Section>
         </CommandMenu.List>
       </CommandMenu>

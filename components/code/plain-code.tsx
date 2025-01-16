@@ -42,7 +42,11 @@ export type PreProps = HTMLAttributes<HTMLElement> & {
 
 export const Pre = ({ className, ref, ...props }: React.ComponentProps<"pre">) => {
   return (
-    <pre ref={ref} className={cn("p-4 focus-visible:outline-none", className)} {...props}>
+    <pre
+      ref={ref}
+      className={cn("w-full p-4 leading-relaxed focus-visible:outline-hidden", className)}
+      {...props}
+    >
       {props.children}
     </pre>
   )
@@ -83,7 +87,7 @@ export const PlainCode = ({
       )}
     >
       {title ? (
-        <div className="flex flex-row items-center gap-2 border-b bg-fd-muted px-4 py-1.5">
+        <div className="flex w-full flex-row items-center gap-2 border-b bg-fd-muted px-4 py-1.5">
           {icon ? (
             <div
               className="text-fd-muted-foreground [&_svg]:size-3.5"
@@ -107,7 +111,7 @@ export const PlainCode = ({
           <CopyButton className="absolute top-2 right-2 z-[2] backdrop-blur-md" onCopy={onCopy} />
         )
       )}
-      <ScrollArea ref={areaRef} dir="ltr">
+      <ScrollArea ref={areaRef} className="w-full" dir="ltr">
         <ScrollViewport
           {...viewportProps}
           className={cn("max-h-[600px]", viewportProps?.className)}

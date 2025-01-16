@@ -1,8 +1,6 @@
 "use client"
 
 import { useState } from "react"
-
-import { IconCube } from "justd-icons"
 import { Button, CommandMenu } from "ui"
 
 export default function CommandMenuDescriptionDemo() {
@@ -12,23 +10,13 @@ export default function CommandMenuDescriptionDemo() {
       <Button appearance="outline" onPress={() => setIsOpen(true)}>
         Open
       </Button>
-      <CommandMenu
-        messageOnEmpty={false}
-        hideCloseButton
-        hideSearchIndicator
-        isOpen={isOpen}
-        onOpenChange={setIsOpen}
-      >
-        <CommandMenu.Input placeholder="Search for apps and commands..." />
-        <CommandMenu.Empty className="grid place-content-center">
-          <div className="text-center">
-            <IconCube className="inline" />
-            <p className="mt-2">No results found.</p>
-          </div>
-        </CommandMenu.Empty>
-
+      <CommandMenu escapeButton={false} isOpen={isOpen} onOpenChange={setIsOpen}>
+        <CommandMenu.Search
+          className="*:data-[slot=command-menu-search-icon]:hidden"
+          placeholder="Search for apps and commands..."
+        />
         <CommandMenu.List>
-          <CommandMenu.Section separator heading="Suggestions">
+          <CommandMenu.Section className="mt-2" title="Suggestions">
             <CommandMenu.Item>
               PhpStorm
               <CommandMenu.Description>Application</CommandMenu.Description>
@@ -43,7 +31,7 @@ export default function CommandMenuDescriptionDemo() {
             </CommandMenu.Item>
           </CommandMenu.Section>
 
-          <CommandMenu.Section separator heading="Applications">
+          <CommandMenu.Section title="Applications">
             <CommandMenu.Item>
               Terminal
               <CommandMenu.Description>Application</CommandMenu.Description>
@@ -54,22 +42,22 @@ export default function CommandMenuDescriptionDemo() {
             </CommandMenu.Item>
           </CommandMenu.Section>
 
-          <CommandMenu.Section separator heading="Commands">
+          <CommandMenu.Section title="Commands">
             <CommandMenu.Item>
-              git status
+              Git status
               <CommandMenu.Description>Command</CommandMenu.Description>
             </CommandMenu.Item>
             <CommandMenu.Item>
-              bun add
+              Bun add
               <CommandMenu.Description>Command</CommandMenu.Description>
             </CommandMenu.Item>
             <CommandMenu.Item>
-              composer require
+              Composer require
               <CommandMenu.Description>Command</CommandMenu.Description>
             </CommandMenu.Item>
           </CommandMenu.Section>
 
-          <CommandMenu.Section heading="System Settings">
+          <CommandMenu.Section title="System Settings">
             <CommandMenu.Item>
               Display Brightness
               <CommandMenu.Description>System Settings</CommandMenu.Description>

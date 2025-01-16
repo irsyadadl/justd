@@ -6,14 +6,18 @@ import { Avatar, Button, CommandMenu } from "ui"
 export default function CommandMenuControlledDemo() {
   const [isOpen, setIsOpen] = useState(false)
   const [search, setSearch] = useState("")
+  const [isSearching, setIsSearching] = useState(false)
   const [results, setResults] = useState(users)
 
-  const handleSearch = (value: string) => {
+  const handleSearch = async (value: string) => {
+    setIsSearching(true)
     setSearch(value)
+    await new Promise((resolve) => setTimeout(resolve, 2000))
     const filteredResults = users.filter((user) =>
       user.name.toLowerCase().includes(value.toLowerCase()),
     )
     setResults(filteredResults)
+    setIsSearching(false)
   }
 
   return (
@@ -22,13 +26,14 @@ export default function CommandMenuControlledDemo() {
         Open
       </Button>
       <CommandMenu
+        isPending={isSearching}
         onInputChange={handleSearch}
         inputValue={search}
         isOpen={isOpen}
         onOpenChange={setIsOpen}
       >
         <CommandMenu.Search placeholder="Quick search..." />
-        <CommandMenu.List>
+        <CommandMenu.List items={results}>
           {(user) => (
             <CommandMenu.Item textValue={user.name} key={user.name}>
               <Avatar src={user.image_url} />

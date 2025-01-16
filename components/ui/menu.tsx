@@ -163,7 +163,12 @@ interface MenuSeparatorProps extends SeparatorProps {
 }
 
 const MenuSeparator = ({ className, ref, ...props }: MenuSeparatorProps) => (
-  <Separator ref={ref} className={cn("-mx-1 my-1 h-px border-b", className)} {...props} />
+  <Separator
+    ref={ref}
+    orientation="horizontal"
+    className={cn("-mx-1 my-1 h-px border-b", className)}
+    {...props}
+  />
 )
 
 const MenuItemCheckbox = ({ className, children, ...props }: MenuItemProps) => (
@@ -206,6 +211,7 @@ interface MenuSectionProps<T> extends MenuSectionPrimitiveProps<T> {
   ref?: React.Ref<HTMLDivElement>
   title?: string
 }
+
 const Section = <T extends object>({ className, ref, ...props }: MenuSectionProps<T>) => {
   return (
     <MenuSection ref={ref} className={section({ className })} {...props}>

@@ -12,7 +12,7 @@ export default function CommandMenuDangerItemDemo() {
         Open
       </Button>
       <CommandMenu isOpen={isOpen} onOpenChange={setIsOpen}>
-        <CommandMenu.Input placeholder="Quick search..." />
+        <CommandMenu.Search placeholder="Quick search..." />
         <CommandMenu.List>
           <CommandMenu.Section>
             <CommandMenu.Item>System Shutdown</CommandMenu.Item>

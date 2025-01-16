@@ -11,8 +11,8 @@ export default function CommandMenuKeyboardDemo() {
       <Button appearance="outline" onPress={() => setIsOpen(true)}>
         Open
       </Button>
-      <CommandMenu isOpen={isOpen} onOpenChange={setIsOpen}>
-        <CommandMenu.Input placeholder="Quick search..." />
+      <CommandMenu key="k" isOpen={isOpen} onOpenChange={setIsOpen}>
+        <CommandMenu.Search placeholder="Quick search..." />
         <CommandMenu.List>
           <CommandMenu.Item>
             Account Settings

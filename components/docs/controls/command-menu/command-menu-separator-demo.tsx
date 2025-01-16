@@ -12,38 +12,22 @@ export default function CommandMenuSeparatorDemo() {
         Open
       </Button>
       <CommandMenu isOpen={isOpen} onOpenChange={setIsOpen}>
-        <CommandMenu.Input placeholder="Quick search..." />
+        <CommandMenu.Search placeholder="Quick search..." />
         <CommandMenu.List>
-          <CommandMenu.Item asChild>
-            <a href="#">Profile Overview</a>
-          </CommandMenu.Item>
-          <CommandMenu.Item asChild>
-            <a href="#">Profile Settings</a>
-          </CommandMenu.Item>
-          <CommandMenu.Item asChild>
-            <a href="#">Security Settings</a>
-          </CommandMenu.Item>
-          <CommandMenu.Separator />
-          <CommandMenu.Item asChild>
-            <a href="#">Notification Preferences</a>
-          </CommandMenu.Item>
-          <CommandMenu.Item asChild>
-            <a href="#">Privacy Settings</a>
-          </CommandMenu.Item>
-          <CommandMenu.Separator />
-          <CommandMenu.Item asChild>
-            <a href="#">Billing Information</a>
-          </CommandMenu.Item>
-          <CommandMenu.Item asChild>
-            <a href="#">Subscription Plans</a>
-          </CommandMenu.Item>
-          <CommandMenu.Separator />
-          <CommandMenu.Item asChild>
-            <a href="#">Connected Apps</a>
-          </CommandMenu.Item>
-          <CommandMenu.Item asChild>
-            <a href="#">Logout</a>
-          </CommandMenu.Item>
+          <CommandMenu.Section>
+            <CommandMenu.Item href="#">Profile Overview</CommandMenu.Item>
+            <CommandMenu.Item href="#">Profile Settings</CommandMenu.Item>
+            <CommandMenu.Item href="#">Security Settings</CommandMenu.Item>
+            <CommandMenu.Separator />
+            <CommandMenu.Item href="#">Notification Preferences</CommandMenu.Item>
+            <CommandMenu.Item href="#">Privacy Settings</CommandMenu.Item>
+            <CommandMenu.Separator />
+
+            <CommandMenu.Item href="#">Billing Information</CommandMenu.Item>
+            <CommandMenu.Item href="#">Subscription Plans</CommandMenu.Item>
+            <CommandMenu.Separator />
+            <CommandMenu.Item href="#">Connected Apps</CommandMenu.Item>
+          </CommandMenu.Section>
         </CommandMenu.List>
       </CommandMenu>
     </>

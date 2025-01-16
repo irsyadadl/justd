@@ -1,7 +1,10 @@
 "use client"
 
 import { IconCheck, IconHamburger } from "justd-icons"
-import type { ListBoxItemProps, ListBoxProps } from "react-aria-components"
+import type {
+  ListBoxItemProps as ListBoxItemPrimitiveProps,
+  ListBoxProps,
+} from "react-aria-components"
 import { ListBoxItem, ListBox as ListBoxPrimitive, composeRenderProps } from "react-aria-components"
 import { tv } from "tailwind-variants"
 
@@ -44,11 +47,11 @@ const listBoxItemStyles = tv({
   },
 })
 
-interface ItemProps<T extends object> extends ListBoxItemProps<T> {
+interface ListBoxItemProps<T extends object> extends ListBoxItemPrimitiveProps<T> {
   className?: string
 }
 
-const Item = <T extends object>({ children, className, ...props }: ItemProps<T>) => {
+const Item = <T extends object>({ children, className, ...props }: ListBoxItemProps<T>) => {
   const textValue = typeof children === "string" ? children : undefined
 
   return (
@@ -113,5 +116,5 @@ ListBox.ItemDetails = DropdownItemDetails
 ListBox.Item = Item
 ListBox.Picker = ListBoxPicker
 
-export type { ListBoxPickerProps }
+export type { ListBoxPickerProps, ListBoxItemProps }
 export { ListBox, listBoxStyles }

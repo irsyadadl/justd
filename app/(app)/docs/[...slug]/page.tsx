@@ -7,6 +7,7 @@ import { goodTitle } from "@/resources/lib/utils"
 import { source } from "@/utils/source"
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
+import { twJoin } from "tailwind-merge"
 import { Badge } from "ui"
 
 export interface DocPageProps {
@@ -107,7 +108,14 @@ export default async function Page(props: DocPageProps) {
                 </p>
               ) : null}
 
-              <div className="mt-6 flex items-center">
+              <div
+                className={twJoin(
+                  "flex items-center",
+                  ((page.data.references && page.data.references?.length > 0) ||
+                    page.data.status) &&
+                    "mt-6",
+                )}
+              >
                 {page.data.references && page.data.references?.length > 0 && (
                   <DocRefs references={page.data.references} />
                 )}

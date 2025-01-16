@@ -1,7 +1,5 @@
 "use client"
 import { useEffect, useMemo, useState } from "react"
-
-import Link from "next/link"
 import { CommandMenu } from "ui"
 
 import { useMediaQuery } from "@/utils/use-media-query"
@@ -16,11 +14,12 @@ import {
   IconNotes,
   IconWindowVisit,
 } from "justd-icons"
-import { usePathname, useRouter } from "next/navigation"
+import { useRouter } from "next/navigation"
 
 import { source } from "@/utils/source"
 import { useDocsSearch } from "fumadocs-core/search/client"
 import type { PageTree } from "fumadocs-core/server"
+import { useDebouncedCallback } from "use-debounce"
 
 export interface OpenCloseProps {
   openCmd: boolean
@@ -29,7 +28,6 @@ export interface OpenCloseProps {
 
 export function CommandPalette({ openCmd, setOpen }: OpenCloseProps) {
   const router = useRouter()
-  const pathname = usePathname()
 
   const firstChild = source.pageTree.children[0]
   const pageTree = firstChild?.type === "folder" ? firstChild : source.pageTree
@@ -43,88 +41,59 @@ export function CommandPalette({ openCmd, setOpen }: OpenCloseProps) {
     type: "fetch",
   })
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
-  useEffect(() => {
-    setOpen?.(false)
-    client.setSearch("")
-  }, [pathname, setOpen])
-
-  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
-  useEffect(() => {
-    const down = (e: KeyboardEvent) => {
-      if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
-        e.preventDefault()
-        // @ts-ignore
-        setOpen((open: boolean) => !open)
-      }
-    }
-
-    document.addEventListener("keydown", down)
-
-    return () => document.removeEventListener("keydown", down)
-  }, [pathname, setOpen])
-
   const isDesktop = useMediaQuery("(min-width: 1024px)")
+  const [value, setValue] = useState(client.search || "")
 
+  const debouncedSetSearch = useDebouncedCallback((newValue: string) => {
+    client.setSearch(newValue)
+  }, 300)
+
+  const onValueChange = (newValue: string) => {
+    setValue(newValue)
+    debouncedSetSearch(newValue)
+  }
+
+  useEffect(() => {
+    setValue(client.search || "")
+  }, [client.search])
   return (
     <CommandMenu
-      classNames={{
-        content:
-          "dark:supports-backdrop-filter:backdrop-blur-2xl dark:supports-backdrop-filter:bg-overlay/50",
-      }}
+      shortcut="k"
+      isBlurred
       isOpen={openCmd}
       onOpenChange={setOpen}
+      inputValue={value}
+      onInputChange={onValueChange}
+      isPending={client.query.isLoading}
     >
-      <DebouncedCommandInput
-        className="lg:text-sm"
-        isPending={client.query.isLoading}
-        onValueChange={client.setSearch}
-        autoFocus={isDesktop}
-        placeholder="Eg. Colors, Date, Chart, etc."
-      />
+      <CommandMenu.Search autoFocus={isDesktop} placeholder="Eg. Colors, Date, Chart, etc." />
       <CommandMenu.List className="scrollbar-hidden">
         {client.search === "" && (
           <>
             <CommandMenu.Section>
-              <CommandMenu.Item value="home" asChild>
-                <Link href="/">
-                  <IconHome /> Home
-                </Link>
+              <CommandMenu.Item href="/">
+                <IconHome /> Home
               </CommandMenu.Item>
-              <CommandMenu.Item value="documenation" asChild>
-                <Link href="/docs/2.x/getting-started/installation">
-                  <IconNotes /> Docs
-                </Link>
+              <CommandMenu.Item href="/docs/2.x/getting-started/installation">
+                <IconNotes /> Docs
               </CommandMenu.Item>
-              <CommandMenu.Item value="components" asChild>
-                <Link href="/components">
-                  <IconCube /> Components
-                </Link>
+              <CommandMenu.Item href="/components">
+                <IconCube /> Components
               </CommandMenu.Item>
-              <CommandMenu.Item value="colors" asChild>
-                <Link href="/colors">
-                  <IconColors /> Colors
-                </Link>
+              <CommandMenu.Item href="/colors">
+                <IconColors /> Colors
               </CommandMenu.Item>
-              <CommandMenu.Item value="icons" asChild>
-                <Link href="/icons">
-                  <IconBrandJustd /> Icons
-                </Link>
+              <CommandMenu.Item href="/icons">
+                <IconBrandJustd /> Icons
               </CommandMenu.Item>
-              <CommandMenu.Item value="themes" asChild>
-                <Link href="/themes">
-                  <IconColorSwatch /> Themes
-                </Link>
+              <CommandMenu.Item href="/themes">
+                <IconColorSwatch /> Themes
               </CommandMenu.Item>
-              <CommandMenu.Item value="blocks" asChild>
-                <Link href="/blocks">
-                  <IconWindowVisit /> Blocks
-                </Link>
+              <CommandMenu.Item href="/blocks">
+                <IconWindowVisit /> Blocks
               </CommandMenu.Item>
-              <CommandMenu.Item value="blog" asChild>
-                <Link href="/blog">
-                  <IconNotepad /> Blog
-                </Link>
+              <CommandMenu.Item href="/blog">
+                <IconNotepad /> Blog
               </CommandMenu.Item>
             </CommandMenu.Section>
 
@@ -139,8 +108,8 @@ export function CommandPalette({ openCmd, setOpen }: OpenCloseProps) {
             client.query.data.map((item) => (
               <CommandMenu.Item
                 key={item.id}
-                value={item.content + item.id}
-                onSelect={() => router.push(item.url)}
+                textValue={item.content + item.id}
+                onAction={() => router.push(item.url)}
               >
                 {item.type !== "page" ? <div className="ms-4 h-full" /> : null}
                 {item.type === "page" && <IconCube />}
@@ -164,7 +133,7 @@ const CommandComposed = ({
 
   if (node.type === "folder") {
     return (
-      <CommandMenu.Section heading={node.name}>
+      <CommandMenu.Section title={node.name as string}>
         {node.children.map((child, index) => (
           <CommandComposed key={index} node={child} />
         ))}
@@ -179,7 +148,7 @@ const CommandComposed = ({
   if (node.type === "page") {
     return (
       <CommandMenu.Item
-        onSelect={() => {
+        onAction={() => {
           if (node.external) {
             window.open(node.url, "_blank")
           } else {
@@ -192,50 +161,4 @@ const CommandComposed = ({
       </CommandMenu.Item>
     )
   }
-}
-
-const useDebounce = (value: string, delay = 300) => {
-  const [debouncedValue, setDebouncedValue] = useState(value)
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setDebouncedValue(value)
-    }, delay)
-
-    return () => clearTimeout(timer)
-  }, [value, delay])
-
-  return debouncedValue
-}
-
-export const DebouncedCommandInput = ({
-  value,
-  onValueChange,
-  className,
-  ...props
-}: React.ComponentProps<typeof CommandMenu.Input>) => {
-  const [localValue, setLocalValue] = useState(value || "")
-  const debouncedValue = useDebounce(localValue)
-
-  // Update local value when prop value changes
-  useEffect(() => {
-    if (value !== undefined) {
-      setLocalValue(value)
-    }
-  }, [value])
-
-  useEffect(() => {
-    if (onValueChange && debouncedValue !== value) {
-      onValueChange(debouncedValue)
-    }
-  }, [debouncedValue, onValueChange, value])
-
-  return (
-    <CommandMenu.Input
-      className={className}
-      value={localValue}
-      onValueChange={setLocalValue}
-      {...props}
-    />
-  )
 }
