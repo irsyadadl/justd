@@ -277,6 +277,7 @@ const MultipleSelect = <T extends SelectedKey>({
               trigger="ComboBox"
             >
               <ListBox.Picker
+                className="grid-cols-none"
                 renderEmptyState={() =>
                   renderEmptyState ? (
                     renderEmptyState(fieldState.inputValue)

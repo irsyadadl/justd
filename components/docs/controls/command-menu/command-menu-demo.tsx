@@ -17,33 +17,39 @@ export default function CommandMenuDemo() {
         <CommandMenu.List>
           <CommandMenu.Section title="Pages">
             <CommandMenu.Item textValue="Home" href="#">
-              <IconHome /> Home
+              <IconHome />
+              <CommandMenu.Label>Home</CommandMenu.Label>
             </CommandMenu.Item>
             <CommandMenu.Item textValue="Docs" href="#">
-              <IconNotes /> Docs
+              <IconNotes />
+              <CommandMenu.Label>Docs</CommandMenu.Label>
               <CommandMenu.Keyboard keys="⌘k" />
             </CommandMenu.Item>
             <CommandMenu.Item textValue="Components" href="#">
-              <IconCube /> Components
+              <IconCube />
+              <CommandMenu.Label>Components</CommandMenu.Label>
             </CommandMenu.Item>
           </CommandMenu.Section>
           <CommandMenu.Section title="Dashboard">
             <CommandMenu.Item textValue="billing" href="#">
-              <IconBill /> Billing
+              <IconBill />
+              <CommandMenu.Label>Billing</CommandMenu.Label>
             </CommandMenu.Item>
             <CommandMenu.Item textValue="settings" href="#">
-              <IconGear /> Settings
+              <IconGear />
+              <CommandMenu.Label>Settings</CommandMenu.Label>
               <CommandMenu.Keyboard keys="⌘s" />
             </CommandMenu.Item>
             <CommandMenu.Item textValue="security" href="#">
-              <IconShield /> Security
+              <IconShield />
+              <CommandMenu.Label>Security</CommandMenu.Label>
             </CommandMenu.Item>
           </CommandMenu.Section>
           <CommandMenu.Section title="Team">
             {users.map((user) => (
               <CommandMenu.Item textValue={user.name} key={user.id}>
                 <Avatar src={user.image_url} />
-                {user.name}
+                <CommandMenu.Label>{user.name}</CommandMenu.Label>
               </CommandMenu.Item>
             ))}
           </CommandMenu.Section>

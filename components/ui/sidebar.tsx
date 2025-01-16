@@ -34,7 +34,6 @@ import { Tooltip } from "./tooltip"
 
 const SIDEBAR_COOKIE_NAME = "sidebar:state"
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7
-const SIDEBAR_KEYBOARD_SHORTCUT = "b"
 type SidebarContextProps = {
   state: "expanded" | "collapsed"
   open: boolean
@@ -59,6 +58,7 @@ const useSidebar = () => {
 interface SidebarProviderProps extends React.ComponentProps<"div"> {
   defaultOpen?: boolean
   isOpen?: boolean
+  shortcut?: string
   onOpenChange?: (open: boolean) => void
 }
 
@@ -68,6 +68,7 @@ const SidebarProvider = ({
   onOpenChange: setOpenProp,
   className,
   children,
+  shortcut = "b",
   ref,
   ...props
 }: SidebarProviderProps) => {
@@ -97,7 +98,7 @@ const SidebarProvider = ({
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === SIDEBAR_KEYBOARD_SHORTCUT && (event.metaKey || event.ctrlKey)) {
+      if (event.key === shortcut && (event.metaKey || event.ctrlKey)) {
         event.preventDefault()
         toggleSidebar()
       }
@@ -105,7 +106,7 @@ const SidebarProvider = ({
 
     window.addEventListener("keydown", handleKeyDown)
     return () => window.removeEventListener("keydown", handleKeyDown)
-  }, [toggleSidebar])
+  }, [toggleSidebar, shortcut])
 
   const state = open ? "expanded" : "collapsed"
 
@@ -167,7 +168,7 @@ const sidebar = tv({
   base: [
     "fixed inset-y-0 z-10 hidden h-svh w-(--sidebar-width) transition-[left,right,width] duration-200 ease-linear md:flex",
     "min-h-svh bg-sidebar",
-    "**:data-[slot=disclosure]:border-0 **:data-[slot=disclosure]:px-2",
+    "**:data-[slot=disclosure]:border-0 **:data-[slot=disclosure]:px-2.5",
   ],
   variants: {
     side: {
@@ -305,8 +306,8 @@ const footer = tv({
     "in-data-[sidebar-intent=fleet]:mt-0 in-data-[sidebar-intent=fleet]:p-0",
     "in-data-[sidebar-intent=fleet]:**:data-[slot=menu-trigger]:rounded-none",
     "**:data-[slot=menu-trigger]:relative **:data-[slot=menu-trigger]:overflow-hidden",
-    "**:data-[slot=menu-trigger]:rounded-lg",
-    "**:data-[slot=menu-trigger]:flex **:data-[slot=menu-trigger]:cursor-default **:data-[slot=menu-trigger]:items-center **:data-[slot=menu-trigger]:gap-x-2 **:data-[slot=menu-trigger]:p-2 **:data-[slot=menu-trigger]:outline-hidden sm:**:data-[slot=menu-trigger]:text-sm",
+    "**:data-[slot=menu-trigger]:**:data-[slot=avatar]:mr-2 **:data-[slot=menu-trigger]:rounded-lg",
+    "**:data-[slot=menu-trigger]:flex **:data-[slot=menu-trigger]:cursor-default **:data-[slot=menu-trigger]:items-center **:data-[slot=menu-trigger]:p-2 **:data-[slot=menu-trigger]:outline-hidden sm:**:data-[slot=menu-trigger]:text-sm",
     "**:data-[slot=menu-trigger]:data-hovered:bg-(--sidebar-accent) **:data-[slot=menu-trigger]:data-hovered:text-fg",
   ],
   variants: {
@@ -377,14 +378,14 @@ const SidebarSection = ({
           {props.title}
         </Header>
       )}
-      {props.children}
+      <div className="grid grid-cols-[auto_1fr]">{props.children}</div>
     </div>
   )
 }
 
-const sidebarItem = tv({
+const sidebarItemStyles = tv({
   base: [
-    "group relative flex w-full cursor-pointer items-center gap-x-2 overflow-hidden rounded-lg px-2.5 py-2 text-sidebar-fg/70 outline-hidden sm:text-sm",
+    "group relative col-span-full cursor-pointer overflow-hidden rounded-lg px-2.5 py-2 text-sidebar-fg/70 outline-hidden sm:text-sm",
     "**:data-[slot=menu-trigger]:absolute **:data-[slot=menu-trigger]:right-0 **:data-[slot=menu-trigger]:flex **:data-[slot=menu-trigger]:h-full **:data-[slot=menu-trigger]:w-[calc(var(--sidebar-width)-90%)] **:data-[slot=menu-trigger]:items-center **:data-[slot=menu-trigger]:justify-end **:data-[slot=menu-trigger]:pr-2.5",
     "**:data-[slot=menu-trigger]:hidden",
     "**:data-[slot=avatar]:*:size-4 **:data-[slot=avatar]:size-4 **:data-[slot=icon]:size-4 **:data-[slot=avatar]:shrink-0 **:data-[slot=icon]:shrink-0",
@@ -393,7 +394,9 @@ const sidebarItem = tv({
   ],
   variants: {
     collapsed: {
-      true: "size-9 justify-center gap-x-0 p-0",
+      false:
+        "grid grid-cols-[auto_1fr_1.5rem_0.5rem_auto] items-center **:data-[slot=avatar]:*:mr-2 **:data-[slot=avatar]:mr-2 **:data-[slot=icon]:mr-2 supports-[grid-template-columns:subgrid]:grid-cols-subgrid",
+      true: "flex not-has-data-[slot=icon]:hidden size-9 items-center justify-center gap-x-0 p-0 ",
     },
     isCurrent: {
       true: "bg-primary text-primary-fg data-hovered:bg-primary data-hovered:text-primary-fg **:data-[slot=menu-trigger]:from-primary **:data-[slot=icon]:text-primary-fg [&_.text-muted-fg]:text-primary-fg/80",
@@ -435,7 +438,7 @@ const SidebarItem = ({
       data-sidebar-item="true"
       aria-current={isCurrent ? "page" : undefined}
       className={composeRenderProps(className, (cls, renderProps) =>
-        sidebarItem({
+        sidebarItemStyles({
           ...renderProps,
           isCurrent,
           collapsed: isCollapsed,
@@ -495,10 +498,12 @@ const SidebarItem = ({
 }
 
 const sidebarLink = tv({
-  base: "flex w-full items-center gap-x-2 focus:outline-hidden",
+  base: "col-span-full items-center focus:outline-hidden",
   variants: {
     collapsed: {
-      true: "absolute inset-0 size-full justify-center",
+      false:
+        "grid grid-cols-[auto_1fr_1.5rem_0.5rem_auto] supports-[grid-template-columns:subgrid]:grid-cols-subgrid",
+      true: "absolute inset-0 flex size-full justify-center",
     },
   },
 })
@@ -549,7 +554,7 @@ const SidebarDisclosureGroup = ({
     <DisclosureGroup
       data-sidebar-disclosure-group="true"
       allowsMultipleExpanded={allowsMultipleExpanded}
-      className={composeTailwindRenderProps(className, "flex flex-col gap-y-6")}
+      className={composeTailwindRenderProps(className, "col-span-full flex flex-col gap-y-6")}
       {...props}
     />
   )
@@ -563,7 +568,10 @@ const SidebarDisclosure = ({ className, ref, ...props }: SidebarDisclosureProps)
     <Disclosure
       ref={ref}
       data-sidebar-disclosure="true"
-      className={composeTailwindRenderProps(className, "in-data-[sidebar-intent=fleet]:px-0 px-2")}
+      className={composeTailwindRenderProps(
+        className,
+        "in-data-[sidebar-intent=fleet]:px-0 px-2.5",
+      )}
       {...props}
     />
   )
@@ -571,12 +579,13 @@ const SidebarDisclosure = ({ className, ref, ...props }: SidebarDisclosureProps)
 
 const sidebarDisclosureTrigger = tv({
   base: [
-    "group relative flex w-full cursor-pointer items-center gap-x-2 overflow-hidden rounded-lg px-2.5 py-2 text-sidebar-fg/70 outline-hidden sm:text-sm",
+    "group relative flex w-full cursor-pointer items-center overflow-hidden rounded-lg px-2.5 py-2 text-sidebar-fg/70 outline-hidden sm:text-sm",
     "in-data-[sidebar-intent=fleet]:rounded-none in-data-[sidebar-intent=fleet]:py-2 in-data-[sidebar-intent=fleet]:**:data-[slot=chevron]:hidden",
   ],
   variants: {
     collapsed: {
-      true: "size-9 justify-center gap-x-0 p-0",
+      false: "**:data-[slot=icon]:mr-2",
+      true: "size-9 justify-center p-0",
     },
     isActive: {
       true: "bg-(--sidebar-accent) text-sidebar-fg",
@@ -625,15 +634,23 @@ const SidebarDisclosureTrigger = ({ className, ref, ...props }: SidebarDisclosur
 }
 
 const SidebarDisclosurePanel = (props: React.ComponentProps<typeof DisclosurePanel>) => {
-  return <DisclosurePanel data-sidebar-disclosure-panel="true" {...props} />
+  return (
+    <DisclosurePanel
+      data-sidebar-disclosure-panel="true"
+      className="grid grid-cols-[auto_1fr]"
+      {...props}
+    />
+  )
 }
 
 type SidebarSeparatorProps = SeparatorProps
-const SidebarSeparator = ({ className, ref, ...props }: SidebarSeparatorProps) => {
+const SidebarSeparator = ({ className, ...props }: SidebarSeparatorProps) => {
   return (
     <Separator
-      ref={ref}
-      className={cn("mx-auto my-2 w-[calc(var(--sidebar-width)-theme(spacing.6))]", className)}
+      className={cn(
+        "col-span-full mx-auto my-2 w-[calc(var(--sidebar-width)-theme(spacing.6))]",
+        className,
+      )}
       {...props}
     />
   )
@@ -686,6 +703,7 @@ const SidebarRail = ({ className, ref, ...props }: SidebarRailProps) => {
 }
 
 type SidebarLabelProps = React.ComponentProps<typeof Text>
+
 const SidebarLabel = ({ className, ref, ...props }: SidebarLabelProps) => {
   const { state, isMobile } = useSidebar()
   const collapsed = state === "collapsed" && !isMobile
@@ -694,7 +712,7 @@ const SidebarLabel = ({ className, ref, ...props }: SidebarLabelProps) => {
       <Text
         ref={ref}
         slot="label"
-        className={cn("flex w-full flex-1 overflow-hidden whitespace-nowrap", className)}
+        className={cn("col-start-2 overflow-hidden whitespace-nowrap", className)}
         {...props}
       >
         {props.children}
@@ -707,7 +725,7 @@ const SidebarLabel = ({ className, ref, ...props }: SidebarLabelProps) => {
 const nav = tv({
   base: [
     "isolate flex h-[3.2rem] items-center justify-between gap-x-2 px-4 text-navbar-fg sm:justify-start md:w-full",
-    "group-has-data-[sidebar-intent=default]/sidebar-root:border-b group-has-data-[sidebar-intent=fleet]/sidebar-root:border-b group-has-data-[sidebar-intent=default]/sidebar-root:bg-sidebar",
+    "group-has-data-[sidebar-intent=default]/sidebar-root:border-b group-has-data-[sidebar-intent=fleet]/sidebar-root:border-b group-has-data-[sidebar-intent=default]/sidebar-root:bg-bg",
   ],
   variants: {
     isSticky: {

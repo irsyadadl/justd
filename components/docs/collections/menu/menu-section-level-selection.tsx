@@ -26,15 +26,15 @@ export default function MenuSectionLevelSelection() {
         <Menu.Section title="Actions">
           <Menu.Item textValue="Cut">
             <IconCut />
-            Cut
+            <Menu.Label>Cut</Menu.Label>
           </Menu.Item>
           <Menu.Item textValue="Copy">
             <IconDuplicate />
-            Copy
+            <Menu.Label>Copy</Menu.Label>
           </Menu.Item>
           <Menu.Item textValue="Paste">
             <IconClipboard />
-            Paste
+            <Menu.Label>Paste</Menu.Label>
           </Menu.Item>
         </Menu.Section>
         <Menu.Section
@@ -43,18 +43,18 @@ export default function MenuSectionLevelSelection() {
           onSelectionChange={setStyle}
           title="Text style"
         >
-          <Menu.Checkbox id="bold" textValue="Bold">
+          <Menu.Item id="bold" textValue="Bold">
             <IconBold />
-            Bold
-          </Menu.Checkbox>
-          <Menu.Checkbox id="italic" textValue="Italic">
+            <Menu.Label>Bold</Menu.Label>
+          </Menu.Item>
+          <Menu.Item id="italic" textValue="Italic">
             <IconItalic />
-            Italic
-          </Menu.Checkbox>
-          <Menu.Checkbox id="underline" textValue="Underline">
+            <Menu.Label>Italic</Menu.Label>
+          </Menu.Item>
+          <Menu.Item id="underline" textValue="Underline">
             <IconUnderline />
-            Underline
-          </Menu.Checkbox>
+            <Menu.Label>Underline</Menu.Label>
+          </Menu.Item>
         </Menu.Section>
         <Menu.Section
           selectionMode="single"
@@ -62,18 +62,18 @@ export default function MenuSectionLevelSelection() {
           onSelectionChange={setAlign}
           title="Text alignment"
         >
-          <Menu.Radio id="left" textValue="Left">
+          <Menu.Item id="left" textValue="Left">
             <IconAlignmentLeft />
-            Left
-          </Menu.Radio>
-          <Menu.Radio id="center" textValue="Cente">
+            <Menu.Label>Left</Menu.Label>
+          </Menu.Item>
+          <Menu.Item id="center" textValue="Cente">
             <IconAlignmentCenter />
-            Center
-          </Menu.Radio>
-          <Menu.Radio id="right" textValue="Right">
+            <Menu.Label>Center</Menu.Label>
+          </Menu.Item>
+          <Menu.Item id="right" textValue="Right">
             <IconAlignmentRight />
-            Right
-          </Menu.Radio>
+            <Menu.Label>Right</Menu.Label>
+          </Menu.Item>
         </Menu.Section>
       </Menu.Content>
     </Menu>

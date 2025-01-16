@@ -17,7 +17,7 @@ export default function SelectUncontrolledDemo() {
       <Select.List items={movies}>
         {(item) => (
           <Select.Option id={item.id} textValue={item.title}>
-            {item.title}
+            <Select.Label>{item.title}</Select.Label>
           </Select.Option>
         )}
       </Select.List>

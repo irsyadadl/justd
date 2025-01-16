@@ -34,7 +34,7 @@ export default function AppSidebar(props: React.ComponentProps<typeof Sidebar>) 
     <Sidebar {...props}>
       <SidebarHeader>
         <Link
-          className="flex items-center gap-x-2 group-data-[collapsible=dock]:size-10 group-data-[collapsible=dock]:justify-center"
+          className="inline-flex items-center gap-x-2 group-data-[collapsible=dock]:size-10 group-data-[collapsible=dock]:justify-center"
           href="/docs/2.x/components/layouts/sidebar"
         >
           <IconBrandApple className="size-5" />

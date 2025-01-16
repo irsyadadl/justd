@@ -1,14 +1,6 @@
 "use client"
 
-import {
-  IconBrandApple,
-  IconCart,
-  IconChartBar,
-  IconDashboard,
-  IconGear,
-  IconPackage,
-  IconPeople,
-} from "justd-icons"
+import { IconBrandApple, IconCart, IconDashboard, IconGear, IconPackage } from "justd-icons"
 import {
   Link,
   Sidebar,
@@ -51,7 +43,7 @@ const navigation = [
   { label: "Overview", icon: <IconDashboard />, isCurrent: true },
   { label: "Orders", icon: <IconCart />, isCurrent: false },
   { label: "Products", icon: <IconPackage />, isCurrent: false },
-  { label: "Customers", icon: <IconPeople />, isCurrent: false },
-  { label: "Reports", icon: <IconChartBar />, isCurrent: false },
   { label: "Settings", icon: <IconGear />, isCurrent: false },
+  { label: "Customers", isCurrent: false },
+  { label: "Reports", isCurrent: false },
 ]

@@ -7,10 +7,14 @@ export default function MenuDisabledDemo() {
     <Menu>
       <Menu.Trigger>Open</Menu.Trigger>
       <Menu.Content placement="bottom">
-        <Menu.Item id="view">View</Menu.Item>
-        <Menu.Item id="edit">Edit</Menu.Item>
+        <Menu.Item id="view">
+          <Menu.Label>View</Menu.Label>
+        </Menu.Item>
+        <Menu.Item id="edit">
+          <Menu.Label>Edit</Menu.Label>
+        </Menu.Item>
         <Menu.Item id="gsu" isDisabled>
-          Generate Short URL
+          <Menu.Label>Generate Short URL</Menu.Label>
         </Menu.Item>
       </Menu.Content>
     </Menu>

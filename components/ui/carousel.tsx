@@ -14,11 +14,11 @@ import {
   composeRenderProps,
 } from "react-aria-components"
 
-import { composeTailwindRenderProps } from "@/components/ui/primitive"
 import { cn } from "@/utils/classes"
 import { tv } from "tailwind-variants"
 import type { ButtonProps } from "./button"
 import { Button } from "./button"
+import { composeTailwindRenderProps } from "./primitive"
 
 type CarouselApi = UseEmblaCarouselType[1]
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>

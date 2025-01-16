@@ -5,9 +5,15 @@ export default function MenuAnatomy() {
     <Menu>
       <Menu.Trigger>Open</Menu.Trigger>
       <Menu.Content>
-        <Menu.Item>Inbox</Menu.Item>
-        <Menu.Item>Sent</Menu.Item>
-        <Menu.Item>New Message</Menu.Item>
+        <Menu.Item>
+          <Menu.Label>Inbox</Menu.Label>
+        </Menu.Item>
+        <Menu.Item>
+          <Menu.Label>Sent</Menu.Label>
+        </Menu.Item>
+        <Menu.Item>
+          <Menu.Label>New Message</Menu.Label>
+        </Menu.Item>
       </Menu.Content>
     </Menu>
   )

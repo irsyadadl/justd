@@ -7,34 +7,60 @@ export default function MenuSubDemo() {
     <Menu>
       <Button appearance="outline">Open</Button>
       <Menu.Content placement="bottom">
-        <Menu.Item>Dashboard</Menu.Item>
-        <Menu.Item>Reports</Menu.Item>
+        <Menu.Item>
+          <Menu.Label>Dashboard</Menu.Label>
+        </Menu.Item>
+        <Menu.Item>
+          <Menu.Label>Reports</Menu.Label>
+        </Menu.Item>
         <Menu.Separator />
         <Menu.Submenu>
-          <Menu.Item>Settings</Menu.Item>
+          <Menu.Item>
+            <Menu.Label>Settings</Menu.Label>
+          </Menu.Item>
           <Menu.Content>
-            <Menu.Item>General</Menu.Item>
-            <Menu.Item>Security</Menu.Item>
+            <Menu.Item>
+              <Menu.Label>General</Menu.Label>
+            </Menu.Item>
+            <Menu.Item>
+              <Menu.Label>Security</Menu.Label>
+            </Menu.Item>
             <Menu.Separator />
             <Menu.Submenu>
-              <Menu.Item>Privacy</Menu.Item>
+              <Menu.Item>
+                <Menu.Label>Privacy</Menu.Label>
+              </Menu.Item>
               <Menu.Content>
-                <Menu.Item>Data Sharing</Menu.Item>
-                <Menu.Item>Cookies</Menu.Item>
+                <Menu.Item>
+                  <Menu.Label>Data Sharing</Menu.Label>
+                </Menu.Item>
+                <Menu.Item>
+                  <Menu.Label>Cookies</Menu.Label>
+                </Menu.Item>
                 <Menu.Separator />
                 <Menu.Submenu>
-                  <Menu.Item>Advanced</Menu.Item>
+                  <Menu.Item>
+                    <Menu.Label>Advanced</Menu.Label>
+                  </Menu.Item>
                   <Menu.Content>
-                    <Menu.Item>Encryption</Menu.Item>
-                    <Menu.Item>Access Logs</Menu.Item>
-                    <Menu.Item>API Keys</Menu.Item>
+                    <Menu.Item>
+                      <Menu.Label>Encryption</Menu.Label>
+                    </Menu.Item>
+                    <Menu.Item>
+                      <Menu.Label>Access Logs</Menu.Label>
+                    </Menu.Item>
+                    <Menu.Item>
+                      <Menu.Label>API Keys</Menu.Label>
+                    </Menu.Item>
                   </Menu.Content>
                 </Menu.Submenu>
               </Menu.Content>
             </Menu.Submenu>
           </Menu.Content>
         </Menu.Submenu>
-        <Menu.Item>Help</Menu.Item>
+        <Menu.Item>
+          <Menu.Label>Help</Menu.Label>
+        </Menu.Item>
       </Menu.Content>
     </Menu>
   )

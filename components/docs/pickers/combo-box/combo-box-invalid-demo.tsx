@@ -13,7 +13,7 @@ export default function ComboBoxInvalidDemo() {
         {(item) => (
           <ComboBox.Option key={item.id} id={item.id} textValue={item.name}>
             <Avatar src={item.image_url} />
-            {item.name}
+            <ComboBox.Label>{item.name}</ComboBox.Label>
           </ComboBox.Option>
         )}
       </ComboBox.List>

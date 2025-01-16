@@ -48,10 +48,10 @@ export function SelectSize() {
         items={sizes}
       >
         {(item) => (
-          <Menu.Radio textValue={item.name}>
+          <Menu.Item textValue={item.name}>
             {item.name} /{" "}
             {item.name === "Size 4" ? "20px" : item.name === "Size 5" ? "24px" : "28px"}
-          </Menu.Radio>
+          </Menu.Item>
         )}
       </Menu.Content>
     </Menu>

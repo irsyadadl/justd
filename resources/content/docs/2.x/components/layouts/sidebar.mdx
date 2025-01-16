@@ -307,6 +307,13 @@ This is justd sidebar, so you can put anything you want in it. You can use the `
     'layout.tsx': 'blocks/sidebar/sidebar-17/layout',
   }} />
 
+## Shortcut
+By default, you can collapse the sidebar by clicking or pressing the `⌘b` shortcut. To customize the shortcut, pass the desired key combination via the `shortcut` prop.
+```
+<Sidebar shortcut="1" />
+```
+The preview can be seen in the <NewTab href='/blocks/sidebar/sidebar-10'>Sidebar Shortcut</NewTab> page.
+
 ## Props
 The sidebar supports the following props:
 ### Sidebar
@@ -336,3 +343,4 @@ The sidebar supports the following props:
 | `defaultOpen`  | `boolean`                 | `true`      |
 | `isOpen`       | `boolean`                 | `undefined` |
 | `onOpenChange` | `(open: boolean) => void` | `undefined` |
+| `shortcut`     | string                    | `"b"`       |

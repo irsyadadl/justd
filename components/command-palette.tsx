@@ -5,15 +5,12 @@ import { CommandMenu } from "ui"
 
 import { useMediaQuery } from "@/utils/use-media-query"
 import {
-  IconBrandJustd,
   IconColorSwatch,
   IconColors,
   IconCube,
   IconHashtag,
   IconHome,
-  IconNotepad,
   IconNotes,
-  IconWindowVisit,
 } from "justd-icons"
 import { usePathname, useRouter } from "next/navigation"
 
@@ -68,7 +65,9 @@ export function CommandPalette({ openCmd, setOpen }: OpenCloseProps) {
   return (
     <CommandMenu
       shortcut="k"
-      isBlurred
+      classNames={{
+        content: "dark:bg-bg/70 dark:backdrop-blur-xl",
+      }}
       isOpen={openCmd}
       onOpenChange={setOpen}
       inputValue={value}
@@ -81,28 +80,29 @@ export function CommandPalette({ openCmd, setOpen }: OpenCloseProps) {
           <>
             <CommandMenu.Section>
               <CommandMenu.Item textValue="home" href="/">
-                <IconHome /> Home
+                <IconHome /> <CommandMenu.Label>Home</CommandMenu.Label>
               </CommandMenu.Item>
               <CommandMenu.Item textValue="docs" href="/docs/2.x/getting-started/installation">
-                <IconNotes /> Docs
+                <IconNotes /> <CommandMenu.Label>Docs</CommandMenu.Label>
               </CommandMenu.Item>
               <CommandMenu.Item textValue="components" href="/components">
-                <IconCube /> Components
+                <IconCube /> <CommandMenu.Label>Components</CommandMenu.Label>
               </CommandMenu.Item>
               <CommandMenu.Item textValue="colors" href="/colors">
-                <IconColors /> Colors
+                <IconColors /> <CommandMenu.Label>Colors</CommandMenu.Label>
+              </CommandMenu.Item>
+
+              <CommandMenu.Item textValue="themes" href="/themes">
+                <IconColorSwatch /> <CommandMenu.Label>Themes</CommandMenu.Label>
               </CommandMenu.Item>
               <CommandMenu.Item textValue="icons" href="/icons">
-                <IconBrandJustd /> Icons
-              </CommandMenu.Item>
-              <CommandMenu.Item textValue="themes" href="/themes">
-                <IconColorSwatch /> Themes
+                <CommandMenu.Label>Icons</CommandMenu.Label>
               </CommandMenu.Item>
               <CommandMenu.Item textValue="blocks" href="/blocks">
-                <IconWindowVisit /> Blocks
+                <CommandMenu.Label>Blocks</CommandMenu.Label>
               </CommandMenu.Item>
               <CommandMenu.Item textValue="blog" href="/blog">
-                <IconNotepad /> Blog
+                <CommandMenu.Label>Blog</CommandMenu.Label>
               </CommandMenu.Item>
             </CommandMenu.Section>
 
@@ -114,19 +114,24 @@ export function CommandPalette({ openCmd, setOpen }: OpenCloseProps) {
 
         <CommandMenu.Section>
           {Array.isArray(client.query.data) &&
-            client.query.data.map((item) => (
-              <CommandMenu.Item
-                key={item.id}
-                textValue={item.content + item.id}
-                onAction={() => router.push(item.url)}
-              >
-                {item.type !== "page" ? <div className="ms-4 h-full" /> : null}
-                {item.type === "page" && <IconCube />}
-                {item.type === "heading" && <IconHashtag />}
-                {item.type === "text" && <IconNotepad />}
-                <p className="w-0 flex-1 truncate">{item.content}</p>
-              </CommandMenu.Item>
-            ))}
+            client.query.data.map((item) => {
+              if (item.type === "text") {
+                return
+              }
+
+              return (
+                <CommandMenu.Item
+                  key={item.id}
+                  textValue={item.content + item.id}
+                  onAction={() => router.push(item.url)}
+                >
+                  {/*{item.type !== "page" ? <div className="ms-4 h-full" /> : null}*/}
+                  {item.type === "page" && <IconCube />}
+                  {item.type === "heading" && <IconHashtag />}
+                  <CommandMenu.Label className="truncate">{item.content}</CommandMenu.Label>
+                </CommandMenu.Item>
+              )
+            })}
         </CommandMenu.Section>
       </CommandMenu.List>
     </CommandMenu>

@@ -17,7 +17,11 @@ export default function ComboBoxControlledSelectionDemo() {
       >
         <ComboBox.Input />
         <ComboBox.List items={countries}>
-          {(item) => <ComboBox.Option id={item.id}>{item.name}</ComboBox.Option>}
+          {(item) => (
+            <ComboBox.Option id={item.id}>
+              <ComboBox.Label>{item.name}</ComboBox.Label>
+            </ComboBox.Option>
+          )}
         </ComboBox.List>
       </ComboBox>
 

@@ -27,6 +27,7 @@ import { LayoutGroup } from "motion/react"
 import { usePathname } from "next/navigation"
 import { Badge, Button, Link, Menu, Separator, buttonStyles } from "ui"
 
+import { Keyboard } from "@/components/ui/keyboard"
 import { cn } from "@/utils/classes"
 import { useMediaQuery } from "@/utils/use-media-query"
 import { Header, MenuSection } from "react-aria-components"
@@ -132,7 +133,7 @@ export function Navbar() {
 
                       <span className="text-muted-fg">Search...</span>
 
-                      <Menu.Keyboard className="-mr-2" keys="⌘K" />
+                      <Keyboard className="-mr-1" keys="⌘K" />
                     </Button>
                     <TakeCurrentUrl />
                     <ThemeSwitcher />

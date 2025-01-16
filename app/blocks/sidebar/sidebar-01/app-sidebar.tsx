@@ -72,8 +72,8 @@ export default function AppSidebar(props: React.ComponentProps<typeof Sidebar>) 
             <SidebarItem>
               {({ isHovered, isCollapsed }) => (
                 <>
-                  <IconShoppingBag />
                   <SidebarLink href="#">
+                    <IconShoppingBag />
                     <SidebarLabel>Orders</SidebarLabel>
                   </SidebarLink>
                   {!isCollapsed && isHovered && (
@@ -111,8 +111,8 @@ export default function AppSidebar(props: React.ComponentProps<typeof Sidebar>) 
             <SidebarItem>
               {({ isHovered, isCollapsed }) => (
                 <>
-                  <IconCube />
                   <SidebarLink href="#">
+                    <IconCube />
                     <SidebarLabel>Products</SidebarLabel>
                   </SidebarLink>
                   {!isCollapsed && isHovered && (

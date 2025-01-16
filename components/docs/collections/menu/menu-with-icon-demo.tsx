@@ -4,7 +4,6 @@ import {
   IconCommandRegular,
   IconDashboard,
   IconDeviceDesktop,
-  IconHeadphones,
   IconLogout,
   IconMoon,
   IconSettings,
@@ -27,19 +26,18 @@ export default function MenuWithIconDemo() {
             <span className="font-normal text-muted-fg">@cobain</span>
           </Menu.Header>
         </Menu.Section>
-
         <Menu.Item href="#dashboard">
           <IconDashboard />
-          Dashboard
+          <Menu.Label>Dashboard</Menu.Label>
         </Menu.Item>
         <Menu.Item href="#settings">
           <IconSettings />
-          Settings
+          <Menu.Label>Settings</Menu.Label>
         </Menu.Item>
         <Menu.Separator />
         <Menu.Item>
           <IconCommandRegular />
-          Command Menu
+          <Menu.Label>Command Menu</Menu.Label>
         </Menu.Item>
         <Menu.Submenu>
           <Menu.Item>
@@ -50,7 +48,7 @@ export default function MenuWithIconDemo() {
             ) : (
               <IconDeviceDesktop />
             )}
-            Switch theme
+            <Menu.Label>Switch theme</Menu.Label>
           </Menu.Item>
           <Menu.Content>
             <Menu.Item onAction={() => setTheme("system")}>
@@ -66,13 +64,12 @@ export default function MenuWithIconDemo() {
         </Menu.Submenu>
         <Menu.Separator />
         <Menu.Item href="#contact-s">
-          <IconHeadphones />
-          Contact Support
+          <Menu.Label>Contact Support</Menu.Label>
         </Menu.Item>
         <Menu.Separator />
         <Menu.Item href="#logout">
           <IconLogout />
-          Log out
+          <Menu.Label>Log out</Menu.Label>
         </Menu.Item>
       </Menu.Content>
     </Menu>

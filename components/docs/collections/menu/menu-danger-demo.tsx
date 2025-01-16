@@ -7,10 +7,16 @@ export default function MenuDangerDemo() {
     <Menu>
       <Menu.Trigger>Open</Menu.Trigger>
       <Menu.Content placement="bottom">
-        <Menu.Item>View</Menu.Item>
-        <Menu.Item>Edit</Menu.Item>
+        <Menu.Item>
+          <Menu.Label>View</Menu.Label>
+        </Menu.Item>
+        <Menu.Item>
+          <Menu.Label>Edit</Menu.Label>
+        </Menu.Item>
         <Menu.Separator />
-        <Menu.Item isDanger>Delete</Menu.Item>
+        <Menu.Item isDanger>
+          <Menu.Label>Delete</Menu.Label>
+        </Menu.Item>
       </Menu.Content>
     </Menu>
   )

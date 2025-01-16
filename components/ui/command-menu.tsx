@@ -26,9 +26,8 @@ import {
   SearchField,
   type SearchFieldProps,
 } from "react-aria-components"
-import { twJoin } from "tailwind-merge"
 import { tv } from "tailwind-variants"
-import { Keyboard, type KeyboardProps } from "./keyboard"
+import { DropdownKeyboard } from "./dropdown"
 import { Loader } from "./loader"
 import { Menu, type MenuSectionProps } from "./menu"
 import { composeTailwindRenderProps } from "./primitive"
@@ -55,10 +54,15 @@ interface CommandMenuProps extends AutocompleteProps, MenuTriggerProps, CommandM
   "aria-label"?: string
   shortcut?: string
   isBlurred?: boolean
+  classNames?: {
+    overlay?: string
+    content?: string
+  }
 }
 
 const CommandMenu = ({
   onOpenChange,
+  classNames,
   isDismissable = true,
   escapeButton = true,
   isPending,
@@ -85,17 +89,19 @@ const CommandMenu = ({
       <ModalContext value={{ isOpen: props.isOpen, onOpenChange: onOpenChange }}>
         <ModalOverlay
           isDismissable={isDismissable}
-          className={twJoin([
+          className={cn([
             "fixed inset-0 z-50 max-h-(--visual-viewport-height) bg-dark/15 dark:bg-dark/40",
             "data-entering:fade-in data-exiting:fade-out data-entering:animate-in data-exiting:animate-in",
             isBlurred ? "backdrop-blur" : "",
+            classNames?.overlay ?? "",
           ])}
         >
           <Modal
-            className={twJoin([
+            className={cn([
               "fixed top-auto bottom-0 left-[50%] z-50 grid h-[calc(100vh-35%)] w-full max-w-full translate-x-[-50%] gap-4 overflow-hidden rounded-t-2xl bg-overlay text-overlay-fg shadow-lg ring-1 ring-fg/10 sm:top-[6rem] sm:bottom-auto sm:h-auto sm:w-full sm:max-w-2xl sm:rounded-xl dark:ring-border forced-colors:border",
               "data-entering:fade-in-0 data-entering:slide-in-from-bottom sm:data-entering:slide-in-from-bottom-0 sm:data-entering:zoom-in-95 data-entering:animate-in data-entering:duration-300 sm:data-entering:duration-300",
               "data-exiting:fade-out sm:data-exiting:zoom-out-95 data-exiting:slide-out-to-bottom-56 sm:data-exiting:slide-out-to-bottom-0 data-exiting:animate-out data-exiting:duration-200",
+              classNames?.content ?? "",
             ])}
             {...props}
           >
@@ -153,7 +159,7 @@ const CommandMenuList = <T extends object>({ className, ...props }: MenuProps<T>
     <CollectionRendererContext.Provider value={renderer}>
       <MenuPrimitive
         className={cn(
-          "flex max-h-96 flex-col overflow-y-auto p-2 *:[[role=group]]:mb-6 *:[[role=group]]:last:mb-0",
+          "grid max-h-96 grid-cols-[auto_1fr] overflow-y-auto p-2 *:[[role=group]]:mb-6 *:[[role=group]]:last:mb-0",
           className,
         )}
         {...props}
@@ -164,8 +170,9 @@ const CommandMenuList = <T extends object>({ className, ...props }: MenuProps<T>
 
 const commandMenuSectionStyles = tv({
   slots: {
-    section: "xss3 flex flex-col gap-y-[calc(var(--spacing)*0.25)]",
-    header: "mb-1 block min-w-(--trigger-width) truncate px-2.5 text-muted-fg text-xs",
+    section: "col-span-full grid grid-cols-[auto_1fr] gap-y-[calc(var(--spacing)*0.25)]",
+    header:
+      "col-span-full mb-1 block min-w-(--trigger-width) truncate px-2.5 text-muted-fg text-xs",
   },
 })
 
@@ -191,7 +198,7 @@ const CommandMenuItem = ({ className, ...props }: React.ComponentProps<typeof Me
     <Menu.Item
       {...props}
       textValue={textValue}
-      className={composeTailwindRenderProps(className, "gap-y-0.5")}
+      className={composeTailwindRenderProps(className, "gap-y-0.5 px-2.5 py-2")}
     />
   )
 }
@@ -222,22 +229,12 @@ const CommandMenuDescription = ({ intent, className, ...props }: CommandMenuDesc
   )
 }
 
-const CommandMenuKeyboard = (props: KeyboardProps) => (
-  <Keyboard
-    classNames={{
-      kbd: "hidden group-data-hovered:text-current/90 group-data-focused:text-current/90 lg:inline",
-      base: "-mr-1",
-    }}
-    {...props}
-  />
-)
-
 const renderer: CollectionRenderer = {
   CollectionRoot(props) {
     if (props.collection.size === 0) {
       return (
         // biome-ignore lint/a11y/useFocusableInteractive: <explanation>
-        <div role="menuitem" className="x3tmpy py-6 text-center text-muted-fg text-sm">
+        <div role="menuitem" className="col-span-full p-4 text-center text-muted-fg text-sm">
           No results found.
         </div>
       )
@@ -257,9 +254,10 @@ const CommandMenuSeparator = ({
 CommandMenu.Search = CommandMenuSearch
 CommandMenu.List = CommandMenuList
 CommandMenu.Item = CommandMenuItem
+CommandMenu.Label = Menu.Label
 CommandMenu.Section = CommandMenuSection
 CommandMenu.Description = CommandMenuDescription
-CommandMenu.Keyboard = CommandMenuKeyboard
+CommandMenu.Keyboard = DropdownKeyboard
 CommandMenu.Separator = CommandMenuSeparator
 
 export type { CommandMenuProps, CommandMenuSearchProps, CommandMenuDescriptionProps }

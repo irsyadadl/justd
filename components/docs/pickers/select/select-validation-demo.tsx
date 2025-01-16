@@ -15,7 +15,7 @@ export default function SelectValidationDemo() {
         <Select.List items={software}>
           {(item) => (
             <Select.Option id={item.id} textValue={item.name}>
-              {item.name}
+              <Select.Label>{item.name}</Select.Label>
             </Select.Option>
           )}
         </Select.List>

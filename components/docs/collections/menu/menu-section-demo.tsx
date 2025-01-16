@@ -9,7 +9,11 @@ export default function MenuSectionDemo() {
       <Menu.Content className="sm:min-w-64" items={cities} placement="bottom">
         {(city) => (
           <Menu.Section title={city.name} items={city.landmarks}>
-            {(landmark) => <Menu.Item textValue={landmark.name}>{landmark.name}</Menu.Item>}
+            {(landmark) => (
+              <Menu.Item textValue={landmark.name}>
+                <Menu.Label>{landmark.name}</Menu.Label>
+              </Menu.Item>
+            )}
           </Menu.Section>
         )}
       </Menu.Content>

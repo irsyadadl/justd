@@ -8,9 +8,9 @@ import type {
 import { ListBoxItem, ListBox as ListBoxPrimitive, composeRenderProps } from "react-aria-components"
 import { tv } from "tailwind-variants"
 
-import { composeTailwindRenderProps } from "@/components/ui/primitive"
 import { cn } from "@/utils/classes"
 import { DropdownItemDetails, DropdownSection } from "./dropdown"
+import { composeTailwindRenderProps } from "./primitive"
 
 const listBoxStyles = tv({
   base: "flex max-h-96 w-full min-w-56 flex-col gap-y-1 overflow-y-auto rounded-xl border p-1 shadow-lg outline-hidden [scrollbar-width:thin] [&::-webkit-scrollbar]:size-0.5",
@@ -99,7 +99,10 @@ type ListBoxPickerProps<T> = ListBoxProps<T>
 const ListBoxPicker = <T extends object>({ className, ...props }: ListBoxPickerProps<T>) => {
   return (
     <ListBoxPrimitive
-      className={composeTailwindRenderProps(className, "max-h-72 overflow-auto p-1 outline-hidden")}
+      className={composeTailwindRenderProps(
+        className,
+        "grid max-h-72 grid-cols-[auto_1fr] overflow-auto p-1 outline-hidden",
+      )}
       {...props}
     />
   )

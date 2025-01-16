@@ -1,6 +1,5 @@
 "use client"
 
-import { composeTailwindRenderProps } from "@/components/ui/primitive"
 import { IconChevronLeft } from "justd-icons"
 import type {
   DisclosureGroupProps as AccordionProps,
@@ -17,6 +16,7 @@ import {
   composeRenderProps,
 } from "react-aria-components"
 import { tv } from "tailwind-variants"
+import { composeTailwindRenderProps } from "./primitive"
 
 interface DisclosureGroupProps extends AccordionProps {
   ref?: React.RefObject<HTMLDivElement>
