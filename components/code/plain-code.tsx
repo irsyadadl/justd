@@ -81,7 +81,7 @@ export const PlainCode = ({
       ref={ref}
       {...props}
       className={cn(
-        "not-prose group relative my-6 max-w-3xl overflow-hidden rounded-lg border bg-secondary/50 text-sm",
+        "not-prose group relative my-6 max-w-4xl overflow-hidden rounded-lg border bg-secondary/50 text-sm",
         keepBackground && "bg-white dark:bg-zinc-950!",
         className,
       )}
