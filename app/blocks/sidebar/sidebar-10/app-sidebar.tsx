@@ -27,6 +27,7 @@ import {
   SidebarHeader,
   SidebarItem,
   SidebarLabel,
+  SidebarSeparator,
 } from "ui"
 
 export default function AppSidebar(props: React.ComponentProps<typeof Sidebar>) {
@@ -43,6 +44,25 @@ export default function AppSidebar(props: React.ComponentProps<typeof Sidebar>) 
       </SidebarHeader>
 
       <SidebarContent>
+        <SidebarDisclosureGroup defaultExpandedKeys={[1, 2]}>
+          {sections.map((section, sectionIndex) => (
+            <SidebarDisclosure key={sectionIndex} id={sectionIndex + 1}>
+              <SidebarDisclosureTrigger>
+                <section.icon />
+                <SidebarLabel> {section.label}</SidebarLabel>
+              </SidebarDisclosureTrigger>
+              <SidebarDisclosurePanel>
+                {section.items.map((item, itemIndex) => (
+                  <SidebarItem key={itemIndex} href="#">
+                    {item.icon && <item.icon />}
+                    <SidebarLabel>{item.name}</SidebarLabel>
+                  </SidebarItem>
+                ))}
+              </SidebarDisclosurePanel>
+            </SidebarDisclosure>
+          ))}
+        </SidebarDisclosureGroup>
+        <SidebarSeparator />
         <SidebarDisclosureGroup defaultExpandedKeys={[1, 2]}>
           {sections.map((section, sectionIndex) => (
             <SidebarDisclosure key={sectionIndex} id={sectionIndex + 1}>

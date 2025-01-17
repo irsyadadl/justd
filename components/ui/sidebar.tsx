@@ -11,6 +11,7 @@ import type {
   DisclosureProps,
   LinkProps,
   LinkRenderProps,
+  SeparatorProps as SidebarSeparatorProps,
 } from "react-aria-components"
 import {
   Disclosure,
@@ -19,6 +20,7 @@ import {
   Header,
   Heading,
   Link,
+  Separator,
   Text,
   Button as Trigger,
   composeRenderProps,
@@ -28,7 +30,6 @@ import { tv } from "tailwind-variants"
 import { Badge } from "./badge"
 import { Button } from "./button"
 import { composeTailwindRenderProps } from "./primitive"
-import { Separator, type SeparatorProps } from "./separator"
 import { Sheet } from "./sheet"
 import { Tooltip } from "./tooltip"
 
@@ -643,12 +644,12 @@ const SidebarDisclosurePanel = (props: React.ComponentProps<typeof DisclosurePan
   )
 }
 
-type SidebarSeparatorProps = SeparatorProps
 const SidebarSeparator = ({ className, ...props }: SidebarSeparatorProps) => {
   return (
     <Separator
+      orientation="horizontal"
       className={cn(
-        "col-span-full mx-auto my-2 w-[calc(var(--sidebar-width)-theme(spacing.6))]",
+        "col-span-full mx-auto my-2.5 h-px w-[calc(var(--sidebar-width)-theme(spacing.6))] bg-border bg-border",
         className,
       )}
       {...props}

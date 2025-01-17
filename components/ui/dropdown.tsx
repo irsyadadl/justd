@@ -150,7 +150,7 @@ const DropdownLabel = ({ className, ref, ...props }: MenuLabelProps) => (
 const DropdownSeparator = ({ className, ...props }: SeparatorProps) => (
   <Separator
     orientation="horizontal"
-    className={cn("-mx-1 col-span-full my-1 h-px border-b", className)}
+    className={cn("-mx-1 col-span-full my-1 h-px bg-border", className)}
     {...props}
   />
 )
