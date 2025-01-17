@@ -656,7 +656,7 @@ const SidebarSeparator = ({ className, ...props }: SidebarSeparatorProps) => {
   )
 }
 
-const SidebarTrigger = ({ onPress, ...props }: React.ComponentProps<typeof Trigger>) => {
+const SidebarTrigger = ({ onPress, children, ...props }: React.ComponentProps<typeof Trigger>) => {
   const { toggleSidebar } = useSidebar()
   return (
     <Button
@@ -670,9 +670,13 @@ const SidebarTrigger = ({ onPress, ...props }: React.ComponentProps<typeof Trigg
       }}
       {...props}
     >
-      <IconSidebarFill className="hidden md:inline" />
-      <IconHamburger className="inline md:hidden" />
-      <span className="sr-only">Toggle Sidebar</span>
+      {children || (
+        <>
+          <IconSidebarFill className="hidden md:inline" />
+          <IconHamburger className="inline md:hidden" />
+          <span className="sr-only">Toggle Sidebar</span>
+        </>
+      )}
     </Button>
   )
 }
