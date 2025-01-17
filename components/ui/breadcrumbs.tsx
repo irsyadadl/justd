@@ -1,24 +1,31 @@
 "use client"
 
-import { IconChevronLgRight } from "justd-icons"
-import type { BreadcrumbProps, BreadcrumbsProps } from "react-aria-components"
-import {
-  Breadcrumb,
-  Breadcrumbs as BreadcrumbsPrimitive,
-  type LinkProps,
-} from "react-aria-components"
-
 import { cn } from "@/utils/classes"
+import { IconChevronLgRight } from "justd-icons"
+import { createContext, use } from "react"
+import type { BreadcrumbProps, BreadcrumbsProps, LinkProps } from "react-aria-components"
+import { Breadcrumb, Breadcrumbs as BreadcrumbsPrimitive } from "react-aria-components"
 import { Link } from "./link"
 import { composeTailwindRenderProps } from "./primitive"
 
-const Breadcrumbs = <T extends object>({ className, ...props }: BreadcrumbsProps<T>) => {
-  return <BreadcrumbsPrimitive {...props} className={cn("flex items-center gap-2", className)} />
+type BreadcrumbsContextProps = { separator?: "chevron" | "slash" | boolean }
+const BreadcrumbsProvider = createContext<BreadcrumbsContextProps>({
+  separator: "chevron",
+})
+
+const Breadcrumbs = <T extends object>({
+  className,
+  ...props
+}: BreadcrumbsProps<T> & BreadcrumbsContextProps) => {
+  return (
+    <BreadcrumbsProvider value={{ separator: props.separator }}>
+      <BreadcrumbsPrimitive {...props} className={cn("flex items-center gap-2", className)} />
+    </BreadcrumbsProvider>
+  )
 }
 
-interface BreadcrumbsItemProps extends BreadcrumbProps {
+interface BreadcrumbsItemProps extends BreadcrumbProps, BreadcrumbsContextProps {
   href?: string
-  separator?: "slash" | "chevron" | boolean
 }
 
 const BreadcrumbsItem = ({
@@ -27,6 +34,8 @@ const BreadcrumbsItem = ({
   className,
   ...props
 }: BreadcrumbsItemProps & Partial<Omit<LinkProps, "className">>) => {
+  const { separator: contextSeparator } = use(BreadcrumbsProvider)
+  separator = contextSeparator ?? separator
   const separatorValue = separator === true ? "chevron" : separator
 
   return (
@@ -36,7 +45,7 @@ const BreadcrumbsItem = ({
     >
       {({ isCurrent }) => (
         <>
-          {<Link href={href} {...props} />}
+          <Link href={href} {...props} />
           {!isCurrent && separator !== false && <Separator separator={separatorValue} />}
         </>
       )}

@@ -26,9 +26,14 @@ Breadcrumbs display a trail of links that guide users to the current page or res
 <Anatomy show='breadcrumbs-anatomy'/>
 
 ## Separator
-This separator is displayed when the breadcrumb differs from the last one. There are three types of separators: `chevron`, `slash`, and `boolean`. By default, the chevron separator is used for non-identical breadcrumbs, but you can disable it by setting the `separator` prop to `false`. Additionally, you can set the separator to `slash` or `chevron` by using the props `separator="slash"` or `separator="chevron"`.
+The separator appears when the breadcrumb changes. By default, it uses a chevron. You can disable it with `separator="false"` or switch to a slash with `separator="slash"`.
 <How toUse="navigation/breadcrumbs/breadcrumbs-separator-demo" />
 
+If you need a unique separator for each item (not recommended), set the `separator` prop directly:
+
+```
+<Breadcrumbs.Item href="#" separator="slash"/>
+```
 
 ## Menu
 You can also combine breadcrumbs with menus to create a more complex navigation structure.
@@ -41,3 +46,15 @@ You can also use breadcrumbs to navigate between collections.
 ## Current
 The current breadcrumb indicates the active page in the breadcrumb navigation. It is automatically added as the last item and its color is updated accordingly. But you can also control the color of the current breadcrumb by passing a `className` prop to the `Breadcrumbs.Item` component.
 <How toUse="navigation/breadcrumbs/breadcrumbs-current-demo" />
+
+if you think you want to render an element inside that current breadcrumb, you can do it like this:
+```
+<Breadcrumbs.Item className="data-current:text-primary">
+  {({ isCurrent }: { isCurrent: boolean }) => (
+    <span className="flex items-center gap-x-2">
+      Navbar
+      {isCurrent && <IconChevronLgDown />}
+    </span>
+  )}
+</Breadcrumbs.Item>
+```
