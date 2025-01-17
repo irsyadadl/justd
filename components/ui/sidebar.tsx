@@ -656,14 +656,14 @@ const SidebarSeparator = ({ className, ...props }: SidebarSeparatorProps) => {
   )
 }
 
-const SidebarTrigger = ({ onPress, children, ...props }: React.ComponentProps<typeof Trigger>) => {
+const SidebarTrigger = ({ onPress, children, ...props }: React.ComponentProps<typeof Button>) => {
   const { toggleSidebar } = useSidebar()
   return (
     <Button
       aria-label={props["aria-label"] || "Toggle Sidebar"}
       data-sidebar-trigger="true"
-      appearance="plain"
-      size="square-petite"
+      appearance={props.appearance || "plain"}
+      size={props.size || "square-petite"}
       onPress={(event) => {
         onPress?.(event)
         toggleSidebar()
@@ -681,8 +681,7 @@ const SidebarTrigger = ({ onPress, children, ...props }: React.ComponentProps<ty
   )
 }
 
-type SidebarRailProps = React.ComponentProps<"button">
-const SidebarRail = ({ className, ref, ...props }: SidebarRailProps) => {
+const SidebarRail = ({ className, ref, ...props }: React.ComponentProps<"button">) => {
   const { toggleSidebar } = useSidebar()
 
   return (
@@ -755,7 +754,6 @@ export type {
   SidebarDisclosureProps,
   SidebarSeparatorProps,
   SidebarLabelProps,
-  SidebarRailProps,
   SidebarLinkProps,
   SidebarDisclosureTriggerProps,
 }
