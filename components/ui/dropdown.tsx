@@ -9,6 +9,7 @@ import {
   type ListBoxItemProps,
   ListBoxSection,
   type SectionProps,
+  Separator,
   type SeparatorProps,
   Text,
   type TextProps,
@@ -16,7 +17,6 @@ import {
 } from "react-aria-components"
 import { tv } from "tailwind-variants"
 import { Keyboard } from "./keyboard"
-import { Separator } from "./separator"
 
 const dropdownItemStyles = tv({
   base: [
@@ -51,7 +51,7 @@ const dropdownSectionStyles = tv({
     section:
       "first:-mt-[5px] xss3 col-span-full grid grid-cols-[auto_1fr] gap-y-0.5 after:block after:h-[4px] after:content-['']",
     header:
-      "-top-[5px] -mb-0.5 -mx-1.5 sticky z-10 col-span-full min-w-(--trigger-width) truncate border-y bg-bg px-4 py-1.5 font-medium text-muted-fg text-sm supports-[-moz-appearance:none]:bg-bg [&+*]:mt-1",
+      "-top-[5px] -mb-0.5 -mx-1.5 sticky z-10 col-span-full min-w-(--trigger-width) truncate border-y bg-bg px-4 py-2 font-medium text-muted-fg text-sm supports-[-moz-appearance:none]:bg-bg [&+*]:mt-1",
   },
 })
 
@@ -159,7 +159,10 @@ const DropdownKeyboard = ({ className, ...props }: React.ComponentProps<typeof K
   return <Keyboard className={cn("absolute right-2 pl-2", className)} {...props} />
 }
 
-// Note: This is not exposed component, but it's used in other components to render dropdowns.
+/**
+ * Note: This is not exposed component, but it's used in other components to render dropdowns.
+ * @internal
+ */
 export type { DropdownSectionProps, DropdownItemProps, DropdownItemDetailProps }
 export {
   DropdownSeparator,

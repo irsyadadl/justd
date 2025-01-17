@@ -162,7 +162,9 @@ const Item = ({ className, isDanger = false, children, ...props }: MenuItemProps
 
           {typeof children === "function" ? children(values) : children}
 
-          {values.hasSubmenu && <IconChevronLgRight className="ml-auto size-4" />}
+          {values.hasSubmenu && (
+            <IconChevronLgRight data-slot="chevron" className="absolute right-2 size-3.5" />
+          )}
         </>
       )}
     </MenuItem>
@@ -176,7 +178,7 @@ export interface MenuHeaderProps extends React.ComponentProps<typeof Header> {
 const MenuHeader = ({ className, separator = false, ...props }: MenuHeaderProps) => (
   <Header
     className={cn(
-      "col-span-full p-2 font-semibold text-base sm:text-sm",
+      "col-span-full px-2.5 py-2 font-semibold text-base sm:text-sm",
       separator && "-mx-1 border-b px-4 py-3 sm:px-3 sm:pb-[0.625rem]",
       className,
     )}
