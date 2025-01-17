@@ -44,7 +44,15 @@ export function CommandPalette({ openCmd, setOpen }: OpenCloseProps) {
   const [value, setValue] = useState(client.search || "")
 
   const debouncedSetSearch = useDebouncedCallback((newValue: string) => {
-    client.setSearch(newValue)
+    const normalizedValue = newValue
+      .toLowerCase()
+      .replace(
+        /(date|color|bar|text|time|group|tag|field|list|area|chart|file|range)([a-z]+)/g,
+        "$1 $2",
+      )
+
+      .replaceAll("-", " ")
+    client.setSearch(normalizedValue)
   }, 300)
 
   const onValueChange = (newValue: string) => {

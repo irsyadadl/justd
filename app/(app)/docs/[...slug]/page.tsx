@@ -3,7 +3,7 @@ import { Mdx } from "@/components/mdx"
 import { Pager } from "@/components/pager"
 import { Toc } from "@/components/toc"
 import { siteConfig } from "@/resources/config/site"
-import { goodTitle } from "@/resources/lib/utils"
+import { title } from "@/resources/lib/utils"
 import { source } from "@/utils/source"
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
@@ -18,7 +18,7 @@ export interface DocPageProps {
 
 const extractSegment = (str: string): string | null => {
   const segments = str.split("/")
-  return segments.length === 5 ? goodTitle(segments[3]!) : goodTitle(segments[3]!)
+  return segments.length === 5 ? title(segments[3]!) : title(segments[3]!)
 }
 
 export async function generateMetadata(props: DocPageProps): Promise<Metadata> {

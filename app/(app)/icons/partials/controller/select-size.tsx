@@ -1,10 +1,10 @@
 import { useState } from "react"
 
+import { title } from "@/reources/lib/utils"
 import { useQueryString } from "hooks/use-query-string"
 import { IconChevronLgDown } from "justd-icons"
 import { usePathname, useRouter } from "next/navigation"
 import type { Selection } from "react-aria-components"
-import title from "title"
 import { Button, Menu } from "ui"
 
 const sizes = [
