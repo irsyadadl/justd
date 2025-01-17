@@ -30,7 +30,7 @@ import { Badge, Button, Link, Menu, Separator, buttonStyles } from "ui"
 import { Keyboard } from "@/components/ui/keyboard"
 import { cn } from "@/utils/classes"
 import { useMediaQuery } from "@/utils/use-media-query"
-import { Header, MenuSection } from "react-aria-components"
+import { Header } from "react-aria-components"
 import { CommandPalette } from "./command-palette"
 import { NavLink } from "./nav-item"
 import { TakeCurrentUrl } from "./take-current-url"
@@ -215,61 +215,61 @@ export function NavbarDropdown() {
           </span>
         </Button>
         <Menu.Content placement="bottom" className="sm:min-w-64">
-          <MenuSection className="mb-3">
-            <Header className="px-3 py-1 text-muted-fg">Pages</Header>
+          <Menu.Section className="mb-3">
+            <Header className="col-span-full px-3 pt-3 pb-1 text-muted-fg text-sm">Pages</Header>
             <Menu.Item href="/">
               <IconHome />
-              Home
+              <Menu.Label>Home</Menu.Label>
             </Menu.Item>
             <Menu.Item href="/components">
               <IconCube />
-              Components
+              <Menu.Label>Components</Menu.Label>
             </Menu.Item>
             <Menu.Item href="/colors">
               <IconColors />
-              Colors
+              <Menu.Label>Colors</Menu.Label>
             </Menu.Item>
             <Menu.Item href="/themes">
               <IconColorPalette />
-              Themes
+              <Menu.Label>Themes</Menu.Label>
             </Menu.Item>
             <Menu.Item href="/blocks">
               <IconWindowVisit />
-              Blocks
+              <Menu.Label>Blocks</Menu.Label>
             </Menu.Item>
             <Menu.Item href="/icons">
               <IconBrandJustd />
-              Icons
+              <Menu.Label>Icons</Menu.Label>
             </Menu.Item>
             <Menu.Item href="/blog">
               <IconNotepad />
-              Blog
+              <Menu.Label>Blog</Menu.Label>
             </Menu.Item>
-          </MenuSection>
-          <MenuSection>
-            <Header className="px-3 py-1 text-muted-fg">Refs</Header>
+          </Menu.Section>
+          <Menu.Section>
+            <Header className="col-span-full px-3 py-1 text-muted-fg text-sm">Refs</Header>
             <Menu.Item href={siteConfig.discord} target="_blank">
-              <IconBrandDiscord /> Discord
+              <IconBrandDiscord /> <Menu.Label>Discord</Menu.Label>
             </Menu.Item>
             <Menu.Item href="https://x.com/intent/follow?screen_name=irsyadadl" target="_blank">
-              <IconBrandX />X / Twitter
+              <IconBrandX /> <Menu.Label>X / Twitter</Menu.Label>
             </Menu.Item>
             <Menu.Item href="https://github.com/justdlabs" target="_blank">
               <IconBrandGithub />
-              Github
+              <Menu.Label>Github</Menu.Label>
             </Menu.Item>
             <Menu.Item
               href="https://react-spectrum.adobe.com/react-aria/components.html"
               target="_blank"
             >
               <IconBrandAdobe />
-              RAC
+              <Menu.Label>RAC</Menu.Label>
             </Menu.Item>
             <Menu.Item href="https://tailwindcss.com" target="_blank">
               <IconBrandTailwindcss />
-              Tailwind CSS
+              <Menu.Label>Tailwind CSS</Menu.Label>
             </Menu.Item>
-          </MenuSection>
+          </Menu.Section>
         </Menu.Content>
       </Menu>
       <Menu>

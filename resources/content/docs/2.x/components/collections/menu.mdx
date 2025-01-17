@@ -77,5 +77,8 @@ Also, you can disable items directly in `Menu.Content` by using the `disabledKey
 <Menu.Content disabledKeys={['gsu']} />
 ```
 
+## Menu Label
+In the examples above, you might notice that the `Menu.Label` component is used inconsistently. This is because it is not mandatory, but it is considered a best practice. Using `Menu.Label` ensures proper alignment between icons and text, especially when dealing with items that vary. For instance, one item might have an icon while another does not. Adding `Menu.Label` helps create a polished and consistent appearance.
+
 ## Open Modal
 Trigger a modal from a menu item. Refer to the [modal demo](/docs/components/overlays/modal#triggered-by-menu) for further information.
