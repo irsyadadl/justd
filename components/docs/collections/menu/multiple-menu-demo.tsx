@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 
-import type { Selection } from "@react-types/shared"
+import type { Selection } from "react-aria-components"
 import { Button, Menu } from "ui"
 
 export default function MultipleMenuDemo() {
