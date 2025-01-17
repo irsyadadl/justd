@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-import { title } from "@/reources/lib/utils"
+import { title } from "@/resources/lib/utils"
 import { useQueryString } from "hooks/use-query-string"
 import { IconChevronLgDown } from "justd-icons"
 import { usePathname, useRouter } from "next/navigation"
