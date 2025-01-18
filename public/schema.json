@@ -2,30 +2,31 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
-    "$schema": {
-      "type": "string",
-      "format": "uri"
-    },
     "ui": {
-      "type": "string"
+      "type": "string",
+      "description": "Path to the UI components directory"
     },
     "utils": {
-      "type": "string"
+      "type": "string",
+      "description": "Path to the utilities directory"
     },
     "gray": {
       "type": "string",
-      "enum": ["zinc", "gray", "slate", "neutral", "stone"]
+      "description": "Alias or mapping for a specific color"
     },
     "css": {
-      "type": "string"
+      "type": "string",
+      "description": "Path to the global CSS file"
     },
     "alias": {
-      "type": "string"
+      "type": "string",
+      "description": "Alias used in the project"
     },
     "language": {
       "type": "string",
-      "enum": ["typescript", "javascript"]
+      "enum": ["javascript", "typescript"],
+      "description": "Programming language of the project"
     }
   },
-  "required": ["ui", "utils", "gray", "css", "alias"]
+  "required": ["ui", "utils", "css", "alias", "language"]
 }
