@@ -87,11 +87,7 @@ export function Navbar() {
                       Ecosystem
                       <IconChevronLgDown className="size-3 duration-200 group-data-pressed:rotate-180" />
                     </Menu.Trigger>
-                    <Menu.Content
-                      className="sm:min-w-xs sm:max-w-min"
-                      placement="bottom"
-                      items={ecosystemItems}
-                    >
+                    <Menu.Content className="sm:min-w-xs sm:max-w-min" placement="bottom" items={ecosystemItems} >
                       {(item) => (
                         <Menu.Item
                           href={item.href}
@@ -293,14 +289,6 @@ const ecosystemItems = [
     icon: <IconWindowVisitFill />,
     description:
       "Get started quickly with a complete React project setup, including authentication.",
-    badge: "Coming soon",
-  },
-  {
-    id: 2,
-    label: "Premium Blocks",
-    href: "#",
-    icon: <IconPackage />,
-    description: "Pre-designed, ready-to-use React components for seamless integration.",
     badge: "Coming soon",
   },
   {
