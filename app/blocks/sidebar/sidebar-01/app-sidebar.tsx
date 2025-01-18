@@ -64,12 +64,12 @@ export default function AppSidebar(props: React.ComponentProps<typeof Sidebar>) 
       <SidebarContent>
         <SidebarSectionGroup>
           <SidebarSection title="Overview">
-            <SidebarItem isCurrent href="#">
+            <SidebarItem tooltip="Overview" isCurrent href="#">
               <IconDashboard />
               <SidebarLabel>Overview</SidebarLabel>
             </SidebarItem>
 
-            <SidebarItem>
+            <SidebarItem tooltip="Orders">
               {({ isHovered, isCollapsed }) => (
                 <>
                   <SidebarLink href="#">
@@ -108,7 +108,7 @@ export default function AppSidebar(props: React.ComponentProps<typeof Sidebar>) 
                 </>
               )}
             </SidebarItem>
-            <SidebarItem>
+            <SidebarItem tooltip="Products">
               {({ isHovered, isCollapsed }) => (
                 <>
                   <SidebarLink href="#">
@@ -147,7 +147,7 @@ export default function AppSidebar(props: React.ComponentProps<typeof Sidebar>) 
                 </>
               )}
             </SidebarItem>
-            <SidebarItem href="#" badge="4 Pending">
+            <SidebarItem href="#" badge="4 Pending" tooltip="Payments">
               <IconCreditCard />
               <SidebarLabel>Payments</SidebarLabel>
             </SidebarItem>
@@ -160,19 +160,19 @@ export default function AppSidebar(props: React.ComponentProps<typeof Sidebar>) 
                 <SidebarLabel>Support</SidebarLabel>
               </SidebarDisclosureTrigger>
               <SidebarDisclosurePanel>
-                <SidebarItem href="#">
+                <SidebarItem href="#" tooltip="Tickets">
                   <IconTicket />
                   <SidebarLabel>Tickets</SidebarLabel>
                 </SidebarItem>
-                <SidebarItem href="#">
+                <SidebarItem href="#" tooltip="Chat Support">
                   <IconMessage />
                   <SidebarLabel>Chat Support</SidebarLabel>
                 </SidebarItem>
-                <SidebarItem href="#">
+                <SidebarItem href="#" tooltip="FAQ">
                   <IconCircleQuestionmark />
                   <SidebarLabel>FAQ</SidebarLabel>
                 </SidebarItem>
-                <SidebarItem href="#">
+                <SidebarItem href="#" tooltip="Documentation">
                   <IconNotes />
                   <SidebarLabel>Documentation</SidebarLabel>
                 </SidebarItem>
@@ -184,15 +184,15 @@ export default function AppSidebar(props: React.ComponentProps<typeof Sidebar>) 
                 <SidebarLabel>Inventory</SidebarLabel>
               </SidebarDisclosureTrigger>
               <SidebarDisclosurePanel>
-                <SidebarItem href="#">
+                <SidebarItem href="#" tooltip="Stock Levels">
                   <IconMinus />
                   <SidebarLabel>Stock Levels</SidebarLabel>
                 </SidebarItem>
-                <SidebarItem href="#">
+                <SidebarItem href="#" tooltip="Warehouse">
                   <IconMinus />
                   <SidebarLabel>Warehouse</SidebarLabel>
                 </SidebarItem>
-                <SidebarItem href="#">
+                <SidebarItem href="#" tooltip="Shipping">
                   <IconMinus />
                   <SidebarLabel>Shipping</SidebarLabel>
                 </SidebarItem>
