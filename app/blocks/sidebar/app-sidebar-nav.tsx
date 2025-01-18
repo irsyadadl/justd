@@ -13,7 +13,7 @@ export default function AppSidebarNav() {
         </Breadcrumbs>
       </span>
 
-      <SidebarTrigger className="-mr-2 ml-auto">
+      <SidebarTrigger className="-mr-2 mpl-auto">
         <IconLayoutAlignRight />
       </SidebarTrigger>
     </SidebarNav>

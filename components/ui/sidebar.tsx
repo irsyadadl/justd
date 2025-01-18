@@ -216,6 +216,8 @@ const Sidebar = ({
   if (collapsible === "none") {
     return (
       <div
+        data-sidebar-intent={intent}
+        data-sidebar-collapsible="none"
         className={cn(
           "flex h-full w-(--sidebar-width) flex-col border-r bg-sidebar text-sidebar-fg",
           className,
