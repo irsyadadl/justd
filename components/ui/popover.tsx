@@ -67,8 +67,8 @@ const content = tv({
     },
     isEntering: {
       true: [
-        "fade-in animate-in duration-200 ease-out",
-        "data-[placement=left]:slide-in-from-left-1 data-[placement=right]:slide-in-from-right-1 data-[placement=top]:slide-in-from-top-1 data-[placement=bottom]:slide-in-from-bottom-1",
+        "fade-in animate-in duration-150 ease-out",
+        "data-[placement=left]:slide-in-from-right-1 data-[placement=right]:slide-in-from-left-1 data-[placement=top]:slide-in-from-bottom-1 data-[placement=bottom]:slide-in-from-top-1",
       ],
     },
     isExiting: {

@@ -2,18 +2,18 @@
 
 import { Wrapper } from "@/app/(app)/partials/resources"
 import {
-    IconBrandBluesky,
-    IconBrandTelegram,
-    IconBrandTwitter,
-    IconChevronLgDown,
-    IconHashtag,
-    IconHeadphones,
-    IconLogout,
-    IconMail,
-    IconMessage,
-    IconPersonAdd,
-    IconPlus,
-    IconSettings,
+  IconBrandBluesky,
+  IconBrandTelegram,
+  IconBrandTwitter,
+  IconChevronLgDown,
+  IconHashtag,
+  IconHeadphones,
+  IconLogout,
+  IconMail,
+  IconMessage,
+  IconPersonAdd,
+  IconPlus,
+  IconSettings,
 } from "justd-icons"
 import { Button, Menu } from "ui"
 

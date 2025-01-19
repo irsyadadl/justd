@@ -7,7 +7,7 @@ import { useMediaQuery } from "@/utils/use-media-query"
 import { Heading } from "react-aria-components"
 import scrollIntoView from "scroll-into-view-if-needed"
 
-import type { TableOfContents, TOCItemType } from "fumadocs-core/server"
+import type { TOCItemType, TableOfContents } from "fumadocs-core/server"
 import { useScrollPosition } from "hooks/use-scroll-position"
 
 interface Props {
@@ -110,14 +110,15 @@ export function useActiveItem(itemIds: string[]) {
     const observer = new IntersectionObserver(
       (entries) => {
         let bestCandidate: IntersectionObserverEntry | null = null
-        entries.forEach((entry) => {
+        for (const entry of entries) {
           if (
             entry.isIntersecting &&
             (!bestCandidate || bestCandidate.intersectionRatio < entry.intersectionRatio)
           ) {
             bestCandidate = entry
           }
-        })
+        }
+
         if (bestCandidate) {
           // @ts-ignore
           setActiveId(bestCandidate.target.id)
@@ -126,16 +127,16 @@ export function useActiveItem(itemIds: string[]) {
       { rootMargin: "0% 0% -25% 0%", threshold: 0.1 },
     )
 
-    itemIds.forEach((id) => {
+    for (const id of itemIds) {
       const element = document.getElementById(id)
       if (element) observer.observe(element)
-    })
+    }
 
     return () => {
-      itemIds.forEach((id) => {
+      for (const id of itemIds) {
         const element = document.getElementById(id)
         if (element) observer.unobserve(element)
-      })
+      }
     }
   }, [itemIds])
 

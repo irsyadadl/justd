@@ -4,17 +4,7 @@
     "enabled": true
   },
   "files": {
-    "ignore": [
-      "**/*.js",
-      "public/**/*",
-      "resources/lib/sidebar.json",
-      "resources/stubs/**/*",
-      "**/*.css",
-      "**/.next/**",
-      "resource/content",
-      ".source",
-      "components/docs/generated/**/*"
-    ]
+    "ignore": []
   },
   "linter": {
     "enabled": true,
@@ -43,9 +33,6 @@
         "noArrayIndexKey": "off",
         "noConsoleLog": "warn"
       },
-      "security": {
-        "noDangerouslySetInnerHtml": "off"
-      },
       "nursery": {
         "useSortedClasses": {
           "level": "error",
@@ -57,14 +44,14 @@
         }
       }
     },
-    "ignore": ["node_modules", ".next", ".source", "dist", ".vercel"]
+    "ignore": []
   },
   "formatter": {
     "enabled": true,
     "indentStyle": "space",
     "indentWidth": 2,
     "lineWidth": 100,
-    "ignore": ["node_modules", ".next", ".source", "dist", ".vercel"]
+    "ignore": []
   },
   "javascript": {
     "formatter": {

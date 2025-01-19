@@ -106,10 +106,7 @@ const MenuContent = <T extends object>({
       respectScreen={respectScreen}
       showArrow={showArrow}
       className={popover({
-        className: cn([
-          showArrow && "data-[placement=left]:mt-[-0.38rem] data-[placement=right]:mt-[-0.38rem]",
-          popoverClassName,
-        ]),
+        className: popoverClassName,
       })}
       {...props}
     >

@@ -75,7 +75,7 @@ const TagField = ({
       return () => clearTimeout(timeoutId)
     }
 
-    tagNames.slice(0, maxTagsToAdd).forEach((tagName) => {
+    for (const tagName of tagNames.slice(0, maxTagsToAdd)) {
       const formattedName = tagName
         .trim()
         .replace(/\s+/g, " ")
@@ -93,7 +93,7 @@ const TagField = ({
         list.append(tag)
         onItemInserted?.(tag)
       }
-    })
+    }
 
     setInputValue("")
   }
@@ -107,7 +107,11 @@ const TagField = ({
   const onRemove = (keys: Set<Key>) => {
     list.remove(...keys)
 
-    onItemCleared?.(list.getItem([...keys][0]!))
+    const firstKey = [...keys][0]
+    if (firstKey !== undefined) {
+      onItemCleared?.(list.getItem(firstKey))
+    }
+
     clearInvalidFeedback()
   }
 

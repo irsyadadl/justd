@@ -69,9 +69,9 @@ export const PlainCode = ({
     if (!pre) return
 
     const clone = pre.cloneNode(true) as HTMLElement
-    clone.querySelectorAll(".nd-copy-ignore").forEach((node) => {
+    for (const node of clone.querySelectorAll(".nd-copy-ignore")) {
       node.remove()
-    })
+    }
 
     void navigator.clipboard.writeText(clone.textContent ?? "")
   }, [])

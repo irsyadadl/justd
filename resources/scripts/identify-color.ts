@@ -22,9 +22,9 @@ const findComponentsUsingClasses = (
 ): Record<string, string[]> => {
   const result: Record<string, string[]> = {}
 
-  targetClasses.forEach((cls) => {
+  for (const cls of targetClasses) {
     result[cls] = []
-  })
+  }
 
   const files = fs.readdirSync(dir)
 
@@ -33,22 +33,20 @@ const findComponentsUsingClasses = (
     const stat = fs.statSync(fullPath)
 
     if (stat.isDirectory()) {
-      // Recursively check subdirectories
       const subResults = findComponentsUsingClasses(fullPath, targetClasses)
-      targetClasses.forEach((cls) => {
+      for (const cls of targetClasses) {
         result[cls] = result[cls]!.concat(subResults[cls]!)
-      })
+      }
     } else if (stat.isFile() && file.endsWith(".tsx")) {
-      // Check .tsx files for the target classes
       const content = fs.readFileSync(fullPath, "utf8")
-      targetClasses.forEach((cls) => {
+      for (const cls of targetClasses) {
         if (content.includes(cls)) {
           const componentName = path.basename(file, ".tsx")
           if (!result[cls]!.includes(componentName)) {
             result[cls]!.push(componentName)
           }
         }
-      })
+      }
     }
   }
 
@@ -64,14 +62,14 @@ const main = () => {
 
   const components = findComponentsUsingClasses(TARGET_DIR, TARGET_CLASSES)
 
-  TARGET_CLASSES.forEach((cls) => {
+  for (const cls of TARGET_CLASSES) {
     if (components[cls]!.length === 0) {
-    } else {
-      components[cls]!.forEach((component) => {
-        console.info(`Found ${component} using ${cls}`)
-      })
+      continue
     }
-  })
+    for (const component of components[cls]!) {
+      console.info(`Found ${component} using ${cls}`)
+    }
+  }
 }
 
 main()

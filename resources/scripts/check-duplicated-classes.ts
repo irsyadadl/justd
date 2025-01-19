@@ -9,7 +9,7 @@ import path from "node:path"
 const get = (dir: string, fileList: string[] = []): string[] => {
   const files = fs.readdirSync(dir)
 
-  files.forEach((file) => {
+  for (const file of files) {
     const filePath = path.join(dir, file)
     const stat = fs.statSync(filePath)
 
@@ -18,7 +18,7 @@ const get = (dir: string, fileList: string[] = []): string[] => {
     } else if (filePath.endsWith(".tsx")) {
       fileList.push(filePath)
     }
-  })
+  }
 
   return fileList
 }
@@ -40,13 +40,15 @@ const find = (content: string): { tag: string; duplicateClasses: string[] }[] =>
     const seen = new Set<string>()
     const tagDuplicates: string[] = []
 
-    classes?.forEach((cls) => {
-      if (seen.has(cls)) {
-        tagDuplicates.push(cls)
-      } else {
-        seen.add(cls)
+    if (classes) {
+      for (const cls of classes) {
+        if (seen.has(cls)) {
+          tagDuplicates.push(cls)
+        } else {
+          seen.add(cls)
+        }
       }
-    })
+    }
 
     if (tagDuplicates.length > 0) {
       // @ts-ignore
@@ -66,14 +68,14 @@ const find = (content: string): { tag: string; duplicateClasses: string[] }[] =>
 const detect = (directories: string[]) => {
   const results: { file: string; tag: string; duplicates: string[] }[] = []
 
-  directories.forEach((dir) => {
+  for (const dir of directories) {
     const files = get(dir)
 
-    files.forEach((file) => {
+    for (const file of files) {
       const content = fs.readFileSync(file, "utf-8")
       const duplicates = find(content)
 
-      duplicates.forEach(({ tag, duplicateClasses }) => {
+      for (const { tag, duplicateClasses } of duplicates) {
         if (duplicateClasses.length > 0) {
           results.push({
             file,
@@ -81,9 +83,9 @@ const detect = (directories: string[]) => {
             duplicates: duplicateClasses,
           })
         }
-      })
-    })
-  })
+      }
+    }
+  }
 
   if (results.length > 0) {
     console.table(

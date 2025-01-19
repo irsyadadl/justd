@@ -29,14 +29,14 @@ const generateComponentRegistry = () => {
       return []
     }
     const files = fs.readdirSync(dirPath)
-    files.forEach((file) => {
+    for (const file of files) {
       const fullPath = path.join(dirPath, file)
       if (fs.statSync(fullPath).isDirectory()) {
         getAllFiles(fullPath, arrayOfFiles)
       } else if ([".tsx", ".css", ".json", ".ts"].some((ext) => file.endsWith(ext))) {
         arrayOfFiles.push(fullPath)
       }
-    })
+    }
 
     return arrayOfFiles
   }
@@ -44,21 +44,20 @@ const generateComponentRegistry = () => {
   const registryEntries: string[] = []
   const generatedFiles: { Type: string; Path: string }[] = []
 
-  sources.forEach(({ type, path: sourcePath }) => {
+  for (const { type, path: sourcePath } of sources) {
     const resolvedPath = path.resolve(sourcePath)
 
     if (!fs.existsSync(resolvedPath)) {
       console.warn(`Directory not found: ${resolvedPath}`)
-      return
+      continue
     }
 
     const files = getAllFiles(resolvedPath)
 
-    // Exclude anatomies and docs from demo and blocks
     const filteredFiles =
       type === "demo" ? files.filter((file) => !file.includes("/anatomies/")) : files
 
-    filteredFiles.forEach((filePath) => {
+    for (const filePath of filteredFiles) {
       const componentName = path.basename(filePath, ".tsx")
       const fileContent = fs.readFileSync(filePath, "utf-8")
 
@@ -69,7 +68,6 @@ const generateComponentRegistry = () => {
       const registryItem: RegistryItem = {
         name: componentName,
         dependencies: undefined,
-
         files: [
           {
             name: path.basename(filePath),
@@ -103,8 +101,8 @@ const generateComponentRegistry = () => {
         }
       `)
       }
-    })
-  })
+    }
+  }
 
   const generatedContent = `
 // @ts-nocheck

@@ -58,11 +58,12 @@ const aliases = generateAliases(Object.keys(icons))
 
 export const aliasLookup = Object.entries(aliases).reduce(
   (acc, [iconName, aliasList]) => {
-    aliasList.forEach((alias) => {
+    for (const alias of aliasList) {
       const lowerAlias = alias.toLowerCase()
       acc[lowerAlias] = acc[lowerAlias] || []
       acc[lowerAlias].push(iconName)
-    })
+    }
+
     return acc
   },
   {} as Record<string, string[]>,

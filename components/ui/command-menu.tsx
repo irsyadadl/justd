@@ -98,14 +98,17 @@ const CommandMenu = ({
         >
           <Modal
             className={cn([
-              "fixed top-auto bottom-0 left-[50%] z-50 grid h-[calc(100vh-35%)] w-full max-w-full translate-x-[-50%] gap-4 overflow-hidden rounded-t-2xl bg-overlay text-overlay-fg shadow-lg ring-1 ring-fg/10 sm:top-[6rem] sm:bottom-auto sm:h-auto sm:w-full sm:max-w-2xl sm:rounded-xl dark:ring-border forced-colors:border",
+              "fixed top-auto bottom-0 left-[50%] z-50 grid h-[calc(100vh-30%)] w-full max-w-full translate-x-[-50%] gap-4 overflow-hidden rounded-t-2xl bg-overlay text-overlay-fg shadow-lg ring-1 ring-fg/10 sm:top-[6rem] sm:bottom-auto sm:h-auto sm:w-full sm:max-w-2xl sm:rounded-xl dark:ring-border forced-colors:border",
               "data-entering:fade-in-0 data-entering:slide-in-from-bottom sm:data-entering:slide-in-from-bottom-0 sm:data-entering:zoom-in-95 data-entering:animate-in data-entering:duration-300 sm:data-entering:duration-300",
               "data-exiting:fade-out sm:data-exiting:zoom-out-95 data-exiting:slide-out-to-bottom-56 sm:data-exiting:slide-out-to-bottom-0 data-exiting:animate-out data-exiting:duration-200",
               classNames?.content ?? "",
             ])}
             {...props}
           >
-            <Dialog aria-label={props["aria-label"] ?? "Command Menu"} className="outline-hidden">
+            <Dialog
+              aria-label={props["aria-label"] ?? "Command Menu"}
+              className="overflow-hidden outline-hidden"
+            >
               <Autocomplete filter={filter} {...props} />
             </Dialog>
           </Modal>
@@ -159,7 +162,7 @@ const CommandMenuList = <T extends object>({ className, ...props }: MenuProps<T>
     <CollectionRendererContext.Provider value={renderer}>
       <MenuPrimitive
         className={cn(
-          "grid max-h-110 grid-cols-[auto_1fr] overflow-y-auto p-2 pb-16 md:pb-2 *:[[role=group]]:mb-6 *:[[role=group]]:last:mb-0",
+          "grid max-h-full grid-cols-[auto_1fr] overflow-y-auto p-2 sm:max-h-110 *:[[role=group]]:mb-6 *:[[role=group]]:last:mb-0",
           className,
         )}
         {...props}
