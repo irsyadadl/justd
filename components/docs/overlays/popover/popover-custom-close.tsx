@@ -7,7 +7,7 @@ export default function PopoverCustomClose() {
     <Popover>
       <Button>Login</Button>
       <Popover.Content className="sm:min-w-96">
-        <Popover.Header className="mb-4">
+        <Popover.Header>
           <Popover.Title>Login</Popover.Title>
           <Popover.Description>Enter your credentials to sign in.</Popover.Description>
         </Popover.Header>

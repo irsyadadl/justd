@@ -70,7 +70,7 @@ export const SourceCode = ({ toShow, ...props }: SourceCodeProps) => {
             <IconBrandReactjs className="size-4 text-cyan-600 dark:text-cyan-500" /> {toShow}.tsx
           </div>
           <CopyMotionButton
-            className="absolute top-20 right-2 rounded-sm group-hover:opacity-100"
+            className="absolute top-20 right-2 hidden rounded-sm group-hover:opacity-100 sm:inline"
             text={processedSourceCode}
           />
         </div>

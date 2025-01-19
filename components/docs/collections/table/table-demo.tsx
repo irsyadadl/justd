@@ -33,7 +33,7 @@ export default function TableDemo() {
                     <Menu.Trigger>
                       <IconDotsVertical />
                     </Menu.Trigger>
-                    <Menu.Content aria-label="Actions" showArrow placement="left">
+                    <Menu.Content aria-label="Actions" placement="left top">
                       <Menu.Item>View</Menu.Item>
                       <Menu.Item>Edit</Menu.Item>
                       <Menu.Separator />

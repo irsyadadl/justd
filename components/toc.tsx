@@ -7,7 +7,7 @@ import { useMediaQuery } from "@/utils/use-media-query"
 import { Heading } from "react-aria-components"
 import scrollIntoView from "scroll-into-view-if-needed"
 
-import type { TOCItemType, TableOfContents } from "fumadocs-core/server"
+import type { TableOfContents, TOCItemType } from "fumadocs-core/server"
 import { useScrollPosition } from "hooks/use-scroll-position"
 
 interface Props {

@@ -4,28 +4,28 @@ import { useId, useState } from "react"
 import { ResponsiveAside } from "@/components/responsive-aside"
 import { siteConfig } from "@/resources/config/site"
 import {
-  IconBrandAdobe,
-  IconBrandDiscord,
-  IconBrandFigma,
-  IconBrandGithub,
-  IconBrandJustd,
-  IconBrandTailwindcss,
-  IconBrandX,
-  IconChevronLgDown,
-  IconColorPalette,
-  IconColors,
-  IconCube,
-  IconDuplicateFill,
-  IconHome,
-  IconNotepad,
-  IconPackage,
-  IconSearch,
-  IconWindowVisit,
-  IconWindowVisitFill,
+    IconBrandAdobe,
+    IconBrandDiscord,
+    IconBrandFigma,
+    IconBrandGithub,
+    IconBrandJustd,
+    IconBrandTailwindcss,
+    IconBrandX,
+    IconChevronLgDown,
+    IconColorPalette,
+    IconColors,
+    IconCube,
+    IconDuplicateFill,
+    IconHome,
+    IconNotepad,
+    IconPackage,
+    IconSearch,
+    IconWindowVisit,
+    IconWindowVisitFill,
 } from "justd-icons"
 import { LayoutGroup } from "motion/react"
 import { usePathname } from "next/navigation"
-import { Badge, Button, Link, Menu, Separator, buttonStyles } from "ui"
+import { Badge, Button, buttonStyles, Link, Menu, Separator } from "ui"
 
 import { Keyboard } from "@/components/ui/keyboard"
 import { cn } from "@/utils/classes"
@@ -46,7 +46,7 @@ export function Navbar() {
       <CommandPalette setOpen={setOpen} openCmd={open} />
       <LayoutGroup id={`navigation-${id}`}>
         <div className="xnw2 sticky top-0 z-30 hidden overflow-hidden pb-0 lg:block">
-          <nav className="border-current/10 border-b bg-bg py-2 dark:supports-backdrop-filter:bg-bg/60 dark:supports-backdrop-filter:backdrop-blur-3xl">
+          <nav className="fg/10 border-b bg-bg py-2 dark:supports-backdrop-filter:bg-bg/60 dark:supports-backdrop-filter:backdrop-blur-3xl">
             <div className="mx-auto max-w-(--breakpoint-2xl) px-4 sm:px-6 lg:px-8">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-x-6">
@@ -87,7 +87,11 @@ export function Navbar() {
                       Ecosystem
                       <IconChevronLgDown className="size-3 duration-200 group-data-pressed:rotate-180" />
                     </Menu.Trigger>
-                    <Menu.Content className="sm:min-w-xs sm:max-w-min" placement="bottom" items={ecosystemItems} >
+                    <Menu.Content
+                      className="sm:min-w-xs sm:max-w-min"
+                      placement="bottom"
+                      items={ecosystemItems}
+                    >
                       {(item) => (
                         <Menu.Item
                           href={item.href}

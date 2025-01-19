@@ -159,7 +159,7 @@ const CommandMenuList = <T extends object>({ className, ...props }: MenuProps<T>
     <CollectionRendererContext.Provider value={renderer}>
       <MenuPrimitive
         className={cn(
-          "grid max-h-96 grid-cols-[auto_1fr] overflow-y-auto p-2 *:[[role=group]]:mb-6 *:[[role=group]]:last:mb-0",
+          "grid max-h-110 grid-cols-[auto_1fr] overflow-y-auto p-2 pb-16 md:pb-2 *:[[role=group]]:mb-6 *:[[role=group]]:last:mb-0",
           className,
         )}
         {...props}
