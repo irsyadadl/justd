@@ -1,5 +1,6 @@
 "use client"
 
+import { IconBrandJustdBlocks } from "@/components/icons/icon-brand-justd-blocks"
 import { cn } from "@/utils/classes"
 import {
   IconBrandAstro,
@@ -82,6 +83,35 @@ export function Resources() {
           Extra
         </Heading>
         <div className="grid grid-cols-1 gap-2 sm:grid-cols-2" aria-label="Extra">
+          <Wrapper className="relative" aria-label="Blocks" id="blocks">
+            <san className="absolute top-0 right-0 mt-12 mr-4 rotate-12 font-mono text-2xl text-muted-fg/20 tracking-tighter sm:text-7xl">
+              15% off
+            </san>
+            <Link
+              target="_blank"
+              aria-label={"Justd Blocks"}
+              rel="noopener noreferrer"
+              href="https://dub.sh/RNMV32k"
+              className="absolute inset-0 size-full"
+            />
+            <div className="flex-1">
+              <WrapperIcon>
+                <IconBrandJustdBlocks className="size-6" />
+              </WrapperIcon>
+              <Card.Header>
+                <Card.Title level={3}>Blocks</Card.Title>
+                <Card.Description className="line-clamp-2">
+                  Pre-designed, ready-to-use React components for seamless integration, customizable
+                  and optimized for modern web applications.
+                </Card.Description>
+              </Card.Header>
+            </div>
+            <Card.Footer>
+              <Badge className="bg-zinc-600/10 text-zinc-700 group-data-hovered:bg-zinc-600/20 dark:bg-white/5 dark:text-zinc-400 dark:group-data-hovered:bg-white/10">
+                support
+              </Badge>
+            </Card.Footer>
+          </Wrapper>
           <Wrapper aria-label="Extra">
             <Link
               target="_blank"

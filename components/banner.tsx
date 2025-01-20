@@ -14,7 +14,7 @@ export function Banner() {
           duration: Infinity,
           action: {
             label: "Let's go!",
-            onClick: () => window.open("https://blocks.getjustd.com", "_blank"),
+            onClick: () => window.open("https://dub.sh/NfSXJrL", "_blank"),
           },
           cancel: {
             label: "Nah",
@@ -30,7 +30,7 @@ export function Banner() {
 
   return (
     <Link
-      href="https://blocks.getjustd.com"
+      href="https://dub.sh/c4aLqep"
       target="_blank"
       className="block w-full bg-primary px-4 py-2 text-center text-primary-fg sm:text-sm/6"
     >
