@@ -84,9 +84,9 @@ export function Resources() {
         </Heading>
         <div className="grid grid-cols-1 gap-2 sm:grid-cols-2" aria-label="Extra">
           <Wrapper className="relative" aria-label="Blocks" id="blocks">
-            <san className="absolute top-0 right-0 mt-12 mr-4 rotate-12 font-mono text-2xl text-muted-fg/20 tracking-tighter sm:text-7xl">
+            <span className="absolute top-0 right-0 mt-12 mr-4 rotate-12 font-mono text-2xl text-muted-fg/20 tracking-tighter sm:text-7xl">
               15% off
-            </san>
+            </span>
             <Link
               target="_blank"
               aria-label={"Justd Blocks"}
