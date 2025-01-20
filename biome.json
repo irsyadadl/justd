@@ -21,6 +21,7 @@
     "rules": {
       "recommended": true,
       "style": {
+        "useNumberNamespace": "off",
         "noNonNullAssertion": "off",
         "noParameterAssign": "warn",
         "useImportType": "error"

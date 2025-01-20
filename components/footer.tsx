@@ -15,7 +15,7 @@ const navigation = {
     { name: "Icons", href: "/icons" },
     { name: "Colors", href: "/colors" },
     { name: "Themes", href: "/themes" },
-    { name: "Blocks", href: "/blocks" },
+    { name: "Blocks", href: "https://blocks.getjustd.com" },
     { name: "Showcase", href: "/showcase" },
     { name: "Blog", href: "/blog" },
   ],

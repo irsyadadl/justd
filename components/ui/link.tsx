@@ -11,7 +11,7 @@ import { focusButtonStyles } from "./primitive"
 
 const linkStyles = tv({
   extend: focusButtonStyles,
-  base: "rounded transition-[color,_opacity] data-disabled:cursor-default data-disabled:opacity-60 forced-colors:data-disabled:text-[GrayText]",
+  base: "transition-[color,_opacity] data-disabled:cursor-default data-disabled:opacity-60 forced-colors:data-disabled:text-[GrayText]",
   variants: {
     intent: {
       unstyled: "text-current",

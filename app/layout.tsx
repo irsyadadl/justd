@@ -9,6 +9,7 @@ import type { Metadata, Viewport } from "next"
 import { ViewTransitions } from "next-view-transitions"
 import { Geist_Mono, Inter } from "next/font/google"
 import { twJoin } from "tailwind-merge"
+import { Toast } from "ui"
 
 export default function RootLayout({
   children,
@@ -25,6 +26,7 @@ export default function RootLayout({
       >
         <body className={cn("min-h-screen font-sans antialiased")}>
           <Providers>
+            <Toast />
             {children}
             {process.env.NODE_ENV === "production" && (
               <OpenPanelComponent

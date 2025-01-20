@@ -18,7 +18,6 @@ import {
   IconDuplicateFill,
   IconHome,
   IconNotepad,
-  IconPackage,
   IconSearch,
   IconWindowVisit,
   IconWindowVisitFill,
@@ -27,6 +26,8 @@ import { LayoutGroup } from "motion/react"
 import { usePathname } from "next/navigation"
 import { Badge, Button, Link, Menu, Separator, buttonStyles } from "ui"
 
+import { Banner } from "@/components/banner"
+import { IconBrandJustdBlocks } from "@/components/icons/icon-brand-justd-blocks"
 import { Keyboard } from "@/components/ui/keyboard"
 import { cn } from "@/utils/classes"
 import { useMediaQuery } from "@/utils/use-media-query"
@@ -44,6 +45,7 @@ export function Navbar() {
   return (
     <>
       <CommandPalette setOpen={setOpen} openCmd={open} />
+      <Banner />
       <LayoutGroup id={`navigation-${id}`}>
         <div className="xnw2 sticky top-0 z-30 hidden overflow-hidden pb-0 lg:block">
           <nav className="fg/10 border-b bg-bg py-2 dark:supports-backdrop-filter:bg-bg/60 dark:supports-backdrop-filter:backdrop-blur-3xl">
@@ -77,6 +79,10 @@ export function Navbar() {
 
                   <NavLink isNextLink isActive={pathname === "/themes"} href="/themes">
                     Themes
+                  </NavLink>
+
+                  <NavLink target="_blank" href="https://blocks.getjustd.com">
+                    Blocks
                   </NavLink>
                   <Menu>
                     <Menu.Trigger
@@ -298,8 +304,8 @@ const ecosystemItems = [
   {
     id: 2,
     label: "Premium Blocks",
-    href: "#",
-    icon: <IconPackage />,
+    href: "https://blocks.getjustd.com",
+    icon: <IconBrandJustdBlocks />,
     description: "Pre-designed, ready-to-use React components for seamless integration.",
     badge: "Coming soon",
   },
