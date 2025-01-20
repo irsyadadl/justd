@@ -14,7 +14,7 @@ export default function ModalBlurDemo() {
           </Modal.Description>
         </Modal.Header>
         <Form onSubmit={() => {}}>
-          <Modal.Body>
+          <Modal.Body className="pb-1">
             <TextField
               isRequired
               autoFocus
