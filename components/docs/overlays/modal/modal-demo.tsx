@@ -14,7 +14,7 @@ export default function ModalDemo() {
           </Modal.Description>
         </Modal.Header>
         <Form onSubmit={() => {}}>
-          <Modal.Body className="isolate">
+          <Modal.Body className="pb-1">
             <TextField
               isRequired
               autoFocus

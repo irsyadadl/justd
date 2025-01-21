@@ -1,16 +1,16 @@
 import { Wrapper } from "@/app/(app)/partials/resources"
 import { SliderOnPopoverBlock } from "@/components/blocks/slider-on-popover-block"
 import {
-  IconCamera,
-  IconCameraFill,
-  IconDuplicate,
-  IconDuplicateFill,
-  IconGallery,
-  IconGalleryFill,
-  IconHeart,
-  IconHeartFill,
-  IconVideoPlaylist,
-  IconVideoPlaylistFill,
+    IconCamera,
+    IconCameraFill,
+    IconDuplicate,
+    IconDuplicateFill,
+    IconGallery,
+    IconGalleryFill,
+    IconHeart,
+    IconHeartFill,
+    IconVideoPlaylist,
+    IconVideoPlaylistFill,
 } from "justd-icons"
 import { Toolbar } from "ui"
 
