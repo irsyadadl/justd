@@ -1,10 +1,8 @@
 import { Toggle, ToggleGroup } from "ui"
 
-export default function ToggleGroupAnatomy(props: React.ComponentProps<typeof ToggleGroup>) {
+export default function ToggleGroupAnatomy() {
   return (
-    <ToggleGroup {...props}>
-      <Toggle />
-      <Toggle />
+    <ToggleGroup>
       <Toggle />
     </ToggleGroup>
   )

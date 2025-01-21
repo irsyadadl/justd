@@ -6,9 +6,9 @@ import {
 } from "justd-icons"
 import { Toggle, ToggleGroup } from "ui"
 
-export default function ToggleGroupSelectionModeDemo() {
+export default function ToggleGroupGapDemo() {
   return (
-    <ToggleGroup defaultSelectedKeys={["center"]} selectionMode="single">
+    <ToggleGroup gap={1} defaultSelectedKeys={["center"]}>
       <Toggle id="left">
         <IconAlignmentLeft /> Left
       </Toggle>

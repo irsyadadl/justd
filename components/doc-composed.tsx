@@ -2,7 +2,7 @@
 
 import { docs } from "@/.source"
 import { usePathname } from "next/navigation"
-import { Card, Link } from "ui"
+import { Choicebox } from "ui"
 
 export function DocComposed({
   components,
@@ -31,26 +31,17 @@ export function DocComposed({
       ) : (
         <p className="mb-4">{text}</p>
       )}
-      <div className="grid gap-2 sm:grid-cols-2">
+      <Choicebox gap={2} selectionMode="single">
         {filteredComponents.map((item) => (
-          <Link
-            className="group"
+          <Choicebox.Item
+            className="**:[[slot=description]]:line-clamp-2"
             key={item._file?.path}
             href={`/docs/${item._file?.path.replace(".mdx", "")}`}
-          >
-            <div className="inset-ring inset-ring-border overflow-hidden rounded-sm bg-white shadow-xs transition-colors group-data-hovered:bg-secondary/50 dark:inset-ring-fg/5 dark:inset-shadow-2xs dark:inset-shadow-fg/7 dark:bg-overlay dark:group-data-hovered:bg-muted">
-              <Card.Header className="p-4">
-                <Card.Title className="line-clamp-1 font-medium text-base sm:text-lg">
-                  {item.title}
-                </Card.Title>
-                <Card.Description className="line-clamp-2 text-xs sm:text-sm">
-                  {item.description}
-                </Card.Description>
-              </Card.Header>
-            </div>
-          </Link>
+            title={item.title}
+            description={item.description}
+          />
         ))}
-      </div>
+      </Choicebox>
     </div>
   )
 }

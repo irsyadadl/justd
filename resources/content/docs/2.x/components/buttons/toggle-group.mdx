@@ -13,7 +13,7 @@ A toggle button lets folks flip a choice on or off, like switching between two v
 <How toUse="buttons/toggle-group/toggle-group-demo" />
 
 ## Installation
-<Installation options={{isComponent: true}} items={['toggle']}/>
+<Installation options={{isComponent: true}} items={['toggle-group']}/>
 
 ## Composed Components
 <Composed components={['toggle']}/>
@@ -37,6 +37,13 @@ You can change the selection mode of the toggle button group by using the `selec
 ## Appearance
 You can change the appearance of the toggle button group by using the `appearance` prop.
 <How toUse="buttons/toggle-group/toggle-group-appearance-demo" />
+
+## Gap
+By default, the toggle button group has no gap between the buttons. You can change the gap by using the `gap` prop.
+<How toUse="buttons/toggle-group/toggle-group-gap-demo" />
+<Note intent='warning'>
+    Never ever set the gap to `0` when you want to use the `plain` appearance.
+</Note>
 
 ## Controlled
 You can control the state of the toggle button group by using the `selectedKeys` prop.
