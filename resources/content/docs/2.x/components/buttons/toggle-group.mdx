@@ -45,15 +45,14 @@ By default, the toggle button group has no gap between the buttons. You can chan
     Never ever set the gap to `0` when you want to use the `plain` appearance.
 </Note>
 
+## Size
+By default, the toggle button group has a medium size. You can change the size by using the `size` prop.
+<How toUse="buttons/toggle-group/toggle-group-sizing-demo" />
+
 ## Controlled
 You can control the state of the toggle button group by using the `selectedKeys` prop.
 <How toUse="buttons/toggle-group/toggle-group-controlled-demo" />
 
 ## Disabled
-You can disable a toggle button group by using the `disabled` prop.
+You can disable an entire toggle group by setting the `isDisabled` prop on the `ToggleGroup` component, which disables all toggles in the group. Alternatively, you can disable specific toggle buttons individually by setting the `isDisabled` prop on the `Toggle` component.
 <How toUse="buttons/toggle-group/toggle-group-disabled-demo" />
-
-If you want, you can also disable individual toggle buttons by using the `isDisabled` prop on the `Toggle` component.
-```tsx
-<Toggle isDisabled>Disabled</Toggle>
-```

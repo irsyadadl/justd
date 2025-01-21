@@ -7,15 +7,18 @@ import type { VariantProps } from "tailwind-variants"
 import { tv } from "tailwind-variants"
 
 type ToggleGroupContextProps = {
+  isDisabled?: boolean
   gap?: 0 | 1 | 2 | 3 | 4
   appearance?: "plain" | "outline" | "solid"
   orientation?: "horizontal" | "vertical"
+  size?: "small" | "medium" | "large" | "square-petite"
 }
 
 const ToggleGroupContext = createContext<ToggleGroupContextProps>({
   gap: 1,
   appearance: "outline",
   orientation: "horizontal",
+  size: "medium",
 })
 
 type BaseToggleGroupProps = Omit<ToggleGroupContextProps, "gap" | "appearance">
@@ -75,11 +78,14 @@ const ToggleGroup = ({
   ref,
   appearance = "outline",
   gap = 0,
+  size = "medium",
   orientation = "horizontal",
   ...props
 }: ToggleGroupProps) => {
   return (
-    <ToggleGroupContext.Provider value={{ appearance, gap, orientation }}>
+    <ToggleGroupContext.Provider
+      value={{ appearance, gap, orientation, size, isDisabled: props.isDisabled }}
+    >
       <ToggleButtonGroup
         ref={ref}
         orientation={orientation}
@@ -111,7 +117,7 @@ const toggleStyles = tv({
       true: "inset-ring-ring/70 z-20 ring-4 ring-ring/20",
     },
     appearance: {
-      plain: "data-selected:bg-secondary data-selected:text-secondary-fg",
+      plain: "inset-ring-0 data-selected:bg-secondary data-selected:text-secondary-fg",
       solid: [
         "inset-ring data-selected:inset-ring-fg data-selected:bg-fg data-selected:bg-fg data-selected:text-bg",
       ],
@@ -127,7 +133,7 @@ const toggleStyles = tv({
     size: {
       small: "h-9 px-3.5",
       medium: "h-10 px-4",
-      large: "h-11 px-5",
+      large: "h-11 px-5 *:data-[slot=icon]:size-4.5 sm:text-base",
       "square-petite": "size-9 shrink-0",
     },
     shape: {
@@ -154,15 +160,22 @@ interface ToggleProps extends ToggleButtonProps, VariantProps<typeof toggleStyle
 }
 
 const Toggle = ({ className, appearance, ref, ...props }: ToggleProps) => {
-  const { appearance: groupAppearance, orientation, gap } = use(ToggleGroupContext)
+  const {
+    appearance: groupAppearance,
+    orientation,
+    gap,
+    size,
+    isDisabled: isGroupDisabled,
+  } = use(ToggleGroupContext)
   return (
     <ToggleButton
       ref={ref}
+      isDisabled={props.isDisabled ?? isGroupDisabled}
       className={composeRenderProps(className, (className, renderProps) =>
         toggleStyles({
           ...renderProps,
           appearance: appearance ?? groupAppearance,
-          size: props.size,
+          size: props.size ?? size,
           orientation,
           shape: props.shape,
           noGap: gap === 0,
