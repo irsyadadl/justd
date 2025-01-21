@@ -7,7 +7,7 @@ import { CopyButton } from "@/components/code/copy-button"
 import { copyToClipboard } from "@/resources/lib/copy"
 import { useOpenPanel } from "@openpanel/nextjs"
 import { Group } from "react-aria-components"
-import { composeTailwindRenderProps, Link, Menu } from "ui"
+import { Link, Menu, composeTailwindRenderProps } from "ui"
 
 const manualText =
   "Sometimes, using the CLI is the way to go, so make sure you install the necessary\n" +

@@ -1,7 +1,7 @@
 "use client"
 
 import { cn } from "@/utils/classes"
-import { findNeighbour, type PageTree } from "fumadocs-core/server"
+import { type PageTree, findNeighbour } from "fumadocs-core/server"
 import { IconChevronLgLeft, IconChevronLgRight } from "justd-icons"
 import { Link } from "next-view-transitions"
 

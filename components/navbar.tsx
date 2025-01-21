@@ -4,27 +4,27 @@ import { useId, useState } from "react"
 import { ResponsiveAside } from "@/components/responsive-aside"
 import { siteConfig } from "@/resources/config/site"
 import {
-    IconBrandAdobe,
-    IconBrandDiscord,
-    IconBrandFigma,
-    IconBrandGithub,
-    IconBrandJustd,
-    IconBrandTailwindcss,
-    IconBrandX,
-    IconChevronLgDown,
-    IconColorPalette,
-    IconColors,
-    IconCube,
-    IconDuplicateFill,
-    IconHome,
-    IconNotepad,
-    IconSearch,
-    IconWindowVisit,
-    IconWindowVisitFill,
+  IconBrandAdobe,
+  IconBrandDiscord,
+  IconBrandFigma,
+  IconBrandGithub,
+  IconBrandJustd,
+  IconBrandTailwindcss,
+  IconBrandX,
+  IconChevronLgDown,
+  IconColorPalette,
+  IconColors,
+  IconCube,
+  IconDuplicateFill,
+  IconHome,
+  IconNotepad,
+  IconSearch,
+  IconWindowVisit,
+  IconWindowVisitFill,
 } from "justd-icons"
 import { LayoutGroup } from "motion/react"
 import { usePathname } from "next/navigation"
-import { Badge, Button, buttonStyles, Link, Menu, Separator } from "ui"
+import { Badge, Button, Link, Menu, Separator, buttonStyles } from "ui"
 
 import { Banner } from "@/components/banner"
 import { IconBrandJustdBlocks } from "@/components/icons/icon-brand-justd-blocks"

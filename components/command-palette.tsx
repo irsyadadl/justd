@@ -4,7 +4,14 @@ import { useEffect, useMemo, useState } from "react"
 import { CommandMenu } from "ui"
 
 import { useMediaQuery } from "@/utils/use-media-query"
-import { IconColors, IconColorSwatch, IconCube, IconHashtag, IconHome, IconNotes, } from "justd-icons"
+import {
+  IconColorSwatch,
+  IconColors,
+  IconCube,
+  IconHashtag,
+  IconHome,
+  IconNotes,
+} from "justd-icons"
 import { usePathname, useRouter } from "next/navigation"
 
 import { source } from "@/utils/source"
