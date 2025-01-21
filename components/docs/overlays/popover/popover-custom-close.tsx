@@ -14,7 +14,13 @@ export default function PopoverCustomClose() {
         <Form onSubmit={() => {}}>
           <Popover.Body>
             <div className="space-y-4">
-              <TextField isRequired type="email" label="Email" placeholder="Enter your email" />
+              <TextField
+                autoFocus
+                isRequired
+                type="email"
+                label="Email"
+                placeholder="Enter your email"
+              />
               <TextField
                 isRequired
                 label="Password"
