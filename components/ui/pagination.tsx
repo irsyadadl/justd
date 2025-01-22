@@ -3,8 +3,8 @@
 import {
   IconChevronLgLeft,
   IconChevronLgRight,
-  IconChevronsLgLeft,
-  IconChevronsLgRight,
+  IconChevronWalkLeft,
+  IconChevronWalkRight,
   IconDotsHorizontal,
 } from "justd-icons"
 import type { ListBoxItemProps, ListBoxProps, ListBoxSectionProps } from "react-aria-components"
@@ -175,9 +175,9 @@ const Item = ({
     case "next":
       return renderPaginationIndicator(<IconChevronLgRight />)
     case "first":
-      return renderPaginationIndicator(<IconChevronsLgLeft />)
+      return renderPaginationIndicator(<IconChevronWalkLeft />)
     case "last":
-      return renderPaginationIndicator(<IconChevronsLgRight />)
+      return renderPaginationIndicator(<IconChevronWalkRight />)
     default:
       return renderListItem(
         {

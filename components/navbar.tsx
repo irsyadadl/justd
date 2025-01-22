@@ -112,6 +112,7 @@ export function Navbar() {
                               {item.badge && (
                                 <Badge
                                   shape="square"
+                                  intent={item.id === 1 ? "warning" : "primary"}
                                   className="ml-0.5 font-mono text-[0.65rem] uppercase"
                                 >
                                   {item.badge}
@@ -294,19 +295,19 @@ export function NavbarDropdown() {
 const ecosystemItems = [
   {
     id: 1,
+    label: "Premium Blocks",
+    href: "https://blocks.getjustd.com",
+    icon: <IconBrandJustdBlocks />,
+    description: "Pre-designed, ready-to-use React components for seamless integration.",
+    badge: "15% off",
+  },
+  {
+    id: 2,
     label: "Premium Starter Kit",
     href: "#",
     icon: <IconWindowVisitFill />,
     description:
       "Get started quickly with a complete React project setup, including authentication.",
-    badge: "Coming soon",
-  },
-  {
-    id: 2,
-    label: "Premium Blocks",
-    href: "https://blocks.getjustd.com",
-    icon: <IconBrandJustdBlocks />,
-    description: "Pre-designed, ready-to-use React components for seamless integration.",
     badge: "Coming soon",
   },
   {
