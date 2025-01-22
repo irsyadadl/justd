@@ -49,7 +49,7 @@ export function CopyButton({
       className={composeTailwindRenderProps(
         className,
         cn(
-          "ml-auto grid size-8 place-content-center text-zinc-400 outline-hidden data-hovered:text-zinc-50 group-data-hovered:opacity-100",
+          "ml-auto grid size-8 place-content-center text-muted-fg outline-hidden data-hovered:text-fg group-data-hovered:opacity-100",
           !alwaysVisible ? "opacity-0" : "opacity-100",
           isCopied && "opacity-100",
         ),
