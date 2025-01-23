@@ -1,15 +1,34 @@
 @import "tailwindcss";
 @plugin 'tailwindcss-animate';
 
-@variant dark (&:is(.dark *));
+:root {
+  color-scheme: light dark;
+}
+.dark {
+  color-scheme: dark;
+}
+.light {
+  color-scheme: light;
+}
+
+@variant dark {
+  &:where(.dark, .dark *) {
+    @slot;
+  }
+  @media (prefers-color-scheme: dark) {
+    &:where(.system, .system *) {
+      @slot;
+    }
+  }
+}
 
 @theme {
   /* Recommended font is: Inter, Sathosi, Geist */
-  /*--font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",*/
+  /*--font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",*/
   /*"Segoe UI Symbol", "Noto Color Emoji";*/
 
   /* Recommended font is: Geist Mono */
-  /*--font-mono: var(--font-mono), 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', '"Liberation Mono"', '"Courier New"', 'monospace';*/
+  /*--font-mono: var(--font-geist), 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', '"Liberation Mono"', '"Courier New"', 'monospace';*/
 
   --color-border: var(--border);
   --color-input: var(--input);

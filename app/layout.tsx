@@ -7,7 +7,8 @@ import "@/resources/styles/app.css"
 import { OpenPanelComponent } from "@openpanel/nextjs"
 import type { Metadata, Viewport } from "next"
 import { ViewTransitions } from "next-view-transitions"
-import { Geist_Mono, Inter } from "next/font/google"
+import { Geist_Mono } from "next/font/google"
+import localFont from "next/font/local"
 import { twJoin } from "tailwind-merge"
 import { Toast } from "ui"
 
@@ -16,6 +17,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const js = String.raw
   return (
     <ViewTransitions>
       <html
@@ -24,6 +26,59 @@ export default function RootLayout({
         className={twJoin("scroll-smooth", fontSans.variable, fontMono.variable)}
         suppressHydrationWarning
       >
+        <head>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: js`
+              try {
+                _updateTheme(localStorage.currentTheme)
+              } catch (_) {}
+
+              try {
+                if (/(Mac|iPhone|iPod|iPad)/i.test(navigator.platform)) {
+                  document.documentElement.classList.add('os-macos')
+                }
+              } catch (_) {}
+
+              function _updateTheme(theme) {
+                let classList = document.documentElement.classList;
+
+                classList.remove("light", "dark", "system");
+                document.querySelectorAll('meta[name="theme-color"]').forEach(el => el.remove())
+                if (theme === 'dark') {
+                  classList.add('dark')
+
+                  let meta = document.createElement('meta')
+                  meta.name = 'theme-color'
+                  meta.content = 'oklch(.13 .028 261.692)'
+                  document.head.appendChild(meta)
+                } else if (theme === 'light') {
+                  classList.add('light')
+
+                  let meta = document.createElement('meta')
+                  meta.name = 'theme-color'
+                  meta.content = 'white'
+                  document.head.appendChild(meta)
+                } else {
+                  classList.add('system')
+
+                  let meta1 = document.createElement('meta')
+                  meta1.name = 'theme-color'
+                  meta1.content = 'oklch(.13 .028 261.692)'
+                  meta1.media = '(prefers-color-scheme: dark)'
+                  document.head.appendChild(meta1)
+
+                  let meta2 = document.createElement('meta')
+                  meta2.name = 'theme-color'
+                  meta2.content = 'white'
+                  meta2.media = '(prefers-color-scheme: light)'
+                  document.head.appendChild(meta2)
+                }
+              }
+            `,
+            }}
+          />
+        </head>
         <body className={cn("min-h-screen font-sans antialiased")}>
           <Providers>
             <Toast />
@@ -113,9 +168,16 @@ export const viewport: Viewport = {
   initialScale: 1,
 }
 
-const fontSans = Inter({
+const fontSans = localFont({
+  src: [
+    { path: "./fonts/InterVariable.woff2", weight: "100 900", style: "normal" },
+    {
+      path: "./fonts/InterVariable-Italic.woff2",
+      weight: "100 900",
+      style: "italic",
+    },
+  ],
   variable: "--font-inter",
-  subsets: ["latin"],
 })
 
 const fontMono = Geist_Mono({

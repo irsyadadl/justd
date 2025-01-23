@@ -162,7 +162,7 @@ export const generateTheme = (
     --chart-5: ${getColorValue(primary, chartShadesLight[4])};
     `
 
-  const darkColors = `--bg: ${adjustLightness(getColorValue(gray, "950"), -5)};
+  const darkColors = `--bg: ${getColorValue(gray, "950")};
     --fg: ${getColorValue(gray, "50")};
     
     --primary: ${getColorValue(primary, darkPrimary)};
@@ -189,8 +189,8 @@ export const generateTheme = (
     --danger: ${dangerColor};
     --danger-fg: ${getColorValue("red", "50")};
     
-    --border: ${adjustLightness(getColorValue(gray, "700"), -10)};
-    --input: ${adjustLightness(getColorValue(gray, "700"), -8)};
+    --border: ${adjustLightness(getColorValue(gray, "800"), -4)};
+    --input: ${adjustLightness(getColorValue(gray, "800"), -2)};
     --ring: ${getColorValue(primary, darkRingShade)};
     
     --navbar: ${adjustLightness(getColorValue(gray, "900"), -4)};
