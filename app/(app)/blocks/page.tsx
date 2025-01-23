@@ -45,7 +45,6 @@ export default function Page() {
                 },
                 app: {
                   "page.tsx": "blocks/sidebar/sidebar-01/page",
-                  "layout.tsx": "blocks/sidebar/sidebar-01/layout",
                   "global.css": "blocks/main.css",
                 },
               },

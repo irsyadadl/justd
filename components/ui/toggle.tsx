@@ -118,9 +118,7 @@ const toggleStyles = tv({
     },
     appearance: {
       plain: "inset-ring-0 data-selected:bg-secondary data-selected:text-secondary-fg",
-      solid: [
-        "inset-ring data-selected:inset-ring-fg data-selected:bg-fg data-selected:bg-fg data-selected:text-bg",
-      ],
+      solid: ["inset-ring data-selected:inset-ring-fg data-selected:bg-fg data-selected:text-bg"],
       outline: [
         "data-hovered:border-secondary-fg/10 data-pressed:border-secondary-fg/10 data-selected:border-secondary-fg/10 data-hovered:bg-muted data-selected:bg-secondary data-hovered:text-secondary-fg data-selected:text-secondary-fg",
       ],

@@ -65,7 +65,7 @@ const menuStyles = tv({
     menu: "grid max-h-[calc(var(--visual-viewport-height)-10rem)] grid-cols-[auto_1fr] overflow-auto rounded-xl p-1 outline-hidden [clip-path:inset(0_0_0_0_round_calc(var(--radius-lg)-2px))] sm:max-h-[inherit]",
     popover: "z-50 p-0 shadow-xs outline-hidden sm:min-w-40",
     trigger: [
-      "relative inline text-left data-focused:outline-hidden data-pressed:outline-hidden data-focus-visible:ring-1 data-focus-visible:ring-primary",
+      "relative inline text-left outline-hidden data-focus-visible:ring-1 data-focus-visible:ring-primary",
     ],
   },
 })

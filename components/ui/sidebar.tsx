@@ -235,7 +235,7 @@ const Sidebar = ({
           aria-label="Sidebar"
           data-sidebar-intent="default"
           classNames={{
-            content: "bg-sidebar w-(--sidebar-width-mobile) text-sidebar-fg [&>button]:hidden",
+            content: "w-(--sidebar-width-mobile) [&>button]:hidden",
           }}
           isFloat={intent === "float"}
           side={side}
