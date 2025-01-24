@@ -4,28 +4,7 @@
 @plugin 'tailwindcss-animate';
 @plugin '@tailwindcss/typography';
 
-@variant dark {
-  &:where(.dark, .dark *) {
-    @slot;
-  }
-  @media (prefers-color-scheme: dark) {
-    &:where(.system, .system *) {
-      @slot;
-    }
-  }
-}
-
-:root {
-  color-scheme: light dark;
-}
-
-.dark {
-  color-scheme: dark;
-}
-
-.light {
-  color-scheme: light;
-}
+@variant dark (&:is(.dark *));
 
 @theme {
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
@@ -253,6 +232,18 @@
   &::-webkit-scrollbar {
     display: none; /* Safari and Chrome */
   }
+}
+
+:root {
+  color-scheme: light dark;
+}
+
+.dark {
+  color-scheme: dark;
+}
+
+.light {
+  color-scheme: light;
 }
 
 html.dark .shiki,

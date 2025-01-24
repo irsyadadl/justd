@@ -1,6 +1,16 @@
 @import "tailwindcss";
 @plugin 'tailwindcss-animate';
 
+:root {
+  color-scheme: light dark;
+}
+.dark {
+  color-scheme: dark;
+}
+.light {
+  color-scheme: light;
+}
+
 @variant dark {
   &:where(.dark, .dark *) {
     @slot;
@@ -10,18 +20,6 @@
       @slot;
     }
   }
-}
-
-:root {
-  color-scheme: light dark;
-}
-
-.dark {
-  color-scheme: dark;
-}
-
-.light {
-  color-scheme: light;
 }
 
 @theme {
