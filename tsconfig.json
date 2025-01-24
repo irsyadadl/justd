@@ -22,22 +22,19 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"],
-      "ui": ["./src/components/ui"],
-      "hooks/*": ["./src/config/hooks/*"],
+      "@/*": ["./*"],
+      "ui": ["./components/ui"],
+      "hooks/*": ["./resources/hooks/*"],
       "content-collections": ["./.content-collections/generated"],
-      "#site/content": ["./.source"],
-      "@/utils/classes": ["./src/config/utils/classes.ts"],
-      "@/utils/use-media-query": ["./src/config/utils/use-media-query.ts"]
+      "#site/content": ["./.source"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "next.config.mjs"],
   "exclude": [
     "node_modules",
-    "src/resources/stubs",
-    "src/resources/content/**/*.mdx",
-    "src/resources/scripts/build-registry.mts",
-    ".next",
+    "resources/stubs",
+    "resources/content/**/*.mdx",
+    "resources/scripts/build-registry.mts",
     "__registry__"
   ]
 }

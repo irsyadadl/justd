@@ -3,7 +3,7 @@ import { defineCollections, defineConfig, defineDocs, frontmatterSchema } from "
 import { z } from "zod"
 
 export const { docs, meta } = defineDocs({
-  dir: "src/content/docs",
+  dir: "resources/content/docs",
   docs: {
     async: false,
     schema: frontmatterSchema.extend({
@@ -24,7 +24,7 @@ export const { docs, meta } = defineDocs({
 
 export const blog = defineCollections({
   type: "doc",
-  dir: "src/content/blog",
+  dir: "resources/content/blog",
   schema: z.object({
     title: z.string(),
     description: z.string(),
