@@ -30,6 +30,7 @@
     "@types/mdx": "^2.0.13",
     "@types/node": "^22.10.7",
     "babel-plugin-react-compiler": "^19.0.0-beta-e552027-20250112",
+    "clsx": "^2.1.1",
     "culori": "^4.0.1",
     "dayjs": "^1.11.13",
     "embla-carousel-autoplay": "^8.5.2",
