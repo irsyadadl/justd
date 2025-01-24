@@ -4,29 +4,6 @@
 @plugin 'tailwindcss-animate';
 @plugin '@tailwindcss/typography';
 
-@variant dark {
-  &:where(.dark, .dark *) {
-    @slot;
-  }
-  @media (prefers-color-scheme: dark) {
-    &:where(.system, .system *) {
-      @slot;
-    }
-  }
-}
-
-:root {
-  color-scheme: light dark;
-}
-
-.dark {
-  color-scheme: dark;
-}
-
-.light {
-  color-scheme: light;
-}
-
 @theme {
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
   "Segoe UI Symbol", "Noto Color Emoji";
@@ -245,6 +222,29 @@
     background: var(--border);
     border-radius: 4px;
   }
+}
+
+@variant dark {
+  &:where(.dark, .dark *) {
+    @slot;
+  }
+  @media (prefers-color-scheme: dark) {
+    &:where(.system, .system *) {
+      @slot;
+    }
+  }
+}
+
+:root {
+  color-scheme: light dark;
+}
+
+.dark {
+  color-scheme: dark;
+}
+
+.light {
+  color-scheme: light;
 }
 
 .scrollbar-hidden {
