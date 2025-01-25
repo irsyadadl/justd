@@ -80,8 +80,8 @@ export default async function Page(props: DocPageProps) {
 
   return (
     <>
-      <div className="min-w-0 max-w-2xl flex-auto px-4 pt-4 pb-32 sm:pt-16 lg:max-w-none lg:pr-0 lg:pl-8 xl:px-12">
-        <main className="prose prose-blue dark:prose-invert prose-headings:mb-[0.3rem] max-w-2xl max-w-[inherit] prose-headings:scroll-mt-24 prose-img:rounded-lg prose-pre:p-0">
+      <div className="min-w-0 max-w-3xl flex-auto px-4 pt-4 pb-32 sm:pt-16 lg:max-w-none lg:pr-0 lg:pl-8 xl:px-10">
+        <main className="prose prose-blue dark:prose-invert prose-headings:mb-[0.3rem] max-w-[inherit] prose-headings:scroll-mt-24 prose-img:rounded-lg prose-pre:p-0">
           <div className="-mx-4 sm:mx-0">
             <div className="not-prose relative inset-shadow-xs isolate overflow-hidden p-4 ring-1 ring-fg/5 sm:mt-0 sm:rounded-xl sm:p-10 sm:ring-inset dark:ring-fg/10">
               <div

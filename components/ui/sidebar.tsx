@@ -73,7 +73,7 @@ const SidebarProvider = ({
   ref,
   ...props
 }: SidebarProviderProps) => {
-  const isMobile = useMediaQuery("(max-width: 768px)")
+  const isMobile = useMediaQuery("(max-width: 767px)")
   const [openMobile, setOpenMobile] = useState(false)
 
   const [internalOpenState, setInternalOpenState] = useState(defaultOpen)
