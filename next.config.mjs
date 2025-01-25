@@ -1,5 +1,6 @@
 import { createMDX } from "fumadocs-mdx/next"
-const versionOneUrl = process.env.NEXT_PUBLIC_APP_V1_URL
+const versionOneUrl = process.env.NEXT_PUBLIC_APP_V1_URL || "http://localhost:3000"
+
 const withMDX = createMDX()
 /** @type {import("next").NextConfig} */
 const config = {
