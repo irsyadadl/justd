@@ -140,8 +140,8 @@
     --danger: oklch(0.577 0.245 27.325);
     --danger-fg: oklch(0.971 0.013 17.38);
 
-    --border: oklch(0.229 0 0);
-    --input: oklch(0.249 0 0);
+    --border: oklch(0.271 0 0);
+    --input: oklch(0.291 0 0);
     --ring: oklch(0.546 0.245 262.881);
 
     --navbar: oklch(0.165 0 0);

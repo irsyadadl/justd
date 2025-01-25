@@ -189,8 +189,8 @@ export const generateTheme = (
     --danger: ${dangerColor};
     --danger-fg: ${getColorValue("red", "50")};
     
-    --border: ${adjustLightness(getColorValue(gray, "800"), -4)};
-    --input: ${adjustLightness(getColorValue(gray, "800"), -2)};
+    --border: ${adjustLightness(getColorValue(gray, "700"), -10)};
+    --input: ${adjustLightness(getColorValue(gray, "700"), -8)};
     --ring: ${getColorValue(primary, darkRingShade)};
     
     --navbar: ${adjustLightness(getColorValue(gray, "900"), -4)};
