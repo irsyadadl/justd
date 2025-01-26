@@ -20,20 +20,21 @@ export default function MenuWithIconDemo() {
         <Avatar alt="kurt cobain" size="large" src="/images/avatar/cobain.jpg" />
       </Menu.Trigger>
       <Menu.Content placement="bottom" showArrow className="sm:min-w-64">
+        <Menu.Header separator>
+          <span className="block">Kurt Cobain</span>
+          <span className="font-normal text-muted-fg">@cobain</span>
+        </Menu.Header>
+
         <Menu.Section>
-          <Menu.Header separator>
-            <span className="block">Kurt Cobain</span>
-            <span className="font-normal text-muted-fg">@cobain</span>
-          </Menu.Header>
+          <Menu.Item href="#dashboard">
+            <IconDashboard />
+            <Menu.Label>Dashboard</Menu.Label>
+          </Menu.Item>
+          <Menu.Item href="#settings">
+            <IconSettings />
+            <Menu.Label>Settings</Menu.Label>
+          </Menu.Item>
         </Menu.Section>
-        <Menu.Item href="#dashboard">
-          <IconDashboard />
-          <Menu.Label>Dashboard</Menu.Label>
-        </Menu.Item>
-        <Menu.Item href="#settings">
-          <IconSettings />
-          <Menu.Label>Settings</Menu.Label>
-        </Menu.Item>
         <Menu.Separator />
         <Menu.Item>
           <IconCommandRegular />

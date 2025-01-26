@@ -31,7 +31,6 @@ import { IconBrandJustdBlocks } from "@/components/icons/icon-brand-justd-blocks
 import { Keyboard } from "@/components/ui/keyboard"
 import { cn } from "@/utils/classes"
 import { useMediaQuery } from "@/utils/use-media-query"
-import { Header } from "react-aria-components"
 import { CommandPalette } from "./command-palette"
 import { NavLink } from "./nav-item"
 import { TakeCurrentUrl } from "./take-current-url"
@@ -222,8 +221,7 @@ export function NavbarDropdown() {
           </span>
         </Button>
         <Menu.Content placement="bottom" className="sm:min-w-64">
-          <Menu.Section className="mb-3">
-            <Header className="col-span-full px-3 pt-3 pb-1 text-muted-fg text-sm">Pages</Header>
+          <Menu.Section title="Pages">
             <Menu.Item href="/">
               <IconHome />
               <Menu.Label>Home</Menu.Label>
@@ -253,8 +251,7 @@ export function NavbarDropdown() {
               <Menu.Label>Blog</Menu.Label>
             </Menu.Item>
           </Menu.Section>
-          <Menu.Section>
-            <Header className="col-span-full px-3 py-1 text-muted-fg text-sm">Refs</Header>
+          <Menu.Section title="Refs">
             <Menu.Item href={siteConfig.discord} target="_blank">
               <IconBrandDiscord /> <Menu.Label>Discord</Menu.Label>
             </Menu.Item>

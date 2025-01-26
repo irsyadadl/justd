@@ -141,7 +141,11 @@ const PopoverContent = ({
           drawer({ ...renderProps, isMenu, className }),
         )}
       >
-        <Dialog role="dialog" className="outline-hidden">
+        <Dialog
+          role="dialog"
+          aria-label={props["aria-label"] || isMenu ? "Menu" : undefined}
+          className="outline-hidden"
+        >
           {children}
         </Dialog>
       </Modal>
@@ -169,7 +173,11 @@ const PopoverContent = ({
           </svg>
         </OverlayArrow>
       )}
-      <Dialog role="dialog" className="outline-hidden">
+      <Dialog
+        role="dialog"
+        aria-label={props["aria-label"] || isMenu ? "Menu" : undefined}
+        className="outline-hidden"
+      >
         {children}
       </Dialog>
     </PopoverPrimitive>
