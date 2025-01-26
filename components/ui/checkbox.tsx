@@ -94,7 +94,11 @@ const Checkbox = ({ className, ...props }: CheckboxProps) => {
 
           <div className="flex flex-col gap-1">
             <>
-              {props.label ? <Label>{props.label}</Label> : (props.children as React.ReactNode)}
+              {props.label ? (
+                <Label className={cn(props.description && "text-sm/4")}>{props.label}</Label>
+              ) : (
+                (props.children as React.ReactNode)
+              )}
               {props.description && <Description>{props.description}</Description>}
             </>
           </div>
