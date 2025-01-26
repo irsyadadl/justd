@@ -253,6 +253,7 @@ const Item = ({ className, isCurrent, ...props }: NavbarItemProps) => {
           {(isCurrent || values.isCurrent) && !isCompact && intent !== "floating" && (
             <motion.span
               layoutId="current-indicator"
+              data-slot="current-indicator"
               className="absolute inset-x-2 bottom-[calc(var(--navbar-height)*-0.33)] h-0.5 rounded-full bg-fg"
             />
           )}
