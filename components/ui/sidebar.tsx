@@ -633,7 +633,7 @@ const SidebarDisclosurePanel = (props: React.ComponentProps<typeof DisclosurePan
   return (
     <DisclosurePanel
       data-sidebar-disclosure-panel="true"
-      className="grid grid-cols-[auto_1fr]"
+      className="col-span-full grid grid-cols-[auto_1fr] gap-y-0.5"
       {...props}
     />
   )
