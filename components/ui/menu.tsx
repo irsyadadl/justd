@@ -146,7 +146,7 @@ const Item = ({ className, isDanger = false, children, ...props }: MenuItemProps
               {values.selectionMode === "single" && (
                 <span
                   data-slot="bullet-icon"
-                  className="**:data-[slot=indicator]:-mx-0.5 -mx-0.5 mr-2 flex size-4 shrink-0 items-center justify-center **:data-[slot=indicator]:size-2.5 **:data-[slot=indicator]:shrink-0"
+                  className="-mx-0.5 mr-2 flex size-4 shrink-0 items-center justify-center **:data-[slot=indicator]:size-2.5 **:data-[slot=indicator]:shrink-0"
                 >
                   <IconBulletFill data-slot="indicator" />
                 </span>

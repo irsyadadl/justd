@@ -85,7 +85,7 @@ const DropdownItem = ({ className, ...props }: DropdownItemProps) => {
       {composeRenderProps(props.children, (children, { isSelected }) => (
         <>
           {isSelected && <IconCheck className="-mx-0.5 mr-2" data-slot="checked-icon" />}
-          {children}
+          {typeof children === "string" ? <DropdownLabel>{children}</DropdownLabel> : children}
         </>
       ))}
     </ListBoxItemPrimitive>

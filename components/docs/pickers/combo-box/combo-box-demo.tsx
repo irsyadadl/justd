@@ -9,7 +9,7 @@ export default function ComboBoxDemo() {
       <ComboBox.List items={users}>
         {(item) => (
           <ComboBox.Option id={item.id} textValue={item.name}>
-            <ComboBox.Label>{item.name}</ComboBox.Label>
+            {item.name}
           </ComboBox.Option>
         )}
       </ComboBox.List>

@@ -9,11 +9,7 @@ export default function SelectSectionDemo() {
       <Select.List items={countries}>
         {(country) => (
           <Select.Section title={country.name} items={country.cities}>
-            {(city) => (
-              <Select.Option textValue={city.name}>
-                <Select.Label>{city.name}</Select.Label>
-              </Select.Option>
-            )}
+            {(city) => <Select.Option textValue={city.name}>{city.name}</Select.Option>}
           </Select.Section>
         )}
       </Select.List>

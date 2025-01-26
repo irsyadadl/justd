@@ -30,7 +30,7 @@ export default function ComboBoxControlledDemo() {
         <ComboBox.List items={sports}>
           {(item) => (
             <ComboBox.Option id={item.id} textValue={item.name}>
-              <ComboBox.Label>{item.name}</ComboBox.Label>
+              {item.name}
             </ComboBox.Option>
           )}
         </ComboBox.List>

@@ -16,7 +16,7 @@ export default function SelectAnatomy() {
           <Select.Label>GitHub</Select.Label>
         </Select.Option>
         <Select.Option id="gitlab" textValue="GitLab">
-          <Select.Label>GitLab</Select.Label>
+          GitLab
         </Select.Option>
       </Select.List>
     </Select>

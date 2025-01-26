@@ -101,7 +101,7 @@ const ListBoxPicker = <T extends object>({ className, ...props }: ListBoxPickerP
     <ListBoxPrimitive
       className={composeTailwindRenderProps(
         className,
-        "grid max-h-72 grid-cols-[auto_1fr] overflow-auto p-1 outline-hidden",
+        "grid max-h-72 grid-cols-[auto_1fr] overflow-auto p-1 outline-hidden *:[[role='group']+[role=group]]:mt-4 *:[[role='group']+[role=separator]]:mt-1",
       )}
       {...props}
     />
