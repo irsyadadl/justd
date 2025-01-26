@@ -49,7 +49,7 @@
     "rehype-stringify": "^10.0.1",
     "scroll-into-view-if-needed": "^3.1.0",
     "sharp": "^0.33.5",
-    "shiki": "2.1.0",
+    "shiki": "^2.1.0",
     "sonner": "^1.7.2",
     "tailwind-merge": "^2.6.0",
     "tailwind-variants": "^0.3.1",

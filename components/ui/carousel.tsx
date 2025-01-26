@@ -212,6 +212,7 @@ const CarouselHandler = ({ ref, className, ...props }: React.ComponentProps<"div
   const { orientation } = useCarousel()
   return (
     <div
+      data-slot="carousel-handler"
       ref={ref}
       className={cn(
         "relative z-10 mt-6 flex items-center gap-x-2",
@@ -224,16 +225,17 @@ const CarouselHandler = ({ ref, className, ...props }: React.ComponentProps<"div
 }
 
 const CarouselButton = ({
-  slot,
+  handler,
   className,
   intent = "secondary",
   appearance = "outline",
   shape = "circle",
   size = "square-petite",
+  ref,
   ...props
-}: ButtonProps & { slot: "previous" | "next" }) => {
+}: ButtonProps & { handler: "previous" | "next" }) => {
   const { orientation, scrollPrev, canScrollPrev, scrollNext, canScrollNext } = useCarousel()
-  const isNext = slot === "next"
+  const isNext = handler === "next"
   const canScroll = isNext ? canScrollNext : canScrollPrev
   const scroll = isNext ? scrollNext : scrollPrev
   const Icon = isNext ? IconChevronLgRight : IconChevronLgLeft
@@ -241,8 +243,9 @@ const CarouselButton = ({
   return (
     <Button
       aria-label={isNext ? "Next slide" : "Previous slide"}
-      slot={slot}
+      data-handler={handler}
       intent={intent}
+      ref={ref}
       appearance={appearance}
       size={size}
       shape={shape}
