@@ -3,15 +3,12 @@
 import { useEffect, useRef } from "react"
 
 import { IconX } from "justd-icons"
-import type {
-  ButtonProps as ButtonPrimitiveProps,
-  DialogProps,
-  HeadingProps,
-} from "react-aria-components"
+import type { HeadingProps } from "react-aria-components"
 import {
   Button as ButtonPrimitive,
   Dialog as DialogPrimitive,
   Heading,
+  Text,
 } from "react-aria-components"
 import { tv } from "tailwind-variants"
 
@@ -38,11 +35,17 @@ const dialogStyles = tv({
 
 const { root, header, description, body, footer, closeIndicator } = dialogStyles()
 
-const Dialog = ({ role, className, ...props }: DialogProps) => {
-  return <DialogPrimitive role={role ?? "dialog"} className={root({ className })} {...props} />
+const Dialog = ({
+  role = "dialog",
+  className,
+  ...props
+}: React.ComponentProps<typeof DialogPrimitive>) => {
+  return <DialogPrimitive role={role} className={root({ className })} {...props} />
 }
 
-const Trigger = (props: ButtonPrimitiveProps) => <ButtonPrimitive slot="close" {...props} />
+const Trigger = (props: React.ComponentProps<typeof ButtonPrimitive>) => (
+  <ButtonPrimitive slot="close" {...props} />
+)
 
 type DialogHeaderProps = React.HTMLAttributes<HTMLDivElement> & {
   title?: string
@@ -108,7 +111,7 @@ const Title = ({ level = 2, className, ref, ...props }: DialogTitleProps) => (
 
 type DialogDescriptionProps = React.ComponentProps<"div">
 const Description = ({ className, ref, ...props }: DialogDescriptionProps) => (
-  <div className={description({ className })} ref={ref} {...props} />
+  <Text slot="description" className={description({ className })} ref={ref} {...props} />
 )
 
 type DialogBodyProps = React.ComponentProps<"div">

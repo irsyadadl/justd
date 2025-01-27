@@ -13,9 +13,9 @@ import {
   type ValidationResult,
   useSlottedContext,
 } from "react-aria-components"
+import { Button as ButtonPrimitive } from "react-aria-components"
 import { tv } from "tailwind-variants"
-
-import { Button, ButtonPrimitive } from "./button"
+import { Button } from "./button"
 import { DropdownItem, DropdownLabel, DropdownSection } from "./dropdown"
 import { Description, FieldError, FieldGroup, Input, Label } from "./field"
 import { ListBox } from "./list-box"
