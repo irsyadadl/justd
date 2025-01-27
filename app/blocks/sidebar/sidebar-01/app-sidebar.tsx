@@ -5,13 +5,13 @@ import {
   IconArrowDown,
   IconArrowUp,
   IconBrandApple,
+  IconBuilding,
   IconCheck,
   IconChevronLgDown,
   IconCircleQuestionmark,
   IconClock,
   IconCommandRegular,
   IconCreditCard,
-  IconCube,
   IconDashboard,
   IconDotsHorizontal,
   IconHashtag,
@@ -19,14 +19,12 @@ import {
   IconListBullets,
   IconLogout,
   IconMessage,
-  IconMinus,
   IconNotes,
   IconPackage,
   IconPlus,
   IconSettings,
   IconShield,
   IconShoppingBag,
-  IconSupport,
   IconTicket,
 } from "justd-icons"
 import {
@@ -112,7 +110,6 @@ export default function AppSidebar(props: React.ComponentProps<typeof Sidebar>) 
               {({ isHovered, isCollapsed }) => (
                 <>
                   <SidebarLink href="#">
-                    <IconCube />
                     <SidebarLabel>Products</SidebarLabel>
                   </SidebarLink>
                   {!isCollapsed && isHovered && (
@@ -156,7 +153,7 @@ export default function AppSidebar(props: React.ComponentProps<typeof Sidebar>) 
           <SidebarDisclosureGroup defaultExpandedKeys={[1]}>
             <SidebarDisclosure id={1}>
               <SidebarDisclosureTrigger>
-                <IconSupport />
+                <IconDotsHorizontal />
                 <SidebarLabel>Support</SidebarLabel>
               </SidebarDisclosureTrigger>
               <SidebarDisclosurePanel>
@@ -184,16 +181,14 @@ export default function AppSidebar(props: React.ComponentProps<typeof Sidebar>) 
                 <SidebarLabel>Inventory</SidebarLabel>
               </SidebarDisclosureTrigger>
               <SidebarDisclosurePanel>
-                <SidebarItem href="#" tooltip="Stock Levels">
-                  <IconMinus />
-                  <SidebarLabel>Stock Levels</SidebarLabel>
-                </SidebarItem>
                 <SidebarItem href="#" tooltip="Warehouse">
-                  <IconMinus />
+                  <IconBuilding />
                   <SidebarLabel>Warehouse</SidebarLabel>
                 </SidebarItem>
+                <SidebarItem href="#" tooltip="Stock Levels">
+                  <SidebarLabel>Stock Levels</SidebarLabel>
+                </SidebarItem>
                 <SidebarItem href="#" tooltip="Shipping">
-                  <IconMinus />
                   <SidebarLabel>Shipping</SidebarLabel>
                 </SidebarItem>
               </SidebarDisclosurePanel>

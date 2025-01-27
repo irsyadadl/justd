@@ -134,7 +134,7 @@ export const generateTheme = (
     --accent-fg: ${lightAccentFgValue};
     
     --muted: ${getColorValue(gray, "100")};
-    --muted-fg: ${getColorValue(gray, "500")};
+    --muted-fg: ${getColorValue(gray, "600")};
     
     --success: ${getColorValue("emerald", "600")};
     --success-fg: ${getColorValue("white")};

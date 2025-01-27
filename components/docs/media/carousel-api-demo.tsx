@@ -61,8 +61,8 @@ export default function CarouselDApiDemo() {
         </div>
 
         <div className="space-x-2">
-          <Carousel.Button slot="previous" />
-          <Carousel.Button slot="next" />
+          <Carousel.Button segment="previous" />
+          <Carousel.Button segment="next" />
         </div>
       </div>
     </Carousel>

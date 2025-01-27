@@ -4,7 +4,7 @@ import { createContext, use, useCallback, useEffect, useMemo, useState } from "r
 
 import { cn } from "@/utils/classes"
 import { useMediaQuery } from "@/utils/use-media-query"
-import { IconChevronLgLeft, IconHamburger, IconSidebarFill } from "justd-icons"
+import { IconChevronLgDown, IconHamburger, IconSidebarFill } from "justd-icons"
 import type {
   ButtonProps,
   DisclosureGroupProps,
@@ -389,7 +389,7 @@ const SidebarSection = ({
 
 const sidebarItemStyles = tv({
   base: [
-    "group relative col-span-full cursor-pointer overflow-hidden rounded-lg px-2.5 py-2 text-sidebar-fg/70 outline-hidden sm:text-sm",
+    "group relative col-span-full cursor-pointer overflow-hidden rounded-lg px-[calc(var(--spacing)*2.3)] py-[calc(var(--spacing)*1.3)] text-sidebar-fg/70 outline-hidden sm:text-sm/6",
     "**:data-[slot=menu-trigger]:-mr-1 **:data-[slot=menu-trigger]:absolute **:data-[slot=menu-trigger]:right-0 **:data-[slot=menu-trigger]:flex **:data-[slot=menu-trigger]:h-full **:data-[slot=menu-trigger]:w-[calc(var(--sidebar-width)-90%)] **:data-[slot=menu-trigger]:items-center **:data-[slot=menu-trigger]:justify-end **:data-[slot=menu-trigger]:pr-2.5",
     "**:data-[slot=avatar]:*:size-4 **:data-[slot=avatar]:size-4 **:data-[slot=icon]:size-4 **:data-[slot=avatar]:shrink-0 **:data-[slot=icon]:shrink-0",
     "in-data-[sidebar-intent=fleet]:rounded-none",
@@ -575,7 +575,7 @@ const SidebarDisclosure = ({ className, ref, ...props }: SidebarDisclosureProps)
 
 const sidebarDisclosureTrigger = tv({
   base: [
-    "group relative flex w-full cursor-pointer items-center overflow-hidden rounded-lg px-2.5 py-2 text-sidebar-fg/70 outline-hidden sm:text-sm",
+    "group relative flex w-full cursor-pointer items-center overflow-hidden rounded-lg px-[calc(var(--spacing)*2.3)] py-[calc(var(--spacing)*1.3)] text-sidebar-fg/70 outline-hidden sm:text-sm/6",
     "in-data-[sidebar-intent=fleet]:rounded-none in-data-[sidebar-intent=fleet]:py-2 in-data-[sidebar-intent=fleet]:**:data-[slot=chevron]:hidden",
   ],
   variants: {
@@ -617,9 +617,9 @@ const SidebarDisclosureTrigger = ({ className, ref, ...props }: SidebarDisclosur
           <>
             {typeof props.children === "function" ? props.children(values) : props.children}
             {state !== "collapsed" && (
-              <IconChevronLgLeft
+              <IconChevronLgDown
                 data-slot="chevron"
-                className="group-aria-expanded:-rotate-90 z-10 ml-auto size-3.5 transition-transform"
+                className="z-10 ml-auto size-3.5 transition-transform group-aria-expanded:rotate-180"
               />
             )}
           </>
@@ -644,7 +644,7 @@ const SidebarSeparator = ({ className, ...props }: SidebarSeparatorProps) => {
     <Separator
       orientation="horizontal"
       className={cn(
-        "col-span-full mx-auto my-2.5 h-px w-[calc(var(--sidebar-width)-theme(spacing.6))] bg-border bg-border",
+        "col-span-full mx-auto my-2.5 h-px w-[calc(var(--sidebar-width)-theme(spacing.6))] bg-border",
         className,
       )}
       {...props}

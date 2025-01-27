@@ -225,7 +225,7 @@ const CarouselHandler = ({ ref, className, ...props }: React.ComponentProps<"div
 }
 
 const CarouselButton = ({
-  handler,
+  segment,
   className,
   intent = "secondary",
   appearance = "outline",
@@ -233,9 +233,9 @@ const CarouselButton = ({
   size = "square-petite",
   ref,
   ...props
-}: ButtonProps & { handler: "previous" | "next" }) => {
+}: ButtonProps & { segment: "previous" | "next" }) => {
   const { orientation, scrollPrev, canScrollPrev, scrollNext, canScrollNext } = useCarousel()
-  const isNext = handler === "next"
+  const isNext = segment === "next"
   const canScroll = isNext ? canScrollNext : canScrollPrev
   const scroll = isNext ? scrollNext : scrollPrev
   const Icon = isNext ? IconChevronLgRight : IconChevronLgLeft
@@ -243,7 +243,7 @@ const CarouselButton = ({
   return (
     <Button
       aria-label={isNext ? "Next slide" : "Previous slide"}
-      data-handler={handler}
+      data-handler={segment}
       intent={intent}
       ref={ref}
       appearance={appearance}
