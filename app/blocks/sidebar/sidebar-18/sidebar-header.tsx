@@ -39,75 +39,75 @@ export function SidebarHeader() {
             <Menu.Submenu>
               <Menu.Item>Behavior</Menu.Item>
               <Menu.Content defaultSelectedKeys={["2", "3"]}>
-                <Menu.Checkbox id="0">Enable Preview Tab</Menu.Checkbox>
-                <Menu.Checkbox id="1">Open Files with Single Click</Menu.Checkbox>
-                <Menu.Checkbox id="2">Open Directories with Single Click</Menu.Checkbox>
-                <Menu.Checkbox id="3">Show Hidden Files</Menu.Checkbox>
-                <Menu.Checkbox id="4">Always Select Open Files</Menu.Checkbox>
+                <Menu.Item id="0">Enable Preview Tab</Menu.Item>
+                <Menu.Item id="1">Open Files with Single Click</Menu.Item>
+                <Menu.Item id="2">Open Directories with Single Click</Menu.Item>
+                <Menu.Item id="3">Show Hidden Files</Menu.Item>
+                <Menu.Item id="4">Always Select Open Files</Menu.Item>
               </Menu.Content>
             </Menu.Submenu>
             <Menu.Submenu>
               <Menu.Item>Appearance</Menu.Item>
               <Menu.Content defaultSelectedKeys={[2]}>
-                <Menu.Checkbox id={1}>Members</Menu.Checkbox>
-                <Menu.Checkbox id={2}>Exclude Files</Menu.Checkbox>
-                <Menu.Checkbox id={3}>Scratchs and Consoles</Menu.Checkbox>
-                <Menu.Checkbox id={4}>Files Details</Menu.Checkbox>
+                <Menu.Item id={1}>Members</Menu.Item>
+                <Menu.Item id={2}>Exclude Files</Menu.Item>
+                <Menu.Item id={3}>Scratchs and Consoles</Menu.Item>
+                <Menu.Item id={4}>Files Details</Menu.Item>
                 <Menu.Separator />
-                <Menu.Checkbox id={5}>File Nesting</Menu.Checkbox>
+                <Menu.Item id={5}>File Nesting</Menu.Item>
                 <Menu.Separator />
-                <Menu.Checkbox id={6}>Customize Tree View</Menu.Checkbox>
+                <Menu.Item id={6}>Customize Tree View</Menu.Item>
               </Menu.Content>
             </Menu.Submenu>
             <Menu.Submenu>
               <Menu.Item>Sort By</Menu.Item>
               <Menu.Content defaultSelectedKeys={[2]}>
-                <Menu.Checkbox id={1}>Name</Menu.Checkbox>
-                <Menu.Checkbox id={2}>Type</Menu.Checkbox>
-                <Menu.Checkbox id={3}>Modified</Menu.Checkbox>
-                <Menu.Checkbox id={4}>Folder Always On Top</Menu.Checkbox>
+                <Menu.Item id={1}>Name</Menu.Item>
+                <Menu.Item id={2}>Type</Menu.Item>
+                <Menu.Item id={3}>Modified</Menu.Item>
+                <Menu.Item id={4}>Folder Always On Top</Menu.Item>
               </Menu.Content>
             </Menu.Submenu>
             <Menu.Item>Edit Scopes...</Menu.Item>
-            <Menu.Checkbox>Group Tabs</Menu.Checkbox>
+            <Menu.Item>Group Tabs</Menu.Item>
             <Menu.Submenu>
               <Menu.Item>View Mode</Menu.Item>
               <Menu.Content defaultSelectedKeys={[1]}>
-                <Menu.Checkbox id={1}>Dock Pinned</Menu.Checkbox>
-                <Menu.Checkbox id={2}>Dock Unpinned</Menu.Checkbox>
-                <Menu.Checkbox id={3}>Undocked</Menu.Checkbox>
-                <Menu.Checkbox id={4}>Float</Menu.Checkbox>
-                <Menu.Checkbox id={5}>Window</Menu.Checkbox>
+                <Menu.Item id={1}>Dock Pinned</Menu.Item>
+                <Menu.Item id={2}>Dock Unpinned</Menu.Item>
+                <Menu.Item id={3}>Undocked</Menu.Item>
+                <Menu.Item id={4}>Float</Menu.Item>
+                <Menu.Item id={5}>Window</Menu.Item>
               </Menu.Content>
             </Menu.Submenu>
             <Menu.Submenu>
               <Menu.Item>Move to</Menu.Item>
               <Menu.Content defaultSelectedKeys={[1]}>
-                <Menu.Checkbox id={1}>
+                <Menu.Item id={1}>
                   <IconArrowRight />
                   Right
-                </Menu.Checkbox>
-                <Menu.Checkbox id={2}>
+                </Menu.Item>
+                <Menu.Item id={2}>
                   <IconArrowLeft />
                   Left
-                </Menu.Checkbox>
+                </Menu.Item>
                 <Menu.Separator />
-                <Menu.Checkbox id={5}>
+                <Menu.Item id={5}>
                   <IconArrowDownLeft />
                   Bottom Left
-                </Menu.Checkbox>
-                <Menu.Checkbox id={6}>
+                </Menu.Item>
+                <Menu.Item id={6}>
                   <IconArrowDownRight />
                   Bottom Right
-                </Menu.Checkbox>
-                <Menu.Checkbox id={7}>
+                </Menu.Item>
+                <Menu.Item id={7}>
                   <IconArrowUpLeft />
                   Top Left
-                </Menu.Checkbox>
-                <Menu.Checkbox id={8}>
+                </Menu.Item>
+                <Menu.Item id={8}>
                   <IconArrowUpRight />
                   Top Right
-                </Menu.Checkbox>
+                </Menu.Item>
               </Menu.Content>
             </Menu.Submenu>
             <Menu.Submenu>

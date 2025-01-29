@@ -1,10 +1,10 @@
 import { useState } from "react"
 
+import { title } from "@/resources/lib/utils"
 import { useQueryString } from "hooks/use-query-string"
 import { IconChevronLgDown } from "justd-icons"
 import { usePathname, useRouter } from "next/navigation"
 import type { Selection } from "react-aria-components"
-import title from "title"
 import { Button, Menu } from "ui"
 
 const sizes = [
@@ -48,10 +48,10 @@ export function SelectSize() {
         items={sizes}
       >
         {(item) => (
-          <Menu.Radio textValue={item.name}>
+          <Menu.Item textValue={item.name}>
             {item.name} /{" "}
             {item.name === "Size 4" ? "20px" : item.name === "Size 5" ? "24px" : "28px"}
-          </Menu.Radio>
+          </Menu.Item>
         )}
       </Menu.Content>
     </Menu>

@@ -19,26 +19,26 @@ export default function MenuWithArrowDemo() {
           </Menu.Section>
           <Menu.Item>
             <IconSettings />
-            Settings
+            <Menu.Label>Settings</Menu.Label>
           </Menu.Item>
           <Menu.Item href="#">
             <IconPlus />
-            Create Team
+            <Menu.Label>Create Team</Menu.Label>
           </Menu.Item>
           <Menu.Item href="#">
             <IconHashtag />
-            Command Menu
+            <Menu.Label>Command Menu</Menu.Label>
             <Menu.Keyboard keys="⌘K" />
           </Menu.Item>
           <Menu.Separator />
           <Menu.Item href="#">
             <IconHeadphones />
-            Contact Support
+            <Menu.Label>Contact Support</Menu.Label>
           </Menu.Item>
           <Menu.Separator />
           <Menu.Item>
             <IconLogout />
-            Log out
+            <Menu.Label>Log out</Menu.Label>
           </Menu.Item>
         </Menu.Content>
       </Menu>

@@ -28,7 +28,7 @@ export function InstallIcon({ pkg = "justd-icons" }: { pkg?: string }) {
   }
 
   return (
-    <div className="[&_.xd]:-mt-px xd flex h-10 w-full items-center justify-between rounded-lg border p-1 pl-3 font-mono text-sm tracking-tighter sm:min-w-72 sm:max-w-72 [&_.xd]:mr-[-0.30rem]">
+    <div className="[&_.xd]:-mt-px xd flex h-10 w-full items-center justify-between rounded-lg border p-1 pl-3 font-mono text-sm sm:min-w-72 sm:max-w-72 [&_.xd]:mr-[-0.30rem]">
       <div className="flex items-center">
         <IconChevronRight className="-ml-1.5 size-5.5 text-muted-fg" />
         {command || "npm i justd-icons"}

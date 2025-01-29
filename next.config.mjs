@@ -1,21 +1,16 @@
-const isDev = process.argv.indexOf("dev") !== -1
-const isBuild = process.argv.indexOf("build") !== -1
-const versionOneUrl = process.env.NEXT_PUBLIC_APP_V1_URL
-if (!process.env.VELITE_STARTED && (isDev || isBuild)) {
-  process.env.VELITE_STARTED = "1"
-  const { build } = await import("velite")
-  await build({ watch: isDev, clean: !isDev })
-}
+import { createMDX } from "fumadocs-mdx/next"
+const versionOneUrl = process.env.NEXT_PUBLIC_APP_V1_URL || "http://localhost:3000"
 
+const withMDX = createMDX()
 /** @type {import("next").NextConfig} */
-export default {
+const config = {
+  reactStrictMode: true,
   devIndicators: {
     buildActivity: false,
     appIsrStatus: false,
   },
   experimental: {
     reactCompiler: true,
-    optimizePackageImports: ["shiki"],
   },
   async rewrites() {
     return [
@@ -56,3 +51,5 @@ export default {
     ]
   },
 }
+
+export default withMDX(config)

@@ -18,13 +18,11 @@ const separatorStyles = tv({
 
 interface SeparatorProps extends DividerProps {
   className?: string
-  ref?: React.RefObject<HTMLDivElement>
 }
 
-const Separator = ({ className, ref, ...props }: SeparatorProps) => {
+const Separator = ({ className, ...props }: SeparatorProps) => {
   return (
     <Divider
-      ref={ref}
       {...props}
       className={separatorStyles({
         orientation: props.orientation,

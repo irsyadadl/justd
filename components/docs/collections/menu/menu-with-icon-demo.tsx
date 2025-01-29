@@ -4,7 +4,6 @@ import {
   IconCommandRegular,
   IconDashboard,
   IconDeviceDesktop,
-  IconHeadphones,
   IconLogout,
   IconMoon,
   IconSettings,
@@ -18,28 +17,28 @@ export default function MenuWithIconDemo() {
   return (
     <Menu>
       <Menu.Trigger aria-label="Open Menu">
-        <Avatar alt="irsyadadl" size="large" src="/images/avatar/cobain.jpg" />
+        <Avatar alt="kurt cobain" size="large" src="/images/avatar/cobain.jpg" />
       </Menu.Trigger>
       <Menu.Content placement="bottom" showArrow className="sm:min-w-64">
-        <Menu.Section>
-          <Menu.Header separator>
-            <span className="block">Kurt Cobain</span>
-            <span className="font-normal text-muted-fg">@cobain</span>
-          </Menu.Header>
-        </Menu.Section>
+        <Menu.Header separator>
+          <span className="block">Kurt Cobain</span>
+          <span className="font-normal text-muted-fg">@cobain</span>
+        </Menu.Header>
 
-        <Menu.Item href="#dashboard">
-          <IconDashboard />
-          Dashboard
-        </Menu.Item>
-        <Menu.Item href="#settings">
-          <IconSettings />
-          Settings
-        </Menu.Item>
+        <Menu.Section>
+          <Menu.Item href="#dashboard">
+            <IconDashboard />
+            <Menu.Label>Dashboard</Menu.Label>
+          </Menu.Item>
+          <Menu.Item href="#settings">
+            <IconSettings />
+            <Menu.Label>Settings</Menu.Label>
+          </Menu.Item>
+        </Menu.Section>
         <Menu.Separator />
         <Menu.Item>
           <IconCommandRegular />
-          Command Menu
+          <Menu.Label>Command Menu</Menu.Label>
         </Menu.Item>
         <Menu.Submenu>
           <Menu.Item>
@@ -50,7 +49,7 @@ export default function MenuWithIconDemo() {
             ) : (
               <IconDeviceDesktop />
             )}
-            Switch theme
+            <Menu.Label>Switch theme</Menu.Label>
           </Menu.Item>
           <Menu.Content>
             <Menu.Item onAction={() => setTheme("system")}>
@@ -66,13 +65,12 @@ export default function MenuWithIconDemo() {
         </Menu.Submenu>
         <Menu.Separator />
         <Menu.Item href="#contact-s">
-          <IconHeadphones />
-          Contact Support
+          <Menu.Label>Contact Support</Menu.Label>
         </Menu.Item>
         <Menu.Separator />
         <Menu.Item href="#logout">
           <IconLogout />
-          Log out
+          <Menu.Label>Log out</Menu.Label>
         </Menu.Item>
       </Menu.Content>
     </Menu>

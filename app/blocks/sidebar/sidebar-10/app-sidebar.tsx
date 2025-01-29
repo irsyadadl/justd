@@ -2,9 +2,17 @@
 
 import {
   IconBrandApple,
-  IconBullet,
+  IconBulletList,
+  IconChartTrending,
+  IconCirclePerson,
+  IconCreditCard,
+  IconGear,
+  IconHashtag,
+  IconInbox,
+  IconMessages,
   IconNotes,
   IconSettings,
+  IconShippingBag,
   IconStore,
   IconWhiteboard,
 } from "justd-icons"
@@ -19,6 +27,7 @@ import {
   SidebarHeader,
   SidebarItem,
   SidebarLabel,
+  SidebarSeparator,
 } from "ui"
 
 export default function AppSidebar(props: React.ComponentProps<typeof Sidebar>) {
@@ -35,9 +44,9 @@ export default function AppSidebar(props: React.ComponentProps<typeof Sidebar>) 
       </SidebarHeader>
 
       <SidebarContent>
-        {sections.map((section, sectionIndex) => (
-          <SidebarDisclosureGroup defaultExpandedKeys={[1, 2]} key={sectionIndex}>
-            <SidebarDisclosure id={sectionIndex + 1}>
+        <SidebarDisclosureGroup defaultExpandedKeys={[1, 2]}>
+          {sections.map((section, sectionIndex) => (
+            <SidebarDisclosure key={sectionIndex} id={sectionIndex + 1}>
               <SidebarDisclosureTrigger>
                 <section.icon />
                 <SidebarLabel> {section.label}</SidebarLabel>
@@ -45,22 +54,33 @@ export default function AppSidebar(props: React.ComponentProps<typeof Sidebar>) 
               <SidebarDisclosurePanel>
                 {section.items.map((item, itemIndex) => (
                   <SidebarItem key={itemIndex} href="#">
-                    {({ isHovered }) => (
-                      <>
-                        <i aria-hidden className="size-4 content-center">
-                          <IconBullet
-                            className={`${isHovered ? "fill-sky-500 text-sky-500" : ""} m-auto size-2`}
-                          />
-                        </i>
-                        <SidebarLabel>{item}</SidebarLabel>
-                      </>
-                    )}
+                    {item.icon && <item.icon />}
+                    <SidebarLabel>{item.name}</SidebarLabel>
                   </SidebarItem>
                 ))}
               </SidebarDisclosurePanel>
             </SidebarDisclosure>
-          </SidebarDisclosureGroup>
-        ))}
+          ))}
+        </SidebarDisclosureGroup>
+        <SidebarSeparator />
+        <SidebarDisclosureGroup defaultExpandedKeys={[1, 2]}>
+          {sections.map((section, sectionIndex) => (
+            <SidebarDisclosure key={sectionIndex} id={sectionIndex + 1}>
+              <SidebarDisclosureTrigger>
+                <section.icon />
+                <SidebarLabel> {section.label}</SidebarLabel>
+              </SidebarDisclosureTrigger>
+              <SidebarDisclosurePanel>
+                {section.items.map((item, itemIndex) => (
+                  <SidebarItem key={itemIndex} href="#">
+                    {item.icon && <item.icon />}
+                    <SidebarLabel>{item.name}</SidebarLabel>
+                  </SidebarItem>
+                ))}
+              </SidebarDisclosurePanel>
+            </SidebarDisclosure>
+          ))}
+        </SidebarDisclosureGroup>
       </SidebarContent>
     </Sidebar>
   )
@@ -70,21 +90,45 @@ const sections = [
   {
     icon: IconNotes,
     label: "Blog",
-    items: ["Articles", "Categories", "Tags", "Comments", "Authors"],
+    items: [
+      { href: "#", name: "Articles", icon: IconNotes },
+      { href: "#", name: "Tags", icon: IconHashtag },
+      { href: "#", name: "Comments", icon: IconMessages },
+      { href: "#", name: "Authors" },
+      { href: "#", name: "Categories" },
+    ],
   },
   {
     icon: IconStore,
     label: "Commerce",
-    items: ["Orders", "Products", "Customers", "Coupons", "Discounts"],
+    items: [
+      { href: "#", name: "Orders", icon: IconShippingBag },
+      { href: "#", name: "Products" },
+      { href: "#", name: "Customers" },
+      { href: "#", name: "Coupons" },
+      { href: "#", name: "Discounts" },
+    ],
   },
   {
     icon: IconWhiteboard,
     label: "Analytics",
-    items: ["Reports", "Traffic", "Conversions", "Audience", "Engagement"],
+    items: [
+      { href: "#", name: "Engagement", icon: IconChartTrending },
+      { href: "#", name: "Reports", icon: IconBulletList },
+      { href: "#", name: "Traffic" },
+      { href: "#", name: "Conversions" },
+      { href: "#", name: "Audience" },
+    ],
   },
   {
     icon: IconSettings,
     label: "Settings",
-    items: ["General", "Profile", "Billing", "Notifications", "Integrations"],
+    items: [
+      { href: "#", name: "General", icon: IconGear },
+      { href: "#", name: "Profile", icon: IconCirclePerson },
+      { href: "#", name: "Billing", icon: IconCreditCard },
+      { href: "#", name: "Notifications", icon: IconInbox },
+      { href: "#", name: "Integrations" },
+    ],
   },
 ]

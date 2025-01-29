@@ -6,7 +6,7 @@ import type { Metadata } from "next"
 export const metadata: Metadata = {
   title: "Colors",
   description:
-    "A stash of over 154 colors blending TailwindCSS vibes with HTML color names, served up in 8 slick formats.",
+    "A stash of over 154 colors blending TailwindCSS vibes with HTML color names, served up in 4 slick formats.",
   metadataBase: new URL("https://getjustd.com"),
   applicationName: siteConfig.name,
   category: "Colors",
@@ -54,8 +54,8 @@ export default async function Page() {
   return (
     <>
       <Header>
-        Col
-        <span className="text-muted-fg">ors</span>
+        <span className="tracking-tight">Col</span>
+        <span className="text-muted-fg tracking-tight">ors</span>
       </Header>
       <ColorPalette />
     </>

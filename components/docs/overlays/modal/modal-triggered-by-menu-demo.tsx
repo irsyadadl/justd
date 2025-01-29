@@ -3,8 +3,8 @@
 import { useState } from "react"
 
 import { wait } from "@/resources/lib/utils"
-import { IconDotsVertical } from "justd-icons"
-import { Button, Loader, Menu, Modal, buttonStyles } from "ui"
+import { IconBlock, IconChevronLgDown, IconTrash } from "justd-icons"
+import { Button, Loader, Menu, Modal } from "ui"
 
 export default function ModalTriggeredByMenuDemo() {
   const [state, setState] = useState<string | null>(null)
@@ -50,15 +50,21 @@ export default function ModalTriggeredByMenuDemo() {
   return (
     <>
       <Menu>
-        <Menu.Trigger className={buttonStyles({ appearance: "outline" })}>
-          <IconDotsVertical />
-        </Menu.Trigger>
+        <Button appearance="outline" className="group">
+          Actions...
+          <IconChevronLgDown className="decoration-200 transition-transform group-data-pressed:rotate-180" />
+        </Button>
         <Menu.Content placement="bottom">
-          <Menu.Item onAction={() => setState("delete")}>Delete</Menu.Item>
-          <Menu.Item isDanger onAction={() => setState("ban")}>
-            Ban
+          <Menu.Item onAction={() => setState("delete")}>
+            <IconTrash /> <Menu.Label>Delete</Menu.Label>
           </Menu.Item>
-          <Menu.Item onAction={() => setState("restore")}>Restore</Menu.Item>
+          <Menu.Item isDanger onAction={() => setState("ban")}>
+            <IconBlock />
+            <Menu.Label>Ban</Menu.Label>
+          </Menu.Item>
+          <Menu.Item onAction={() => setState("restore")}>
+            <Menu.Label>Restore</Menu.Label>
+          </Menu.Item>
         </Menu.Content>
       </Menu>
 

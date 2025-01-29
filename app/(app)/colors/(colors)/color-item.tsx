@@ -112,10 +112,18 @@ export function SelectFormat({ selected, setSelected }: SelectedFormatProps) {
         onSelectionChange={setSelected}
         selectionMode="single"
       >
-        <Menu.Radio id="rgb">RGB</Menu.Radio>
-        <Menu.Radio id="hsl">HSL</Menu.Radio>
-        <Menu.Radio id="oklch">OKLCH</Menu.Radio>
-        <Menu.Radio id="hex">HEX</Menu.Radio>
+        <Menu.Item id="rgb">
+          <Menu.Label>RGB</Menu.Label>
+        </Menu.Item>
+        <Menu.Item id="hsl">
+          <Menu.Label>HSL</Menu.Label>
+        </Menu.Item>
+        <Menu.Item id="oklch">
+          <Menu.Label>OKLCH</Menu.Label>
+        </Menu.Item>
+        <Menu.Item id="hex">
+          <Menu.Label>HEX</Menu.Label>
+        </Menu.Item>
       </Menu.Content>
     </Menu>
   )

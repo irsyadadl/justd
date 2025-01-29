@@ -1,29 +1,40 @@
 "use client"
 
 import { useState } from "react"
-
 import { Avatar, Button, CommandMenu } from "ui"
 
 export default function CommandMenuControlledDemo() {
   const [isOpen, setIsOpen] = useState(false)
-  const [value, setValue] = useState("")
+  const [search, setSearch] = useState("")
+  const [results, setResults] = useState(users)
+
+  const handleSearch = (value: string) => {
+    setSearch(value)
+    const filteredResults = users.filter((user) =>
+      user.name.toLowerCase().includes(value.toLowerCase()),
+    )
+    setResults(filteredResults)
+  }
+
   return (
     <>
       <Button appearance="outline" onPress={() => setIsOpen(true)}>
         Open
       </Button>
-      <CommandMenu onValueChange={setValue} value={value} isOpen={isOpen} onOpenChange={setIsOpen}>
-        <CommandMenu.Input defaultValue={value} placeholder="Quick search..." />
-        <CommandMenu.List>
-          {users.map((user) => (
-            <CommandMenu.Item key={user.id} value={user.name}>
+      <CommandMenu
+        onInputChange={handleSearch}
+        inputValue={search}
+        isOpen={isOpen}
+        onOpenChange={setIsOpen}
+      >
+        <CommandMenu.Search placeholder="Quick search..." />
+        <CommandMenu.List items={results}>
+          {(user) => (
+            <CommandMenu.Item textValue={user.name} key={user.name}>
               <Avatar src={user.image_url} />
-              {user.name}{" "}
-              {user.name === value && (
-                <CommandMenu.Description>Selected: {value}</CommandMenu.Description>
-              )}
+              {user.name}
             </CommandMenu.Item>
-          ))}
+          )}
         </CommandMenu.List>
       </CommandMenu>
     </>

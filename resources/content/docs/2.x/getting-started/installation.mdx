@@ -24,7 +24,7 @@ Begin by executing this command:
 <Installation options={{ isInit: true }} items={['initial setup']} />
 
 When you're run this command, it will ask a couple of questions. Like where's your components folder, utils, your main css file, and lastly is the theme you want like so:
-```bash
+```
 ✔ Initializing.
 ? Components folder: src/components
 ? Utils folder: src/utils
@@ -37,7 +37,7 @@ When you're run this command, it will ask a couple of questions. Like where's yo
   stone
 ```
 If it's all good, you will see the following:
-```bash
+```
 Not sure what to do next?
 Visit our documentation at: https://getjustd.com
 
@@ -51,12 +51,26 @@ by running: npx justd-cli@latest add
   \___/ \__,_|___/\__\__,_|
 ```
 
+### Justd Config
+After running the `init` command, a `.justd` file will appear in your project. This file holds your project's configuration, including settings for gray tones, paths, and more.
+```
+{
+  "$schema": "https://getjustd.com/schema.json",
+  "ui": "src/components/ui",
+  "utils": "src/utils",
+  "gray": "zinc",
+  "css": "src/app/globals.css",
+  "alias": "@",
+  "language": "typescript",
+}
+```
+
 ### Add Components
 Next, use `add [component-name]` to include a specific component in your project. This allows for selective installation without the need for a full setup. If you need a file-trigger or even a button, this command facilitates that. Install only what you need, or refer to the documentation to manually include components. Here's how to add a `combo-box`:
 <Installation options={{ isComponent: true, noText: true }} items={['combo-box']} />
 
 This command will ensure all necessary components are installed:
-```bash
+```
 ✔ Checking.
 ✔ Installing dependencies.
 ✔ Created 7 files:
@@ -75,7 +89,7 @@ If you need to include grouped components, refer to the documentation which orga
 
 <Installation options={{ isComponent: true, noText: true }} items={['overlays']} />
 Using this command, you will install all components under the overlays namespace.
-```bash
+```
 ✓ button created
 ✓ dialog created
 ✓ modal created
@@ -93,7 +107,8 @@ You can override the existing components by using the `-o` flag. This will overw
 You might prefer to select the components you want to include by adding them without specifying any items. Just use the following command to add components:
 <Installation options={{ isComponent: true, noText: true }} items={['']} />
 This command will present a list of available components, which you can navigate and select using the arrow keys and spacebar.
-```bash
+
+```
 ? Select components to add: (Press <space> to select, <a> to toggle all, <i> to invert selection, and <enter> to
   proceed)
   ◯ dropdown
@@ -167,16 +182,25 @@ Looking for a production-ready Astro setup? Check out our [Astro Starter Kit](ht
 For more details, visit the [Astro repository](https://github.com/justdlabs/astro).
 
 
+
+## Formatter
+Justd utilizes the <NewTab href='https://biomejs.dev/'>Biome</NewTab> formatter for code formatting. To use the Biome formatter with Justd components, we recommend the following configuration:
+
+<CodeBlock
+    source={{
+        'biome.json': 'installation/biome.json',
+    }} />
+
 ## Manual Installation
 To begin setting up the design system, start by installing these packages:
 
 <Installation options={{isManual: true}} items={['react-aria-components']} />
 
-Next, add Tailwind Variant, Tailwind Merge, and for utility functions:
+Next, add **Tailwind Variant**, **Tailwind Merge**, and for utility functions:
 
-<Installation options={{isManual: true}} items={['tailwind-variants', 'tailwind-merge']} />
+<Installation options={{isManual: true}} items={['tailwind-variants', 'tailwind-merge', 'clsx']} />
 
-Following that, include the animation package for managing animations and Paranoid for icons:
+Following that, include the **Tailwind Animate** for managing animations and **Justd Icons** for icons:
 
 <Installation options={{isManual: true}} items={['justd-icons', 'tailwindcss-animate']} />
 
@@ -235,8 +259,6 @@ If you're using a `src` folder, you can use the following config:
 ### Fonts
 This is currently using the [Inter font](https://rsms.me/inter/). If you want to use a different font, you can define your font-family in your JS or CSS file.
 
-
-
 ### Stylesheet
 When you're working with a stylesheet, you can define your `@font-face` in your css file.
 
@@ -274,9 +296,9 @@ Then, you can use the variable in your main css file like this:
 
 ```css
 @theme {
-  --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+  --font-sans: var(--font-inter-sans), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
   "Segoe UI Symbol", "Noto Color Emoji";
-  --font-mono: var(--font-mono), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+  --font-mono: var(--font-geist-mono), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
   "Segoe UI Symbol", "Noto Color Emoji";
 
   // Your other variables
@@ -285,7 +307,7 @@ Then, you can use the variable in your main css file like this:
 
 For more information, refer to the [Tailwind documentation](https://tailwindcss.com/docs/font-family#customizing-the-default-font) and [Next.js documentation](https://nextjs.org/docs/app/building-your-application/optimizing/fonts).
 
-## InteliSense
+## IntelliSense
 If you want your development environment to be more intelligent, you can follow instructions here at [Tailwind Variants](https://www.tailwind-variants.org/docs/getting-started#intellisense-setup-optional).
 
 ## Dark Mode

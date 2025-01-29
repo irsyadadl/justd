@@ -134,7 +134,7 @@ export const generateTheme = (
     --accent-fg: ${lightAccentFgValue};
     
     --muted: ${getColorValue(gray, "100")};
-    --muted-fg: ${getColorValue(gray, "500")};
+    --muted-fg: ${getColorValue(gray, "600")};
     
     --success: ${getColorValue("emerald", "600")};
     --success-fg: ${getColorValue("white")};
@@ -149,10 +149,10 @@ export const generateTheme = (
     --input: ${getColorValue(gray, "300")};
     --ring: ${getColorValue(primary, lightRingShade)};
     
-    --navbar: ${getColorValue(gray, "100")};
+    --navbar: ${getColorValue(gray, "50")};
     --navbar-fg: ${getColorValue(gray, "950")};
     
-    --sidebar: ${getColorValue(gray, "100")};
+    --sidebar: ${getColorValue(gray, "50")};
     --sidebar-fg: ${getColorValue(gray, "950")};
     
     --chart-1: ${getColorValue(primary, chartShadesLight[0])};
@@ -162,7 +162,7 @@ export const generateTheme = (
     --chart-5: ${getColorValue(primary, chartShadesLight[4])};
     `
 
-  const darkColors = `--bg: ${adjustLightness(getColorValue(gray, "950"), -5)};
+  const darkColors = `--bg: ${getColorValue(gray, "950")};
     --fg: ${getColorValue(gray, "50")};
     
     --primary: ${getColorValue(primary, darkPrimary)};

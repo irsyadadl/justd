@@ -29,7 +29,7 @@ const ColorSwatchPicker = ({
 
 const itemStyles = tv({
   extend: focusRing,
-  base: "relative rounded disabled:opacity-50",
+  base: "relative rounded-lg data-disabled:opacity-50",
 })
 
 const SwatchPickerItem = (props: ColorSwatchPickerItemProps) => {

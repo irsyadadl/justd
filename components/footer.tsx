@@ -15,7 +15,7 @@ const navigation = {
     { name: "Icons", href: "/icons" },
     { name: "Colors", href: "/colors" },
     { name: "Themes", href: "/themes" },
-    { name: "Blocks", href: "/blocks" },
+    { name: "Blocks", href: "https://dub.sh/d8ldbi9" },
     { name: "Showcase", href: "/showcase" },
     { name: "Blog", href: "/blog" },
   ],
@@ -25,7 +25,10 @@ const navigation = {
     { name: "CLI", href: "https://github.com/justdlabs/cli" },
     { name: "Templates", href: "https://irsyad.co/templates" },
   ],
-  legal: [{ name: "MIT", href: "https://github.com/justdlabs/justd/blob/main/LICENSE" }],
+  extra: [
+    { name: "Discord", href: "https://discord.gg/DYmVJ66JUD" },
+    { name: "MIT", href: "https://github.com/justdlabs/justd/blob/main/LICENSE" },
+  ],
 }
 
 export function Footer() {
@@ -91,7 +94,7 @@ export function Footer() {
               <div className="mt-10 md:mt-0">
                 <h3 className="font-semibold text-fg text-sm leading-6">Legal</h3>
                 <ul className="mt-6 space-y-4">
-                  {navigation.legal.map((item) => (
+                  {navigation.extra.map((item) => (
                     <li key={item.name}>
                       <Link
                         target="_blank"

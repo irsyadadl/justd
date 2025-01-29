@@ -30,8 +30,26 @@ Although the Choicebox defaults to allowing multiple selections, it can be confi
 <How isCenter={false} toUse="collections/choicebox/choicebox-single-selection-demo" />
 
 ## Columns and Gap
-The default layout for the Choicebox includes two columns with a 16px gap between items. These settings can be adjusted by passing the `columns` and `gap` props.
+The Choicebox default layout is set with `columns={2}` and a `gap={4}` between items. You can customize these settings by providing your own `columns` and `gap` props.
 <How isCenter={false} withNoPadding={true} toUse="collections/choicebox/choicebox-columns-demo" />
+
+## No Gap
+If you set `gap={0}` and `columns={1}`, the Choicebox items will lose their individual rounded corners, and the rounded corners will be applied to the parent container instead.
+<How isCenter={false} toUse="collections/choicebox/choicebox-no-gap-demo" />
+
+## Icons
+You can add icons to the Choicebox items by providing the `icon` prop.
+<How isCenter={false} toUse="collections/choicebox/choicebox-icon-demo" />
+
+## Disabled
+Disable the entire Choicebox by applying the `isDisabled` prop.
+<How isCenter={false} withNoPadding={true} toUse="collections/choicebox/choicebox-disabled-demo" />
+
+Individual items can also be disabled by specifying their keys in the `disabledKeys` prop.
+
+```tsx
+<Choicebox disabledKeys={['sm', 'lg']} />
+<How isCenter={false} toUse="collections/choicebox/choicebox-no-gap-demo" />
 
 ## Controlled
 This component can function as either controlled or uncontrolled. For controlled use, provide the `selectedKeys` prop and manage updates with the `onSelectionChange` event handler.

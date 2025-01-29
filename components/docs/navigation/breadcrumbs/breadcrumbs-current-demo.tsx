@@ -1,5 +1,4 @@
 "use client"
-
 import { Breadcrumbs } from "ui"
 
 export default function BreadcrumbsCurrentDemo() {
@@ -8,11 +7,7 @@ export default function BreadcrumbsCurrentDemo() {
       <Breadcrumbs.Item href="#">Home</Breadcrumbs.Item>
       <Breadcrumbs.Item href="#">Components</Breadcrumbs.Item>
 
-      <Breadcrumbs.Item
-        className={({ isCurrent }) => (isCurrent ? "text-sky-500" : "text-secondary")}
-      >
-        Navbar
-      </Breadcrumbs.Item>
+      <Breadcrumbs.Item className="data-current:text-primary">Navbar</Breadcrumbs.Item>
     </Breadcrumbs>
   )
 }

@@ -13,9 +13,11 @@ import {
   SidebarRail,
   SidebarSection,
   SidebarSectionGroup,
+  useSidebar,
 } from "ui"
 
 export default function AppSidebar(props: React.ComponentProps<typeof Sidebar>) {
+  const { state } = useSidebar()
   return (
     <Sidebar {...props}>
       <SidebarHeader>
@@ -29,17 +31,17 @@ export default function AppSidebar(props: React.ComponentProps<typeof Sidebar>) 
       </SidebarHeader>
       <SidebarContent>
         <SidebarSectionGroup>
-          <SidebarSection>
-            <SearchField />
-          </SidebarSection>
-          <SidebarSection>
-            <RangeCalendar
-              defaultValue={{
-                start: parseDate(`${new Date().getFullYear()}-02-03`),
-                end: parseDate(`${new Date().getFullYear()}-02-12`),
-              }}
-            />
-          </SidebarSection>
+          {state !== "collapsed" && (
+            <SidebarSection className="pt-1">
+              <SearchField className="col-span-full mb-6" />
+              <RangeCalendar
+                defaultValue={{
+                  start: parseDate(`${new Date().getFullYear()}-02-03`),
+                  end: parseDate(`${new Date().getFullYear()}-02-12`),
+                }}
+              />
+            </SidebarSection>
+          )}
         </SidebarSectionGroup>
       </SidebarContent>
       <SidebarRail />

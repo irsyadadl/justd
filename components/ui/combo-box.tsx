@@ -5,6 +5,7 @@ import React from "react"
 import { IconChevronLgDown, IconX } from "justd-icons"
 import type { InputProps } from "react-aria-components"
 import {
+  Button as ButtonPrimitive,
   ComboBoxContext,
   ComboBoxStateContext,
   ComboBox as ComboboxPrimitive,
@@ -14,9 +15,8 @@ import {
   useSlottedContext,
 } from "react-aria-components"
 import { tv } from "tailwind-variants"
-
-import { Button, ButtonPrimitive } from "./button"
-import { DropdownItem, DropdownSection } from "./dropdown"
+import { Button } from "./button"
+import { DropdownItem, DropdownLabel, DropdownSection } from "./dropdown"
 import { Description, FieldError, FieldGroup, Input, Label } from "./field"
 import { ListBox } from "./list-box"
 import { Popover } from "./popover"
@@ -111,6 +111,7 @@ const ComboBoxClearButton = () => {
 ComboBox.Input = ComboBoxInput
 ComboBox.List = ComboBoxList
 ComboBox.Option = DropdownItem
+ComboBox.Label = DropdownLabel
 ComboBox.Section = DropdownSection
 
 export type { ComboBoxProps, ComboBoxListProps }

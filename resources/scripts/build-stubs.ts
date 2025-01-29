@@ -6,7 +6,7 @@ const outputDir = "public/stubs"
 
 function getAllFiles(dir: string, basePath = ""): string[] {
   let files: string[] = []
-  fs.readdirSync(dir).forEach((file) => {
+  for (const file of fs.readdirSync(dir)) {
     const fullPath = path.join(dir, file)
     const relativePath = path.join(basePath, file)
     if (fs.statSync(fullPath).isDirectory()) {
@@ -14,7 +14,8 @@ function getAllFiles(dir: string, basePath = ""): string[] {
     } else {
       files.push(relativePath)
     }
-  })
+  }
+
   return files
 }
 
@@ -22,7 +23,7 @@ function buildStubs() {
   const files = getAllFiles(inputDir)
   const tableData: { Stub: string; Output: string }[] = []
 
-  files.forEach((file) => {
+  for (const file of files) {
     const filePath = path.join(inputDir, file)
     const content = fs.readFileSync(filePath, "utf-8")
 
@@ -45,7 +46,7 @@ function buildStubs() {
 
     fs.writeFileSync(outputFilePath, JSON.stringify(stubJson, null, 2))
     tableData.push({ Stub: file, Output: outputFilePath })
-  })
+  }
 
   console.table(tableData)
 }

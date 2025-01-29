@@ -50,6 +50,16 @@ You can control the select component by passing the `selectedKey` prop.
 You can uncontrolled the select component by passing the `defaultSelectedKey` prop.
 <How minW72 toUse="pickers/select/select-uncontrolled-demo" />
 
+## Label
+When the `children` option is a string, `Select.Label` will automatically wrap it. However, if the option includes an icon or avatar, you'll need to manually define the wrapper like this:
+
+```
+<Select.Option id="discord" textValue="Discord">
+  <IconBrandDiscord />
+  <Select.Label>Discord</Select.Label>
+</Select.Option>
+```
+
 ## Disabled
 When the select component is disabled, it cannot be interacted with.
 <How minW72 toUse="pickers/select/select-disabled-demo" />

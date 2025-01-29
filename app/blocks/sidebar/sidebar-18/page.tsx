@@ -2,12 +2,12 @@ import { CodeHighlighter } from "@/components/code/code-highlighter"
 
 export default async function Page() {
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen">
       <div className="p-4">
         <CodeHighlighter
           lang="php"
           max96={false}
-          className="-mt-8 **:[pre]:p-4"
+          className="**:[pre]:px-8"
           removeLastLine
           plain
           code={processedSourceCode}

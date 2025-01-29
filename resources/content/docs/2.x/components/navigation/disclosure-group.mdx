@@ -33,7 +33,7 @@ Allow multiple sections to be expanded at once by using the `allowsMultipleExpan
 ## Nested
 Disclosure Groups can be nested to create a hierarchy of sections. Use the DisclosurePanel component to add content to each nested group. To ensure a polished appearance, make sure the trigger within the nested group includes a span, as shown below:
 ```tsx {6}
-<DisclosurePanel className="bg-[color-mix(in_oklab,var(--color-muted)_70%,black_15%)]">
+<DisclosurePanel className="bg-muted">
   <DisclosureGroup allowsMultipleExpanded>
     {item.children.map((child, childIndex) => (
       <Disclosure key={childIndex} id={childIndex}>

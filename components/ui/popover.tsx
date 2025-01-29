@@ -18,6 +18,7 @@ import {
 } from "react-aria-components"
 import { tv } from "tailwind-variants"
 
+import { cn } from "@/utils/classes"
 import { useMediaQuery } from "@/utils/use-media-query"
 import { twMerge } from "tailwind-merge"
 import type {
@@ -45,33 +46,34 @@ const Header = ({ className, ...props }: DialogHeaderProps) => (
 )
 
 const Footer = ({ className, ...props }: DialogFooterProps) => (
-  <Dialog.Footer className={twMerge("sm:p-4", className)} {...props} />
+  <Dialog.Footer className={cn("sm:p-4", className)} {...props} />
 )
 
 const Body = ({ className, ref, ...props }: DialogBodyProps) => (
-  <Dialog.Body ref={ref} className={twMerge("sm:px-4", className)} {...props} />
+  <Dialog.Body ref={ref} className={cn("sm:px-4 sm:pt-0", className)} {...props} />
 )
 
 const content = tv({
   base: [
-    "max-w-xs rounded-xl border bg-overlay bg-clip-padding text-overlay-fg shadow-xs transition-transform [scrollbar-width:thin] peer-not-has-[data=dialog-header]:p-4 sm:max-w-3xl sm:text-sm dark:backdrop-saturate-200 forced-colors:bg-[Canvas] [&::-webkit-scrollbar]:size-0.5",
+    "peer/popover-content max-w-xs rounded-xl border bg-overlay bg-clip-padding text-overlay-fg shadow-xs transition-transform [scrollbar-width:thin] sm:max-w-3xl sm:text-sm dark:backdrop-saturate-200 forced-colors:bg-[Canvas] [&::-webkit-scrollbar]:size-0.5",
   ],
   variants: {
-    isPicker: { true: "max-h-72 min-w-(--trigger-width) overflow-y-auto p-0", false: "min-w-80" },
+    isPicker: {
+      true: "max-h-72 min-w-(--trigger-width) overflow-y-auto",
+      false: "min-w-80",
+    },
     isMenu: {
-      true: {
-        true: "p-0",
-      },
+      true: "p-0",
     },
     isEntering: {
       true: [
-        "fade-in animate-in duration-100 ease-out",
+        "fade-in animate-in duration-150 ease-out",
         "data-[placement=left]:slide-in-from-right-1 data-[placement=right]:slide-in-from-left-1 data-[placement=top]:slide-in-from-bottom-1 data-[placement=bottom]:slide-in-from-top-1",
       ],
     },
     isExiting: {
       true: [
-        "fade-out animate-out duration-50 ease-in",
+        "fade-out animate-out duration-100 ease-in",
         "data-[placement=left]:slide-out-to-right-1 data-[placement=right]:slide-out-to-left-1 data-[placement=top]:slide-out-to-bottom-1 data-[placement=bottom]:slide-out-to-top-1",
       ],
     },
@@ -85,7 +87,7 @@ const drawer = tv({
   variants: {
     isMenu: {
       true: "rounded-t-xl p-0 [&_[role=dialog]]:*:not-has-[[data-slot=dialog-body]]:px-1",
-      false: "rounded-t-2xl py-4",
+      false: "rounded-t-2xl",
     },
     isEntering: {
       true: [
@@ -141,8 +143,8 @@ const PopoverContent = ({
       >
         <Dialog
           role="dialog"
-          aria-label={isMenu ? "Menu" : props["aria-label"]}
-          className="touch-none p-0 data-focused:outline-hidden sm:p-0"
+          aria-label={props["aria-label"] || isMenu ? "Menu" : undefined}
+          className="outline-hidden"
         >
           {children}
         </Dialog>
@@ -171,7 +173,13 @@ const PopoverContent = ({
           </svg>
         </OverlayArrow>
       )}
-      {children}
+      <Dialog
+        role="dialog"
+        aria-label={props["aria-label"] || isMenu ? "Menu" : undefined}
+        className="outline-hidden"
+      >
+        {children}
+      </Dialog>
     </PopoverPrimitive>
   )
 }

@@ -3,11 +3,8 @@
 import React, { useState } from "react"
 
 import { cn } from "@/utils/classes"
-import rehypePrettyCode from "rehype-pretty-code"
-import rehypeStringify from "rehype-stringify"
-import remarkParse from "remark-parse"
-import remarkRehype from "remark-rehype"
-import { unified } from "unified"
+
+import { codeToHtml } from "shiki"
 
 export interface CodeHighlighterProps {
   plain?: boolean
@@ -35,26 +32,16 @@ export const CodeHighlighter = ({
     setLoading(true)
     const processCode = async () => {
       try {
-        const file = await unified()
-          .use(remarkParse)
-          .use(remarkRehype, { allowDangerousHtml: true })
-          .use(rehypePrettyCode, {
-            keepBackground: false,
-            theme: "vesper",
-            defaultLang: {
-              block: lang,
-              inline: "plaintext",
-            },
-          })
-          .use(rehypeStringify, { allowDangerousHtml: true })
-          .process(`\`\`\`${lang}\n${code}\n\`\`\``)
+        const file = await codeToHtml(code, {
+          lang: lang,
+          themes: { light: "github-light", dark: "github-dark" },
+        })
         setFormattedCode(String(file))
       } catch (err) {
         setError("Failed to process code. Please check the configuration.")
         console.error(err)
       }
     }
-
     processCode().then(() => setLoading(false))
   }, [code, lang])
 
@@ -68,9 +55,9 @@ export const CodeHighlighter = ({
     <div
       {...props}
       className={cn(
-        "not-prose overflow-auto font-mono text-sm",
+        "not-prose overflow-auto font-mono text-sm leading-8 **:[pre]:outline-hidden",
         max96 && "max-h-96",
-        !plain && "inset-ring-1 inset-ring-zinc-800 rounded-lg bg-shiki-bg px-4 py-2.5",
+        !plain && "rounded-lg bg-shiki-bg px-4 py-2.5 ring-1 ring-border",
         removeLastLine &&
           "**:data-rehype-pretty-code-figure:*:[pre]:*:[code]:*:data-line:last:hidden",
         className,

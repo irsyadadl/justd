@@ -81,20 +81,17 @@ export function EditorText({ source }: Props) {
     <>
       {rawSourceCode && Object.keys(rawSourceCode).length > 0 ? (
         <Tabs className="relative gap-0">
-          <div className="flex items-center justify-between overflow-hidden rounded-t-lg border-zinc-700 border-x border-y bg-[#0e0e10] dark:border-zinc-800">
+          <div className="flex items-center justify-between overflow-hidden rounded-t-lg border-x border-y ">
             <Tabs.List className="gap-0 border-0">
               {Object.keys(rawSourceCode).map((key) => (
                 <Tab
                   className={(values) =>
                     cn(
-                      "flex cursor-pointer items-center gap-x-1.5 whitespace-nowrap px-3 py-2.5 font-mono text-xs text-zinc-400 tracking-tight",
-                      "**:data-[slot=icon]:-ml-0.5 border-transparent border-x first:border-l-0 **:data-[slot=icon]:size-4 **:data-[slot=icon]:shrink-0",
-                      values.isHovered && "bg-zinc-800 text-zinc-50 dark:bg-zinc-800/50",
-                      values.isSelected &&
-                        "border-zinc-700 bg-zinc-800 text-zinc-50 dark:border-zinc-800 dark:bg-zinc-800/50",
-                      values.isFocused &&
-                        "bg-zinc-800 text-zinc-50 outline-hidden dark:bg-zinc-800/50",
-                      values.isFocusVisible && "bg-zinc-800 text-zinc-50 dark:bg-zinc-800/50",
+                      "flex cursor-pointer items-center gap-x-1.5 whitespace-nowrap p-3 font-mono text-muted-fg text-xs tracking-tight",
+                      "**:data-[slot=icon]:-ml-0.5 border-transparent border-x outline-hidden first:border-l-0 **:data-[slot=icon]:size-4 **:data-[slot=icon]:shrink-0",
+                      (values.isSelected || values.isFocused || values.isFocusVisible) &&
+                        "border-input bg-secondary text-secondary-fg dark:bg-muted",
+                      values.isHovered && "bg-secondary text-secondary-fg dark:bg-muted",
                     )
                   }
                   key={key}
@@ -115,22 +112,12 @@ export function EditorText({ source }: Props) {
                 </Tab>
               ))}
             </Tabs.List>
-            {/*<Tooltip>*/}
-            {/*  <Tooltip.Trigger className="hidden gap-x-2 items-center pr-3 sm:flex">*/}
-            {/*    <div className="bg-green-500 rounded-full size-3" />*/}
-            {/*    <div className="bg-yellow-500 rounded-full size-3" />*/}
-            {/*    <div className="bg-red-500 rounded-full size-3" />*/}
-            {/*  </Tooltip.Trigger>*/}
-            {/*  <Tooltip.Content className="max-w-[16rem]" placement="bottom right">*/}
-            {/*    Nothing to worry about, this is a documentation file. You can safely ignore it.*/}
-            {/*  </Tooltip.Content>*/}
-            {/*</Tooltip>*/}
           </div>
           {Object.entries(rawSourceCode).map(([key, value]) => (
             <Tabs.Panel
               key={key}
               id={key}
-              className="overflow-hidden rounded-b-lg border-zinc-700 border-x border-b bg-shiki-bg dark:border-zinc-800"
+              className="overflow-hidden rounded-b-lg border-x border-b bg-shiki-bg"
             >
               <CopyButton
                 className="absolute top-0.5 right-1"

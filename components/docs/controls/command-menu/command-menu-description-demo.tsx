@@ -1,8 +1,6 @@
 "use client"
 
 import { useState } from "react"
-
-import { IconCube } from "justd-icons"
 import { Button, CommandMenu } from "ui"
 
 export default function CommandMenuDescriptionDemo() {
@@ -12,69 +10,59 @@ export default function CommandMenuDescriptionDemo() {
       <Button appearance="outline" onPress={() => setIsOpen(true)}>
         Open
       </Button>
-      <CommandMenu
-        messageOnEmpty={false}
-        hideCloseButton
-        hideSearchIndicator
-        isOpen={isOpen}
-        onOpenChange={setIsOpen}
-      >
-        <CommandMenu.Input placeholder="Search for apps and commands..." />
-        <CommandMenu.Empty className="grid place-content-center">
-          <div className="text-center">
-            <IconCube className="inline" />
-            <p className="mt-2">No results found.</p>
-          </div>
-        </CommandMenu.Empty>
-
+      <CommandMenu escapeButton={false} isOpen={isOpen} onOpenChange={setIsOpen}>
+        <CommandMenu.Search
+          className="*:data-[slot=command-menu-search-icon]:hidden"
+          placeholder="Search for apps and commands..."
+        />
         <CommandMenu.List>
-          <CommandMenu.Section separator heading="Suggestions">
-            <CommandMenu.Item>
+          <CommandMenu.Section className="mt-2" title="Suggestions">
+            <CommandMenu.Item textValue="phpstorm">
               PhpStorm
               <CommandMenu.Description>Application</CommandMenu.Description>
             </CommandMenu.Item>
-            <CommandMenu.Item>
+            <CommandMenu.Item textValue="webstorm">
               WebStorm
               <CommandMenu.Description>Application</CommandMenu.Description>
             </CommandMenu.Item>
-            <CommandMenu.Item>
+            <CommandMenu.Item textValue="warp">
               Warp
               <CommandMenu.Description>Application</CommandMenu.Description>
             </CommandMenu.Item>
           </CommandMenu.Section>
 
-          <CommandMenu.Section separator heading="Applications">
-            <CommandMenu.Item>
+          <CommandMenu.Section title="Applications">
+            <CommandMenu.Item textValue="terminal">
               Terminal
               <CommandMenu.Description>Application</CommandMenu.Description>
             </CommandMenu.Item>
-            <CommandMenu.Item>
+            <CommandMenu.Item textValue="docker">
               Docker
               <CommandMenu.Description>Application</CommandMenu.Description>
             </CommandMenu.Item>
           </CommandMenu.Section>
 
-          <CommandMenu.Section separator heading="Commands">
-            <CommandMenu.Item>
-              git status
+          <CommandMenu.Section title="Commands">
+            <CommandMenu.Item textValue="git status">
+              Git status
               <CommandMenu.Description>Command</CommandMenu.Description>
             </CommandMenu.Item>
-            <CommandMenu.Item>
-              bun add
+            <CommandMenu.Item textValue="bun add">
+              Bun add
               <CommandMenu.Description>Command</CommandMenu.Description>
             </CommandMenu.Item>
-            <CommandMenu.Item>
-              composer require
+            <CommandMenu.Item textValue="composer require">
+              Composer require
               <CommandMenu.Description>Command</CommandMenu.Description>
             </CommandMenu.Item>
           </CommandMenu.Section>
 
-          <CommandMenu.Section heading="System Settings">
-            <CommandMenu.Item>
+          <CommandMenu.Section title="System Settings">
+            <CommandMenu.Item textValue="display brightness">
               Display Brightness
               <CommandMenu.Description>System Settings</CommandMenu.Description>
             </CommandMenu.Item>
-            <CommandMenu.Item>
+            <CommandMenu.Item textValue="sound output">
               Sound Output
               <CommandMenu.Description>System Settings</CommandMenu.Description>
             </CommandMenu.Item>

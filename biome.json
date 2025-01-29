@@ -12,7 +12,7 @@
       "**/*.css",
       "**/.next/**",
       "resource/content",
-      ".velite",
+      ".source",
       "components/docs/generated/**/*"
     ]
   },
@@ -21,13 +21,13 @@
     "rules": {
       "recommended": true,
       "style": {
+        "useNumberNamespace": "off",
         "noNonNullAssertion": "off",
         "noParameterAssign": "warn",
         "useImportType": "error"
       },
       "complexity": {
-        "useArrowFunction": "error",
-        "noForEach": "off"
+        "useArrowFunction": "error"
       },
       "a11y": {
         "noSvgWithoutTitle": "off",
@@ -36,7 +36,7 @@
       },
       "correctness": {
         "useHookAtTopLevel": "error",
-        "noUnusedImports": "warn",
+        "noUnusedImports": "error",
         "noChildrenProp": "off"
       },
       "suspicious": {
@@ -58,14 +58,14 @@
         }
       }
     },
-    "ignore": ["node_modules", ".next", ".velite", "dist", ".vercel"]
+    "ignore": ["node_modules", ".next", ".source", "dist", ".vercel"]
   },
   "formatter": {
     "enabled": true,
     "indentStyle": "space",
     "indentWidth": 2,
     "lineWidth": 100,
-    "ignore": ["node_modules", ".next", ".velite", "dist", ".vercel"]
+    "ignore": ["node_modules", ".next", ".source", "dist", ".vercel"]
   },
   "javascript": {
     "formatter": {

@@ -10,8 +10,8 @@ export default function CarouselAnatomy() {
       </Carousel.Content>
 
       <Carousel.Handler>
-        <Carousel.Button slot="previous" />
-        <Carousel.Button slot="next" />
+        <Carousel.Button segment="previous" />
+        <Carousel.Button segment="next" />
       </Carousel.Handler>
     </Carousel>
   )

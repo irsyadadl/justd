@@ -12,7 +12,7 @@ export default function DisclosureGroupNestedDemo() {
       {items.map((item, index) => (
         <Disclosure key={index} id={index}>
           <DisclosureTrigger className="px-4">{item.title}</DisclosureTrigger>
-          <DisclosurePanel className="bg-[color-mix(in_oklab,var(--color-muted)_70%,black_15%)]">
+          <DisclosurePanel className="bg-muted">
             <DisclosureGroup allowsMultipleExpanded>
               {item.children.map((child, childIndex) => (
                 <Disclosure key={childIndex} id={childIndex}>

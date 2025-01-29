@@ -10,7 +10,6 @@ import {
   IconBrandGithub,
   IconBrandJustd,
   IconChartBar,
-  IconCommandFill,
 } from "justd-icons"
 import { ListBox, ListBoxItem } from "react-aria-components"
 
@@ -49,10 +48,6 @@ export function DocRefs({ references }: { references: string[] }) {
         title = "Sonner"
         icon = IconBell
         break
-      case url.includes("cmdk"):
-        title = "Cmdk"
-        icon = IconCommandFill
-        break
       case url.includes("github"):
         title = "Github"
         icon = IconBrandGithub
@@ -75,7 +70,7 @@ export function DocRefs({ references }: { references: string[] }) {
   return (
     <ListBox
       orientation="horizontal"
-      className="not-prose mt-6 flex gap-x-2"
+      className="not-prose flex gap-x-2"
       aria-label="Link References"
       items={urls}
     >

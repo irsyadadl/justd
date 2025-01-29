@@ -1,6 +1,6 @@
 "use client"
 
-import { IconDeviceDesktop, IconDevicePhone, IconMacbook } from "justd-icons"
+import { IconBrandDiscord, IconBrandGithub } from "justd-icons"
 import { Select } from "ui"
 
 export default function SelectWithIconDemo() {
@@ -8,17 +8,17 @@ export default function SelectWithIconDemo() {
     <Select aria-label="Devices" defaultSelectedKey="desktop" placeholder="Select a device">
       <Select.Trigger />
       <Select.List>
-        <Select.Option id="desktop" textValue="Desktop">
-          <IconDeviceDesktop />
-          Desktop
+        <Select.Option id="discord" textValue="Discord">
+          <IconBrandDiscord />
+          <Select.Label>Discord</Select.Label>
         </Select.Option>
-        <Select.Option id="laptop" textValue="Laptop">
-          <IconMacbook />
-          Laptop
+        <Select.Separator />
+        <Select.Option id="github" textValue="GitHub">
+          <IconBrandGithub />
+          <Select.Label>GitHub</Select.Label>
         </Select.Option>
-        <Select.Option id="smartphone" textValue="Smartphone">
-          <IconDevicePhone />
-          Smartphone
+        <Select.Option id="gitlab" textValue="GitLab">
+          GitLab
         </Select.Option>
       </Select.List>
     </Select>

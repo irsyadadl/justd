@@ -15,14 +15,14 @@ import type { RestrictedIntent, TagGroupProps } from "./tag-group"
 import { Tag, TagGroup, TagList } from "./tag-group"
 
 const tagFieldsStyles = tv({
-  base: ["relative flex min-h-10 flex-row flex-wrap items-center"],
+  base: ["relative flex min-h-10 flex-row flex-wrap items-center transition"],
   variants: {
     appearance: {
       outline: [
         "rounded-lg border px-1 shadow-xs",
-        "has-[input[data-focused=true]]:border-primary",
+        "has-[input[data-focused=true]]:border-ring/70",
         "has-[input[data-invalid=true][data-focused=true]]:border-danger has-[input[data-invalid=true]]:border-danger has-[input[data-invalid=true]]:ring-danger/20",
-        "has-[input[data-focused=true]]:ring-4 has-[input[data-focused=true]]:ring-primary/20",
+        "has-[input[data-focused=true]]:ring-4 has-[input[data-focused=true]]:ring-ring/20",
       ],
       plain: ["has-[input[data-focused=true]]:border-transparent"],
     },
@@ -75,7 +75,7 @@ const TagField = ({
       return () => clearTimeout(timeoutId)
     }
 
-    tagNames.slice(0, maxTagsToAdd).forEach((tagName) => {
+    for (const tagName of tagNames.slice(0, maxTagsToAdd)) {
       const formattedName = tagName
         .trim()
         .replace(/\s+/g, " ")
@@ -93,7 +93,7 @@ const TagField = ({
         list.append(tag)
         onItemInserted?.(tag)
       }
-    })
+    }
 
     setInputValue("")
   }
@@ -107,7 +107,11 @@ const TagField = ({
   const onRemove = (keys: Set<Key>) => {
     list.remove(...keys)
 
-    onItemCleared?.(list.getItem([...keys][0]!))
+    const firstKey = [...keys][0]
+    if (firstKey !== undefined) {
+      onItemCleared?.(list.getItem(firstKey))
+    }
+
     clearInvalidFeedback()
   }
 

@@ -12,7 +12,7 @@ export function IconDevicePhone(props: React.ComponentProps<"svg">) {
       strokeWidth={2}
       strokeLinecap="round"
       strokeLinejoin="round"
-      className="icon icon-tabler icons-tabler-outline icon-tabler-device-mobile"
+      className="size-4"
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
       <path d="M6 5a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2v-14z" />
@@ -36,7 +36,7 @@ export function IconDeviceIpad(props: React.ComponentProps<"svg">) {
       strokeWidth={2}
       strokeLinecap="round"
       strokeLinejoin="round"
-      className="icon icon-tabler icons-tabler-outline icon-tabler-device-ipad"
+      className="size-4"
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
       <path d="M18 3a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2z" />
@@ -59,7 +59,7 @@ export function IconDeviceDesktop(props: React.ComponentProps<"svg">) {
       strokeWidth={2}
       strokeLinecap="round"
       strokeLinejoin="round"
-      className="icon icon-tabler icons-tabler-outline icon-tabler-device-laptop"
+      className="size-4"
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
       <path d="M3 19l18 0" />

@@ -11,35 +11,35 @@ export default function CommandMenuKeyboardDemo() {
       <Button appearance="outline" onPress={() => setIsOpen(true)}>
         Open
       </Button>
-      <CommandMenu isOpen={isOpen} onOpenChange={setIsOpen}>
-        <CommandMenu.Input placeholder="Quick search..." />
+      <CommandMenu key="k" isOpen={isOpen} onOpenChange={setIsOpen}>
+        <CommandMenu.Search placeholder="Quick search..." />
         <CommandMenu.List>
-          <CommandMenu.Item>
+          <CommandMenu.Item textValue="account settings">
             Account Settings
             <CommandMenu.Keyboard keys="⌘A" />
           </CommandMenu.Item>
 
-          <CommandMenu.Item>
+          <CommandMenu.Item textValue="profile">
             Profile
             <CommandMenu.Keyboard keys="⌘P" />
           </CommandMenu.Item>
 
-          <CommandMenu.Item>
+          <CommandMenu.Item textValue="notifications">
             Notifications
             <CommandMenu.Keyboard keys="⌘N" />
           </CommandMenu.Item>
 
-          <CommandMenu.Item>
+          <CommandMenu.Item textValue="privacy settings">
             Privacy Settings
             <CommandMenu.Keyboard keys="⌘S" />
           </CommandMenu.Item>
 
-          <CommandMenu.Item>
+          <CommandMenu.Item textValue="billing information">
             Billing Information
             <CommandMenu.Keyboard keys="⌘B" />
           </CommandMenu.Item>
 
-          <CommandMenu.Item>
+          <CommandMenu.Item textValue="logout">
             Logout
             <CommandMenu.Keyboard keys="⌘L" />
           </CommandMenu.Item>

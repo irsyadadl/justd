@@ -3,15 +3,12 @@
 import { useEffect, useRef } from "react"
 
 import { IconX } from "justd-icons"
-import type {
-  ButtonProps as ButtonPrimitiveProps,
-  DialogProps,
-  HeadingProps,
-} from "react-aria-components"
+import type { HeadingProps } from "react-aria-components"
 import {
   Button as ButtonPrimitive,
   Dialog as DialogPrimitive,
   Heading,
+  Text,
 } from "react-aria-components"
 import { tv } from "tailwind-variants"
 
@@ -21,12 +18,12 @@ import { Button, type ButtonProps } from "./button"
 const dialogStyles = tv({
   slots: {
     root: [
-      "peer group/dialog relative flex max-h-[inherit] flex-col overflow-hidden outline-hidden [scrollbar-width:thin] not-has-data-[slot=dialog-body]:**:data-[slot=dialog-header]:pb-0 [&::-webkit-scrollbar]:size-0.5",
+      "peer/dialog group/dialog relative flex max-h-[inherit] flex-col overflow-hidden outline-hidden [scrollbar-width:thin] [&::-webkit-scrollbar]:size-0.5",
     ],
-    header: "relative flex flex-col gap-0.5 p-4 sm:gap-1 sm:p-6",
+    header:
+      "relative flex flex-col gap-0.5 p-4 sm:gap-1 sm:p-6 [&[data-slot=dialog-header]:has(+[data-slot=dialog-footer])]:pb-0",
     description: "text-muted-fg text-sm",
     body: [
-      "has-[input]:pb-1",
       "isolate flex flex-1 flex-col overflow-auto px-4 sm:px-6",
       "max-h-[calc(var(--visual-viewport-height)-var(--visual-viewport-vertical-padding)-var(--dialog-header-height,0px)-var(--dialog-footer-height,0px))]",
     ],
@@ -38,11 +35,17 @@ const dialogStyles = tv({
 
 const { root, header, description, body, footer, closeIndicator } = dialogStyles()
 
-const Dialog = ({ role, className, ...props }: DialogProps) => {
-  return <DialogPrimitive role={role ?? "dialog"} className={root({ className })} {...props} />
+const Dialog = ({
+  role = "dialog",
+  className,
+  ...props
+}: React.ComponentProps<typeof DialogPrimitive>) => {
+  return <DialogPrimitive role={role} className={root({ className })} {...props} />
 }
 
-const Trigger = (props: ButtonPrimitiveProps) => <ButtonPrimitive slot="close" {...props} />
+const Trigger = (props: React.ComponentProps<typeof ButtonPrimitive>) => (
+  <ButtonPrimitive slot="close" {...props} />
+)
 
 type DialogHeaderProps = React.HTMLAttributes<HTMLDivElement> & {
   title?: string
@@ -108,7 +111,7 @@ const Title = ({ level = 2, className, ref, ...props }: DialogTitleProps) => (
 
 type DialogDescriptionProps = React.ComponentProps<"div">
 const Description = ({ className, ref, ...props }: DialogDescriptionProps) => (
-  <div className={description({ className })} ref={ref} {...props} />
+  <Text slot="description" className={description({ className })} ref={ref} {...props} />
 )
 
 type DialogBodyProps = React.ComponentProps<"div">

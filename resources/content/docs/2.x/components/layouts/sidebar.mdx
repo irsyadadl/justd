@@ -13,9 +13,8 @@ The sidebar is a versatile component designed to organize your site's content an
   src='/blocks/sidebar/sidebar-01'
   source={{
     preview: 'blocks/sidebar/sidebar-01/page',
+    'app-sidebar.tsx': 'blocks/sidebar/sidebar-01/app-sidebar',
     'app-sidebar-nav.tsx': 'blocks/sidebar/app-sidebar-nav',
-    'app-sidebar.tsx': 'blocks/sidebar/app-sidebar',
-    'layout.tsx': 'blocks/sidebar/sidebar-01/layout',
     'page.tsx': 'blocks/sidebar/sidebar-01/page',
   }} />
 
@@ -307,6 +306,13 @@ This is justd sidebar, so you can put anything you want in it. You can use the `
     'layout.tsx': 'blocks/sidebar/sidebar-17/layout',
   }} />
 
+## Shortcut
+By default, you can collapse the sidebar by clicking or pressing the `⌘b` shortcut. To customize the shortcut, pass the desired key combination via the `shortcut` prop.
+```
+<Sidebar shortcut="1" />
+```
+The preview can be seen in the <NewTab href='/blocks/sidebar/sidebar-10'>Sidebar Shortcut</NewTab> page.
+
 ## Props
 The sidebar supports the following props:
 ### Sidebar
@@ -336,3 +342,4 @@ The sidebar supports the following props:
 | `defaultOpen`  | `boolean`                 | `true`      |
 | `isOpen`       | `boolean`                 | `undefined` |
 | `onOpenChange` | `(open: boolean) => void` | `undefined` |
+| `shortcut`     | string                    | `"b"`       |

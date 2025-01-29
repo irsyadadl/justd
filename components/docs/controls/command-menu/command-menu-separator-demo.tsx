@@ -12,38 +12,38 @@ export default function CommandMenuSeparatorDemo() {
         Open
       </Button>
       <CommandMenu isOpen={isOpen} onOpenChange={setIsOpen}>
-        <CommandMenu.Input placeholder="Quick search..." />
+        <CommandMenu.Search placeholder="Quick search..." />
         <CommandMenu.List>
-          <CommandMenu.Item asChild>
-            <a href="#">Profile Overview</a>
-          </CommandMenu.Item>
-          <CommandMenu.Item asChild>
-            <a href="#">Profile Settings</a>
-          </CommandMenu.Item>
-          <CommandMenu.Item asChild>
-            <a href="#">Security Settings</a>
-          </CommandMenu.Item>
-          <CommandMenu.Separator />
-          <CommandMenu.Item asChild>
-            <a href="#">Notification Preferences</a>
-          </CommandMenu.Item>
-          <CommandMenu.Item asChild>
-            <a href="#">Privacy Settings</a>
-          </CommandMenu.Item>
-          <CommandMenu.Separator />
-          <CommandMenu.Item asChild>
-            <a href="#">Billing Information</a>
-          </CommandMenu.Item>
-          <CommandMenu.Item asChild>
-            <a href="#">Subscription Plans</a>
-          </CommandMenu.Item>
-          <CommandMenu.Separator />
-          <CommandMenu.Item asChild>
-            <a href="#">Connected Apps</a>
-          </CommandMenu.Item>
-          <CommandMenu.Item asChild>
-            <a href="#">Logout</a>
-          </CommandMenu.Item>
+          <CommandMenu.Section>
+            <CommandMenu.Item textValue="profile overview" href="#">
+              Profile Overview
+            </CommandMenu.Item>
+            <CommandMenu.Item textValue="profile settings" href="#">
+              Profile Settings
+            </CommandMenu.Item>
+            <CommandMenu.Item textValue="security settings" href="#">
+              Security Settings
+            </CommandMenu.Item>
+            <CommandMenu.Separator />
+            <CommandMenu.Item textValue="notification preferences" href="#">
+              Notification Preferences
+            </CommandMenu.Item>
+            <CommandMenu.Item textValue="privacy settings" href="#">
+              Privacy Settings
+            </CommandMenu.Item>
+            <CommandMenu.Separator />
+
+            <CommandMenu.Item textValue="billing information" href="#">
+              Billing Information
+            </CommandMenu.Item>
+            <CommandMenu.Item textValue="subscription plans" href="#">
+              Subscription Plans
+            </CommandMenu.Item>
+            <CommandMenu.Separator />
+            <CommandMenu.Item textValue="connected apps" href="#">
+              Connected Apps
+            </CommandMenu.Item>
+          </CommandMenu.Section>
         </CommandMenu.List>
       </CommandMenu>
     </>

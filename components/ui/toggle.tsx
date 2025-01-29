@@ -1,51 +1,98 @@
 "use client"
 
 import { createContext, use } from "react"
-
 import type { ToggleButtonGroupProps, ToggleButtonProps } from "react-aria-components"
 import { ToggleButton, ToggleButtonGroup, composeRenderProps } from "react-aria-components"
 import type { VariantProps } from "tailwind-variants"
 import { tv } from "tailwind-variants"
 
-import { focusButtonStyles } from "./primitive"
-
-interface ToggleGroupContextProps {
-  appearance?: "outline" | "plain" | "solid"
+type ToggleGroupContextProps = {
+  isDisabled?: boolean
+  gap?: 0 | 1 | 2 | 3 | 4
+  appearance?: "plain" | "outline" | "solid"
+  orientation?: "horizontal" | "vertical"
+  size?: "small" | "medium" | "large" | "square-petite"
 }
 
 const ToggleGroupContext = createContext<ToggleGroupContextProps>({
-  appearance: "plain",
+  gap: 1,
+  appearance: "outline",
+  orientation: "horizontal",
+  size: "medium",
 })
 
+type BaseToggleGroupProps = Omit<ToggleGroupContextProps, "gap" | "appearance">
+interface ToggleGroupPropsNonZeroGap extends BaseToggleGroupProps {
+  gap?: Exclude<ToggleGroupContextProps["gap"], 0>
+  appearance?: ToggleGroupContextProps["appearance"]
+}
+
+interface ToggleGroupPropsGapZero extends BaseToggleGroupProps {
+  gap?: 0
+  appearance?: Exclude<ToggleGroupContextProps["appearance"], "plain">
+}
+
+type ToggleGroupProps = ToggleButtonGroupProps &
+  (ToggleGroupPropsGapZero | ToggleGroupPropsNonZeroGap) & {
+    ref?: React.RefObject<HTMLDivElement>
+  }
+
 const toggleGroupStyles = tv({
-  base: "flex gap-1",
+  base: "flex",
   variants: {
     orientation: {
       horizontal:
         "flex-row [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
       vertical: "flex-col items-start",
     },
+    gap: {
+      0: "gap-0 rounded-lg *:[button]:inset-ring-1 *:[button]:rounded-none",
+      1: "gap-1",
+      2: "gap-2",
+      3: "gap-3",
+      4: "gap-4",
+    },
   },
+  defaultVariants: {
+    orientation: "horizontal",
+    gap: 0,
+  },
+  compoundVariants: [
+    {
+      gap: 0,
+      orientation: "vertical",
+      className:
+        "*:[button]:-mt-px *:[button]:first:rounded-t-[calc(var(--radius-lg)-1px)] *:[button]:last:rounded-b-[calc(var(--radius-lg)-1px)]",
+    },
+    {
+      gap: 0,
+      orientation: "horizontal",
+      className:
+        "*:[button]:-mr-px *:[button]:first:rounded-s-[calc(var(--radius-lg)-1px)] *:[button]:last:rounded-e-[calc(var(--radius-lg)-1px)]",
+    },
+  ],
 })
 
-interface ToggleGroupProps extends ToggleButtonGroupProps, ToggleGroupContextProps {
-  ref?: React.RefObject<HTMLDivElement>
-}
 const ToggleGroup = ({
   className,
-  orientation = "horizontal",
-  appearance = "plain",
   ref,
+  appearance = "outline",
+  gap = 0,
+  size = "medium",
+  orientation = "horizontal",
   ...props
 }: ToggleGroupProps) => {
   return (
-    <ToggleGroupContext.Provider value={{ appearance }}>
+    <ToggleGroupContext.Provider
+      value={{ appearance, gap, orientation, size, isDisabled: props.isDisabled }}
+    >
       <ToggleButtonGroup
         ref={ref}
         orientation={orientation}
         className={composeRenderProps(className, (className, renderProps) =>
           toggleGroupStyles({
             ...renderProps,
+            gap,
             orientation,
             className,
           }),
@@ -57,35 +104,34 @@ const ToggleGroup = ({
 }
 
 const toggleStyles = tv({
-  extend: focusButtonStyles,
   base: [
-    "relative inline-flex items-center justify-center gap-x-2 rounded-lg border border-transparent bg-transparent font-medium text-sm ring-offset-bg transition-colors",
-    "data-hovered:bg-secondary data-hovered:text-secondary-fg",
+    "inset-ring inset-ring-border cursor-pointer items-center gap-x-2 rounded-lg outline-hidden sm:text-sm",
     "forced-colors:[--button-icon:ButtonText] forced-colors:hover:[--button-icon:ButtonText]",
-    "*:data-[slot=icon]:-mx-0.5 *:data-[slot=icon]:my-1 *:data-[slot=icon]:size-4 *:data-[slot=icon]:shrink-0 *:data-[slot=icon]:text-(--button-icon)",
+    "*:data-[slot=icon]:-mx-0.5 data-hovered:*:data-[slot=icon]:text-current/90 data-pressed:*:data-[slot=icon]:text-current *:data-[slot=icon]:my-1 *:data-[slot=icon]:size-4 *:data-[slot=icon]:shrink-0 *:data-[slot=icon]:text-current/60",
   ],
   variants: {
     isDisabled: {
       true: "cursor-default opacity-50 forced-colors:border-[GrayText]",
     },
+    isFocusVisible: {
+      true: "inset-ring-ring/70 z-20 ring-4 ring-ring/20",
+    },
     appearance: {
-      plain: [
-        "data-selected:bg-secondary data-selected:text-secondary-fg",
-        "[--button-icon:var(--color-secondary-fg)]/60 data-hovered:[--button-icon:var(--color-secondary-fg)]/80 data-selected:[--button-icon:var(--color-secondary-fg)]",
-      ],
-      solid: [
-        "border-border bg-white text-black data-selected:border-primary data-hovered:bg-white/95 data-selected:bg-primary data-hovered:text-black data-selected:text-primary-fg",
-        "[--button-icon:var(--color-black)]/60 data-hovered:[--button-icon:var(--color-black)]/80 data-selected:[--button-icon:var(--color-white)]",
-      ],
+      plain: "inset-ring-0 data-selected:bg-secondary data-selected:text-secondary-fg",
+      solid: ["inset-ring data-selected:inset-ring-fg data-selected:bg-fg data-selected:text-bg"],
       outline: [
-        "border-border data-hovered:border-secondary-fg/10 data-pressed:border-secondary-fg/10 data-selected:border-secondary-fg/10 data-hovered:bg-secondary/90 data-selected:bg-secondary/90 data-hovered:text-secondary-fg data-selected:text-secondary-fg data-selected:backdrop-blur-sm",
-        "[--button-icon:var(--color-secondary-fg)]/60 data-hovered:[--button-icon:var(--color-secondary-fg)]/80 data-selected:[--button-icon:var(--color-secondary-fg)]",
+        "data-hovered:border-secondary-fg/10 data-pressed:border-secondary-fg/10 data-selected:border-secondary-fg/10 data-hovered:bg-muted data-selected:bg-secondary data-hovered:text-secondary-fg data-selected:text-secondary-fg",
       ],
+    },
+    noGap: { true: "" },
+    orientation: {
+      horizontal: "inline-flex justify-center",
+      vertical: "flex",
     },
     size: {
       small: "h-9 px-3.5",
       medium: "h-10 px-4",
-      large: "h-11 px-5",
+      large: "h-11 px-5 *:data-[slot=icon]:size-4.5 sm:text-base",
       "square-petite": "size-9 shrink-0",
     },
     shape: {
@@ -94,26 +140,43 @@ const toggleStyles = tv({
     },
   },
   defaultVariants: {
-    appearance: "plain",
+    appearance: "outline",
     size: "small",
     shape: "square",
   },
+  compoundVariants: [
+    {
+      noGap: true,
+      orientation: "vertical",
+      className: "w-full",
+    },
+  ],
 })
 
 interface ToggleProps extends ToggleButtonProps, VariantProps<typeof toggleStyles> {
   ref?: React.RefObject<HTMLButtonElement>
 }
+
 const Toggle = ({ className, appearance, ref, ...props }: ToggleProps) => {
-  const { appearance: groupAppearance } = use(ToggleGroupContext)
+  const {
+    appearance: groupAppearance,
+    orientation,
+    gap,
+    size,
+    isDisabled: isGroupDisabled,
+  } = use(ToggleGroupContext)
   return (
     <ToggleButton
       ref={ref}
+      isDisabled={props.isDisabled ?? isGroupDisabled}
       className={composeRenderProps(className, (className, renderProps) =>
         toggleStyles({
           ...renderProps,
           appearance: appearance ?? groupAppearance,
-          size: props.size,
+          size: props.size ?? size,
+          orientation,
           shape: props.shape,
+          noGap: gap === 0,
           className,
         }),
       )}

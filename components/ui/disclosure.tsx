@@ -1,6 +1,5 @@
 "use client"
 
-import { composeTailwindRenderProps } from "@/components/ui/primitive"
 import { IconChevronLeft } from "justd-icons"
 import type {
   DisclosureGroupProps as AccordionProps,
@@ -17,6 +16,7 @@ import {
   composeRenderProps,
 } from "react-aria-components"
 import { tv } from "tailwind-variants"
+import { composeTailwindRenderProps } from "./primitive"
 
 interface DisclosureGroupProps extends AccordionProps {
   ref?: React.RefObject<HTMLDivElement>
@@ -70,7 +70,7 @@ const Disclosure = ({ className, ref, ...props }: DisclosureProps) => {
 
 const disclosureTrigger = tv({
   base: [
-    "group/trigger [&[aria-expanded=true]_[data-slot=chevron]]:-rotate-90 **:data-[slot=icon]:-mx-0.5 flex w-full items-center justify-between gap-x-2 py-3 text-left font-medium **:data-[slot=chevron]:size-5 **:data-[slot=chevron]:size-5 **:data-[slot=icon]:shrink-0 **:data-[slot=icon]:text-muted-fg sm:text-sm **:[span]:flex **:[span]:items-center **:[span]:gap-x-1 **:[span]:*:data-[slot=icon]:mr-1",
+    "group/trigger [&[aria-expanded=true]_[data-slot=disclosure-chevron]]:-rotate-90 **:data-[slot=icon]:-mx-0.5 flex w-full items-center justify-between gap-x-2 py-3 text-left font-medium **:data-[slot=disclosure-chevron]:size-5 **:data-[slot=icon]:shrink-0 **:data-[slot=icon]:text-muted-fg sm:text-sm **:[span]:flex **:[span]:items-center **:[span]:gap-x-1 **:[span]:*:data-[slot=icon]:mr-1",
   ],
   variants: {
     isFocused: {
@@ -106,7 +106,7 @@ const DisclosureTrigger = ({ className, ref, ...props }: DisclosureTriggerProps)
           <>
             {typeof props.children === "function" ? props.children(values) : props.children}
             <IconChevronLeft
-              data-slot="chevron"
+              data-slot="disclosure-chevron"
               className="internal-chevron ml-auto size-4 shrink-0 transition duration-300"
             />
           </>

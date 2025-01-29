@@ -59,7 +59,7 @@ const content = tv({
     },
   },
   defaultVariants: {
-    size: "xl",
+    size: "lg",
   },
 })
 
@@ -68,8 +68,7 @@ const Modal = (props: DialogTriggerProps) => {
 }
 
 interface ModalContentProps
-  extends Omit<React.ComponentProps<typeof Modal>, "children">,
-    Omit<ModalOverlayProps, "className" | "children">,
+  extends Omit<ModalOverlayProps, "className" | "children">,
     VariantProps<typeof content> {
   "aria-label"?: DialogProps["aria-label"]
   "aria-labelledby"?: DialogProps["aria-labelledby"]
@@ -85,18 +84,19 @@ interface ModalContentProps
 
 const ModalContent = ({
   classNames,
-  isDismissable = true,
+  isDismissable: isDismissableInternal,
   isBlurred = false,
   children,
   size,
-  role,
+  role = "dialog",
   closeButton = true,
   ...props
 }: ModalContentProps) => {
-  const _isDismissable = role === "alertdialog" ? false : isDismissable
+  const isDismissable = isDismissableInternal ?? role !== "alertdialog"
+
   return (
     <ModalOverlay
-      isDismissable={_isDismissable}
+      isDismissable={isDismissable}
       className={composeRenderProps(classNames?.overlay, (className, renderProps) => {
         return overlay({
           ...renderProps,
@@ -107,6 +107,7 @@ const ModalContent = ({
       {...props}
     >
       <ModalPrimitive
+        isDismissable={isDismissable}
         className={composeRenderProps(classNames?.content, (className, renderProps) =>
           content({
             ...renderProps,
@@ -120,7 +121,7 @@ const ModalContent = ({
           {(values) => (
             <>
               {typeof children === "function" ? children(values) : children}
-              {closeButton && <Dialog.CloseIndicator isDismissable={_isDismissable} />}
+              {closeButton && <Dialog.CloseIndicator isDismissable={isDismissable} />}
             </>
           )}
         </Dialog>

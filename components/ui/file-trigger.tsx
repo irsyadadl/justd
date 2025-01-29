@@ -1,6 +1,6 @@
 "use client"
 
-import { IconCamera, IconFolder, IconPaperclip } from "justd-icons"
+import { IconCamera, IconFolder, IconPaperclip45 } from "justd-icons"
 import {
   FileTrigger as FileTriggerPrimitive,
   type FileTriggerProps as FileTriggerPrimitiveProps,
@@ -42,7 +42,7 @@ const FileTrigger = ({
           ) : props.acceptDirectory ? (
             <IconFolder />
           ) : (
-            <IconPaperclip className="rotate-45" />
+            <IconPaperclip45 />
           ))}
         {props.children ? (
           props.children

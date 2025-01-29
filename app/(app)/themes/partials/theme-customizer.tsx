@@ -63,7 +63,7 @@ const ColorSelect = ({
                 } as React.CSSProperties
               }
             />
-            {key}
+            <Select.Label>{key}</Select.Label>
           </Select.Option>
         ))}
       </Select.List>
@@ -149,8 +149,10 @@ export function ThemeCustomizer({ selectedColors, setSelectedColors }: ThemeCust
                 key={radius}
                 id={radius}
               >
-                {radius.replace("rem", "")}
-                {radius === "0.5rem" && <Badge>Default</Badge>}
+                <Select.Label>
+                  {radius.replace("rem", "")}
+                  {radius === "0.5rem" && <Badge className="ml-2">Default</Badge>}
+                </Select.Label>
               </Select.Option>
             ))}
           </Select.List>

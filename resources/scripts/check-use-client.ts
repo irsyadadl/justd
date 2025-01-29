@@ -10,7 +10,7 @@ function findFilesWithoutUseClient(dirPath: string): void {
       return
     }
 
-    files.forEach((file) => {
+    for (const file of files) {
       const fullPath = path.join(dirPath, file.name)
 
       if (file.isDirectory()) {
@@ -27,7 +27,7 @@ function findFilesWithoutUseClient(dirPath: string): void {
           }
         })
       }
-    })
+    }
   })
 }
 

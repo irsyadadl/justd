@@ -1,18 +1,20 @@
+/*
+* Uncomment the following line to use the Inter font when not working on a Next.js project.
+* @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+* Then replace var(--font-inter) to Inter
+*/
+
 @import "tailwindcss";
 @plugin 'tailwindcss-animate';
 
-@variant dark (&:is(.dark *));
-
 @theme {
-  /* Recommended font is: Inter, Sathosi, Geist */
-  /*--font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",*/
-  /*"Segoe UI Symbol", "Noto Color Emoji";*/
-
-  /* Recommended font is: Geist Mono */
-  /*--font-mono: var(--font-mono), 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', '"Liberation Mono"', '"Courier New"', 'monospace';*/
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+  "Segoe UI Symbol", "Noto Color Emoji";
+  --font-mono: "Geist Mono", 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', '"Liberation Mono"', '"Courier New"', 'monospace';
 
   --color-border: var(--border);
   --color-input: var(--input);
+
   --color-ring: var(--ring);
 
   --color-bg: var(--bg);
@@ -56,21 +58,6 @@
 }
 
 @layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--border, currentColor);
-  }
-
-  body {
-    background-color: var(--bg);
-    color: var(--fg);
-  }
-}
-
-@layer base {
   :root {
     --bg: oklch(1 0 0);
     --fg: oklch(0.145 0 0);
@@ -88,7 +75,7 @@
     --accent-fg: oklch(1 0 0);
 
     --muted: oklch(0.97 0 0);
-    --muted-fg: oklch(0.556 0 0);
+    --muted-fg: oklch(0.439 0 0);
 
     --success: oklch(0.596 0.145 163.225);
     --success-fg: oklch(1 0 0);
@@ -103,10 +90,10 @@
     --input: oklch(0.87 0 0);
     --ring: oklch(0.546 0.245 262.881);
 
-    --navbar: oklch(0.97 0 0);
+    --navbar: oklch(0.985 0 0);
     --navbar-fg: oklch(0.145 0 0);
 
-    --sidebar: oklch(0.97 0 0);
+    --sidebar: oklch(0.985 0 0);
     --sidebar-fg: oklch(0.145 0 0);
 
     --chart-1: oklch(0.546 0.245 262.881);
@@ -126,13 +113,13 @@
   }
 
   .dark {
-    --bg: oklch(0.095 0 0);
+    --bg: oklch(0.145 0 0);
     --fg: oklch(0.985 0 0);
 
     --primary: oklch(0.546 0.245 262.881);
     --primary-fg: oklch(1 0 0);
 
-    --secondary: oklch(0.229 0 0);
+    --secondary: oklch(0.239 0 0);
     --secondary-fg: oklch(0.985 0 0);
 
     --accent: oklch(0.546 0.245 262.881);
@@ -153,8 +140,8 @@
     --danger: oklch(0.577 0.245 27.325);
     --danger-fg: oklch(0.971 0.013 17.38);
 
-    --border: oklch(0.269 0 0);
-    --input: oklch(0.269 0 0);
+    --border: oklch(0.271 0 0);
+    --input: oklch(0.291 0 0);
     --ring: oklch(0.546 0.245 262.881);
 
     --navbar: oklch(0.165 0 0);
@@ -169,4 +156,71 @@
     --chart-4: oklch(0.809 0.105 251.813);
     --chart-5: oklch(0.882 0.059 254.128);
   }
+}
+
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--border, currentColor);
+  }
+
+  * {
+    text-rendering: optimizeLegibility;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+
+  html {
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    font-variation-settings: normal;
+    scroll-behavior: smooth;
+    height: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--fg);
+  }
+
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 4px;
+  }
+}
+
+@variant dark {
+  &:where(.dark, .dark *) {
+    @slot;
+  }
+  @media (prefers-color-scheme: dark) {
+    &:where(.system, .system *) {
+      @slot;
+    }
+  }
+}
+
+:root {
+  color-scheme: light dark;
+}
+
+.dark {
+  color-scheme: dark;
+}
+
+.light {
+  color-scheme: light;
 }

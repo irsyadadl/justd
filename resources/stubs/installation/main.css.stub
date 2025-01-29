@@ -1,15 +1,19 @@
+/*
+* Uncomment the following line to use the Inter font when not working on a Next.js project.
+* @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+* Then replace var(--font-inter) to Inter
+*/
+
 @import "tailwindcss";
 @plugin 'tailwindcss-animate';
 
-@variant dark (&:is(.dark *));
-
 @theme {
   /* Recommended font is: Inter, Sathosi, Geist */
-  /*--font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",*/
+  /*--font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",*/
   /*"Segoe UI Symbol", "Noto Color Emoji";*/
 
   /* Recommended font is: Geist Mono */
-  /*--font-mono: var(--font-mono), 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', '"Liberation Mono"', '"Courier New"', 'monospace';*/
+  /*--font-mono: var(--font-geist), 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', '"Liberation Mono"', '"Courier New"', 'monospace';*/
 
   --color-border: var(--border);
   --color-input: var(--input);
@@ -155,6 +159,31 @@
     --chart-4: oklch(0.809 0.105 251.813);
     --chart-5: oklch(0.882 0.059 254.128);
   }
+}
+
+
+
+@variant dark {
+  &:where(.dark, .dark *) {
+    @slot;
+  }
+  @media (prefers-color-scheme: dark) {
+    &:where(.system, .system *) {
+      @slot;
+    }
+  }
+}
+
+:root {
+  color-scheme: light dark;
+}
+
+.dark {
+  color-scheme: dark;
+}
+
+.light {
+  color-scheme: light;
 }
 
 @layer base {

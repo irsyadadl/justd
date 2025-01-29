@@ -3,8 +3,6 @@
 import { useState } from "react"
 
 import { IconBill, IconCube, IconGear, IconHome, IconNotes, IconShield } from "justd-icons"
-// Replace with your router link component
-import Link from "next/link"
 import { Avatar, Button, CommandMenu } from "ui"
 
 export default function CommandMenuDemo() {
@@ -15,49 +13,43 @@ export default function CommandMenuDemo() {
         Open
       </Button>
       <CommandMenu isOpen={isOpen} onOpenChange={setIsOpen}>
-        <CommandMenu.Input placeholder="Quick search..." />
+        <CommandMenu.Search placeholder="Quick search..." />
         <CommandMenu.List>
-          <CommandMenu.Section separator heading="Pages">
-            <CommandMenu.Item asChild>
-              <Link href="#">
-                <IconHome /> Home
-              </Link>
+          <CommandMenu.Section title="Pages">
+            <CommandMenu.Item textValue="Home" href="#">
+              <IconHome />
+              <CommandMenu.Label>Home</CommandMenu.Label>
             </CommandMenu.Item>
-            <CommandMenu.Item asChild>
-              <Link href="#">
-                <IconNotes /> Docs
-                <CommandMenu.Keyboard keys="⌘k" />
-              </Link>
+            <CommandMenu.Item textValue="Docs" href="#">
+              <IconNotes />
+              <CommandMenu.Label>Docs</CommandMenu.Label>
+              <CommandMenu.Keyboard keys="⌘k" />
             </CommandMenu.Item>
-            <CommandMenu.Item asChild>
-              <Link href="#">
-                <IconCube /> Components
-              </Link>
+            <CommandMenu.Item textValue="Components" href="#">
+              <IconCube />
+              <CommandMenu.Label>Components</CommandMenu.Label>
             </CommandMenu.Item>
           </CommandMenu.Section>
-          <CommandMenu.Section separator heading="Dashboard">
-            <CommandMenu.Item asChild>
-              <Link href="#">
-                <IconBill /> Billing
-              </Link>
+          <CommandMenu.Section title="Dashboard">
+            <CommandMenu.Item textValue="billing" href="#">
+              <IconBill />
+              <CommandMenu.Label>Billing</CommandMenu.Label>
             </CommandMenu.Item>
-            <CommandMenu.Item asChild>
-              <Link href="#">
-                <IconGear /> Settings
-                <CommandMenu.Keyboard keys="⌘s" />
-              </Link>
+            <CommandMenu.Item textValue="settings" href="#">
+              <IconGear />
+              <CommandMenu.Label>Settings</CommandMenu.Label>
+              <CommandMenu.Keyboard keys="⌘s" />
             </CommandMenu.Item>
-            <CommandMenu.Item asChild>
-              <Link href="#">
-                <IconShield /> Security
-              </Link>
+            <CommandMenu.Item textValue="security" href="#">
+              <IconShield />
+              <CommandMenu.Label>Security</CommandMenu.Label>
             </CommandMenu.Item>
           </CommandMenu.Section>
-          <CommandMenu.Section heading="Team">
+          <CommandMenu.Section title="Team">
             {users.map((user) => (
-              <CommandMenu.Item key={user.id}>
+              <CommandMenu.Item textValue={user.name} key={user.id}>
                 <Avatar src={user.image_url} />
-                {user.name}
+                <CommandMenu.Label>{user.name}</CommandMenu.Label>
               </CommandMenu.Item>
             ))}
           </CommandMenu.Section>

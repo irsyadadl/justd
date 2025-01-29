@@ -1,19 +1,17 @@
 import { useState } from "react"
 
 import { IconHome } from "justd-icons"
-import { CommandMenu, Link } from "ui"
+import { CommandMenu } from "ui"
 
 export default function CommandMenuAnatomy() {
   const [isOpen, setIsOpen] = useState(false)
   return (
     <CommandMenu isOpen={isOpen} onOpenChange={setIsOpen}>
-      <CommandMenu.Input placeholder="Quick search..." />
+      <CommandMenu.Search placeholder="Quick search..." />
       <CommandMenu.List>
-        <CommandMenu.Section separator heading="Pages">
-          <CommandMenu.Item asChild>
-            <Link href="#">
-              <IconHome /> Home
-            </Link>
+        <CommandMenu.Section title="Pages">
+          <CommandMenu.Item textValue="home" href="#">
+            <IconHome /> Home
           </CommandMenu.Item>
         </CommandMenu.Section>
       </CommandMenu.List>

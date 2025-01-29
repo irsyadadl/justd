@@ -5,11 +5,8 @@ import { tv } from "tailwind-variants"
 
 const keyboardStyles = tv({
   slots: {
-    base: "-mr-1 ml-auto hidden items-center lg:inline-flex",
-    kbd: [
-      "text-center font-sans text-current/70 capitalize group-data-focused:text-fg forced-colors:group-data-focused:text-[HighlightText]",
-      "inline-grid min-h-5 min-w-[2ch] place-content-center rounded font-sans text-[.75rem] uppercase group-data-hovered:text-fg group-data-disabled:opacity-50 group-data-focused:opacity-90",
-    ],
+    base: "hidden text-current/70 group-data-focused:text-fg group-data-hovered:text-fg group-data-disabled:opacity-50 group-data-focused:opacity-90 lg:inline-flex lg:inline-flex forced-colors:group-data-focused:text-[HighlightText]",
+    kbd: "inline-grid min-h-5 min-w-[2ch] place-content-center rounded text-center font-sans text-[.75rem] uppercase",
   },
 })
 
