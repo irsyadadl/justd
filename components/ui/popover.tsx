@@ -31,7 +31,7 @@ import { Dialog } from "./dialog"
 
 type PopoverProps = DialogTriggerProps
 const Popover = (props: PopoverProps) => {
-  return <DialogTrigger {...props}/>
+  return <DialogTrigger {...props} />
 }
 
 const Title = ({ level = 2, className, ...props }: DialogTitleProps) => (
