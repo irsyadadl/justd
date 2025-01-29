@@ -30,8 +30,8 @@ import type {
 import { Dialog } from "./dialog"
 
 type PopoverProps = DialogTriggerProps
-const Popover = ({ children, ...props }: PopoverProps) => {
-  return <DialogTrigger {...props}>{children}</DialogTrigger>
+const Popover = (props: PopoverProps) => {
+  return <DialogTrigger {...props}/>
 }
 
 const Title = ({ level = 2, className, ...props }: DialogTitleProps) => (
