@@ -75,7 +75,7 @@
     --accent-fg: oklch(1 0 0);
 
     --muted: oklch(0.968 0.007 247.896);
-    --muted-fg: oklch(0.554 0.046 257.417);
+    --muted-fg: oklch(0.446 0.043 257.281);
 
     --success: oklch(0.596 0.145 163.225);
     --success-fg: oklch(1 0 0);
@@ -90,10 +90,10 @@
     --input: oklch(0.869 0.022 252.894);
     --ring: oklch(0.546 0.245 262.881);
 
-    --navbar: oklch(0.968 0.007 247.896);
+    --navbar: oklch(0.984 0.003 247.858);
     --navbar-fg: oklch(0.129 0.042 264.695);
 
-    --sidebar: oklch(0.968 0.007 247.896);
+    --sidebar: oklch(0.984 0.003 247.858);
     --sidebar-fg: oklch(0.129 0.042 264.695);
 
     --chart-1: oklch(0.546 0.245 262.881);

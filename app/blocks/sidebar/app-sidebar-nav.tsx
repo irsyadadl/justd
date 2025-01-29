@@ -1,9 +1,8 @@
 "use client"
 
-import { Avatar, Breadcrumbs, Link, Menu, Separator, SidebarNav, SidebarTrigger } from "ui"
+import { Avatar, Breadcrumbs, Menu, Separator, SidebarNav, SidebarTrigger } from "ui"
 
 import {
-  IconBrandApple,
   IconCommandRegular,
   IconDashboard,
   IconDeviceDesktop,
@@ -20,9 +19,6 @@ export default function AppSidebarNav() {
       <span className="flex items-center gap-x-4">
         <SidebarTrigger className="-mx-2" />
         <Separator className="h-6" orientation="vertical" />
-        <Link href="/" aria-label="Home">
-          <IconBrandApple />
-        </Link>
         <Breadcrumbs className="@md:flex hidden">
           <Breadcrumbs.Item href="/blocks/sidebar/sidebar-01">Dashboard</Breadcrumbs.Item>
           <Breadcrumbs.Item>Newsletter</Breadcrumbs.Item>

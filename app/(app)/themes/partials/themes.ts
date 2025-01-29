@@ -149,10 +149,10 @@ export const generateTheme = (
     --input: ${getColorValue(gray, "300")};
     --ring: ${getColorValue(primary, lightRingShade)};
     
-    --navbar: ${getColorValue(gray, "100")};
+    --navbar: ${getColorValue(gray, "50")};
     --navbar-fg: ${getColorValue(gray, "950")};
     
-    --sidebar: ${getColorValue(gray, "100")};
+    --sidebar: ${getColorValue(gray, "50")};
     --sidebar-fg: ${getColorValue(gray, "950")};
     
     --chart-1: ${getColorValue(primary, chartShadesLight[0])};
