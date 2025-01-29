@@ -158,16 +158,7 @@
   }
 }
 
-@variant dark {
-  &:where(.dark, .dark *) {
-    @slot;
-  }
-  @media (prefers-color-scheme: dark) {
-    &:where(.system, .system *) {
-      @slot;
-    }
-  }
-}
+@variant dark (&:is(.dark *));
 
 @layer base {
   *,
@@ -211,16 +202,4 @@
     background: var(--border);
     border-radius: 4px;
   }
-}
-
-:root {
-  color-scheme: light dark;
-}
-
-.dark {
-  color-scheme: dark;
-}
-
-.light {
-  color-scheme: light;
 }
