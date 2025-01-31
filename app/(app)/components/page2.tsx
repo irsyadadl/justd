@@ -1,7 +1,7 @@
-import { Thumbnail } from "@/app/(app)/components/(partials)/thumbnail"
 import { Header } from "@/components/header"
 import { siteConfig } from "@/resources/config/site"
 import { source } from "@/utils/source"
+import { IconArrowRight, IconCube, IconPackage } from "justd-icons"
 import type { Metadata } from "next"
 import { Link } from "next-view-transitions"
 import { Container, Heading } from "ui"
@@ -19,25 +19,34 @@ export default function Page() {
       </Header>
       <div className="bg-muted/35 py-10 lg:py-16">
         <Container>
-          <div className="grid gap-x-6 gap-y-12">
+          <div className="columns-1 gap-(--gap) [--gap:0.5rem] sm:columns-2 md:columns-3 lg:columns-4">
             {components.map((item: ComponentProps, index: number) => (
-              <div key={index} className="grid gap-2">
+              <div
+                key={index}
+                className="relative inset-ring-1 inset-ring-border mb-(--gap) break-inside-avoid rounded-md bg-white p-4 dark:inset-ring-fg/5 dark:inset-shadow-xs dark:inset-shadow-zinc-800 dark:bg-[#111114]"
+              >
                 <Heading
                   level={2}
                   className="mb-2 flex items-center gap-x-2 font-semibold text-base sm:text-base"
                 >
-                  {item.name}
+                  <IconPackage /> {item.name}
                 </Heading>
-                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                <ol className="flex flex-col">
                   {item?.children?.map((child: ComponentProps, i: number) => (
-                    <div className="rounded-xl border bg-bg p-2 shadow-xs" key={i}>
-                      <Link href={child.url} className="" aria-label={child.name}>
-                        <h3 className="font-mono text-xs uppercase">{child.name}</h3>
-                        <Thumbnail name={child.url.split("/").pop() as string} />
+                    <li key={i}>
+                      <Link
+                        href={child.url}
+                        className="group flex items-center justify-between py-1 text-muted-fg duration-200 hover:text-fg sm:text-sm"
+                      >
+                        <span className="flex items-center gap-x-2">
+                          <IconCube />
+                          {child.name}
+                        </span>
+                        <IconArrowRight className="hidden size-4 group-hover:block" />
                       </Link>
-                    </div>
+                    </li>
                   ))}
-                </div>
+                </ol>
               </div>
             ))}
           </div>
