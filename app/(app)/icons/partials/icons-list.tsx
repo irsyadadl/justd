@@ -100,13 +100,19 @@ export function IconListItem({ name, Icon }: IconListItemProps) {
           <Menu.Header className="font-mono font-normal text-xs sm:text-xs" separator>
             {name}
           </Menu.Header>
-          <Menu.Item onAction={() => handleCopy("jsx")}><Menu.Label>Copy JSX</Menu.Label></Menu.Item>
-          <Menu.Item onAction={() => copySvgToClipboard(Icon)}><Menu.Label>Copy SVG</Menu.Label></Menu.Item>
-          <Menu.Item onAction={() => handleCopy("text")}><Menu.Label>Copy Name</Menu.Label></Menu.Item>
+          <Menu.Item onAction={() => handleCopy("jsx")}>
+            <Menu.Label>Copy JSX</Menu.Label>
+          </Menu.Item>
+          <Menu.Item onAction={() => copySvgToClipboard(Icon)}>
+            <Menu.Label>Copy SVG</Menu.Label>
+          </Menu.Item>
+          <Menu.Item onAction={() => handleCopy("text")}>
+            <Menu.Label>Copy Name</Menu.Label>
+          </Menu.Item>
           <Menu.Separator />
           <Menu.Item onAction={() => downloadSvg(Icon, name)}>
             <Menu.Label>Download SVG</Menu.Label>
-            <IconDownload/>
+            <IconDownload />
           </Menu.Item>
         </Menu.Content>
       </Menu>

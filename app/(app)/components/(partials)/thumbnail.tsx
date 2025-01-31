@@ -4,19 +4,19 @@ import { ThumbButton } from "@/app/(app)/components/(partials)/(svg)/thumb-butto
 import { ThumbCalendar } from "@/app/(app)/components/(partials)/(svg)/thumb-calendar"
 import { ThumbCheckbox } from "@/app/(app)/components/(partials)/(svg)/thumb-checkbox"
 import { ThumbCheckboxGroup } from "@/app/(app)/components/(partials)/(svg)/thumb-checkbox-group"
+import { ThumbChoicebox } from "@/app/(app)/components/(partials)/(svg)/thumb-choicebox"
 import { ThumbFileTrigger } from "@/app/(app)/components/(partials)/(svg)/thumb-file-trigger"
+import { ThumbGridList } from "@/app/(app)/components/(partials)/(svg)/thumb-grid-list"
 import { ThumbLineChart } from "@/app/(app)/components/(partials)/(svg)/thumb-line-chart"
+import { ThumbListBox } from "@/app/(app)/components/(partials)/(svg)/thumb-list-box"
+import { ThumbMenu } from "@/app/(app)/components/(partials)/(svg)/thumb-menu"
+import { ThumbNavbar } from "@/app/(app)/components/(partials)/(svg)/thumb-navbar"
 import { ThumbPieChart } from "@/app/(app)/components/(partials)/(svg)/thumb-pie-chart"
+import { ThumbSidebar } from "@/app/(app)/components/(partials)/(svg)/thumb-sidebar"
 import { ThumbTable } from "@/app/(app)/components/(partials)/(svg)/thumb-table"
 import { ThumbToggle } from "@/app/(app)/components/(partials)/(svg)/thumb-toggle"
 import { ThumbToggleGroup } from "@/app/(app)/components/(partials)/(svg)/thumb-toggle-group"
 import { ThumbTree } from "@/app/(app)/components/(partials)/(svg)/thumb-tree"
-import { ThumbGridList } from "@/app/(app)/components/(partials)/(svg)/thumb-grid-list";
-import { ThumbListBox } from "@/app/(app)/components/(partials)/(svg)/thumb-list-box";
-import { ThumbMenu } from "@/app/(app)/components/(partials)/(svg)/thumb-menu";
-import { ThumbSidebar } from "@/app/(app)/components/(partials)/(svg)/thumb-sidebar";
-import { ThumbNavbar } from "@/app/(app)/components/(partials)/(svg)/thumb-navbar";
-import { ThumbChoicebox } from "@/app/(app)/components/(partials)/(svg)/thumb-choicebox";
 
 export function Thumbnail({ name }: { name: string }) {
   const svgMap = {
@@ -37,8 +37,8 @@ export function Thumbnail({ name }: { name: string }) {
     choicebox: <ThumbChoicebox />,
     sidebar: <ThumbSidebar />,
     menu: <ThumbMenu />,
-    'list-box': <ThumbListBox />,
-    'grid-list': <ThumbGridList />,
+    "list-box": <ThumbListBox />,
+    "grid-list": <ThumbGridList />,
   }
 
   // @ts-ignore

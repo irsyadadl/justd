@@ -8,7 +8,7 @@ export function ThumbNavbar() {
         x=".85"
         y=".85"
         stroke="currentColor"
-        className='stroke-zinc-400 dark:stroke-zinc-700'
+        className="stroke-zinc-400 dark:stroke-zinc-700"
         rx="4.15"
         strokeWidth=".3"
       />

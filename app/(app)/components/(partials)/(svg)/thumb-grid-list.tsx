@@ -1,26 +1,14 @@
 export function ThumbGridList() {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      height="90"
-      fill="none"
-      viewBox="0 0 51 60"
-    >
-      <rect
-        width="50.597"
-        height="59.597"
-        x=".201"
-        y=".201"
-        fill="var(--overlay)"
-        rx="3.021"
-      />
+    <svg xmlns="http://www.w3.org/2000/svg" height="90" fill="none" viewBox="0 0 51 60">
+      <rect width="50.597" height="59.597" x=".201" y=".201" fill="var(--overlay)" rx="3.021" />
       <rect
         width="50.597"
         height="59.597"
         x=".201"
         y=".201"
         stroke="currentColor"
-        className='stroke-zinc-300 dark:stroke-zinc-600'
+        className="stroke-zinc-300 dark:stroke-zinc-600"
         rx="3.021"
         strokeWidth=".403"
       />
@@ -66,5 +54,5 @@ export function ThumbGridList() {
         strokeWidth=".333"
       />
     </svg>
-  );
+  )
 }

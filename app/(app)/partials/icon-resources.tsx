@@ -70,7 +70,6 @@ import { Container, Link, buttonStyles } from "ui"
 export function IconResources() {
   const [isCopied, setIsCopied] = useState(false)
 
-
   useEffect(() => {
     let timer: NodeJS.Timeout
     if (isCopied) {

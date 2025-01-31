@@ -1,26 +1,14 @@
 export function ThumbListBox() {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      height="90"
-      fill="none"
-      viewBox="0 0 51 60"
-    >
-      <rect
-        width="50.597"
-        height="59.597"
-        x=".201"
-        y=".201"
-        fill="var(--overlay)"
-        rx="3.021"
-      />
+    <svg xmlns="http://www.w3.org/2000/svg" height="90" fill="none" viewBox="0 0 51 60">
+      <rect width="50.597" height="59.597" x=".201" y=".201" fill="var(--overlay)" rx="3.021" />
       <rect
         width="50.597"
         height="59.597"
         x=".201"
         y=".201"
         stroke="currentColor"
-        className='stroke-zinc-300 dark:stroke-zinc-700'
+        className="stroke-zinc-300 dark:stroke-zinc-700"
         rx="3.021"
         strokeWidth=".403"
       />
@@ -45,5 +33,5 @@ export function ThumbListBox() {
         d="M10.5 40.5A1.5 1.5 0 0 1 12 39h34a1.5 1.5 0 0 1 0 3H12a1.5 1.5 0 0 1-1.5-1.5m0 7A1.5 1.5 0 0 1 12 46h34a1.5 1.5 0 0 1 0 3H12a1.5 1.5 0 0 1-1.5-1.5m0 7A1.5 1.5 0 0 1 12 53h34a1.5 1.5 0 0 1 0 3H12a1.5 1.5 0 0 1-1.5-1.5"
       />
     </svg>
-  );
+  )
 }
