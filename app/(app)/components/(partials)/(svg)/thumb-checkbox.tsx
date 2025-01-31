@@ -1,19 +1,7 @@
 export function ThumbCheckbox() {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      height="12"
-      fill="none"
-      viewBox="0 0 75 12"
-    >
-      <rect
-        width="10.5"
-        height="10.5"
-        x=".75"
-        y=".75"
-        fill="#155DFC"
-        rx="2.25"
-      />
+    <svg xmlns="http://www.w3.org/2000/svg" height="12" fill="none" viewBox="0 0 75 12">
+      <rect width="10.5" height="10.5" x=".75" y=".75" fill="#155DFC" rx="2.25" />
       <rect
         width="10.5"
         height="10.5"
@@ -32,5 +20,5 @@ export function ThumbCheckbox() {
       />
       <rect width="56" height="4" x="19" y="4" fill="#9F9FA9" rx="2" />
     </svg>
-  );
+  )
 }

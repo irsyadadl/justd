@@ -1,15 +1,15 @@
 import { ThumbAreaChart } from "@/app/(app)/components/(partials)/(svg)/thumb-area-chart"
 import { ThumbBarChart } from "@/app/(app)/components/(partials)/(svg)/thumb-bar-chart"
 import { ThumbButton } from "@/app/(app)/components/(partials)/(svg)/thumb-button"
+import { ThumbCalendar } from "@/app/(app)/components/(partials)/(svg)/thumb-calendar"
+import { ThumbCheckbox } from "@/app/(app)/components/(partials)/(svg)/thumb-checkbox"
+import { ThumbCheckboxGroup } from "@/app/(app)/components/(partials)/(svg)/thumb-checkbox-group"
 import { ThumbFileTrigger } from "@/app/(app)/components/(partials)/(svg)/thumb-file-trigger"
 import { ThumbLineChart } from "@/app/(app)/components/(partials)/(svg)/thumb-line-chart"
 import { ThumbPieChart } from "@/app/(app)/components/(partials)/(svg)/thumb-pie-chart"
 import { ThumbToggle } from "@/app/(app)/components/(partials)/(svg)/thumb-toggle"
 import { ThumbToggleGroup } from "@/app/(app)/components/(partials)/(svg)/thumb-toggle-group"
-import { ThumbCheckbox } from "@/app/(app)/components/(partials)/(svg)/thumb-checkbox";
-import { ThumbCheckboxGroup } from "@/app/(app)/components/(partials)/(svg)/thumb-checkbox-group";
-import { ThumbTree } from "@/app/(app)/components/(partials)/(svg)/thumb-tree";
-import { ThumbCalendar } from "@/app/(app)/components/(partials)/(svg)/thumb-calendar";
+import { ThumbTree } from "@/app/(app)/components/(partials)/(svg)/thumb-tree"
 
 export function Thumbnail({ name }: { name: string }) {
   const svgMap = {
@@ -17,14 +17,14 @@ export function Thumbnail({ name }: { name: string }) {
     "file-trigger": <ThumbFileTrigger />,
     "toggle-group": <ThumbToggleGroup />,
     toggle: <ThumbToggle />,
-    "checkbox": <ThumbCheckbox />,
+    checkbox: <ThumbCheckbox />,
     "checkbox-group": <ThumbCheckboxGroup />,
     "area-chart": <ThumbAreaChart />,
     "pie-chart": <ThumbPieChart />,
     "line-chart": <ThumbLineChart />,
     "bar-chart": <ThumbBarChart />,
-    "tree": <ThumbTree />,
-    "calendar": <ThumbCalendar />,
+    tree: <ThumbTree />,
+    calendar: <ThumbCalendar />,
   }
 
   // @ts-ignore

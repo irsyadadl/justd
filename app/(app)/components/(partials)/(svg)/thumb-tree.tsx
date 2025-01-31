@@ -1,19 +1,7 @@
 export function ThumbTree() {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      height="84"
-      fill="none"
-      viewBox="0 0 95 84"
-    >
-      <rect
-        width="10.5"
-        height="10.5"
-        x="10.75"
-        y="18.75"
-        fill="#155DFC"
-        rx="2.25"
-      />
+    <svg xmlns="http://www.w3.org/2000/svg" height="84" fill="none" viewBox="0 0 95 84">
+      <rect width="10.5" height="10.5" x="10.75" y="18.75" fill="#155DFC" rx="2.25" />
       <rect
         width="10.5"
         height="10.5"
@@ -31,14 +19,7 @@ export function ThumbTree() {
         strokeWidth="1.008"
       />
       <rect width="56" height="4" x="29" y="22" fill="var(--muted-fg)" rx="2" />
-      <rect
-        width="10.5"
-        height="10.5"
-        x="20.75"
-        y="36.75"
-        fill="#155DFC"
-        rx="2.25"
-      />
+      <rect width="10.5" height="10.5" x="20.75" y="36.75" fill="#155DFC" rx="2.25" />
       <rect
         width="10.5"
         height="10.5"
@@ -56,14 +37,7 @@ export function ThumbTree() {
         strokeWidth=".667"
       />
       <rect width="56" height="4" x="39" y="40" fill="var(--muted-fg)" rx="2" />
-      <rect
-        width="10.5"
-        height="10.167"
-        x="20.75"
-        y="54.75"
-        fill="var(--muted)"
-        rx="2.25"
-      />
+      <rect width="10.5" height="10.167" x="20.75" y="54.75" fill="var(--muted)" rx="2.25" />
       <rect
         width="10.5"
         height="10.167"
@@ -74,14 +48,7 @@ export function ThumbTree() {
         strokeWidth=".5"
       />
       <rect width="56" height="4" x="39" y="58" fill="var(--muted-fg)" rx="2" />
-      <rect
-        width="10.5"
-        height="10.167"
-        x=".75"
-        y="72.75"
-        fill="var(--muted)"
-        rx="2.25"
-      />
+      <rect width="10.5" height="10.167" x=".75" y="72.75" fill="var(--muted)" rx="2.25" />
       <rect
         width="10.5"
         height="10.167"
@@ -92,14 +59,7 @@ export function ThumbTree() {
         strokeWidth=".5"
       />
       <rect width="56" height="4" x="19" y="76" fill="var(--muted-fg)" rx="2" />
-      <rect
-        width="10.5"
-        height="10.5"
-        x=".75"
-        y=".75"
-        fill="#155DFC"
-        rx="2.25"
-      />
+      <rect width="10.5" height="10.5" x=".75" y=".75" fill="#155DFC" rx="2.25" />
       <rect
         width="10.5"
         height="10.5"
@@ -118,5 +78,5 @@ export function ThumbTree() {
       />
       <rect width="56" height="4" x="19" y="4" fill="var(--muted-fg)" rx="2" />
     </svg>
-  );
+  )
 }
