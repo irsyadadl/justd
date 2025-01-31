@@ -1,6 +1,6 @@
 export function ThumbToggleGroup() {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" height="14" fill="none" viewBox="0 0 80 14">
+    <svg xmlns="http://www.w3.org/2000/svg" height="24" fill="none" viewBox="0 0 80 14">
       <mask id="a" fill="#fff">
         <path d="M0 2a2 2 0 0 1 2-2h18v14H2a2 2 0 0 1-2-2z" />
       </mask>

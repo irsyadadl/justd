@@ -70,12 +70,6 @@ import { Container, Link, buttonStyles } from "ui"
 export function IconResources() {
   const [isCopied, setIsCopied] = useState(false)
 
-  function handleCopy(text: string) {
-    setIsCopied(true)
-    navigator.clipboard.writeText(text).then(() => {
-      setIsCopied(true)
-    })
-  }
 
   useEffect(() => {
     let timer: NodeJS.Timeout
@@ -101,21 +95,6 @@ export function IconResources() {
               Designed to seamlessly integrate into any project, they work perfectly whether or not
               you use Justd components.
             </p>
-
-            {/*<div className="flex justify-between items-center py-1 px-3 max-w-xs h-11 text-sm rounded-lg border group bg-secondary/20 shadow-xs dark:bg-secondary/50">*/}
-            {/*  <code>npm i justd-icons</code>*/}
-            {/*  <Button*/}
-            {/*    className={cn(*/}
-            {/*      "size-8 group-hover:flex hidden -mr-2 rounded-xs",*/}
-            {/*      isCopied ? "flex" : "hidden",*/}
-            {/*    )}*/}
-            {/*    onPress={() => handleCopy("npm i justd-icons")}*/}
-            {/*    appearance="plain"*/}
-            {/*    size="square-petite"*/}
-            {/*  >*/}
-            {/*    {isCopied ? <IconCheck /> : <IconDuplicate />}*/}
-            {/*  </Button>*/}
-            {/*</div>*/}
             <InstallIcon />
           </div>
           <div>

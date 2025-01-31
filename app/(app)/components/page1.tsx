@@ -1,12 +1,12 @@
+import { Thumbnail } from "@/app/(app)/components/(partials)/thumbnail"
 import { Header } from "@/components/header"
 import { siteConfig } from "@/resources/config/site"
 import { source } from "@/utils/source"
-import { IconArrowRight, IconCube, IconPackage } from "justd-icons"
 import type { Metadata } from "next"
 import { Link } from "next-view-transitions"
 import { Container, Heading } from "ui"
 
-export default function Page() {
+export default function Page1() {
   const components =
     (source.pageTree as any).children?.[0]?.children?.find(
       (item: any) => item.name === "Components",
@@ -19,34 +19,25 @@ export default function Page() {
       </Header>
       <div className="bg-muted/35 py-10 lg:py-16">
         <Container>
-          <div className="columns-1 gap-(--gap) [--gap:0.5rem] sm:columns-2 md:columns-3 lg:columns-4">
+          <div className="grid gap-x-6 gap-y-12">
             {components.map((item: ComponentProps, index: number) => (
-              <div
-                key={index}
-                className="relative inset-ring-1 inset-ring-border mb-(--gap) break-inside-avoid rounded-md bg-white p-4 dark:inset-ring-fg/5 dark:inset-shadow-xs dark:inset-shadow-zinc-800 dark:bg-[#111114]"
-              >
+              <div key={index} className="grid gap-2">
                 <Heading
                   level={2}
                   className="mb-2 flex items-center gap-x-2 font-semibold text-base sm:text-base"
                 >
-                  <IconPackage /> {item.name}
+                  {item.name}
                 </Heading>
-                <ol className="flex flex-col">
+                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
                   {item?.children?.map((child: ComponentProps, i: number) => (
-                    <li key={i}>
-                      <Link
-                        href={child.url}
-                        className="group flex items-center justify-between py-1 text-muted-fg duration-200 hover:text-fg sm:text-sm"
-                      >
-                        <span className="flex items-center gap-x-2">
-                          <IconCube />
-                          {child.name}
-                        </span>
-                        <IconArrowRight className="hidden size-4 group-hover:block" />
+                    <div className="rounded-xl border bg-bg p-4 shadow-xs" key={i}>
+                      <Link href={child.url} className="" aria-label={child.name}>
+                        <Thumbnail name={child.url.split("/").pop() as string} />
+                        <h3 className="font-mono text-xs uppercase">{child.name}</h3>
                       </Link>
-                    </li>
+                    </div>
                   ))}
-                </ol>
+                </div>
               </div>
             ))}
           </div>

@@ -1,6 +1,6 @@
 export function ThumbToggle() {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" height="14" fill="none" viewBox="0 0 60 14">
+    <svg xmlns="http://www.w3.org/2000/svg" height="20" fill="none" viewBox="0 0 60 14">
       <rect
         width="27.5"
         height="13.5"

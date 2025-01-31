@@ -1,7 +1,7 @@
 export function ThumbCalendar() {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" height="85" fill="none" viewBox="0 0 80 85">
-      <rect width="79.216" height="83.922" x=".392" y=".392" fill="var(--muted)" rx="5.882" />
+      <rect width="79.216" height="100" x=".392" y=".392" fill="var(--muted)" rx="5.882" />
       <rect
         width="79.216"
         height="83.922"

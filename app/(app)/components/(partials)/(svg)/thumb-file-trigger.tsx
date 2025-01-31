@@ -1,6 +1,6 @@
 export function ThumbFileTrigger() {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" height="14" fill="none" viewBox="0 0 38 14">
+    <svg xmlns="http://www.w3.org/2000/svg" height="20" fill="none" viewBox="0 0 38 14">
       <rect
         width="36.592"
         height="13.5"
