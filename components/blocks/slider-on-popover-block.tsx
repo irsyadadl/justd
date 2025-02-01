@@ -1,16 +1,16 @@
-"use client";
+"use client"
 
-import { useRef, useState } from "react";
+import { useRef, useState } from "react"
 
-import { IconAdjustment } from "justd-icons";
-import { Button, Description, Popover, Separator, Slider } from "ui";
+import { IconAdjustment } from "justd-icons"
+import { Button, Description, Popover, Separator, Slider } from "ui"
 
 export function SliderOnPopoverBlock() {
-  const [fontSize, setFontSize] = useState<number>(16);
-  const [lineHeight, setLineHeight] = useState<number>(42);
+  const [fontSize, setFontSize] = useState<number>(16)
+  const [lineHeight, setLineHeight] = useState<number>(42)
 
-  const [isOpen, setIsOpen] = useState(false);
-  const button = useRef(null);
+  const [isOpen, setIsOpen] = useState(false)
+  const button = useRef(null)
 
   return (
     <>
@@ -50,5 +50,5 @@ export function SliderOnPopoverBlock() {
         </Popover.Body>
       </Popover.Content>
     </>
-  );
+  )
 }
