@@ -115,4 +115,4 @@ const Button = ({ className, intent, appearance, size, shape, ref, ...props }: B
 }
 
 export type { ButtonProps }
-export { Button, ButtonPrimitive, buttonStyles }
+export { Button, buttonStyles }

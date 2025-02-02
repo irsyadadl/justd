@@ -5,7 +5,11 @@ import type {
   ListBoxItemProps as ListBoxItemPrimitiveProps,
   ListBoxProps,
 } from "react-aria-components"
-import { ListBoxItem, ListBox as ListBoxPrimitive, composeRenderProps } from "react-aria-components"
+import {
+  ListBoxItem as ListBoxItemPrimitive,
+  ListBox as ListBoxPrimitive,
+  composeRenderProps,
+} from "react-aria-components"
 import { tv } from "tailwind-variants"
 
 import { cn } from "@/utils/classes"
@@ -29,7 +33,7 @@ const listBoxItemStyles = tv({
   base: "lbi relative cursor-pointer rounded-[calc(var(--radius-lg)-1px)] p-2 text-base outline-hidden sm:text-sm",
   variants: {
     isFocusVisible: {
-      true: "bg-secondary text-accent-fg text-accent-fg/70",
+      true: "bg-secondary text-accent-fg",
     },
     isHovered: {
       true: "bg-accent text-accent-fg [&:hover_[slot=description]]:text-accent-fg/70 [&:hover_[slot=label]]:text-accent-fg [&_.text-muted-fg]:text-accent-fg/80",
@@ -51,11 +55,11 @@ interface ListBoxItemProps<T extends object> extends ListBoxItemPrimitiveProps<T
   className?: string
 }
 
-const Item = <T extends object>({ children, className, ...props }: ListBoxItemProps<T>) => {
+const ListBoxItem = <T extends object>({ children, className, ...props }: ListBoxItemProps<T>) => {
   const textValue = typeof children === "string" ? children : undefined
 
   return (
-    <ListBoxItem
+    <ListBoxItemPrimitive
       textValue={textValue}
       {...props}
       className={composeRenderProps(className, (className, renderProps) =>
@@ -90,7 +94,7 @@ const Item = <T extends object>({ children, className, ...props }: ListBoxItemPr
           </>
         </div>
       )}
-    </ListBoxItem>
+    </ListBoxItemPrimitive>
   )
 }
 
@@ -108,16 +112,18 @@ const ListBoxPicker = <T extends object>({ className, ...props }: ListBoxPickerP
   )
 }
 
-const Section = ({ className, ...props }: React.ComponentProps<typeof DropdownSection>) => {
+const ListBoxSection = ({ className, ...props }: React.ComponentProps<typeof DropdownSection>) => {
   return (
     <DropdownSection className={cn(className, "[&_.lbi:last-child]:-mb-1.5 gap-y-1")} {...props} />
   )
 }
 
-ListBox.Section = Section
-ListBox.ItemDetails = DropdownItemDetails
-ListBox.Item = Item
+const ListBoxItemDetails = DropdownItemDetails
+
+ListBox.Section = ListBoxSection
+ListBox.ItemDetails = ListBoxItemDetails
+ListBox.Item = ListBoxItem
 ListBox.Picker = ListBoxPicker
 
 export type { ListBoxPickerProps, ListBoxItemProps }
-export { ListBox, listBoxStyles }
+export { ListBox, ListBoxPicker, listBoxStyles }

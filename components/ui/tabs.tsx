@@ -10,8 +10,8 @@ import type {
   TabsProps as TabsPrimitiveProps,
 } from "react-aria-components"
 import {
-  TabList,
-  TabPanel,
+  TabList as TabListPrimitive,
+  TabPanel as TabPanelPrimitive,
   Tab as TabPrimitive,
   Tabs as TabsPrimitive,
   composeRenderProps,
@@ -63,11 +63,11 @@ const tabListStyles = tv({
 interface TabListProps<T extends object> extends TabListPrimitiveProps<T> {
   ref?: React.RefObject<HTMLDivElement>
 }
-const List = <T extends object>({ className, ref, ...props }: TabListProps<T>) => {
+const TabList = <T extends object>({ className, ref, ...props }: TabListProps<T>) => {
   const id = useId()
   return (
     <LayoutGroup id={id}>
-      <TabList
+      <TabListPrimitive
         ref={ref}
         {...props}
         className={composeRenderProps(className, (className, renderProps) =>
@@ -136,9 +136,9 @@ const Tab = ({ children, ref, ...props }: TabProps) => {
 interface TabPanelProps extends TabPanelPrimitiveProps {
   ref?: React.RefObject<HTMLDivElement>
 }
-const Panel = ({ className, ref, ...props }: TabPanelProps) => {
+const TabPanel = ({ className, ref, ...props }: TabPanelProps) => {
   return (
-    <TabPanel
+    <TabPanelPrimitive
       {...props}
       ref={ref}
       className={composeTailwindRenderProps(
@@ -149,9 +149,9 @@ const Panel = ({ className, ref, ...props }: TabPanelProps) => {
   )
 }
 
-Tabs.List = List
+Tabs.List = TabList
 Tabs.Tab = Tab
-Tabs.Panel = Panel
+Tabs.Panel = TabPanel
 
 export type { TabsProps, TabListProps, TabProps, TabPanelProps }
 export { Tabs }

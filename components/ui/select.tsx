@@ -77,7 +77,7 @@ interface ListProps<T extends object> extends ListBoxProps<T> {
   className?: string
 }
 
-const List = <T extends object>({
+const SelectList = <T extends object>({
   className,
   children,
   items,
@@ -109,7 +109,7 @@ const SelectTrigger = ({ className, ...props }: SelectTriggerProps) => {
       )}
     >
       {props.prefix && <span className="-mr-1">{props.prefix}</span>}
-      <SelectValue className="*:data-[slot=icon]:-mx-0.5 *:data-[slot=avatar]:-mx-0.5 *:data-[slot=avatar]:*:-mx-0.5 grid flex-1 grid-cols-[auto_1fr] items-center text-base data-placeholder:text-muted-fg *:data-[slot=avatar]:*:mr-2 *:data-[slot=avatar]:mr-2 *:data-[slot=icon]:mr-2 sm:text-sm [&_[slot=description]]:hidden" />
+      <SelectValue className="*:data-[slot=icon]:-mx-0.5 *:data-[slot=avatar]:-mx-0.5 *:data-[slot=avatar]:*:-mx-0.5 grid flex-1 grid-cols-[auto_1fr] items-center truncate text-base data-placeholder:text-muted-fg *:data-[slot=avatar]:*:mr-2 *:data-[slot=avatar]:mr-2 *:data-[slot=icon]:mr-2 sm:text-sm [&_[slot=description]]:hidden" />
       <IconChevronLgDown
         aria-hidden
         className="size-4 shrink-0 text-muted-fg duration-300 group-data-open:rotate-180 group-data-open:text-fg group-data-disabled:opacity-50 forced-colors:text-[ButtonText] forced-colors:group-data-disabled:text-[GrayText]"
@@ -118,13 +118,19 @@ const SelectTrigger = ({ className, ...props }: SelectTriggerProps) => {
   )
 }
 
-Select.OptionDetails = DropdownItemDetails
-Select.Option = DropdownItem
-Select.Label = DropdownLabel
-Select.Separator = DropdownSeparator
-Select.Section = DropdownSection
+const SelectSection = DropdownSection
+const SelectSeparator = DropdownSeparator
+const SelectLabel = DropdownLabel
+const SelectOptionDetails = DropdownItemDetails
+const SelectItem = DropdownItem
+
+Select.OptionDetails = SelectOptionDetails
+Select.Option = SelectItem
+Select.Label = SelectLabel
+Select.Separator = SelectSeparator
+Select.Section = SelectSection
 Select.Trigger = SelectTrigger
-Select.List = List
+Select.List = SelectList
 
 export type { SelectProps, SelectTriggerProps }
 export { Select }

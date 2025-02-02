@@ -20,7 +20,7 @@ import {
   IconPerson,
   IconStar,
 } from "justd-icons"
-import { Group } from "react-aria-components"
+import { Group, Menu as MenuPrimitive } from "react-aria-components"
 import { Avatar, Button, Checkbox, Description, Menu, Modal, Select, Sheet, TextField } from "ui"
 
 export default function SheetMenuDemo() {
@@ -86,7 +86,7 @@ export default function SheetMenuDemo() {
             </div>
           </Sheet.Header>
           <Sheet.Body className="px-0 sm:px-0">
-            <Menu.Primitive className="divide-y [&_.xss3]:p-2">
+            <MenuPrimitive className="divide-y [&_.xss3]:p-2">
               <Menu.Section>
                 <Menu.Item onAction={openModal}>
                   <IconBrandGithub />
@@ -149,7 +149,7 @@ export default function SheetMenuDemo() {
                   <IconLogout /> Sign out
                 </Menu.Item>
               </Menu.Section>
-            </Menu.Primitive>
+            </MenuPrimitive>
           </Sheet.Body>
         </Sheet.Content>
       </Sheet>

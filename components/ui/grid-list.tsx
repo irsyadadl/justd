@@ -6,7 +6,7 @@ import { IconHamburger } from "justd-icons"
 import type { GridListItemProps, GridListProps } from "react-aria-components"
 import {
   Button,
-  GridListItem,
+  GridListItem as GridListItemPrimitive,
   GridList as GridListPrimitive,
   composeRenderProps,
 } from "react-aria-components"
@@ -45,10 +45,10 @@ const itemStyles = tv({
   },
 })
 
-const Item = ({ className, ...props }: GridListItemProps) => {
+const GridListItem = ({ className, ...props }: GridListItemProps) => {
   const textValue = typeof props.children === "string" ? props.children : undefined
   return (
-    <GridListItem
+    <GridListItemPrimitive
       textValue={textValue}
       {...props}
       className={composeRenderProps(className, (className, renderProps) =>
@@ -76,16 +76,16 @@ const Item = ({ className, ...props }: GridListItemProps) => {
           {props.children as React.ReactNode}
         </>
       )}
-    </GridListItem>
+    </GridListItemPrimitive>
   )
 }
 
-const EmptyState = ({ ref, className, ...props }: React.ComponentProps<"div">) => (
+const GridEmptyState = ({ ref, className, ...props }: React.ComponentProps<"div">) => (
   <div ref={ref} className={cn("p-6", className)} {...props} />
 )
 
-GridList.Item = Item
-GridList.EmptyState = EmptyState
+GridList.Item = GridListItem
+GridList.EmptyState = GridEmptyState
 
 export type { GridListProps, GridListItemProps }
 export { GridList }

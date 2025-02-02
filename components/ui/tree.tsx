@@ -4,7 +4,7 @@ import { IconChevronRight } from "justd-icons"
 import type { TreeItemProps, TreeProps } from "react-aria-components"
 import {
   Button,
-  UNSTABLE_TreeItemContent as TreeItemContent,
+  UNSTABLE_TreeItemContent as TreeItemContentPrimitive,
   UNSTABLE_TreeItem as TreeItemPrimitive,
   UNSTABLE_Tree as TreePrimitive,
   composeRenderProps,
@@ -73,15 +73,15 @@ const TreeItem = <T extends object>({ className, ...props }: TreeItemProps<T>) =
   )
 }
 
-const ItemContent = (props: React.ComponentProps<typeof TreeItemContent>) => {
+const TreeItemContent = (props: React.ComponentProps<typeof TreeItemContentPrimitive>) => {
   return (
-    <TreeItemContent {...props}>
+    <TreeItemContentPrimitive {...props}>
       <div className="flex items-center">{props.children as React.ReactNode}</div>
-    </TreeItemContent>
+    </TreeItemContentPrimitive>
   )
 }
 
-const Indicator = () => {
+const TreeIndicator = () => {
   return (
     <Button className="relative shrink-0" slot="chevron">
       <IconChevronRight className="size-5" />
@@ -89,18 +89,18 @@ const Indicator = () => {
   )
 }
 
-const ItemCheckbox = () => {
+const TreeItemCheckbox = () => {
   return <Checkbox slot="selection" />
 }
 
-const ItemLabel = (props: React.HtmlHTMLAttributes<HTMLSpanElement>) => {
+const TreeItemLabel = (props: React.ComponentProps<"span">) => {
   return <span {...props} />
 }
 
-TreeItem.Label = ItemLabel
-TreeItem.Indicator = Indicator
-TreeItem.Checkbox = ItemCheckbox
-TreeItem.Content = ItemContent
+TreeItem.Label = TreeItemLabel
+TreeItem.Indicator = TreeIndicator
+TreeItem.Checkbox = TreeItemCheckbox
+TreeItem.Content = TreeItemContent
 
 export type { TreeProps, TreeItemProps }
 export { Tree, TreeItem }

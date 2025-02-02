@@ -1,5 +1,4 @@
 import { source } from "@/utils/source"
-import {} from "./components"
 
 const sources = source.getPageTree()
 

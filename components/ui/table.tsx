@@ -20,8 +20,8 @@ import {
   ColumnResizer as ColumnResizerPrimitive,
   ResizableTableContainer,
   Row,
-  TableBody,
-  TableHeader,
+  TableBody as TableBodyPrimitive,
+  TableHeader as TableHeaderPrimitive,
   Table as TablePrimitive,
   composeRenderProps,
   useTableOptions,
@@ -90,8 +90,12 @@ const ColumnResizer = ({ className, ...props }: ColumnResizerProps) => (
   </ColumnResizerPrimitive>
 )
 
-const Body = <T extends object>(props: TableBodyProps<T>) => (
-  <TableBody data-slot="table-body" {...props} className={cn("[&_.tr:last-child]:border-0")} />
+const TableBody = <T extends object>(props: TableBodyProps<T>) => (
+  <TableBodyPrimitive
+    data-slot="table-body"
+    {...props}
+    className={cn("[&_.tr:last-child]:border-0")}
+  />
 )
 
 interface TableCellProps extends CellProps {
@@ -161,7 +165,7 @@ interface TableHeaderProps<T extends object> extends HeaderProps<T> {
   ref?: React.Ref<HTMLTableSectionElement>
 }
 
-const Header = <T extends object>({
+const TableHeader = <T extends object>({
   children,
   ref,
   className,
@@ -170,7 +174,12 @@ const Header = <T extends object>({
 }: TableHeaderProps<T>) => {
   const { selectionBehavior, selectionMode, allowsDragging } = useTableOptions()
   return (
-    <TableHeader data-slot="table-header" ref={ref} className={header({ className })} {...props}>
+    <TableHeaderPrimitive
+      data-slot="table-header"
+      ref={ref}
+      className={header({ className })}
+      {...props}
+    >
       {allowsDragging && <Column className="w-0" />}
       {selectionBehavior === "toggle" && (
         <Column className="w-0 pl-4">
@@ -178,7 +187,7 @@ const Header = <T extends object>({
         </Column>
       )}
       <Collection items={columns}>{children}</Collection>
-    </TableHeader>
+    </TableHeaderPrimitive>
   )
 }
 
@@ -236,10 +245,10 @@ const TableRow = <T extends object>({
   )
 }
 
-Table.Body = Body
+Table.Body = TableBody
 Table.Cell = TableCell
 Table.Column = TableColumn
-Table.Header = Header
+Table.Header = TableHeader
 Table.Row = TableRow
 
 export type { TableProps, TableBodyProps, TableCellProps, TableColumnProps, TableRowProps }

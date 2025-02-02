@@ -105,14 +105,23 @@ const ContextMenuContent = <T extends object>(props: ContextMenuContentProps<T>)
   ) : null
 }
 
+const ContextMenuItem = Menu.Item
+const ContextMenuSeparator = Menu.Separator
+const ContextMenuItemDetails = Menu.ItemDetails
+const ContextMenuSection = Menu.Section
+const ContextMenuHeader = Menu.Header
+const ContextMenuKeyboard = Menu.Keyboard
+const ContextMenuLabel = Menu.Label
+
 ContextMenu.Trigger = ContextMenuTrigger
 ContextMenu.Content = ContextMenuContent
-ContextMenu.Item = Menu.Item
-ContextMenu.Separator = Menu.Separator
-ContextMenu.ItemDetails = Menu.ItemDetails
-ContextMenu.Section = Menu.Section
-ContextMenu.Header = Menu.Header
-ContextMenu.Keyboard = Menu.Keyboard
+ContextMenu.Item = ContextMenuItem
+ContextMenu.Label = ContextMenuLabel
+ContextMenu.Separator = ContextMenuSeparator
+ContextMenu.ItemDetails = ContextMenuItemDetails
+ContextMenu.Section = ContextMenuSection
+ContextMenu.Header = ContextMenuHeader
+ContextMenu.Keyboard = ContextMenuKeyboard
 
 export type { ContextMenuProps }
 export { ContextMenu }

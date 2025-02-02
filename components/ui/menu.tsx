@@ -15,9 +15,9 @@ import {
   Button,
   Collection,
   Header,
-  MenuItem,
+  MenuItem as MenuItemPrimitive,
   Menu as MenuPrimitive,
-  MenuSection,
+  MenuSection as MenuSectionPrimitive,
   MenuTrigger as MenuTriggerPrimitive,
   SubmenuTrigger as SubmenuTriggerPrimitive,
   composeRenderProps,
@@ -54,7 +54,7 @@ const Menu = ({ respectScreen = true, ...props }: MenuProps) => {
   )
 }
 
-const SubMenu = ({ delay = 0, ...props }) => (
+const MenuSubMenu = ({ delay = 0, ...props }) => (
   <SubmenuTriggerPrimitive {...props} delay={delay}>
     {props.children}
   </SubmenuTriggerPrimitive>
@@ -119,16 +119,16 @@ interface MenuItemProps extends MenuItemPrimitiveProps, VariantProps<typeof drop
   isDanger?: boolean
 }
 
-const Item = ({ className, isDanger = false, children, ...props }: MenuItemProps) => {
+const MenuItem = ({ className, isDanger = false, children, ...props }: MenuItemProps) => {
   const textValue = props.textValue || (typeof children === "string" ? children : undefined)
   return (
-    <MenuItem
+    <MenuItemPrimitive
       className={composeRenderProps(className, (className, renderProps) =>
         dropdownItemStyles({
           ...renderProps,
           className: renderProps.hasSubmenu
             ? cn([
-                "data-open:data-danger:bg-danger/20 data-open:data-danger:text-danger",
+                "data-open:data-danger:bg-danger/10 data-open:data-danger:text-danger",
                 "data-open:bg-accent data-open:text-accent-fg data-open:*:data-[slot=icon]:text-accent-fg data-open:*:[.text-muted-fg]:text-accent-fg",
                 className,
               ])
@@ -164,7 +164,7 @@ const Item = ({ className, isDanger = false, children, ...props }: MenuItemProps
           )}
         </>
       )}
-    </MenuItem>
+    </MenuItemPrimitive>
   )
 }
 
@@ -190,26 +190,30 @@ interface MenuSectionProps<T> extends MenuSectionPrimitiveProps<T> {
   title?: string
 }
 
-const Section = <T extends object>({ className, ref, ...props }: MenuSectionProps<T>) => {
+const MenuSection = <T extends object>({ className, ref, ...props }: MenuSectionProps<T>) => {
   return (
-    <MenuSection ref={ref} className={section({ className })} {...props}>
+    <MenuSectionPrimitive ref={ref} className={section({ className })} {...props}>
       {"title" in props && <Header className={header()}>{props.title}</Header>}
       <Collection items={props.items}>{props.children}</Collection>
-    </MenuSection>
+    </MenuSectionPrimitive>
   )
 }
 
-Menu.Keyboard = DropdownKeyboard
-Menu.Primitive = MenuPrimitive
+const MenuSeparator = DropdownSeparator
+const MenuItemDetails = DropdownItemDetails
+const MenuKeyboard = DropdownKeyboard
+const MenuLabel = DropdownLabel
+
+Menu.Keyboard = MenuKeyboard
 Menu.Content = MenuContent
 Menu.Header = MenuHeader
-Menu.Item = Item
-Menu.Section = Section
-Menu.Separator = DropdownSeparator
+Menu.Item = MenuItem
+Menu.Section = MenuSection
+Menu.Separator = MenuSeparator
+Menu.ItemDetails = MenuItemDetails
+Menu.Label = MenuLabel
 Menu.Trigger = MenuTrigger
-Menu.ItemDetails = DropdownItemDetails
-Menu.Submenu = SubMenu
-Menu.Label = DropdownLabel
+Menu.Submenu = MenuSubMenu
 
 export type { MenuProps, MenuContentProps, MenuTriggerProps, MenuItemProps, MenuSectionProps }
 export { Menu }

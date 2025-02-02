@@ -130,13 +130,21 @@ const ModalContent = ({
   )
 }
 
-Modal.Trigger = Dialog.Trigger
-Modal.Header = Dialog.Header
-Modal.Title = Dialog.Title
-Modal.Description = Dialog.Description
-Modal.Footer = Dialog.Footer
-Modal.Body = Dialog.Body
-Modal.Close = Dialog.Close
+const ModalTrigger = Dialog.Trigger
+const ModalHeader = Dialog.Header
+const ModalTitle = Dialog.Title
+const ModalDescription = Dialog.Description
+const ModalFooter = Dialog.Footer
+const ModalBody = Dialog.Body
+const ModalClose = Dialog.Close
+
+Modal.Trigger = ModalTrigger
+Modal.Header = ModalHeader
+Modal.Title = ModalTitle
+Modal.Description = ModalDescription
+Modal.Footer = ModalFooter
+Modal.Body = ModalBody
+Modal.Close = ModalClose
 Modal.Content = ModalContent
 
 export { Modal }
