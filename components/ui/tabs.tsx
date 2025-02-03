@@ -116,7 +116,7 @@ const Tab = ({ children, ref, ...props }: TabProps) => {
           {children as React.ReactNode}
           {isSelected && (
             <motion.span
-              data-slot='selected-indicator'
+              data-slot="selected-indicator"
               className={cn(
                 "absolute rounded bg-fg",
                 // horizontal
