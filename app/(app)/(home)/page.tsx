@@ -8,7 +8,7 @@ export default function Page() {
   return (
     <>
       <Hero />
-      <div className="space-y-16 py-6 lg:py-16">
+      <div className="space-y-8 py-6 sm:space-y-16 lg:py-16">
         <Blocks />
         <IconResources />
         <Resources />

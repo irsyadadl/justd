@@ -8,7 +8,7 @@ const navigation = {
   starterKits: [
     { name: "Inertia.js", href: "https://github.com/justdlabs/inertia.ts/" },
     { name: "Next.js", href: "https://next.getjustd.com/" },
-    { name: "Remix", href: "https://remix.getjustd.com/" },
+    { name: "Remix", href: "https://github.com/justdlabs/remix" },
     { name: "Astro", href: "https://astro.getjustd.com/" },
   ],
   resources: [
@@ -23,7 +23,8 @@ const navigation = {
     { name: "Github", href: "https://github.com/justdlabs" },
     { name: "X / Formerly Twitter", href: "https://x.com/intent/follow?screen_name=irsyadadl" },
     { name: "CLI", href: "https://github.com/justdlabs/cli" },
-    { name: "Templates", href: "https://irsyad.co/templates" },
+    { name: "Premium Blocks", href: "https://blocks.getjustd.com" },
+    { name: "Templates", href: "https://blocks.getjustd.com/templates" },
   ],
   extra: [
     { name: "Discord", href: "https://discord.gg/DYmVJ66JUD" },

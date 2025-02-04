@@ -2,7 +2,7 @@
 
 import { Button } from "ui"
 
-import { Wrapper } from "@/app/(app)/partials/resources"
+import { Wrapper } from "@/app/(app)/(home)/partials/resources"
 
 export function Buttons() {
   return (

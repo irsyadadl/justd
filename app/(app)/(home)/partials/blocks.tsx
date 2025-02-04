@@ -12,7 +12,7 @@ import RangeCalendarControlledDemo from "@/components/docs/date-and-time/calenda
 import TagFieldDemo from "@/components/docs/forms/tag-field/tag-field-demo"
 import ComboBoxAvatarDemo from "@/components/docs/pickers/combo-box/combo-box-avatar-demo"
 import MultipleSelectDemo from "@/components/docs/pickers/multiple-select/multiple-select-demo"
-import { IconCubeFill } from "justd-icons"
+import { IconArrowRight, IconPackage } from "justd-icons"
 import { Container, DatePicker, DateRangePicker, Grid, Heading, Link, Note, buttonStyles } from "ui"
 import { Wrapper } from "./resources"
 
@@ -21,13 +21,21 @@ export function Blocks() {
     <Container>
       <section
         id="blocks"
-        className="mb-12 **:data-[slot=wrapper-card]:grid **:data-[slot=wrapper-card]:place-content-center"
+        className="**:data-[slot=wrapper-card]:grid **:data-[slot=wrapper-card]:place-content-center sm:mb-12"
       >
-        <Heading level={2} className="mb-6">
-          Blocks
-        </Heading>
-        <div className="space-y-2">
-          <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mb-4 flex items-center justify-between">
+          <Heading level={2} className="sm:text-3xl">
+            Some Components
+          </Heading>
+          <Link
+            href="/docs/2.x/components/buttons/button"
+            className={buttonStyles({ size: "small", appearance: "outline" })}
+          >
+            Show More <IconArrowRight />
+          </Link>
+        </div>
+        <div className="space-y-1">
+          <div className="grid grid-cols-1 gap-1 sm:grid-cols-2 lg:grid-cols-3">
             <Wrapper>
               <TagFieldDemo />
             </Wrapper>
@@ -43,8 +51,8 @@ export function Blocks() {
               <RangeCalendarControlledDemo />
             </Wrapper>
           </div>
-          <Grid columns={{ initial: 1, sm: 2, lg: 3 }} gap={2}>
-            <Grid.Item className="flex flex-col gap-y-4 lg:gap-y-2">
+          <div className="grid grid-cols-1 gap-1 sm:grid-cols-2 lg:grid-cols-3">
+            <Grid.Item className="flex flex-col gap-y-1 lg:gap-y-1">
               <ToolbarBlock />
 
               <Wrapper>
@@ -55,7 +63,7 @@ export function Blocks() {
             </Grid.Item>
 
             <Grid.Item>
-              <div className="grid gap-2">
+              <div className="grid grid-cols-1 gap-1">
                 <Wrapper className="grid gap-6 lg:px-8 lg:py-9">
                   <DateRangePicker className="w-full" label="Reservations date" />
                   <DatePicker className="w-full" label="Event date" />
@@ -73,19 +81,19 @@ export function Blocks() {
               </div>
             </Grid.Item>
 
-            <Grid.Item className="grid gap-2">
+            <Grid.Item className="grid grid-cols-1 gap-1">
               <PopoverOverlays />
               <Wrapper>
                 <SwitchDemo />
               </Wrapper>
               <ModalOverlays />
             </Grid.Item>
-          </Grid>
+          </div>
         </div>
 
-        <div className="mt-8 flex items-center justify-center lg:justify-end">
-          <Link className={buttonStyles()} href="/docs/2.x/components/buttons/button">
-            <IconCubeFill /> Show More
+        <div className="mt-8 flex items-center justify-center">
+          <Link className={buttonStyles()} href="/components">
+            <IconPackage /> Show More
           </Link>
         </div>
       </section>

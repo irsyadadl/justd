@@ -2,7 +2,6 @@
 import { InstallIcon } from "@/app/(app)/icons/partials/controller/install-icon"
 import {
   IconArrowRight,
-  IconBrandJustd,
   IconCheck,
   IconCircleCheckFill,
   IconCirclePerson,
@@ -15,6 +14,7 @@ import {
   IconCubeFill,
   IconDeviceDesktop2,
   IconDeviceDesktop2Fill,
+  IconDuplicateFill,
   IconFileText,
   IconFileTextFill,
   IconFolderCloud,
@@ -78,12 +78,12 @@ export function IconResources() {
     return () => clearTimeout(timer)
   }, [isCopied])
   return (
-    <div className="border-y py-16">
+    <div className="border-y py-8 sm:py-16">
       <Container>
         <div className="grid items-end gap-6 md:grid-cols-2 md:gap-10">
           <div className="">
             <div className="grid size-14 place-content-center rounded-xl bg-secondary/50 ring-1 ring-fg/20 group-hover:bg-secondary">
-              <IconBrandJustd className="size-6" />
+              <IconDuplicateFill className="size-6" />
             </div>
             <h2 className="mt-4 max-w-md font-semibold text-3xl tracking-tight md:text-4xl">
               Empower your design with Justd Icons

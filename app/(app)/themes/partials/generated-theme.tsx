@@ -4,7 +4,7 @@ export function GeneratedTheme({ className, ...props }: React.ComponentProps<"di
   return (
     <div>
       <div className={cn("grid max-h-48 gap-4 overflow-y-auto lg:gap-6", className)} {...props}>
-        <div className="sticky inset-x-0 top-0 h-10 w-full bg-gradient-to-b from-5% from-bg to-transparent" />
+        <div className="sticky inset-x-0 top-0 h-10 w-full bg-linear-to-b from-5% from-bg to-transparent" />
         <div className="-mt-12 -mb-12 flex flex-col gap-y-6">
           <ColorBox>
             <ColorBoxItem variable="bg" />
@@ -64,7 +64,7 @@ export function GeneratedTheme({ className, ...props }: React.ComponentProps<"di
           </ColorBox>
         </div>
 
-        <div className="sticky inset-x-0 bottom-0 h-10 w-full bg-gradient-to-t from-5% from-bg to-transparent" />
+        <div className="sticky inset-x-0 bottom-0 h-10 w-full bg-linear-to-t from-5% from-bg to-transparent" />
       </div>
     </div>
   )
