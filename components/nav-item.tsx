@@ -8,7 +8,7 @@ import { Link } from "react-aria-components"
 import { tv } from "tailwind-variants"
 
 const navLinkStyles = tv({
-  base: "relative flex items-center gap-x-3 py-2 py-4.5 text-muted-fg text-sm tracking-tight transition-colors focus-visible:text-fg data-focused:outline-hidden sm:py-3",
+  base: "**:[svg]:-mx-0.5 relative flex items-center gap-x-2 py-4.5 text-muted-fg text-sm tracking-tight transition-colors focus-visible:text-fg data-focused:outline-hidden sm:py-3",
   variants: {
     isActive: {
       false: "text-muted-fg hover:text-fg forced-colors:text-[Gray]",

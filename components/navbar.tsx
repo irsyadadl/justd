@@ -81,6 +81,7 @@ export function Navbar() {
                   </NavLink>
 
                   <NavLink target="_blank" href="https://blocks.getjustd.com">
+                    <IconBrandJustdBlocks />
                     Blocks
                   </NavLink>
                   <Menu>
@@ -241,6 +242,10 @@ export function NavbarDropdown() {
             <Menu.Item href="/blocks">
               <IconWindowVisit />
               <Menu.Label>Blocks</Menu.Label>
+            </Menu.Item>
+            <Menu.Item target="_blank" href="https://blocks.getjustd.com">
+              <IconBrandJustdBlocks />
+              <Menu.Label>Premium Blocks</Menu.Label>
             </Menu.Item>
             <Menu.Item href="/icons">
               <IconBrandJustd />
