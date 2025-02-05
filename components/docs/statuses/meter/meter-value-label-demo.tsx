@@ -12,7 +12,7 @@ export default function MeterValueLabelDemo() {
       }}
       valueLabel="25GB of 100GB"
       label="Progress"
-      value={75.25}
+      value={25}
     />
   )
 }
