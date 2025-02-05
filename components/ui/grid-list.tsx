@@ -55,9 +55,9 @@ const GridListItem = ({ className, ...props }: GridListItemProps) => {
         itemStyles({ ...renderProps, className }),
       )}
     >
-      {({ selectionMode, selectionBehavior, allowsDragging }) => (
+      {(values) => (
         <>
-          {allowsDragging && (
+          {values.allowsDragging && (
             <Button
               slot="drag"
               className="cursor-grab data-dragging:cursor-grabbing *:data-[slot=icon]:text-muted-fg"
@@ -70,10 +70,10 @@ const GridListItem = ({ className, ...props }: GridListItemProps) => {
             aria-hidden
             className="absolute inset-y-0 left-0 hidden h-full w-0.5 bg-primary group-data-selected:block"
           />
-          {selectionMode === "multiple" && selectionBehavior === "toggle" && (
+          {values.selectionMode === "multiple" && values.selectionBehavior === "toggle" && (
             <Checkbox className="-mr-2" slot="selection" />
           )}
-          {props.children as React.ReactNode}
+          {typeof props.children === "function" ? props.children(values) : props.children}
         </>
       )}
     </GridListItemPrimitive>
