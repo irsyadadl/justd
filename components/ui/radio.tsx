@@ -90,14 +90,15 @@ const Radio = ({ description, label, ref, ...props }: RadioProps) => {
             })}
           />
           <div className="flex flex-col gap-1">
-            {(label || description) ? (
+            {label || description ? (
               <>
                 {label && <Label>{label}</Label>}
                 {description && <Description className="block">{description}</Description>}
               </>
-            ) : props.children as React.ReactNode}
+            ) : (
+              (props.children as React.ReactNode)
+            )}
           </div>
-
         </div>
       )}
     </RadioPrimitive>
