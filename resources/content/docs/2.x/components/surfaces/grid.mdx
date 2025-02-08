@@ -3,7 +3,7 @@ title: "Grid"
 description: Check out this Responsive Grid component! It adjusts columns and gaps for any device, enhancing your UI’s vibe and usability across all screen sizes.
 order: 2
 published: true
-status: alpha
+status: beta
 ---
 
 ## Basic
@@ -56,24 +56,27 @@ Aight, just a heads up, all them props got that responsive mojo. You can tweak t
 ### Grid
 These props let you tweak the grid to your vibe.
 
-| Property | Type                                                  | Description                                                                               |
-|----------|-------------------------------------------------------|-------------------------------------------------------------------------------------------|
-| columns  | number \| object                                      | Defines the number of columns in the grid. Can be a number or an object with breakpoints. |
-| gap      | number \| object                                      | Defines the gap between each item in the grid.                                            |
-| gapX     | number \| object                                      | Defines the gap between each item in the grid on the x-axis.                              |
-| gapY     | number \| object                                      | Defines the gap between each item in the grid on the y-axis.                              |
-| flow     | 'row' \| 'col' \| 'rowDense' \| 'colDense' \| 'dense' | Defines the flow direction of the grid.                                                   |
-| rows     | number \| object                                      | Defines the number of rows in the grid.                                                   |
-| debug    | boolean                                               | Adds a border around each item in the grid.                                               |
+| Property    | Type                                                  |
+|-------------|-------------------------------------------------------|
+| columns     | string \| number \| object                            |
+| gap         | number \| object                                      |
+| gapX        | number \| object                                      |
+| gapY        | number \| object                                      |
+| autoRows    | 'auto' \| 'min' \| 'max' \| 'fr'                      |
+| autoColumns | 'auto' \| 'min' \| 'max' \| 'fr'                      |
+| flow        | 'row' \| 'col' \| 'rowDense' \| 'colDense' \| 'dense' |
+| rows        | number \| object                                      |
+| debug       | boolean                                               |
 
 ### GridItem
 Props like `colSpan`, `rowSpan`, `colStart`, `colEnd`, `rowStart`, and `rowEnd` let you position grid items exactly where you want 'em in the grid layout.
 
-| Property | Type             | Description                                                                                  |
-|----------|------------------|----------------------------------------------------------------------------------------------|
-| colSpan  | number \| object | Defines the number of columns the item spans. Can be a number or an object with breakpoints. |
-| rowSpan  | number \| object | Defines the number of rows the item spans. Can be a number or an object with breakpoints.    |
-| colStart | number \| object | Defines the column the item starts at. Can be a number or an object with breakpoints.        |
-| colEnd   | number \| object | Defines the column the item ends at. Can be a number or an object with breakpoints.          |
-| rowStart | number \| object | Defines the row the item starts at. Can be a number or an object with breakpoints.           |
-| rowEnd   | number \| object | Defines the row the item ends at. Can be a number or an object with breakpoints.             |
+| Property | Type                       |
+|----------|----------------------------|
+| colSpan  | string \| number \| object |
+| rowSpan  | string \| number \| object |
+| colStart | string \| number \| object |
+| colEnd   | string \| number \| object |
+| rowStart | string \| number \| object |
+| rowEnd   | string \| number \| object |
+| order    | string \| number \| object |
