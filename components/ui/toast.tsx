@@ -45,12 +45,12 @@ const Toast = ({ ...props }: ToasterProps) => {
           default: "bg-bg text-fg [--gray2:theme(--color-fg/10%)]",
           content: "pr-6 *:data-description:text-current/65! *:data-description:text-sm!",
           error:
-            "inset-ring-danger/15 dark:inset-ring-danger/25 [--error-bg:theme(--color-danger/10%)] [--error-border:transparent] [--error-text:var(--color-danger)]",
-          info: "inset-ring-sky-600/15 dark:inset-ring-sky-500/20 [--info-border:transparent] [--info-bg:theme(--color-sky-500/10%)] [--info-text:var(--color-sky-700)] dark:[--info-bg:theme(--color-sky-500/15%)] dark:[--info-text:var(--color-sky-400)]",
+            "inset-ring-danger/15 dark:inset-ring-danger/25 [--error-bg:theme(--color-danger/5%)] [--error-border:transparent] [--error-text:var(--color-danger)]",
+          info: "inset-ring-sky-600/15 dark:inset-ring-sky-500/20 [--info-border:transparent] [--info-bg:theme(--color-sky-500/5%)] [--info-text:var(--color-sky-700)] dark:[--info-bg:theme(--color-sky-500/15%)] dark:[--info-text:var(--color-sky-400)]",
           warning:
-            "inset-ring-warning/30 dark:inset-ring-warning/15 [--warning-bg:theme(--color-warning/20%)] dark:[--warning-bg:theme(--color-warning/10%)] [--warning-border:transparent] [--warning-text:var(--color-warning-fg)] dark:[--warning-text:var(--color-warning)]",
+            "inset-ring-warning/30 dark:inset-ring-warning/15 [--warning-bg:theme(--color-warning/10%)] dark:[--warning-bg:theme(--color-warning/10%)] [--warning-border:transparent] [--warning-text:var(--color-warning-fg)] dark:[--warning-text:var(--color-warning)]",
           success:
-            "inset-ring-success/20 [--success-bg:theme(--color-success/80%)] dark:[--success-bg:theme(--color-success/20%)] [--success-border:transparent] [--success-text:#fff] dark:[--success-text:var(--color-success)]",
+            "inset-ring-success/20 [--success-bg:theme(--color-success/5%)] dark:[--success-bg:theme(--color-success/20%)] [--success-border:transparent] [--success-text:var(--color-success)] dark:[--success-text:var(--color-success)]",
           cancelButton: buttonStyles({
             className:
               "hover:border-secondary-fg/10 hover:bg-secondary/90 self-start absolute bottom-4 left-4 justify-self-start",
