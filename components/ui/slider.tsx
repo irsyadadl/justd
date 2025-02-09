@@ -4,13 +4,13 @@ import React, { useState } from "react"
 
 import type { SliderProps as SliderPrimitiveProps, SliderThumbProps } from "react-aria-components"
 import {
-  composeRenderProps,
-  Slider as SliderPrimitive,
   SliderOutput,
+  Slider as SliderPrimitive,
   SliderStateContext,
   SliderThumb,
   SliderTrack,
   type SliderTrackProps,
+  composeRenderProps,
 } from "react-aria-components"
 import { tv } from "tailwind-variants"
 

@@ -10,12 +10,12 @@ import type {
   ValidationResult,
 } from "react-aria-components"
 import {
-  composeRenderProps,
   FieldError as FieldErrorPrimitive,
   Group,
   Input as InputPrimitive,
   Label as LabelPrimitive,
   Text,
+  composeRenderProps,
 } from "react-aria-components"
 import { tv } from "tailwind-variants"
 
@@ -35,13 +35,10 @@ const fieldStyles = tv({
     description: "text-pretty text-muted-fg text-sm/6",
     label: "w-fit cursor-default font-medium text-secondary-fg text-sm/6",
     fieldError: "text-danger text-sm/6 forced-colors:text-[Mark]",
-    input: [
-      "w-full min-w-0 bg-transparent px-2.5 py-2 text-base text-fg placeholder-muted-fg outline-hidden data-focused:outline-hidden sm:text-sm/6 [&::-ms-reveal]:hidden",
-    ],
   },
 })
 
-const { description, label, fieldError, input } = fieldStyles()
+const { description, label, fieldError } = fieldStyles()
 
 const Label = ({ className, ...props }: LabelProps) => {
   return <LabelPrimitive {...props} className={label({ className })} />
@@ -84,9 +81,9 @@ const fieldGroupStyles = tv({
     "relative [&>[role=progressbar]]:mr-2.5",
     "**:data-[slot=icon]:size-4 **:data-[slot=icon]:shrink-0 **:[button]:shrink-0",
     "[&>button:has([data-slot=icon]):first-child]:left-0 [&>button:has([data-slot=icon]):last-child]:right-0 [&>button:has([data-slot=icon])]:absolute",
-    "*:data-[slot=icon]:pointer-events-none *:data-[slot=icon]:absolute *:data-[slot=icon]:top-3 *:data-[slot=icon]:z-10 *:data-[slot=icon]:size-4 *:data-[slot=icon]:text-muted-fg",
+    "*:data-[slot=icon]:pointer-events-none *:data-[slot=icon]:absolute *:data-[slot=icon]:top-[calc(var(--spacing)*2.7)] *:data-[slot=icon]:z-10 *:data-[slot=icon]:size-4 *:data-[slot=icon]:text-muted-fg",
     "[&>[data-slot=icon]:first-child]:left-2.5 [&>[data-slot=icon]:last-child]:right-2.5",
-    "[&:has([data-slot=icon]):first-child]:[&_input]:pl-8 [&:has([data-slot=icon]):last-child]:[&_input]:pr-8",
+    "[&:has([data-slot=icon]):first-child]:pl-7.5 [&:has([data-slot=icon]):last-child]:pr-6",
     "*:[button]:h-8 *:[button]:rounded-[calc(var(--radius-sm)-1px)] *:[button]:px-2.5",
     "[&>button:first-child]:ml-[calc(var(--spacing)*0.7)] [&>button:last-child]:mr-[calc(var(--spacing)*0.7)]",
   ],
@@ -122,7 +119,10 @@ const Input = ({ className, ref, ...props }: InputProps) => {
     <InputPrimitive
       ref={ref}
       {...props}
-      className={composeTailwindRenderProps(className, input())}
+      className={composeTailwindRenderProps(
+        className,
+        "w-full min-w-0 bg-transparent px-2.5 py-2 text-base text-fg placeholder-muted-fg outline-hidden data-focused:outline-hidden sm:text-sm/6 [&::-ms-reveal]:hidden [&::-webkit-search-cancel-button]:hidden",
+      )}
     />
   )
 }

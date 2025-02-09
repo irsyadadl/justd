@@ -14,13 +14,13 @@ import type {
 import {
   Button,
   Collection,
-  composeRenderProps,
   Header,
-  Menu as MenuPrimitive,
   MenuItem as MenuItemPrimitive,
+  Menu as MenuPrimitive,
   MenuSection as MenuSectionPrimitive,
   MenuTrigger as MenuTriggerPrimitive,
   SubmenuTrigger as SubmenuTriggerPrimitive,
+  composeRenderProps,
 } from "react-aria-components"
 import type { VariantProps } from "tailwind-variants"
 import { tv } from "tailwind-variants"
@@ -28,11 +28,11 @@ import { tv } from "tailwind-variants"
 import { cn } from "@/utils/classes"
 import {
   DropdownItemDetails,
-  dropdownItemStyles,
   DropdownKeyboard,
   DropdownLabel,
-  dropdownSectionStyles,
   DropdownSeparator,
+  dropdownItemStyles,
+  dropdownSectionStyles,
 } from "./dropdown"
 import { Popover } from "./popover"
 

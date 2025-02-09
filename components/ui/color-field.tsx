@@ -1,6 +1,9 @@
 "use client"
 
-import type { ColorFieldProps as ColorFieldPrimitiveProps, ValidationResult, } from "react-aria-components"
+import type {
+  ColorFieldProps as ColorFieldPrimitiveProps,
+  ValidationResult,
+} from "react-aria-components"
 import { ColorField as ColorFieldPrimitive } from "react-aria-components"
 
 import { ColorPicker } from "./color-picker"

@@ -4,7 +4,12 @@ import { useEffect, useRef } from "react"
 
 import { IconX } from "justd-icons"
 import type { HeadingProps } from "react-aria-components"
-import { Button as ButtonPrimitive, Dialog as DialogPrimitive, Heading, Text, } from "react-aria-components"
+import {
+  Button as ButtonPrimitive,
+  Dialog as DialogPrimitive,
+  Heading,
+  Text,
+} from "react-aria-components"
 import { tv } from "tailwind-variants"
 
 import { useMediaQuery } from "@/utils/use-media-query"

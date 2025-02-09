@@ -1,4 +1,4 @@
-import { tv, type VariantProps } from "tailwind-variants"
+import { type VariantProps, tv } from "tailwind-variants"
 
 const avatar = tv({
   base: [

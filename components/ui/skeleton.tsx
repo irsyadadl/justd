@@ -1,6 +1,6 @@
 import type React from "react"
 
-import { tv, type VariantProps } from "tailwind-variants"
+import { type VariantProps, tv } from "tailwind-variants"
 
 const skeletonStyles = tv({
   base: "shrink-0 animate-pulse",

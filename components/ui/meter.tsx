@@ -2,7 +2,10 @@
 
 import { IconCircleExclamation } from "justd-icons"
 import { motion } from "motion/react"
-import { Meter as MeterPrimitive, type MeterProps as MeterPrimitiveProps, } from "react-aria-components"
+import {
+  Meter as MeterPrimitive,
+  type MeterProps as MeterPrimitiveProps,
+} from "react-aria-components"
 
 import { Label } from "./field"
 import { composeTailwindRenderProps } from "./primitive"

@@ -5,7 +5,7 @@ import type {
   RadioProps as RadioPrimitiveProps,
   ValidationResult,
 } from "react-aria-components"
-import { Radio as RadioPrimitive, RadioGroup as RadioGroupPrimitive } from "react-aria-components"
+import { RadioGroup as RadioGroupPrimitive, Radio as RadioPrimitive } from "react-aria-components"
 import { tv } from "tailwind-variants"
 
 import { Description, FieldError, Label } from "./field"

@@ -7,8 +7,8 @@ import type {
   ValidationResult,
 } from "react-aria-components"
 import {
-  Checkbox as CheckboxPrimitive,
   CheckboxGroup as CheckboxGroupPrimitive,
+  Checkbox as CheckboxPrimitive,
   composeRenderProps,
 } from "react-aria-components"
 import { tv } from "tailwind-variants"

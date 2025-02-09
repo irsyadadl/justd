@@ -4,7 +4,11 @@ import { useCallback, useEffect, useId, useRef, useState } from "react"
 
 import { IconChevronLgDown } from "justd-icons"
 import { useFilter } from "react-aria"
-import type { ComboBoxProps as ComboBoxPrimitiveProps, Key, ValidationResult, } from "react-aria-components"
+import type {
+  ComboBoxProps as ComboBoxPrimitiveProps,
+  Key,
+  ValidationResult,
+} from "react-aria-components"
 import { ComboBox } from "react-aria-components"
 import type { ListData } from "react-stately"
 import { useListData } from "react-stately"

@@ -4,7 +4,6 @@ import { cn } from "@/utils/classes"
 import { IconCheck } from "justd-icons"
 import {
   Collection,
-  composeRenderProps,
   Header,
   ListBoxItem as ListBoxItemPrimitive,
   type ListBoxItemProps,
@@ -14,6 +13,7 @@ import {
   type SeparatorProps,
   Text,
   type TextProps,
+  composeRenderProps,
 } from "react-aria-components"
 import { tv } from "tailwind-variants"
 import { Keyboard } from "./keyboard"

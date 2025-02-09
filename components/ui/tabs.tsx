@@ -10,11 +10,11 @@ import type {
   TabsProps as TabsPrimitiveProps,
 } from "react-aria-components"
 import {
-  composeRenderProps,
-  Tab as TabPrimitive,
   TabList as TabListPrimitive,
   TabPanel as TabPanelPrimitive,
+  Tab as TabPrimitive,
   Tabs as TabsPrimitive,
+  composeRenderProps,
 } from "react-aria-components"
 import { twJoin } from "tailwind-merge"
 import { tv } from "tailwind-variants"

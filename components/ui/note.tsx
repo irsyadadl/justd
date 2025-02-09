@@ -1,5 +1,5 @@
 import { IconCircleCheckFill, IconCircleExclamationFill, IconCircleInfoFill } from "justd-icons"
-import { tv, type VariantProps } from "tailwind-variants"
+import { type VariantProps, tv } from "tailwind-variants"
 
 const noteStyles = tv({
   base: [
