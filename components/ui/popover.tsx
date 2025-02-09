@@ -6,14 +6,14 @@ import type {
   PopoverProps as PopoverPrimitiveProps,
 } from "react-aria-components"
 import {
+  composeRenderProps,
   type DialogProps,
   DialogTrigger,
   Modal,
   ModalOverlay,
   OverlayArrow,
-  PopoverContext,
   Popover as PopoverPrimitive,
-  composeRenderProps,
+  PopoverContext,
   useSlottedContext,
 } from "react-aria-components"
 import { tv } from "tailwind-variants"
@@ -21,12 +21,7 @@ import { tv } from "tailwind-variants"
 import { cn } from "@/utils/classes"
 import { useMediaQuery } from "@/utils/use-media-query"
 import { twMerge } from "tailwind-merge"
-import type {
-  DialogBodyProps,
-  DialogFooterProps,
-  DialogHeaderProps,
-  DialogTitleProps,
-} from "./dialog"
+import type { DialogBodyProps, DialogFooterProps, DialogHeaderProps, DialogTitleProps, } from "./dialog"
 import { Dialog } from "./dialog"
 
 type PopoverProps = DialogTriggerProps

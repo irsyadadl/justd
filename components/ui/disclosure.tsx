@@ -2,18 +2,18 @@
 
 import { IconChevronLeft } from "justd-icons"
 import type {
-  DisclosureGroupProps as AccordionProps,
   ButtonProps,
-  DisclosureProps as CollapsibleProps,
+  DisclosureGroupProps as AccordionProps,
   DisclosurePanelProps as DisclosurePanelPrimitiveProps,
+  DisclosureProps as CollapsibleProps,
 } from "react-aria-components"
 import {
-  DisclosureGroup as Accordion,
   Button,
+  composeRenderProps,
   Disclosure as Collapsible,
+  DisclosureGroup as Accordion,
   DisclosurePanel as CollapsiblePanel,
   Heading,
-  composeRenderProps,
 } from "react-aria-components"
 import { tv } from "tailwind-variants"
 import { composeTailwindRenderProps } from "./primitive"

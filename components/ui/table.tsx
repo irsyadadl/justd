@@ -7,9 +7,9 @@ import type {
   CellProps,
   ColumnProps,
   ColumnResizerProps,
-  TableHeaderProps as HeaderProps,
   RowProps,
   TableBodyProps,
+  TableHeaderProps as HeaderProps,
   TableProps as TablePrimitiveProps,
 } from "react-aria-components"
 import {
@@ -18,12 +18,12 @@ import {
   Collection,
   Column,
   ColumnResizer as ColumnResizerPrimitive,
+  composeRenderProps,
   ResizableTableContainer,
   Row,
+  Table as TablePrimitive,
   TableBody as TableBodyPrimitive,
   TableHeader as TableHeaderPrimitive,
-  Table as TablePrimitive,
-  composeRenderProps,
   useTableOptions,
 } from "react-aria-components"
 import { tv } from "tailwind-variants"

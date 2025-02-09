@@ -1,10 +1,7 @@
 "use client"
 
 import type { ColorSwatchPickerItemProps, ColorSwatchPickerProps } from "react-aria-components"
-import {
-  ColorSwatchPickerItem,
-  ColorSwatchPicker as ColorSwatchPickerPrimitive,
-} from "react-aria-components"
+import { ColorSwatchPicker as ColorSwatchPickerPrimitive, ColorSwatchPickerItem, } from "react-aria-components"
 import { tv } from "tailwind-variants"
 
 import { ColorSwatch } from "./color-swatch"

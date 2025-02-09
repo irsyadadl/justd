@@ -1,10 +1,6 @@
 "use client"
 
-import {
-  Link as LinkPrimitive,
-  type LinkProps as LinkPrimitiveProps,
-  composeRenderProps,
-} from "react-aria-components"
+import { composeRenderProps, Link as LinkPrimitive, type LinkProps as LinkPrimitiveProps, } from "react-aria-components"
 import { tv } from "tailwind-variants"
 
 import { focusButtonStyles } from "./primitive"

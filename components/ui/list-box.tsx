@@ -1,14 +1,11 @@
 "use client"
 
 import { IconCheck, IconHamburger } from "justd-icons"
-import type {
-  ListBoxItemProps as ListBoxItemPrimitiveProps,
-  ListBoxProps,
-} from "react-aria-components"
+import type { ListBoxItemProps as ListBoxItemPrimitiveProps, ListBoxProps, } from "react-aria-components"
 import {
-  ListBoxItem as ListBoxItemPrimitive,
-  ListBox as ListBoxPrimitive,
   composeRenderProps,
+  ListBox as ListBoxPrimitive,
+  ListBoxItem as ListBoxItemPrimitive,
 } from "react-aria-components"
 import { tv } from "tailwind-variants"
 

@@ -1,9 +1,6 @@
 "use client"
 
-import type {
-  DateValue,
-  RangeCalendarProps as RangeCalendarPrimitiveProps,
-} from "react-aria-components"
+import type { DateValue, RangeCalendarProps as RangeCalendarPrimitiveProps, } from "react-aria-components"
 import {
   CalendarCell,
   CalendarGrid,

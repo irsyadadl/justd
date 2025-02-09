@@ -1,27 +1,12 @@
 "use client"
 
 import { IconChevronLgDown } from "justd-icons"
-import type {
-  ListBoxProps,
-  SelectProps as SelectPrimitiveProps,
-  ValidationResult,
-} from "react-aria-components"
-import {
-  Button,
-  Select as SelectPrimitive,
-  SelectValue,
-  composeRenderProps,
-} from "react-aria-components"
+import type { ListBoxProps, SelectProps as SelectPrimitiveProps, ValidationResult, } from "react-aria-components"
+import { Button, composeRenderProps, Select as SelectPrimitive, SelectValue, } from "react-aria-components"
 import { tv } from "tailwind-variants"
 
 import type { Placement } from "@react-types/overlays"
-import {
-  DropdownItem,
-  DropdownItemDetails,
-  DropdownLabel,
-  DropdownSection,
-  DropdownSeparator,
-} from "./dropdown"
+import { DropdownItem, DropdownItemDetails, DropdownLabel, DropdownSection, DropdownSeparator, } from "./dropdown"
 import { Description, FieldError, Label } from "./field"
 import { ListBox } from "./list-box"
 import { Popover } from "./popover"

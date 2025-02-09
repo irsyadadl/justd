@@ -14,6 +14,8 @@ import type {
   SeparatorProps as SidebarSeparatorProps,
 } from "react-aria-components"
 import {
+  Button as Trigger,
+  composeRenderProps,
   Disclosure,
   DisclosureGroup,
   DisclosurePanel,
@@ -22,8 +24,6 @@ import {
   Link,
   Separator,
   Text,
-  Button as Trigger,
-  composeRenderProps,
 } from "react-aria-components"
 import { twJoin } from "tailwind-merge"
 import { tv } from "tailwind-variants"

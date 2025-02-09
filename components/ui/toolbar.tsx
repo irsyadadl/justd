@@ -3,7 +3,7 @@
 import { createContext, useContext } from "react"
 
 import type { GroupProps, SeparatorProps, ToolbarProps } from "react-aria-components"
-import { Group, Toolbar as ToolbarPrimitive, composeRenderProps } from "react-aria-components"
+import { composeRenderProps, Group, Toolbar as ToolbarPrimitive } from "react-aria-components"
 import { tv } from "tailwind-variants"
 
 import { cn } from "@/utils/classes"

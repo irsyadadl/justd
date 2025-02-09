@@ -3,9 +3,9 @@
 import {
   ColorSlider as ColorSliderPrimitive,
   type ColorSliderProps as ColorSliderPrimitiveProps,
+  composeRenderProps,
   SliderOutput,
   SliderTrack,
-  composeRenderProps,
 } from "react-aria-components"
 import { tv } from "tailwind-variants"
 

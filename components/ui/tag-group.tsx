@@ -10,10 +10,10 @@ import type {
 } from "react-aria-components"
 import {
   Button,
+  composeRenderProps,
+  Tag as TagPrimitive,
   TagGroup as TagGroupPrimitive,
   TagList as TagListPrimitive,
-  Tag as TagPrimitive,
-  composeRenderProps,
 } from "react-aria-components"
 import { tv } from "tailwind-variants"
 

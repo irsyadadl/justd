@@ -6,9 +6,9 @@ import { IconHamburger } from "justd-icons"
 import type { GridListItemProps, GridListProps } from "react-aria-components"
 import {
   Button,
-  GridListItem as GridListItemPrimitive,
-  GridList as GridListPrimitive,
   composeRenderProps,
+  GridList as GridListPrimitive,
+  GridListItem as GridListItemPrimitive,
 } from "react-aria-components"
 import { tv } from "tailwind-variants"
 

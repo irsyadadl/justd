@@ -4,10 +4,10 @@ import { IconChevronRight } from "justd-icons"
 import type { TreeItemProps, TreeProps } from "react-aria-components"
 import {
   Button,
-  UNSTABLE_TreeItemContent as TreeItemContentPrimitive,
-  UNSTABLE_TreeItem as TreeItemPrimitive,
-  UNSTABLE_Tree as TreePrimitive,
   composeRenderProps,
+  UNSTABLE_Tree as TreePrimitive,
+  UNSTABLE_TreeItem as TreeItemPrimitive,
+  UNSTABLE_TreeItemContent as TreeItemContentPrimitive,
 } from "react-aria-components"
 import { tv } from "tailwind-variants"
 

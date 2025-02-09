@@ -1,5 +1,5 @@
 import { cn } from "@/utils/classes"
-import { type VariantProps, tv } from "tailwind-variants"
+import { tv, type VariantProps } from "tailwind-variants"
 
 const gridStyles = tv(
   {

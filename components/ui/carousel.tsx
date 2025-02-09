@@ -6,12 +6,12 @@ import { createContext, use, useCallback, useEffect, useState } from "react"
 import useEmblaCarousel, { type UseEmblaCarouselType } from "embla-carousel-react"
 import { IconChevronLgLeft, IconChevronLgRight } from "justd-icons"
 import {
+  composeRenderProps,
   ListBox,
   ListBoxItem,
   type ListBoxItemProps,
   ListBoxSection,
   type ListBoxSectionProps,
-  composeRenderProps,
 } from "react-aria-components"
 
 import { cn } from "@/utils/classes"
