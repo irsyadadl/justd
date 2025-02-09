@@ -6,26 +6,11 @@ import {
   type SearchFieldProps as SearchFieldPrimitiveProps,
   type ValidationResult,
 } from "react-aria-components"
-import { tv } from "tailwind-variants"
 
 import { Button } from "./button"
 import { Description, FieldError, FieldGroup, Input, Label } from "./field"
 import { Loader } from "./loader"
 import { composeTailwindRenderProps } from "./primitive"
-
-const searchFieldStyles = tv({
-  slots: {
-    base: "group flex min-w-10 flex-col gap-y-1.5",
-    searchIcon:
-      "ml-2.5 size-4 shrink-0 text-muted-fg group-data-disabled:text-muted-fg forced-colors:text-[ButtonText] forced-colors:group-data-disabled:text-[GrayText]",
-    clearButton: [
-      "mr-1 size-8 text-muted-fg data-hovered:bg-transparent data-pressed:bg-transparent data-hovered:text-fg data-pressed:text-fg group-data-empty:invisible",
-    ],
-    input: "[&::-webkit-search-cancel-button]:hidden",
-  },
-})
-
-const { base, searchIcon, clearButton, input } = searchFieldStyles()
 
 interface SearchFieldProps extends SearchFieldPrimitiveProps {
   label?: string
@@ -48,22 +33,31 @@ const SearchField = ({
     <SearchFieldPrimitive
       aria-label={placeholder ?? props["aria-label"] ?? "Search..."}
       {...props}
-      className={composeTailwindRenderProps(className, base())}
+      className={composeTailwindRenderProps(className, "group/search-field flex flex-col gap-y-1")}
     >
-      {label && <Label>{label}</Label>}
-      <FieldGroup>
-        <IconSearch aria-hidden className={searchIcon()} />
-        <Input placeholder={placeholder ?? "Search..."} className={input()} />
-        {isPending ? (
-          <Loader variant="spin" />
-        ) : (
-          <Button size="square-petite" appearance="plain" className={clearButton()}>
-            <IconX aria-hidden />
-          </Button>
-        )}
-      </FieldGroup>
-      {description && <Description>{description}</Description>}
-      <FieldError>{errorMessage}</FieldError>
+      {!props.children ? (
+        <>
+          {label && <Label>{label}</Label>}
+          <FieldGroup>
+            <IconSearch />
+            <Input placeholder={placeholder ?? "Search..."} />
+            {isPending ? (
+              <Loader variant="spin" />
+            ) : (
+              <Button
+                appearance="plain"
+                className="size-8 text-muted-fg data-hovered:bg-transparent data-pressed:bg-transparent data-hovered:text-fg data-pressed:text-fg group-data-empty/search-field:invisible"
+              >
+                <IconX />
+              </Button>
+            )}
+          </FieldGroup>
+          {description && <Description>{description}</Description>}
+          <FieldError>{errorMessage}</FieldError>
+        </>
+      ) : (
+        props.children
+      )}
     </SearchFieldPrimitive>
   )
 }

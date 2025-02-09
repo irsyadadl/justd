@@ -36,13 +36,23 @@ const TimeField = <T extends TimeValue>({
   return (
     <TimeFieldPrimitive
       {...props}
-      className={composeTailwindRenderProps(className, "group flex flex-col gap-y-1.5")}
+      className={composeTailwindRenderProps(className, "group/time-field flex flex-col gap-y-1")}
     >
       {label && <Label>{label}</Label>}
       <FieldGroup>
-        {prefix ? <span data-slot="prefix">{prefix}</span> : null}
+        {prefix && typeof prefix === "string" ? (
+          <span className="ml-2 text-muted-fg">{prefix}</span>
+        ) : (
+          prefix
+        )}
         <DateInput className={timeFieldStyles} />
-        {suffix ? <span data-slot="suffix">{suffix}</span> : null}
+        {suffix ? (
+          typeof suffix === "string" ? (
+            <span className="mr-2 text-muted-fg">{suffix}</span>
+          ) : (
+            suffix
+          )
+        ) : null}
       </FieldGroup>
       {description && <Description>{description}</Description>}
       <FieldError>{errorMessage}</FieldError>
