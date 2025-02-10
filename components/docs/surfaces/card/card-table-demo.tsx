@@ -33,7 +33,7 @@ export default function CardTableDemo() {
                     <Menu.Trigger>
                       <IconDotsVertical />
                     </Menu.Trigger>
-                    <Menu.Content showArrow placement="left top">
+                    <Menu.Content placement="left top">
                       <Menu.Item>
                         <IconEye /> View
                       </Menu.Item>

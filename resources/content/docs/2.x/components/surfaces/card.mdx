@@ -6,7 +6,7 @@ order: 1
 ---
 ## Basic
 Top spots to hit in 2024, no cap!
-<How toUse="surfaces/card/card-demo" />
+<How toUse="surfaces/card/card-demo"/>
 
 ## Installation
 <Installation options={{ isComponent: true }} items={['card']}/>
@@ -23,16 +23,20 @@ Top spots to hit in 2024, no cap!
 
 ## With Form
 Peep this for a slick login setup, easy peasy.
-<How isCenter={false} toUse="surfaces/card/card-login-form-demo" />
+<How isCenter={false} toUse="surfaces/card/card-login-form-demo"/>
 
 ## With Table
 Check out the lowdown with all the deets laid out.
-<How isCenter={false} withNoPadding toUse="surfaces/card/card-table-demo" />
+<How isCenter={false} withNoPadding toUse="surfaces/card/card-table-demo"/>
 
 ## Section Title
 Sometimes, you may only need a card header without wrapping container itself. Of course, you need don't want the default padding, right? So I have prop called `withoutPadding` to help you out.
 ```
-<Card.Header withoutPadding title="List Daemons" description="List of daemons to use in your sites." />
+<Card.Header
+  className='p-0 mb-6'
+  title="List Daemons"
+  description="List of daemons to use in your sites."
+/>
 ```
 
 For table docs, check out the [Table](/docs/components/collections/table) docs.

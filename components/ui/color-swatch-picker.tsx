@@ -2,7 +2,7 @@
 
 import type { ColorSwatchPickerItemProps, ColorSwatchPickerProps } from "react-aria-components"
 import {
-  ColorSwatchPickerItem,
+  ColorSwatchPickerItem as ColorSwatchPickerItemPrimitive,
   ColorSwatchPicker as ColorSwatchPickerPrimitive,
 } from "react-aria-components"
 import { tv } from "tailwind-variants"
@@ -32,21 +32,21 @@ const itemStyles = tv({
   base: "relative rounded-lg data-disabled:opacity-50",
 })
 
-const SwatchPickerItem = (props: ColorSwatchPickerItemProps) => {
+const ColorSwatchPickerItem = (props: ColorSwatchPickerItemProps) => {
   return (
-    <ColorSwatchPickerItem {...props} className={itemStyles}>
+    <ColorSwatchPickerItemPrimitive {...props} className={itemStyles}>
       {({ isSelected }) => (
         <>
           <ColorSwatch />
           {isSelected && (
-            <div className="absolute top-0 left-0 h-full w-full rounded-[calc(var(--radius-lg)-3.9px)] rounded-md outline-hidden ring-1 ring-fg/30 ring-inset forced-color-adjust-none" />
+            <div className="absolute top-0 left-0 size-full rounded-md outline-hidden ring-1 ring-fg/30 ring-inset forced-color-adjust-none" />
           )}
         </>
       )}
-    </ColorSwatchPickerItem>
+    </ColorSwatchPickerItemPrimitive>
   )
 }
 
-ColorSwatchPicker.Item = SwatchPickerItem
+ColorSwatchPicker.Item = ColorSwatchPickerItem
 
 export { ColorSwatchPicker }
