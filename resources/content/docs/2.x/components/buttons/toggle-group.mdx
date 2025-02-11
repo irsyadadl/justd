@@ -6,43 +6,56 @@ published: true
 references: [https://react-spectrum.adobe.com/react-aria/ToggleButtonGroup.html#props]
 ---
 
-
 ## Basic
 
-A toggle button lets folks flip a choice on or off, like switching between two vibes or modes.
+A toggle button group allows users to switch between multiple options, enabling one or more selections at a time.
+
 <How toUse="buttons/toggle-group/toggle-group-demo" />
 
 ## Installation
+
 <Installation options={{isComponent: true}} items={['toggle-group']}/>
 
 ## Composed Components
+
 <Composed components={['toggle']}/>
 
 ## Manual Installation
+
 <Installation options={{isManual: true}} items={['react-aria-components']}/>
 
 <SourceCode toShow='toggle'/>
 
 ## Anatomy
+
 <Anatomy show='toggle-group-anatomy'/>
 
 ## Orientation
-By default, the toggle button group is horizontally oriented. You can change it to a vertical orientation by using the `orientation` prop.
+
+By default, the toggle button group is arranged horizontally. Use the `orientation` prop to switch to a vertical layout.
+
 <How toUse="buttons/toggle-group/toggle-group-orientation-demo" />
 
 ## Selection Mode
-You can change the selection mode of the toggle button group by using the `selectionMode` prop.
+
+Modify the selection behavior using the `selectionMode` prop.
+
 <How toUse="buttons/toggle-group/toggle-group-selection-mode-demo" />
 
 ## Appearance
-You can change the appearance of the toggle button group by using the `appearance` prop.
+
+Customize the look of the toggle button group with the `appearance` prop.
+
 <How toUse="buttons/toggle-group/toggle-group-appearance-demo" />
 
 ## Gap
-By default, the toggle button group has no gap between the buttons. You can change the gap by using the `gap` prop.
+
+By default, the toggle button group has no spacing between buttons. Adjust the spacing using the `gap` prop.
+
 <How toUse="buttons/toggle-group/toggle-group-gap-demo" />
+
 <Note intent='warning'>
-    Never ever set the gap to `0` when you want to use the `plain` appearance.
+  Avoid setting the gap to `0` when using the `plain` appearance.
 </Note>
 
 ## Size

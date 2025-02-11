@@ -39,7 +39,7 @@ const ColorSwatchPickerItem = (props: ColorSwatchPickerItemProps) => {
         <>
           <ColorSwatch />
           {isSelected && (
-            <div className="absolute top-0 left-0 size-full rounded-md outline-hidden ring-1 ring-fg/30 ring-inset forced-color-adjust-none" />
+            <div className="absolute inset-ring inset-ring-fg/30 top-0 left-0 size-full rounded-md outline-hidden forced-color-adjust-none" />
           )}
         </>
       )}

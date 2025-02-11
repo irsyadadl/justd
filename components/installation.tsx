@@ -9,10 +9,6 @@ import { useOpenPanel } from "@openpanel/nextjs"
 import { Group } from "react-aria-components"
 import { Link, Menu, composeTailwindRenderProps } from "ui"
 
-const manualText =
-  "Sometimes, using the CLI is the way to go, so make sure you install the necessary\n" +
-  "          dependencies for the components you want to use."
-
 export interface InstallationProps {
   items: string[]
   command?: string
@@ -69,7 +65,12 @@ export function Installation({ className, ...props }: InstallationProps) {
           for more information.
         </p>
       )}
-      {options.isManual && <p>{manualText}</p>}
+      {options.isManual && (
+        <p>
+          Make sure you also install the <strong>composed components</strong> and the{" "}
+          <strong>required packages</strong> for the component to function properly.
+        </p>
+      )}
       <Group
         className={composeTailwindRenderProps(
           className,

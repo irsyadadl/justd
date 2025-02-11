@@ -39,8 +39,13 @@ const config = {
         permanent: true,
       },
       {
+        source: "/docs/2.x/components/charts/setup",
+        destination: "/docs/2.x/components/charts/area-chart",
+        permanent: true,
+      },
+      {
         source: "/docs/2.x/components/surfaces/chart",
-        destination: "/docs/2.x/components/charts/setup",
+        destination: "/docs/2.x/components/charts/area-chart",
         permanent: true,
       },
       {

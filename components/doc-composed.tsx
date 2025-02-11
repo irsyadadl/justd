@@ -20,12 +20,12 @@ export function DocComposed({
       {!text ? (
         <>
           <p className="mb-6">
-            When you plug this component from the CLI, it autoloads all the composed components. No
-            need to toss 'em in one at a time.
+            When you install this component via the CLI, it automatically loads all composed
+            components, so you don’t need to add them individually.
           </p>
           <p className="mb-6">
-            The <strong className="font-medium lowercase">{name}</strong>'s decked out with several
-            components to make it bangin'.
+            The <strong className="font-medium lowercase">{name}</strong> comes packed with several
+            components to enhance functionality and provide a seamless experience.
           </p>
         </>
       ) : (

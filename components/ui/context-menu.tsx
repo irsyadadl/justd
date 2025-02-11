@@ -38,7 +38,6 @@ const ContextMenu = ({ children }: ContextMenuProps) => {
     crossOffset: number
   } | null>(null)
   const buttonRef = useRef<HTMLButtonElement>(null)
-
   return (
     <ContextMenuTriggerContext.Provider
       value={{ buttonRef, contextMenuOffset, setContextMenuOffset }}

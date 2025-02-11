@@ -7,7 +7,7 @@ references: ["https://react-spectrum.adobe.com/react-aria/ListBox.html#props"]
 ---
 
 ## Basic
-ListBoxes can be enhanced with features like multi-selection, filtering, and dynamic data updates. They are widely used in applications to display and manage lists of options or data entries.
+ListBoxes can be enhanced with features such as multi-selection, filtering, and dynamic data updates. They are commonly used in applications to display and manage lists of options or data entries.
 <How toUse="collections/list-box/list-box-demo" />
 
 ## Installation
@@ -25,29 +25,31 @@ ListBoxes can be enhanced with features like multi-selection, filtering, and dyn
 <Anatomy show='list-box-anatomy'/>
 
 ## Multiple Selection
-To enable multiple selections, set the `selectionMode` prop to `multiple`. Since this prop has no default value, you must define it explicitly.
+To enable multiple selections, set the `selectionMode` prop to `multiple`. This prop has no default value, so it must be explicitly defined.
 <How toUse="collections/list-box/list-box-multiple-demo" />
 
 ## Item Details
-Enhance list items by providing additional details through the `ListBoxItemDetails` component.
+You can enhance list items by providing additional details using the `ListBoxItemDetails` component.
 <How toUse="collections/list-box/list-box-item-details-demo" />
 
 ## Section
-Display items in a ListBox grouped by sections.
+Group items in a ListBox using sections for better organization.
 <How toUse="collections/list-box/list-box-section-demo" />
 
 ## Rearrange
-Enable drag and drop functionality in the ListBox using the `dragAndDropHooks` prop with the `useDragAndDrop` hook. This allows for rearranging items, adding new entries between existing ones, or managing data across the entire list.
+Enable drag-and-drop functionality in the ListBox by using the `dragAndDropHooks` prop with the `useDragAndDrop` hook. This allows users to rearrange items, insert new entries, or manage data across the list.
 <How toUse="collections/list-box/list-box-rearrange-demo" />
 
 ## Controlled
-Make sure you set the `selectionMode` prop to `single` to enable controlled mode. This will allow you to manage the ListBox selection by using the `selectedKey` prop.
+To enable controlled mode, set the `selectionMode` prop to `single`. This allows you to manage the ListBox selection using the `selectedKey` prop.
 <How toUse="collections/list-box/list-box-controlled-demo" />
 
 ## Disabled
-Disable specific ListBox items.
+Disable specific ListBox items to restrict user interaction.
 <How toUse="collections/list-box/list-box-disabled-demo" />
+
 You can also disable an item directly by passing the `isDisabled` prop to `ListBoxItem`.
+
 ```tsx
 <ListBoxItem isDisabled>Disabled</ListBoxItem>
 ```

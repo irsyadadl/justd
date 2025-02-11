@@ -1,6 +1,5 @@
 {
   "pages": [
-    "setup",
     "area-chart",
     "line-chart",
     "bar-chart",
