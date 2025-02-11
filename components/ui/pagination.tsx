@@ -70,7 +70,7 @@ const PaginationSection = <T extends object>({
 interface PaginationListProps<T> extends ListBoxProps<T> {
   ref?: React.RefObject<HTMLDivElement>
 }
-const List = <T extends object>({ className, ref, ...props }: PaginationListProps<T>) => {
+const PaginationList = <T extends object>({ className, ref, ...props }: PaginationListProps<T>) => {
   return (
     <ListBox
       ref={ref}
@@ -104,7 +104,7 @@ interface PaginationItemProps extends ListBoxItemProps {
   segment?: "label" | "separator" | "ellipsis" | "default" | "last" | "first" | "previous" | "next"
 }
 
-const Item = ({
+const PaginationItem = ({
   segment = "default",
   size = "small",
   appearance = "outline",
@@ -200,8 +200,8 @@ const Item = ({
   }
 }
 
-Pagination.Item = Item
-Pagination.List = List
+Pagination.Item = PaginationItem
+Pagination.List = PaginationList
 Pagination.Section = PaginationSection
 
 export type { PagginationProps, PaginationListProps, PaginationSectionProps, PaginationItemProps }

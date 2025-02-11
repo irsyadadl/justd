@@ -14,11 +14,11 @@ interface MeterProps extends MeterPrimitiveProps {
   label?: string
 }
 
-const Meter = ({ label, ...props }: MeterProps) => {
+const Meter = ({ label, className, ...props }: MeterProps) => {
   return (
     <MeterPrimitive
       {...props}
-      className={composeTailwindRenderProps(props.className, "flex flex-col gap-1")}
+      className={composeTailwindRenderProps(className, "flex min-w-56 flex-col gap-1")}
     >
       {({ percentage, valueText }) => (
         <>
@@ -36,7 +36,7 @@ const Meter = ({ label, ...props }: MeterProps) => {
               {` ${valueText}`}
             </span>
           </div>
-          <div className="-outline-offset-1 relative h-2 min-w-64 rounded-full bg-muted outline outline-1 outline-transparent">
+          <div className="-outline-offset-1 relative h-2 rounded-full bg-muted outline outline-transparent">
             <motion.div
               className="absolute top-0 left-0 h-full rounded-full forced-colors:bg-[Highlight]"
               initial={{ width: "0%", backgroundColor: getColor(0) }}

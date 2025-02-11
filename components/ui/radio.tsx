@@ -67,10 +67,11 @@ const radioStyles = tv({
 
 interface RadioProps extends RadioPrimitiveProps {
   description?: string
+  label?: string
   ref?: React.Ref<HTMLLabelElement>
 }
 
-const Radio = ({ description, ref, ...props }: RadioProps) => {
+const Radio = ({ description, label, ref, ...props }: RadioProps) => {
   return (
     <RadioPrimitive
       ref={ref}
@@ -89,8 +90,14 @@ const Radio = ({ description, ref, ...props }: RadioProps) => {
             })}
           />
           <div className="flex flex-col gap-1">
-            {props.children as React.ReactNode}
-            {description && <Description className="block">{description}</Description>}
+            {label || description ? (
+              <>
+                {label && <Label>{label}</Label>}
+                {description && <Description className="block">{description}</Description>}
+              </>
+            ) : (
+              (props.children as React.ReactNode)
+            )}
           </div>
         </div>
       )}

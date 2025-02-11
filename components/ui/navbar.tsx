@@ -196,7 +196,7 @@ const NavbarTrigger = ({ className, onPress, ref, ...props }: NavbarTriggerProps
   )
 }
 
-const Section = ({ className, ...props }: React.ComponentProps<"div">) => {
+const NavbarSection = ({ className, ...props }: React.ComponentProps<"div">) => {
   const { isCompact } = useNavbar()
   const id = useId()
   return (
@@ -235,7 +235,7 @@ interface NavbarItemProps extends LinkProps {
   isCurrent?: boolean
 }
 
-const Item = ({ className, isCurrent, ...props }: NavbarItemProps) => {
+const NavbarItem = ({ className, isCurrent, ...props }: NavbarItemProps) => {
   const { intent, isCompact } = useNavbar()
   return (
     <Link
@@ -263,7 +263,7 @@ const Item = ({ className, isCurrent, ...props }: NavbarItemProps) => {
   )
 }
 
-const Logo = ({ className, ...props }: LinkProps) => {
+const NavbarLogo = ({ className, ...props }: LinkProps) => {
   return (
     <Link
       className={composeTailwindRenderProps(
@@ -275,7 +275,7 @@ const Logo = ({ className, ...props }: LinkProps) => {
   )
 }
 
-const Flex = ({ className, ref, ...props }: React.ComponentProps<"div">) => {
+const NavbarFlex = ({ className, ref, ...props }: React.ComponentProps<"div">) => {
   return <div ref={ref} className={cn("flex items-center gap-2 md:gap-3", className)} {...props} />
 }
 
@@ -312,7 +312,7 @@ const insetStyles = tv({
   },
 })
 
-const Inset = ({ className, ref, ...props }: React.ComponentProps<"div">) => {
+const NavbarInset = ({ className, ref, ...props }: React.ComponentProps<"div">) => {
   const { intent } = useNavbar()
   return (
     <main
@@ -330,13 +330,13 @@ const Inset = ({ className, ref, ...props }: React.ComponentProps<"div">) => {
 }
 
 Navbar.Nav = NavbarNav
-Navbar.Inset = Inset
+Navbar.Inset = NavbarInset
 Navbar.Compact = NavbarCompact
-Navbar.Flex = Flex
+Navbar.Flex = NavbarFlex
 Navbar.Trigger = NavbarTrigger
-Navbar.Logo = Logo
-Navbar.Item = Item
-Navbar.Section = Section
+Navbar.Logo = NavbarLogo
+Navbar.Item = NavbarItem
+Navbar.Section = NavbarSection
 
 export type { NavbarProps, NavbarNavProps, NavbarCompactProps, NavbarTriggerProps, NavbarItemProps }
 export { Navbar }

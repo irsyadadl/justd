@@ -3,16 +3,16 @@ import { Button, Drawer } from "ui"
 export default function DrawerAnatomy() {
   return (
     <Drawer>
-      <Drawer.Trigger />
+      <Drawer.Trigger>Open Drawer</Drawer.Trigger>
       <Drawer.Content>
         <Drawer.Header>
-          <Drawer.Title />
-          <Drawer.Description />
+          <Drawer.Title>Drawer Title</Drawer.Title>
+          <Drawer.Description>Drawer Description</Drawer.Description>
         </Drawer.Header>
-        <Drawer.Body />
+        <Drawer.Body>Drawer Body</Drawer.Body>
         <Drawer.Footer>
-          <Drawer.Close />
-          <Button />
+          <Drawer.Close>Close</Drawer.Close>
+          <Button>Confirm</Button>
         </Drawer.Footer>
       </Drawer.Content>
     </Drawer>

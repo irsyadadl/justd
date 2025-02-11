@@ -11,7 +11,7 @@ import { type VariantProps, tv } from "tailwind-variants"
 
 import { Dialog } from "./dialog"
 
-const overlay = tv({
+const modalOverlayStyles = tv({
   base: [
     "fixed top-0 left-0 isolate z-50 h-(--visual-viewport-height) w-full",
     "flex items-end justify-end bg-fg/15 text-center sm:items-center sm:justify-center dark:bg-bg/40",
@@ -25,11 +25,11 @@ const overlay = tv({
       true: "fade-in animate-in duration-200 ease-out",
     },
     isExiting: {
-      true: "fade-out animate-out duration-150 ease-in",
+      true: "fade-out animate-out ease-in",
     },
   },
 })
-const content = tv({
+const modalContentStyles = tv({
   base: [
     "max-h-full w-full rounded-t-2xl bg-overlay text-left align-middle text-overlay-fg shadow-lg ring-1 ring-fg/5",
     "overflow-hidden sm:rounded-2xl dark:ring-border",
@@ -69,11 +69,8 @@ const Modal = (props: DialogTriggerProps) => {
 
 interface ModalContentProps
   extends Omit<ModalOverlayProps, "className" | "children">,
-    VariantProps<typeof content> {
-  "aria-label"?: DialogProps["aria-label"]
-  "aria-labelledby"?: DialogProps["aria-labelledby"]
-  role?: DialogProps["role"]
-  children?: DialogProps["children"]
+    Pick<DialogProps, "aria-label" | "aria-labelledby" | "role" | "children">,
+    VariantProps<typeof modalContentStyles> {
   closeButton?: boolean
   isBlurred?: boolean
   classNames?: {
@@ -97,19 +94,19 @@ const ModalContent = ({
   return (
     <ModalOverlay
       isDismissable={isDismissable}
-      className={composeRenderProps(classNames?.overlay, (className, renderProps) => {
-        return overlay({
+      className={composeRenderProps(classNames?.overlay, (className, renderProps) =>
+        modalOverlayStyles({
           ...renderProps,
           isBlurred,
           className,
-        })
-      })}
+        }),
+      )}
       {...props}
     >
       <ModalPrimitive
         isDismissable={isDismissable}
         className={composeRenderProps(classNames?.content, (className, renderProps) =>
-          content({
+          modalContentStyles({
             ...renderProps,
             size,
             className,
@@ -130,13 +127,21 @@ const ModalContent = ({
   )
 }
 
-Modal.Trigger = Dialog.Trigger
-Modal.Header = Dialog.Header
-Modal.Title = Dialog.Title
-Modal.Description = Dialog.Description
-Modal.Footer = Dialog.Footer
-Modal.Body = Dialog.Body
-Modal.Close = Dialog.Close
+const ModalTrigger = Dialog.Trigger
+const ModalHeader = Dialog.Header
+const ModalTitle = Dialog.Title
+const ModalDescription = Dialog.Description
+const ModalFooter = Dialog.Footer
+const ModalBody = Dialog.Body
+const ModalClose = Dialog.Close
+
+Modal.Trigger = ModalTrigger
+Modal.Header = ModalHeader
+Modal.Title = ModalTitle
+Modal.Description = ModalDescription
+Modal.Footer = ModalFooter
+Modal.Body = ModalBody
+Modal.Close = ModalClose
 Modal.Content = ModalContent
 
 export { Modal }

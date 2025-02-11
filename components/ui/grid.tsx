@@ -5,7 +5,6 @@ const gridStyles = tv(
   {
     base: "grid",
     variants: {
-      // Columns
       columns: {
         1: "grid-cols-1",
         2: "grid-cols-2",
@@ -19,9 +18,9 @@ const gridStyles = tv(
         10: "grid-cols-10",
         11: "grid-cols-11",
         12: "grid-cols-12",
+        none: "grid-cols-none",
+        subgrid: "grid-cols-subgrid",
       },
-
-      // Rows
       rows: {
         1: "grid-rows-1",
         2: "grid-rows-2",
@@ -36,17 +35,13 @@ const gridStyles = tv(
         11: "grid-rows-11",
         12: "grid-rows-12",
       },
-
-      // Flow
       flow: {
         row: "grid-flow-row",
         col: "grid-flow-col",
+        dense: "grid-flow-dense",
         rowDense: "grid-flow-row-dense",
         colDense: "grid-flow-col-dense",
-        dense: "grid-flow-dense",
       },
-
-      // Gap
       gap: {
         0: "gap-0",
         0.5: "gap-0.5",
@@ -116,6 +111,18 @@ const gridStyles = tv(
         20: "gap-y-20",
         24: "gap-y-24",
       },
+      autoRows: {
+        auto: "auto-rows-auto",
+        min: "auto-rows-min",
+        max: "auto-rows-max",
+        fr: "auto-rows-fr",
+      },
+      autoColumns: {
+        auto: "auto-cols-auto",
+        min: "auto-cols-min",
+        max: "auto-cols-max",
+        fr: "auto-cols-fr",
+      },
     },
     defaultVariants: {
       columns: 1,
@@ -131,7 +138,18 @@ interface GridProps extends React.HTMLAttributes<HTMLDivElement>, VariantProps<t
   debug?: boolean
 }
 
-const Grid = ({ className, gap, gapX, gapY, flow, columns, rows, ...props }: GridProps) => {
+const Grid = ({
+  className,
+  gap,
+  gapX,
+  gapY,
+  flow,
+  columns,
+  rows,
+  autoRows,
+  autoColumns,
+  ...props
+}: GridProps) => {
   return (
     <div
       aria-label={props["aria-label"] || "grid"}
@@ -140,6 +158,8 @@ const Grid = ({ className, gap, gapX, gapY, flow, columns, rows, ...props }: Gri
         gapX: gapX ?? gap,
         gapY: gapY ?? gap,
         flow: flow ?? "row",
+        autoRows: autoRows,
+        autoColumns: autoColumns,
         columns: columns ?? 1,
         rows: rows ?? 1,
         className:
@@ -254,6 +274,23 @@ const gridItemStyles = tv(
         13: "row-end-13",
         auto: "row-end-auto",
       },
+      order: {
+        first: "order-first",
+        last: "order-last",
+        none: "order-none",
+        1: "order-1",
+        2: "order-2",
+        3: "order-3",
+        4: "order-4",
+        5: "order-5",
+        6: "order-6",
+        7: "order-7",
+        8: "order-8",
+        9: "order-9",
+        10: "order-10",
+        11: "order-11",
+        12: "order-12",
+      },
     },
   },
   {
@@ -276,6 +313,7 @@ const GridItem = ({
   colEnd,
   rowStart,
   rowEnd,
+  order,
   ...props
 }: GridItemProps) => {
   return (
@@ -288,6 +326,7 @@ const GridItem = ({
         colEnd,
         rowStart,
         rowEnd,
+        order,
         className,
       })}
       {...props}

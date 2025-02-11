@@ -82,7 +82,7 @@ export default function RootLayout({
         <body className={cn("min-h-screen font-sans antialiased")}>
           <Providers>
             <Toast />
-            {children}
+            <main>{children}</main>
             {process.env.NODE_ENV === "production" && (
               <OpenPanelComponent
                 clientSecret={process.env.ANALYTICS_CLIENT_SECRET as string}

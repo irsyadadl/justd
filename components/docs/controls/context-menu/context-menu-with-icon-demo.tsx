@@ -1,6 +1,13 @@
 "use client"
 
-import { IconDuplicate, IconFolder, IconHighlight, IconTrash, IconUpload } from "justd-icons"
+import {
+  IconDuplicate,
+  IconFile,
+  IconFolder,
+  IconHighlight,
+  IconTrash,
+  IconTrashPaper,
+} from "justd-icons"
 import { ContextMenu } from "ui"
 
 export default function ContextMenuWithIconDemo() {
@@ -12,24 +19,36 @@ export default function ContextMenuWithIconDemo() {
       <ContextMenu.Content>
         <ContextMenu.Item>
           <IconFolder />
-          Open
+          <ContextMenu.Label>Open Folder</ContextMenu.Label>
         </ContextMenu.Item>
         <ContextMenu.Item>
+          <IconFile />
+          <ContextMenu.Label>Open File</ContextMenu.Label>
+        </ContextMenu.Item>
+        <ContextMenu.Item>
+          <ContextMenu.Label>Open with...</ContextMenu.Label>
+        </ContextMenu.Item>
+        <ContextMenu.Separator />
+        <ContextMenu.Item>
           <IconHighlight />
-          Rename
+          <ContextMenu.Label>Rename</ContextMenu.Label>
         </ContextMenu.Item>
         <ContextMenu.Item>
           <IconDuplicate />
-          Duplicate
+          <ContextMenu.Label>Duplicate</ContextMenu.Label>
         </ContextMenu.Item>
         <ContextMenu.Item>
-          <IconUpload />
-          Share
+          <ContextMenu.Label>Share</ContextMenu.Label>
         </ContextMenu.Item>
         <ContextMenu.Separator />
-        <ContextMenu.Item isDanger>
+        <ContextMenu.Item>
           <IconTrash />
-          Delete
+          <ContextMenu.Label>Delete</ContextMenu.Label>
+          <ContextMenu.Keyboard keys="⌘←" />
+        </ContextMenu.Item>
+        <ContextMenu.Item>
+          <IconTrashPaper />
+          <ContextMenu.Label>Bin</ContextMenu.Label>
         </ContextMenu.Item>
       </ContextMenu.Content>
     </ContextMenu>

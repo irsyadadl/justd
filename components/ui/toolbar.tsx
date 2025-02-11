@@ -60,7 +60,7 @@ const ToolbarGroup = ({ isDisabled, className, ...props }: ToolbarGroupProps) =>
 }
 
 type ToggleItemProps = ToggleProps
-const Item = ({ isDisabled, ref, ...props }: ToggleItemProps) => {
+const ToolbarItem = ({ isDisabled, ref, ...props }: ToggleItemProps) => {
   const context = useContext(ToolbarGroupContext)
   const effectiveIsDisabled = isDisabled || context.isDisabled
 
@@ -81,7 +81,7 @@ const ToolbarSeparator = ({ className, ...props }: ToolbarSeparatorProps) => {
 
 Toolbar.Group = ToolbarGroup
 Toolbar.Separator = ToolbarSeparator
-Toolbar.Item = Item
+Toolbar.Item = ToolbarItem
 
 export type { ToolbarGroupProps, ToolbarProps, ToggleItemProps, ToolbarSeparatorProps }
 export { Toolbar }

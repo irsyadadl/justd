@@ -6,7 +6,7 @@ import { IconHamburger } from "justd-icons"
 import type { GridListItemProps, GridListProps } from "react-aria-components"
 import {
   Button,
-  GridListItem,
+  GridListItem as GridListItemPrimitive,
   GridList as GridListPrimitive,
   composeRenderProps,
 } from "react-aria-components"
@@ -45,19 +45,19 @@ const itemStyles = tv({
   },
 })
 
-const Item = ({ className, ...props }: GridListItemProps) => {
+const GridListItem = ({ className, ...props }: GridListItemProps) => {
   const textValue = typeof props.children === "string" ? props.children : undefined
   return (
-    <GridListItem
+    <GridListItemPrimitive
       textValue={textValue}
       {...props}
       className={composeRenderProps(className, (className, renderProps) =>
         itemStyles({ ...renderProps, className }),
       )}
     >
-      {({ selectionMode, selectionBehavior, allowsDragging }) => (
+      {(values) => (
         <>
-          {allowsDragging && (
+          {values.allowsDragging && (
             <Button
               slot="drag"
               className="cursor-grab data-dragging:cursor-grabbing *:data-[slot=icon]:text-muted-fg"
@@ -70,22 +70,22 @@ const Item = ({ className, ...props }: GridListItemProps) => {
             aria-hidden
             className="absolute inset-y-0 left-0 hidden h-full w-0.5 bg-primary group-data-selected:block"
           />
-          {selectionMode === "multiple" && selectionBehavior === "toggle" && (
+          {values.selectionMode === "multiple" && values.selectionBehavior === "toggle" && (
             <Checkbox className="-mr-2" slot="selection" />
           )}
-          {props.children as React.ReactNode}
+          {typeof props.children === "function" ? props.children(values) : props.children}
         </>
       )}
-    </GridListItem>
+    </GridListItemPrimitive>
   )
 }
 
-const EmptyState = ({ ref, className, ...props }: React.ComponentProps<"div">) => (
+const GridEmptyState = ({ ref, className, ...props }: React.ComponentProps<"div">) => (
   <div ref={ref} className={cn("p-6", className)} {...props} />
 )
 
-GridList.Item = Item
-GridList.EmptyState = EmptyState
+GridList.Item = GridListItem
+GridList.EmptyState = GridEmptyState
 
 export type { GridListProps, GridListItemProps }
 export { GridList }

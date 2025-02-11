@@ -8,7 +8,7 @@ export default function ContextMenuSeparatorDemo() {
       <ContextMenu.Trigger className="grid h-28 place-content-center rounded-lg border-2 border-dashed sm:min-w-60">
         Right click me
       </ContextMenu.Trigger>
-      <ContextMenu.Content>
+      <ContextMenu.Content className="sm:min-w-60">
         <ContextMenu.Item>Go to Definition</ContextMenu.Item>
         <ContextMenu.Item>Go to Type Definition</ContextMenu.Item>
         <ContextMenu.Item>Go to Source Definition</ContextMenu.Item>
@@ -38,20 +38,6 @@ export default function ContextMenuSeparatorDemo() {
         <ContextMenu.Item>
           Refactor...
           <ContextMenu.Keyboard keys={["⌘⇧R"]} />
-        </ContextMenu.Item>
-        <ContextMenu.Item>Source Action...</ContextMenu.Item>
-        <ContextMenu.Separator />
-        <ContextMenu.Item>
-          Cut
-          <ContextMenu.Keyboard keys={["⌘X"]} />
-        </ContextMenu.Item>
-        <ContextMenu.Item>
-          Сору
-          <ContextMenu.Keyboard keys={["⌘C"]} />
-        </ContextMenu.Item>
-        <ContextMenu.Item>
-          Paste
-          <ContextMenu.Keyboard keys={["⌘P"]} />
         </ContextMenu.Item>
       </ContextMenu.Content>
     </ContextMenu>

@@ -28,8 +28,9 @@ export function SliderOnPopoverBlock() {
         isOpen={isOpen}
         onOpenChange={setIsOpen}
         showArrow={false}
+        className="py-4"
       >
-        <Popover.Body className="space-y-4 py-4">
+        <Popover.Body className="space-y-4">
           <Slider
             output="tooltip"
             value={fontSize}

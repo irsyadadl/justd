@@ -36,7 +36,7 @@ export function DocRefs({ references }: { references: string[] }) {
         title = "Props"
         icon = IconChartBar
         break
-      case url.includes("framer"):
+      case url.includes("motion"):
         title = "Motion"
         icon = IconBrandFramer
         break

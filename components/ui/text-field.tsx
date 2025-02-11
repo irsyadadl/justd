@@ -9,7 +9,6 @@ import {
   TextField as TextFieldPrimitive,
   type TextFieldProps as TextFieldPrimitiveProps,
 } from "react-aria-components"
-import { twJoin } from "tailwind-merge"
 
 import type { FieldProps } from "./field"
 import { Description, FieldError, FieldGroup, Input, Label } from "./field"
@@ -59,26 +58,21 @@ const TextField = ({
     <TextFieldPrimitive
       type={inputType}
       {...props}
-      className={composeTailwindRenderProps(className, "group flex flex-col gap-y-1.5")}
+      className={composeTailwindRenderProps(className, "group flex flex-col gap-y-1")}
     >
       {!props.children ? (
         <>
           {label && <Label>{label}</Label>}
           <FieldGroup
-            isInvalid={!!errorMessage}
             isDisabled={props.isDisabled}
-            className={twJoin(
-              "**:[button]:inset-ring-0 **:[button]:inset-shadow-none **:[button]:h-8 **:[button]:rounded-[calc(var(--radius-lg)*0.5)] **:[button]:px-3.5 **:[button]:has-data-[slot=icon]:w-8 **:[button]:has-data-[slot=icon]:p-0 dark:**:[button]:inset-ring-0",
-              "[&>[data-slot=suffix]>button]:mr-[calc(var(--spacing)*-1.7)] [&>[data-slot=suffix]>button]:data-focus-visible:outline-1 [&>[data-slot=suffix]>button]:data-focus-visible:outline-offset-1",
-              "[&>[data-slot=prefix]>button]:ml-[calc(var(--spacing)*-1.7)] [&>[data-slot=prefix]>button]:data-focus-visible:outline-1 [&>[data-slot=prefix]>button]:data-focus-visible:outline-offset-1",
-            )}
+            isInvalid={!!errorMessage}
             data-loading={isPending ? "true" : undefined}
           >
-            {prefix ? (
-              <span data-slot="prefix" className="atrs x2e2">
-                {prefix}
-              </span>
-            ) : null}
+            {prefix && typeof prefix === "string" ? (
+              <span className="ml-2 text-muted-fg">{prefix}</span>
+            ) : (
+              prefix
+            )}
             <Input placeholder={placeholder} />
             {isRevealable ? (
               <ButtonPrimitive
@@ -90,9 +84,13 @@ const TextField = ({
                 {isPasswordVisible ? <IconEyeClosed /> : <IconEye />}
               </ButtonPrimitive>
             ) : isPending ? (
-              <Loader variant="spin" data-slot="suffix" />
+              <Loader variant="spin" />
             ) : suffix ? (
-              <span data-slot="suffix">{suffix}</span>
+              typeof suffix === "string" ? (
+                <span className="mr-2 text-muted-fg">{suffix}</span>
+              ) : (
+                suffix
+              )
             ) : null}
           </FieldGroup>
           {description && <Description>{description}</Description>}

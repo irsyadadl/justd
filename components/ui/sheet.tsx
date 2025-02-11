@@ -139,14 +139,22 @@ const SheetContent = ({
   )
 }
 
-Sheet.Trigger = Dialog.Trigger
-Sheet.Footer = Dialog.Footer
+const SheetTrigger = Dialog.Trigger
+const SheetFooter = Dialog.Footer
+const SheetHeader = Dialog.Header
+const SheetTitle = Dialog.Title
+const SheetDescription = Dialog.Description
+const SheetBody = Dialog.Body
+const SheetClose = Dialog.Close
+
+Sheet.Trigger = SheetTrigger
+Sheet.Footer = SheetFooter
+Sheet.Header = SheetHeader
+Sheet.Title = SheetTitle
+Sheet.Description = SheetDescription
+Sheet.Body = SheetBody
+Sheet.Close = SheetClose
 Sheet.Content = SheetContent
-Sheet.Header = Dialog.Header
-Sheet.Title = Dialog.Title
-Sheet.Description = Dialog.Description
-Sheet.Body = Dialog.Body
-Sheet.Close = Dialog.Close
 
 export type { SheetProps, SheetContentProps, Sides }
 export { Sheet }

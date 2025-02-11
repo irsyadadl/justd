@@ -1,6 +1,6 @@
 "use client"
 
-import { Wrapper } from "@/app/(app)/partials/resources"
+import { Wrapper } from "@/app/(app)/(home)/partials/resources"
 import { Button, Modal, Popover } from "ui"
 
 export function PopoverOverlays() {

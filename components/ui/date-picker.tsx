@@ -24,9 +24,9 @@ import { RangeCalendar } from "./range-calendar"
 
 const datePickerStyles = tv({
   slots: {
-    base: "group flex flex-col gap-y-1.5",
+    base: "group/date-picker flex flex-col gap-y-1",
     datePickerIcon:
-      "group mr-1 h-7 w-8 rounded outline-offset-0data-hovered:bg-transparent data-pressed:bg-transparent **:data-[slot=icon]:text-muted-fg",
+      "mr-1 h-7 w-8 rounded outline-offset-0data-hovered:bg-transparent data-pressed:bg-transparent **:data-[slot=icon]:text-muted-fg",
     calendarIcon: "group-open:text-fg",
     datePickerInput: "w-full px-2 text-base sm:text-sm",
     dateRangePickerInputStart: "px-2 text-base sm:text-sm",
@@ -61,8 +61,8 @@ const DatePickerOverlay = ({
     <Popover.Content
       showArrow={false}
       className={cn(
-        "flex justify-center p-4 sm:min-w-[17rem] sm:p-2 sm:pt-3",
-        visibleDuration?.months === 1 ? "sm:max-w-[17.5rem]" : "sm:max-w-none",
+        "flex justify-center p-4 sm:min-w-[16.5rem] sm:p-2 sm:pt-3",
+        visibleDuration?.months === 1 ? "sm:max-w-2xs" : "sm:max-w-none",
       )}
       {...props}
     >

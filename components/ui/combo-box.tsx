@@ -18,7 +18,7 @@ import { tv } from "tailwind-variants"
 import { Button } from "./button"
 import { DropdownItem, DropdownLabel, DropdownSection } from "./dropdown"
 import { Description, FieldError, FieldGroup, Input, Label } from "./field"
-import { ListBox } from "./list-box"
+import { ListBoxPicker } from "./list-box"
 import { Popover } from "./popover"
 import { composeTailwindRenderProps } from "./primitive"
 
@@ -61,7 +61,7 @@ const ComboBox = <T extends object>({
   )
 }
 
-type ListBoxPickerProps<T extends object> = React.ComponentProps<typeof ListBox<T>>
+type ListBoxPickerProps<T extends object> = React.ComponentProps<typeof ListBoxPicker<T>>
 
 interface ComboBoxListProps<T extends object>
   extends ListBoxPickerProps<T>,
@@ -70,9 +70,9 @@ interface ComboBoxListProps<T extends object>
 const ComboBoxList = <T extends object>({ children, items, ...props }: ComboBoxListProps<T>) => {
   return (
     <Popover.Picker trigger="ComboBox" isNonModal placement={props.placement}>
-      <ListBox.Picker items={items} {...props}>
+      <ListBoxPicker items={items} {...props}>
         {children}
-      </ListBox.Picker>
+      </ListBoxPicker>
     </Popover.Picker>
   )
 }

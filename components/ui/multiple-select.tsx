@@ -319,8 +319,11 @@ const MultipleSelect = <T extends SelectedKey>({
   )
 }
 
-MultipleSelect.Tag = Tag
-MultipleSelect.Option = ListBox.Item
+const MultipleSelectTag = Tag
+const MultipleSelectOption = ListBox.Item
+
+MultipleSelect.Tag = MultipleSelectTag
+MultipleSelect.Option = MultipleSelectOption
 
 export type { MultipleSelectProps, SelectedKey }
 export { MultipleSelect }

@@ -235,7 +235,7 @@ const Drawer = ({
 }
 
 type DrawerContentProps = React.ComponentProps<typeof DrawerPrimitive>
-const Content = ({ children, ...props }: DrawerContentProps) => {
+const DrawerContent = ({ children, ...props }: DrawerContentProps) => {
   return (
     <DrawerPrimitive>
       <DrawerContentPrimitive {...props}>
@@ -276,14 +276,18 @@ const DrawerFooter = ({
   </Dialog.Footer>
 )
 
-Drawer.Body = DrawerBody
-Drawer.Close = Dialog.Close
-Drawer.Content = Content
-Drawer.Description = Dialog.Description
-Drawer.Footer = DrawerFooter
-Drawer.Header = DrawerHeader
-Drawer.Title = Dialog.Title
+const DrawerClose = Dialog.Close
+const DrawerDescription = Dialog.Description
+const DrawerTitle = Dialog.Title
+
 Drawer.Trigger = DrawerTrigger
+Drawer.Header = DrawerHeader
+Drawer.Title = DrawerTitle
+Drawer.Description = DrawerDescription
+Drawer.Body = DrawerBody
+Drawer.Content = DrawerContent
+Drawer.Footer = DrawerFooter
+Drawer.Close = DrawerClose
 
 export type { DrawerProps, DrawerContentProps }
 export { Drawer }

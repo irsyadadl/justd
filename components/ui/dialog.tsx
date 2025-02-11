@@ -44,7 +44,7 @@ const Dialog = ({
 }
 
 const Trigger = (props: React.ComponentProps<typeof ButtonPrimitive>) => (
-  <ButtonPrimitive slot="close" {...props} />
+  <ButtonPrimitive {...props} />
 )
 
 type DialogHeaderProps = React.HTMLAttributes<HTMLDivElement> & {

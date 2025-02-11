@@ -16,7 +16,7 @@ import { Button, SidebarHeader as Header, Link, Menu, SidebarLabel, useSidebar }
 export function SidebarHeader() {
   const { toggleSidebar } = useSidebar()
   return (
-    <Header className="flex h-12 flex-row items-center justify-between border-b bg-gradient-to-b py-0">
+    <Header className="flex h-12 flex-row items-center justify-between border-b bg-linear-to-b py-0">
       <Link
         className="flex items-center gap-x-2 group-data-[collapsible=dock]:size-10 group-data-[collapsible=dock]:justify-center"
         href="/docs/2.x/components/layouts/sidebar"

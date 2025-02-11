@@ -90,7 +90,7 @@ const CommandMenu = ({
         <ModalOverlay
           isDismissable={isDismissable}
           className={cn([
-            "fixed inset-0 z-50 max-h-(--visual-viewport-height) bg-dark/15 dark:bg-dark/40",
+            "fixed inset-0 z-50 max-h-(--visual-viewport-height) bg-black/15 dark:bg-black/40",
             "data-entering:fade-in data-exiting:fade-out data-entering:animate-in data-exiting:animate-in",
             isBlurred && props.isOpen ? "backdrop-blur" : "",
             classNames?.overlay ?? "",

@@ -1,11 +1,11 @@
 "use client"
 
-import { Wrapper } from "@/app/(app)/partials/resources"
-import { Button, Card, Checkbox, Link, TextField } from "ui"
+import { Wrapper } from "@/app/(app)/(home)/partials/resources"
+import { Button, Card, Checkbox, TextField } from "ui"
 
 export function LoginForm() {
   return (
-    <Wrapper className="w-full">
+    <Wrapper slot="not-wrapper" className="w-full py-4">
       <Card.Header className="px-0">
         <Card.Title>Login</Card.Title>
         <Card.Description>Don't loose the level, just keep on going.</Card.Description>
@@ -21,9 +21,6 @@ export function LoginForm() {
         />
         <div className="flex items-center justify-between">
           <Checkbox name="remember-me">Remember me</Checkbox>
-          <Link intent="primary" href="#">
-            Forgot password?
-          </Link>
         </div>
       </div>
       <Card.Footer className="px-0">

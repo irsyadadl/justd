@@ -20,8 +20,8 @@ import {
   IconPerson,
   IconStar,
 } from "justd-icons"
-import { Group } from "react-aria-components"
-import { Avatar, Button, Checkbox, Description, Menu, Modal, Select, Sheet, TextField } from "ui"
+import { Menu as MenuPrimitive } from "react-aria-components"
+import { Avatar, Button, Checkbox, Menu, Modal, Select, Sheet, TextField } from "ui"
 
 export default function SheetMenuDemo() {
   const [isOpen, setIsOpen] = useState(false)
@@ -40,13 +40,6 @@ export default function SheetMenuDemo() {
               label="Status"
               placeholder="What's your status?"
             />
-            <Group>
-              <Checkbox>Busy</Checkbox>
-              <Description>
-                When others mention you, assign you, or request your review, GitHub will let them
-                know that you have limited availability.
-              </Description>
-            </Group>
             <Select label="Clear Status">
               <Select.Trigger />
               <Select.List>
@@ -60,12 +53,17 @@ export default function SheetMenuDemo() {
               </Select.List>
             </Select>
             <Select label="Visible to">
+              <Select.Trigger />
               <Select.List>
                 <Select.Option>Everyone</Select.Option>
                 <Select.Option>Organization</Select.Option>
                 <Select.Option>Public</Select.Option>
               </Select.List>
             </Select>
+            <Checkbox
+              label="Busy"
+              description="When others mention you, assign you, or request your review, GitHub will let them know that you have limited availability."
+            />
           </div>
         </Modal.Body>
         <Modal.Footer>
@@ -86,7 +84,7 @@ export default function SheetMenuDemo() {
             </div>
           </Sheet.Header>
           <Sheet.Body className="px-0 sm:px-0">
-            <Menu.Primitive className="divide-y [&_.xss3]:p-2">
+            <MenuPrimitive className="divide-y [&_.xss3]:p-2">
               <Menu.Section>
                 <Menu.Item onAction={openModal}>
                   <IconBrandGithub />
@@ -149,7 +147,7 @@ export default function SheetMenuDemo() {
                   <IconLogout /> Sign out
                 </Menu.Item>
               </Menu.Section>
-            </Menu.Primitive>
+            </MenuPrimitive>
           </Sheet.Body>
         </Sheet.Content>
       </Sheet>

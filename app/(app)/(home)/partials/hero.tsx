@@ -1,7 +1,7 @@
 "use client"
 
 import { siteConfig } from "@/resources/config/site"
-import { IconBrandJustd, IconCube, IconStar } from "justd-icons"
+import { IconBrandGithub, IconBrandJustd, IconCube, IconStarFill } from "justd-icons"
 import { Header } from "react-aria-components"
 import { Container, Link, buttonStyles } from "ui"
 
@@ -20,44 +20,21 @@ export function Hero() {
           className="-translate-x-1/2 relative left-[calc(50%-11rem)] aspect-1155/678 w-[36.125rem] rotate-[30deg] bg-linear-to-tr opacity-10 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem] dark:from-indigo-500 dark:to-blue-600 dark:opacity-20"
         />
       </div>
-      <svg
-        aria-hidden="true"
-        className="-z-10 absolute inset-0 hidden h-full w-full stroke-fg/10 [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)] lg:block"
-      >
-        <defs>
-          <pattern
-            x="50%"
-            y={-1}
-            id="0787a7c5-978c-4f66-83c7-11c213f99cb7"
-            width={200}
-            height={200}
-            patternUnits="userSpaceOnUse"
-          >
-            <path d="M.5 200V.5H200" fill="none" />
-          </pattern>
-        </defs>
-        <rect
-          fill="url(#0787a7c5-978c-4f66-83c7-11c213f99cb7)"
-          width="100%"
-          height="100%"
-          strokeWidth={0}
-        />
-      </svg>
       <div className="border-b pt-10 pb-6 sm:py-8 lg:py-10 xl:py-20 2xl:py-24">
         <Container>
-          <Header>
+          <Header className="text-center sm:text-left">
             <Link
               target="_blank"
               href={siteConfig.repo}
-              className="group inline-flex items-center gap-x-1 rounded-full bg-zinc-50 px-3 py-2 text-xs text-zinc-900 data-hovered:bg-zinc-200"
+              className="inset-ring inset-ring-fg/10 inline-flex items-center gap-x-2 rounded-full bg-fg/5 px-2.5 py-1.5 text-xs/5 transition data-hovered:inset-ring/fg/15 data-hovered:bg-fg/10"
             >
-              <IconStar className="text-amber-400 duration-200 group-hover:fill-amber-400 group-hover:text-amber-400" />
-              Stars sustain energy
+              <IconStarFill className="text-amber-400" />
+              1.1K Github <IconBrandGithub />
             </Link>
-            <h1 className="mt-4 mb-4 max-w-xl font-bold text-2xl tracking-tight lg:mb-6 lg:text-4xl">
-              Accessible React UI Components. Copy, Customize, and Make Them Yours.
+            <h1 className="mt-4 mb-4 max-w-6xl bg-linear-to-r from-zinc-900 to-zinc-600 bg-clip-text pb-1 font-semibold text-3xl text-transparent tracking-tight lg:mb-6 lg:text-6xl dark:from-blue-400 dark:to-blue-200">
+              Accessible React components made for you to copy, customize, and own.
             </h1>
-            <p className="block max-w-3xl max-w-xl text-base text-muted-fg leading-relaxed md:leading-relaxed lg:text-xl [&_strong]:font-medium">
+            <p className="block max-w-2xl text-base text-muted-fg leading-relaxed md:leading-relaxed lg:text-xl [&_strong]:font-medium">
               <strong className="text-fg">{siteConfig.name}</strong> is a chill set of React
               components, built on top of <strong className="text-fg">React Aria Components</strong>
               , all about keeping the web accessible. Easy to customize and just copy & paste into
@@ -67,7 +44,7 @@ export function Hero() {
             </p>
           </Header>
 
-          <div className="mt-6 flex items-center gap-x-2">
+          <div className="mt-6 flex items-center justify-center gap-x-2 sm:justify-start">
             <Link
               className={buttonStyles({
                 size: "large",

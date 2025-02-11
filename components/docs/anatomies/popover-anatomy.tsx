@@ -3,14 +3,17 @@ import { Popover } from "ui"
 export default function PopoverAnatomy() {
   return (
     <Popover>
-      <Popover.Trigger />
-      <Popover.Content className="min-w-72">
+      <Popover.Trigger>Open Popover</Popover.Trigger>
+      <Popover.Content className="sm:min-w-72">
         <Popover.Header>
-          <Popover.Title />
-          <Popover.Description />
+          <Popover.Title>Popover Title</Popover.Title>
+          <Popover.Description>Popover Description</Popover.Description>
         </Popover.Header>
-        <Popover.Body />
-        <Popover.Footer />
+        <Popover.Body>Popover Body</Popover.Body>
+        <Popover.Footer>
+          <Popover.Close>Close</Popover.Close>
+          <Popover.Close>Confirm</Popover.Close>
+        </Popover.Footer>
       </Popover.Content>
     </Popover>
   )

@@ -77,7 +77,7 @@ interface ListProps<T extends object> extends ListBoxProps<T> {
   className?: string
 }
 
-const List = <T extends object>({
+const SelectList = <T extends object>({
   className,
   children,
   items,
@@ -118,13 +118,19 @@ const SelectTrigger = ({ className, ...props }: SelectTriggerProps) => {
   )
 }
 
-Select.OptionDetails = DropdownItemDetails
-Select.Option = DropdownItem
-Select.Label = DropdownLabel
-Select.Separator = DropdownSeparator
-Select.Section = DropdownSection
+const SelectSection = DropdownSection
+const SelectSeparator = DropdownSeparator
+const SelectLabel = DropdownLabel
+const SelectOptionDetails = DropdownItemDetails
+const SelectItem = DropdownItem
+
+Select.OptionDetails = SelectOptionDetails
+Select.Option = SelectItem
+Select.Label = SelectLabel
+Select.Separator = SelectSeparator
+Select.Section = SelectSection
 Select.Trigger = SelectTrigger
-Select.List = List
+Select.List = SelectList
 
 export type { SelectProps, SelectTriggerProps }
 export { Select }
