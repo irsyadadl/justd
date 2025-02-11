@@ -26,7 +26,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
     },
     {
-      url: `${siteConfig.url}/charts`,
+      url: `${siteConfig.url}/chart`,
       lastModified: new Date(),
     },
     //   @ts-ignore
