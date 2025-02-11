@@ -21,11 +21,12 @@ export function Blocks() {
     <Container>
       <section
         id="blocks"
-        className="**:data-[slot=wrapper-card]:grid **:data-[slot=wrapper-card]:place-content-center sm:mb-12"
+        className="relative **:data-[slot=wrapper-card]:grid **:data-[slot=wrapper-card]:place-content-center sm:mb-12"
       >
+        <div className="absolute bottom-0 z-20 h-70 w-full bg-linear-to-t from-bg via-bg/60 to-transparent" />
         <div className="mb-4 flex items-center justify-between">
-          <Heading level={2} className="sm:text-3xl">
-            Some Components
+          <Heading level={2} className="sm:text-2xl">
+            At a Glance
           </Heading>
           <Link
             href="/docs/2.x/components/buttons/button"
@@ -64,8 +65,8 @@ export function Blocks() {
 
             <Grid.Item>
               <div className="grid grid-cols-1 gap-1">
-                <Wrapper className="grid gap-6 lg:px-8 lg:py-9">
-                  <DateRangePicker className="w-full" label="Reservations date" />
+                <Wrapper className="grid gap-6 lg:px-0 lg:py-9">
+                  <DateRangePicker className="w-full sm:min-w-2xs" label="Reservations date" />
                   <DatePicker className="w-full" label="Event date" />
                 </Wrapper>
                 <Wrapper className="p-4 py-2 sm:p-4 lg:p-5">
@@ -91,7 +92,7 @@ export function Blocks() {
           </div>
         </div>
 
-        <div className="mt-8 flex items-center justify-center">
+        <div className="-mt-4 relative z-30 flex items-center justify-center">
           <Link className={buttonStyles()} href="/components">
             <IconPackage /> Show More
           </Link>

@@ -48,110 +48,106 @@ export function Resources() {
   return (
     <Container>
       <section id="starter-kit" className="mb-12">
-        <Heading level={2} className="mb-4 text-2xl sm:text-3xl">
+        <Heading level={2} className="mb-4 text-2xl sm:text-2xl">
           Starter Kit
         </Heading>
-        <div className="-mx-4">
-          <div
-            className="grid grid-cols-1 gap-px divide-y border-y p-px sm:grid-cols-2 sm:divide-y-0 sm:border-y-0 sm:bg-border"
-            aria-label="Resources"
-          >
-            {resources.map((item) => (
-              <Link
-                target="_blank"
-                href={item.url}
-                className="group relative bg-bg p-4 data-hovered:bg-overlay sm:p-8 lg:p-10"
-                aria-label={item.name}
-                key={item.name.toLowerCase().replaceAll(" ", "-")}
-              >
-                <div className="flex">
-                  <WrapperIcon>
-                    <item.icon />
-                  </WrapperIcon>
-                  <Card.Header className="flex flex-col gap-y-2 sm:gap-y-4">
-                    <Card.Title level={3} className="sm:mb-2 sm:text-2xl/0">
-                      {item.name}
-                    </Card.Title>
-                    <Card.Description>{item.description}</Card.Description>
-                    <div>
-                      <Badge>{item.label}</Badge>
-                    </div>
-                  </Card.Header>
-                </div>
-              </Link>
-            ))}
-          </div>
+        <div
+          className="grid grid-cols-1 gap-px divide-y border-y p-px sm:grid-cols-2 sm:divide-y-0 sm:border-y-0 sm:bg-border"
+          aria-label="Resources"
+        >
+          {resources.map((item) => (
+            <Link
+              target="_blank"
+              href={item.url}
+              className="group relative bg-bg p-4 data-hovered:bg-overlay sm:p-8 lg:p-10"
+              aria-label={item.name}
+              key={item.name.toLowerCase().replaceAll(" ", "-")}
+            >
+              <div className="flex">
+                <WrapperIcon>
+                  <item.icon />
+                </WrapperIcon>
+                <Card.Header className="flex flex-col gap-y-2 sm:gap-y-4">
+                  <Card.Title level={3} className="sm:mb-2 sm:text-2xl/0">
+                    {item.name}
+                  </Card.Title>
+                  <Card.Description>{item.description}</Card.Description>
+                  <div>
+                    <Badge>{item.label}</Badge>
+                  </div>
+                </Card.Header>
+              </div>
+            </Link>
+          ))}
         </div>
       </section>
 
       <section id="extra">
         <div className="mb-4">
-          <Heading level={2} className="text-2xl sm:text-3xl">
+          <Heading level={2} className="text-2xl sm:text-2xl">
             Justd Blocks
           </Heading>
           <p className="text-muted-fg leading-relaxed lg:text-lg">
             Create Beautiful Pages Effortlessly in No Time
           </p>
         </div>
-        <div className="-mx-4">
-          <div
-            className="grid grid-cols-1 gap-px divide-y border-y p-px sm:grid-cols-2 sm:divide-y-0 sm:border-y-0 sm:bg-border"
-            aria-label="Extra"
+        <div
+          className="grid grid-cols-1 gap-px divide-y border-y p-px sm:grid-cols-2 sm:divide-y-0 sm:border-y-0 sm:bg-border"
+          aria-label="Extra"
+        >
+          <Link
+            className="group relative bg-bg p-4 data-hovered:bg-overlay sm:p-8 lg:p-10"
+            target="_blank"
+            aria-label={"Justd Blocks"}
+            rel="noopener noreferrer"
+            href="https://dub.sh/RNMV32k"
           >
-            <Link
-              className="group relative bg-bg p-4 data-hovered:bg-overlay sm:p-8 lg:p-10"
-              target="_blank"
-              aria-label={"Justd Blocks"}
-              rel="noopener noreferrer"
-              href="https://dub.sh/RNMV32k"
-            >
-              <span className="absolute top-0 right-0 mt-12 mr-4 rotate-12 font-mono text-2xl text-muted-fg/20 tracking-tighter sm:text-7xl">
-                15% off
-              </span>
-              <div className="flex">
-                <WrapperIcon>
-                  <IconBrandJustdBlocks />
-                </WrapperIcon>
-                <Card.Header className="flex flex-col gap-y-2 sm:gap-y-4">
-                  <Card.Title level={3} className="sm:mb-2 sm:text-2xl/0">
-                    Justd Blocks
-                  </Card.Title>
-                  <Card.Description>
-                    Pre-designed, ready-to-use React components for seamless integration,
-                    customizable and optimized for modern web applications.
-                  </Card.Description>
-                  <div>
-                    <Badge>15% off</Badge>
-                  </div>
-                </Card.Header>
-              </div>
-            </Link>
-            <Link
-              className="group relative bg-bg p-4 data-hovered:bg-overlay sm:p-8 lg:p-10"
-              target="_blank"
-              aria-label={"Justd icons"}
-              rel="noopener noreferrer"
-              href="https://blocks.getjustd.com/templates"
-            >
-              <div className="flex">
-                <WrapperIcon>
-                  <IconWindowVisitFill className="size-6" />
-                </WrapperIcon>
-                <Card.Header className="flex flex-col gap-y-2 sm:gap-y-4">
-                  <Card.Title level={3} className="sm:mb-2 sm:text-2xl/0">
-                    Templates
-                  </Card.Title>
-                  <Card.Description>
-                    Looking for beautifully crafted templates to elevate your project? Browse
-                    through a collection of designs tailored to meet your needs.
-                  </Card.Description>
-                  <div>
-                    <Badge>15% off</Badge>
-                  </div>
-                </Card.Header>
-              </div>
-            </Link>
-          </div>
+            <span className="absolute top-0 right-0 mt-12 mr-4 rotate-12 font-mono text-2xl text-muted-fg/20 tracking-tighter sm:text-7xl">
+              15% off
+            </span>
+            <div className="flex">
+              <WrapperIcon>
+                <IconBrandJustdBlocks />
+              </WrapperIcon>
+              <Card.Header className="flex flex-col gap-y-2 sm:gap-y-4">
+                <Card.Title level={3} className="sm:mb-2 sm:text-2xl/0">
+                  Justd Blocks
+                </Card.Title>
+                <Card.Description>
+                  Pre-designed, ready-to-use React components for seamless integration, customizable
+                  and optimized for modern web applications.
+                </Card.Description>
+                <div>
+                  <Badge>15% off</Badge>
+                </div>
+              </Card.Header>
+            </div>
+          </Link>
+          <Link
+            className="group relative bg-bg p-4 data-hovered:bg-overlay sm:p-8 lg:p-10"
+            target="_blank"
+            aria-label={"Justd icons"}
+            rel="noopener noreferrer"
+            href="https://blocks.getjustd.com/templates"
+          >
+            <div className="flex">
+              <WrapperIcon>
+                <IconWindowVisitFill className="size-6" />
+              </WrapperIcon>
+              <Card.Header className="flex flex-col gap-y-2 sm:gap-y-4">
+                <Card.Title level={3} className="sm:mb-2 sm:text-2xl/0">
+                  Templates
+                </Card.Title>
+                <Card.Description>
+                  Looking for beautifully crafted templates to elevate your project? Browse through
+                  a collection of designs tailored to meet your needs.
+                </Card.Description>
+                <div>
+                  <Badge>15% off</Badge>
+                </div>
+              </Card.Header>
+            </div>
+          </Link>
         </div>
       </section>
     </Container>
@@ -166,7 +162,7 @@ export function Wrapper({
   return (
     <div
       data-slot={slot}
-      className={cn("relative rounded border bg-overlay px-4 py-10 sm:px-6 sm:py-8", className)}
+      className={cn("relative rounded-md border bg-overlay px-4 py-10 sm:px-6 sm:py-8", className)}
       {...props}
     />
   )

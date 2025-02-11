@@ -82,10 +82,10 @@ export function IconResources() {
       <Container>
         <div className="grid items-end gap-6 md:grid-cols-2 md:gap-10">
           <div className="">
-            <div className="grid size-14 place-content-center rounded-xl bg-secondary/50 ring-1 ring-fg/20 group-hover:bg-secondary">
-              <IconDuplicateFill className="size-6" />
+            <div className="grid size-10 place-content-center rounded-xl bg-secondary/50 ring-1 ring-fg/20 group-hover:bg-secondary">
+              <IconDuplicateFill className="size-5" />
             </div>
-            <h2 className="mt-4 max-w-md font-semibold text-3xl tracking-tight md:text-4xl">
+            <h2 className="mt-4 max-w-md font-semibold text-3xl tracking-tight md:text-2xl">
               Empower your design with Justd Icons
             </h2>
             <p className="mt-3 mb-6 text-pretty text-muted-fg leading-relaxed lg:text-lg">

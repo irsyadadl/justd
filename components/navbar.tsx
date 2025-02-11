@@ -33,7 +33,6 @@ import { cn } from "@/utils/classes"
 import { useMediaQuery } from "@/utils/use-media-query"
 import { CommandPalette } from "./command-palette"
 import { NavLink } from "./nav-item"
-import { TakeCurrentUrl } from "./take-current-url"
 import { ThemeSwitcher } from "./theme-switcher"
 
 export function Navbar() {
@@ -50,9 +49,9 @@ export function Navbar() {
           <nav className="fg/10 border-b bg-bg py-2 dark:supports-backdrop-filter:bg-bg/60 dark:supports-backdrop-filter:backdrop-blur-3xl">
             <div className="mx-auto max-w-(--breakpoint-2xl) px-4 sm:px-6 lg:px-8">
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-x-6">
+                <div className="flex items-center gap-x-5">
                   <NavbarDropdown />
-                  <Separator orientation="vertical" className="h-6" />
+                  <Separator orientation="vertical" className="-ml-4 mr-1 h-6" />
                   <NavLink isNextLink isActive={pathname === "/"} href="/">
                     Home
                   </NavLink>
@@ -81,7 +80,6 @@ export function Navbar() {
                   </NavLink>
 
                   <NavLink target="_blank" href="https://blocks.getjustd.com">
-                    <IconBrandJustdBlocks />
                     Blocks
                   </NavLink>
                   <Menu>
@@ -142,43 +140,15 @@ export function Navbar() {
 
                       <Keyboard className="-mr-1" keys="⌘K" />
                     </Button>
-                    <TakeCurrentUrl />
                     <ThemeSwitcher />
 
-                    <Menu>
-                      <Button
-                        size="small"
-                        appearance="outline"
-                        className="group justify-between text-left"
-                      >
-                        {pathname.includes("/docs/")
-                          ? pathname.split("/")[2]
-                          : siteConfig.currentVersion}
-                        <IconChevronLgDown className="size-3 duration-200 group-pressed:rotate-180" />
-                      </Button>
-                      <Menu.Content placement="bottom right" showArrow className="sm:min-w-10">
-                        <Menu.Item href="/docs/1.x/getting-started/introduction">1.x</Menu.Item>
-                        <Menu.Item href="/docs/2.x/getting-started/introduction">2.x</Menu.Item>
-                      </Menu.Content>
-                    </Menu>
-                    <Link
-                      aria-label="Github Repository"
-                      className={buttonStyles({
-                        appearance: "outline",
-                        size: "square-petite",
-                        className: "**:data-[slot=icon]:text-fg",
-                      })}
-                      target="_blank"
-                      href={siteConfig.repo}
-                    >
-                      <IconBrandGithub />
-                    </Link>
                     <Link
                       aria-label="Join Discord"
                       className={buttonStyles({
                         appearance: "outline",
                         size: "square-petite",
-                        className: "**:data-[slot=icon]:text-fg",
+                        className:
+                          "data-hovered:border-indigo-500/20 data-hovered:bg-indigo-600/10 data-hovered:**:data-[slot=icon]:text-indigo-600 **:data-[slot=icon]:text-indigo-500",
                       })}
                       target="_blank"
                       href={siteConfig.discord}
@@ -197,6 +167,32 @@ export function Navbar() {
                     >
                       <IconBrandX />
                     </Link>
+                    <Link
+                      aria-label="Follow Update on X"
+                      className={buttonStyles({
+                        appearance: "outline",
+                        size: "square-petite",
+                        className:
+                          "data-hovered:border-blue-500/20 data-hovered:bg-blue-600/10 **:data-[slot=icon]:text-fg",
+                      })}
+                      target="_blank"
+                      href="https://dub.sh/NfSXJrL"
+                    >
+                      <IconBrandJustdBlocks />
+                    </Link>
+
+                    <Link
+                      aria-label="Github Repository"
+                      className={buttonStyles({
+                        appearance: "outline",
+                        size: "square-petite",
+                        className: "**:data-[slot=icon]:text-fg sm:text-xs",
+                      })}
+                      target="_blank"
+                      href={siteConfig.repo}
+                    >
+                      <IconBrandGithub />
+                    </Link>
                   </>
                 </div>
               </div>
@@ -211,6 +207,7 @@ export function Navbar() {
 
 export function NavbarDropdown() {
   const pathname = usePathname()
+
   return (
     <div className="flex items-center gap-x-1">
       <Menu>
@@ -218,10 +215,21 @@ export function NavbarDropdown() {
           <span className="flex items-center gap-x-2">
             <IconBrandJustd className="-ml-1 size-4.5" />
             <span className="font-mono text-base tracking-tight sm:text-sm">{siteConfig.name}</span>
-            <IconChevronLgDown className="-mr-1 ml-3 size-3.5 text-muted-fg transition duration-300 group-hover:text-fg group-data-pressed:rotate-180 group-data-pressed:text-fg" />
+            <Badge intent="secondary">
+              {pathname.includes("/docs/") ? pathname.split("/")[2] : siteConfig.currentVersion}
+            </Badge>
           </span>
         </Button>
         <Menu.Content placement="bottom" className="sm:min-w-64">
+          <Menu.Submenu title="Versions">
+            <Menu.Item>
+              <Menu.Label>Switch Version</Menu.Label>
+            </Menu.Item>
+            <Menu.Content>
+              <Menu.Item href="/docs/1.x/getting-started/introduction">1.x</Menu.Item>
+              <Menu.Item href="/docs/2.x/getting-started/introduction">2.x</Menu.Item>
+            </Menu.Content>
+          </Menu.Submenu>
           <Menu.Section title="Pages">
             <Menu.Item href="/">
               <IconHome />
