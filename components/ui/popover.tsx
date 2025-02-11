@@ -174,23 +174,6 @@ const PopoverContent = ({
   )
 }
 
-const PopoverPicker = ({ children, className, ...props }: PopoverContentProps) => {
-  return (
-    <PopoverPrimitive
-      {...props}
-      className={composeRenderProps(className, (className, renderProps) =>
-        content({
-          ...renderProps,
-          isPicker: true,
-          className,
-        }),
-      )}
-    >
-      {children}
-    </PopoverPrimitive>
-  )
-}
-
 const PopoverTrigger = Dialog.Trigger
 const PopoverClose = Dialog.Close
 const PopoverDescription = Dialog.Description
@@ -202,8 +185,7 @@ Popover.Content = PopoverContent
 Popover.Body = PopoverBody
 Popover.Footer = PopoverFooter
 Popover.Header = PopoverHeader
-Popover.Picker = PopoverPicker
 Popover.Title = PopoverTitle
 
 export type { PopoverProps, PopoverContentProps }
-export { Popover }
+export { Popover, PopoverContent }

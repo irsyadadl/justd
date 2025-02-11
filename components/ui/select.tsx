@@ -1,8 +1,10 @@
 "use client"
 
+import { cn } from "@/utils/classes"
 import { IconChevronLgDown } from "justd-icons"
 import type {
   ListBoxProps,
+  PopoverProps,
   SelectProps as SelectPrimitiveProps,
   ValidationResult,
 } from "react-aria-components"
@@ -13,8 +15,6 @@ import {
   composeRenderProps,
 } from "react-aria-components"
 import { tv } from "tailwind-variants"
-
-import type { Placement } from "@react-types/overlays"
 import {
   DropdownItem,
   DropdownItemDetails,
@@ -24,7 +24,7 @@ import {
 } from "./dropdown"
 import { Description, FieldError, Label } from "./field"
 import { ListBox } from "./list-box"
-import { Popover } from "./popover"
+import { PopoverContent } from "./popover"
 import { composeTailwindRenderProps, focusStyles } from "./primitive"
 
 const selectTriggerStyles = tv({
@@ -53,7 +53,6 @@ const Select = <T extends object>({
   label,
   description,
   errorMessage,
-  children,
   className,
   ...props
 }: SelectProps<T>) => {
@@ -62,34 +61,43 @@ const Select = <T extends object>({
       {...props}
       className={composeTailwindRenderProps(className, "group flex w-full flex-col gap-y-1.5")}
     >
-      {label && <Label>{label}</Label>}
-      {children as React.ReactNode}
-      {description && <Description>{description}</Description>}
-      <FieldError>{errorMessage}</FieldError>
+      {(values) => (
+        <>
+          {label && <Label>{label}</Label>}
+          {typeof props.children === "function" ? props.children(values) : props.children}
+          {description && <Description>{description}</Description>}
+          <FieldError>{errorMessage}</FieldError>
+        </>
+      )}
     </SelectPrimitive>
   )
 }
 
-interface ListProps<T extends object> extends ListBoxProps<T> {
+interface SelectListProps<T extends object>
+  extends ListBoxProps<T>,
+    Pick<PopoverProps, "placement"> {
   items?: Iterable<T>
-  placement?: Placement
-  children: React.ReactNode | ((item: T) => React.ReactNode)
-  className?: string
+  popoverClassName?: PopoverProps["className"]
 }
 
 const SelectList = <T extends object>({
-  className,
   children,
   items,
-  placement,
+  className,
+  popoverClassName,
   ...props
-}: ListProps<T>) => {
+}: SelectListProps<T>) => {
   return (
-    <Popover.Picker className={className} placement={placement}>
-      <ListBox.Picker aria-label="items" items={items} {...props}>
+    <PopoverContent
+      showArrow={false}
+      respectScreen={false}
+      className={cn("sm:min-w-(--trigger-width)", popoverClassName)}
+      placement={props.placement}
+    >
+      <ListBox className={cn("border-0", className)} items={items} {...props}>
         {children}
-      </ListBox.Picker>
-    </Popover.Picker>
+      </ListBox>
+    </PopoverContent>
   )
 }
 
@@ -122,10 +130,10 @@ const SelectSection = DropdownSection
 const SelectSeparator = DropdownSeparator
 const SelectLabel = DropdownLabel
 const SelectOptionDetails = DropdownItemDetails
-const SelectItem = DropdownItem
+const SelectOption = DropdownItem
 
 Select.OptionDetails = SelectOptionDetails
-Select.Option = SelectItem
+Select.Option = SelectOption
 Select.Label = SelectLabel
 Select.Separator = SelectSeparator
 Select.Section = SelectSection

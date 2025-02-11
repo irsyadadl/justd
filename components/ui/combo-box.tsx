@@ -2,24 +2,27 @@
 
 import React from "react"
 
+import { cn } from "@/utils/classes"
 import { IconChevronLgDown, IconX } from "justd-icons"
-import type { InputProps } from "react-aria-components"
+import type {
+  ComboBoxProps as ComboboxPrimitiveProps,
+  InputProps,
+  ListBoxProps,
+  ValidationResult,
+} from "react-aria-components"
 import {
   Button as ButtonPrimitive,
   ComboBoxContext,
   ComboBoxStateContext,
   ComboBox as ComboboxPrimitive,
-  type ComboBoxProps as ComboboxPrimitiveProps,
-  type PopoverProps as PopoverPrimitiveProps,
-  type ValidationResult,
   useSlottedContext,
 } from "react-aria-components"
 import { tv } from "tailwind-variants"
 import { Button } from "./button"
 import { DropdownItem, DropdownLabel, DropdownSection } from "./dropdown"
 import { Description, FieldError, FieldGroup, Input, Label } from "./field"
-import { ListBoxPicker } from "./list-box"
-import { Popover } from "./popover"
+import { ListBox } from "./list-box"
+import { PopoverContent, type PopoverContentProps } from "./popover"
 import { composeTailwindRenderProps } from "./primitive"
 
 const comboboxStyles = tv({
@@ -61,19 +64,31 @@ const ComboBox = <T extends object>({
   )
 }
 
-type ListBoxPickerProps<T extends object> = React.ComponentProps<typeof ListBoxPicker<T>>
-
 interface ComboBoxListProps<T extends object>
-  extends ListBoxPickerProps<T>,
-    Omit<PopoverPrimitiveProps, "children" | "className" | "style"> {}
+  extends ListBoxProps<T>,
+    Pick<PopoverContentProps, "placement"> {
+  popoverClassName?: PopoverContentProps["className"]
+}
 
-const ComboBoxList = <T extends object>({ children, items, ...props }: ComboBoxListProps<T>) => {
+const ComboBoxList = <T extends object>({
+  children,
+  items,
+  className,
+  popoverClassName,
+  ...props
+}: ComboBoxListProps<T>) => {
   return (
-    <Popover.Picker trigger="ComboBox" isNonModal placement={props.placement}>
-      <ListBoxPicker items={items} {...props}>
+    <PopoverContent
+      showArrow={false}
+      respectScreen={false}
+      isNonModal
+      className={cn("sm:min-w-(--trigger-width)", popoverClassName)}
+      placement={props.placement}
+    >
+      <ListBox className={cn("border-0", className)} items={items} {...props}>
         {children}
-      </ListBoxPicker>
-    </Popover.Picker>
+      </ListBox>
+    </PopoverContent>
   )
 }
 
@@ -108,11 +123,15 @@ const ComboBoxClearButton = () => {
   )
 }
 
+const ComboBoxOption = DropdownItem
+const ComboBoxLabel = DropdownLabel
+const ComboBoxSection = DropdownSection
+
 ComboBox.Input = ComboBoxInput
 ComboBox.List = ComboBoxList
-ComboBox.Option = DropdownItem
-ComboBox.Label = DropdownLabel
-ComboBox.Section = DropdownSection
+ComboBox.Option = ComboBoxOption
+ComboBox.Label = ComboBoxLabel
+ComboBox.Section = ComboBoxSection
 
 export type { ComboBoxProps, ComboBoxListProps }
 export { ComboBox }

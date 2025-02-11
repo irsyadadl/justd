@@ -19,7 +19,7 @@ import { Button } from "./button"
 import type { FieldProps } from "./field"
 import { Description, FieldError, Input, Label } from "./field"
 import { ListBox } from "./list-box"
-import { Popover } from "./popover"
+import { PopoverContent } from "./popover"
 import type { RestrictedIntent, TagGroupProps } from "./tag-group"
 import { Tag, TagGroup, TagList } from "./tag-group"
 import { VisuallyHidden } from "./visually-hidden"
@@ -269,15 +269,15 @@ const MultipleSelect = <T extends SelectedKey>({
                 </Button>
               </VisuallyHidden>
             </div>
-            <Popover.Picker
+            <PopoverContent
+              respectScreen={false}
               isNonModal
               className="max-w-none"
               style={{ width: `${width}px` }}
               triggerRef={triggerRef}
               trigger="ComboBox"
             >
-              <ListBox.Picker
-                className="grid-cols-none"
+              <ListBox
                 renderEmptyState={() =>
                   renderEmptyState ? (
                     renderEmptyState(fieldState.inputValue)
@@ -297,8 +297,8 @@ const MultipleSelect = <T extends SelectedKey>({
                 selectionMode="multiple"
               >
                 {children}
-              </ListBox.Picker>
-            </Popover.Picker>
+              </ListBox>
+            </PopoverContent>
           </ComboBox>
           <div className="relative ml-auto flex items-center justify-center px-1" aria-hidden>
             <button
