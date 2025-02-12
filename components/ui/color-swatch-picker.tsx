@@ -5,10 +5,10 @@ import {
   ColorSwatchPickerItem as ColorSwatchPickerItemPrimitive,
   ColorSwatchPicker as ColorSwatchPickerPrimitive,
 } from "react-aria-components"
-import { tv } from "tailwind-variants"
 
+import { twMerge } from "tailwind-merge"
 import { ColorSwatch } from "./color-swatch"
-import { composeTailwindRenderProps, focusRing } from "./primitive"
+import { composeTailwindRenderProps } from "./primitive"
 
 const ColorSwatchPicker = ({
   children,
@@ -19,27 +19,41 @@ const ColorSwatchPicker = ({
   return (
     <ColorSwatchPickerPrimitive
       layout={layout}
-      {...props}
       className={composeTailwindRenderProps(className, "flex gap-1")}
+      {...props}
     >
       {children}
     </ColorSwatchPickerPrimitive>
   )
 }
 
-const itemStyles = tv({
-  extend: focusRing,
-  base: "relative rounded-lg data-disabled:opacity-50",
-})
-
-const ColorSwatchPickerItem = (props: ColorSwatchPickerItemProps) => {
+const ColorSwatchPickerItem = ({ className, children, ...props }: ColorSwatchPickerItemProps) => {
   return (
-    <ColorSwatchPickerItemPrimitive {...props} className={itemStyles}>
-      {({ isSelected }) => (
+    <ColorSwatchPickerItemPrimitive
+      className={composeTailwindRenderProps(
+        className,
+        "relative overflow-hidden rounded-md outline-hidden data-disabled:opacity-50",
+      )}
+      {...props}
+    >
+      {(values) => (
         <>
-          <ColorSwatch />
-          {isSelected && (
-            <div className="absolute inset-ring inset-ring-fg/30 top-0 left-0 size-full rounded-md outline-hidden forced-color-adjust-none" />
+          {!children ? (
+            <>
+              <ColorSwatch
+                className={twMerge(
+                  (values.isSelected || values.isFocused || values.isPressed) && "inset-ring-fg/30",
+                  values.isDisabled && "opacity-50",
+                )}
+              />
+              {(values.isSelected || values.isFocused || values.isPressed) && (
+                <span aria-hidden className="absolute right-1 bottom-1 size-1 rounded-full bg-fg" />
+              )}
+            </>
+          ) : typeof children === "function" ? (
+            children(values)
+          ) : (
+            children
           )}
         </>
       )}

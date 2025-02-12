@@ -1,36 +1,35 @@
 "use client"
 
-import type React from "react"
+import { use } from "react"
 
-import type { Placement } from "@react-types/overlays"
 import {
-  Button,
   ColorPicker as ColorPickerPrimitive,
   type ColorPickerProps as ColorPickerPrimitiveProps,
-  Dialog,
+  ColorPickerStateContext,
 } from "react-aria-components"
-import { tv } from "tailwind-variants"
 
+import { cn } from "@/utils/classes"
+import { parseColor } from "@react-stately/color"
+import { IconEyeDropper } from "justd-icons"
+import { twJoin } from "tailwind-merge"
+import { Button } from "./button"
 import { ColorArea } from "./color-area"
 import { ColorField } from "./color-field"
 import { ColorSlider } from "./color-slider"
 import { ColorSwatch } from "./color-swatch"
 import { Description } from "./field"
-import { Popover } from "./popover"
-import { focusButtonStyles } from "./primitive"
+import { Popover, PopoverContent, type PopoverContentProps } from "./popover"
 
-const buttonStyles = tv({
-  extend: focusButtonStyles,
-  base: "btn-trigger flex cursor-pointer items-center rounded text-sm disabled:cursor-default disabled:opacity-50",
-})
-
-interface ColorPickerProps extends ColorPickerPrimitiveProps {
+interface ColorPickerProps
+  extends ColorPickerPrimitiveProps,
+    Pick<PopoverContentProps, "placement"> {
   label?: string
+  className?: string
   children?: React.ReactNode
   showArrow?: boolean
   isDisabled?: boolean
-  placement?: Placement
   description?: string
+  eyeDropper?: boolean
 }
 
 const ColorPicker = ({
@@ -40,31 +39,44 @@ const ColorPicker = ({
   isDisabled,
   children,
   description,
+  eyeDropper,
+  className,
   ...props
 }: ColorPickerProps) => {
   return (
-    <div className="flex flex-col gap-y-2">
+    <div className={cn("flex flex-col items-start gap-y-1.5", className)}>
       <ColorPickerPrimitive {...props}>
         <Popover>
-          <Button isDisabled={isDisabled} className={buttonStyles}>
+          <Button
+            isDisabled={isDisabled}
+            size={label ? "medium" : "square-petite"}
+            appearance="plain"
+            className={twJoin(
+              "*:data-[slot=color-swatch]:-mx-0.5 w-auto px-2.5",
+              !label && "size-10",
+            )}
+          >
             <ColorSwatch className="size-6" />
-            {label && <span className="ml-2">{label}</span>}
+            {label && label}
           </Button>
-          <Popover.Content
-            className="overflow-y-auto px-0 pt-4 pb-3 **:data-[slot=color-area]:w-full **:data-[slot=color-slider]:w-full sm:min-w-min sm:max-w-56 sm:p-3 sm:**:data-[slot=color-area]:size-56"
+          <PopoverContent
+            className="overflow-auto **:data-[slot=color-area]:w-full **:data-[slot=color-slider]:w-full sm:min-w-min sm:max-w-56 sm:**:data-[slot=color-area]:size-56 *:[[role=dialog]]:p-4 sm:*:[[role=dialog]]:p-3"
             showArrow={showArrow}
             placement={placement}
           >
-            <Dialog className="flex flex-col gap-2 outline-hidden">
+            <div className="flex flex-col gap-y-1.5">
               {children || (
                 <>
                   <ColorArea colorSpace="hsb" xChannel="saturation" yChannel="brightness" />
                   <ColorSlider showOutput={false} colorSpace="hsb" channel="hue" />
-                  <ColorField aria-label="Hex" />
+                  <div className="flex items-center gap-1.5">
+                    {eyeDropper && <EyeDropper />}
+                    <ColorField className="h-9" aria-label="Hex" />
+                  </div>
                 </>
               )}
-            </Dialog>
-          </Popover.Content>
+            </div>
+          </PopoverContent>
         </Popover>
       </ColorPickerPrimitive>
       {description && <Description>{description}</Description>}
@@ -72,5 +84,33 @@ const ColorPicker = ({
   )
 }
 
+declare global {
+  interface Window {
+    EyeDropper?: new () => { open: () => Promise<{ sRGBHex: string }> }
+  }
+}
+
+const EyeDropper = () => {
+  const state = use(ColorPickerStateContext)!
+
+  if (!window.EyeDropper) {
+    return "EyeDropper is not supported in your browser."
+  }
+
+  return (
+    <Button
+      aria-label="Eye dropper"
+      size="square-petite"
+      appearance="outline"
+      onPress={() => {
+        const eyeDropper = window.EyeDropper ? new window.EyeDropper() : null
+        eyeDropper?.open().then((result) => state.setColor(parseColor(result.sRGBHex)))
+      }}
+    >
+      <IconEyeDropper />
+    </Button>
+  )
+}
+
 export type { ColorPickerProps }
-export { ColorPicker }
+export { ColorPicker, EyeDropper }

@@ -6,6 +6,7 @@ import type {
 } from "react-aria-components"
 import { ColorField as ColorFieldPrimitive } from "react-aria-components"
 
+import { cn } from "@/utils/classes"
 import { ColorPicker } from "./color-picker"
 import { ColorSwatch } from "./color-swatch"
 import { Description, FieldError, FieldGroup, Input, Label } from "./field"
@@ -46,16 +47,20 @@ const ColorField = ({
     >
       {label && <Label>{label}</Label>}
       <FieldGroup data-loading={isLoading ? "true" : undefined}>
-        {prefix ? (
-          <span data-slot="prefix" className="atrs">
-            {prefix}
-          </span>
-        ) : null}
-        <div className="flex w-full items-center">
+        {prefix && typeof prefix === "string" ? (
+          <span className="ml-2 text-muted-fg">{prefix}</span>
+        ) : (
+          prefix
+        )}
+        <div className={cn("flex w-full items-center", prefix && "ml-6")}>
           {value && (
-            <span className="ml-2">
+            <span className="ml-1">
               {enableColorPicker ? (
-                <ColorPicker onChange={props.onChange} defaultValue={value} />
+                <ColorPicker
+                  className="*:[button]:size-8 *:[button]:rounded-sm *:[button]:ring-0"
+                  onChange={props.onChange}
+                  defaultValue={value}
+                />
               ) : (
                 <ColorSwatch className="size-6" color={value.toString("hex")} />
               )}
@@ -64,11 +69,11 @@ const ColorField = ({
 
           <Input placeholder={placeholder} />
         </div>
-        {suffix ? (
-          <span data-slot="suffix" className="atrs ml-auto">
-            {suffix}
-          </span>
-        ) : null}
+        {suffix && typeof suffix === "string" ? (
+          <span className="mr-2 text-muted-fg">{suffix}</span>
+        ) : (
+          suffix
+        )}
       </FieldGroup>
       {description && <Description>{description}</Description>}
       <FieldError>{errorMessage}</FieldError>
