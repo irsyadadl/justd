@@ -1,6 +1,7 @@
 "use client"
 
 import { IconChevronLgLeft, IconChevronLgRight } from "justd-icons"
+import type { CalendarProps as CalendarPrimitiveProps, DateValue } from "react-aria-components"
 import {
   CalendarCell,
   CalendarGrid,
@@ -8,34 +9,15 @@ import {
   CalendarGridHeader as CalendarGridHeaderPrimitive,
   CalendarHeaderCell,
   Calendar as CalendarPrimitive,
-  type CalendarProps as CalendarPrimitiveProps,
-  type DateValue,
   Heading,
   Text,
   composeRenderProps,
   useLocale,
 } from "react-aria-components"
-import { tv } from "tailwind-variants"
 
+import { cn } from "@/utils/classes"
+import { getLocalTimeZone, today } from "@internationalized/date"
 import { Button } from "./button"
-
-const cell = tv({
-  // extend: focusRing,
-  base: "flex size-10 cursor-default items-center justify-center rounded-lg tabular-nums outline-hidden sm:size-9 sm:text-sm/6 forced-colors:outline-0",
-  variants: {
-    isSelected: {
-      false:
-        "text-fg data-hovered:bg-secondary-fg/15 data-pressed:bg-secondary-fg/20 forced-colors:text-[ButtonText]",
-      true: "bg-primary text-primary-fg data-invalid:bg-danger data-invalid:text-danger-fg forced-colors:bg-[Highlight] forced-colors:text-[Highlight] forced-colors:data-invalid:bg-[Mark]",
-    },
-    isFocused: {
-      true: "bg-primary text-primary-fg ring-0 forced-colors:bg-[Highlight] forced-colors:text-[HighlightText]",
-    },
-    isDisabled: {
-      true: "text-muted-fg forced-colors:text-[GrayText]",
-    },
-  },
-})
 
 interface CalendarProps<T extends DateValue>
   extends Omit<CalendarPrimitiveProps<T>, "visibleDuration"> {
@@ -44,6 +26,8 @@ interface CalendarProps<T extends DateValue>
 }
 
 const Calendar = <T extends DateValue>({ errorMessage, className, ...props }: CalendarProps<T>) => {
+  const now = today(getLocalTimeZone())
+
   return (
     <CalendarPrimitive {...props}>
       <CalendarHeader />
@@ -53,11 +37,18 @@ const Calendar = <T extends DateValue>({ errorMessage, className, ...props }: Ca
           {(date) => (
             <CalendarCell
               date={date}
-              className={composeRenderProps(className, (className, renderProps) =>
-                cell({
-                  ...renderProps,
-                  className,
-                }),
+              className={composeRenderProps(
+                className,
+                (className, { isSelected, isDisabled, isHovered }) =>
+                  cn(
+                    "relative flex size-10 cursor-default items-center justify-center rounded-lg text-fg tabular-nums outline-hidden data-hovered:bg-secondary-fg/15 sm:size-9 sm:text-sm/6 forced-colors:text-[ButtonText] forced-colors:outline-0",
+                    isSelected &&
+                      "bg-primary text-primary-fg data-hovered:bg-primary/90 data-invalid:bg-danger data-pressed:bg-primary data-invalid:text-danger-fg forced-colors:bg-[Highlight] forced-colors:text-[Highlight] forced-colors:data-invalid:bg-[Mark]",
+                    isDisabled && "text-muted-fg forced-colors:text-[GrayText]",
+                    date.compare(now) === 0 &&
+                      "after:-translate-x-1/2 after:pointer-events-none after:absolute after:start-1/2 after:bottom-1 after:z-10 after:size-[3px] after:rounded-full after:bg-primary data-focused:after:bg-primary-fg data-selected:after:bg-primary-fg",
+                    className,
+                  ),
               )}
             />
           )}
@@ -72,22 +63,18 @@ const Calendar = <T extends DateValue>({ errorMessage, className, ...props }: Ca
   )
 }
 
-const calendarHeaderStyles = tv({
-  slots: {
-    header: "flex w-full justify-center gap-1 px-1 pb-5 sm:pb-4",
-    heading: "mr-2 flex-1 text-left font-medium text-muted-fg sm:text-sm",
-    calendarGridHeaderCell: "pb-2 font-semibold text-muted-fg text-sm sm:px-0 sm:py-0.5 lg:text-xs",
-  },
-})
-
-const { header, heading, calendarGridHeaderCell } = calendarHeaderStyles()
-
 const CalendarHeader = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
   const { direction } = useLocale()
 
   return (
-    <header data-slot="calendar-header" className={header({ className })} {...props}>
-      <Heading className={heading()} />
+    <header
+      data-slot="calendar-header"
+      className={cn("flex w-full justify-center gap-1 px-1 pb-5 sm:pb-4", className)}
+      {...props}
+    >
+      <Heading
+        className={cn("mr-2 flex-1 text-left font-medium text-muted-fg sm:text-sm", className)}
+      />
       <div className="flex items-center gap-1">
         <Button
           size="square-petite"
@@ -115,7 +102,11 @@ const CalendarHeader = ({ className, ...props }: React.HTMLAttributes<HTMLDivEle
 const CalendarGridHeader = () => {
   return (
     <CalendarGridHeaderPrimitive>
-      {(day) => <CalendarHeaderCell className={calendarGridHeaderCell()}>{day}</CalendarHeaderCell>}
+      {(day) => (
+        <CalendarHeaderCell className="pb-2 font-semibold text-muted-fg text-sm sm:px-0 sm:py-0.5 lg:text-xs">
+          {day}
+        </CalendarHeaderCell>
+      )}
     </CalendarGridHeaderPrimitive>
   )
 }
