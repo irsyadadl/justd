@@ -125,7 +125,7 @@ const TagList = <T extends object>({ className, ...props }: TagListProps<T>) => 
   return (
     <TagListPrimitive
       {...props}
-      className={composeTailwindRenderProps(className, "flex flex-wrap gap-2")}
+      className={composeTailwindRenderProps(className, "flex flex-wrap gap-1.5")}
     />
   )
 }
