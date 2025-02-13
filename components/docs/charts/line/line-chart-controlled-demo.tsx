@@ -3,7 +3,15 @@
 import { useState } from "react"
 
 import { CartesianGrid, Line, LineChart, XAxis } from "recharts"
-import { Card, Chart, type ChartConfig, ChartTooltip, ChartTooltipContent, Toggle } from "ui"
+import {
+  Card,
+  Chart,
+  type ChartConfig,
+  ChartTooltip,
+  ChartTooltipContent,
+  Toggle,
+  ToggleGroup,
+} from "ui"
 
 const generateChartData = (startDate: string, endDate: string) => {
   const result = []
@@ -47,7 +55,7 @@ export default function LineChartControlledDemo() {
             Tracking daily revenue and expenses over the last 3 months
           </Card.Description>
         </div>
-        <div className="flex gap-x-1">
+        <ToggleGroup size="extra-small">
           {["revenue", "expenses"].map((key) => {
             const chart = key as keyof typeof chartConfig
             return (
@@ -60,7 +68,7 @@ export default function LineChartControlledDemo() {
               </Toggle>
             )
           })}
-        </div>
+        </ToggleGroup>
       </Card.Header>
       <Card.Content className="px-2 sm:p-6">
         <Chart config={chartConfig} className="aspect-auto h-[250px] w-full">

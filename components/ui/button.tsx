@@ -56,7 +56,8 @@ const buttonStyles = tv({
       plain: ["border-transparent data-hovered:bg-secondary data-pressed:bg-secondary"],
     },
     size: {
-      "extra-small": "h-8 px-[calc(var(--spacing)*2.7)] text-xs/4 lg:text-[0.800rem]/4",
+      "extra-small":
+        "h-8 px-[calc(var(--spacing)*2.7)] text-xs/4 **:data-[slot=avatar]:*:size-3.5 **:data-[slot=avatar]:size-3.5 **:data-[slot=icon]:size-3 lg:text-[0.800rem]/4",
       small: "h-9 px-3.5 text-sm/5 sm:text-sm/5",
       medium: "h-10 px-4 text-base sm:text-sm/6",
       large:

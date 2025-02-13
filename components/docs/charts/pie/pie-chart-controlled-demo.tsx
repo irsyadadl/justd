@@ -76,27 +76,26 @@ export default function PieChartControlledDemo() {
             <strong className="font-semibold">{data[activeIndex]?.sales.toLocaleString()}</strong>
           </Card.Description>
         </div>
-        <Select selectedKey={activeMonth} onSelectionChange={setActiveMonth}>
-          <Select.Trigger
-            className="ml-auto h-8 w-[130px] rounded-lg px-2"
-            aria-label="Select a value"
-          />
-          <Select.List className="rounded-xl">
-            {months.map((key) => {
-              const _config = config[key as keyof typeof config]
+        <div className="ml-auto max-w-[130px]">
+          <Select selectedKey={activeMonth} onSelectionChange={setActiveMonth}>
+            <Select.Trigger />
+            <Select.List aria-label="Options" className="sm:min-w-40" placement="bottom end">
+              {months.map((key) => {
+                const _config = config[key as keyof typeof config]
 
-              if (!_config) {
-                return null
-              }
+                if (!_config) {
+                  return null
+                }
 
-              return (
-                <Select.Option key={key} id={key}>
-                  <div className="flex items-center gap-2 text-xs">{_config?.label}</div>
-                </Select.Option>
-              )
-            })}
-          </Select.List>
-        </Select>
+                return (
+                  <Select.Option key={key} id={key}>
+                    {_config?.label}
+                  </Select.Option>
+                )
+              })}
+            </Select.List>
+          </Select>
+        </div>
       </Card.Header>
       <Card.Content className="flex flex-1 justify-center pb-0">
         <Chart id={id} config={config} className="mx-auto aspect-square w-full max-w-[315px]">

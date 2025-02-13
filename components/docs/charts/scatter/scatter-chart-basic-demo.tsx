@@ -21,7 +21,7 @@ export default function StorePerformanceAnalysis() {
   return (
     <Card>
       <Card.Header
-        className="items-center pb-0"
+        className="items-center"
         title="Store Performance Analysis"
         description="Insights into revenue, footfall, and average order value across stores"
       />
@@ -45,7 +45,7 @@ export default function StorePerformanceAnalysis() {
               tickLine={false}
               axisLine={false}
             />
-            <ZAxis type="number" dataKey="z" name="Avg Order Value" unit="$" />
+            <ZAxis type="number" dataKey="z" name="Avg Order Value" unit="k" />
             <ChartTooltip content={<ChartTooltipContent indicator="dashed" />} />
             <Scatter data={data} fill="var(--chart-1)" />
           </ScatterChart>

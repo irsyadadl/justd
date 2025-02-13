@@ -11,7 +11,7 @@ type ToggleGroupContextProps = {
   gap?: 0 | 1 | 2 | 3 | 4
   appearance?: "plain" | "outline" | "solid"
   orientation?: "horizontal" | "vertical"
-  size?: "small" | "medium" | "large" | "square-petite"
+  size?: "extra-small" | "small" | "medium" | "large" | "square-petite"
 }
 
 const ToggleGroupContext = createContext<ToggleGroupContextProps>({
@@ -129,6 +129,7 @@ const toggleStyles = tv({
       vertical: "flex",
     },
     size: {
+      "extra-small": "h-8 px-3 text-xs/4 *:data-[slot=icon]:size-3.5",
       small: "h-9 px-3.5",
       medium: "h-10 px-4",
       large: "h-11 px-5 *:data-[slot=icon]:size-4.5 sm:text-base",

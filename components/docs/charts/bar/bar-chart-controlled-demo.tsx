@@ -53,16 +53,8 @@ export default function BarChartControlledDemo() {
               {["sales", "revenue"].map((key) => {
                 const chart = key as keyof typeof chartConfig
                 return (
-                  <Select.Option
-                    key={chart}
-                    data-active={activeChart === chart}
-                    id={key}
-                    textValue={chartConfig[chart].label}
-                  >
-                    <Select.OptionDetails
-                      label={chartConfig[chart].label}
-                      description={total[key as keyof typeof total].toLocaleString()}
-                    />
+                  <Select.Option key={chart} data-active={activeChart === chart} id={key}>
+                    {chartConfig[chart].label}
                   </Select.Option>
                 )
               })}

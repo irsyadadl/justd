@@ -26,10 +26,10 @@ export default function AreaChartBasicDemo() {
       <Card.Header
         title="Revenue Trends"
         description="Monthly revenue for the last 24 months"
-        className="items-center pb-0"
+        className="items-center"
       />
       <Card.Content>
-        <Chart config={salesConfig}>
+        <Chart className="max-h-[250px] w-full" config={salesConfig}>
           <AreaChart
             accessibilityLayer
             data={salesData}

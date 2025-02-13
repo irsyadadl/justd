@@ -34,7 +34,7 @@ export default function AreaChartGradientDemo() {
         className="items-center pb-4"
       />
       <Card.Content>
-        <Chart config={chartConfig} className="max-h-[250px] w-full">
+        <Chart config={chartConfig} className="max-h-[300px] w-full">
           <AreaChart
             accessibilityLayer
             data={salesData}
