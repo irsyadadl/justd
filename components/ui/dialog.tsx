@@ -24,10 +24,11 @@ const dialogStyles = tv({
       "relative flex flex-col gap-0.5 p-4 sm:gap-1 sm:p-6 [&[data-slot=dialog-header]:has(+[data-slot=dialog-footer])]:pb-0",
     description: "text-muted-fg text-sm",
     body: [
-      "isolate flex flex-1 flex-col overflow-auto px-4 sm:px-6",
+      "isolate flex flex-1 flex-col overflow-auto px-4 py-1 sm:px-6",
       "max-h-[calc(var(--visual-viewport-height)-var(--visual-viewport-vertical-padding)-var(--dialog-header-height,0px)-var(--dialog-footer-height,0px))]",
     ],
-    footer: "isolate mt-auto flex flex-col-reverse justify-between gap-3 p-4 sm:flex-row sm:p-6",
+    footer:
+      "isolate mt-auto flex flex-col-reverse justify-between gap-3 p-4 pt-3 sm:flex-row sm:p-6 sm:pt-5",
     closeIndicator:
       "close absolute top-1 right-1 z-50 grid size-8 place-content-center rounded-xl data-focused:bg-secondary data-hovered:bg-secondary data-focused:outline-hidden data-focus-visible:ring-1 data-focus-visible:ring-primary sm:top-2 sm:right-2 sm:size-7 sm:rounded-md",
   },

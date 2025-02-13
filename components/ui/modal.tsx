@@ -11,6 +11,10 @@ import { type VariantProps, tv } from "tailwind-variants"
 
 import { Dialog } from "./dialog"
 
+const Modal = (props: DialogTriggerProps) => {
+  return <DialogTrigger {...props} />
+}
+
 const modalOverlayStyles = tv({
   base: [
     "fixed top-0 left-0 isolate z-50 h-(--visual-viewport-height) w-full",
@@ -62,10 +66,6 @@ const modalContentStyles = tv({
     size: "lg",
   },
 })
-
-const Modal = (props: DialogTriggerProps) => {
-  return <DialogTrigger {...props} />
-}
 
 interface ModalContentProps
   extends Omit<ModalOverlayProps, "className" | "children">,
