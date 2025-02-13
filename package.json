@@ -63,7 +63,7 @@
     "@tailwindcss/typography": "^0.5.16",
     "@types/culori": "^2.1.1",
     "@types/mdx": "^2.0.13",
-    "@types/node": "^22.13.1",
+    "@types/node": "^22.13.2",
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
     "@types/title": "^3.4.3",

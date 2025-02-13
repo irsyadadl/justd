@@ -12,7 +12,6 @@ import {
 import { tv } from "tailwind-variants"
 
 import { cn } from "@/utils/classes"
-import { useMediaQuery } from "@/utils/use-media-query"
 import type { DateDuration } from "@internationalized/date"
 import { Button } from "./button"
 import { Calendar } from "./calendar"
@@ -27,7 +26,6 @@ const datePickerStyles = tv({
     base: "group/date-picker flex flex-col gap-y-1",
     datePickerIcon:
       "mr-1 h-7 w-8 rounded outline-offset-0data-hovered:bg-transparent data-pressed:bg-transparent **:data-[slot=icon]:text-muted-fg",
-    calendarIcon: "group-open:text-fg",
     datePickerInput: "w-full px-2 text-base sm:text-sm",
     dateRangePickerInputStart: "px-2 text-base sm:text-sm",
     dateRangePickerInputEnd: "flex-1 px-2 py-1.5 text-base sm:text-sm",
@@ -36,7 +34,7 @@ const datePickerStyles = tv({
   },
 })
 
-const { base, datePickerIcon, calendarIcon, datePickerInput } = datePickerStyles()
+const { base, datePickerIcon, datePickerInput } = datePickerStyles()
 
 interface DatePickerOverlayProps
   extends Omit<DialogProps, "children" | "className" | "style">,
@@ -56,21 +54,17 @@ const DatePickerOverlay = ({
   range,
   ...props
 }: DatePickerOverlayProps) => {
-  const isMobile = useMediaQuery("(max-width: 600px)")
   return (
     <Popover.Content
       showArrow={false}
       className={cn(
-        "flex justify-center p-4 sm:min-w-[16.5rem] sm:p-2 sm:pt-3",
+        "flex min-w-auto max-w-none snap-x justify-center p-4 sm:min-w-[16.5rem] sm:p-2 sm:pt-3",
         visibleDuration?.months === 1 ? "sm:max-w-2xs" : "sm:max-w-none",
       )}
       {...props}
     >
       {range ? (
-        <RangeCalendar
-          pageBehavior={pageBehavior}
-          visibleDuration={!isMobile ? visibleDuration : undefined}
-        />
+        <RangeCalendar pageBehavior={pageBehavior} visibleDuration={visibleDuration} />
       ) : (
         <Calendar />
       )}
@@ -87,7 +81,7 @@ const DatePickerOverlay = ({
 
 const DatePickerIcon = () => (
   <Button size="square-petite" appearance="plain" className={datePickerIcon()}>
-    <IconCalendarDays aria-hidden className={calendarIcon()} />
+    <IconCalendarDays aria-hidden className="ml-2 group-open:text-fg" />
   </Button>
 )
 

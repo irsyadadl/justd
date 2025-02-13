@@ -31,7 +31,7 @@ const Calendar = <T extends DateValue>({ errorMessage, className, ...props }: Ca
   return (
     <CalendarPrimitive {...props}>
       <CalendarHeader />
-      <CalendarGrid className="[&_td]:border-collapse [&_td]:p-1 sm:[&_td]:px-0 sm:[&_td]:py-0.5">
+      <CalendarGrid className="[&_td]:border-collapse [&_td]:px-0 [&_td]:py-0.5">
         <CalendarGridHeader />
         <CalendarGridBody>
           {(date) => (
@@ -41,12 +41,12 @@ const Calendar = <T extends DateValue>({ errorMessage, className, ...props }: Ca
                 className,
                 (className, { isSelected, isDisabled, isHovered }) =>
                   cn(
-                    "relative flex size-10 cursor-default items-center justify-center rounded-lg text-fg tabular-nums outline-hidden data-hovered:bg-secondary-fg/15 sm:size-9 sm:text-sm/6 forced-colors:text-[ButtonText] forced-colors:outline-0",
+                    "relative flex size-11 cursor-default items-center justify-center rounded-lg text-fg tabular-nums outline-hidden data-hovered:bg-secondary-fg/15 sm:size-10 sm:size-9 sm:text-sm/6 forced-colors:text-[ButtonText] forced-colors:outline-0",
                     isSelected &&
                       "bg-primary text-primary-fg data-hovered:bg-primary/90 data-invalid:bg-danger data-pressed:bg-primary data-invalid:text-danger-fg forced-colors:bg-[Highlight] forced-colors:text-[Highlight] forced-colors:data-invalid:bg-[Mark]",
                     isDisabled && "text-muted-fg forced-colors:text-[GrayText]",
                     date.compare(now) === 0 &&
-                      "after:-translate-x-1/2 after:pointer-events-none after:absolute after:start-1/2 after:bottom-1 after:z-10 after:size-[3px] after:rounded-full after:bg-primary data-focused:after:bg-primary-fg data-selected:after:bg-primary-fg",
+                      "after:-translate-x-1/2 after:pointer-events-none after:absolute after:start-1/2 after:bottom-1 after:z-10 after:size-[3px] after:rounded-full after:bg-primary data-focus-visible:after:bg-primary-fg data-selected:after:bg-primary-fg",
                     className,
                   ),
               )}

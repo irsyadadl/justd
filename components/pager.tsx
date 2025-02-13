@@ -15,7 +15,7 @@ export const Pager = ({
   return (
     <div className={cn("not-prose flex w-full justify-between gap-3", className)}>
       {neighbours.previous && (
-        <div className="group w-full">
+        <div className="group w-40">
           <Link className="inline-flex justify-start text-sm" href={neighbours.previous.url}>
             <div>
               <div className="flex items-center gap-1 text-muted-fg">
@@ -29,7 +29,7 @@ export const Pager = ({
       )}
 
       {neighbours.next && (
-        <div className="group">
+        <div className="group flex w-40 justify-end">
           <Link className="inline-flex justify-end text-sm" href={neighbours.next.url}>
             <div>
               <div className="flex items-center justify-end gap-1 text-right text-muted-fg">

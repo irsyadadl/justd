@@ -29,26 +29,26 @@ const RangeCalendar = <T extends DateValue>({
   return (
     <RangeCalendarPrimitive visibleDuration={visibleDuration} {...props}>
       <Calendar.Header />
-      <div className="flex gap-2 overflow-auto">
+      <div className="flex snap-x items-start justify-stretch gap-6 overflow-auto sm:gap-10">
         {Array.from({ length: visibleDuration?.months ?? 1 }).map((_, index) => {
           const id = index + 1
           return (
             <CalendarGrid
               key={index}
               offset={id >= 2 ? { months: id - 1 } : undefined}
-              className="**:[td]:px-0 **:[td]:py-[1.5px]"
+              className="[&_td]:border-collapse [&_td]:px-0 [&_td]:py-0.5"
             >
               <Calendar.GridHeader />
-              <CalendarGridBody>
+              <CalendarGridBody className="snap-start">
                 {(date) => (
                   <CalendarCell
                     date={date}
                     className={twMerge([
-                      "[--cell-fg:var(--color-primary)] [--cell:color-mix(in_oklab,var(--color-primary)_15%,white_85%)]",
+                      "shrink-0 [--cell-fg:var(--color-primary)] [--cell:color-mix(in_oklab,var(--color-primary)_15%,white_85%)]",
                       "dark:[--cell-fg:color-mix(in_oklab,var(--color-primary)_80%,white_20%)] dark:[--cell:color-mix(in_oklab,var(--color-primary)_30%,black_45%)]",
-                      "group/calendar-cell relative size-10 cursor-default outline-hidden [line-height:2.286rem] data-selection-start:rounded-s-lg data-selection-end:rounded-e-lg data-outside-month:text-muted-fg sm:text-sm lg:size-9",
+                      "group/calendar-cell relative size-11 cursor-default outline-hidden [line-height:2.286rem] data-selection-start:rounded-s-lg data-selection-end:rounded-e-lg data-outside-month:text-muted-fg sm:size-10 sm:text-sm lg:size-9",
                       "data-selected:bg-(--cell)/70 data-selected:text-(--cell-fg) dark:data-selected:bg-(--cell)",
-                      "data-invalid:data-selected:bg-danger/10 data-focused:after:bg-primary-fg data-selected:after:bg-primary-fg dark:data-invalid:data-selected:bg-danger/13",
+                      "data-invalid:data-selected:bg-danger/10 data-focus-visible:after:bg-primary-fg data-selected:after:bg-primary-fg dark:data-invalid:data-selected:bg-danger/13",
                       "[td:first-child_&]:rounded-s-lg [td:last-child_&]:rounded-e-lg",
                       "forced-colors:data-invalid:data-selected:bg-[Mark] forced-colors:data-selected:bg-[Highlight] forced-colors:data-selected:text-[HighlightText]",
                       date.compare(now) === 0 &&
