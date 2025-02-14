@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
   "organizeImports": {
     "enabled": true
   },
@@ -10,7 +10,7 @@
   },
   "files": {
     "ignoreUnknown": false,
-    "ignore": [".idea"]
+    "ignore": [".next", ".idea", ".vscode", "node_modules"]
   },
   "linter": {
     "enabled": true,
