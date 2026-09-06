@@ -3,8 +3,8 @@
 Thanks for helping make Intent UI better. Contributions of all sizes are
 welcome, from fixing a typo to improving an accessible component.
 
-Before starting, search the existing [issues](https://github.com/intentui/intentui/issues)
-and [pull requests](https://github.com/intentui/intentui/pulls) to avoid duplicating
+Before starting, search the existing [issues](https://github.com/irsyadadl/intentui/issues)
+and [pull requests](https://github.com/irsyadadl/intentui/pulls) to avoid duplicating
 work. For large features or breaking changes, open an issue first so we can agree
 on the direction. Small fixes can go straight to a pull request.
 
@@ -110,10 +110,10 @@ before the standard checks.
 ## Code of Conduct
 
 Everyone participating in Intent UI must follow our
-[Code of Conduct](https://github.com/intentui/intentui/blob/main/CODE_OF_CONDUCT.md).
+[Code of Conduct](https://github.com/irsyadadl/intentui/blob/main/CODE_OF_CONDUCT.md).
 Unacceptable behavior can be reported to [irsyadadl@pm.me](mailto:irsyadadl@pm.me).
 
 ## License
 
 By contributing to Intent UI, you agree that your contributions will be licensed
-under the project's [MIT License](https://github.com/intentui/intentui/blob/main/LICENSE).
+under the project's [MIT License](https://github.com/irsyadadl/intentui/blob/main/LICENSE).

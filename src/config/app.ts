@@ -14,7 +14,7 @@ export const app = {
     discord: 'https://discord.gg/DYmVJ66JUD',
   },
   repo: {
-    url: 'https://github.com/intentui/intentui',
+    url: 'https://github.com/irsyadadl/intentui',
     currentVersion: '3.x',
     repoStars: '1.9',
   },
