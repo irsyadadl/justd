@@ -27,7 +27,9 @@
     "postinstall": "husky"
   },
   "lint-staged": {
-    "./**/*.{ts,tsx}": ["biome lint --fix && biome check --write"]
+    "./**/*.{ts,tsx}": [
+      "biome lint --fix && biome check --write"
+    ]
   },
   "dependencies": {
     "@intentui/icons": "^1.11.0",
@@ -42,7 +44,7 @@
     "fumadocs-mdx": "11.6.1",
     "input-otp": "^1.4.2",
     "motion": "^12.18.1",
-    "next": "^15.3.4",
+    "next": "15.3.8",
     "next-themes": "^0.4.6",
     "ntcjs": "^1.1.3",
     "react": "^19.1.0",
@@ -97,7 +99,11 @@
     "type": "git",
     "url": "git+https://github.com/irsyadadl/intentui.git"
   },
-  "trustedDependencies": ["es5-ext", "esbuild", "sharp"],
+  "trustedDependencies": [
+    "es5-ext",
+    "esbuild",
+    "sharp"
+  ],
   "overrides": {
     "react-is": "^19.0.0"
   }
