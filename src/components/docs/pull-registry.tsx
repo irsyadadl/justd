@@ -1,7 +1,7 @@
 'use client'
 
-import { track } from '@vercel/analytics'
 import { useState } from 'react'
+import { event } from 'onedollarstats'
 import { Button } from 'react-aria-components/Button'
 import { twJoin, cn } from 'cn'
 import { Link } from '@/components/ui/link'
@@ -64,6 +64,11 @@ export function PullRegistry({ readMore, processedSourceCode, blockExample }: Pu
   const handleCopy = async (key: 'code' | 'command', value: string) => {
     const didCopy = await copyToClipboard(value)
     if (!didCopy) return
+
+    if (key === 'code') {
+      void event('copy to clipboard', { component: blockExample })
+    }
+
     setCopy((prev) => ({ ...prev, [key]: true }))
     setTimeout(() => setCopy((prev) => ({ ...prev, [key]: false })), 2000)
   }
@@ -84,9 +89,6 @@ export function PullRegistry({ readMore, processedSourceCode, blockExample }: Pu
         onCopy={() => {
           const text = processedSourceCode as string
           handleCopy('code', text)
-          track('copy to clipboard', {
-            text: text,
-          })
         }}
       />
       {readMore && (
