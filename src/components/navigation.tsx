@@ -112,11 +112,11 @@ export function Navigation() {
                       latest
                     </Badge>
                   </MenuItem>
-                  <MenuItem href="https://2x.intentui.com/docs/getting-started/introduction">
+                  <MenuItem href="https://github.com/irsyadadl/intentui/tree/2.x">
                     2.x
                   </MenuItem>
                   <MenuItem
-                    href="https://1x.intentui.com/docs/getting-started/introduction"
+                    href="https://github.com/irsyadadl/intentui/tree/1.x"
                     className="group"
                   >
                     1.x{' '}
