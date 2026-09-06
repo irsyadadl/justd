@@ -220,7 +220,7 @@ function updateSearchScript(components: string[]) {
   const content = readFileSync(SEARCH_SCRIPT_PATH, 'utf-8')
 
   const regex =
-    /const rawStatusMap: Record<"new" \| "updated" \| "beta" \| "alpha", string\[\]> = \{[\s\S]*?\n\}/
+    /const rawStatusMap: Record<(['"])new\1 \| \1updated\1 \| \1beta\1 \| \1alpha\1, string\[\]> = \{[\s\S]*?\n\}/
   const match = content.match(regex)
 
   if (!match) {
@@ -228,9 +228,9 @@ function updateSearchScript(components: string[]) {
     return
   }
 
-  const newStatusMap = `const rawStatusMap: Record<"new" | "updated" | "beta" | "alpha", string[]> = {
+  const newStatusMap = `const rawStatusMap: Record<'new' | 'updated' | 'beta' | 'alpha', string[]> = {
   new: [],
-  updated: [${components.map((c) => `"${c}"`).join(', ')}],
+  updated: [${components.map((c) => `'${c}'`).join(', ')}],
   beta: [],
   alpha: [],
 }`

@@ -1,5 +1,53 @@
 [
   {
+    "name": "Table virtualizer example",
+    "component": "table-virtualizer-example.tsx",
+    "url": null,
+    "type": "example",
+    "category": "collections",
+    "kind": "improvement",
+    "description": null,
+    "additions": 14,
+    "deletions": 6,
+    "date": "2026-09-06"
+  },
+  {
+    "name": "Card table example",
+    "component": "card-table-example.tsx",
+    "url": "/table",
+    "type": "example",
+    "category": "collections",
+    "kind": "improvement",
+    "description": null,
+    "additions": 1,
+    "deletions": 1,
+    "date": "2026-09-06"
+  },
+  {
+    "name": "Card",
+    "component": "card.tsx",
+    "url": "/card",
+    "type": "component",
+    "category": "surfaces",
+    "kind": "improvement",
+    "description": null,
+    "additions": 54,
+    "deletions": 51,
+    "date": "2026-09-06"
+  },
+  {
+    "name": "Sheet",
+    "component": "sheet.tsx",
+    "url": "/sheet",
+    "type": "component",
+    "category": "overlays",
+    "kind": "improvement",
+    "description": null,
+    "additions": 57,
+    "deletions": 57,
+    "date": "2026-09-06"
+  },
+  {
     "name": "Pie chart donut custom label example",
     "component": "pie-chart-donut-custom-label-example.tsx",
     "url": "/pie-chart",

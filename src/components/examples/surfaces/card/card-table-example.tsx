@@ -85,7 +85,7 @@ export default function CardTableDemo() {
           </TableBody>
         </Table>
       </CardContent>
-      <CardFooter className="-mt-[calc(var(--card-spacing)+1px)]">
+      <CardFooter className="pt-6">
         <Pagination>
           <PaginationList className="hidden md:flex">
             <PaginationFirst href="#" />

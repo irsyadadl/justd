@@ -22,7 +22,7 @@ export default function TableVirtualizerExample() {
       <TablePrimitive
         aria-label="Virtualized products"
         selectionMode="multiple"
-        className="block h-96 w-full min-w-full overflow-auto rounded-lg border text-sm/6 outline-hidden [--gutter-y:--spacing(2)] [--table-selected-bg:var(--color-secondary)]/50 [&_[data-slot=table-cell]]:h-full [&_[data-slot=table-column]]:h-full [&_[data-slot=table-column]:has([slot=selection])]:flex [&_[data-slot=table-column]:has([slot=selection])]:items-center"
+        className="block h-96 w-full min-w-full overflow-auto whitespace-nowrap rounded-lg border text-sm/6 outline-hidden [--gutter-y:--spacing(2)] [--table-selected-bg:var(--color-secondary)]/50 [&_[data-slot=table-cell]]:h-full [&_[data-slot=table-column]]:h-full [&_[data-slot=table-column]:has([slot=selection])]:flex [&_[data-slot=table-column]:has([slot=selection])]:items-center"
       >
         <TableHeader
           style={{ width: '100%', height: '100%', backgroundColor: 'var(--color-muted)' }}
@@ -30,13 +30,21 @@ export default function TableVirtualizerExample() {
           <TableColumn width={54} minWidth={54} style={{ width: 54 }}>
             #
           </TableColumn>
-          <TableColumn width="2fr" isRowHeader>
+          <TableColumn width="2fr" minWidth={160} isRowHeader>
             Name
           </TableColumn>
-          <TableColumn width="2fr">Category</TableColumn>
-          <TableColumn width="1fr">Brand</TableColumn>
-          <TableColumn width="1fr">Price</TableColumn>
-          <TableColumn width="1fr">Stock</TableColumn>
+          <TableColumn width="2fr" minWidth={140}>
+            Category
+          </TableColumn>
+          <TableColumn width="1fr" minWidth={110}>
+            Brand
+          </TableColumn>
+          <TableColumn width="1fr" minWidth={100}>
+            Price
+          </TableColumn>
+          <TableColumn width="1fr" minWidth={80}>
+            Stock
+          </TableColumn>
         </TableHeader>
         <TableBody items={items}>
           {(item) => (
