@@ -1,5 +1,5 @@
 import { AppBootstrap } from '@/components/app-bootstrap'
-import { DeferredAnalytics } from '@/components/deferred-analytics'
+import { Analytics } from '@/components/analytics'
 import { Discount } from '@/components/discount'
 import { JsonLd } from '@/components/json-ld'
 import { app, META_THEME_COLORS } from '@/config/app'
@@ -157,7 +157,7 @@ export default async function RootLayout({ children }: Readonly<Props>) {
           <Discount />
           <main>{children}</main>
         </Providers>
-        <DeferredAnalytics />
+        <Analytics />
       </body>
     </html>
   )
